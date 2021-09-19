@@ -447,7 +447,7 @@ exports.uploadBlog = async (req, res) => {
 
         const manager = await managerModel.findOne({ categoryId: _id });
         const sentEmail = await nodemailer(manager.email);
-        console.log("Email sent...", sentEmail);
+        console.log('Email sent...', sentEmail);
 
         return res.redirect(`/users/manageBlog`);
     } catch (error) {
