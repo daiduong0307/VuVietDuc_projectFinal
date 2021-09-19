@@ -1,0 +1,34 @@
+<nav class="blog-pagination justify-content-center d-flex">
+    {{#pagination currentPage pages size=5}}
+    <ul class="pagination">
+        {{#unless context.startFromFirstPage}}
+        <li class="page-item">
+            <a href="/users/home" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">
+                    <span class="ti-arrow-left"></span>
+                </span>
+            </a>
+        </li>
+        {{/unless}}
+
+        {{#each pages}}
+        {{#if isCurrent}}
+        <li class="page-item active"><a href="/users/home?p={{page}}" class="page-link">{{page}}</a></li>
+        {{/if}}
+        {{#unless isCurrent}}
+        <li class="page-item"><a href="/users/home?p={{page}}" class="page-link">{{page}}</a></li>
+        {{/unless}}
+        {{/each}}
+
+        {{#unless context.endAtLastPage}}
+        <li class="page-item">
+            <a href="/users/home?p={{endPage}}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">
+                    <span class="ti-arrow-right"></span>
+                </span>
+            </a>
+        </li>
+        {{/unless}}
+    </ul>
+    {{/pagination}}
+</nav>

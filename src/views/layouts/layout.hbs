@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{#if err}}
+  <title>{{err}}</title>
+  {{else}}
+  <title>{{title}}</title>
+  {{/if}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="CodedThemes">
+  <meta name="keywords"
+    content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+  <meta name="author" content="CodedThemes">
+  <!-- Favicon icon -->
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <!-- Google font-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+  <!-- Required Fremwork -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap/css/bootstrap.min.css">
+  <!-- themify-icons line icon -->
+  <link rel="stylesheet" type="text/css" href="/assets/icon/themify-icons/themify-icons.css">
+  <!-- ico font -->
+  <link rel="stylesheet" type="text/css" href="/assets/icon/icofont/css/icofont.css">
+  <!-- Style.css -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+  {{!--
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> --}}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+  <script src="/ckeditor/ckeditor.js"></script>
+  <style>
+    .changeStyle {
+      font-weight: bold;
+    }
+
+    th,
+    td {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .changePosition {
+      position: fixed;
+      top: 6rem;
+    }
+  </style>
+</head>
+
+<body class="fix-menu">
+  {{{body}}}
+
+  <script src="/javascripts/ajax/ajaxCategory.js"></script>
+  <script src="/javascripts/ajax/ajaxDelManager.js"></script>
+  <script src="/javascripts/ajax/ajaxDelUser.js"></script>
+  <script src="/javascripts/checkRetypePwd.js"></script>
+  <script src="/javascripts/ajax/ajaxDelTag.js"></script>
+
+  <!-- Required Jquery -->
+  <script type="text/javascript" src="/assets/js/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/assets/js/popper.js/popper.min.js"></script>
+  <script type="text/javascript" src="/assets/js/bootstrap/js/bootstrap.min.js"></script>
+  <!-- jquery slimscroll js -->
+  <script type="text/javascript" src="/assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+  <!-- modernizr js -->
+  <script type="text/javascript" src="/assets/js/modernizr/modernizr.js"></script>
+  <script type="text/javascript" src="/assets/js/modernizr/css-scrollbars.js"></script>
+  <script type="text/javascript" src="/assets/js/common-pages.js"></script>
+  <!-- am chart -->
+  <script type="text/javascript" src="/assets/pages/widget/amchart/amcharts.min.js"></script>
+  <script type="text/javascript" src="/assets/pages/widget/amchart/serial.min.js"></script>
+  <!-- classie js -->
+  <script type="text/javascript" src="/assets/js/classie/classie.js"></script>
+  <!-- Morris Chart js -->
+  <script type="text/javascript" src="/assets/js/raphael/raphael.min.js"></script>
+  <script type="text/javascript" src="/assets/js/morris.js/morris.js"></script>
+  <!-- Todo js -->
+  <script type="text/javascript " src="/assets/pages/todo/todo.js "></script>
+  <!-- Custom js -->
+  <script type="text/javascript" src="/assets/pages/dashboard/custom-dashboard.js"></script>
+  <script type="text/javascript" src="/assets/js/script.js"></script>
+  <script type="text/javascript " src="/assets/js/SmoothScroll.js"></script>
+  <script type="text/javascript" src="/assets/js/pcoded.min.js"></script>
+  <script type="text/javascript" src="/assets/js/demo-12.js"></script>
+  <script type="text/javascript" src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/javascripts/socket.js"></script>
+
+  {{!--
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script> --}}
+
+  <script>
+    var $window = $(window);
+    var nav = $('.fixed-button');
+    $window.scroll(function () {
+      if ($window.scrollTop() >= 200) {
+        nav.addClass('active');
+      }
+      else {
+        nav.removeClass('active');
+      }
+    });
+  </script>
+  <script>
+    $('.table-responsive').on('show.bs.dropdown', function () {
+      $('.table-responsive').css("overflow", "inherit");
+    });
+
+    $('.table-responsive').on('hide.bs.dropdown', function () {
+      $('.table-responsive').css("overflow", "auto");
+    })
+
+  </script>
+  <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+  </script>
+</body>
+
+</html>

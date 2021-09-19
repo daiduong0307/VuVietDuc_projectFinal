@@ -1,0 +1,253 @@
+<!--================ Start Header Area ===============-->
+<header class="header-area">
+    <div class="container">
+        {{> user/header}}
+    </div>
+</header>
+<!--================ End Header Area =================-->
+
+<!--================ Start banner Area ===============-->
+<section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="banner-content text-center">
+        <h1>Blog Details</h1>
+        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
+        </p>
+    </div>
+</section>
+<!--================ End banner Area =================-->
+
+<!--================Blog Area =================-->
+<section class="blog_area section-gap single-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="main_blog_details">
+                    <img class="img-fluid" src="/uploads/{{blog.mainImage}}" style="width:730px; height:340px" alt="">
+                    <a href="#">
+                        <h4>{{blog.titleName}}</h4>
+                    </a>
+                    <div class="user_details">
+                        <div class="float-left" id="bookmark">
+                            <input type="hidden" name="" id="ss_id" value={{session.userId}}>
+                            {{#equals demo.bookmarkExists.accountId session.userId}}
+
+                            <input type="hidden" name="blogId" id="blog_id" value="{{blog._id}}">
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="unBookmark this post" id="{{blog._id}}"
+                                style="margin-right: 10px; margin-top: 6px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z" />
+                                    <path
+                                        d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z" />
+                                </svg>
+                            </button>
+
+                            {{else}}
+
+                            <input type="hidden" name="blogId" id="blog_id" value="{{blog._id}}">
+                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Bookmark this post" id="{{blog._id}}"
+                                style="margin-right: 10px; margin-top: 6px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z" />
+                                    <path
+                                        d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z" />
+                                </svg>
+                            </button>
+
+                            {{/equals}}
+                        </div>
+
+                        <div class="float-left">
+                            <a
+                                href="/users/blogByCategory?categoryId={{blog.categoryId._id}}">{{blog.categoryId.name}}</a>
+                        </div>
+                        {{#each blog.tags}}
+                        <div class="float-left">
+                            <a href="#">{{name}}</a>
+                        </div>
+                        {{/each}}
+                        <div class="float-right mt-sm-0 mt-3">
+                            <div class="media">
+                                <div class="media-body">
+                                    <a href="/users/u/{{blog.owner.accountId.username}}">
+                                        <h5>{{blog.owner.fullName}}</h5>
+                                    </a>
+                                    <p>{{moment blog.createdAt format ="MMMM DD - YYYY HH:mm"}}</p>
+                                </div>
+                                <div class="d-flex">
+                                    <a href="/users/u/{{blog.owner.accountId.username}}">
+                                        <img src="/uploads/{{blog.owner.avatar}}" style="width:40px; height:40px"
+                                            alt="{{blog.owner.fullName}}">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="blogContent">
+                        {{blog.blogContent}}
+                    </div>
+                    <div class="pt-5">
+                        <p><strong>Categories:</strong> <a href="#">{{blog.categoryId.name}}</a> <strong>Tags:</strong>
+                            {{#each blog.tags}}<a href="#">#{{name}}, </a>{{/each}}</p>
+                    </div>
+                    <div class="news_d_footer flex-column flex-sm-row">
+                        <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><i
+                                class="lnr lnr lnr-bubble"></i>{{totalComment}}
+                            Comments</a>
+                        <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comments-area" id="listComment">
+                    <h4>{{totalComment}} Comments</h4>
+                    <input type="hidden" name="" id="userId" value="{{session.userId}}">
+                    {{#each blog.comments}}
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="/uploads/{{author.avatar}}" style="width:60px; height:60px;"
+                                        alt="userAvt">
+                                </div>
+                                <div class="desc">
+                                    <h5><a href="#">{{author.fullName}}</a></h5>
+                                    <p class="date">{{moment createdAt format ="MMMM DD, YYYY HH:mm"}}</p>
+                                    <p class="comment">
+                                        {{comment}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                <a class="btn-reply text-uppercase reply" style="cursor: pointer" id="show">reply</a>
+                                {{#equals author.accountId._id ../session.userId}}
+                                <a class="btn-reply text-uppercase btn-deleteComment" style="cursor: pointer"
+                                    id="{{_id}}">Delete</a>
+                                {{/equals}}
+                            </div>
+                            <form method="post" id="formReply" hidden="true" class="clsFormReply"
+                                enctype="application/x-www-form-urlencoded">
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" name="reply" placeholder="Message"
+                                        required></textarea>
+                                </div>
+
+                                <input type="hidden" id="commentId" name="commentId" value="{{_id}}">
+                                <input type="hidden" id="blogId" name="blogId" value="{{postId._id}}">
+
+                                <input type="submit" class="primary-btn submit_btn" value="Reply" />
+                            </form>
+                        </div>
+                    </div>
+
+                    {{#if replies}}
+                    <div id="listReplies">
+                        <input type="hidden" name="" id="userId2" value="{{../session.userId}}">
+                        {{#each replies}}
+                        <div class="comment-list left-padding">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="/uploads/{{author.avatar}}" style="width:60px; height:60px;"
+                                            alt="userAvt">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">{{author.fullName}}</a></h5>
+                                        <p class="date">{{moment createdAt format ="MMMM DD, YYYY HH:mm"}}</p>
+                                        <p class="comment">
+                                            {{comment}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="reply-btn">
+                                    {{#equals author.accountId._id ../../session.userId}}
+                                    <a class="btn-reply text-uppercase btn-deleteReply" style="cursor: pointer"
+                                        id="{{_id}}">Delete</a>
+                                    {{/equals}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </div>
+                <div class="comment-form">
+                    <h4>Leave a Comment</h4>
+                    <form id="cmtForm" method="post">
+                        <div class="form-group">
+                            <textarea class="form-control mb-10" rows="5" name="comment" placeholder="Message"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
+                                required=""></textarea>
+                        </div>
+                        <input type="hidden" id="blogId2" name="blogId" value="{{blog._id}}">
+                        <input type="submit" class="primary-btn submit_btn" value="Post comment" />
+                    </form>
+                </div>
+            </div>
+
+            <!-- Start Blog Post Sidebar -->
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+
+                    <div class="single-sidebar-widget share-widget">
+                        <h4 class="share-title">Share this post</h4>
+                        <div class="social-icons mt-20">
+                            <a href="#">
+                                <span class="ti-facebook"></span>
+                            </a>
+                            <a href="#">
+                                <span class="ti-twitter"></span>
+                            </a>
+                            <a href="#">
+                                <span class="ti-pinterest"></span>
+                            </a>
+                            <a href="#">
+                                <span class="ti-instagram"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    {{> user/bioProfile}}
+                    {{> user/categories}}
+                    {{> user/relatedBlog}}
+                    {{> user/popularBlog}}
+                    {{> user/tags}}
+
+                </div>
+            </div>
+            <!-- End Blog Post Sidebar -->
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->
+
+<!--================ Start Footer Area =================-->
+{{> user/userFooter}}
+<!--================ End Footer Area ===================-->
+
+<script>
+    $(document).ready(function () {
+        $("#blogContent").html($("#blogContent").text())
+    })
+
+    var formReply;
+    $(document).on("click", '.reply', function () {
+        formReply = $(this).parents().parents().children("#formReply")
+
+        formReply.removeAttr("hidden")
+    });
+
+    $(document).mouseup(function (event) {
+
+        if (!formReply.is(event.target) && !formReply.has(event.target).length) {
+            formReply.attr('hidden', true);
+        }
+    })
+</script>

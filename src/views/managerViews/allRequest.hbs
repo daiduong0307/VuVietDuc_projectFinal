@@ -1,0 +1,245 @@
+<!-- Pre-loader start -->
+{{> themeLoad}}
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        {{> manager/navHeader}}
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="">
+                            <div class="main-menu-header">
+                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
+                                    alt="User-Profile-Image">
+                                <div class="user-details">
+                                    <span>{{managerInfo.fullName}}</span>
+                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="main-menu-content">
+                                <ul>
+                                    <li class="more-details">
+
+                                        <a href="/auth/logout">
+                                            <i class="ti-layout-sidebar-left"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="/managers/home">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">Navigation</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="active">
+                                <a href="/managers/allRequest">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List of user requests</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                        </ul>
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- Page-header start -->
+                                    <div class="page-header card">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <i
+                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
+                                                    <div class="d-inline">
+                                                        <h4>List of User Requests in Category:
+                                                            {{managerInfo.categoryId.name}}</h4>
+                                                        <span>All user Requests</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item">
+                                                            <a href="/managers/home">
+                                                                <i class="icofont icofont-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">Homepage</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">list of user requests</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-header end -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div class="card">
+                                                <div class="card-block">
+                                                    <h4 class="sub-title">Search</h4>
+                                                    <form action="/managers/searchRequest" method="GET">
+                                                        <div class="form-group row">
+                                                            <div class="col">
+                                                                <h6>Time Request From</h6>
+                                                                <input type="date" name="timeFrom" class="form-control"
+                                                                    placeholder="col" />
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <h6>Time Request To</h6>
+                                                                <input type="date" name="timeTo" class="form-control"
+                                                                    placeholder="col-sm-4" />
+                                                            </div>
+                                                            <div class="col text-right">
+                                                                <button
+                                                                    class="btn btn-primary btn-square">Search</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card">
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Requester</th>
+                                                                    <th scope="col">Blog Title</th>
+                                                                    {{!-- <th scope="col">Brief</th> --}}
+                                                                    <th scope="col">Created At</th>
+                                                                    <th scope="col">status</th>
+                                                                    <th scope="col">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#each userBlog}}
+                                                                <tr>
+                                                                    <th scope="row">{{@index}}</th>
+                                                                    <td>{{owner.fullName}}</td>
+                                                                    <td>{{titleName}}</td>
+                                                                    {{!-- <td>{{brief}}</td> --}}
+                                                                    <td>{{moment createdAt format ="dddd, DD MMMM
+                                                                        YYYY"}}</td>
+                                                                    {{#equals isPublish 'Approved'}}
+                                                                    <td><span
+                                                                            class="label bg-c-green m-l-10 f-10">{{isPublish}}</span>
+                                                                    </td>
+                                                                    {{else equals isPublish 'Rejected'}}
+                                                                    <td><span
+                                                                            class="label bg-c-pink m-l-10">{{isPublish}}</span>
+                                                                    </td>
+                                                                    {{else}}
+                                                                    <td><span
+                                                                            class="label bg-inverse m-l-10">{{isPublish}}</span>
+                                                                    </td>
+                                                                    {{/equals}}
+                                                                    <td class="d-flex flex-row">
+
+                                                                        <a href="/managers/blogDetails/{{_id}}">
+                                                                            <button type="submit" style="margin-right: 5px;"
+                                                                                class="btn btn-primary btn-outline-primary btn-round">Details</button>
+                                                                        </a>
+
+
+                                                                        <div class="dropdown-success dropdown open">
+                                                                            <button
+                                                                                class="btn btn-success btn-round btn-outline-success dropdown-toggle waves-effect waves-light "
+                                                                                type="button" id="dropdown-3"
+                                                                                data-toggle="dropdown"
+                                                                                aria-haspopup="true"
+                                                                                aria-expanded="true">Status</button>
+                                                                            <div class="dropdown-menu"
+                                                                                aria-labelledby="dropdown-3"
+                                                                                data-dropdown-in="fadeIn"
+                                                                                data-dropdown-out="fadeOut">
+
+                                                                                {{#equals isPublish "Approved"}}
+
+                                                                                <button
+                                                                                    class="btn btn-success dropdown-item waves-light waves-effect disabled">Approve</button>
+
+                                                                                {{else}}
+                                                                                <form action="/managers/approveBlog"
+                                                                                    method="POST"
+                                                                                    enctype="application/x-www-form-urlencoded">
+                                                                                    <input type="hidden" name="blogId"
+                                                                                        value={{_id}}>
+                                                                                    <input type="hidden" name="_method"
+                                                                                        value="PATCH">
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-success dropdown-item waves-light waves-effect">Approve</button>
+                                                                                </form>
+                                                                                {{/equals}}
+
+                                                                                <form action="/managers/rejectBlog"
+                                                                                    method="POST"
+                                                                                    enctype="application/x-www-form-urlencoded">
+                                                                                    <input type="hidden" name="blogId"
+                                                                                        value={{_id}}>
+                                                                                    <input type="hidden" name="_method"
+                                                                                        value="PATCH">
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger dropdown-item waves-light waves-effect">Reject</button>
+                                                                                </form>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    {{else}}
+                                                                    <td colspan="9">
+                                                                        <div class="alert alert-primary" role="alert">
+                                                                            There isn't any content !!!
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                {{/each}}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                                {{!-- end table card --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="styleSelector">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

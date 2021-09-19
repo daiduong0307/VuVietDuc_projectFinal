@@ -1,0 +1,4 @@
+# /node_modules/* in the project root is ignored by default
+# 3rd party libs
+/src/public/
+/src/controllers/**/*.js

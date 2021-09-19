@@ -1,0 +1,245 @@
+<!-- Pre-loader start -->
+{{> themeLoad}}
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        {{> manager/navHeader}}
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="">
+                            <div class="main-menu-header">
+                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
+                                    alt="User-Profile-Image">
+                                <div class="user-details">
+                                    <span>{{managerInfo.fullName}}</span>
+                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="main-menu-content">
+                                <ul>
+                                    <li class="more-details">
+
+                                        <a href="/auth/logout">
+                                            <i class="ti-layout-sidebar-left"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="/managers/home">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">Navigation</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="active">
+                                <a href="/managers/allRequest">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List of user requests</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- Page-header start -->
+                                    <div class="page-header card">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <i
+                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
+                                                    <div class="d-inline">
+                                                        <h4>{{blog.titleName}}</h4>
+                                                        <span>{{blog.brief}}</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item">
+                                                            <a href="/managers/home">
+                                                                <i class="icofont icofont-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">Homepage</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">List of user requests</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">{{blog.titleName}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-header end -->
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="card-header-left ">
+                                                        <h5>Main Content</h5>
+                                                    </div>
+                                                    <div class="card-header-right">
+                                                        <ul class="list-unstyled card-option">
+                                                            <li><i class="icofont icofont-simple-left "></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-maximize full-card"></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-minus minimize-card"></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-refresh reload-card"></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-error close-card"></i>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div style=" display: flex;align-items: center;">
+                                                        <img class="card-img-top" src="/uploads/{{blog.mainImage}}"
+                                                            alt="image cap">
+                                                    </div>
+                                                    <div class="card-body" id="blogContent">
+                                                        {{blog.blogContent}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-5" id="blogInfo">
+                                            <div class="card" style="position: sticky;">
+                                                <div class="card-header">
+                                                    <div class="card-header-left ">
+                                                        <h5>Information Details</h5>
+                                                    </div>
+                                                    <div class="card-header-right">
+                                                        <ul class="list-unstyled card-option">
+                                                            <li><i class="icofont icofont-simple-left "></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-maximize full-card"></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-minus minimize-card"></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-refresh reload-card"></i>
+                                                            </li>
+                                                            <li><i class="icofont icofont-error close-card"></i>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <dl class="dl-horizontal row">
+                                                        <dt class="col-sm-3">Author</dt>
+                                                        <dd class="col-sm-9">
+                                                            {{blog.owner.fullName}}
+                                                        </dd>
+                                                        <dt class="col-sm-3">Category</dt>
+                                                        <dd class="col-sm-9">
+                                                            {{blog.categoryId.name}}
+                                                        </dd>
+                                                        <dt class="col-sm-3">Brief</dt>
+                                                        <dd class="col-sm-9">
+                                                            {{blog.brief}}
+                                                        </dd>
+                                                        <dt class="col-sm-3">Created At</dt>
+                                                        <dd class="col-sm-9">
+                                                            {{moment blog.createdAt format ="dddd, MMMM DD - YYYY
+                                                            HH:mm"}}
+                                                        </dd>
+                                                        <dt class="col-sm-3">Status</dt>
+                                                        {{#equals blog.isPublish 'Approved'}}
+                                                        <dd class="col-sm-9">
+                                                            <label
+                                                                class="label label-success">{{blog.isPublish}}</label>
+                                                        </dd>
+                                                        {{else equals blog.isPublish 'Rejected'}}
+                                                        <dd class="col-sm-9">
+                                                            <label class="label label-danger">{{blog.isPublish}}</label>
+                                                        </dd>
+                                                        {{else}}
+                                                        <dd class="col-sm-9">
+                                                            <label
+                                                                class="label label-inverse">{{blog.isPublish}}</label>
+                                                        </dd>
+                                                        {{/equals}}
+                                                    </dl>
+
+                                                    <div class="text-center">
+                                                        <form style="display: inline-block"
+                                                            action="/managers/approveBlog" method="POST">
+                                                            <input type="hidden" name="blogId" value={{blog._id}}>
+                                                            <input type="hidden" name="_method" value="PATCH">
+                                                            <button type="submit"
+                                                                class="btn btn-success btn-round">Approve</button>
+                                                        </form>
+
+                                                        <form style="display: inline-block"
+                                                            action="/managers/rejectBlog" method="POST">
+                                                            <input type="hidden" name="blogId" value={{blog._id}}>
+                                                            <input type="hidden" name="_method" value="PATCH">
+                                                            <button type="submit"
+                                                                class="btn btn-danger btn-round">Reject</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="styleSelector">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#blogContent").html($("#blogContent").text())
+    })
+
+    /*let element = document.getElementById("blogInfo")
+    let el = element.getBoundingClientRect();
+
+    $(document).scroll(function () {
+        var winTop = $(window).scrollTop();
+        if (winTop > 30) {
+            $("#blogInfo").addClass("changePosition")
+        } else {
+            $("#blogInfo").removeClass("changePosition")
+        }
+    })*/
+</script>

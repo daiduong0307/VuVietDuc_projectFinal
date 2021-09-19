@@ -1,0 +1,288 @@
+<!-- Pre-loader start -->
+{{> themeLoad}}
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        {{> admin/navHeader}}
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="">
+                            <div class="main-menu-header">
+                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
+                                    alt="User-Profile-Image" />
+                                <div class="user-details">
+                                    <span>{{admin.username}}</span>
+                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="main-menu-content">
+                                <ul>
+                                    <li class="more-details">
+
+                                        <a href="/auth/logout">
+                                            <i class="ti-layout-sidebar-left"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="/admin/home">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List of Account</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Accounts</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="/admin/allUserAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User
+                                                Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="/admin/allManagerAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext"
+                                                data-i18n="nav.basic-components.breadcrumbs">Manager Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Manage Categories</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="active">
+                                <a href="/admin/allCategories">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Categories</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/admin/allTags">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Tags</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- Page-header start -->
+                                    <div class="page-header card">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <i
+                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
+                                                    <div class="d-inline">
+                                                        <h4>List of Categories</h4>
+                                                        <span>List of Categories</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item">
+                                                            <a href="/managers/home">
+                                                                <i class="icofont icofont-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">Homepage</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">list of Categories</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-header end -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card add-task-card">
+                                                <div class="card-header">
+                                                    <div class="card-header-left">
+                                                        <h3>List of Categories</h3>
+                                                    </div>
+                                                    <div class="card-header-right">
+                                                        <button type="button" class="btn btn-card btn-primary"
+                                                            data-toggle="modal" data-target="#exampleModal">
+                                                            Adding more Category
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">New
+                                                                    Category</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <form action="/admin/addOneCategory" method="POST"
+                                                                class="needs-validation" novalidate>
+                                                                <div class="modal-body">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Category name</label>
+
+                                                                        {{#if err}}
+                                                                        <input type="text"
+                                                                            class="form-control is-invalid" id="name"
+                                                                            name="name"
+                                                                            placeholder="Enter category Name" required>
+                                                                        <div class="invalid-feedback">
+                                                                            {{err}}
+                                                                        </div>
+                                                                        {{else}}
+                                                                        <input type="text" class="form-control"
+                                                                            id="name" name="name"
+                                                                            placeholder="Enter category Name" required>
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter a category name
+                                                                        </div>
+                                                                        {{/if}}
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputDesc">Managed By</label>
+                                                                        <select class="form-control" name="managerId">
+                                                                            {{#each managers}}
+                                                                            <option value="{{_id}}">
+                                                                                {{fullName}}
+                                                                            </option>
+                                                                            {{/each}}
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputDesc">Description</label>
+                                                                        <textarea class="form-control" id="desc"
+                                                                            name="describe" rows="3"
+                                                                            placeholder="Description">
+                                                                </textarea>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Add</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Category_id</th>
+                                                                    <th scope="col">Category name</th>
+                                                                    <th scope="col">Description</th>
+                                                                    <th scope="col">Managed By</th>
+                                                                    <th scope="col">CreatedAt</th>
+                                                                    <th scope="col">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="listCategory">
+                                                                {{#each categories}}
+                                                                <tr>
+                                                                    <td>{{@index}}</td>
+                                                                    <td>{{_id}}</td>
+                                                                    <td>{{name}}</td>
+                                                                    <td>{{describe}}</td>
+                                                                    <td>{{managedBy.fullName}}</td>
+                                                                    <td>{{moment createdAt format ="MMMM DD - YYYY
+                                                                        HH:mm:ss"}}</td>
+                                                                    <td class="d-flex flex-row">
+                                                                        <button
+                                                                            class="btn btn-success btn-round btn-outline-success"
+                                                                            title="Update" data-toggle="tooltip"
+                                                                            onclick="window.location='/admin/updateCategory/{{_id}}'"
+                                                                            style="margin-right: 5px;">
+                                                                            <i class="ti-pencil-alt"></i>
+                                                                        </button>
+
+                                                                        <button id="{{_id}}"
+                                                                            class="btn btn-danger btn-round btn-outline-danger btn-deleteCategory"
+                                                                            title="Delete" data-toggle="tooltip">
+                                                                            <i class="ti-trash"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                    {{else}}
+                                                                    <td colspan="7">
+                                                                        <div class="alert alert-primary" role="alert">
+                                                                            No Data
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                {{/each}}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- Tab variant tab card start -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="styleSelector">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

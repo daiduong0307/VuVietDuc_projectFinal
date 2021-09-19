@@ -1,0 +1,168 @@
+<!--================ Start Header Area ===============-->
+<header class="header-area">
+    <div class="container">
+        {{> user/header}}
+    </div>
+</header>
+<!--================ End Header Area =================-->
+
+<!--================ Start banner Area ===============-->
+<section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="banner-content text-center">
+        <h1>Hi There! I'm {{authorInfo.fullName}}</h1>
+        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
+        </p>
+    </div>
+</section>
+<!--================ End banner Area =================-->
+
+<!--================Blog Area =================-->
+<section class="blog_area section-gap single-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget-wrap">
+                            <div class="single-sidebar-widget">
+                                <div class="bio text-center">
+                                    <img src="/uploads/{{authorInfo.avatar}}" alt="Image Placeholder" class="img-fluid">
+                                    <h3 class="text-heading">Hi There! I'm {{authorInfo.fullName}}</h3>
+                                    <p>@{{authorAcc.username}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="intro">
+                            {{authorInfo.introduction}}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mb-5 mt-5 blog-entries">
+                    <div class="col-md-12">
+                        <h3 class="text-heading">Here is my latest Posts</h3>
+                        <div class="col-md-12">
+                            {{#each authorLatestPost}}
+                            <div class="post-entry-horizontal">
+                                <a href="/users/blogDetail/{{_id}}">
+                                    <img class="img-fluid" style="width:350px; height:150px"
+                                        src="/uploads/{{mainImage}}" alt="" />
+                                    <span class="text">
+                                        <div class="post-meta">
+                                            {{!-- <span class="author mr-2"><img src="/uploads/{{owner.avatar}}" alt="">
+                                                {{owner.fullName}}</span>&bullet; --}}
+                                            <span class="ml-20"><span class="ti-calendar"></span> {{moment createdAt
+                                                format ="DD MMMM YYYY"}}</span>
+                                            <span class="ml-20"><span class="fa fa-comments"></span>
+                                                {{comments.length}} </span>
+                                            <span class="ml-20"><span class="ti-eye"></span> {{views}}</span>
+                                        </div>
+                                        <h2>{{titleName}}</h2>
+
+                                    </span>
+                                </a>
+                            </div>
+
+                            {{else}}
+                            <div class="col-md-12">
+                                <div class="alert alert-primary" role="alert">
+                                    There is no content available !!!
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <nav class="blog-pagination justify-content-center d-flex">
+                                    {{#pagination currentPage pages size=5}}
+                                    <ul class="pagination">
+                                        {{#unless context.startFromFirstPage}}
+                                        <li class="page-item">
+                                            <a href="/users/u/{{../authorAcc.username}}" class="page-link" aria-label="Previous">
+                                                <span aria-hidden="true">
+                                                    <span class="ti-arrow-left"></span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        {{/unless}}
+
+                                        {{#each pages}}
+                                        {{#if isCurrent}}
+                                        <li class="page-item active"><a
+                                                href="/users/u/{{../../authorAcc.username}}?p={{page}}"
+                                                class="page-link">{{page}}</a></li>
+                                        {{/if}}
+                                        {{#unless isCurrent}}
+                                        <li class="page-item"><a href="/users/u/{{../../authorAcc.username}}?p={{page}}"
+                                                class="page-link">{{page}}</a></li>
+                                        {{/unless}}
+                                        {{/each}}
+
+                                        {{#unless context.endAtLastPage}}
+                                        <li class="page-item">
+                                            <a href="/users/myProfile?p={{context.endAtLastPage}}" class="page-link"
+                                                aria-label="Next">
+                                                <span aria-hidden="true">
+                                                    <span class="ti-arrow-right"></span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        {{/unless}}
+                                    </ul>
+                                    {{/pagination}}
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Start Blog Post Sidebar -->
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+
+                    <div class="single-sidebar-widget post-category-widget">
+                        <h4 class="category-title">Information</h4>
+                        <ul class="cat-list mt-20">
+                            <li class="d-flex justify-content-between">
+                                <p>Total post views</p>
+                                <p class="badge badge-primary">{{totalViews}}</p>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <p>Posts</p>
+                                <p class="badge badge-primary">{{countBlog}}</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {{> user/categories}}
+                    {{> user/popularBlog}}
+                    {{> user/tags}}
+                </div>
+            </div>
+
+            <!-- End Blog Post Sidebar -->
+
+        </div>
+
+
+    </div>
+
+</section>
+<!--================Blog Area =================-->
+
+<!--================ Start Footer Area =================-->
+{{> user/userFooter}}
+<!--================ End Footer Area ===================-->
+
+
+<script>
+    $(document).ready(function () {
+        $("#intro").html($("#intro").text())
+    })
+</script>

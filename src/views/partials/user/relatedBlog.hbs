@@ -1,0 +1,18 @@
+<div class="single-sidebar-widget popular-post-widget">
+    <h4 class="popular-title">Related Posts</h4>
+    <div class="popular-post-list">
+        {{#each relatedBlog}}
+        <div class="single-post-list">
+            <div class="thumb">
+                <img class="img-fluid" src="/uploads/{{mainImage}}" style="width:290px; height:133px" alt="BlogImage">
+            </div>
+            <div class="details mt-20">
+                <a href="/users/blogDetail/{{_id}}">
+                    <h6>{{titleName}}</h6>
+                </a>
+                <p>{{owner.fullName}} | {{moment createdAt format ="MMM DD, YYYY"}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

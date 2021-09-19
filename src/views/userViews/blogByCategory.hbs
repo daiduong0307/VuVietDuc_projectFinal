@@ -1,0 +1,133 @@
+<!--================ Start Header Area ===============-->
+<header class="header-area">
+    <div class="container">
+        {{> user/header}}
+    </div>
+</header>
+<!--================ End Header Area =================-->
+
+<!--================ Start banner Area =================-->
+<section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="banner-content text-center">
+        <h1>{{blogCategory.name}}</h1>
+        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
+        </p>
+    </div>
+</section>
+<!--================ End banner Area =================-->
+
+<!--================ Start Blog Post Area =================-->
+<section class="blog-post-area section-gap relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-heading">Category: {{blogCategory.name}}</h3>
+                    </div>
+
+                    {{#each blogs}}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-amenities">
+                            <div class="amenities-thumb">
+                                <img class="img-fluid w-100" src="/uploads/{{mainImage}}" alt="" />
+                            </div>
+                            <div class="amenities-details">
+                                <h5>
+                                    <a href="/users/blogDetail/{{_id}}">{{titleName}}</a>
+                                </h5>
+                                <div class="amenities-meta mb-10">
+                                    <a href="#" class=""><span class="ti-calendar"></span>{{moment createdAt format
+                                        ="DD
+                                        MMMM, YYYY"}}</a>
+                                    <a href="#" class="ml-20"><span class="ti-comment"></span>{{comments.length}}</a>
+                                </div>
+                                <p>{{brief}}</p>
+
+                                <div class="d-flex justify-content-between mt-20">
+                                    <div>
+                                        <a href="/users/blogDetail/{{_id}}" class="blog-post-btn">
+                                            Read More <span class="ti-arrow-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="category">
+                                        <a href="/user/blogByCategory?categoryId={{categoryId._id}}">
+                                            <span class="ti-folder mr-1"></span> {{categoryId.name}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="col-md-12">
+                        <div class="alert alert-primary" role="alert" style="text-align: center;">
+                            There is no content available
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
+
+                 <div class="row">
+                    <div class="col-lg-12">
+                    
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            {{#pagination currentPage pages size=5}}
+                            <ul class="pagination">
+                                {{#unless context.startFromFirstPage}}
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <span class="ti-arrow-left"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                {{/unless}}
+
+                                {{#each pages}}
+                                {{#if isCurrent}}
+                                <li class="page-item active"><a href="/users/blogByCategory/{{../../blogCategory._id}}?p={{page}}" class="page-link">{{page}}</a></li>
+                                {{/if}}
+                                {{#unless isCurrent}}
+                                <li class="page-item"><a href="/users/blogByCategory/{{../../blogCategory._id}}?p={{page}}" class="page-link">{{page}}</a></li>
+                                {{/unless}}
+                                {{/each}}
+
+                                {{#unless context.endAtLastPage}}
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <span class="ti-arrow-right"></span>
+                                        </span>
+                                    </a>
+                                </li>
+                                {{/unless}}
+                            </ul>
+                            {{/pagination}}
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Blog Post Sidebar -->
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+                    {{> user/searchSidebar}}
+                    {{> user/categories}}
+                    {{> user/popularBlog}}
+                    {{> user/tags}}
+                </div>
+            </div>
+
+            <!-- End Blog Post Sidebar -->
+        </div>
+    </div>
+</section>
+<!--================ End Blog Post Area ================-->
+
+<!--================ Start Footer Area =================-->
+{{> user/userFooter}}
+<!--================ End Footer Area ===================-->

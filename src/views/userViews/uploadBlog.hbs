@@ -1,0 +1,148 @@
+<!--================ Start Header Area ===============-->
+<header class="header-area">
+    <div class="container">
+        {{> user/header}}
+    </div>
+</header>
+<!--================ End Header Area =================-->
+
+<!--================ Start banner Area ===============-->
+<section class="banner-area relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="banner-content text-center">
+        <h1>Upload New Blog</h1>
+        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
+        </p>
+    </div>
+</section>
+<!--================ End banner Area =================-->
+
+<!--================Blog Area =================-->
+<section class="blog_area section-gap single-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <form action="/users/uploadOneBlog" method="POST" enctype="multipart/form-data" class="needs-validation"
+                    novalidate>
+                    <h3 class="mb-30">Upload New Blog</h3>
+
+                    <div class="form-group">
+                        <label for="">Blog title</label>
+                        <input type="text" class="form-control" id="titleName" name="titleName"
+                            placeholder="Enter blog title here ..." onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Enter blog title here ...'" class="single-input" required>
+                        <div class="invalid-feedback">
+                            Please enter a blog title here
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Select Category</label>
+                                <select class="form-control" id="category" name="_id" required>
+                                    <option value="">Open this select category</option>
+                                    {{#each categories}}
+                                    <option value="{{_id}}">
+                                        {{name}}
+                                    </option>
+                                    {{/each}}
+                                </select>
+                                <div class="invalid-feedback">Please choose a category</div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Select Tag</label>
+                                <select class="selectpicker form-control" name="tagId" data-live-search="true" multiple required>
+                                    {{#each tags}}
+                                    <option value="{{_id}}">{{name}}</option>
+                                    {{/each}}
+                                </select>
+
+                                <div class="invalid-feedback">Please choose a tag</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="inputName">brief</label>
+                        <textarea type="text" class="form-control" id="brief" rows="3" id="brief" name="brief"
+                            placeholder="Enter your brief ..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName">Main Content</label>
+                        <textarea name="blogContent" id="editor1" rows="10" cols="20"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Main Image: You can upload main image for your blog</label><br>
+                        <img src="" id="imgShow" alt="" style="max-width:180px">
+                        <hr>
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="imgLoad"
+                                aria-describedby="inputGroupFileAddon01" required>
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                        <div class="invalid-feedback">Please choose a file</div>
+                    </div>
+
+                    {{#if err}}
+                    <div class="alert alert-danger" role="alert">
+                        {{err}}
+                    </div>
+                    {{/if}}
+
+                    <button type="submit" class="genric-btn info circle" id="submit_info">Submit</button>
+
+                </form>
+            </div>
+            <!-- Start Blog Post Sidebar -->
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+                    {{> user/bioProfile}}
+                    {{> user/categories}}
+                    {{> user/popularBlog}}
+                    {{> user/tags}}
+                </div>
+            </div>
+
+            <!-- End Blog Post Sidebar -->
+
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->
+
+<!--================ Start Footer Area =================-->
+{{> index/indexFooter}}
+<!--================ End Footer Area ===================-->
+
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor 4
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1', {
+        extraPlugins: 'filebrowser',
+        filebrowserBrowseUrl: '/list',//upload location
+        filebrowserUploadMethod: 'form',
+        filebrowserUploadUrl: '/upload'//route;
+    })
+</script>
+
+<script>
+    $('document').ready(function () {
+        $("#imgLoad").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgShow').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+</script>

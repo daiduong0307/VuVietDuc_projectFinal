@@ -1,0 +1,135 @@
+<!--================ Start Header Area ===============-->
+<header class="header-area">
+    <div class="container">
+        {{> user/header}}
+    </div>
+</header>
+<!--================ End Header Area =================-->
+
+<!--================ Start banner Area =================-->
+{{#if slideBlog}}
+<section class="home-banner-area relative">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="owl-carousel home-banner-owl">
+                {{#each slideBlog}}
+                <div class="banner-img">
+                    <img class="img-fluid" style="width: 1140px; height: 650px" src="/uploads/{{mainImage}}" alt="" />
+                    <div class="text-wrapper">
+                        <a href="/users/blogDetail/{{_id}}" class="d-flex">
+                            <h1>
+                                {{titleName}}
+                            </h1>
+                        </a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+            <li class="diffrent">share now</li>
+        </ul>
+    </div>
+</section>
+{{/if}}
+<!--================ End banner Area =================-->
+
+<!--================ Start Blog Post Area =================-->
+<section class="blog-post-area section-gap relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    {{#if search}}
+                    <div class="col-md-12">
+                        <h3 class="text-heading">Result for: {{search}}</h3>
+                    </div>
+                    {{/if}}
+                    {{#each blogs}}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-amenities">
+                            <div class="amenities-thumb">
+                                <a href="/users/blogDetail/{{_id}}">
+                                    <img class="img-fluid w-100" src="/uploads/{{mainImage}}" alt="" />
+                                </a>
+                            </div>
+                            <div class="amenities-details">
+                                <h5>
+                                    <a href="/users/blogDetail/{{_id}}">{{titleName}}</a>
+                                </h5>
+                                <div class="amenities-meta mb-10">
+                                    <a href="#" class=""><span class="ti-calendar"></span>{{moment createdAt format ="DD
+                                        MMMM, YYYY"}}</a>
+                                    <a href="#" class="ml-20"><span class="ti-comment"></span>{{comments.length}}</a>
+                                    <a href="#" class="ml-20"><span class="ti-eye"></span>{{views}}</a>
+                                </div>
+                                <p>{{brief}}</p>
+
+                                <div class="d-flex justify-content-between mt-20">
+                                    <div>
+                                        <a href="/users/blogDetail/{{_id}}" class="blog-post-btn">
+                                            Read More <span class="ti-arrow-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="category">
+                                        <a href="/users/blogByCategory/{{categoryId._id}}">
+                                            <span class="ti-folder mr-1"></span> {{categoryId.name}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{else}}
+                    <div class="col-md-12">
+                        <div class="alert alert-primary" role="alert" style="text-align: center;">
+                            There is no content available
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{#if search}}
+                        {{> user/searchPagination}}
+                        {{else}}
+                        {{> user/pagination}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Blog Post Sidebar -->
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+                    {{> user/searchSidebar}}
+                    {{> user/bioProfile}}
+                    {{> user/categories}}
+                    {{> user/popularBlog}}
+                    {{> user/tags}}
+                </div>
+            </div>
+
+            <!-- End Blog Post Sidebar -->
+        </div>
+    </div>
+</section>
+<!--================ End Blog Post Area ================-->
+
+<!--================ Start Footer Area =================-->
+{{> index/indexFooter}}
+<!--================ End Footer Area ===================-->

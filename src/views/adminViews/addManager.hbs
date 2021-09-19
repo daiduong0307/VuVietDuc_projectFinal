@@ -1,0 +1,267 @@
+<!-- Pre-loader start -->
+{{> themeLoad}}
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        {{> admin/navHeader}}
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="">
+                            <div class="main-menu-header">
+                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
+                                    alt="User-Profile-Image" />
+                                <div class="user-details">
+                                    <span>{{admin.username}}</span>
+                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="main-menu-content">
+                                <ul>
+                                    <li class="more-details">
+
+                                        <a href="/auth/logout">
+                                            <i class="ti-layout-sidebar-left"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="/admin/home">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List of Account</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu active pcoded-trigger">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Accounts</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="/admin/allUserAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User
+                                                Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="/admin/allManagerAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext"
+                                                data-i18n="nav.basic-components.breadcrumbs">Manager Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Manage Categories</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="/admin/allCategories">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Categories</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/admin/allTags">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Tags</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- Page-header start -->
+                                    <div class="page-header card">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <i class="icofont icofont-table bg-c-blue"></i>
+                                                    <div class="d-inline">
+                                                        <h4>Adding new manager Accounts</h4>
+                                                        <span>List of Manager Accounts</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item">
+                                                            <a href="/admin/home">
+                                                                <i class="icofont icofont-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item"><a href="#!">User Account</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item"><a href="#!">Manager Account</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item"><a href="#!">Adding new account</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-header end -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card">
+                                                <div class="card-block table-border-style">
+                                                    <div class="card-block">
+                                                        <form action="/admin/addManagerAcc" method="POST"
+                                                            class="needs-validation" novalidate>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="username">Username</label>
+
+                                                                    {{#if notify.errAcc}}
+                                                                    <input type="text" class="form-control is-invalid"
+                                                                        id="usr" name="username" placeholder="Username"
+                                                                        required>
+                                                                    <div class="invalid-feedback">
+                                                                        {{notify.errAcc}}
+                                                                    </div>
+                                                                    {{else}}
+                                                                    <input type="text" class="form-control" id="usr"
+                                                                        name="username" placeholder="Username" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please enter a username
+                                                                    </div>
+                                                                    {{/if}}
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="inputPassword">Password</label>
+
+                                                                    {{#if notify.errPwd}}
+                                                                    <input type="password"
+                                                                        class="form-control is-invalid" id="pwd"
+                                                                        name="password" placeholder="Password" required>
+                                                                    <div class="invalid-feedback">
+                                                                        {{notify.errPwd}}
+                                                                    </div>
+                                                                    {{else}}
+                                                                    <input type="password" class="form-control" id="pwd"
+                                                                        name="password" placeholder="Password" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please enter a password
+                                                                    </div>
+                                                                    {{/if}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inputName">Full Name</label>
+                                                                <input type="text" class="form-control" id="name"
+                                                                    name="fullName" placeholder="Enter full name ..."
+                                                                    required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a full name
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inputEmail">Email</label>
+
+                                                                {{#if notify.errEmail}}
+                                                                <input type="email" class="form-control is-invalid"
+                                                                    id="email" name="email"
+                                                                    placeholder="eg: example@example.com" required>
+                                                                <div class="invalid-feedback">
+                                                                    {{notify.errEmail}}
+                                                                </div>
+                                                                {{else}}
+                                                                <input type="email" class="form-control" id="email"
+                                                                    name="email" placeholder="eg: example@example.com"
+                                                                    required>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a email address
+                                                                </div>
+                                                                {{/if}}
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="inputEmail">Date of Birth</label>
+                                                                    <input type="date" class="form-control" id="DoB"
+                                                                        name="DoB">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="inputEmail">Assign to category</label>
+                                                                    <select class="form-control" name="categoryId">
+                                                                        {{#each categories}}
+                                                                        <option value="{{_id}}" selected>
+                                                                            {{name}}
+                                                                        </option>
+                                                                        {{/each}}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            {{#if notify.errAcc}}
+                                                            <div class="alert alert-danger" role="alert">
+                                                                {{notify.errAcc}}
+                                                            </div>
+                                                            {{else if notify.errPwd}}
+                                                            <div class="alert alert-danger" role="alert">
+                                                                {{notify.errPwd}}
+                                                            </div>
+                                                            {{else if notify.errEmail}}
+                                                            <div class="alert alert-danger" role="alert">
+                                                                {{notify.errEmail}}
+                                                            </div>
+                                                            {{/if}}
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
+                                                            <br><br>
+
+                                                        </form>
+                                                    </div>
+                                                    <!-- card-block end -->
+                                                </div>
+                                            </div>
+                                            <!-- Tab variant tab card start -->
+                                        </div>
+                                    </div>
+                                    {{!-- row end --}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="styleSelector">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

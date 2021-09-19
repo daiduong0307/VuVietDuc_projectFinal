@@ -1,0 +1,41 @@
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-4">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        dolore
+                        magna aliqua.
+                    </p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="single-footer-widget mail-chimp">
+                    <h6 class="mb-20">Latest Posts</h6>
+                    <ul class="instafeed d-flex flex-wrap">
+                        {{#each latestPost}}
+                        <a href="/blogDetail/{{_id}}">
+                            <li style="width:58px; height:58px"><img src="/uploads/{{mainImage}}" style="width:58px; height:58px" alt=""></li>
+                        </a>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="single-footer-widget">
+                    <h6>Follow Us</h6>
+                    <p>Let us be social</p>
+                    <div class="footer-social d-flex align-items-center">
+                        <a href="https://www.facebook.com/ndc.aladdin/"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/ndc_aladdin/"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCtnufAka0OjUw98Ei3bGT6w"><i
+                                class="fa fa-youtube-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,286 @@
+<!-- Pre-loader start -->
+{{> themeLoad}}
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        {{> admin/navHeader}}
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="">
+                            <div class="main-menu-header">
+                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
+                                    alt="User-Profile-Image" />
+                                <div class="user-details">
+                                    <span>{{admin.username}}</span>
+                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="main-menu-content">
+                                <ul>
+                                    <li class="more-details">
+
+                                        <a href="/auth/logout">
+                                            <i class="ti-layout-sidebar-left"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="active">
+                                <a href="/admin/home">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List of Account</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Accounts</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="">
+                                        <a href="/admin/allUserAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User
+                                                Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="/admin/allManagerAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext"
+                                                data-i18n="nav.basic-components.breadcrumbs">Manager Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Manage Categories</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="/admin/allCategories">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Categories</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/admin/allTags">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Tags</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- Page-header start -->
+                                    <div class="page-header card">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <i
+                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
+                                                    <div class="d-inline">
+                                                        <h4>Administrator Page</h4>
+                                                        <span>Welcome Admin to Homepage</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item">
+                                                            <a href="/admin/home">
+                                                                <i class="icofont icofont-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">Homepage</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-header end -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card">
+                                                <div class="card-block tab-icon">
+                                                    <div class="col-lg-12 col-xl-12 tab-with-img">
+                                                        <div class="sub-title">Administrator</div>
+                                                        <!-- Nav tabs -->
+                                                        <ul class="nav nav-tabs md-tabs img-tabs b-none" role="tablist">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link active" data-toggle="tab"
+                                                                    href="#cuong" role="tab">
+                                                                    <img src="/images/teamAVT/me.png"
+                                                                        class="img-fluid img-circle" alt="" />
+                                                                    <span class="quote"><i
+                                                                            class="icofont icofont-quote-left bg-primary"></i></span>
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                        <!-- Tab panes -->
+                                                        <div class="tab-content card-block">
+                                                            <div class="tab-pane active" id="cuong" role="tabpanel">
+                                                                <p class="text-center m-0">1. My name is Nguyen
+                                                                    Duc Cuong, I am the team leader of the
+                                                                    development team and in charge of full-stack
+                                                                    development.
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Tab variant tab card start -->
+                                        </div>
+                                        <!-- Statestics Start -->
+                                        <div class="col-md-12 col-xl-8">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Statistics</h5>
+                                                    <div class="card-header-left ">
+                                                    </div>
+                                                    <div class="card-header-right">
+                                                        <ul class="list-unstyled card-option">
+                                                            <li><i class="icofont icofont-simple-left "></i></li>
+                                                            <li><i class="icofont icofont-maximize full-card"></i></li>
+                                                            <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                                            <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                                            <li><i class="icofont icofont-error close-card"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <canvas id="myChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 col-xl-4">
+                                            {{#each categories}}
+                                            <div class="card fb-card">
+                                                <div class="card-header">
+                                                    <i class="icofont icofont-social-facebook"></i>
+                                                    <div class="d-inline-block">
+                                                        <h5>{{name}}</h5>
+                                                        <span>blog page timeline</span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block text-center">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h2>{{posts.length}}</h2>
+                                                            <p class="text-muted">Active</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="styleSelector">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    ctx.canvas.parentNode.style.width = '1005'
+    var idata = JSON.parse('{{datai}}');
+    var ilabel = JSON.parse('{{labeli}}');
+    console.log(ilabel);
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ilabel,
+            datasets: [{
+                label: 'Total of Post',
+                data: idata,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(51, 204, 51,0.2)',
+                    'rgb(191, 191, 63,0.2)',
+                    'rgb(63, 127, 191 ,0.2)',
+                    'rgb(63, 191, 191,0.2)',
+                    'rgb(191, 63, 127,0.2)',
+                    'rgb(46, 91, 68,0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(51, 204, 51,1)',
+                    'rgb(191, 191, 63,1)',
+                    'rgb(63, 127, 191,1)',
+                    'rgb(63, 191, 191,1)',
+                    'rgb(191, 63, 127,1)',
+                    'rgb(46, 91, 68,1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>

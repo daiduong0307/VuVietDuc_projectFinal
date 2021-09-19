@@ -1,0 +1,272 @@
+<!-- Pre-loader start -->
+{{> themeLoad}}
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+
+        {{> admin/navHeader}}
+
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <nav class="pcoded-navbar">
+                    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+                        <div class="">
+                            <div class="main-menu-header">
+                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
+                                    alt="User-Profile-Image" />
+                                <div class="user-details">
+                                    <span>{{admin.username}}</span>
+                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="main-menu-content">
+                                <ul>
+                                    <li class="more-details">
+
+                                        <a href="/auth/logout">
+                                            <i class="ti-layout-sidebar-left"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="/admin/home">
+                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List of Account</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu active pcoded-trigger">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Accounts</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class="active">
+                                        <a href="/admin/allUserAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User
+                                                Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="/admin/allManagerAcc">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext"
+                                                data-i18n="nav.basic-components.breadcrumbs">Manager Account</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Manage Categories</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="/admin/allCategories">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Categories</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/admin/allTags">
+                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                        Tags</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                <div class="page-body">
+                                    <!-- Page-header start -->
+                                    <div class="page-header card">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <i class="icofont icofont-table bg-c-blue"></i>
+                                                    <div class="d-inline">
+                                                        <h4>User Accounts</h4>
+                                                        <span>List of User Accounts</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item">
+                                                            <a href="/admin/home">
+                                                                <i class="icofont icofont-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item"><a href="#!">User Account</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item">
+                                                            <a href="#!">List of user Account</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-header end -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div class="card">
+                                                <div class="card-block">
+                                                    <h4 class="sub-title">Search</h4>
+                                                    <form action="/admin/searchUser" method="GET">
+                                                        <div class="form-group row">
+                                                            <div class="col">
+                                                                <h6>Time Request From</h6>
+                                                                <input type="date" id="timeFrom" name="timeFrom"
+                                                                    class="form-control" placeholder="col" />
+                                                            </div>
+                                                            <div class="col">
+                                                                <h6>Time Request To</h6>
+                                                                <input type="date" id="timeTo" name="timeTo"
+                                                                    class="form-control" placeholder="col-sm-4"
+                                                                    value="" />
+                                                            </div>
+
+                                                            <div class="col-sm-4">
+                                                                <h6>Email</h6>
+                                                                <input type="email" name="email" class="form-control"
+                                                                    placeholder="Type email to find account ..." />
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-right">
+                                                                <button
+                                                                    class="btn btn-primary btn-square">Search</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card add-task-card">
+                                                <div class="card-header">
+                                                    <div class="card-header-left">
+                                                        <h3>List of User Accounts</h3>
+                                                    </div>
+                                                    <div class="card-header-right">
+                                                        {{!-- <button type="button" class="btn btn-success"
+                                                            onclick="window.location='/admin/add_student?faculty_id={{faculty._id}}';">
+                                                            Adding more user
+                                                        </button> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="card-block table-border-style">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Account_id</th>
+                                                                    <th scope="col">Email</th>
+                                                                    <th scope="col">Full name</th>
+                                                                    <th scope="col">Username</th>
+                                                                    <th scope="col">CreatedAt</th>
+                                                                    <th scope="col">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="listUser">
+                                                                {{#each users}}
+                                                                <tr>
+                                                                    <th scope="row">{{@index}}</th>
+                                                                    <td>{{accountId._id}}</td>
+                                                                    <td>{{email}}</td>
+                                                                    <td>{{fullName}}</td>
+                                                                    <td>{{accountId.username}}</td>
+                                                                    <td>{{moment createdAt format ="MMMM DD -
+                                                                        YYYY HH:mm:ss"}}</td>
+                                                                    <td class="d-flex flex-row">
+                                                                        <button
+                                                                            class="btn btn-success btn-round btn-outline-success"
+                                                                            title="Update" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            onclick="window.location='/admin/updateUser/{{_id}}'"
+                                                                            style="margin-right: 5px;">
+                                                                            <i class="ti-pencil-alt"></i>
+                                                                        </button>
+
+                                                                        <button id="{{accountId._id}}"
+                                                                            class="btn btn-danger btn-round btn-outline-danger btn-deleteUser"
+                                                                            title="Delete" data-toggle="tooltip">
+                                                                            <i class="ti-trash"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                    {{else}}
+                                                                    <td colspan="7">
+                                                                        <div class="alert alert-primary" role="alert">
+                                                                            No Data
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                {{/each}}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- Tab variant tab card start -->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="styleSelector">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!--
+<script>
+    Date.prototype.currentDate = (function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+    });
+
+    $(document).ready(function () {
+        var date = new Date();
+        $('#timeFrom').val(new Date().currentDate());
+        $('#timeTo').val(new Date().currentDate());
+    });
+</script> --}}
