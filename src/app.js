@@ -15,6 +15,7 @@ const {
 } = require('@handlebars/allow-prototype-access');
 
 const auth = require('./middleware/checkLogin');
+const passwordReset = require('./routes/passwordReset');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
@@ -23,7 +24,7 @@ const managerRouter = require('./routes/manager');
 const apiRouter = require('./routes/api');
 
 require('dotenv').config();
-require('./database/mongoose');
+require('./utils/db');
 
 const app = express();
 
@@ -173,6 +174,7 @@ app.post('/upload', multipartMiddleware, (req, res) => {
 // Add APIs
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/u', passwordReset);
 app.use('/admin', adminRouter);
 app.use('/users', auth.isUser, userRouter);
 app.use('/managers', auth.isManager, managerRouter);

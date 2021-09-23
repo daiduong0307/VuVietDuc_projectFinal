@@ -15,7 +15,43 @@ const oAuth2client = new google.auth.OAuth2(
 );
 oAuth2client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-async function sendMail(email) {
+async function sendMail(email, subject, author, title) {
+    try {
+        const accessToken = await oAuth2client.getAccessToken();
+        const transport = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                type: 'OAuth2',
+                user: 'cuongndgch18641@fpt.edu.vn',
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken,
+            },
+        });
+
+        const html = `
+        <h3>Hi Manager, a user post has been created, Please check !</h3>
+        <h4>Some information of the article:</h4>
+        <p><strong>Author</strong>: ${author}</p>
+        <p><strong>Post Title</strong>: ${title}</p>
+        `;
+
+        const mailOption = {
+            from: 'BLOG MANAGEMENT SYSTEM 🎡 <cuongndgch18641@fpt.edu.vn>',
+            to: `${email}`,
+            subject,
+            html,
+        };
+
+        const result = await transport.sendMail(mailOption);
+        return result;
+    } catch (error) {
+        return error;
+    }
+}
+
+async function sendMailReset(email, subject, text) {
     try {
         const accessToken = await oAuth2client.getAccessToken();
         const transport = nodemailer.createTransport({
@@ -33,9 +69,8 @@ async function sendMail(email) {
         const mailOption = {
             from: 'BLOG MANAGEMENT SYSTEM 🎡 <cuongndgch18641@fpt.edu.vn>',
             to: `${email}`,
-            subject: 'BMS support: You have receive a new submission',
-            text: 'You have receive a new submission',
-            html: '<h3>You have receive a new submission from a user</h3>',
+            subject,
+            html: 'Click the link to <a href="' + text + '">Reset Password</a>',
         };
 
         const result = await transport.sendMail(mailOption);
@@ -45,4 +80,4 @@ async function sendMail(email) {
     }
 }
 
-module.exports = sendMail;
+module.exports = { sendMail, sendMailReset };
