@@ -122,17 +122,19 @@ exports.allRequest = async (req, res) => {
         .findOne({ accountId: req.session.userId })
         .populate('categoryId');
     const categories = await categoryModel.find({});
+    const userAcc = await appUserModel.find({ role: 'user' });
 
     try {
         if (managerInfo.categoryId) {
             const userBlog = await blogModel
                 .find({ categoryId: managerInfo.categoryId })
                 .sort({ createdAt: -1 })
-                .populate('owner')
+                .populate({ path: 'owner', populate: { path: 'accountId' } })
                 .populate('categoryId');
 
             res.render('managerViews/allRequest', {
                 title,
+                userAcc,
                 userBlog,
                 managerInfo,
                 categories,
@@ -145,7 +147,7 @@ exports.allRequest = async (req, res) => {
 
 exports.searchRequest = async (req, res) => {
     const title = 'All User Request';
-    const { timeFrom, timeTo } = req.query;
+    const { timeFrom, timeTo, username } = req.query;
 
     // var regExp = new RegExp(keySearch, "i");
 
@@ -153,24 +155,31 @@ exports.searchRequest = async (req, res) => {
         .findOne({ accountId: req.session.userId })
         .populate('categoryId');
     const categories = await categoryModel.find({});
+    const userAcc = await appUserModel.find({ role: 'user' });
 
     try {
         if (managerInfo.categoryId) {
             const searchBlog = await blogModel
                 .find({
                     categoryId: managerInfo.categoryId,
-                    createdAt: {
-                        $gte: timeFrom,
-                        $lte: timeTo,
-                    },
+                    $or: [
+                        {
+                            createdAt: {
+                                $gte: timeFrom,
+                                $lte: timeTo,
+                            },
+                        },
+                        { owner: username },
+                    ],
                 })
                 .sort({ createdAt: -1 })
-                .populate('owner')
+                .populate({ path: 'owner', populate: { path: 'accountId' } })
                 .populate('categoryId');
 
             res.render('managerViews/allRequest', {
                 title,
                 userBlog: searchBlog,
+                userAcc,
                 managerInfo,
                 categories,
             });

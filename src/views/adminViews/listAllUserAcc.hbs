@@ -153,11 +153,14 @@
                                                             </div>
 
                                                             <div class="col-sm-4">
-                                                                <h6>Email</h6>
-                                                                <input type="email" name="email" class="form-control"
-                                                                    placeholder="Type email to find account ..." />
+                                                                <h6>Username</h6>
+                                                                <select class="selectpicker form-control" name="username"
+                                                                    data-live-search="true" multiple>
+                                                                    {{#each userAcc}}
+                                                                    <option value="{{_id}}">{{username}}</option>
+                                                                    {{/each}}
+                                                                </select>
                                                             </div>
-
                                                         </div>
                                                         <div class="row">
                                                             <div class="col text-right">
