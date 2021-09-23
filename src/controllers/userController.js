@@ -8,7 +8,7 @@ const managerModel = require('../models/Manager');
 const bookmarkModel = require('../models/Bookmarks');
 const tagModel = require('../models/BlogTags');
 const fs = require('fs');
-const nodemailer = require('../middleware/sendingMail');
+const { sendMail } = require('../middleware/sendingMail');
 
 const limitLatest = 8;
 const limitPopular = 3;
@@ -440,13 +440,25 @@ exports.uploadBlog = async (req, res) => {
             { new: true, useFindAndModify: false, multi: true }
         );
         await pushTag.save();
-        console.log(pushTag);
 
         await userInfo.posts.push(pushTag);
-        userInfo.save();
+        await userInfo.save();
+
+        const findBlog = await blogModel
+            .findOne({ _id: savePost._id })
+            .populate('owner');
 
         const manager = await managerModel.findOne({ categoryId: _id });
-        const sentEmail = await nodemailer(manager.email);
+        const body = {
+            Author: findBlog.owner.fullName,
+            title: findBlog.titleName,
+        };
+        const sentEmail = await sendMail(
+            manager.email,
+            'You have receive a new Request',
+            body.Author,
+            body.title
+        );
         console.log('Email sent...', sentEmail);
 
         return res.redirect(`/users/manageBlog`);
