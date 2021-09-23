@@ -98,11 +98,14 @@ exports.allUserAccount = async (req, res) => {
         .find({})
         .sort({ createdAt: -1 })
         .populate('accountId');
+
+    const userAcc = await appUserModel.find({ role: 'user' });
     const admin = await appUserModel.findOne({ _id: req.session.userId });
 
     try {
         res.render('adminViews/listAllUserAcc', {
             users,
+            userAcc,
             title,
             admin,
         });
@@ -114,22 +117,23 @@ exports.allUserAccount = async (req, res) => {
 
 exports.searchUser = async (req, res) => {
     const title = 'List of User Accounts';
-    const { timeFrom, timeTo, email } = req.query;
-    let regExpEmail = '';
-    if (!email) {
-        regExpEmail = null;
-    } else {
-        regExpEmail = new RegExp(email, 'i');
-    }
+    const { timeFrom, timeTo, username } = req.query;
+    // let regExpEmail = '';
+    // if (!email) {
+    //     regExpEmail = null;
+    // } else {
+    //     regExpEmail = new RegExp(email, 'i');
+    // }
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
+    const userAcc = await appUserModel.find({ role: 'user' });
 
     // const usersFindEmail = await userModel.find({}).or([{ email: regExpEmail },]).sort({ "createdAt": -1 }).populate("accountId");
     // const users = await userModel.find({ createdAt: { $gte: timeFrom, $lte: timeTo } }).sort({ "createdAt": -1 }).populate("accountId");
     const users = await userModel
         .find({
             $or: [
-                { email: regExpEmail },
+                { accountId: username },
                 { createdAt: { $gte: timeFrom, $lte: timeTo } },
             ],
         })
@@ -139,6 +143,7 @@ exports.searchUser = async (req, res) => {
     try {
         res.render('adminViews/listAllUserAcc', {
             users,
+            userAcc,
             title,
             admin,
         });
@@ -223,7 +228,7 @@ exports.deleteOneUser = async (req, res) => {
         });
 
         if (userBlog) {
-            const pullBlog = await categoryModel.findOneAndUpdate(
+            const pullBlog = await userModel.findOneAndUpdate(
                 { posts: userBlog._id },
                 { $pull: { posts: userBlog._id } },
                 { new: true, useFindAndModify: false, multi: true }
