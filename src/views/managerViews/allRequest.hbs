@@ -103,20 +103,30 @@
                                                     <h4 class="sub-title">Search</h4>
                                                     <form action="/managers/searchRequest" method="GET">
                                                         <div class="form-group row">
-                                                            <div class="col">
+                                                            <div class="col-sm-3">
                                                                 <h6>Time Request From</h6>
                                                                 <input type="date" name="timeFrom" class="form-control"
                                                                     placeholder="col" />
                                                             </div>
-                                                            <div class="col-sm-4">
+                                                            <div class="col-sm-3">
                                                                 <h6>Time Request To</h6>
                                                                 <input type="date" name="timeTo" class="form-control"
                                                                     placeholder="col-sm-4" />
                                                             </div>
+                                                            {{!-- <div class="col-sm-3">
+                                                                <h6>Requester</h6>
+                                                                <select class="selectpicker form-control"
+                                                                    name="username" data-live-search="true" multiple>
+                                                                    {{#each userAcc}}
+                                                                    <option value="{{_id}}">{{username}}</option>
+                                                                    {{/each}}
+                                                                </select>
+                                                            </div> --}}
                                                             <div class="col text-right">
                                                                 <button
                                                                     class="btn btn-primary btn-square">Search</button>
                                                             </div>
+
                                                         </div>
                                                     </form>
                                                 </div>
@@ -131,8 +141,8 @@
                                                                 <tr>
                                                                     <th scope="col">#</th>
                                                                     <th scope="col">Requester</th>
+                                                                    <th scope="col">Full Name</th>
                                                                     <th scope="col">Blog Title</th>
-                                                                    {{!-- <th scope="col">Brief</th> --}}
                                                                     <th scope="col">Created At</th>
                                                                     <th scope="col">status</th>
                                                                     <th scope="col">Action</th>
@@ -142,9 +152,9 @@
                                                                 {{#each userBlog}}
                                                                 <tr>
                                                                     <th scope="row">{{@index}}</th>
+                                                                    <td>{{owner.accountId.username}}</td>
                                                                     <td>{{owner.fullName}}</td>
                                                                     <td>{{titleName}}</td>
-                                                                    {{!-- <td>{{brief}}</td> --}}
                                                                     <td>{{moment createdAt format ="dddd, DD MMMM
                                                                         YYYY"}}</td>
                                                                     {{#equals isPublish 'Approved'}}
@@ -163,7 +173,8 @@
                                                                     <td class="d-flex flex-row">
 
                                                                         <a href="/managers/blogDetails/{{_id}}">
-                                                                            <button type="submit" style="margin-right: 5px;"
+                                                                            <button type="submit"
+                                                                                style="margin-right: 5px;"
                                                                                 class="btn btn-primary btn-outline-primary btn-round">Details</button>
                                                                         </a>
 
@@ -213,7 +224,7 @@
                                                                         </div>
                                                                     </td>
                                                                     {{else}}
-                                                                    <td colspan="9">
+                                                                    <td colspan="7">
                                                                         <div class="alert alert-primary" role="alert">
                                                                             There isn't any content !!!
                                                                         </div>
