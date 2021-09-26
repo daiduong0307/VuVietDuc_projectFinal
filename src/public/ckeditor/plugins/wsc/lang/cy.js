@@ -6,8 +6,7 @@
     btnUndo: 'Dadwneud',
     changeTo: 'Newid i',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        'Gwirydd sillafu heb ei arsefydlu. A ydych am ei lawrlwytho nawr?',
+    ieSpellDownload: 'Gwirydd sillafu heb ei arsefydlu. A ydych am ei lawrlwytho nawr?',
     manyChanges: 'Gwirio sillafu wedi gorffen: Newidiwyd %1 gair',
     noChanges: 'Gwirio sillafu wedi gorffen: Dim newidiadau',
     noMispell: 'Gwirio sillafu wedi gorffen: Dim camsillaf.',

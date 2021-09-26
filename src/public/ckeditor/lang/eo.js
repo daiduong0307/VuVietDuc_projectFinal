@@ -44,8 +44,7 @@ CKEDITOR.lang['eo'] = {
         validateNumberFailed: 'Tiu valoro ne estas nombro.',
         confirmNewPage:
             'La neregistritaj ŝanĝoj estas perdotaj. Ĉu vi certas, ke vi volas ŝargi novan paĝon?',
-        confirmCancel:
-            'Iuj opcioj esta ŝanĝitaj. Ĉu vi certas, ke vi volas fermi la dialogon?',
+        confirmCancel: 'Iuj opcioj esta ŝanĝitaj. Ĉu vi certas, ke vi volas fermi la dialogon?',
         options: 'Opcioj',
         target: 'Celo',
         targetNew: 'Nova Fenestro (_blank)',
@@ -256,8 +255,7 @@ CKEDITOR.lang['eo'] = {
         emptyListMsg: '(Neniu ŝablono difinita)',
         insertOption: 'Anstataŭigi la nunan enhavon',
         options: 'Opcioj pri ŝablonoj',
-        selectPromptMsg:
-            'Bonvolu selekti la ŝablonon por malfermi ĝin en la redaktilo',
+        selectPromptMsg: 'Bonvolu selekti la ŝablonon por malfermi ĝin en la redaktilo',
         title: 'Enhavo de ŝablonoj',
     },
     contextmenu: { options: 'Opcioj de Kunteksta Menuo' },
@@ -295,10 +293,8 @@ CKEDITOR.lang['eo'] = {
     filetools: {
         loadError: 'Eraro okazis dum la dosiera legado.',
         networkError: 'Reta eraro okazis dum la dosiera alŝuto.',
-        httpError404:
-            'HTTP eraro okazis dum la dosiera alŝuto (404: dosiero ne trovita).',
-        httpError403:
-            'HTTP eraro okazis dum la dosiera alŝuto (403: malpermesita).',
+        httpError404: 'HTTP eraro okazis dum la dosiera alŝuto (404: dosiero ne trovita).',
+        httpError403: 'HTTP eraro okazis dum la dosiera alŝuto (403: malpermesita).',
         httpError: 'HTTP eraro okazis dum la dosiera alŝuto (erara stato: %1).',
         noUrlError: 'Alŝuta URL ne estas difinita.',
         responseError: 'Malĝusta respondo de la servilo.',
@@ -467,11 +463,9 @@ CKEDITOR.lang['eo'] = {
         alt: 'Anstataŭiga Teksto',
         border: 'Bordero',
         btnUpload: 'Sendu al Servilo',
-        button2Img:
-            'Ĉu vi volas transformi la selektitan bildbutonon en simplan bildon?',
+        button2Img: 'Ĉu vi volas transformi la selektitan bildbutonon en simplan bildon?',
         hSpace: 'Horizontala Spaco',
-        img2Button:
-            'Ĉu vi volas transformi la selektitan bildon en bildbutonon?',
+        img2Button: 'Ĉu vi volas transformi la selektitan bildon en bildbutonon?',
         infoTab: 'Informoj pri Bildo',
         linkTab: 'Ligilo',
         lockRatio: 'Konservi Proporcion',
@@ -675,10 +669,8 @@ CKEDITOR.lang['eo'] = {
         headersRow: 'Unua linio',
         heightUnit: 'height unit',
         invalidBorder: 'La bordergrando devas esti nombro.',
-        invalidCellPadding:
-            'La interna marĝeno en la ĉeloj devas esti pozitiva nombro.',
-        invalidCellSpacing:
-            'La spaco inter la ĉeloj devas esti pozitiva nombro.',
+        invalidCellPadding: 'La interna marĝeno en la ĉeloj devas esti pozitiva nombro.',
+        invalidCellSpacing: 'La spaco inter la ĉeloj devas esti pozitiva nombro.',
         invalidCols: 'La nombro de la kolumnoj devas superi 0.',
         invalidHeight: 'La tabelalto devas esti nombro.',
         invalidRows: 'La nombro de la linioj devas superi 0.',
@@ -705,7 +697,6 @@ CKEDITOR.lang['eo'] = {
         doneOne: 'Dosiero sukcese alŝutita.',
         doneMany: 'Sukcese alŝutitaj %1 dosieroj.',
         uploadOne: 'alŝutata dosiero ({percentage}%)...',
-        uploadMany:
-            'Alŝutataj dosieroj, {current} el {max} faritaj ({percentage}%)...',
+        uploadMany: 'Alŝutataj dosieroj, {current} el {max} faritaj ({percentage}%)...',
     },
 };

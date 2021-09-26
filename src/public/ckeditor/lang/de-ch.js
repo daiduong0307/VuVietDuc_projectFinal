@@ -44,8 +44,7 @@ CKEDITOR.lang['de-ch'] = {
         validateNumberFailed: 'Dieser Wert ist keine Nummer.',
         confirmNewPage:
             'Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher, die neue Seite zu laden?',
-        confirmCancel:
-            'Einige Optionen wurden geändert. Wollen Sie den Dialog dennoch schliessen?',
+        confirmCancel: 'Einige Optionen wurden geändert. Wollen Sie den Dialog dennoch schliessen?',
         options: 'Optionen',
         target: 'Zielseite',
         targetNew: 'Neues Fenster (_blank)',
@@ -83,8 +82,7 @@ CKEDITOR.lang['de-ch'] = {
             'Wert spezifiziert für inline Stilart muss enthalten ein oder mehr Wertepaare mit dem Format "Name : Wert" getrennt durch Semikolons.',
         cssLengthTooltip:
             'Geben Sie eine Zahl ein für ein Wert in Pixel oder eine Zahl mit einer korrekten CSS-Masseinheit (px, %, in, cm, mm, em, ex, pt oder pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, nicht verfügbar</span>',
+        unavailable: '%1<span class="cke_accessibility">, nicht verfügbar</span>',
         keyboard: {
             8: 'Rücktaste',
             13: 'Eingabe',
@@ -173,8 +171,7 @@ CKEDITOR.lang['de-ch'] = {
         pasteNotification:
             'Drücken Sie %1 zum Einfügen. Ihr Browser unterstützt nicht das Einfügen über dem Knopf in der Werkzeugleiste oder dem Kontextmenü.',
         pasteArea: 'Einfügebereich',
-        pasteMsg:
-            'Fügen Sie den Inhalt in den unteren Bereich ein und drücken Sie OK.',
+        pasteMsg: 'Fügen Sie den Inhalt in den unteren Bereich ein und drücken Sie OK.',
     },
     colorbutton: {
         auto: 'Automatisch',
@@ -259,8 +256,7 @@ CKEDITOR.lang['de-ch'] = {
         emptyListMsg: '(Keine Vorlagen definiert)',
         insertOption: 'Aktuelle Inhalte ersetzen',
         options: 'Vorlagenoptionen',
-        selectPromptMsg:
-            'Klicken Sie auf eine Vorlage, um sie im Editor zu öffnen',
+        selectPromptMsg: 'Klicken Sie auf eine Vorlage, um sie im Editor zu öffnen',
         title: 'Inhaltsvorlagen',
     },
     contextmenu: { options: 'Kontextmenüoptionen' },
@@ -297,8 +293,7 @@ CKEDITOR.lang['de-ch'] = {
     },
     filetools: {
         loadError: 'Während dem Lesen der Datei ist ein Fehler aufgetreten.',
-        networkError:
-            'Während dem Hochladen der Datei ist ein Netzwerkfehler aufgetreten.',
+        networkError: 'Während dem Hochladen der Datei ist ein Netzwerkfehler aufgetreten.',
         httpError404:
             'Während dem Hochladen der Datei ist ein HTTP-Fehler aufgetreten (404: Datei nicht gefunden).',
         httpError403:
@@ -472,11 +467,9 @@ CKEDITOR.lang['de-ch'] = {
         alt: 'Alternativer Text',
         border: 'Rahmen',
         btnUpload: 'Zum Server senden',
-        button2Img:
-            'Möchten Sie die ausgewählte Bildschaltfläche in ein einfaches Bild umwandeln?',
+        button2Img: 'Möchten Sie die ausgewählte Bildschaltfläche in ein einfaches Bild umwandeln?',
         hSpace: 'Horizontal-Abstand',
-        img2Button:
-            'Möchten Sie das ausgewählte Bild in eine Bildschaltfläche umwandeln?',
+        img2Button: 'Möchten Sie das ausgewählte Bild in eine Bildschaltfläche umwandeln?',
         infoTab: 'Bildinfo',
         linkTab: 'Link',
         lockRatio: 'Grössenverhältnis beibehalten',
@@ -662,10 +655,8 @@ CKEDITOR.lang['de-ch'] = {
             no: 'Nein',
             invalidWidth: 'Zellenbreite muss eine Zahl sein.',
             invalidHeight: 'Zellenhöhe muss eine Zahl sein.',
-            invalidRowSpan:
-                '"Anzahl Zeilen verbinden" muss eine Ganzzahl sein.',
-            invalidColSpan:
-                '"Anzahl Spalten verbinden" muss eine Ganzzahl sein.',
+            invalidRowSpan: '"Anzahl Zeilen verbinden" muss eine Ganzzahl sein.',
+            invalidColSpan: '"Anzahl Spalten verbinden" muss eine Ganzzahl sein.',
             chooseColor: 'Wählen',
         },
         cellPad: 'Zellenabstand innen',
@@ -685,10 +676,8 @@ CKEDITOR.lang['de-ch'] = {
         headersRow: 'Erste Zeile',
         heightUnit: 'Höheneinheit',
         invalidBorder: 'Die Rahmenbreite muss eine Zahl sein.',
-        invalidCellPadding:
-            'Der Zellenabstand innen muss eine positive Zahl sein.',
-        invalidCellSpacing:
-            'Der Zellenabstand aussen muss eine positive Zahl sein.',
+        invalidCellPadding: 'Der Zellenabstand innen muss eine positive Zahl sein.',
+        invalidCellSpacing: 'Der Zellenabstand aussen muss eine positive Zahl sein.',
         invalidCols: 'Die Anzahl der Spalten muss grösser als 0 sein..',
         invalidHeight: 'Die Tabellenbreite muss eine Zahl sein.',
         invalidRows: 'Die Anzahl der Zeilen muss grösser als 0 sein.',
@@ -718,7 +707,6 @@ CKEDITOR.lang['de-ch'] = {
         doneOne: 'Datei erfolgreich hochgeladen.',
         doneMany: '%1 Dateien erfolgreich hochgeladen.',
         uploadOne: 'Datei wird hochgeladen ({percentage}%)...',
-        uploadMany:
-            'Dateien werden hochgeladen, {current} von {max} fertig ({percentage}%)...',
+        uploadMany: 'Dateien werden hochgeladen, {current} von {max} fertig ({percentage}%)...',
     },
 };

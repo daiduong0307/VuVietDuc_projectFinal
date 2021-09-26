@@ -6,8 +6,7 @@
     btnUndo: 'Vrati',
     changeTo: 'Promijeni u',
     errorLoading: 'Greška učitavanja aplikacije: %s.',
-    ieSpellDownload:
-        'Provjera pravopisa nije instalirana. Želite li skinuti provjeru pravopisa?',
+    ieSpellDownload: 'Provjera pravopisa nije instalirana. Želite li skinuti provjeru pravopisa?',
     manyChanges: 'Provjera završena: Promijenjeno %1 riječi',
     noChanges: 'Provjera završena: Nije napravljena promjena',
     noMispell: 'Provjera završena: Nema grešaka',

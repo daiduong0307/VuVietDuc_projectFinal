@@ -125,8 +125,7 @@ CKEDITOR.lang['si'] = {
     about: {
         copy: 'පිටපත් අයිතිය සහ පිටපත් කිරීම;$1 .සියලුම හිමිකම් ඇවිරිණි.',
         dlgTitle: 'CKEditor ගැන විස්තර',
-        moreInfo:
-            'බලපත්‍ර තොරතුරු සදහා කරුණාකර අපගේ විද්‍යුත් ලිපිනයට පිවිසෙන්න:',
+        moreInfo: 'බලපත්‍ර තොරතුරු සදහා කරුණාකර අපගේ විද්‍යුත් ලිපිනයට පිවිසෙන්න:',
     },
     basicstyles: {
         bold: 'තද අකුරින් ලියනලද',
@@ -294,10 +293,8 @@ CKEDITOR.lang['si'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -699,7 +696,6 @@ CKEDITOR.lang['si'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

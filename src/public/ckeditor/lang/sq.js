@@ -44,8 +44,7 @@ CKEDITOR.lang['sq'] = {
         validateNumberFailed: 'Kjo vlerë nuk është numër.',
         confirmNewPage:
             'Çdo ndryshim që nuk është ruajtur do humbasë. Je i sigurt që dëshiron të hapsh faqe të re?',
-        confirmCancel:
-            'Ke ndryshuar ca mundësi. Je i sigurt që dëshiron ta mbyllësh dritaren?',
+        confirmCancel: 'Ke ndryshuar ca mundësi. Je i sigurt që dëshiron ta mbyllësh dritaren?',
         options: 'Mundësitë',
         target: 'Objektivi',
         targetNew: 'Dritare e re (_blank)',
@@ -83,8 +82,7 @@ CKEDITOR.lang['sq'] = {
             'Vlera e përcaktuar për stilin e vijëzuar duhet përmbajtur një ose më shumë vlera me format "emër : vlerë", të ndara me pikëpresje.',
         cssLengthTooltip:
             'Shto një numër për vlerën në piksel ose një numër me njësi të vlefshme CSS (px, %, in, cm, mm, em, ex, pt, or pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, i padisponueshëm</span>',
+        unavailable: '%1<span class="cke_accessibility">, i padisponueshëm</span>',
         keyboard: {
             8: 'Prapa',
             13: 'Enter',
@@ -297,10 +295,8 @@ CKEDITOR.lang['sq'] = {
         networkError: 'Gabimi në rrjetë u paraqitë gjatë ngarkimit të skedës.',
         httpError404:
             'Gabimi në HTTP u paraqit gjatë ngarkimit të skedës (404: Skeda nuk u gjetë).',
-        httpError403:
-            'Gabimi në HTTP u paraqitë gjatë ngarkimit të skedës (403: E ndaluar).',
-        httpError:
-            'Gabimi në HTTP u paraqit gjatë ngarkimit të skedës (gjendja e gabimit: %1).',
+        httpError403: 'Gabimi në HTTP u paraqitë gjatë ngarkimit të skedës (403: E ndaluar).',
+        httpError: 'Gabimi në HTTP u paraqit gjatë ngarkimit të skedës (gjendja e gabimit: %1).',
         noUrlError: 'URL e ngarkimit nuk është vendosur.',
         responseError: 'Përgjigje e gabuar e serverit.',
     },
@@ -468,8 +464,7 @@ CKEDITOR.lang['sq'] = {
         alt: 'Tekst Alternativ',
         border: 'Korniza',
         btnUpload: 'Dërgo në server',
-        button2Img:
-            'Dëshironi të e ndërroni pullën e fotos së selektuar në një foto të thjeshtë?',
+        button2Img: 'Dëshironi të e ndërroni pullën e fotos së selektuar në një foto të thjeshtë?',
         hSpace: 'HSpace',
         img2Button: 'Dëshironi të ndryshoni foton e përzgjedhur në pullë?',
         infoTab: 'Informacione mbi Fotografinë',
@@ -578,8 +573,7 @@ CKEDITOR.lang['sq'] = {
         type: 'Lloji',
         upperAlpha: 'Alfa të mëdha (A, B, C, D, E, etj.)',
         upperRoman: 'Romake të mëdha (I, II, III, IV, V, etj.)',
-        validateStartNumber:
-            'Numri i fillimit të listës duhet të është numër i plotë.',
+        validateStartNumber: 'Numri i fillimit të listës duhet të është numër i plotë.',
     },
     magicline: { title: 'Shto paragrafin këtu' },
     maximize: { maximize: 'Zmadho', minimize: 'Zvogëlo' },
@@ -707,7 +701,6 @@ CKEDITOR.lang['sq'] = {
         doneOne: 'Skeda u ngarkua me sukses.',
         doneMany: 'Me sukses u ngarkuan %1 skeda.',
         uploadOne: 'Duke ngarkuar skedën ({percentage}%)...',
-        uploadMany:
-            'Duke ngarkuar skedat, {current} nga {max} , ngarkuar ({percentage}%)...',
+        uploadMany: 'Duke ngarkuar skedat, {current} nga {max} , ngarkuar ({percentage}%)...',
     },
 };

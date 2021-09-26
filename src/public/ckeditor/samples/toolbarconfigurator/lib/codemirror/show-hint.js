@@ -17,7 +17,7 @@
             'cursorActivity',
             (this.activityFunc = function () {
                 c.cursorActivity();
-            })
+            }),
         );
     }
     function w(a, b) {
@@ -59,14 +59,12 @@
             d = a.options.customKeys,
             f = d ? {} : e;
         if (d) for (var g in d) d.hasOwnProperty(g) && c(g, d[g]);
-        if ((d = a.options.extraKeys))
-            for (g in d) d.hasOwnProperty(g) && c(g, d[g]);
+        if ((d = a.options.extraKeys)) for (g in d) d.hasOwnProperty(g) && c(g, d[g]);
         return f;
     }
     function v(a, b) {
         for (; b && b != a; ) {
-            if ('LI' === b.nodeName.toUpperCase() && b.parentNode == a)
-                return b;
+            if ('LI' === b.nodeName.toUpperCase() && b.parentNode == a) return b;
             b = b.parentNode;
         }
     }
@@ -82,17 +80,13 @@
         for (var m = b.list, g = 0; g < m.length; ++g) {
             var l = d.appendChild(document.createElement('li')),
                 h = m[g],
-                k =
-                    'CodeMirror-hint' +
-                    (g != this.selectedHint ? '' : ' CodeMirror-hint-active');
+                k = 'CodeMirror-hint' + (g != this.selectedHint ? '' : ' CodeMirror-hint-active');
             null != h.className && (k = h.className + ' ' + k);
             l.className = k;
             h.render
                 ? h.render(l, b, h)
                 : l.appendChild(
-                      document.createTextNode(
-                          h.displayText || ('string' == typeof h ? h : h.text)
-                      )
+                      document.createTextNode(h.displayText || ('string' == typeof h ? h : h.text)),
                   );
             l.hintId = g;
         }
@@ -104,16 +98,10 @@
         d.style.top = t + 'px';
         l =
             window.innerWidth ||
-            Math.max(
-                document.body.offsetWidth,
-                document.documentElement.offsetWidth
-            );
+            Math.max(document.body.offsetWidth, document.documentElement.offsetWidth);
         k =
             window.innerHeight ||
-            Math.max(
-                document.body.offsetHeight,
-                document.documentElement.offsetHeight
-            );
+            Math.max(document.body.offsetHeight, document.documentElement.offsetHeight);
         (a.options.container || document.body).appendChild(d);
         h = d.getBoundingClientRect();
         if (0 < h.bottom - k) {
@@ -131,8 +119,7 @@
         }
         k = h.right - l;
         0 < k &&
-            (h.right - h.left > l &&
-                ((d.style.width = l - 5 + 'px'), (k -= h.right - h.left - l)),
+            (h.right - h.left > l && ((d.style.width = l - 5 + 'px'), (k -= h.right - h.left - l)),
             (d.style.left = (r = g.left - k) + 'px'));
         e.addKeyMap(
             (this.keyMap = w(a, {
@@ -153,7 +140,7 @@
                     c.pick();
                 },
                 data: b,
-            }))
+            })),
         );
         if (a.options.closeOnUnfocus) {
             var p;
@@ -163,13 +150,13 @@
                     p = setTimeout(function () {
                         a.close();
                     }, 100);
-                })
+                }),
             );
             e.on(
                 'focus',
                 (this.onFocus = function () {
                     clearTimeout(p);
-                })
+                }),
             );
         }
         var q = e.getScrollInfo();
@@ -182,13 +169,12 @@
                     g =
                         f -
                         (window.pageYOffset ||
-                            (document.documentElement || document.body)
-                                .scrollTop);
+                            (document.documentElement || document.body).scrollTop);
                 n || (g += d.offsetHeight);
                 if (g <= b.top || g >= b.bottom) return a.close();
                 d.style.top = f + 'px';
                 d.style.left = r + q.left - c.left + 'px';
-            })
+            }),
         );
         f.on(d, 'dblclick', function (a) {
             (a = v(d, a.target || a.srcElement)) &&
@@ -198,8 +184,7 @@
         f.on(d, 'click', function (b) {
             (b = v(d, b.target || b.srcElement)) &&
                 null != b.hintId &&
-                (c.changeActive(b.hintId),
-                a.options.completeOnSingleClick && c.pick());
+                (c.changeActive(b.hintId), a.options.completeOnSingleClick && c.pick());
         });
         f.on(d, 'mousedown', function () {
             setTimeout(function () {
@@ -221,8 +206,7 @@
             this.somethingSelected() ||
             (this.state.completionActive && this.state.completionActive.close(),
             (a = this.state.completionActive = new p(this, a)),
-            a.options.hint &&
-                (f.signal(this, 'startCompletion', this), a.update()));
+            a.options.hint && (f.signal(this, 'startCompletion', this), a.update()));
     });
     var x =
             window.requestAnimationFrame ||
@@ -249,7 +233,7 @@
                       'string' == typeof c ? c : c.text,
                       c.from || a.from,
                       c.to || a.to,
-                      'complete'
+                      'complete',
                   );
             f.signal(a, 'pick', c);
             this.close();
@@ -282,10 +266,7 @@
         },
         update: function () {
             if (null != this.tick)
-                if (
-                    (this.data && f.signal(this.data, 'update'),
-                    this.options.hint.async)
-                ) {
+                if ((this.data && f.signal(this.data, 'update'), this.options.hint.async)) {
                     var a = ++this.tick,
                         b = this;
                     this.options.hint(
@@ -293,13 +274,9 @@
                         function (c) {
                             b.tick == a && b.finishUpdate(c);
                         },
-                        this.options
+                        this.options,
                     );
-                } else
-                    this.finishUpdate(
-                        this.options.hint(this.cm, this.options),
-                        a
-                    );
+                } else this.finishUpdate(this.options.hint(this.cm, this.options), a);
         },
         finishUpdate: function (a) {
             this.data = a;
@@ -307,9 +284,7 @@
             this.widget && this.widget.close();
             a &&
                 a.list.length &&
-                (b && 1 == a.list.length
-                    ? this.pick(a, 0)
-                    : (this.widget = new n(this, a)));
+                (b && 1 == a.list.length ? this.pick(a, 0) : (this.widget = new n(this, a)));
         },
         showWidget: function (a) {
             this.data = a;
@@ -357,10 +332,7 @@
                 : 0 > a && (a = b ? 0 : this.data.list.length - 1);
             if (this.selectedHint != a) {
                 var c = this.hints.childNodes[this.selectedHint];
-                c.className = c.className.replace(
-                    ' CodeMirror-hint-active',
-                    ''
-                );
+                c.className = c.className.replace(' CodeMirror-hint-active', '');
                 c = this.hints.childNodes[(this.selectedHint = a)];
                 c.className += ' CodeMirror-hint-active';
                 c.offsetTop < this.hints.scrollTop
@@ -368,24 +340,12 @@
                     : c.offsetTop + c.offsetHeight >
                           this.hints.scrollTop + this.hints.clientHeight &&
                       (this.hints.scrollTop =
-                          c.offsetTop +
-                          c.offsetHeight -
-                          this.hints.clientHeight +
-                          3);
-                f.signal(
-                    this.data,
-                    'select',
-                    this.data.list[this.selectedHint],
-                    c
-                );
+                          c.offsetTop + c.offsetHeight - this.hints.clientHeight + 3);
+                f.signal(this.data, 'select', this.data.list[this.selectedHint], c);
             }
         },
         screenAmount: function () {
-            return (
-                Math.floor(
-                    this.hints.clientHeight / this.hints.firstChild.offsetHeight
-                ) || 1
-            );
+            return Math.floor(this.hints.clientHeight / this.hints.firstChild.offsetHeight) || 1;
         },
     };
     f.registerHelper('hint', 'auto', function (a, b) {
@@ -400,11 +360,7 @@
         } else if (f.hint.anyword) return f.hint.anyword(a, b);
     });
     f.registerHelper('hint', 'fromList', function (a, b) {
-        for (
-            var c = a.getCursor(), e = a.getTokenAt(c), d = [], m = 0;
-            m < b.words.length;
-            m++
-        ) {
+        for (var c = a.getCursor(), e = a.getTokenAt(c), d = [], m = 0; m < b.words.length; m++) {
             var g = b.words[m];
             g.slice(0, e.string.length) == e.string && d.push(g);
         }

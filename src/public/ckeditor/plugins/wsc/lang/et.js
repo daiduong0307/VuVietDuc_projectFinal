@@ -6,8 +6,7 @@
     btnUndo: 'Võta tagasi',
     changeTo: 'Muuda',
     errorLoading: 'Viga rakenduse teenushosti laadimisel: %s.',
-    ieSpellDownload:
-        'Õigekirja kontrollija ei ole paigaldatud. Soovid sa selle alla laadida?',
+    ieSpellDownload: 'Õigekirja kontrollija ei ole paigaldatud. Soovid sa selle alla laadida?',
     manyChanges: 'Õigekirja kontroll sooritatud: %1 sõna muudetud',
     noChanges: 'Õigekirja kontroll sooritatud: ühtegi sõna ei muudetud',
     noMispell: 'Õigekirja kontroll sooritatud: õigekirjuvigu ei leitud',

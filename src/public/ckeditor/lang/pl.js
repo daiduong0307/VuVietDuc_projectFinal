@@ -44,8 +44,7 @@ CKEDITOR.lang['pl'] = {
         validateNumberFailed: 'Ta wartość nie jest liczbą.',
         confirmNewPage:
             'Wszystkie niezapisane zmiany zostaną utracone. Czy na pewno wczytać nową stronę?',
-        confirmCancel:
-            'Pewne opcje zostały zmienione. Czy na pewno zamknąć okno dialogowe?',
+        confirmCancel: 'Pewne opcje zostały zmienione. Czy na pewno zamknąć okno dialogowe?',
         options: 'Opcje',
         target: 'Obiekt docelowy',
         targetNew: 'Nowe okno (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['pl'] = {
     about: {
         copy: 'Copyright &copy; $1. Wszelkie prawa zastrzeżone.',
         dlgTitle: 'Informacje o programie CKEditor 4',
-        moreInfo:
-            'Informacje na temat licencji można znaleźć na naszej stronie:',
+        moreInfo: 'Informacje na temat licencji można znaleźć na naszej stronie:',
     },
     basicstyles: {
         bold: 'Pogrubienie',
@@ -296,8 +294,7 @@ CKEDITOR.lang['pl'] = {
     filetools: {
         loadError: 'Błąd podczas odczytu pliku.',
         networkError: 'W trakcie wysyłania pliku pojawił się błąd sieciowy.',
-        httpError404:
-            'Błąd HTTP w trakcie wysyłania pliku (404: Nie znaleziono pliku).',
+        httpError404: 'Błąd HTTP w trakcie wysyłania pliku (404: Nie znaleziono pliku).',
         httpError403: 'Błąd HTTP w trakcie wysyłania pliku (403: Zabroniony).',
         httpError: 'Błąd HTTP w trakcie wysyłania pliku (status błędu: %1).',
         noUrlError: 'Nie zdefiniowano adresu URL do przesłania pliku.',
@@ -467,11 +464,9 @@ CKEDITOR.lang['pl'] = {
         alt: 'Tekst zastępczy',
         border: 'Obramowanie',
         btnUpload: 'Wyślij',
-        button2Img:
-            'Czy chcesz przekonwertować zaznaczony przycisk graficzny do zwykłego obrazka?',
+        button2Img: 'Czy chcesz przekonwertować zaznaczony przycisk graficzny do zwykłego obrazka?',
         hSpace: 'Odstęp poziomy',
-        img2Button:
-            'Czy chcesz przekonwertować zaznaczony obrazek do przycisku graficznego?',
+        img2Button: 'Czy chcesz przekonwertować zaznaczony obrazek do przycisku graficznego?',
         infoTab: 'Informacje o obrazku',
         linkTab: 'Hiperłącze',
         lockRatio: 'Zablokuj proporcje',
@@ -676,8 +671,7 @@ CKEDITOR.lang['pl'] = {
         heightUnit: 'jednostka wysokości',
         invalidBorder: 'Wartość obramowania musi być liczbą.',
         invalidCellPadding: 'Dopełnienie komórek musi być liczbą dodatnią.',
-        invalidCellSpacing:
-            'Odstęp pomiędzy komórkami musi być liczbą dodatnią.',
+        invalidCellSpacing: 'Odstęp pomiędzy komórkami musi być liczbą dodatnią.',
         invalidCols: 'Liczba kolumn musi być większa niż 0.',
         invalidHeight: 'Wysokość tabeli musi być liczbą.',
         invalidRows: 'Liczba wierszy musi być większa niż 0.',
@@ -707,7 +701,6 @@ CKEDITOR.lang['pl'] = {
         doneOne: 'Plik został pomyślnie wysłany.',
         doneMany: 'Pomyślnie wysłane pliki: %1.',
         uploadOne: 'Wysyłanie pliku ({percentage}%)...',
-        uploadMany:
-            'Wysyłanie plików, gotowe {current} z {max} ({percentage}%)...',
+        uploadMany: 'Wysyłanie plików, gotowe {current} z {max} ({percentage}%)...',
     },
 };

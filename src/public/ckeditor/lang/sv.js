@@ -83,8 +83,7 @@ CKEDITOR.lang['sv'] = {
             'Det angivna värdet för style måste innehålla en eller flera tupler separerade med semikolon i följande format: "name : value"',
         cssLengthTooltip:
             'Ange ett nummer i pixlar eller ett nummer men godkänd CSS-mätenhet (px, %, in, cm, mm, em, ex, pt, eller pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, Ej tillgänglig</span>',
+        unavailable: '%1<span class="cke_accessibility">, Ej tillgänglig</span>',
         keyboard: {
             8: 'Backsteg',
             13: 'Retur',
@@ -296,8 +295,7 @@ CKEDITOR.lang['sv'] = {
     filetools: {
         loadError: 'Fel uppstod vid filläsning',
         networkError: 'Nätverksfel uppstod vid filuppladdning.',
-        httpError404:
-            'HTTP-fel uppstod vid filuppladdning (404: Fil hittades inte).',
+        httpError404: 'HTTP-fel uppstod vid filuppladdning (404: Fil hittades inte).',
         httpError403: 'HTTP-fel uppstod vid filuppladdning (403: Förbjuden).',
         httpError: 'HTTP-fel uppstod vid filuppladdning (felstatus: %1).',
         noUrlError: 'URL för uppladdning inte definierad.',
@@ -704,7 +702,6 @@ CKEDITOR.lang['sv'] = {
         doneOne: 'Filuppladdning lyckades.',
         doneMany: 'Uppladdning av %1 filer lyckades.',
         uploadOne: 'Laddar upp fil ({percentage}%)...',
-        uploadMany:
-            'Laddar upp filer, {current} av {max} färdiga ({percentage}%)...',
+        uploadMany: 'Laddar upp filer, {current} av {max} färdiga ({percentage}%)...',
     },
 };

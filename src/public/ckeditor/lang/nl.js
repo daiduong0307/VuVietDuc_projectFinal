@@ -83,8 +83,7 @@ CKEDITOR.lang['nl'] = {
             'Waarde voor de online stijl moet bestaan uit een of meerdere tupels met het formaat "naam : waarde", gescheiden door puntkomma\'s.',
         cssLengthTooltip:
             'Geef een nummer in voor een waarde in pixels of geef een nummer in met een geldige CSS eenheid (px, %, in, cm, mm, em, ex, pt, of pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, niet beschikbaar</span>',
+        unavailable: '%1<span class="cke_accessibility">, niet beschikbaar</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Enter',
@@ -296,8 +295,7 @@ CKEDITOR.lang['nl'] = {
     filetools: {
         loadError: 'Fout tijdens lezen van bestand.',
         networkError: 'Netwerkfout tijdens uploaden van bestand.',
-        httpError404:
-            'HTTP fout tijdens uploaden van bestand (404: Bestand niet gevonden).',
+        httpError404: 'HTTP fout tijdens uploaden van bestand (404: Bestand niet gevonden).',
         httpError403: 'HTTP fout tijdens uploaden van bestand (403: Verboden).',
         httpError: 'HTTP fout tijdens uploaden van bestand (fout status: %1).',
         noUrlError: 'Upload URL is niet gedefinieerd.',
@@ -470,8 +468,7 @@ CKEDITOR.lang['nl'] = {
         button2Img:
             'Wilt u de geselecteerde afbeeldingsknop vervangen door een eenvoudige afbeelding?',
         hSpace: 'HSpace',
-        img2Button:
-            'Wilt u de geselecteerde afbeelding vervangen door een afbeeldingsknop?',
+        img2Button: 'Wilt u de geselecteerde afbeelding vervangen door een afbeeldingsknop?',
         infoTab: 'Informatie afbeelding',
         linkTab: 'Link',
         lockRatio: 'Afmetingen vergrendelen',
@@ -581,8 +578,7 @@ CKEDITOR.lang['nl'] = {
         type: 'Type',
         upperAlpha: 'Hoofdletters (A, B, C, D, E, etc.)',
         upperRoman: 'Romeinse hoofdletters (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'Startnummer van de lijst moet een heel nummer zijn.',
+        validateStartNumber: 'Startnummer van de lijst moet een heel nummer zijn.',
     },
     magicline: { title: 'Hier paragraaf invoeren' },
     maximize: { maximize: 'Maximaliseren', minimize: 'Minimaliseren' },
@@ -707,7 +703,6 @@ CKEDITOR.lang['nl'] = {
         doneOne: 'Bestand succesvol geüpload.',
         doneMany: 'Succesvol %1 bestanden geüpload.',
         uploadOne: 'Uploaden bestand ({percentage}%)…',
-        uploadMany:
-            'Bestanden aan het uploaden, {current} van {max} klaar ({percentage}%)…',
+        uploadMany: 'Bestanden aan het uploaden, {current} van {max} klaar ({percentage}%)…',
     },
 };

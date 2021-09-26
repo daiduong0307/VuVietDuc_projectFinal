@@ -8,11 +8,9 @@
     errorLoading: 'Erro carregando servidor de aplicação: %s.',
     ieSpellDownload:
         'A verificação ortográfica não foi instalada. Você gostaria de realizar o download agora?',
-    manyChanges:
-        'Verificação ortográfica encerrada: %1 palavras foram alteradas',
+    manyChanges: 'Verificação ortográfica encerrada: %1 palavras foram alteradas',
     noChanges: 'Verificação ortográfica encerrada: Não houve alterações',
-    noMispell:
-        'Verificação encerrada: Não foram encontrados erros de ortografia',
+    noMispell: 'Verificação encerrada: Não foram encontrados erros de ortografia',
     noSuggestions: '-sem sugestões de ortografia-',
     notAvailable: 'Desculpe, o serviço não está disponível no momento.',
     notInDic: 'Não encontrada',

@@ -83,8 +83,7 @@ CKEDITOR.lang['gl'] = {
             'O valor especificado no estilo en liña debe consistir nunha ou máis tuplas co formato «nome : valor», separadas por punto e coma.',
         cssLengthTooltip:
             'Escriba un número para o valor en píxeles ou un número cunha unidade CSS correcta (px, %, in, cm, mm, em, ex, pt, ou pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, non dispoñíbel</span>',
+        unavailable: '%1<span class="cke_accessibility">, non dispoñíbel</span>',
         keyboard: {
             8: 'Ir atrás',
             13: 'Intro',
@@ -127,8 +126,7 @@ CKEDITOR.lang['gl'] = {
     about: {
         copy: 'Copyright &copy; $1. Todos os dereitos reservados.',
         dlgTitle: 'Sobre o CKEditor 4',
-        moreInfo:
-            'Para obter  información sobre a licenza, visite o noso sitio web:',
+        moreInfo: 'Para obter  información sobre a licenza, visite o noso sitio web:',
     },
     basicstyles: {
         bold: 'Negra',
@@ -298,10 +296,8 @@ CKEDITOR.lang['gl'] = {
         networkError: 'Produciuse un erro na rede durante o envío do ficheiro.',
         httpError404:
             'Produciuse un erro HTTP durante o envío do ficheiro (404: Ficheiro non atopado).',
-        httpError403:
-            'Produciuse un erro HTTP durante o envío do ficheiro (403: Acceso denegado).',
-        httpError:
-            'Produciuse un erro HTTP durante o envío do ficheiro (erro de estado: %1).',
+        httpError403: 'Produciuse un erro HTTP durante o envío do ficheiro (403: Acceso denegado).',
+        httpError: 'Produciuse un erro HTTP durante o envío do ficheiro (erro de estado: %1).',
         noUrlError: 'Non foi definido o URL para o envío.',
         responseError: 'Resposta incorrecta do servidor.',
     },
@@ -469,8 +465,7 @@ CKEDITOR.lang['gl'] = {
         alt: 'Texto alternativo',
         border: 'Bordo',
         btnUpload: 'Enviar ao servidor',
-        button2Img:
-            'Quere converter o botón da imaxe seleccionada nunha imaxe sinxela?',
+        button2Img: 'Quere converter o botón da imaxe seleccionada nunha imaxe sinxela?',
         hSpace: 'Esp.Horiz.',
         img2Button: 'Quere converter a imaxe seleccionada nun botón de imaxe?',
         infoTab: 'Información da imaxe',
@@ -579,8 +574,7 @@ CKEDITOR.lang['gl'] = {
         type: 'Tipo',
         upperAlpha: 'Alfabeto en maiúsculas (A, B, C, D, E, etc.)',
         upperRoman: 'Números romanos en maiúsculas (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'O número de inicio da lista debe ser un número enteiro.',
+        validateStartNumber: 'O número de inicio da lista debe ser un número enteiro.',
     },
     magicline: { title: 'Inserir aquí o parágrafo' },
     maximize: { maximize: 'Maximizar', minimize: 'Minimizar' },
@@ -657,8 +651,7 @@ CKEDITOR.lang['gl'] = {
             invalidWidth: 'O largo da cela debe ser un número.',
             invalidHeight: 'O alto da cela debe ser un número.',
             invalidRowSpan: 'A expansión de filas debe ser un número enteiro.',
-            invalidColSpan:
-                'A expansión de columnas debe ser un número enteiro.',
+            invalidColSpan: 'A expansión de columnas debe ser un número enteiro.',
             chooseColor: 'Escoller',
         },
         cellPad: 'Marxe interior da cela',
@@ -706,7 +699,6 @@ CKEDITOR.lang['gl'] = {
         doneOne: 'Ficheiro enviado satisfactoriamente.',
         doneMany: '%1 ficheiros enviados satisfactoriamente.',
         uploadOne: 'Enviando o ficheiro ({percentage}%)...',
-        uploadMany:
-            'Enviando ficheiros, {current} de {max} feito o ({percentage}%)...',
+        uploadMany: 'Enviando ficheiros, {current} de {max} feito o ({percentage}%)...',
     },
 };

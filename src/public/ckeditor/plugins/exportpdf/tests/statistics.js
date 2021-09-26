@@ -16,26 +16,26 @@
             'test default statistics header': function () {
                 var a = this.editors.defaultHeader;
                 this.editorBots.defaultHeader.setHtmlWithSelection(
-                    '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
+                    '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^',
                 );
                 exportPdfUtils.useXHR(a, function (a) {
                     assert.areEqual(
                         a.requestHeaders['x-cs-app-id'],
                         'cke4',
-                        'Default stats header is wrong.'
+                        'Default stats header is wrong.',
                     );
                 });
             },
             'test custom statistics header': function () {
                 var a = this.editors.customHeader;
                 this.editorBots.customHeader.setHtmlWithSelection(
-                    '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
+                    '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^',
                 );
                 exportPdfUtils.useXHR(a, function (a) {
                     assert.areEqual(
                         a.requestHeaders['x-cs-app-id'],
                         'cke4-tests-unit',
-                        'Custom stats header was not set properly.'
+                        'Custom stats header was not set properly.',
                     );
                 });
             },

@@ -1,9 +1,7 @@
 ﻿(function () {
     function t(a, m, r) {
         (m.is && m.getCustomData('block_processed')) ||
-            (m.is &&
-                CKEDITOR.dom.element.setMarker(r, m, 'block_processed', !0),
-            a.push(m));
+            (m.is && CKEDITOR.dom.element.setMarker(r, m, 'block_processed', !0), a.push(m));
     }
     function q(a, m) {
         function r() {
@@ -16,13 +14,8 @@
                     a.commit ||
                         (a.commit = function (c) {
                             var f = this.getValue();
-                            if (
-                                'dir' != a.id ||
-                                c.getComputedStyle('direction') != f
-                            )
-                                f
-                                    ? c.setAttribute(a.id, f)
-                                    : c.removeAttribute(a.id);
+                            if ('dir' != a.id || c.getComputedStyle('direction') != f)
+                                f ? c.setAttribute(a.id, f) : c.removeAttribute(a.id);
                         }));
             });
         }
@@ -66,33 +59,21 @@
                                             f = c.getModel(a),
                                             f =
                                                 (f && f.clone()) ||
-                                                new CKEDITOR.dom.element(
-                                                    'div',
-                                                    a.document
-                                                );
+                                                new CKEDITOR.dom.element('div', a.document);
                                         this.commit(f, !0);
                                         for (
-                                            var g = [].concat(g),
-                                                b = g.length,
-                                                k,
-                                                e = 0;
+                                            var g = [].concat(g), b = g.length, k, e = 0;
                                             e < b;
                                             e++
                                         )
-                                            (k = c.getContentElement.apply(
-                                                c,
-                                                g[e].split(':')
-                                            )) &&
+                                            (k = c.getContentElement.apply(c, g[e].split(':'))) &&
                                                 k.setup &&
                                                 k.setup(f, !0);
                                     },
                                     setup: function (g) {
                                         for (var c in n)
-                                            n[c].checkElementRemovable(
-                                                g,
-                                                !0,
-                                                a
-                                            ) && this.setValue(c, 1);
+                                            n[c].checkElementRemovable(g, !0, a) &&
+                                                this.setValue(c, 1);
                                     },
                                     commit: function (g) {
                                         var c;
@@ -152,10 +133,7 @@
                                             label: a.lang.common.cssStyle,
                                             default: '',
                                             commit: function (a) {
-                                                a.setAttribute(
-                                                    'style',
-                                                    this.getValue()
-                                                );
+                                                a.setAttribute('style', this.getValue());
                                             },
                                         },
                                     ],
@@ -192,9 +170,7 @@
                 },
             ],
             getModel: function (a) {
-                return 'editdiv' === m
-                    ? CKEDITOR.plugins.div.getSurroundDiv(a)
-                    : null;
+                return 'editdiv' === m ? CKEDITOR.plugins.div.getSurroundDiv(a) : null;
             },
             onLoad: function () {
                 r.call(this);
@@ -209,8 +185,7 @@
                                     'div' == k.element &&
                                     ((b = k.name),
                                     (n[b] = k = new CKEDITOR.style(k)),
-                                    a.filter.check(k) &&
-                                        (c.items.push([b, b]), c.add(b, b)));
+                                    a.filter.check(k) && (c.items.push([b, b]), c.add(b, b)));
                     c[1 < c.items.length ? 'enable' : 'disable']();
                     setTimeout(function () {
                         var b = g.getModel(a);
@@ -234,22 +209,12 @@
                         h,
                         l;
                     for (h = 0; h < e.length; h++)
-                        for (
-                            l = e[h].createIterator();
-                            (b = l.getNextParagraph());
-
-                        )
+                        for (l = e[h].createIterator(); (b = l.getNextParagraph()); )
                             if (b.getName() in q && !b.isReadOnly()) {
                                 var d = b.getChildren();
-                                for (b = 0; b < d.count(); b++)
-                                    t(f, d.getItem(b), c);
+                                for (b = 0; b < d.count(); b++) t(f, d.getItem(b), c);
                             } else {
-                                for (
-                                    ;
-                                    !u[b.getName()] && !b.equals(e[h].root);
-
-                                )
-                                    b = b.getParent();
+                                for (; !u[b.getName()] && !b.equals(e[h].root); ) b = b.getParent();
                                 t(f, b, c);
                             }
                     CKEDITOR.dom.element.clearAllMarkers(c);
@@ -268,29 +233,23 @@
                         if (e[h].length) {
                             d = e[h][0];
                             f = d.getParent();
-                            for (b = 1; b < e[h].length; b++)
-                                f = f.getCommonAncestor(e[h][b]);
+                            for (b = 1; b < e[h].length; b++) f = f.getCommonAncestor(e[h][b]);
                             f || (f = a.editable());
                             l = new CKEDITOR.dom.element('div', a.document);
                             for (b = 0; b < e[h].length; b++) {
-                                for (
-                                    d = e[h][b];
-                                    d.getParent() && !d.getParent().equals(f);
-
-                                )
+                                for (d = e[h][b]; d.getParent() && !d.getParent().equals(f); )
                                     d = d.getParent();
                                 e[h][b] = d;
                             }
                             for (b = 0; b < e[h].length; b++)
                                 (d = e[h][b]),
-                                    (d.getCustomData &&
-                                        d.getCustomData('block_processed')) ||
+                                    (d.getCustomData && d.getCustomData('block_processed')) ||
                                         (d.is &&
                                             CKEDITOR.dom.element.setMarker(
                                                 c,
                                                 d,
                                                 'block_processed',
-                                                !0
+                                                !0,
                                             ),
                                         b || l.insertBefore(d),
                                         l.append(d));
@@ -303,8 +262,7 @@
                 g = p.length;
                 for (c = 0; c < g; c++)
                     this.commitContent(p[c]),
-                        !p[c].getAttribute('style') &&
-                            p[c].removeAttribute('style');
+                        !p[c].getAttribute('style') && p[c].removeAttribute('style');
                 this.hide();
             },
             onHide: function () {

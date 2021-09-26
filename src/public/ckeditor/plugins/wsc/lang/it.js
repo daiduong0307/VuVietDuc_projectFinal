@@ -5,10 +5,8 @@
     btnReplaceAll: 'Cambia tutto',
     btnUndo: 'Annulla',
     changeTo: 'Cambia in',
-    errorLoading:
-        "Errore nel caricamento dell'host col servizio applicativo: %s.",
-    ieSpellDownload:
-        'Contollo ortografico non installato. Lo vuoi scaricare ora?',
+    errorLoading: "Errore nel caricamento dell'host col servizio applicativo: %s.",
+    ieSpellDownload: 'Contollo ortografico non installato. Lo vuoi scaricare ora?',
     manyChanges: 'Controllo ortografico completato: %1 parole cambiate',
     noChanges: 'Controllo ortografico completato: nessuna parola cambiata',
     noMispell: 'Controllo ortografico completato: nessun errore trovato',

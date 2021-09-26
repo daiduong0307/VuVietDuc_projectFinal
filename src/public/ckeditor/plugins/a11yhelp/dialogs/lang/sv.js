@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'sv', {
     title: 'Hjälpmedelsinstruktioner',
-    contents:
-        'Hjälpinnehåll. För att stänga denna dialogruta trycker du på ESC.',
+    contents: 'Hjälpinnehåll. För att stänga denna dialogruta trycker du på ESC.',
     legend: [
         {
             name: 'Allmänt',

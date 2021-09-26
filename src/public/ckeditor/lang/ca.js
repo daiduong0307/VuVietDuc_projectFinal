@@ -294,14 +294,12 @@ CKEDITOR.lang['ca'] = {
     },
     filetools: {
         loadError: "S'ha produït un error durant la lectura del fitxer.",
-        networkError:
-            "S'ha produït un error de xarxa durant la càrrega del fitxer.",
+        networkError: "S'ha produït un error de xarxa durant la càrrega del fitxer.",
         httpError404:
             "S'ha produït un error HTTP durant la càrrega del fitxer (404: Fitxer no trobat).",
         httpError403:
             "S'ha produït un error HTTP durant la càrrega del fitxer (403: Permís denegat).",
-        httpError:
-            "S'ha produït un error HTTP durant la càrrega del fitxer (estat d'error: %1).",
+        httpError: "S'ha produït un error HTTP durant la càrrega del fitxer (estat d'error: %1).",
         noUrlError: 'La URL de càrrega no està definida.',
         responseError: 'Resposta incorrecte del servidor',
     },
@@ -469,11 +467,9 @@ CKEDITOR.lang['ca'] = {
         alt: 'Text alternatiu',
         border: 'Vora',
         btnUpload: 'Envia-la al servidor',
-        button2Img:
-            "Voleu transformar el botó d'imatge seleccionat en una simple imatge?",
+        button2Img: "Voleu transformar el botó d'imatge seleccionat en una simple imatge?",
         hSpace: 'Espaiat horit.',
-        img2Button:
-            "Voleu transformar la imatge seleccionada en un botó d'imatge?",
+        img2Button: "Voleu transformar la imatge seleccionada en un botó d'imatge?",
         infoTab: 'Informació de la imatge',
         linkTab: 'Enllaç',
         lockRatio: 'Bloqueja les proporcions',
@@ -702,7 +698,6 @@ CKEDITOR.lang['ca'] = {
         doneOne: 'Fitxer pujat correctament.',
         doneMany: '%1 fitxers pujats correctament.',
         uploadOne: 'Pujant fitxer ({percentage}%)...',
-        uploadMany:
-            'Pujant fitxers, {current} de {max} finalitzats ({percentage}%)...',
+        uploadMany: 'Pujant fitxers, {current} de {max} finalitzats ({percentage}%)...',
     },
 };

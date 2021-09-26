@@ -294,10 +294,8 @@ CKEDITOR.lang['fi'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -572,8 +570,7 @@ CKEDITOR.lang['fi'] = {
         type: 'Tyyppi',
         upperAlpha: 'Isot aakkoset (A, B, C, D, E, jne.)',
         upperRoman: 'Isot roomalaiset (I, II, III, IV, V, jne.)',
-        validateStartNumber:
-            'Listan ensimmäisen numeron tulee olla kokonaisluku.',
+        validateStartNumber: 'Listan ensimmäisen numeron tulee olla kokonaisluku.',
     },
     magicline: { title: 'Lisää kappale tähän.' },
     maximize: { maximize: 'Suurenna', minimize: 'Pienennä' },
@@ -698,7 +695,6 @@ CKEDITOR.lang['fi'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

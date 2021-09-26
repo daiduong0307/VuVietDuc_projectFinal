@@ -6,8 +6,7 @@
     btnUndo: 'Batalkan',
     changeTo: 'Tukarkan kepada',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        'Pemeriksa ejaan tidak dipasang. Adakah anda mahu muat turun sekarang?',
+    ieSpellDownload: 'Pemeriksa ejaan tidak dipasang. Adakah anda mahu muat turun sekarang?',
     manyChanges: 'Pemeriksaan ejaan siap: %1 perkataan diubah',
     noChanges: 'Pemeriksaan ejaan siap: Tiada perkataan diubah',
     noMispell: 'Pemeriksaan ejaan siap: Tiada salah ejaan',

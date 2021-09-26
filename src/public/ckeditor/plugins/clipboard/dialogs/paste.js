@@ -33,7 +33,7 @@ CKEDITOR.dialog.add('paste', function (c) {
                 }
                 b && a.preventDefault();
             },
-            this
+            this,
         );
         c.fire('ariaWidget', new CKEDITOR.dom.element(a.frameElement));
         b.getWindow().getFrame().removeCustomData('pendingFocus') && g.focus();
@@ -49,13 +49,12 @@ CKEDITOR.dialog.add('paste', function (c) {
                     type: 'auto',
                     dataValue: a.data.dataValue,
                     method: 'paste',
-                    dataTransfer:
-                        a.data.dataTransfer || e.initPasteDataTransfer(),
+                    dataTransfer: a.data.dataTransfer || e.initPasteDataTransfer(),
                 });
         },
         null,
         null,
-        1e3
+        1e3,
     );
     return {
         title: h.paste,
@@ -95,9 +94,7 @@ CKEDITOR.dialog.add('paste', function (c) {
                         focus: function () {
                             var a = this.getInputElement(),
                                 b = a.getFrameDocument().getBody();
-                            !b || b.isReadOnly()
-                                ? a.setCustomData('pendingFocus', 1)
-                                : b.focus();
+                            !b || b.isReadOnly() ? a.setCustomData('pendingFocus', 1) : b.focus();
                         },
                         setup: function () {
                             var a = this.getDialog(),
@@ -116,7 +113,7 @@ CKEDITOR.dialog.add('paste', function (c) {
                                       encodeURIComponent(
                                           'document.open();(' +
                                               CKEDITOR.tools.fixDomain +
-                                              ')();document.close();'
+                                              ')();document.close();',
                                       ) +
                                       '})())"'
                                     : '',
@@ -126,11 +123,8 @@ CKEDITOR.dialog.add('paste', function (c) {
                                         '" aria-label\x3d"' +
                                         h.pasteArea +
                                         '" aria-describedby\x3d"' +
-                                        a.getContentElement(
-                                            'general',
-                                            'pasteMsg'
-                                        ).domId +
-                                        '"\x3e\x3c/iframe\x3e'
+                                        a.getContentElement('general', 'pasteMsg').domId +
+                                        '"\x3e\x3c/iframe\x3e',
                                 );
                             f = null;
                             d.on(
@@ -140,10 +134,9 @@ CKEDITOR.dialog.add('paste', function (c) {
                                     a = d.getFrameDocument();
                                     a.write(b);
                                     c.focusManager.add(a.getBody());
-                                    CKEDITOR.env.air &&
-                                        k.call(this, a.getWindow().$);
+                                    CKEDITOR.env.air && k.call(this, a.getWindow().$);
                                 },
-                                a
+                                a,
                             );
                             d.setCustomData('dialog', a);
                             a = this.getElement();
@@ -151,7 +144,7 @@ CKEDITOR.dialog.add('paste', function (c) {
                             a.append(d);
                             if (CKEDITOR.env.ie && !CKEDITOR.env.edge) {
                                 var e = CKEDITOR.dom.element.createFromHtml(
-                                    '\x3cspan tabindex\x3d"-1" style\x3d"position:absolute" role\x3d"presentation"\x3e\x3c/span\x3e'
+                                    '\x3cspan tabindex\x3d"-1" style\x3d"position:absolute" role\x3d"presentation"\x3e\x3c/span\x3e',
                                 );
                                 e.on('focus', function () {
                                     setTimeout(function () {
@@ -169,16 +162,11 @@ CKEDITOR.dialog.add('paste', function (c) {
                             };
                             CKEDITOR.env.ie &&
                                 (a.setStyle('display', 'block'),
-                                a.setStyle(
-                                    'height',
-                                    d.$.offsetHeight + 2 + 'px'
-                                ));
+                                a.setStyle('height', d.$.offsetHeight + 2 + 'px'));
                         },
                         commit: function () {
                             var a = this.getDialog().getParentEditor(),
-                                b = this.getInputElement()
-                                    .getFrameDocument()
-                                    .getBody(),
+                                b = this.getInputElement().getFrameDocument().getBody(),
                                 c = b.getBogus();
                             c && c.remove();
                             b = b.getHtml();

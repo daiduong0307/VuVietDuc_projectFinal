@@ -6,8 +6,7 @@
     btnUndo: 'Geri Al',
     changeTo: 'Şuna değiştir:',
     errorLoading: 'Uygulamada yüklerken hata oluştu: %s.',
-    ieSpellDownload:
-        'Yazım denetimi yüklenmemiş. Şimdi yüklemek ister misiniz?',
+    ieSpellDownload: 'Yazım denetimi yüklenmemiş. Şimdi yüklemek ister misiniz?',
     manyChanges: 'Yazım denetimi tamamlandı: %1 kelime değiştirildi',
     noChanges: 'Yazım denetimi tamamlandı: Hiçbir kelime değiştirilmedi',
     noMispell: 'Yazım denetimi tamamlandı: Yanlış yazıma rastlanmadı',

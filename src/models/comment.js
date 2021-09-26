@@ -23,7 +23,7 @@ const commentSchema = new Schema(
     },
     {
         timestamps: true,
-    }
+    },
 );
 
 commentSchema.virtual('commentBlog', {

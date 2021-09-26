@@ -8,8 +8,7 @@ CKEDITOR.dialog.add('textarea', function (b) {
         minWidth: 350,
         minHeight: 220,
         getModel: function (a) {
-            return (a = a.getSelection().getSelectedElement()) &&
-                'textarea' == a.getName()
+            return (a = a.getSelection().getSelectedElement()) && 'textarea' == a.getName()
                 ? a
                 : null;
         },
@@ -38,17 +37,12 @@ CKEDITOR.dialog.add('textarea', function (b) {
                         default: '',
                         accessKey: 'N',
                         setup: function (a) {
-                            this.setValue(
-                                a.data('cke-saved-name') ||
-                                    a.getAttribute('name') ||
-                                    ''
-                            );
+                            this.setValue(a.data('cke-saved-name') || a.getAttribute('name') || '');
                         },
                         commit: function (a) {
                             this.getValue()
                                 ? a.data('cke-saved-name', this.getValue())
-                                : (a.data('cke-saved-name', !1),
-                                  a.removeAttribute('name'));
+                                : (a.data('cke-saved-name', !1), a.removeAttribute('name'));
                         },
                     },
                     {
@@ -63,20 +57,15 @@ CKEDITOR.dialog.add('textarea', function (b) {
                                 accessKey: 'C',
                                 style: 'width:50px',
                                 validate: CKEDITOR.dialog.validate.integer(
-                                    b.lang.common.validateNumberFailed
+                                    b.lang.common.validateNumberFailed,
                                 ),
                                 setup: function (a) {
-                                    a =
-                                        a.hasAttribute('cols') &&
-                                        a.getAttribute('cols');
+                                    a = a.hasAttribute('cols') && a.getAttribute('cols');
                                     this.setValue(a || '');
                                 },
                                 commit: function (a) {
                                     this.getValue()
-                                        ? a.setAttribute(
-                                              'cols',
-                                              this.getValue()
-                                          )
+                                        ? a.setAttribute('cols', this.getValue())
                                         : a.removeAttribute('cols');
                                 },
                             },
@@ -88,20 +77,15 @@ CKEDITOR.dialog.add('textarea', function (b) {
                                 accessKey: 'R',
                                 style: 'width:50px',
                                 validate: CKEDITOR.dialog.validate.integer(
-                                    b.lang.common.validateNumberFailed
+                                    b.lang.common.validateNumberFailed,
                                 ),
                                 setup: function (a) {
-                                    a =
-                                        a.hasAttribute('rows') &&
-                                        a.getAttribute('rows');
+                                    a = a.hasAttribute('rows') && a.getAttribute('rows');
                                     this.setValue(a || '');
                                 },
                                 commit: function (a) {
                                     this.getValue()
-                                        ? a.setAttribute(
-                                              'rows',
-                                              this.getValue()
-                                          )
+                                        ? a.setAttribute('rows', this.getValue())
                                         : a.removeAttribute('rows');
                                 },
                             },

@@ -8,9 +8,7 @@ CKEDITOR.dialog.add('select', function (c) {
         d = d ? d.createElement('OPTION') : document.createElement('OPTION');
         if (a && d && 'option' == d.getName())
             CKEDITOR.env.ie
-                ? (isNaN(parseInt(c, 10))
-                      ? a.$.options.add(d.$)
-                      : a.$.options.add(d.$, c),
+                ? (isNaN(parseInt(c, 10)) ? a.$.options.add(d.$) : a.$.options.add(d.$, c),
                   (d.$.innerHTML = 0 < b.length ? b : ''),
                   (d.$.value = e))
                 : (null !== c && c < a.getChildCount()
@@ -68,19 +66,14 @@ CKEDITOR.dialog.add('select', function (c) {
         return (a = f(a)) ? a.getChildren() : !1;
     }
     function f(a) {
-        return a && a.domId && a.getInputElement().$
-            ? a.getInputElement()
-            : a && a.$
-            ? a
-            : !1;
+        return a && a.domId && a.getInputElement().$ ? a.getInputElement() : a && a.$ ? a : !1;
     }
     return {
         title: c.lang.forms.select.title,
         minWidth: CKEDITOR.env.ie ? 460 : 395,
         minHeight: CKEDITOR.env.ie ? 320 : 300,
         getModel: function (a) {
-            return (a = a.getSelection().getSelectedElement()) &&
-                'select' == a.getName()
+            return (a = a.getSelection().getSelectedElement()) && 'select' == a.getName()
                 ? a
                 : null;
         },
@@ -128,16 +121,13 @@ CKEDITOR.dialog.add('select', function (c) {
                                 ? this.setValue(this['default'] || '')
                                 : 'select' == a &&
                                   this.setValue(
-                                      b.data('cke-saved-name') ||
-                                          b.getAttribute('name') ||
-                                          ''
+                                      b.data('cke-saved-name') || b.getAttribute('name') || '',
                                   );
                         },
                         commit: function (a) {
                             this.getValue()
                                 ? a.data('cke-saved-name', this.getValue())
-                                : (a.data('cke-saved-name', !1),
-                                  a.removeAttribute('name'));
+                                : (a.data('cke-saved-name', !1), a.removeAttribute('name'));
                         },
                     },
                     {
@@ -175,29 +165,18 @@ CKEDITOR.dialog.add('select', function (c) {
                                 style: 'width:175px',
                                 validate: function () {
                                     var a = CKEDITOR.dialog.validate.integer(
-                                        c.lang.common.validateNumberFailed
+                                        c.lang.common.validateNumberFailed,
                                     );
-                                    return (
-                                        '' === this.getValue() || a.apply(this)
-                                    );
+                                    return '' === this.getValue() || a.apply(this);
                                 },
                                 setup: function (a, b) {
-                                    'select' == a &&
-                                        this.setValue(
-                                            b.getAttribute('size') || ''
-                                        );
+                                    'select' == a && this.setValue(b.getAttribute('size') || '');
                                     CKEDITOR.env.webkit &&
-                                        this.getInputElement().setStyle(
-                                            'width',
-                                            '86px'
-                                        );
+                                        this.getInputElement().setStyle('width', '86px');
                                 },
                                 commit: function (a) {
                                     this.getValue()
-                                        ? a.setAttribute(
-                                              'size',
-                                              this.getValue()
-                                          )
+                                        ? a.setAttribute('size', this.getValue())
                                         : a.removeAttribute('size');
                                 },
                             },
@@ -205,9 +184,7 @@ CKEDITOR.dialog.add('select', function (c) {
                                 type: 'html',
                                 html:
                                     '\x3cspan\x3e' +
-                                    CKEDITOR.tools.htmlEncode(
-                                        c.lang.forms.select.lines
-                                    ) +
+                                    CKEDITOR.tools.htmlEncode(c.lang.forms.select.lines) +
                                     '\x3c/span\x3e',
                             },
                         ],
@@ -216,9 +193,7 @@ CKEDITOR.dialog.add('select', function (c) {
                         type: 'html',
                         html:
                             '\x3cspan\x3e' +
-                            CKEDITOR.tools.htmlEncode(
-                                c.lang.forms.select.opAvail
-                            ) +
+                            CKEDITOR.tools.htmlEncode(c.lang.forms.select.opAvail) +
                             '\x3c/span\x3e',
                     },
                     {
@@ -248,18 +223,9 @@ CKEDITOR.dialog.add('select', function (c) {
                                         items: [],
                                         onChange: function () {
                                             var a = this.getDialog(),
-                                                b = a.getContentElement(
-                                                    'info',
-                                                    'cmbValue'
-                                                ),
-                                                e = a.getContentElement(
-                                                    'info',
-                                                    'txtOptName'
-                                                ),
-                                                a = a.getContentElement(
-                                                    'info',
-                                                    'txtOptValue'
-                                                ),
+                                                b = a.getContentElement('info', 'cmbValue'),
+                                                e = a.getContentElement('info', 'txtOptName'),
+                                                a = a.getContentElement('info', 'txtOptValue'),
                                                 d = g(this);
                                             k(b, d);
                                             e.setValue(this.getValue());
@@ -273,42 +239,26 @@ CKEDITOR.dialog.add('select', function (c) {
                                                       this,
                                                       b.getText(),
                                                       b.getText(),
-                                                      this.getDialog().getParentEditor()
-                                                          .document
+                                                      this.getDialog().getParentEditor().document,
                                                   );
                                         },
                                         commit: function (a) {
                                             var b = this.getDialog(),
                                                 e = n(this),
-                                                d = n(
-                                                    b.getContentElement(
-                                                        'info',
-                                                        'cmbValue'
-                                                    )
-                                                ),
+                                                d = n(b.getContentElement('info', 'cmbValue')),
                                                 c = b
-                                                    .getContentElement(
-                                                        'info',
-                                                        'txtValue'
-                                                    )
+                                                    .getContentElement('info', 'txtValue')
                                                     .getValue();
                                             m(a);
-                                            for (
-                                                var f = 0;
-                                                f < e.count();
-                                                f++
-                                            ) {
+                                            for (var f = 0; f < e.count(); f++) {
                                                 var g = h(
                                                     a,
                                                     e.getItem(f).getValue(),
                                                     d.getItem(f).getValue(),
-                                                    b.getParentEditor().document
+                                                    b.getParentEditor().document,
                                                 );
                                                 d.getItem(f).getValue() == c &&
-                                                    (g.setAttribute(
-                                                        'selected',
-                                                        'selected'
-                                                    ),
+                                                    (g.setAttribute('selected', 'selected'),
                                                     (g.selected = !0));
                                             }
                                         },
@@ -336,18 +286,9 @@ CKEDITOR.dialog.add('select', function (c) {
                                         items: [],
                                         onChange: function () {
                                             var a = this.getDialog(),
-                                                b = a.getContentElement(
-                                                    'info',
-                                                    'cmbName'
-                                                ),
-                                                e = a.getContentElement(
-                                                    'info',
-                                                    'txtOptName'
-                                                ),
-                                                a = a.getContentElement(
-                                                    'info',
-                                                    'txtOptValue'
-                                                ),
+                                                b = a.getContentElement('info', 'cmbName'),
+                                                e = a.getContentElement('info', 'txtOptName'),
+                                                a = a.getContentElement('info', 'txtOptValue'),
                                                 d = g(this);
                                             k(b, d);
                                             e.setValue(b.getValue());
@@ -361,18 +302,11 @@ CKEDITOR.dialog.add('select', function (c) {
                                                     this,
                                                     e,
                                                     e,
-                                                    this.getDialog().getParentEditor()
-                                                        .document
+                                                    this.getDialog().getParentEditor().document,
                                                 );
-                                                'selected' ==
-                                                    b.getAttribute(
-                                                        'selected'
-                                                    ) &&
+                                                'selected' == b.getAttribute('selected') &&
                                                     this.getDialog()
-                                                        .getContentElement(
-                                                            'info',
-                                                            'txtValue'
-                                                        )
+                                                        .getContentElement('info', 'txtValue')
                                                         .setValue(e);
                                             }
                                         },
@@ -391,33 +325,21 @@ CKEDITOR.dialog.add('select', function (c) {
                                         style: 'width:100%;',
                                         onClick: function () {
                                             var a = this.getDialog(),
-                                                b = a.getContentElement(
-                                                    'info',
-                                                    'txtOptName'
-                                                ),
-                                                e = a.getContentElement(
-                                                    'info',
-                                                    'txtOptValue'
-                                                ),
-                                                d = a.getContentElement(
-                                                    'info',
-                                                    'cmbName'
-                                                ),
-                                                c = a.getContentElement(
-                                                    'info',
-                                                    'cmbValue'
-                                                );
+                                                b = a.getContentElement('info', 'txtOptName'),
+                                                e = a.getContentElement('info', 'txtOptValue'),
+                                                d = a.getContentElement('info', 'cmbName'),
+                                                c = a.getContentElement('info', 'cmbValue');
                                             h(
                                                 d,
                                                 b.getValue(),
                                                 b.getValue(),
-                                                a.getParentEditor().document
+                                                a.getParentEditor().document,
                                             );
                                             h(
                                                 c,
                                                 e.getValue(),
                                                 e.getValue(),
-                                                a.getParentEditor().document
+                                                a.getParentEditor().document,
                                             );
                                             b.setValue('');
                                             e.setValue('');
@@ -431,36 +353,14 @@ CKEDITOR.dialog.add('select', function (c) {
                                         style: 'width:100%;',
                                         onClick: function () {
                                             var a = this.getDialog(),
-                                                b = a.getContentElement(
-                                                    'info',
-                                                    'txtOptName'
-                                                ),
-                                                e = a.getContentElement(
-                                                    'info',
-                                                    'txtOptValue'
-                                                ),
-                                                d = a.getContentElement(
-                                                    'info',
-                                                    'cmbName'
-                                                ),
-                                                a = a.getContentElement(
-                                                    'info',
-                                                    'cmbValue'
-                                                ),
+                                                b = a.getContentElement('info', 'txtOptName'),
+                                                e = a.getContentElement('info', 'txtOptValue'),
+                                                d = a.getContentElement('info', 'cmbName'),
+                                                a = a.getContentElement('info', 'cmbValue'),
                                                 c = g(d);
                                             0 <= c &&
-                                                (q(
-                                                    d,
-                                                    c,
-                                                    b.getValue(),
-                                                    b.getValue()
-                                                ),
-                                                q(
-                                                    a,
-                                                    c,
-                                                    e.getValue(),
-                                                    e.getValue()
-                                                ));
+                                                (q(d, c, b.getValue(), b.getValue()),
+                                                q(a, c, e.getValue(), e.getValue()));
                                         },
                                     },
                                     {
@@ -471,24 +371,10 @@ CKEDITOR.dialog.add('select', function (c) {
                                         title: c.lang.forms.select.btnUp,
                                         onClick: function () {
                                             var a = this.getDialog(),
-                                                b = a.getContentElement(
-                                                    'info',
-                                                    'cmbName'
-                                                ),
-                                                c = a.getContentElement(
-                                                    'info',
-                                                    'cmbValue'
-                                                );
-                                            l(
-                                                b,
-                                                -1,
-                                                a.getParentEditor().document
-                                            );
-                                            l(
-                                                c,
-                                                -1,
-                                                a.getParentEditor().document
-                                            );
+                                                b = a.getContentElement('info', 'cmbName'),
+                                                c = a.getContentElement('info', 'cmbValue');
+                                            l(b, -1, a.getParentEditor().document);
+                                            l(c, -1, a.getParentEditor().document);
                                         },
                                     },
                                     {
@@ -499,24 +385,10 @@ CKEDITOR.dialog.add('select', function (c) {
                                         title: c.lang.forms.select.btnDown,
                                         onClick: function () {
                                             var a = this.getDialog(),
-                                                b = a.getContentElement(
-                                                    'info',
-                                                    'cmbName'
-                                                ),
-                                                c = a.getContentElement(
-                                                    'info',
-                                                    'cmbValue'
-                                                );
-                                            l(
-                                                b,
-                                                1,
-                                                a.getParentEditor().document
-                                            );
-                                            l(
-                                                c,
-                                                1,
-                                                a.getParentEditor().document
-                                            );
+                                                b = a.getContentElement('info', 'cmbName'),
+                                                c = a.getContentElement('info', 'cmbValue');
+                                            l(b, 1, a.getParentEditor().document);
+                                            l(c, 1, a.getParentEditor().document);
                                         },
                                     },
                                 ],
@@ -534,14 +406,8 @@ CKEDITOR.dialog.add('select', function (c) {
                                 title: c.lang.forms.select.btnSetValue,
                                 onClick: function () {
                                     var a = this.getDialog(),
-                                        b = a.getContentElement(
-                                            'info',
-                                            'cmbValue'
-                                        );
-                                    a.getContentElement(
-                                        'info',
-                                        'txtValue'
-                                    ).setValue(b.getValue());
+                                        b = a.getContentElement('info', 'cmbValue');
+                                    a.getContentElement('info', 'txtValue').setValue(b.getValue());
                                 },
                             },
                             {
@@ -551,22 +417,10 @@ CKEDITOR.dialog.add('select', function (c) {
                                 title: c.lang.forms.select.btnDelete,
                                 onClick: function () {
                                     var a = this.getDialog(),
-                                        b = a.getContentElement(
-                                            'info',
-                                            'cmbName'
-                                        ),
-                                        c = a.getContentElement(
-                                            'info',
-                                            'cmbValue'
-                                        ),
-                                        d = a.getContentElement(
-                                            'info',
-                                            'txtOptName'
-                                        ),
-                                        a = a.getContentElement(
-                                            'info',
-                                            'txtOptValue'
-                                        );
+                                        b = a.getContentElement('info', 'cmbName'),
+                                        c = a.getContentElement('info', 'cmbValue'),
+                                        d = a.getContentElement('info', 'txtOptName'),
+                                        a = a.getContentElement('info', 'txtOptValue');
                                     p(b);
                                     p(c);
                                     d.setValue('');
@@ -585,16 +439,11 @@ CKEDITOR.dialog.add('select', function (c) {
                                         value: 'checked',
                                         setup: function (a, b) {
                                             'select' == a &&
-                                                this.setValue(
-                                                    b.getAttribute('multiple')
-                                                );
+                                                this.setValue(b.getAttribute('multiple'));
                                         },
                                         commit: function (a) {
                                             this.getValue()
-                                                ? a.setAttribute(
-                                                      'multiple',
-                                                      this.getValue()
-                                                  )
+                                                ? a.setAttribute('multiple', this.getValue())
                                                 : a.removeAttribute('multiple');
                                         },
                                     },
@@ -609,15 +458,12 @@ CKEDITOR.dialog.add('select', function (c) {
                                             'select' == a &&
                                                 CKEDITOR.plugins.forms._setupRequiredAttribute.call(
                                                     this,
-                                                    b
+                                                    b,
                                                 );
                                         },
                                         commit: function (a) {
                                             this.getValue()
-                                                ? a.setAttribute(
-                                                      'required',
-                                                      'required'
-                                                  )
+                                                ? a.setAttribute('required', 'required')
                                                 : a.removeAttribute('required');
                                         },
                                     },

@@ -31,16 +31,13 @@ CKEDITOR.dialog.add('button', function (b) {
                 b = this.getModel(a),
                 d = this.getMode(a) == CKEDITOR.dialog.CREATION_MODE,
                 c = b
-                    ? CKEDITOR.htmlParser.fragment.fromHtml(b.getOuterHtml())
-                          .children[0]
+                    ? CKEDITOR.htmlParser.fragment.fromHtml(b.getOuterHtml()).children[0]
                     : new CKEDITOR.htmlParser.element('input');
             this.commitContent(c);
             var e = new CKEDITOR.htmlParser.basicWriter();
             c.writeHtml(e);
             c = CKEDITOR.dom.element.createFromHtml(e.getHtml(), a.document);
-            d
-                ? a.insertElement(c)
-                : (c.replace(b), a.getSelection().selectElement(c));
+            d ? a.insertElement(c) : (c.replace(b), a.getSelection().selectElement(c));
         },
         contents: [
             {
@@ -55,11 +52,7 @@ CKEDITOR.dialog.add('button', function (b) {
                         label: b.lang.common.name,
                         default: '',
                         setup: function (a) {
-                            this.setValue(
-                                a.data('cke-saved-name') ||
-                                    a.getAttribute('name') ||
-                                    ''
-                            );
+                            this.setValue(a.data('cke-saved-name') || a.getAttribute('name') || '');
                         },
                         commit: d,
                     },

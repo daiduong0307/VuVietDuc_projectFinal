@@ -44,8 +44,7 @@ CKEDITOR.lang['oc'] = {
         validateNumberFailed: 'Aquesta valor es pas un nombre.',
         confirmNewPage:
             'Los cambiaments pas salvats seràn perduts. Sètz segur que volètz cargar una novèla pagina ?',
-        confirmCancel:
-            'Certanas opcions son estadas modificadas. Sètz segur que volètz tampar ?',
+        confirmCancel: 'Certanas opcions son estadas modificadas. Sètz segur que volètz tampar ?',
         options: 'Opcions',
         target: 'Cibla',
         targetNew: 'Novèla fenèstra (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['oc'] = {
     about: {
         copy: 'Copyright &copy; $1. Totes los dreits reservats.',
         dlgTitle: 'A prepaus de CKEditor 4',
-        moreInfo:
-            'Per las informacions de licéncia, visitatz nòstre site web :',
+        moreInfo: 'Per las informacions de licéncia, visitatz nòstre site web :',
     },
     basicstyles: {
         bold: 'Gras',
@@ -294,14 +292,12 @@ CKEDITOR.lang['oc'] = {
     },
     filetools: {
         loadError: "Una error s'es produita pendent la lectura del fichièr.",
-        networkError:
-            "Una error de ret s'es produita pendent lo mandadís del fichièr.",
+        networkError: "Una error de ret s'es produita pendent lo mandadís del fichièr.",
         httpError404:
             "Una error HTTP s'es produita pendent lo mandadís del fichièr (404 : fichièr pas trobat).",
         httpError403:
             "Una error HTTP s'es produita pendent lo mandadís del fichièr (403 : accès refusat).",
-        httpError:
-            "Una error HTTP s'es produita pendent lo mandadís del fichièr (error : %1).",
+        httpError: "Una error HTTP s'es produita pendent lo mandadís del fichièr (error : %1).",
         noUrlError: "L'URL de mandadís es pas especificada.",
         responseError: 'Responsa del servidor incorrècta.',
     },
@@ -469,11 +465,9 @@ CKEDITOR.lang['oc'] = {
         alt: 'Tèxte alternatiu',
         border: 'Bordadura',
         btnUpload: 'Mandar sul servidor',
-        button2Img:
-            'Volètz transformar lo boton amb imatge seleccionat en imatge simple ?',
+        button2Img: 'Volètz transformar lo boton amb imatge seleccionat en imatge simple ?',
         hSpace: 'Espaçament orizontal',
-        img2Button:
-            "Volètz transformar l'imatge seleccionat en boton amb imatge ?",
+        img2Button: "Volètz transformar l'imatge seleccionat en boton amb imatge ?",
         infoTab: "Informacions sus l'imatge",
         linkTab: 'Ligam',
         lockRatio: 'Conservar las proporcions',
@@ -580,8 +574,7 @@ CKEDITOR.lang['oc'] = {
         type: 'Tipe',
         upperAlpha: 'Letras majusculas (A, B, C, D, E, etc.)',
         upperRoman: 'Chifras romanas majusculas (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'Lo primièr element de la lista deu èsser un nombre entièr.',
+        validateStartNumber: 'Lo primièr element de la lista deu èsser un nombre entièr.',
     },
     magicline: { title: 'Inserir un paragraf aicí' },
     maximize: { maximize: 'Maximizar', minimize: 'Minimizar' },
@@ -660,10 +653,8 @@ CKEDITOR.lang['oc'] = {
             no: 'Non',
             invalidWidth: 'La largor de la cellula deu èsser un nombre.',
             invalidHeight: 'La nautor de la cellula deu èsser un nombre.',
-            invalidRowSpan:
-                'Lo nombre de linhas ocupadas deu èsser un nombre entièr.',
-            invalidColSpan:
-                'Lo nombre de colomnas ocupadas deu èsser un nombre entièr.',
+            invalidRowSpan: 'Lo nombre de linhas ocupadas deu èsser un nombre entièr.',
+            invalidColSpan: 'Lo nombre de colomnas ocupadas deu èsser un nombre entièr.',
             chooseColor: 'Causir',
         },
         cellPad: 'Marge intèrne de las cellulas',
@@ -683,10 +674,8 @@ CKEDITOR.lang['oc'] = {
         headersRow: 'Primièra linha',
         heightUnit: 'height unit',
         invalidBorder: 'La talha de la bordadura deu èsser un nombre.',
-        invalidCellPadding:
-            'Lo marge intèrne de las cellulas deu èsser un nombre positiu.',
-        invalidCellSpacing:
-            "L'espaçament entre las cellulas deu èsser un nombre positiu.",
+        invalidCellPadding: 'Lo marge intèrne de las cellulas deu èsser un nombre positiu.',
+        invalidCellSpacing: "L'espaçament entre las cellulas deu èsser un nombre positiu.",
         invalidCols: 'Lo nombre de colomnas deu èsser superior a 0.',
         invalidHeight: 'La nautor del tablèu deu èsser un nombre.',
         invalidRows: 'Lo nombre de linhas deu èsser superior a 0.',

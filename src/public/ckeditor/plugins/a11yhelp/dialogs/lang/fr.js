@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'fr', {
     title: "Instructions d'accessibilité",
-    contents:
-        "Contenu de l'aide. Pour fermer cette fenêtre, appuyez sur la touche Échap.",
+    contents: "Contenu de l'aide. Pour fermer cette fenêtre, appuyez sur la touche Échap.",
     legend: [
         {
             name: 'Général',

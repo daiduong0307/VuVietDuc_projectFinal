@@ -1,6 +1,5 @@
 ﻿(function (q) {
-    if ('object' == typeof exports && 'object' == typeof module)
-        module.exports = q();
+    if ('object' == typeof exports && 'object' == typeof module) module.exports = q();
     else {
         if ('function' == typeof define && define.amd) return define([], q);
         this.CodeMirror = q();
@@ -19,8 +18,7 @@
         d.wrapper.CodeMirror = this;
         Ad(this);
         Bd(this);
-        b.lineWrapping &&
-            (this.display.wrapper.className += ' CodeMirror-wrap');
+        b.lineWrapping && (this.display.wrapper.className += ' CodeMirror-wrap');
         b.autofocus && !ab && d.input.focus();
         Cd(this);
         this.state = {
@@ -49,9 +47,7 @@
         Ja(this);
         this.curOp.forceUpdate = !0;
         Ed(this, c);
-        (b.autofocus && !ab) || e.hasFocus()
-            ? setTimeout(cb(xc, this), 20)
-            : db(this);
+        (b.autofocus && !ab) || e.hasFocus() ? setTimeout(cb(xc, this), 20) : db(this);
         for (var f in Ka) if (Ka.hasOwnProperty(f)) Ka[f](this, b[f], Fd);
         Gd(this);
         b.finishInit && b.finishInit(this);
@@ -69,32 +65,21 @@
         this.gutterFiller = t('div', null, 'CodeMirror-gutter-filler');
         this.gutterFiller.setAttribute('cm-not-content', 'true');
         this.lineDiv = t('div', null, 'CodeMirror-code');
-        this.selectionDiv = t(
-            'div',
-            null,
-            null,
-            'position: relative; z-index: 1'
-        );
+        this.selectionDiv = t('div', null, null, 'position: relative; z-index: 1');
         this.cursorDiv = t('div', null, 'CodeMirror-cursors');
         this.measure = t('div', null, 'CodeMirror-measure');
         this.lineMeasure = t('div', null, 'CodeMirror-measure');
         this.lineSpace = t(
             'div',
-            [
-                this.measure,
-                this.lineMeasure,
-                this.selectionDiv,
-                this.cursorDiv,
-                this.lineDiv,
-            ],
+            [this.measure, this.lineMeasure, this.selectionDiv, this.cursorDiv, this.lineDiv],
             null,
-            'position: relative; outline: none'
+            'position: relative; outline: none',
         );
         this.mover = t(
             'div',
             [t('div', [this.lineSpace], 'CodeMirror-lines')],
             null,
-            'position: relative'
+            'position: relative',
         );
         this.sizer = t('div', [this.mover], 'CodeMirror-sizer');
         this.sizerWidth = null;
@@ -102,32 +87,25 @@
             'div',
             null,
             null,
-            'position: absolute; height: ' + Hd + 'px; width: 1px;'
+            'position: absolute; height: ' + Hd + 'px; width: 1px;',
         );
         this.gutters = t('div', null, 'CodeMirror-gutters');
         this.lineGutter = null;
         this.scroller = t(
             'div',
             [this.sizer, this.heightForcer, this.gutters],
-            'CodeMirror-scroll'
+            'CodeMirror-scroll',
         );
         this.scroller.setAttribute('tabIndex', '-1');
         this.wrapper = t(
             'div',
             [this.scrollbarFiller, this.gutterFiller, this.scroller],
-            'CodeMirror'
+            'CodeMirror',
         );
-        B &&
-            8 > C &&
-            ((this.gutters.style.zIndex = -1),
-            (this.scroller.style.paddingRight = 0));
+        B && 8 > C && ((this.gutters.style.zIndex = -1), (this.scroller.style.paddingRight = 0));
         J || (wa && ab) || (this.scroller.draggable = !0);
         a && (a.appendChild ? a.appendChild(this.wrapper) : a(this.wrapper));
-        this.reportedViewFrom =
-            this.reportedViewTo =
-            this.viewFrom =
-            this.viewTo =
-                b.first;
+        this.reportedViewFrom = this.reportedViewTo = this.viewFrom = this.viewTo = b.first;
         this.view = [];
         this.externalMeasured = this.renderedView = null;
         this.lastWrapHeight = this.lastWrapWidth = this.viewOffset = 0;
@@ -136,18 +114,10 @@
         this.scrollbarsClipped = !1;
         this.lineNumWidth = this.lineNumInnerWidth = this.lineNumChars = null;
         this.alignWidgets = !1;
-        this.maxLine =
-            this.cachedCharWidth =
-            this.cachedTextHeight =
-            this.cachedPaddingH =
-                null;
+        this.maxLine = this.cachedCharWidth = this.cachedTextHeight = this.cachedPaddingH = null;
         this.maxLineLength = 0;
         this.maxLineChanged = !1;
-        this.wheelDX =
-            this.wheelDY =
-            this.wheelStartX =
-            this.wheelStartY =
-                null;
+        this.wheelDX = this.wheelDY = this.wheelStartX = this.wheelStartY = null;
         this.shift = !1;
         this.activeTouch = this.selForContextMenu = null;
         c.init(this);
@@ -169,9 +139,7 @@
     function Id(a) {
         var b = xa(a.display),
             c = a.options.lineWrapping,
-            d =
-                c &&
-                Math.max(5, a.display.scroller.clientWidth / gb(a.display) - 3);
+            d = c && Math.max(5, a.display.scroller.clientWidth / gb(a.display) - 3);
         return function (e) {
             if (ya(a.doc, e)) return 0;
             var f = 0;
@@ -271,12 +239,12 @@
         var d = (this.vert = t(
                 'div',
                 [t('div', null, null, 'min-width: 1px')],
-                'CodeMirror-vscrollbar'
+                'CodeMirror-vscrollbar',
             )),
             e = (this.horiz = t(
                 'div',
                 [t('div', null, null, 'height: 100%; min-height: 1px')],
-                'CodeMirror-hscrollbar'
+                'CodeMirror-hscrollbar',
             ));
         a(d);
         a(e);
@@ -287,16 +255,13 @@
             e.clientWidth && b(e.scrollLeft, 'horizontal');
         });
         this.checkedOverlay = !1;
-        B &&
-            8 > C &&
-            (this.horiz.style.minHeight = this.vert.style.minWidth = '18px');
+        B && 8 > C && (this.horiz.style.minHeight = this.vert.style.minWidth = '18px');
     }
     function Gc() {}
     function Cd(a) {
         a.display.scrollbars &&
             (a.display.scrollbars.clear(),
-            a.display.scrollbars.addClass &&
-                kb(a.display.wrapper, a.display.scrollbars.addClass));
+            a.display.scrollbars.addClass && kb(a.display.wrapper, a.display.scrollbars.addClass));
         a.display.scrollbars = new q.scrollbarModel[a.options.scrollbarStyle](
             function (b) {
                 a.display.wrapper.insertBefore(b, a.display.scrollbarFiller);
@@ -311,21 +276,16 @@
             function (b, c) {
                 'horizontal' == c ? Ma(a, b) : lb(a, b);
             },
-            a
+            a,
         );
-        a.display.scrollbars.addClass &&
-            mb(a.display.wrapper, a.display.scrollbars.addClass);
+        a.display.scrollbars.addClass && mb(a.display.wrapper, a.display.scrollbars.addClass);
     }
     function Na(a, b) {
         b || (b = jb(a));
         var c = a.display.barWidth,
             d = a.display.barHeight;
         Jd(a, b);
-        for (
-            var e = 0;
-            (4 > e && c != a.display.barWidth) || d != a.display.barHeight;
-            e++
-        )
+        for (var e = 0; (4 > e && c != a.display.barWidth) || d != a.display.barHeight; e++)
             c != a.display.barWidth && a.options.lineWrapping && Lb(a),
                 Jd(a, jb(a)),
                 (c = a.display.barWidth),
@@ -341,9 +301,7 @@
               (c.scrollbarFiller.style.height = d.bottom + 'px'),
               (c.scrollbarFiller.style.width = d.right + 'px'))
             : (c.scrollbarFiller.style.display = '');
-        d.bottom &&
-        a.options.coverGutterNextToScrollbar &&
-        a.options.fixedGutter
+        d.bottom && a.options.coverGutterNextToScrollbar && a.options.fixedGutter
             ? ((c.gutterFiller.style.display = 'block'),
               (c.gutterFiller.style.height = d.bottom + 'px'),
               (c.gutterFiller.style.width = b.gutterWidth + 'px'))
@@ -378,12 +336,9 @@
                 g++
             )
                 if (!c[g].hidden) {
-                    a.options.fixedGutter &&
-                        c[g].gutter &&
-                        (c[g].gutter.style.left = f);
+                    a.options.fixedGutter && c[g].gutter && (c[g].gutter.style.left = f);
                     var h = c[g].alignable;
-                    if (h)
-                        for (var k = 0; k < h.length; k++) h[k].style.left = f;
+                    if (h) for (var k = 0; k < h.length; k++) h[k].style.left = f;
                 }
             a.options.fixedGutter && (b.gutters.style.left = d + e + 'px');
         }
@@ -395,11 +350,7 @@
             c = a.display;
         if (b.length != c.lineNumChars) {
             var d = c.measure.appendChild(
-                    t(
-                        'div',
-                        [t('div', b)],
-                        'CodeMirror-linenumber CodeMirror-gutter-elt'
-                    )
+                    t('div', [t('div', b)], 'CodeMirror-linenumber CodeMirror-gutter-elt'),
                 ),
                 e = d.firstChild.offsetWidth,
                 d = d.offsetWidth - e;
@@ -417,10 +368,7 @@
         return String(a.lineNumberFormatter(b + a.firstLineNumber));
     }
     function Ic(a) {
-        return (
-            a.scroller.getBoundingClientRect().left -
-            a.sizer.getBoundingClientRect().left
-        );
+        return a.scroller.getBoundingClientRect().left - a.sizer.getBoundingClientRect().left;
     }
     function Mb(a, b, c) {
         var d = a.display;
@@ -451,9 +399,7 @@
         var e = d.first + d.size,
             f = Math.max(b.visible.from - a.options.viewportMargin, d.first),
             g = Math.min(e, b.visible.to + a.options.viewportMargin);
-        c.viewFrom < f &&
-            20 > f - c.viewFrom &&
-            (f = Math.max(d.first, c.viewFrom));
+        c.viewFrom < f && 20 > f - c.viewFrom && (f = Math.max(d.first, c.viewFrom));
         c.viewTo > g && 20 > c.viewTo - g && (g = Math.min(e, c.viewTo));
         ra && ((f = Mc(a.doc, f)), (g = Ld(a.doc, g)));
         d =
@@ -492,10 +438,7 @@
         za(c.cursorDiv);
         za(c.selectionDiv);
         c.gutters.style.height = 0;
-        d &&
-            ((c.lastWrapHeight = b.wrapperHeight),
-            (c.lastWrapWidth = b.wrapperWidth),
-            fb(a, 400));
+        d && ((c.lastWrapHeight = b.wrapperHeight), (c.lastWrapWidth = b.wrapperWidth), fb(a, 400));
         c.updateLineNumbers = null;
         return !0;
     }
@@ -506,14 +449,10 @@
                     (c &&
                         null != c.top &&
                         (c = {
-                            top: Math.min(
-                                a.doc.height + Ec(a.display) - Nc(a),
-                                c.top
-                            ),
+                            top: Math.min(a.doc.height + Ec(a.display) - Nc(a), c.top),
                         }),
                     (b.visible = Hc(a.display, a.doc, c)),
-                    b.visible.from >= a.display.viewFrom &&
-                        b.visible.to <= a.display.viewTo)
+                    b.visible.from >= a.display.viewFrom && b.visible.to <= a.display.viewTo)
                 )
                     break;
             if (!Lc(a, b)) break;
@@ -528,13 +467,7 @@
             a.display.viewFrom != a.display.reportedViewFrom ||
             a.display.viewTo != a.display.reportedViewTo
         )
-            b.signal(
-                a,
-                'viewportChange',
-                a,
-                a.display.viewFrom,
-                a.display.viewTo
-            ),
+            b.signal(a, 'viewportChange', a, a.display.viewFrom, a.display.viewTo),
                 (a.display.reportedViewFrom = a.display.viewFrom),
                 (a.display.reportedViewTo = a.display.viewTo);
     }
@@ -554,8 +487,7 @@
         a.display.sizer.style.minHeight = b.docHeight + 'px';
         var c = b.docHeight + a.display.barHeight;
         a.display.heightForcer.style.top = c + 'px';
-        a.display.gutters.style.height =
-            Math.max(c + da(a), b.clientHeight) + 'px';
+        a.display.gutters.style.height = Math.max(c + da(a), b.clientHeight) + 'px';
     }
     function Lb(a) {
         a = a.display;
@@ -567,9 +499,7 @@
                     var f = d.node.offsetTop + d.node.offsetHeight;
                     e = f - b;
                     b = f;
-                } else
-                    (e = d.node.getBoundingClientRect()),
-                        (e = e.bottom - e.top);
+                } else (e = d.node.getBoundingClientRect()), (e = e.bottom - e.top);
                 f = d.line.height - e;
                 2 > e && (e = xa(a));
                 if (0.001 < f || -0.001 > f)
@@ -628,14 +558,10 @@
                 if (m.node && m.node.parentNode == g) {
                     for (; h != m.node; ) h = d(h);
                     h = f && null != b && b <= e && m.lineNumber;
-                    m.changes &&
-                        (-1 < D(m.changes, 'gutter') && (h = !1),
-                        Od(a, m, e, c));
+                    m.changes && (-1 < D(m.changes, 'gutter') && (h = !1), Od(a, m, e, c));
                     h &&
                         (za(m.lineNumber),
-                        m.lineNumber.appendChild(
-                            document.createTextNode(Jc(a.options, e))
-                        ));
+                        m.lineNumber.appendChild(document.createTextNode(Jc(a.options, e))));
                     h = m.node.nextSibling;
                 } else {
                     var p = vf(a, m, e, c);
@@ -656,9 +582,7 @@
                 f.text.parentNode.replaceChild(h.pre, f.text);
                 f.text = h.pre;
                 h.bgClass != f.bgClass || h.textClass != f.textClass
-                    ? ((f.bgClass = h.bgClass),
-                      (f.textClass = h.textClass),
-                      Qc(f))
+                    ? ((f.bgClass = h.bgClass), (f.textClass = h.textClass), Qc(f))
                     : g && (f.text.className = g);
             } else if ('gutter' == f) Qd(a, b, c, d);
             else if ('class' == f) Qc(b);
@@ -669,8 +593,7 @@
                 g.alignable && (g.alignable = null);
                 for (var k = g.node.firstChild, l = void 0; k; k = l)
                     (l = k.nextSibling),
-                        'CodeMirror-linewidget' == k.className &&
-                            g.node.removeChild(k);
+                        'CodeMirror-linewidget' == k.className && g.node.removeChild(k);
                 Rd(f, g, h);
             }
         }
@@ -687,21 +610,16 @@
     function Pd(a, b) {
         var c = a.display.externalMeasured;
         return c && c.line == b.line
-            ? ((a.display.externalMeasured = null),
-              (b.measure = c.measure),
-              c.built)
+            ? ((a.display.externalMeasured = null), (b.measure = c.measure), c.built)
             : Sd(a, b);
     }
     function Qc(a) {
-        var b = a.bgClass
-            ? a.bgClass + ' ' + (a.line.bgClass || '')
-            : a.line.bgClass;
+        var b = a.bgClass ? a.bgClass + ' ' + (a.line.bgClass || '') : a.line.bgClass;
         b && (b += ' CodeMirror-linebackground');
         if (a.background)
             b
                 ? (a.background.className = b)
-                : (a.background.parentNode.removeChild(a.background),
-                  (a.background = null));
+                : (a.background.parentNode.removeChild(a.background), (a.background = null));
         else if (b) {
             var c = Ob(a);
             a.background = c.insertBefore(t('div', null, b), c.firstChild);
@@ -710,9 +628,7 @@
             ? (Ob(a).className = a.line.wrapClass)
             : a.node != a.text && (a.node.className = '');
         a.text.className =
-            (a.textClass
-                ? a.textClass + ' ' + (a.line.textClass || '')
-                : a.line.textClass) || '';
+            (a.textClass ? a.textClass + ' ' + (a.line.textClass || '') : a.line.textClass) || '';
     }
     function Qd(a, b, c, d) {
         b.gutter && (b.node.removeChild(b.gutter), (b.gutter = null));
@@ -724,12 +640,10 @@
                     null,
                     'CodeMirror-gutter-wrapper',
                     'left: ' +
-                        (a.options.fixedGutter
-                            ? d.fixedPos
-                            : -d.gutterTotalWidth) +
+                        (a.options.fixedGutter ? d.fixedPos : -d.gutterTotalWidth) +
                         'px; width: ' +
                         d.gutterTotalWidth +
-                        'px'
+                        'px',
                 ));
             a.display.input.setUneditable(g);
             f.insertBefore(g, b.text);
@@ -745,8 +659,8 @@
                             d.gutterLeft['CodeMirror-linenumbers'] +
                             'px; width: ' +
                             a.display.lineNumInnerWidth +
-                            'px'
-                    )
+                            'px',
+                    ),
                 ));
             if (e)
                 for (b = 0; b < a.options.gutters.length; ++b)
@@ -761,8 +675,8 @@
                                         d.gutterLeft[c] +
                                         'px; width: ' +
                                         d.gutterWidth[c] +
-                                        'px'
-                                )
+                                        'px',
+                                ),
                             );
         }
     }
@@ -778,8 +692,7 @@
     }
     function Rd(a, b, c) {
         Td(a, b.line, b, c, !0);
-        if (b.rest)
-            for (var d = 0; d < b.rest.length; d++) Td(a, b.rest[d], b, c, !1);
+        if (b.rest) for (var d = 0; d < b.rest.length; d++) Td(a, b.rest[d], b, c, !1);
     }
     function Td(a, b, c, d, e) {
         if (b.widgets) {
@@ -788,8 +701,7 @@
             for (b = b.widgets; g < b.length; ++g) {
                 var h = b[g],
                     k = t('div', [h.node], 'CodeMirror-linewidget');
-                h.handleMouseEvents ||
-                    k.setAttribute('cm-ignore-events', 'true');
+                h.handleMouseEvents || k.setAttribute('cm-ignore-events', 'true');
                 var l = h,
                     m = k,
                     p = d;
@@ -805,12 +717,9 @@
                 l.coverGutter &&
                     ((m.style.zIndex = 5),
                     (m.style.position = 'relative'),
-                    l.noHScroll ||
-                        (m.style.marginLeft = -p.gutterTotalWidth + 'px'));
+                    l.noHScroll || (m.style.marginLeft = -p.gutterTotalWidth + 'px'));
                 a.display.input.setUneditable(k);
-                e && h.above
-                    ? f.insertBefore(k, c.gutter || c.text)
-                    : f.appendChild(k);
+                e && h.above ? f.insertBefore(k, c.gutter || c.text) : f.appendChild(k);
                 L(h, 'redraw');
             }
         }
@@ -853,10 +762,7 @@
                     ? (m = r(m.line, m.ch - c))
                     : a.state.overwrite &&
                       !a.state.pasteIncoming &&
-                      (p = r(
-                          p.line,
-                          Math.min(u(f, p.line).text.length, p.ch + A(g).length)
-                      )));
+                      (p = r(p.line, Math.min(u(f, p.line).text.length, p.ch + A(g).length))));
             var n = a.curOp.updateInput,
                 m = {
                     from: m,
@@ -864,11 +770,7 @@
                     text: h ? h[k % h.length] : g,
                     origin:
                         e ||
-                        (a.state.pasteIncoming
-                            ? 'paste'
-                            : a.state.cutIncoming
-                            ? 'cut'
-                            : '+input'),
+                        (a.state.pasteIncoming ? 'paste' : a.state.cutIncoming ? 'cut' : '+input'),
                 };
             Oa(a.doc, m);
             L(a, 'inputRead', a, m);
@@ -892,9 +794,7 @@
                     }
                 else
                     l.electricInput &&
-                        l.electricInput.test(
-                            u(f, m.line).text.slice(0, m.ch)
-                        ) &&
+                        l.electricInput.test(u(f, m.line).text.slice(0, m.ch)) &&
                         (p = pb(a, m.line, 'smart'));
                 p && L(a, 'electricInput', a, m.line);
             }
@@ -931,13 +831,13 @@
                 'textarea',
                 null,
                 null,
-                'position: absolute; padding: 0; width: 1px; height: 1em; outline: none'
+                'position: absolute; padding: 0; width: 1px; height: 1em; outline: none',
             ),
             b = t(
                 'div',
                 [a],
                 null,
-                'overflow: hidden; position: relative; width: 3px; height: 0px;'
+                'overflow: hidden; position: relative; width: 3px; height: 0px;',
             );
         J ? (a.style.width = '1000px') : a.setAttribute('wrap', 'off');
         Qa && (a.style.border = '1px solid black');
@@ -988,11 +888,7 @@
     function wf(a, b, c) {
         function d(b, c, d) {
             for (var e = -1; e < (l ? l.length : 0); e++)
-                for (
-                    var f = 0 > e ? k.map : l[e], g = 0;
-                    g < f.length;
-                    g += 3
-                ) {
+                for (var f = 0 > e ? k.map : l[e], g = 0; g < f.length; g += 3) {
                     var h = f[g + 2];
                     if (h == b || h == c) {
                         c = F(0 > e ? a.line : a.rest[e]);
@@ -1006,9 +902,7 @@
             f = !1;
         if (!b || !Wc(e, b)) return Ra(r(F(a.line), 0), !0);
         if (b == e && ((f = !0), (b = e.childNodes[c]), (c = 0), !b))
-            return (
-                (c = a.rest ? A(a.rest) : a.line), Ra(r(F(c), c.text.length), f)
-            );
+            return (c = a.rest ? A(a.rest) : a.line), Ra(r(F(c), c.text.length), f);
         var g = 3 == b.nodeType ? b : null,
             h = b;
         g ||
@@ -1039,9 +933,7 @@
         function g(b) {
             if (1 == b.nodeType) {
                 var c = b.getAttribute('cm-text');
-                if (null != c)
-                    '' == c && (c = b.textContent.replace(/\u200b/g, '')),
-                        (h += c);
+                if (null != c) '' == c && (c = b.textContent.replace(/\u200b/g, '')), (h += c);
                 else {
                     var c = b.getAttribute('cm-marker'),
                         p;
@@ -1051,8 +943,7 @@
                                 (p = b[0].find()) &&
                                 (h += Da(a.doc, p.from, p.to).join('\n'));
                     else if ('false' != b.getAttribute('contenteditable')) {
-                        for (p = 0; p < b.childNodes.length; p++)
-                            g(b.childNodes[p]);
+                        for (p = 0; p < b.childNodes.length; p++) g(b.childNodes[p]);
                         /^(pre|div|p)$/i.test(b.nodeName) && (k = !0);
                     }
                 }
@@ -1112,9 +1003,7 @@
             ? ((a = b.anchor),
               d &&
                   ((b = 0 > y(c, a)),
-                  b != 0 > y(d, a)
-                      ? ((a = c), (c = d))
-                      : b != 0 > y(c, d) && (c = d)),
+                  b != 0 > y(d, a) ? ((a = c), (c = d)) : b != 0 > y(c, d) && (c = d)),
               new z(a, c))
             : new z(d || c, c);
     }
@@ -1179,23 +1068,16 @@
         c && !1 !== c.clearRedo && ce(e.undone);
     }
     function Vb(a, b, c) {
-        if (
-            S(a, 'beforeSelectionChange') ||
-            (a.cm && S(a.cm, 'beforeSelectionChange'))
-        )
+        if (S(a, 'beforeSelectionChange') || (a.cm && S(a.cm, 'beforeSelectionChange')))
             b = yf(a, b);
-        var d =
-            (c && c.bias) ||
-            (0 > y(b.primary().head, a.sel.primary().head) ? -1 : 1);
+        var d = (c && c.bias) || (0 > y(b.primary().head, a.sel.primary().head) ? -1 : 1);
         de(a, ee(a, b, d, !0));
         (c && !1 === c.scroll) || !a.cm || Pa(a.cm);
     }
     function de(a, b) {
         b.equals(a.sel) ||
             ((a.sel = b),
-            a.cm &&
-                ((a.cm.curOp.updateInput = a.cm.curOp.selectionChanged = !0),
-                fe(a.cm)),
+            a.cm && ((a.cm.curOp.updateInput = a.cm.curOp.selectionChanged = !0), fe(a.cm)),
             L(a, 'cursorActivity', a));
     }
     function ge(a) {
@@ -1223,17 +1105,10 @@
                     var l = h.markedSpans[k],
                         m = l.marker;
                     if (
-                        (null == l.from ||
-                            (m.inclusiveLeft
-                                ? l.from <= f.ch
-                                : l.from < f.ch)) &&
-                        (null == l.to ||
-                            (m.inclusiveRight ? l.to >= f.ch : l.to > f.ch))
+                        (null == l.from || (m.inclusiveLeft ? l.from <= f.ch : l.from < f.ch)) &&
+                        (null == l.to || (m.inclusiveRight ? l.to >= f.ch : l.to > f.ch))
                     ) {
-                        if (
-                            d &&
-                            (K(m, 'beforeCursorEnter'), m.explicitlyCleared)
-                        )
+                        if (d && (K(m, 'beforeCursorEnter'), m.explicitlyCleared))
                             if (h.markedSpans) {
                                 --k;
                                 continue;
@@ -1244,15 +1119,9 @@
                                 0 == y(k, f) &&
                                 ((k.ch += g),
                                 0 > k.ch
-                                    ? (k =
-                                          k.line > a.first
-                                              ? w(a, r(k.line - 1))
-                                              : null)
+                                    ? (k = k.line > a.first ? w(a, r(k.line - 1)) : null)
                                     : k.ch > h.text.length &&
-                                      (k =
-                                          k.line < a.first + a.size - 1
-                                              ? r(k.line + 1, 0)
-                                              : null),
+                                      (k = k.line < a.first + a.size - 1 ? r(k.line + 1, 0) : null),
                                 !k)
                             ) {
                                 if (e) {
@@ -1291,33 +1160,19 @@
                 if (k || a.options.showCursorWhenSelecting) {
                     var l = a,
                         m = e,
-                        p = ma(
-                            l,
-                            h.head,
-                            'div',
-                            null,
-                            null,
-                            !l.options.singleCursorHeightPerLine
-                        ),
+                        p = ma(l, h.head, 'div', null, null, !l.options.singleCursorHeightPerLine),
                         n = m.appendChild(t('div', ' ', 'CodeMirror-cursor'));
                     n.style.left = p.left + 'px';
                     n.style.top = p.top + 'px';
-                    n.style.height =
-                        Math.max(0, p.bottom - p.top) * l.options.cursorHeight +
-                        'px';
+                    n.style.height = Math.max(0, p.bottom - p.top) * l.options.cursorHeight + 'px';
                     p.other &&
                         ((l = m.appendChild(
-                            t(
-                                'div',
-                                ' ',
-                                'CodeMirror-cursor CodeMirror-secondarycursor'
-                            )
+                            t('div', ' ', 'CodeMirror-cursor CodeMirror-secondarycursor'),
                         )),
                         (l.style.display = ''),
                         (l.style.left = p.other.left + 'px'),
                         (l.style.top = p.other.top + 'px'),
-                        (l.style.height =
-                            0.85 * (p.other.bottom - p.other.top) + 'px'));
+                        (l.style.height = 0.85 * (p.other.bottom - p.other.top) + 'px'));
                 }
                 k || zf(a, h, f);
             }
@@ -1341,8 +1196,8 @@
                         (null == c ? m - a : c) +
                         'px; height: ' +
                         (d - b) +
-                        'px'
-                )
+                        'px',
+                ),
             );
         }
         function e(b, c, e) {
@@ -1366,14 +1221,8 @@
                     (t = l),
                     u.bottom < v.top && d(t, u.bottom, null, v.top));
                 null == e && q == h && (w = m);
-                if (!k || u.top < k.top || (u.top == k.top && u.left < k.left))
-                    k = u;
-                if (
-                    !p ||
-                    v.bottom > p.bottom ||
-                    (v.bottom == p.bottom && v.right > p.right)
-                )
-                    p = v;
+                if (!k || u.top < k.top || (u.top == k.top && u.left < k.left)) k = u;
+                if (!p || v.bottom > p.bottom || (v.bottom == p.bottom && v.right > p.right)) p = v;
                 t < l + 1 && (t = l);
                 d(t, v.top, w - t, v.bottom);
             });
@@ -1396,8 +1245,7 @@
             b = e(b.line, k ? 0 : null, b.ch).start;
             k &&
                 (f.top < b.top - 2
-                    ? (d(f.right, f.top, null, f.bottom),
-                      d(l, b.top, b.left, b.bottom))
+                    ? (d(f.right, f.top, null, f.bottom), d(l, b.top, b.left, b.bottom))
                     : d(f.right, f.top, b.left - f.right, f.bottom));
             f.bottom < b.top && d(l, f.bottom, null, b.top);
         }
@@ -1413,8 +1261,7 @@
                 ? (b.blinker = setInterval(function () {
                       b.cursorDiv.style.visibility = (c = !c) ? '' : 'hidden';
                   }, a.options.cursorBlinkRate))
-                : 0 > a.options.cursorBlinkRate &&
-                  (b.cursorDiv.style.visibility = 'hidden');
+                : 0 > a.options.cursorBlinkRate && (b.cursorDiv.style.visibility = 'hidden');
         }
     }
     function fb(a, b) {
@@ -1429,38 +1276,25 @@
             var c = +new Date() + a.options.workTime,
                 d = Sa(b.mode, sb(a, b.frontier)),
                 e = [];
-            b.iter(
-                b.frontier,
-                Math.min(b.first + b.size, a.display.viewTo + 500),
-                function (f) {
-                    if (b.frontier >= a.display.viewFrom) {
-                        var g = f.styles,
-                            h = je(a, f, d, !0);
-                        f.styles = h.styles;
-                        var k = f.styleClasses;
-                        (h = h.classes)
-                            ? (f.styleClasses = h)
-                            : k && (f.styleClasses = null);
-                        k =
-                            !g ||
-                            g.length != f.styles.length ||
-                            (k != h &&
-                                (!k ||
-                                    !h ||
-                                    k.bgClass != h.bgClass ||
-                                    k.textClass != h.textClass));
-                        for (h = 0; !k && h < g.length; ++h)
-                            k = g[h] != f.styles[h];
-                        k && e.push(b.frontier);
-                        f.stateAfter = Sa(b.mode, d);
-                    } else
-                        Zc(a, f.text, d),
-                            (f.stateAfter =
-                                0 == b.frontier % 5 ? Sa(b.mode, d) : null);
-                    ++b.frontier;
-                    if (+new Date() > c) return fb(a, a.options.workDelay), !0;
-                }
-            );
+            b.iter(b.frontier, Math.min(b.first + b.size, a.display.viewTo + 500), function (f) {
+                if (b.frontier >= a.display.viewFrom) {
+                    var g = f.styles,
+                        h = je(a, f, d, !0);
+                    f.styles = h.styles;
+                    var k = f.styleClasses;
+                    (h = h.classes) ? (f.styleClasses = h) : k && (f.styleClasses = null);
+                    k =
+                        !g ||
+                        g.length != f.styles.length ||
+                        (k != h &&
+                            (!k || !h || k.bgClass != h.bgClass || k.textClass != h.textClass));
+                    for (h = 0; !k && h < g.length; ++h) k = g[h] != f.styles[h];
+                    k && e.push(b.frontier);
+                    f.stateAfter = Sa(b.mode, d);
+                } else Zc(a, f.text, d), (f.stateAfter = 0 == b.frontier % 5 ? Sa(b.mode, d) : null);
+                ++b.frontier;
+                if (+new Date() > c) return fb(a, a.options.workDelay), !0;
+            });
             e.length &&
                 T(a, function () {
                     for (var b = 0; b < e.length; b++) na(a, e[b], 'text');
@@ -1468,14 +1302,7 @@
         }
     }
     function Cf(a, b, c) {
-        for (
-            var d,
-                e,
-                f = a.doc,
-                g = c ? -1 : b - (a.doc.mode.innerMode ? 1e3 : 100);
-            b > g;
-            --b
-        ) {
+        for (var d, e, f = a.doc, g = c ? -1 : b - (a.doc.mode.innerMode ? 1e3 : 100); b > g; --b) {
             if (b <= f.first) return f.first;
             var h = u(f, b - 1);
             if (h.stateAfter && (!c || b <= f.frontier)) return b;
@@ -1508,9 +1335,7 @@
     function ie(a) {
         if (a.cachedPaddingH) return a.cachedPaddingH;
         var b = U(a.measure, t('pre', 'x')),
-            b = window.getComputedStyle
-                ? window.getComputedStyle(b)
-                : b.currentStyle,
+            b = window.getComputedStyle ? window.getComputedStyle(b) : b.currentStyle,
             b = {
                 left: parseInt(b.paddingLeft),
                 right: parseInt(b.paddingRight),
@@ -1530,8 +1355,7 @@
     function Zd(a, b, c) {
         if (a.line == b) return { map: a.measure.map, cache: a.measure.cache };
         for (var d = 0; d < a.rest.length; d++)
-            if (a.rest[d] == b)
-                return { map: a.measure.maps[d], cache: a.measure.caches[d] };
+            if (a.rest[d] == b) return { map: a.measure.maps[d], cache: a.measure.caches[d] };
         for (d = 0; d < a.rest.length; d++)
             if (F(a.rest[d]) > c)
                 return {
@@ -1541,8 +1365,7 @@
                 };
     }
     function Vc(a, b) {
-        if (b >= a.display.viewFrom && b < a.display.viewTo)
-            return a.display.view[Ca(a, b)];
+        if (b >= a.display.viewFrom && b < a.display.viewTo) return a.display.view[Ca(a, b)];
         var c = a.display.externalMeasured;
         if (c && b >= c.lineN && b < c.lineN + c.size) return c;
     }
@@ -1587,9 +1410,7 @@
                     var m = (g.measure.heights = []);
                     if (k)
                         for (
-                            g.measure.width = l,
-                                g = g.text.firstChild.getClientRects(),
-                                k = 0;
+                            g.measure.width = l, g = g.text.firstChild.getClientRects(), k = 0;
                             k < g.length - 1;
                             k++
                         ) {
@@ -1614,8 +1435,7 @@
                     for (; h && tb(b.line.text.charAt(k.coverStart + h)); ) --h;
                     for (
                         ;
-                        k.coverStart + l < k.coverEnd &&
-                        tb(b.line.text.charAt(k.coverStart + l));
+                        k.coverStart + l < k.coverEnd && tb(b.line.text.charAt(k.coverStart + l));
 
                     )
                         ++l;
@@ -1655,8 +1475,7 @@
             } else
                 0 < h && (c = g = 'right'),
                     (n =
-                        a.options.lineWrapping &&
-                        1 < (E = d.getClientRects()).length
+                        a.options.lineWrapping && 1 < (E = d.getClientRects()).length
                             ? E['right' == g ? E.length - 1 : 0]
                             : d.getBoundingClientRect());
             !(B && 9 > C) ||
@@ -1682,8 +1501,7 @@
                 bottom: g[m],
             };
             n.left || n.right || (c.bogus = !0);
-            a.options.singleCursorHeightPerLine ||
-                ((c.rtop = E), (c.rbottom = d));
+            a.options.singleCursorHeightPerLine || ((c.rtop = E), (c.rbottom = d));
             a = c;
             a.bogus || (b.cache[f] = a);
         }
@@ -1709,13 +1527,7 @@
                     for (; h && a[h - 2] == a[h - 3] && a[h - 1].insertLeft; )
                         (d = a[(h -= 3) + 2]), (g = 'left');
                 if ('right' == c && e == l - k)
-                    for (
-                        ;
-                        h < a.length - 3 &&
-                        a[h + 3] == a[h + 4] &&
-                        !a[h + 5].insertLeft;
-
-                    )
+                    for (; h < a.length - 3 && a[h + 3] == a[h + 4] && !a[h + 5].insertLeft; )
                         (d = a[(h += 3) + 2]), (g = 'right');
                 break;
             }
@@ -1730,10 +1542,7 @@
         };
     }
     function le(a) {
-        if (
-            a.measure &&
-            ((a.measure.cache = {}), (a.measure.heights = null), a.rest)
-        )
+        if (a.measure && ((a.measure.cache = {}), (a.measure.heights = null), a.rest))
             for (var b = 0; b < a.rest.length; b++) a.measure.caches[b] = {};
     }
     function me(a) {
@@ -1743,10 +1552,7 @@
     }
     function hb(a) {
         me(a);
-        a.display.cachedCharWidth =
-            a.display.cachedTextHeight =
-            a.display.cachedPaddingH =
-                null;
+        a.display.cachedCharWidth = a.display.cachedTextHeight = a.display.cachedPaddingH = null;
         a.options.lineWrapping || (a.display.maxLineChanged = !0);
         a.display.lineNumChars = null;
     }
@@ -1761,10 +1567,7 @@
         if ('line' == d) return c;
         d || (d = 'local');
         b = ea(b);
-        b =
-            'local' == d
-                ? b + a.display.lineSpace.offsetTop
-                : b - a.display.viewOffset;
+        b = 'local' == d ? b + a.display.lineSpace.offsetTop : b - a.display.viewOffset;
         if ('page' == d || 'window' == d)
             (a = a.display.lineSpace.getBoundingClientRect()),
                 (b +=
@@ -1772,15 +1575,13 @@
                     ('window' == d
                         ? 0
                         : window.pageYOffset ||
-                          (document.documentElement || document.body)
-                              .scrollTop)),
+                          (document.documentElement || document.body).scrollTop)),
                 (d =
                     a.left +
                     ('window' == d
                         ? 0
                         : window.pageXOffset ||
-                          (document.documentElement || document.body)
-                              .scrollLeft)),
+                          (document.documentElement || document.body).scrollLeft)),
                 (c.left += d),
                 (c.right += d);
         c.top += b;
@@ -1792,16 +1593,10 @@
         var d = b.left;
         b = b.top;
         'page' == c
-            ? ((d -=
-                  window.pageXOffset ||
-                  (document.documentElement || document.body).scrollLeft),
-              (b -=
-                  window.pageYOffset ||
-                  (document.documentElement || document.body).scrollTop))
+            ? ((d -= window.pageXOffset || (document.documentElement || document.body).scrollLeft),
+              (b -= window.pageYOffset || (document.documentElement || document.body).scrollTop))
             : ('local' != c && c) ||
-              ((c = a.display.sizer.getBoundingClientRect()),
-              (d += c.left),
-              (b += c.top));
+              ((c = a.display.sizer.getBoundingClientRect()), (d += c.left), (b += c.top));
         a = a.display.lineSpace.getBoundingClientRect();
         return { left: d - a.left, top: b - a.top };
     }
@@ -1915,8 +1710,7 @@
         if (null == Fa) {
             Fa = t('pre');
             for (var b = 0; 49 > b; ++b)
-                Fa.appendChild(document.createTextNode('x')),
-                    Fa.appendChild(t('br'));
+                Fa.appendChild(document.createTextNode('x')), Fa.appendChild(t('br'));
             Fa.appendChild(document.createTextNode('x'));
         }
         U(a.measure, Fa);
@@ -1956,8 +1750,7 @@
         };
         Ta
             ? Ta.ops.push(a.curOp)
-            : (a.curOp.ownsGroup = Ta =
-                  { ops: [a.curOp], delayedCallbacks: [] });
+            : (a.curOp.ownsGroup = Ta = { ops: [a.curOp], delayedCallbacks: [] });
     }
     function La(a) {
         if ((a = a.curOp.ownsGroup))
@@ -1969,15 +1762,8 @@
                     for (var d = 0; d < a.ops.length; d++) {
                         var e = a.ops[d];
                         if (e.cursorActivityHandlers)
-                            for (
-                                ;
-                                e.cursorActivityCalled <
-                                e.cursorActivityHandlers.length;
-
-                            )
-                                e.cursorActivityHandlers[
-                                    e.cursorActivityCalled++
-                                ](e.cm);
+                            for (; e.cursorActivityCalled < e.cursorActivityHandlers.length; )
+                                e.cursorActivityHandlers[e.cursorActivityCalled++](e.cm);
                     }
                 } while (c < b.length);
             } finally {
@@ -1990,8 +1776,7 @@
                         f = (d = c.display);
                     !f.scrollbarsClipped &&
                         f.scroller.offsetWidth &&
-                        ((f.nativeBarWidth =
-                            f.scroller.offsetWidth - f.scroller.clientWidth),
+                        ((f.nativeBarWidth = f.scroller.offsetWidth - f.scroller.clientWidth),
                         (f.heightForcer.style.height = da(c) + 'px'),
                         (f.sizer.style.marginBottom = -f.nativeBarWidth + 'px'),
                         (f.sizer.style.borderRightWidth = da(c) + 'px'),
@@ -2013,12 +1798,11 @@
                                 top: e.scrollTop,
                                 ensure: e.scrollToPos,
                             },
-                            e.forceUpdate
+                            e.forceUpdate,
                         );
                 }
                 for (b = 0; b < a.length; b++)
-                    (e = a[b]),
-                        (e.updatedDisplay = e.mustUpdate && Lc(e.cm, e.update));
+                    (e = a[b]), (e.updatedDisplay = e.mustUpdate && Lc(e.cm, e.update));
                 for (b = 0; b < a.length; b++)
                     if (
                         ((e = a[b]),
@@ -2035,14 +1819,11 @@
                             (c.display.sizerWidth = e.adjustWidthTo),
                             (e.barMeasure.scrollWidth = Math.max(
                                 d.scroller.clientWidth,
-                                d.sizer.offsetLeft +
-                                    e.adjustWidthTo +
-                                    da(c) +
-                                    c.display.barWidth
+                                d.sizer.offsetLeft + e.adjustWidthTo + da(c) + c.display.barWidth,
                             )),
                             (e.maxScrollLeft = Math.max(
                                 0,
-                                d.sizer.offsetLeft + e.adjustWidthTo - pa(c)
+                                d.sizer.offsetLeft + e.adjustWidthTo - pa(c),
                             ))),
                         e.updatedDisplay || e.selectionChanged)
                     )
@@ -2051,27 +1832,15 @@
                     (e = a[b]),
                         (c = e.cm),
                         null != e.adjustWidthTo &&
-                            ((c.display.sizer.style.minWidth =
-                                e.adjustWidthTo + 'px'),
+                            ((c.display.sizer.style.minWidth = e.adjustWidthTo + 'px'),
                             e.maxScrollLeft < c.doc.scrollLeft &&
-                                Ma(
-                                    c,
-                                    Math.min(
-                                        c.display.scroller.scrollLeft,
-                                        e.maxScrollLeft
-                                    ),
-                                    !0
-                                ),
+                                Ma(c, Math.min(c.display.scroller.scrollLeft, e.maxScrollLeft), !0),
                             (c.display.maxLineChanged = !1)),
-                        e.preparedSelection &&
-                            c.display.input.showSelection(e.preparedSelection),
+                        e.preparedSelection && c.display.input.showSelection(e.preparedSelection),
                         e.updatedDisplay && Oc(c, e.barMeasure),
-                        (e.updatedDisplay || e.startHeight != c.doc.height) &&
-                            Na(c, e.barMeasure),
+                        (e.updatedDisplay || e.startHeight != c.doc.height) && Na(c, e.barMeasure),
                         e.selectionChanged && Yc(c),
-                        c.state.focused &&
-                            e.updateInput &&
-                            c.display.input.reset(e.typing),
+                        c.state.focused && e.updateInput && c.display.input.reset(e.typing),
                         e.focus && e.focus == fa() && Ud(e.cm);
                 for (b = 0; b < a.length; b++) {
                     e = a[b];
@@ -2080,32 +1849,24 @@
                     f = c.doc;
                     e.updatedDisplay && Md(c, e.update);
                     null == d.wheelStartX ||
-                        (null == e.scrollTop &&
-                            null == e.scrollLeft &&
-                            !e.scrollToPos) ||
+                        (null == e.scrollTop && null == e.scrollLeft && !e.scrollToPos) ||
                         (d.wheelStartX = d.wheelStartY = null);
                     null == e.scrollTop ||
-                        (d.scroller.scrollTop == e.scrollTop &&
-                            !e.forceScroll) ||
+                        (d.scroller.scrollTop == e.scrollTop && !e.forceScroll) ||
                         ((f.scrollTop = Math.max(
                             0,
                             Math.min(
-                                d.scroller.scrollHeight -
-                                    d.scroller.clientHeight,
-                                e.scrollTop
-                            )
+                                d.scroller.scrollHeight - d.scroller.clientHeight,
+                                e.scrollTop,
+                            ),
                         )),
                         d.scrollbars.setScrollTop(f.scrollTop),
                         (d.scroller.scrollTop = f.scrollTop));
                     null == e.scrollLeft ||
-                        (d.scroller.scrollLeft == e.scrollLeft &&
-                            !e.forceScroll) ||
+                        (d.scroller.scrollLeft == e.scrollLeft && !e.forceScroll) ||
                         ((f.scrollLeft = Math.max(
                             0,
-                            Math.min(
-                                d.scroller.scrollWidth - pa(c),
-                                e.scrollLeft
-                            )
+                            Math.min(d.scroller.scrollWidth - pa(c), e.scrollLeft),
                         )),
                         d.scrollbars.setScrollLeft(f.scrollLeft),
                         (d.scroller.scrollLeft = f.scrollLeft),
@@ -2125,13 +1886,12 @@
                                     Math.min(p.left, n.left),
                                     Math.min(p.top, n.top) - k,
                                     Math.max(p.left, n.left),
-                                    Math.max(p.bottom, n.bottom) + k
+                                    Math.max(p.bottom, n.bottom) + k,
                                 ),
                                 q = c.doc.scrollTop,
                                 r = c.doc.scrollLeft;
                             null != n.scrollTop &&
-                                (lb(c, n.scrollTop),
-                                1 < Math.abs(c.doc.scrollTop - q) && (m = !0));
+                                (lb(c, n.scrollTop), 1 < Math.abs(c.doc.scrollTop - q) && (m = !0));
                             null != n.scrollLeft &&
                                 (Ma(c, n.scrollLeft),
                                 1 < Math.abs(c.doc.scrollLeft - r) && (m = !0));
@@ -2148,8 +1908,7 @@
                                     ? (h = !0)
                                     : g.bottom + l.top >
                                           (window.innerHeight ||
-                                              document.documentElement
-                                                  .clientHeight) && (h = !1),
+                                              document.documentElement.clientHeight) && (h = !1),
                                 null == h ||
                                     Gf ||
                                     ((g = t(
@@ -2157,17 +1916,12 @@
                                         '​',
                                         null,
                                         'position: absolute; top: ' +
-                                            (g.top -
-                                                k.viewOffset -
-                                                c.display.lineSpace.offsetTop) +
+                                            (g.top - k.viewOffset - c.display.lineSpace.offsetTop) +
                                             'px; height: ' +
-                                            (g.bottom -
-                                                g.top +
-                                                da(c) +
-                                                k.barHeight) +
+                                            (g.bottom - g.top + da(c) + k.barHeight) +
                                             'px; left: ' +
                                             g.left +
-                                            'px; width: 2px;'
+                                            'px; width: 2px;',
                                     )),
                                     c.display.lineSpace.appendChild(g),
                                     g.scrollIntoView(h),
@@ -2175,14 +1929,9 @@
                     }
                     h = e.maybeHiddenMarkers;
                     g = e.maybeUnhiddenMarkers;
-                    if (h)
-                        for (k = 0; k < h.length; ++k)
-                            h[k].lines.length || K(h[k], 'hide');
-                    if (g)
-                        for (k = 0; k < g.length; ++k)
-                            g[k].lines.length && K(g[k], 'unhide');
-                    d.wrapper.offsetHeight &&
-                        (f.scrollTop = c.display.scroller.scrollTop);
+                    if (h) for (k = 0; k < h.length; ++k) h[k].lines.length || K(h[k], 'hide');
+                    if (g) for (k = 0; k < g.length; ++k) g[k].lines.length && K(g[k], 'unhide');
+                    d.wrapper.offsetHeight && (f.scrollTop = c.display.scroller.scrollTop);
                     e.changeObjs && K(c, 'changes', c, e.changeObjs);
                     e.update && e.update.finish();
                 }
@@ -2241,8 +1990,7 @@
     function Nb(a, b, c) {
         var d = [],
             e;
-        for (e = b; e < c; )
-            (b = new ke(a.doc, u(a.doc, e), e)), (e += b.size), d.push(b);
+        for (e = b; e < c; ) (b = new ke(a.doc, u(a.doc, e), e)), (e += b.size), d.push(b);
         return d;
     }
     function Q(a, b, c, d) {
@@ -2257,17 +2005,11 @@
         a.curOp.viewChanged = !0;
         if (b >= e.viewTo) ra && Mc(a.doc, b) < e.viewTo && qa(a);
         else if (c <= e.viewFrom)
-            ra && Ld(a.doc, c + d) > e.viewFrom
-                ? qa(a)
-                : ((e.viewFrom += d), (e.viewTo += d));
+            ra && Ld(a.doc, c + d) > e.viewFrom ? qa(a) : ((e.viewFrom += d), (e.viewTo += d));
         else if (b <= e.viewFrom && c >= e.viewTo) qa(a);
         else if (b <= e.viewFrom) {
             var f = dc(a, c, c + d, 1);
-            f
-                ? ((e.view = e.view.slice(f.index)),
-                  (e.viewFrom = f.lineN),
-                  (e.viewTo += d))
-                : qa(a);
+            f ? ((e.view = e.view.slice(f.index)), (e.viewFrom = f.lineN), (e.viewTo += d)) : qa(a);
         } else if (c >= e.viewTo)
             (f = dc(a, b, b, -1))
                 ? ((e.view = e.view.slice(0, f.index)), (e.viewTo = f.lineN))
@@ -2284,24 +2026,17 @@
                 : qa(a);
         }
         if ((a = e.externalMeasured))
-            c < a.lineN
-                ? (a.lineN += d)
-                : b < a.lineN + a.size && (e.externalMeasured = null);
+            c < a.lineN ? (a.lineN += d) : b < a.lineN + a.size && (e.externalMeasured = null);
     }
     function na(a, b, c) {
         a.curOp.viewChanged = !0;
         var d = a.display,
             e = a.display.externalMeasured;
-        e &&
-            b >= e.lineN &&
-            b < e.lineN + e.size &&
-            (d.externalMeasured = null);
+        e && b >= e.lineN && b < e.lineN + e.size && (d.externalMeasured = null);
         b < d.viewFrom ||
             b >= d.viewTo ||
             ((a = d.view[Ca(a, b)]),
-            null != a.node &&
-                ((a = a.changes || (a.changes = [])),
-                -1 == D(a, c) && a.push(c)));
+            null != a.node && ((a = a.changes || (a.changes = [])), -1 == D(a, c) && a.push(c)));
     }
     function qa(a) {
         a.display.viewFrom = a.display.viewTo = a.doc.first;
@@ -2370,11 +2105,9 @@
                           !c ||
                               hd(a, b, 'gutterClick', !0, L) ||
                               oa(a.display, b) ||
-                              (O(b),
-                              (b = a.findWordAt(c)),
-                              Ub(a.doc, b.anchor, b.head));
+                              (O(b), (b = a.findWordAt(c)), Ub(a.doc, b.anchor, b.head));
                       }
-                  })
+                  }),
               )
             : v(d.scroller, 'dblclick', function (b) {
                   ja(a, b) || O(b);
@@ -2407,13 +2140,7 @@
         });
         v(d.scroller, 'touchend', function (e) {
             var f = d.activeTouch;
-            if (
-                f &&
-                !oa(d, e) &&
-                null != f.left &&
-                !f.moved &&
-                300 > new Date() - f.start
-            ) {
+            if (f && !oa(d, e) && null != f.left && !f.moved && 300 > new Date() - f.start) {
                 var g = a.coordsChar(d.activeTouch, 'page'),
                     f =
                         !f.prev || c(f, f.prev)
@@ -2430,9 +2157,7 @@
         v(d.scroller, 'touchcancel', b);
         v(d.scroller, 'scroll', function () {
             d.scroller.clientHeight &&
-                (lb(a, d.scroller.scrollTop),
-                Ma(a, d.scroller.scrollLeft, !0),
-                K(a, 'scroll', a));
+                (lb(a, d.scroller.scrollTop), Ma(a, d.scroller.scrollLeft, !0), K(a, 'scroll', a));
         });
         v(d.scroller, 'mousewheel', function (b) {
             re(a, b);
@@ -2448,20 +2173,14 @@
                 ja(a, b) || jd(b);
             },
             start: function (b) {
-                if (B && (!a.state.draggingText || 100 > +new Date() - se))
-                    jd(b);
+                if (B && (!a.state.draggingText || 100 > +new Date() - se)) jd(b);
                 else if (
                     !ja(a, b) &&
                     !oa(a.display, b) &&
                     (b.dataTransfer.setData('Text', a.getSelection()),
                     b.dataTransfer.setDragImage && !te)
                 ) {
-                    var c = t(
-                        'img',
-                        null,
-                        null,
-                        'position: fixed; left: 0; top: 0;'
-                    );
+                    var c = t('img', null, null, 'position: fixed; left: 0; top: 0;');
                     c.src =
                         'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw\x3d\x3d';
                     ba &&
@@ -2485,10 +2204,7 @@
     }
     function If(a) {
         var b = a.display;
-        if (
-            b.lastWrapHeight != b.wrapper.clientHeight ||
-            b.lastWrapWidth != b.wrapper.clientWidth
-        )
+        if (b.lastWrapHeight != b.wrapper.clientHeight || b.lastWrapWidth != b.wrapper.clientWidth)
             (b.cachedCharWidth = b.cachedTextHeight = b.cachedPaddingH = null),
                 (b.scrollbarsClipped = !1),
                 a.setSize();
@@ -2497,19 +2213,14 @@
         for (var c = b.target || b.srcElement; c != a.wrapper; c = c.parentNode)
             if (
                 !c ||
-                (1 == c.nodeType &&
-                    'true' == c.getAttribute('cm-ignore-events')) ||
+                (1 == c.nodeType && 'true' == c.getAttribute('cm-ignore-events')) ||
                 (c.parentNode == a.sizer && c != a.mover)
             )
                 return !0;
     }
     function Ua(a, b, c, d) {
         var e = a.display;
-        if (
-            !c &&
-            'true' == (b.target || b.srcElement).getAttribute('cm-not-content')
-        )
-            return null;
+        if (!c && 'true' == (b.target || b.srcElement).getAttribute('cm-not-content')) return null;
         var f, g;
         c = e.lineSpace.getBoundingClientRect();
         try {
@@ -2523,13 +2234,7 @@
             1 == b.xRel &&
             (k = u(a.doc, b.line).text).length == b.ch &&
             ((d = aa(k, k.length, a.options.tabSize) - k.length),
-            (b = r(
-                b.line,
-                Math.max(
-                    0,
-                    Math.round((f - ie(a.display).left) / gb(a.display)) - d
-                )
-            )));
+            (b = r(b.line, Math.max(0, Math.round((f - ie(a.display).left) / gb(a.display)) - d))));
         return b;
     }
     function pe(a) {
@@ -2546,9 +2251,7 @@
                 window.focus();
                 switch (xe(a)) {
                     case 1:
-                        c
-                            ? Jf(this, a, c)
-                            : (a.target || a.srcElement) == b.scroller && O(a);
+                        c ? Jf(this, a, c) : (a.target || a.srcElement) == b.scroller && O(a);
                         break;
                     case 2:
                         J && (this.state.lastMiddleDown = +new Date());
@@ -2592,9 +2295,7 @@
                 a.state.draggingText = !1;
                 ka(document, 'mouseup', g);
                 ka(e.scroller, 'drop', g);
-                10 >
-                    Math.abs(b.clientX - h.clientX) +
-                        Math.abs(b.clientY - h.clientY) &&
+                10 > Math.abs(b.clientX - h.clientX) + Math.abs(b.clientY - h.clientY) &&
                     (O(h),
                     !d && +new Date() - 200 < f && Ub(a.doc, c),
                     J || (B && 9 == C)
@@ -2622,10 +2323,7 @@
                             k = Math.min(g, h),
                             g = Math.max(g, h),
                             h = Math.min(c.line, b.line),
-                            q = Math.min(
-                                a.lastLine(),
-                                Math.max(c.line, b.line)
-                            );
+                            q = Math.min(a.lastLine(), Math.max(c.line, b.line));
                         h <= q;
                         h++
                     ) {
@@ -2633,8 +2331,7 @@
                             t = ye(E, k, f);
                         k == g
                             ? e.push(new z(r(h, t), r(h, t)))
-                            : E.length > t &&
-                              e.push(new z(r(h, t), r(h, ye(E, g, f))));
+                            : E.length > t && e.push(new z(r(h, t), r(h, ye(E, g, f))));
                     }
                     e.length || e.push(new z(c, c));
                     H(l, Z(n.ranges.slice(0, p).concat(e), p), {
@@ -2650,10 +2347,7 @@
                             ((b =
                                 'double' == d
                                     ? a.findWordAt(b)
-                                    : new z(
-                                          r(b.line, 0),
-                                          w(l, r(b.line + 1, 0))
-                                      )),
+                                    : new z(r(b.line, 0), w(l, r(b.line + 1, 0)))),
                             0 < y(b.anchor, f)
                                 ? ((k = b.head), (f = Qb(e.from(), b.anchor)))
                                 : ((k = b.anchor), (f = Pb(e.to(), b.head)))),
@@ -2674,17 +2368,16 @@
                             G(a, function () {
                                 A == c && g(b);
                             }),
-                            150
+                            150,
                         );
                 } else {
-                    var m =
-                        b.clientY < B.top ? -20 : b.clientY > B.bottom ? 20 : 0;
+                    var m = b.clientY < B.top ? -20 : b.clientY > B.bottom ? 20 : 0;
                     m &&
                         setTimeout(
                             G(a, function () {
                                 A == c && ((k.scroller.scrollTop += m), g(b));
                             }),
-                            50
+                            50,
                         );
                 }
         }
@@ -2706,29 +2399,20 @@
         e && !b.shiftKey
             ? ((p = l.sel.contains(c)), (m = -1 < p ? q[p] : new z(c, c)))
             : ((m = l.sel.primary()), (p = l.sel.primIndex));
-        if (b.altKey)
-            (d = 'rect'),
-                e || (m = new z(c, c)),
-                (c = Ua(a, b, !0, !0)),
-                (p = -1);
+        if (b.altKey) (d = 'rect'), e || (m = new z(c, c)), (c = Ua(a, b, !0, !0)), (p = -1);
         else if ('double' == d) {
             var t = a.findWordAt(c);
             m = a.display.shift || l.extend ? rb(l, m, t.anchor, t.head) : t;
         } else
             'triple' == d
                 ? ((t = new z(r(c.line, 0), w(l, r(c.line + 1, 0)))),
-                  (m =
-                      a.display.shift || l.extend
-                          ? rb(l, m, t.anchor, t.head)
-                          : t))
+                  (m = a.display.shift || l.extend ? rb(l, m, t.anchor, t.head) : t))
                 : (m = rb(l, m, c));
         e
             ? -1 == p
-                ? ((p = q.length),
-                  H(l, Z(q.concat([m]), p), { scroll: !1, origin: '*mouse' }))
+                ? ((p = q.length), H(l, Z(q.concat([m]), p), { scroll: !1, origin: '*mouse' }))
                 : 1 < q.length && q[p].empty() && 'single' == d && !b.shiftKey
-                ? (H(l, Z(q.slice(0, p).concat(q.slice(p + 1)), 0)),
-                  (n = l.sel))
+                ? (H(l, Z(q.slice(0, p).concat(q.slice(p + 1)), 0)), (n = l.sel))
                 : Xc(l, p, m, kd)
             : ((p = 0), H(l, new la([m], 0), kd), (n = l.sel));
         var x = c,
@@ -2748,8 +2432,7 @@
         } catch (h) {
             return !1;
         }
-        if (f >= Math.floor(a.display.gutters.getBoundingClientRect().right))
-            return !1;
+        if (f >= Math.floor(a.display.gutters.getBoundingClientRect().right)) return !1;
         d && O(b);
         d = a.display;
         var k = d.lineDiv.getBoundingClientRect();
@@ -2758,11 +2441,7 @@
         for (k = 0; k < a.options.gutters.length; ++k) {
             var l = d.gutters.childNodes[k];
             if (l && l.getBoundingClientRect().right >= f)
-                return (
-                    (f = Ba(a.doc, g)),
-                    e(a, c, a, f, a.options.gutters[k], b),
-                    ld(b)
-                );
+                return (f = Ba(a.doc, g)), e(a, c, a, f, a.options.gutters[k], b), ld(b);
         }
     }
     function Hf(a) {
@@ -2804,21 +2483,12 @@
                 else
                     try {
                         if ((f = a.dataTransfer.getData('Text'))) {
-                            if (
-                                b.state.draggingText &&
-                                (W ? !a.altKey : !a.ctrlKey)
-                            )
+                            if (b.state.draggingText && (W ? !a.altKey : !a.ctrlKey))
                                 var k = b.listSelections();
                             Vb(b.doc, ga(c, c));
                             if (k)
                                 for (h = 0; h < k.length; ++h)
-                                    wb(
-                                        b.doc,
-                                        '',
-                                        k[h].anchor,
-                                        k[h].head,
-                                        'drag'
-                                    );
+                                    wb(b.doc, '', k[h].anchor, k[h].head, 'drag');
                             b.replaceSelection(f, 'around', 'paste');
                             b.display.input.focus();
                         }
@@ -2829,22 +2499,17 @@
         2 > Math.abs(a.doc.scrollTop - b) ||
             ((a.doc.scrollTop = b),
             wa || Pc(a, { top: b }),
-            a.display.scroller.scrollTop != b &&
-                (a.display.scroller.scrollTop = b),
+            a.display.scroller.scrollTop != b && (a.display.scroller.scrollTop = b),
             a.display.scrollbars.setScrollTop(b),
             wa && Pc(a),
             fb(a, 100));
     }
     function Ma(a, b, c) {
         (c ? b == a.doc.scrollLeft : 2 > Math.abs(a.doc.scrollLeft - b)) ||
-            ((b = Math.min(
-                b,
-                a.display.scroller.scrollWidth - a.display.scroller.clientWidth
-            )),
+            ((b = Math.min(b, a.display.scroller.scrollWidth - a.display.scroller.clientWidth)),
             (a.doc.scrollLeft = b),
             Bc(a),
-            a.display.scroller.scrollLeft != b &&
-                (a.display.scroller.scrollLeft = b),
+            a.display.scroller.scrollLeft != b && (a.display.scroller.scrollLeft = b),
             a.display.scrollbars.setScrollLeft(b));
     }
     function re(a, b) {
@@ -2853,10 +2518,7 @@
             c = c.y,
             e = a.display,
             f = e.scroller;
-        if (
-            (d && f.scrollWidth > f.clientWidth) ||
-            (c && f.scrollHeight > f.clientHeight)
-        ) {
+        if ((d && f.scrollWidth > f.clientWidth) || (c && f.scrollHeight > f.clientHeight)) {
             if (c && W && J) {
                 var g = b.target,
                     h = e.view;
@@ -2900,22 +2562,10 @@
                           a,
                           Math.max(
                               0,
-                              Math.min(
-                                  f.scrollTop + c * R,
-                                  f.scrollHeight - f.clientHeight
-                              )
-                          )
+                              Math.min(f.scrollTop + c * R, f.scrollHeight - f.clientHeight),
+                          ),
                       ),
-                  Ma(
-                      a,
-                      Math.max(
-                          0,
-                          Math.min(
-                              f.scrollLeft + d * R,
-                              f.scrollWidth - f.clientWidth
-                          )
-                      )
-                  ),
+                  Ma(a, Math.max(0, Math.min(f.scrollLeft + d * R, f.scrollWidth - f.clientWidth))),
                   O(b),
                   (e.wheelStartX = null));
         }
@@ -2926,9 +2576,7 @@
         var d = a.display.shift,
             e = !1;
         try {
-            Rb(a) && (a.state.suppressEdits = !0),
-                c && (a.display.shift = !1),
-                (e = b(a) != Ae);
+            Rb(a) && (a.state.suppressEdits = !0), c && (a.display.shift = !1), (e = b(a) != Ae);
         } finally {
             (a.display.shift = d), (a.state.suppressEdits = !1);
         }
@@ -2949,8 +2597,7 @@
         if (e) {
             if (Pf(b)) return 'handled';
             Qf.set(50, function () {
-                a.state.keySeq == e &&
-                    ((a.state.keySeq = null), a.display.input.reset());
+                a.state.keySeq == e && ((a.state.keySeq = null), a.display.input.reset());
             });
             b = e + ' ' + b;
         }
@@ -2968,8 +2615,7 @@
                       return hc(a, b, !0);
                   }) ||
                   jc(a, c, b, function (b) {
-                      if ('string' == typeof b ? /^go[A-Z]/.test(b) : b.motion)
-                          return hc(a, b);
+                      if ('string' == typeof b ? /^go[A-Z]/.test(b) : b.motion) return hc(a, b);
                   })
                 : jc(a, c, b, function (b) {
                       return hc(a, b);
@@ -2995,11 +2641,7 @@
                     !Ce &&
                     (W ? a.metaKey : a.ctrlKey) &&
                     this.replaceSelection('', null, 'cut'));
-            18 != b ||
-                /\bCodeMirror-crosshair\b/.test(
-                    this.display.lineDiv.className
-                ) ||
-                Tf(this);
+            18 != b || /\bCodeMirror-crosshair\b/.test(this.display.lineDiv.className) || Tf(this);
         }
     }
     function Tf(a) {
@@ -3019,30 +2661,19 @@
         ja(this, a);
     }
     function we(a) {
-        if (
-            !(
-                oa(this.display, a) ||
-                ja(this, a) ||
-                (a.ctrlKey && !a.altKey) ||
-                (W && a.metaKey)
-            )
-        ) {
+        if (!(oa(this.display, a) || ja(this, a) || (a.ctrlKey && !a.altKey) || (W && a.metaKey))) {
             var b = a.keyCode,
                 c = a.charCode;
             if (ba && b == md) (md = null), O(a);
             else if (!ba || (a.which && !(10 > a.which)) || !Be(this, a))
-                if (
-                    ((b = String.fromCharCode(null == c ? b : c)),
-                    !Sf(this, a, b))
-                )
+                if (((b = String.fromCharCode(null == c ? b : c)), !Sf(this, a, b)))
                     this.display.input.onKeyPress(a);
         }
     }
     function Kf(a) {
         a.state.delayingBlurEvent = !0;
         setTimeout(function () {
-            a.state.delayingBlurEvent &&
-                ((a.state.delayingBlurEvent = !1), db(a));
+            a.state.delayingBlurEvent && ((a.state.delayingBlurEvent = !1), db(a));
         }, 100);
     }
     function xc(a) {
@@ -3076,9 +2707,7 @@
     function qe(a, b) {
         var c;
         (c = oa(a.display, b)) ||
-            (c = S(a, 'gutterContextMenu')
-                ? hd(a, b, 'gutterContextMenu', !1, K)
-                : !1);
+            (c = S(a, 'gutterContextMenu') ? hd(a, b, 'gutterContextMenu', !1, K) : !1);
         if (!c) a.display.input.onContextMenu(b);
     }
     function De(a, b) {
@@ -3121,9 +2750,7 @@
             });
         K(a, 'beforeChange', a, b);
         a.cm && K(a.cm, 'beforeChange', a.cm, b);
-        return b.canceled
-            ? null
-            : { from: b.from, to: b.to, text: b.text, origin: b.origin };
+        return b.canceled ? null : { from: b.from, to: b.to, text: b.text, origin: b.origin };
     }
     function Oa(a, b, c) {
         if (a.cm) {
@@ -3148,9 +2775,7 @@
             yb(a, b, c, od(a, b));
             var d = [];
             Ga(a, function (a, c) {
-                c ||
-                    -1 != D(d, a.history) ||
-                    (Je(a.history, b), d.push(a.history));
+                c || -1 != D(d, a.history) || (Je(a.history, b), d.push(a.history));
                 yb(a, b, null, od(a, b));
             });
         }
@@ -3164,8 +2789,7 @@
                     g = 'undo' == b ? d.done : d.undone,
                     h = 'undo' == b ? d.undone : d.done,
                     k = 0;
-                k < g.length &&
-                ((e = g[k]), c ? !e.ranges || e.equals(a.sel) : e.ranges);
+                k < g.length && ((e = g[k]), c ? !e.ranges || e.equals(a.sel) : e.ranges);
                 k++
             );
             if (k != g.length) {
@@ -3193,14 +2817,10 @@
                     c.push(pd(a, l));
                     f = k ? nd(a, l) : A(g);
                     yb(a, l, f, Ke(a, l));
-                    !k &&
-                        a.cm &&
-                        a.cm.scrollIntoView({ from: l.from, to: ta(l) });
+                    !k && a.cm && a.cm.scrollIntoView({ from: l.from, to: ta(l) });
                     var m = [];
                     Ga(a, function (a, b) {
-                        b ||
-                            -1 != D(m, a.history) ||
-                            (Je(a.history, l), m.push(a.history));
+                        b || -1 != D(m, a.history) || (Je(a.history, l), m.push(a.history));
                         yb(a, l, null, Ke(a, l));
                     });
                 }
@@ -3213,24 +2833,19 @@
             ((a.first += b),
             (a.sel = new la(
                 ob(a.sel.ranges, function (a) {
-                    return new z(
-                        r(a.anchor.line + b, a.anchor.ch),
-                        r(a.head.line + b, a.head.ch)
-                    );
+                    return new z(r(a.anchor.line + b, a.anchor.ch), r(a.head.line + b, a.head.ch));
                 }),
-                a.sel.primIndex
+                a.sel.primIndex,
             )),
             a.cm)
         ) {
             Q(a.cm, a.first, a.first - b, b);
-            for (var c = a.cm.display, d = c.viewFrom; d < c.viewTo; d++)
-                na(a.cm, d, 'gutter');
+            for (var c = a.cm.display, d = c.viewFrom; d < c.viewTo; d++) na(a.cm, d, 'gutter');
         }
     }
     function yb(a, b, c, d) {
         if (a.cm && !a.cm.curOp) return G(a.cm, yb)(a, b, c, d);
-        if (b.to.line < a.first)
-            Le(a, b.text.length - 1 - (b.to.line - b.from.line));
+        if (b.to.line < a.first) Le(a, b.text.length - 1 - (b.to.line - b.from.line));
         else if (!(b.from.line > a.lastLine())) {
             if (b.from.line < a.first) {
                 var e = b.text.length - 1 - (a.first - b.from.line);
@@ -3274,10 +2889,7 @@
             (d.iter(k, f.line + b.text.length, function (a) {
                 var b = Kb(a);
                 b > e.maxLineLength &&
-                    ((e.maxLine = a),
-                    (e.maxLineLength = b),
-                    (e.maxLineChanged = !0),
-                    (h = !1));
+                    ((e.maxLine = a), (e.maxLineLength = b), (e.maxLineChanged = !0), (h = !1));
             }),
             h && (a.curOp.updateMaxLine = !0));
         d.frontier = Math.min(d.frontier, f.line);
@@ -3315,10 +2927,7 @@
         var f = a.display,
             g = xa(a.display);
         0 > c && (c = 0);
-        var h =
-                a.curOp && null != a.curOp.scrollTop
-                    ? a.curOp.scrollTop
-                    : f.scroller.scrollTop,
+        var h = a.curOp && null != a.curOp.scrollTop ? a.curOp.scrollTop : f.scroller.scrollTop,
             k = Nc(a),
             l = {};
         e - c > k && (e = c + k);
@@ -3327,12 +2936,8 @@
             g = e > m - g;
         c < h
             ? (l.scrollTop = p ? 0 : c)
-            : e > h + k &&
-              ((c = Math.min(c, (g ? m : e) - k)), c != h && (l.scrollTop = c));
-        h =
-            a.curOp && null != a.curOp.scrollLeft
-                ? a.curOp.scrollLeft
-                : f.scroller.scrollLeft;
+            : e > h + k && ((c = Math.min(c, (g ? m : e) - k)), c != h && (l.scrollTop = c));
+        h = a.curOp && null != a.curOp.scrollLeft ? a.curOp.scrollLeft : f.scroller.scrollLeft;
         a = pa(a) - (a.options.fixedGutter ? f.gutters.offsetWidth : 0);
         (f = d - b > a) && (d = b + a);
         10 > b
@@ -3346,22 +2951,17 @@
         (null == b && null == c) || mc(a);
         null != b &&
             (a.curOp.scrollLeft =
-                (null == a.curOp.scrollLeft
-                    ? a.doc.scrollLeft
-                    : a.curOp.scrollLeft) + b);
+                (null == a.curOp.scrollLeft ? a.doc.scrollLeft : a.curOp.scrollLeft) + b);
         null != c &&
             (a.curOp.scrollTop =
-                (null == a.curOp.scrollTop
-                    ? a.doc.scrollTop
-                    : a.curOp.scrollTop) + c);
+                (null == a.curOp.scrollTop ? a.doc.scrollTop : a.curOp.scrollTop) + c);
     }
     function Pa(a) {
         mc(a);
         var b = a.getCursor(),
             c = b,
             d = b;
-        a.options.lineWrapping ||
-            ((c = b.ch ? r(b.line, b.ch - 1) : b), (d = r(b.line, b.ch + 1)));
+        a.options.lineWrapping || ((c = b.ch ? r(b.line, b.ch - 1) : b), (d = r(b.line, b.ch + 1)));
         a.curOp.scrollToPos = {
             from: c,
             to: d,
@@ -3380,7 +2980,7 @@
                     Math.min(c.left, d.left),
                     Math.min(c.top, d.top) - b.margin,
                     Math.max(c.right, d.right),
-                    Math.max(c.bottom, d.bottom) + b.margin
+                    Math.max(c.bottom, d.bottom) + b.margin,
                 );
             a.scrollTo(b.scrollLeft, b.scrollTop);
         }
@@ -3399,8 +2999,7 @@
         if (!d && !/\S/.test(h.text)) (m = 0), (c = 'not');
         else if (
             'smart' == c &&
-            ((m = e.mode.indent(f, h.text.slice(l.length), h.text)),
-            m == Ae || 150 < m)
+            ((m = e.mode.indent(f, h.text.slice(l.length), h.text)), m == Ae || 150 < m)
         ) {
             if (!d) return;
             c = 'prev';
@@ -3415,20 +3014,11 @@
         m = Math.max(0, m);
         c = '';
         d = 0;
-        if (a.options.indentWithTabs)
-            for (a = Math.floor(m / g); a; --a) (d += g), (c += '\t');
+        if (a.options.indentWithTabs) for (a = Math.floor(m / g); a; --a) (d += g), (c += '\t');
         d < m && (c += Ne(m - d));
-        if (c != l)
-            return (
-                wb(e, c, r(b, 0), r(b, l.length), '+input'),
-                (h.stateAfter = null),
-                !0
-            );
+        if (c != l) return wb(e, c, r(b, 0), r(b, l.length), '+input'), (h.stateAfter = null), !0;
         for (a = 0; a < e.sel.ranges.length; a++)
-            if (
-                ((g = e.sel.ranges[a]),
-                g.head.line == b && g.head.ch < l.length)
-            ) {
+            if (((g = e.sel.ranges[a]), g.head.line == b && g.head.ch < l.length)) {
                 d = r(b, l.length);
                 Xc(e, a, new z(d, d));
                 break;
@@ -3456,8 +3046,7 @@
             d.push(f);
         }
         T(a, function () {
-            for (var b = d.length - 1; 0 <= b; b--)
-                wb(a.doc, '', d[b].from, d[b].to, '+delete');
+            for (var b = d.length - 1; 0 <= b; b--) wb(a.doc, '', d[b].from, d[b].to, '+delete');
             Pa(a);
         });
     }
@@ -3488,13 +3077,7 @@
             b = a.cm && a.cm.getHelper(b, 'wordChars');
             for (var n = !0; !(0 > c) || f(!n); n = !1) {
                 var q = l.text.charAt(h) || '\n',
-                    q = oc(q, b)
-                        ? 'w'
-                        : d && '\n' == q
-                        ? 'n'
-                        : !d || /\s/.test(q)
-                        ? null
-                        : 'p';
+                    q = oc(q, b) ? 'w' : d && '\n' == q ? 'n' : !d || /\s/.test(q) ? null : 'p';
                 !d || n || q || (q = 's');
                 if (p && p != q) {
                     0 > c && ((c = 1), f());
@@ -3515,7 +3098,7 @@
         'page' == d
             ? ((g = Math.min(
                   a.display.wrapper.clientHeight,
-                  window.innerHeight || document.documentElement.clientHeight
+                  window.innerHeight || document.documentElement.clientHeight,
               )),
               (g = b.top + c * (g - (0 > c ? 1.5 : 0.5) * xa(a.display))))
             : 'line' == d && (g = 0 < c ? b.bottom + 3 : b.top - 3);
@@ -3569,36 +3152,21 @@
         f.replacedWith &&
             ((f.collapsed = !0),
             (f.widgetNode = t('span', [f.replacedWith], 'CodeMirror-widget')),
-            d.handleMouseEvents ||
-                f.widgetNode.setAttribute('cm-ignore-events', 'true'),
+            d.handleMouseEvents || f.widgetNode.setAttribute('cm-ignore-events', 'true'),
             d.insertLeft && (f.widgetNode.insertLeft = !0));
         if (f.collapsed) {
-            if (
-                Qe(a, b.line, b, c, f) ||
-                (b.line != c.line && Qe(a, c.line, b, c, f))
-            )
-                throw Error(
-                    'Inserting collapsed marker partially overlapping an existing one'
-                );
+            if (Qe(a, b.line, b, c, f) || (b.line != c.line && Qe(a, c.line, b, c, f)))
+                throw Error('Inserting collapsed marker partially overlapping an existing one');
             ra = !0;
         }
-        f.addToHistory &&
-            Ie(a, { from: b, to: c, origin: 'markText' }, a.sel, NaN);
+        f.addToHistory && Ie(a, { from: b, to: c, origin: 'markText' }, a.sel, NaN);
         var g = b.line,
             h = a.cm,
             k;
         a.iter(g, c.line + 1, function (a) {
-            h &&
-                f.collapsed &&
-                !h.options.lineWrapping &&
-                ia(a) == h.display.maxLine &&
-                (k = !0);
+            h && f.collapsed && !h.options.lineWrapping && ia(a) == h.display.maxLine && (k = !0);
             f.collapsed && g != b.line && ca(a, 0);
-            var d = new qc(
-                f,
-                g == b.line ? b.ch : null,
-                g == c.line ? c.ch : null
-            );
+            var d = new qc(f, g == b.line ? b.ch : null, g == c.line ? c.ch : null);
             a.markedSpans = a.markedSpans ? a.markedSpans.concat([d]) : [d];
             d.marker.attachLine(a);
             ++g;
@@ -3612,20 +3180,12 @@
                 f.clear();
             });
         f.readOnly &&
-            ((Ge = !0),
-            (a.history.done.length || a.history.undone.length) &&
-                a.clearHistory());
+            ((Ge = !0), (a.history.done.length || a.history.undone.length) && a.clearHistory());
         f.collapsed && ((f.id = ++sd), (f.atomic = !0));
         if (h) {
             k && (h.curOp.updateMaxLine = !0);
             if (f.collapsed) Q(h, b.line, c.line + 1);
-            else if (
-                f.className ||
-                f.title ||
-                f.startStyle ||
-                f.endStyle ||
-                f.css
-            )
+            else if (f.className || f.title || f.startStyle || f.endStyle || f.css)
                 for (d = b.line; d <= c.line; d++) na(h, d, 'text');
             f.atomic && ge(h.doc);
             L(h, 'markerAdded', h, f);
@@ -3641,20 +3201,15 @@
         Ga(a, function (a) {
             h && (d.widgetNode = h.cloneNode(!0));
             f.push(Wa(a, w(a, b), w(a, c), d, e));
-            for (var l = 0; l < a.linked.length; ++l)
-                if (a.linked[l].isParent) return;
+            for (var l = 0; l < a.linked.length; ++l) if (a.linked[l].isParent) return;
             g = A(f);
         });
         return new rc(f, g);
     }
     function Re(a) {
-        return a.findMarks(
-            r(a.first, 0),
-            a.clipPos(r(a.lastLine())),
-            function (a) {
-                return a.parent;
-            }
-        );
+        return a.findMarks(r(a.first, 0), a.clipPos(r(a.lastLine())), function (a) {
+            return a.parent;
+        });
     }
     function Yf(a) {
         for (var b = 0; b < a.length; b++) {
@@ -3665,8 +3220,7 @@
             });
             for (var e = 0; e < c.markers.length; e++) {
                 var f = c.markers[e];
-                -1 == D(d, f.doc) &&
-                    ((f.parent = null), c.markers.splice(e--, 1));
+                -1 == D(d, f.doc) && ((f.parent = null), c.markers.splice(e--, 1));
             }
         }
     }
@@ -3697,15 +3251,9 @@
                 if (
                     null == l.from ||
                     (m.inclusiveLeft ? l.from <= e : l.from < e) ||
-                    !(
-                        l.from != e ||
-                        'bookmark' != m.type ||
-                        (g && l.marker.insertLeft)
-                    )
+                    !(l.from != e || 'bookmark' != m.type || (g && l.marker.insertLeft))
                 ) {
-                    var p =
-                        null == l.to ||
-                        (m.inclusiveRight ? l.to >= e : l.to > e);
+                    var p = null == l.to || (m.inclusiveRight ? l.to >= e : l.to > e);
                     (k || (k = [])).push(new qc(m, l.from, p ? null : l.to));
                 }
             }
@@ -3717,19 +3265,11 @@
                     (l = k.marker),
                     null == k.to ||
                         (l.inclusiveRight ? k.to >= f : k.to > f) ||
-                        (k.from == f &&
-                            'bookmark' == l.type &&
-                            (!g || k.marker.insertLeft)))
+                        (k.from == f && 'bookmark' == l.type && (!g || k.marker.insertLeft)))
                 )
-                    (m =
-                        null == k.from ||
-                        (l.inclusiveLeft ? k.from <= f : k.from < f)),
+                    (m = null == k.from || (l.inclusiveLeft ? k.from <= f : k.from < f)),
                         (n || (n = [])).push(
-                            new qc(
-                                l,
-                                m ? null : k.from - f,
-                                null == k.to ? null : k.to - f
-                            )
+                            new qc(l, m ? null : k.from - f, null == k.to ? null : k.to - f),
                         );
         d = n;
         g = 1 == b.text.length;
@@ -3745,8 +3285,7 @@
                 (h = d[f]),
                     null != h.to && (h.to += n),
                     null == h.from
-                        ? ((k = zb(c, h.marker)),
-                          k || ((h.from = n), g && (c || (c = [])).push(h)))
+                        ? ((k = zb(c, h.marker)), k || ((h.from = n), g && (c || (c = [])).push(h)))
                         : ((h.from += n), g && (c || (c = [])).push(h));
         c && (c = Se(c));
         d && d != c && (d = Se(d));
@@ -3756,8 +3295,7 @@
                 q;
             if (0 < g && c)
                 for (f = 0; f < c.length; ++f)
-                    null == c[f].to &&
-                        (q || (q = [])).push(new qc(c[f].marker, null, null));
+                    null == c[f].to && (q || (q = [])).push(new qc(c[f].marker, null, null));
             for (f = 0; f < g; ++f) e.push(q);
             e.push(d);
         }
@@ -3766,10 +3304,7 @@
     function Se(a) {
         for (var b = 0; b < a.length; ++b) {
             var c = a[b];
-            null != c.from &&
-                c.from == c.to &&
-                !1 !== c.marker.clearWhenEmpty &&
-                a.splice(b--, 1);
+            null != c.from && c.from == c.to && !1 !== c.marker.clearWhenEmpty && a.splice(b--, 1);
         }
         return a.length ? a : null;
     }
@@ -3802,9 +3337,7 @@
             if (a.markedSpans)
                 for (var b = 0; b < a.markedSpans.length; ++b) {
                     var c = a.markedSpans[b].marker;
-                    !c.readOnly ||
-                        (d && -1 != D(d, c)) ||
-                        (d || (d = [])).push(c);
+                    !c.readOnly || (d && -1 != D(d, c)) || (d || (d = [])).push(c);
                 }
         });
         if (!d) return null;
@@ -3817,10 +3350,8 @@
                     var h = [f, 1],
                         k = y(g.from, e.from),
                         l = y(g.to, e.to);
-                    (0 > k || (!c.inclusiveLeft && !k)) &&
-                        h.push({ from: g.from, to: e.from });
-                    (0 < l || (!c.inclusiveRight && !l)) &&
-                        h.push({ from: e.to, to: g.to });
+                    (0 > k || (!c.inclusiveLeft && !k)) && h.push({ from: g.from, to: e.from });
+                    (0 < l || (!c.inclusiveRight && !l)) && h.push({ from: e.to, to: g.to });
                     a.splice.apply(a, h);
                     f += h.length - 1;
                 }
@@ -3846,14 +3377,10 @@
         if (0 != c) return c;
         var c = a.find(),
             d = b.find(),
-            e =
-                y(c.from, d.from) ||
-                (a.inclusiveLeft ? -1 : 0) - (b.inclusiveLeft ? -1 : 0);
+            e = y(c.from, d.from) || (a.inclusiveLeft ? -1 : 0) - (b.inclusiveLeft ? -1 : 0);
         return e
             ? -e
-            : (c =
-                  y(c.to, d.to) ||
-                  (a.inclusiveRight ? 1 : 0) - (b.inclusiveRight ? 1 : 0))
+            : (c = y(c.to, d.to) || (a.inclusiveRight ? 1 : 0) - (b.inclusiveRight ? 1 : 0))
             ? c
             : b.id - a.id;
     }
@@ -3878,22 +3405,16 @@
                     var g = f.marker.find(0),
                         h =
                             y(g.from, c) ||
-                            (f.marker.inclusiveLeft ? -1 : 0) -
-                                (e.inclusiveLeft ? -1 : 0),
+                            (f.marker.inclusiveLeft ? -1 : 0) - (e.inclusiveLeft ? -1 : 0),
                         k =
                             y(g.to, d) ||
-                            (f.marker.inclusiveRight ? 1 : 0) -
-                                (e.inclusiveRight ? 1 : 0);
+                            (f.marker.inclusiveRight ? 1 : 0) - (e.inclusiveRight ? 1 : 0);
                     if (
                         !((0 <= h && 0 >= k) || (0 >= h && 0 <= k)) &&
                         ((0 >= h &&
-                            (0 < y(g.to, c) ||
-                                (f.marker.inclusiveRight &&
-                                    e.inclusiveLeft))) ||
+                            (0 < y(g.to, c) || (f.marker.inclusiveRight && e.inclusiveLeft))) ||
                             (0 <= h &&
-                                (0 > y(g.from, d) ||
-                                    (f.marker.inclusiveLeft &&
-                                        e.inclusiveRight))))
+                                (0 > y(g.from, d) || (f.marker.inclusiveLeft && e.inclusiveRight))))
                     )
                         return !0;
                 }
@@ -3933,10 +3454,7 @@
     }
     function td(a, b, c) {
         if (null == c.to)
-            return (
-                (b = c.marker.find(1, !0)),
-                td(a, b.line, zb(b.line.markedSpans, c.marker))
-            );
+            return (b = c.marker.find(1, !0)), td(a, b.line, zb(b.line.markedSpans, c.marker));
         if (c.marker.inclusiveRight && c.to == b.text.length) return !0;
         for (var d, e = 0; e < b.markedSpans.length; ++e)
             if (
@@ -3956,10 +3474,8 @@
         if (!b) return 0;
         if (!Wc(document.body, a.node)) {
             var c = 'position: relative;';
-            a.coverGutter &&
-                (c += 'margin-left: -' + b.display.gutters.offsetWidth + 'px;');
-            a.noHScroll &&
-                (c += 'width: ' + b.display.wrapper.clientWidth + 'px;');
+            a.coverGutter && (c += 'margin-left: -' + b.display.gutters.offsetWidth + 'px;');
+            a.noHScroll && (c += 'width: ' + b.display.wrapper.clientWidth + 'px;');
             U(b.display.measure, t('div', [a.node], null, c));
         }
         return (a.height = a.node.offsetHeight);
@@ -3972,11 +3488,7 @@
             var c = b.widgets || (b.widgets = []);
             null == e.insertAt
                 ? c.push(e)
-                : c.splice(
-                      Math.min(c.length - 1, Math.max(0, e.insertAt)),
-                      0,
-                      e
-                  );
+                : c.splice(Math.min(c.length - 1, Math.max(0, e.insertAt)), 0, e);
             e.line = b;
             f &&
                 !ya(a, b) &&
@@ -3997,8 +3509,7 @@
                 var d = c[1] ? 'bgClass' : 'textClass';
                 null == b[d]
                     ? (b[d] = c[2])
-                    : new RegExp('(?:^|s)' + c[2] + '(?:$|s)').test(b[d]) ||
-                      (b[d] += ' ' + c[2]);
+                    : new RegExp('(?:^|s)' + c[2] + '(?:$|s)').test(b[d]) || (b[d] += ' ' + c[2]);
             }
         return a;
     }
@@ -4049,10 +3560,7 @@
             n = a.options.addModeClass && [null];
         for ('' == b && We(Xe(c, d), f); !m.eol(); ) {
             m.pos > a.options.maxHighlightLength
-                ? ((h = !1),
-                  g && Zc(a, b, d, m.pos),
-                  (m.pos = b.length),
-                  (p = null))
+                ? ((h = !1), g && Zc(a, b, d, m.pos), (m.pos = b.length), (p = null))
                 : (p = We(ud(c, m, d, n), f));
             if (n) {
                 var q = n[0].name;
@@ -4078,7 +3586,7 @@
                 e.push(a, b);
             },
             f,
-            d
+            d,
         );
         for (c = 0; c < a.state.overlays.length; ++c) {
             var g = a.state.overlays[c],
@@ -4097,16 +3605,12 @@
                         k = Math.min(a, d);
                     }
                     if (b)
-                        if (g.opaque)
-                            e.splice(c, h - c, a, 'cm-overlay ' + b),
-                                (h = c + 2);
+                        if (g.opaque) e.splice(c, h - c, a, 'cm-overlay ' + b), (h = c + 2);
                         else
                             for (; c < h; c += 2)
-                                (d = e[c + 1]),
-                                    (e[c + 1] =
-                                        (d ? d + ' ' : '') + 'cm-overlay ' + b);
+                                (d = e[c + 1]), (e[c + 1] = (d ? d + ' ' : '') + 'cm-overlay ' + b);
                 },
-                f
+                f,
             );
         }
         return { styles: e, classes: f.bgClass || f.textClass ? f : null };
@@ -4115,9 +3619,7 @@
         if (!b.styles || b.styles[0] != a.state.modeGen) {
             var d = je(a, b, (b.stateAfter = sb(a, F(b))));
             b.styles = d.styles;
-            d.classes
-                ? (b.styleClasses = d.classes)
-                : b.styleClasses && (b.styleClasses = null);
+            d.classes ? (b.styleClasses = d.classes) : b.styleClasses && (b.styleClasses = null);
             c === a.doc.frontier && a.doc.frontier++;
         }
         return b.styles;
@@ -4126,11 +3628,7 @@
         var e = a.doc.mode,
             f = new tc(b, a.options.tabSize);
         f.start = f.pos = d || 0;
-        for (
-            '' == b && Xe(e, c);
-            !f.eol() && f.pos <= a.options.maxHighlightLength;
-
-        )
+        for ('' == b && Xe(e, c); !f.eol() && f.pos <= a.options.maxHighlightLength; )
             ud(e, f, c), (f.start = f.pos);
     }
     function af(a, b) {
@@ -4161,10 +3659,7 @@
                 var h = Ea(g, 0, 1).getBoundingClientRect();
                 g =
                     h && h.left != h.right
-                        ? (vd =
-                              3 >
-                              Ea(g, 1, 2).getBoundingClientRect().right -
-                                  h.right)
+                        ? (vd = 3 > Ea(g, 1, 2).getBoundingClientRect().right - h.right)
                         : !1;
             }
             g && (f = Y(e)) && (c.addToken = dg(c.addToken, f));
@@ -4195,56 +3690,36 @@
                     ) {
                         if (w == n) {
                             for (
-                                var x = (y = A = C = v = ''),
-                                    z = null,
-                                    w = Infinity,
-                                    G = [],
-                                    H = 0;
+                                var x = (y = A = C = v = ''), z = null, w = Infinity, G = [], H = 0;
                                 H < k.length;
                                 ++H
                             ) {
                                 var I = k[H],
                                     D = I.marker;
-                                'bookmark' == D.type &&
-                                I.from == n &&
-                                D.widgetNode
+                                'bookmark' == D.type && I.from == n && D.widgetNode
                                     ? G.push(D)
                                     : I.from <= n &&
                                       (null == I.to ||
                                           I.to > n ||
-                                          (D.collapsed &&
-                                              I.to == n &&
-                                              I.from == n))
+                                          (D.collapsed && I.to == n && I.from == n))
                                     ? (null != I.to &&
                                           I.to != n &&
                                           w > I.to &&
                                           ((w = I.to), (y = '')),
                                       D.className && (x += ' ' + D.className),
                                       D.css && (v = D.css),
-                                      D.startStyle &&
-                                          I.from == n &&
-                                          (A += ' ' + D.startStyle),
-                                      D.endStyle &&
-                                          I.to == w &&
-                                          (y += ' ' + D.endStyle),
+                                      D.startStyle && I.from == n && (A += ' ' + D.startStyle),
+                                      D.endStyle && I.to == w && (y += ' ' + D.endStyle),
                                       D.title && !C && (C = D.title),
-                                      D.collapsed &&
-                                          (!z || 0 > Ve(z.marker, D)) &&
-                                          (z = I))
+                                      D.collapsed && (!z || 0 > Ve(z.marker, D)) && (z = I))
                                     : I.from > n && w > I.from && (w = I.from);
                             }
                             if (z && (z.from || 0) == n) {
-                                bf(
-                                    g,
-                                    (null == z.to ? p + 1 : z.to) - n,
-                                    z.marker,
-                                    null == z.from
-                                );
+                                bf(g, (null == z.to ? p + 1 : z.to) - n, z.marker, null == z.from);
                                 if (null == z.to) break a;
                                 z.to == n && (z = !1);
                             }
-                            if (!z && G.length)
-                                for (H = 0; H < G.length; ++H) bf(g, 0, G[H]);
+                            if (!z && G.length) for (H = 0; H < G.length; ++H) bf(g, 0, G[H]);
                         }
                         if (n >= p) break;
                         for (G = Math.min(p, w); ; ) {
@@ -4259,7 +3734,7 @@
                                         A,
                                         n + I.length == w ? y : '',
                                         C,
-                                        v
+                                        v,
                                     ));
                                 if (H >= G) {
                                     r = r.slice(G - n);
@@ -4275,22 +3750,14 @@
                     }
                 else
                     for (var q = 1; q < h.length; q += 2)
-                        g.addToken(
-                            g,
-                            l.slice(m, (m = h[q])),
-                            af(h[q + 1], g.cm.options)
-                        );
+                        g.addToken(g, l.slice(m, (m = h[q])), af(h[q + 1], g.cm.options));
             }
             e.styleClasses &&
                 (e.styleClasses.bgClass &&
                     (c.bgClass = wd(e.styleClasses.bgClass, c.bgClass || '')),
                 e.styleClasses.textClass &&
-                    (c.textClass = wd(
-                        e.styleClasses.textClass,
-                        c.textClass || ''
-                    )));
-            0 == c.map.length &&
-                c.map.push(0, 0, c.content.appendChild(eg(a.display.measure)));
+                    (c.textClass = wd(e.styleClasses.textClass, c.textClass || '')));
+            0 == c.map.length && c.map.push(0, 0, c.content.appendChild(eg(a.display.measure)));
             0 == d
                 ? ((b.measure.map = c.map), (b.measure.cache = {}))
                 : ((b.measure.maps || (b.measure.maps = [])).push(c.map),
@@ -4300,8 +3767,7 @@
             /\bcm-tab\b/.test(c.content.lastChild.className) &&
             (c.content.className = 'cm-tab-wrap-hack');
         K(a, 'renderLine', a, b.line, c.pre);
-        c.pre.className &&
-            (c.textClass = wd(c.pre.className, c.textClass || ''));
+        c.pre.className && (c.textClass = wd(c.pre.className, c.textClass || ''));
         return c;
     }
     function cg(a, b, c, d, e, f, g) {
@@ -4316,9 +3782,7 @@
                         q = n ? n.index - p : b.length - p;
                     if (q) {
                         var r = document.createTextNode(h.slice(p, p + q));
-                        B && 9 > C
-                            ? m.appendChild(t('span', [r]))
-                            : m.appendChild(r);
+                        B && 9 > C ? m.appendChild(t('span', [r])) : m.appendChild(r);
                         a.map.push(a.pos, a.pos + q, r);
                         a.col += q;
                         a.pos += q;
@@ -4334,9 +3798,7 @@
                           (a.col += n))
                         : ((r = a.cm.options.specialCharPlaceholder(n[0])),
                           r.setAttribute('cm-text', n[0]),
-                          B && 9 > C
-                              ? m.appendChild(t('span', [r]))
-                              : m.appendChild(r),
+                          B && 9 > C ? m.appendChild(t('span', [r])) : m.appendChild(r),
                           (a.col += 1));
                     a.map.push(a.pos, a.pos + 1, r);
                     a.pos++;
@@ -4411,8 +3873,7 @@
             L(a, 'change', a, b);
         }
         function f(a, b) {
-            for (var e = a, f = []; e < b; ++e)
-                f.push(new Ab(k[e], c ? c[e] : null, d));
+            for (var e = a, f = []; e < b; ++e) f.push(new Ab(k[e], c ? c[e] : null, d));
             return f;
         }
         var g = b.from,
@@ -4423,8 +3884,7 @@
             p = A(k),
             n = c ? c[k.length - 1] : null,
             q = h.line - g.line;
-        if (b.full)
-            a.insert(0, f(0, k.length)), a.remove(k.length, a.size - k.length);
+        if (b.full) a.insert(0, f(0, k.length)), a.remove(k.length, a.size - k.length);
         else if (Me(a, b)) {
             var r = f(0, k.length - 1);
             e(m, m.text, n);
@@ -4439,11 +3899,7 @@
                       e(l, l.text.slice(0, g.ch) + k[0], c ? c[0] : null),
                       a.insert(g.line + 1, r))
                 : 1 == k.length
-                ? (e(
-                      l,
-                      l.text.slice(0, g.ch) + k[0] + m.text.slice(h.ch),
-                      c ? c[0] : null
-                  ),
+                ? (e(l, l.text.slice(0, g.ch) + k[0] + m.text.slice(h.ch), c ? c[0] : null),
                   a.remove(g.line + 1, q))
                 : (e(l, l.text.slice(0, g.ch) + k[0], c ? c[0] : null),
                   e(m, p + m.text.slice(h.ch), n),
@@ -4455,8 +3911,7 @@
     function Bb(a) {
         this.lines = a;
         this.parent = null;
-        for (var b = 0, c = 0; b < a.length; ++b)
-            (a[b].parent = this), (c += a[b].height);
+        for (var b = 0, c = 0; b < a.length; ++b) (a[b].parent = this), (c += a[b].height);
         this.height = c;
     }
     function Cb(a) {
@@ -4497,9 +3952,7 @@
     function u(a, b) {
         b -= a.first;
         if (0 > b || b >= a.size)
-            throw Error(
-                'There is no line ' + (b + a.first) + ' in the document.'
-            );
+            throw Error('There is no line ' + (b + a.first) + ' in the document.');
         for (var c = a; !c.lines; )
             for (var d = 0; ; ++d) {
                 var e = c.children[d],
@@ -4540,8 +3993,7 @@
         var b = a.parent;
         a = D(b.lines, a);
         for (var c = b.parent; c; b = c, c = c.parent)
-            for (var d = 0; c.children[d] != b; ++d)
-                a += c.children[d].chunkSize();
+            for (var d = 0; c.children[d] != b; ++d) a += c.children[d].chunkSize();
         return a + b.first;
     }
     function Ba(a, b) {
@@ -4574,12 +4026,7 @@
             else b += e.height;
         }
         for (a = c.parent; a; c = a, a = c.parent)
-            for (
-                d = 0;
-                d < a.children.length && ((e = a.children[d]), e != c);
-                ++d
-            )
-                b += e.height;
+            for (d = 0; d < a.children.length && ((e = a.children[d]), e != c); ++d) b += e.height;
         return b;
     }
     function Y(a) {
@@ -4592,11 +4039,7 @@
         this.undone = [];
         this.undoDepth = Infinity;
         this.lastModTime = this.lastSelTime = 0;
-        this.lastOrigin =
-            this.lastSelOrigin =
-            this.lastOp =
-            this.lastSelOp =
-                null;
+        this.lastOrigin = this.lastSelOrigin = this.lastOp = this.lastSelOp = null;
         this.generation = this.maxGeneration = a || 1;
     }
     function pd(a, b) {
@@ -4607,7 +4050,7 @@
             function (a) {
                 cf(a, c, b.from.line, b.to.line + 1);
             },
-            !0
+            !0,
         );
         return c;
     }
@@ -4660,22 +4103,15 @@
     function cf(a, b, c, d) {
         var e = b['spans_' + a.id],
             f = 0;
-        a.iter(
-            Math.max(a.first, c),
-            Math.min(a.first + a.size, d),
-            function (c) {
-                c.markedSpans &&
-                    ((e || (e = b['spans_' + a.id] = {}))[f] = c.markedSpans);
-                ++f;
-            }
-        );
+        a.iter(Math.max(a.first, c), Math.min(a.first + a.size, d), function (c) {
+            c.markedSpans && ((e || (e = b['spans_' + a.id] = {}))[f] = c.markedSpans);
+            ++f;
+        });
     }
     function Zf(a) {
         if (!a) return null;
         for (var b = 0, c; b < a.length; ++b)
-            a[b].marker.explicitlyCleared
-                ? c || (c = a.slice(0, b))
-                : c && c.push(a[b]);
+            a[b].marker.explicitlyCleared ? c || (c = a.slice(0, b)) : c && c.push(a[b]);
         return c ? (c.length ? c : null) : a;
     }
     function Xa(a, b, c) {
@@ -4710,8 +4146,7 @@
             if (f.ranges) {
                 f.copied || ((f = a[e] = f.deepCopy()), (f.copied = !0));
                 for (var h = 0; h < f.ranges.length; h++)
-                    df(f.ranges[h].anchor, b, c, d),
-                        df(f.ranges[h].head, b, c, d);
+                    df(f.ranges[h].anchor, b, c, d), df(f.ranges[h].head, b, c, d);
             } else {
                 for (h = 0; h < f.changes.length; ++h) {
                     var k = f.changes[h];
@@ -4735,18 +4170,11 @@
         ef(a.undone, c, d, e);
     }
     function ld(a) {
-        return null != a.defaultPrevented
-            ? a.defaultPrevented
-            : 0 == a.returnValue;
+        return null != a.defaultPrevented ? a.defaultPrevented : 0 == a.returnValue;
     }
     function xe(a) {
         var b = a.which;
-        null == b &&
-            (a.button & 1
-                ? (b = 1)
-                : a.button & 2
-                ? (b = 3)
-                : a.button & 4 && (b = 2));
+        null == b && (a.button & 1 ? (b = 1) : a.button & 2 ? (b = 3) : a.button & 4 && (b = 2));
         W && a.ctrlKey && 1 == b && (b = 3);
         return b;
     }
@@ -4760,11 +4188,7 @@
         if (d) {
             var e = Array.prototype.slice.call(arguments, 2),
                 f;
-            Ta
-                ? (f = Ta.delayedCallbacks)
-                : Db
-                ? (f = Db)
-                : ((f = Db = []), setTimeout(hg, 0));
+            Ta ? (f = Ta.delayedCallbacks) : Db ? (f = Db) : ((f = Db = []), setTimeout(hg, 0));
             for (var g = 0; g < d.length; ++g) f.push(c(d[g]));
         }
     }
@@ -4787,9 +4211,7 @@
     function fe(a) {
         var b = a._handlers && a._handlers.cursorActivity;
         if (b) {
-            a =
-                a.curOp.cursorActivityHandlers ||
-                (a.curOp.cursorActivityHandlers = []);
+            a = a.curOp.cursorActivityHandlers || (a.curOp.cursorActivityHandlers = []);
             for (var c = 0; c < b.length; ++c) -1 == D(a, b[c]) && a.push(b[c]);
         }
     }
@@ -4838,18 +4260,13 @@
     function Eb() {}
     function ff(a, b) {
         var c;
-        Object.create
-            ? (c = Object.create(a))
-            : ((Eb.prototype = a), (c = new Eb()));
+        Object.create ? (c = Object.create(a)) : ((Eb.prototype = a), (c = new Eb()));
         b && V(b, c);
         return c;
     }
     function V(a, b, c) {
         b || (b = {});
-        for (var d in a)
-            !a.hasOwnProperty(d) ||
-                (!1 === c && b.hasOwnProperty(d)) ||
-                (b[d] = a[d]);
+        for (var d in a) !a.hasOwnProperty(d) || (!1 === c && b.hasOwnProperty(d)) || (b[d] = a[d]);
         return b;
     }
     function cb(a) {
@@ -4859,11 +4276,7 @@
         };
     }
     function oc(a, b) {
-        return b
-            ? -1 < b.source.indexOf('\\w') && gf(a)
-                ? !0
-                : b.test(a)
-            : gf(a);
+        return b ? (-1 < b.source.indexOf('\\w') && gf(a) ? !0 : b.test(a)) : gf(a);
     }
     function hf(a) {
         for (var b in a) if (a.hasOwnProperty(b) && a[b]) return !1;
@@ -4881,8 +4294,7 @@
         return a;
     }
     function za(a) {
-        for (var b = a.childNodes.length; 0 < b; --b)
-            a.removeChild(a.firstChild);
+        for (var b = a.childNodes.length; 0 < b; --b) a.removeChild(a.firstChild);
         return a;
     }
     function U(a, b) {
@@ -4902,8 +4314,7 @@
     function jf(a) {
         if (document.body.getElementsByClassName)
             for (
-                var b = document.body.getElementsByClassName('CodeMirror'),
-                    c = 0;
+                var b = document.body.getElementsByClassName('CodeMirror'), c = 0;
                 c < b.length;
                 c++
             ) {
@@ -4929,17 +4340,11 @@
             var b = t('span', '​');
             U(a, t('span', [b, document.createTextNode('x')]));
             0 != a.firstChild.offsetHeight &&
-                (yd =
-                    1 >= b.offsetWidth && 2 < b.offsetHeight && !(B && 8 > C));
+                (yd = 1 >= b.offsetWidth && 2 < b.offsetHeight && !(B && 8 > C));
         }
         a = yd
             ? t('span', '​')
-            : t(
-                  'span',
-                  ' ',
-                  null,
-                  'display: inline-block; width: 1px; margin-right: -1px'
-              );
+            : t('span', ' ', null, 'display: inline-block; width: 1px; margin-right: -1px');
         a.setAttribute('cm-text', '');
         return a;
     }
@@ -4948,12 +4353,7 @@
         for (var e = !1, f = 0; f < a.length; ++f) {
             var g = a[f];
             if ((g.from < c && g.to > b) || (b == c && g.to == b))
-                d(
-                    Math.max(g.from, b),
-                    Math.min(g.to, c),
-                    1 == g.level ? 'rtl' : 'ltr'
-                ),
-                    (e = !0);
+                d(Math.max(g.from, b), Math.min(g.to, c), 1 == g.level ? 'rtl' : 'ltr'), (e = !0);
         }
         e || d(b, c, 'ltr');
     }
@@ -5046,14 +4446,10 @@
         te = /Apple Computer/.test(navigator.vendor),
         lg = /Mac OS X 1\d\D([8-9]|\d\d)\D/.test(navigator.userAgent),
         Gf = /PhantomJS/.test(navigator.userAgent),
-        Qa =
-            /AppleWebKit/.test(navigator.userAgent) &&
-            /Mobile\/\w+/.test(navigator.userAgent),
+        Qa = /AppleWebKit/.test(navigator.userAgent) && /Mobile\/\w+/.test(navigator.userAgent),
         ab =
             Qa ||
-            /Android|webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(
-                navigator.userAgent
-            ),
+            /Android|webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(navigator.userAgent),
         W = Qa || /Mac/.test(navigator.platform),
         mg = /win/i.test(navigator.platform),
         Ia = ba && navigator.userAgent.match(/Version\/(\d*\.\d*)/);
@@ -5075,12 +4471,9 @@
                       (this.vert.firstChild.style.height =
                           Math.max(
                               0,
-                              a.scrollHeight -
-                                  a.clientHeight +
-                                  (a.viewHeight - (b ? d : 0))
+                              a.scrollHeight - a.clientHeight + (a.viewHeight - (b ? d : 0)),
                           ) + 'px'))
-                    : ((this.vert.style.display = ''),
-                      (this.vert.firstChild.style.height = '0'));
+                    : ((this.vert.style.display = ''), (this.vert.firstChild.style.height = '0'));
                 b
                     ? ((this.horiz.style.display = 'block'),
                       (this.horiz.style.right = c ? d + 'px' : '0'),
@@ -5090,8 +4483,7 @@
                           a.clientWidth +
                           (a.viewWidth - a.barLeft - (c ? d : 0)) +
                           'px'))
-                    : ((this.horiz.style.display = ''),
-                      (this.horiz.firstChild.style.width = '0'));
+                    : ((this.horiz.style.display = ''), (this.horiz.firstChild.style.width = '0'));
                 !this.checkedOverlay &&
                     0 < a.clientHeight &&
                     (0 == d && this.overlayHack(), (this.checkedOverlay = !0));
@@ -5104,8 +4496,7 @@
                 this.vert.scrollTop != a && (this.vert.scrollTop = a);
             },
             overlayHack: function () {
-                this.horiz.style.minHeight = this.vert.style.minWidth =
-                    W && !lg ? '12px' : '18px';
+                this.horiz.style.minHeight = this.vert.style.minWidth = W && !lg ? '12px' : '18px';
                 var a = this,
                     b = function (b) {
                         (b.target || b.srcElement) != a.vert &&
@@ -5121,7 +4512,7 @@
                 a.removeChild(this.vert);
             },
         },
-        Fc.prototype
+        Fc.prototype,
     );
     Gc.prototype = V(
         {
@@ -5132,15 +4523,14 @@
             setScrollTop: function () {},
             clear: function () {},
         },
-        Gc.prototype
+        Gc.prototype,
     );
     q.scrollbarModel = { native: Fc, null: Gc };
     Mb.prototype.signal = function (a, b) {
         S(a, b) && this.events.push(arguments);
     };
     Mb.prototype.finish = function () {
-        for (var a = 0; a < this.events.length; a++)
-            K.apply(null, this.events[a]);
+        for (var a = 0; a < this.events.length; a++) K.apply(null, this.events[a]);
     };
     var r = (q.Pos = function (a, b) {
             if (!(this instanceof r)) return new r(a, b);
@@ -5167,9 +4557,7 @@
                         X = b.text;
                         'cut' == a.type
                             ? d.setSelections(b.ranges, null, ha)
-                            : ((c.prevInput = ''),
-                              (f.value = b.text.join('\n')),
-                              Za(f));
+                            : ((c.prevInput = ''), (f.value = b.text.join('\n')), Za(f));
                     } else return;
                     'cut' == a.type && (d.state.cutIncoming = !0);
                 }
@@ -5217,10 +4605,7 @@
                     };
                 });
                 v(f, 'compositionend', function () {
-                    c.composing &&
-                        (c.poll(),
-                        c.composing.range.clear(),
-                        (c.composing = null));
+                    c.composing && (c.poll(), c.composing.range.clear(), (c.composing = null));
                 });
             },
             prepareSelection: function () {
@@ -5234,17 +4619,11 @@
                         e = b.lineDiv.getBoundingClientRect();
                     d.teTop = Math.max(
                         0,
-                        Math.min(
-                            b.wrapper.clientHeight - 10,
-                            a.top + e.top - c.top
-                        )
+                        Math.min(b.wrapper.clientHeight - 10, a.top + e.top - c.top),
                     );
                     d.teLeft = Math.max(
                         0,
-                        Math.min(
-                            b.wrapper.clientWidth - 10,
-                            a.left + e.left - c.left
-                        )
+                        Math.min(b.wrapper.clientWidth - 10, a.left + e.left - c.left),
                     );
                 }
                 return d;
@@ -5288,10 +4667,7 @@
                 return !1;
             },
             focus: function () {
-                if (
-                    'nocursor' != this.cm.options.readOnly &&
-                    (!ab || fa() != this.textarea)
-                )
+                if ('nocursor' != this.cm.options.readOnly && (!ab || fa() != this.textarea))
                     try {
                         this.textarea.focus();
                     } catch (a) {}
@@ -5342,16 +4718,12 @@
                     (a.state.fakedLastChar = !1));
                 var d = b.value;
                 if (d == c && !a.somethingSelected()) return !1;
-                if (
-                    (B && 9 <= C && this.hasSelection === d) ||
-                    (W && /[\uf700-\uf7ff]/.test(d))
-                )
+                if ((B && 9 <= C && this.hasSelection === d) || (W && /[\uf700-\uf7ff]/.test(d)))
                     return a.display.input.reset(), !1;
                 if (a.doc.sel == a.display.selForContextMenu) {
                     var e = d.charCodeAt(0);
                     8203 != e || c || (c = '​');
-                    if (8666 == e)
-                        return this.reset(), this.cm.execCommand('undo');
+                    if (8666 == e) return this.reset(), this.cm.execCommand('undo');
                 }
                 for (
                     var f = 0, e = Math.min(c.length, d.length);
@@ -5361,23 +4733,15 @@
                     ++f;
                 var g = this;
                 T(a, function () {
-                    Sc(
-                        a,
-                        d.slice(f),
-                        c.length - f,
-                        null,
-                        g.composing ? '*compose' : null
-                    );
+                    Sc(a, d.slice(f), c.length - f, null, g.composing ? '*compose' : null);
                     1e3 < d.length || -1 < d.indexOf('\n')
                         ? (b.value = g.prevInput = '')
                         : (g.prevInput = d);
                     g.composing &&
                         (g.composing.range.clear(),
-                        (g.composing.range = a.markText(
-                            g.composing.start,
-                            a.getCursor('to'),
-                            { className: 'CodeMirror-composing' }
-                        )));
+                        (g.composing.range = a.markText(g.composing.start, a.getCursor('to'), {
+                            className: 'CodeMirror-composing',
+                        })));
                 });
                 return !0;
             },
@@ -5405,9 +4769,7 @@
                     d.contextMenuPending = !1;
                     d.wrapper.style.position = 'relative';
                     g.style.cssText = l;
-                    B &&
-                        9 > C &&
-                        f.scrollbars.setScrollTop((f.scroller.scrollTop = k));
+                    B && 9 > C && f.scrollbars.setScrollTop((f.scroller.scrollTop = k));
                     if (null != g.selectionStart) {
                         (!B || (B && 9 > C)) && b();
                         var a = 0,
@@ -5418,10 +4780,7 @@
                                 '​' == d.prevInput
                                     ? G(e, ic.selectAll)(e)
                                     : 10 > a++
-                                    ? (f.detectingSelectAll = setTimeout(
-                                          c,
-                                          500
-                                      ))
+                                    ? (f.detectingSelectAll = setTimeout(c, 500))
                                     : f.input.reset();
                             };
                         f.detectingSelectAll = setTimeout(c, 200);
@@ -5469,7 +4828,7 @@
             setUneditable: Eb,
             needsContentAttribute: !1,
         },
-        Tc.prototype
+        Tc.prototype,
     );
     Uc.prototype = V(
         {
@@ -5477,8 +4836,7 @@
                 function b(a) {
                     if (d.somethingSelected())
                         (X = d.getSelections()),
-                            'cut' == a.type &&
-                                d.replaceSelection('', null, 'cut');
+                            'cut' == a.type && d.replaceSelection('', null, 'cut');
                     else if (d.options.lineWiseCopyCut) {
                         var b = Vd(d);
                         X = b.text;
@@ -5495,10 +4853,7 @@
                     else {
                         var c = Xd();
                         a = c.firstChild;
-                        d.display.lineSpace.insertBefore(
-                            c,
-                            d.display.lineSpace.firstChild
-                        );
+                        d.display.lineSpace.insertBefore(c, d.display.lineSpace.firstChild);
                         a.value = X.join('\n');
                         var h = document.activeElement;
                         Za(a);
@@ -5514,12 +4869,8 @@
                 a.contentEditable = 'true';
                 Wd(a);
                 v(a, 'paste', function (a) {
-                    var b =
-                        a.clipboardData &&
-                        a.clipboardData.getData('text/plain');
-                    b &&
-                        (a.preventDefault(),
-                        d.replaceSelection(b, null, 'paste'));
+                    var b = a.clipboardData && a.clipboardData.getData('text/plain');
+                    b && (a.preventDefault(), d.replaceSelection(b, null, 'paste'));
                 });
                 v(a, 'compositionstart', function (a) {
                     a = a.data;
@@ -5531,10 +4882,7 @@
                                 .indexOf(a, Math.max(0, b.head.ch - a.length));
                         -1 < g &&
                             g <= b.head.ch &&
-                            (c.composing.sel = ga(
-                                r(b.head.line, g),
-                                r(b.head.line, g + a.length)
-                            ));
+                            (c.composing.sel = ga(r(b.head.line, g), r(b.head.line, g + a.length)));
                     }
                 });
                 v(a, 'compositionupdate', function (a) {
@@ -5543,9 +4891,7 @@
                 v(a, 'compositionend', function (a) {
                     var b = c.composing;
                     b &&
-                        (a.data == b.startData ||
-                            /\u200b/.test(a.data) ||
-                            (b.data = a.data),
+                        (a.data == b.startData || /\u200b/.test(a.data) || (b.data = a.data),
                         setTimeout(function () {
                             b.handled || c.applyComposition(b);
                             c.composing == b && (c.composing = null);
@@ -5572,8 +4918,7 @@
             showSelection: function (a) {
                 a &&
                     this.cm.display.view.length &&
-                    (a.focus && this.showPrimarySelection(),
-                    this.showMultipleSelections(a));
+                    (a.focus && this.showPrimarySelection(), this.showMultipleSelections(a));
             },
             showPrimarySelection: function () {
                 var a = window.getSelection(),
@@ -5588,11 +4933,7 @@
                     0 != y(Qb(c, d), b.from()) ||
                     0 != y(Pb(c, d), b.to())
                 )
-                    if (
-                        ((c = Yd(this.cm, b.from())),
-                        (d = Yd(this.cm, b.to())),
-                        c || d)
-                    ) {
+                    if (((c = Yd(this.cm, b.from())), (d = Yd(this.cm, b.to())), c || d)) {
                         var e = this.cm.display.view,
                             b = a.rangeCount && a.getRangeAt(0);
                         c
@@ -5659,8 +5000,7 @@
             receivedFocus: function () {
                 function a() {
                     b.cm.state.focused &&
-                        (b.pollSelection(),
-                        b.polling.set(b.cm.options.pollInterval, a));
+                        (b.pollSelection(), b.polling.set(b.cm.options.pollInterval, a));
                 }
                 var b = this;
                 this.selectionInEditor()
@@ -5680,11 +5020,7 @@
                 );
             },
             pollSelection: function () {
-                if (
-                    !this.composing &&
-                    !this.gracePeriod &&
-                    this.selectionChanged()
-                ) {
+                if (!this.composing && !this.gracePeriod && this.selectionChanged()) {
                     var a = window.getSelection(),
                         b = this.cm;
                     this.rememberSelection();
@@ -5708,13 +5044,11 @@
                 var e;
                 d.line == b.viewFrom || 0 == (e = Ca(a, d.line))
                     ? ((d = F(b.view[0].line)), (e = b.view[0].node))
-                    : ((d = F(b.view[e].line)),
-                      (e = b.view[e - 1].node.nextSibling));
+                    : ((d = F(b.view[e].line)), (e = b.view[e - 1].node.nextSibling));
                 var f = Ca(a, c.line);
                 f == b.view.length - 1
                     ? ((c = b.viewTo - 1), (b = b.view[f].node))
-                    : ((c = F(b.view[f + 1].line) - 1),
-                      (b = b.view[f + 1].node.previousSibling));
+                    : ((c = F(b.view[f + 1].line) - 1), (b = b.view[f + 1].node.previousSibling));
                 b = sa(xf(a, e, b, d, c));
                 for (
                     e = Da(a.doc, r(d, 0), r(c, u(a.doc, c).text.length));
@@ -5725,11 +5059,7 @@
                     else if (b[0] == e[0]) b.shift(), e.shift(), d++;
                     else break;
                 for (
-                    var g = 0,
-                        f = 0,
-                        h = b[0],
-                        k = e[0],
-                        l = Math.min(h.length, k.length);
+                    var g = 0, f = 0, h = b[0], k = e[0], l = Math.min(h.length, k.length);
                     g < l && h.charCodeAt(g) == k.charCodeAt(g);
 
                 )
@@ -5739,11 +5069,9 @@
                 for (
                     l = Math.min(
                         h.length - (1 == b.length ? g : 0),
-                        k.length - (1 == e.length ? g : 0)
+                        k.length - (1 == e.length ? g : 0),
                     );
-                    f < l &&
-                    h.charCodeAt(h.length - f - 1) ==
-                        k.charCodeAt(k.length - f - 1);
+                    f < l && h.charCodeAt(h.length - f - 1) == k.charCodeAt(k.length - f - 1);
 
                 )
                     ++f;
@@ -5751,8 +5079,7 @@
                 b[0] = b[0].slice(g);
                 d = r(d, g);
                 c = r(c, e.length ? A(e).length - f : 0);
-                if (1 < b.length || b[0] || y(d, c))
-                    return wb(a.doc, b, d, c, '+input'), !0;
+                if (1 < b.length || b[0] || y(d, c)) return wb(a.doc, b, d, c, '+input'), !0;
             },
             ensurePolled: function () {
                 this.forceCompositionEnd();
@@ -5769,9 +5096,7 @@
                     this.div.focus());
             },
             applyComposition: function (a) {
-                a.data &&
-                    a.data != a.startData &&
-                    G(this.cm, Sc)(this.cm, a.data, 0, a.sel);
+                a.data && a.data != a.startData && G(this.cm, Sc)(this.cm, a.data, 0, a.sel);
             },
             setUneditable: function (a) {
                 a.setAttribute('contenteditable', 'false');
@@ -5780,17 +5105,15 @@
                 a.preventDefault();
                 G(this.cm, Sc)(
                     this.cm,
-                    String.fromCharCode(
-                        null == a.charCode ? a.keyCode : a.charCode
-                    ),
-                    0
+                    String.fromCharCode(null == a.charCode ? a.keyCode : a.charCode),
+                    0,
                 );
             },
             onContextMenu: Eb,
             resetPosition: Eb,
             needsContentAttribute: !0,
         },
-        Uc.prototype
+        Uc.prototype,
     );
     q.inputStyles = { textarea: Tc, contenteditable: Uc };
     la.prototype = {
@@ -5799,30 +5122,21 @@
         },
         equals: function (a) {
             if (a == this) return !0;
-            if (
-                a.primIndex != this.primIndex ||
-                a.ranges.length != this.ranges.length
-            )
-                return !1;
+            if (a.primIndex != this.primIndex || a.ranges.length != this.ranges.length) return !1;
             for (var b = 0; b < this.ranges.length; b++) {
                 var c = this.ranges[b],
                     d = a.ranges[b];
-                if (0 != y(c.anchor, d.anchor) || 0 != y(c.head, d.head))
-                    return !1;
+                if (0 != y(c.anchor, d.anchor) || 0 != y(c.head, d.head)) return !1;
             }
             return !0;
         },
         deepCopy: function () {
             for (var a = [], b = 0; b < this.ranges.length; b++)
-                a[b] = new z(
-                    Rc(this.ranges[b].anchor),
-                    Rc(this.ranges[b].head)
-                );
+                a[b] = new z(Rc(this.ranges[b].anchor), Rc(this.ranges[b].head));
             return new la(a, this.primIndex);
         },
         somethingSelected: function () {
-            for (var a = 0; a < this.ranges.length; a++)
-                if (!this.ranges[a].empty()) return !0;
+            for (var a = 0; a < this.ranges.length; a++) if (!this.ranges[a].empty()) return !0;
             return !1;
         },
         contains: function (a, b) {
@@ -5842,10 +5156,7 @@
             return Pb(this.anchor, this.head);
         },
         empty: function () {
-            return (
-                this.head.line == this.anchor.line &&
-                this.head.ch == this.anchor.ch
-            );
+            return this.head.line == this.anchor.line && this.head.ch == this.anchor.ch;
         },
     };
     var ad = { left: 0, right: 0, top: 0, bottom: 0 },
@@ -5879,7 +5190,7 @@
             return a.text
                 ? r(
                       a.from.line + a.text.length - 1,
-                      A(a.text).length + (1 == a.text.length ? a.from.ch : 0)
+                      A(a.text).length + (1 == a.text.length ? a.from.ch : 0),
                   )
                 : a.to;
         });
@@ -5944,11 +5255,7 @@
             qb(this.doc, a) && pb(this, a, b, c);
         }),
         indentSelection: M(function (a) {
-            for (
-                var b = this.doc.sel.ranges, c = -1, d = 0;
-                d < b.length;
-                d++
-            ) {
+            for (var b = this.doc.sel.ranges, c = -1, d = 0; d < b.length; d++) {
                 var e = b[d];
                 if (e.empty())
                     e.head.line > c &&
@@ -5960,11 +5267,7 @@
                         var f = e.from(),
                             e = e.to(),
                             g = Math.max(c, f.line),
-                            c =
-                                Math.min(
-                                    this.lastLine(),
-                                    e.line - (e.ch ? 0 : 1)
-                                ) + 1,
+                            c = Math.min(this.lastLine(), e.line - (e.ch ? 0 : 1)) + 1,
                             e = g;
                         e < c;
                         ++e
@@ -6006,9 +5309,7 @@
         },
         getModeAt: function (a) {
             var b = this.doc.mode;
-            return b.innerMode
-                ? q.innerMode(b, this.getTokenAt(a).state).mode
-                : b;
+            return b.innerMode ? q.innerMode(b, this.getTokenAt(a).state).mode : b;
         },
         getHelper: function (a, b) {
             return this.getHelpers(a, b)[0];
@@ -6029,32 +5330,21 @@
                     ? c.push(d[e.helperType])
                     : d[e.name] && c.push(d[e.name]);
             for (f = 0; f < d._global.length; f++)
-                (g = d._global[f]),
-                    g.pred(e, this) && -1 == D(c, g.val) && c.push(g.val);
+                (g = d._global[f]), g.pred(e, this) && -1 == D(c, g.val) && c.push(g.val);
             return c;
         },
         getStateAfter: function (a, b) {
             var c = this.doc;
             a = Math.max(
                 c.first,
-                Math.min(
-                    null == a ? c.first + c.size - 1 : a,
-                    c.first + c.size - 1
-                )
+                Math.min(null == a ? c.first + c.size - 1 : a, c.first + c.size - 1),
             );
             return sb(this, a + 1, b);
         },
         cursorCoords: function (a, b) {
             var c;
             c = this.doc.sel.primary();
-            c =
-                null == a
-                    ? c.head
-                    : 'object' == typeof a
-                    ? w(this.doc, a)
-                    : a
-                    ? c.from()
-                    : c.to();
+            c = null == a ? c.head : 'object' == typeof a ? w(this.doc, a) : a ? c.from() : c.to();
             return ma(this, c, b || 'page');
         },
         charCoords: function (a, b) {
@@ -6073,9 +5363,7 @@
                 d;
             'number' == typeof a
                 ? ((d = this.doc.first + this.doc.size - 1),
-                  a < this.doc.first
-                      ? (a = this.doc.first)
-                      : a > d && ((a = d), (c = !0)),
+                  a < this.doc.first ? (a = this.doc.first) : a > d && ((a = d), (c = !0)),
                   (d = u(this.doc, a)))
                 : (d = a);
             return (
@@ -6144,8 +5432,7 @@
             else if ('above' == d || 'near' == d) {
                 var k = Math.max(f.wrapper.clientHeight, this.doc.height),
                     l = Math.max(f.sizer.clientWidth, f.lineSpace.clientWidth);
-                ('above' == d || a.bottom + b.offsetHeight > k) &&
-                a.top > b.offsetHeight
+                ('above' == d || a.bottom + b.offsetHeight > k) && a.top > b.offsetHeight
                     ? (g = a.top - b.offsetHeight)
                     : a.bottom + b.offsetHeight <= k && (g = a.bottom);
                 h + b.offsetWidth > l && (h = l - b.offsetWidth);
@@ -6153,12 +5440,10 @@
             b.style.top = g + 'px';
             b.style.left = b.style.right = '';
             'right' == e
-                ? ((h = f.sizer.clientWidth - b.offsetWidth),
-                  (b.style.right = '0px'))
+                ? ((h = f.sizer.clientWidth - b.offsetWidth), (b.style.right = '0px'))
                 : ('left' == e
                       ? (h = 0)
-                      : 'middle' == e &&
-                        (h = (f.sizer.clientWidth - b.offsetWidth) / 2),
+                      : 'middle' == e && (h = (f.sizer.clientWidth - b.offsetWidth) / 2),
                   (b.style.left = h + 'px'));
             c &&
                 ((a = cc(this, h, g, h + b.offsetWidth, g + b.offsetHeight)),
@@ -6175,11 +5460,7 @@
             var e = 1;
             0 > b && ((e = -1), (b = -b));
             var f = 0;
-            for (
-                a = w(this.doc, a);
-                f < b && ((a = rd(this.doc, a, e, c, d)), !a.hitSide);
-                ++f
-            );
+            for (a = w(this.doc, a); f < b && ((a = rd(this.doc, a, e, c, d)), !a.hitSide); ++f);
             return a;
         },
         moveH: M(function (a, b) {
@@ -6198,9 +5479,7 @@
                 ? c.replaceSelection('', null, '+delete')
                 : Va(this, function (d) {
                       var e = rd(c, d.head, a, b, !1);
-                      return 0 > a
-                          ? { from: e, to: d.head }
-                          : { from: d.head, to: e };
+                      return 0 > a ? { from: e, to: d.head } : { from: d.head, to: e };
                   });
         }),
         findPosV: function (a, b, c, d) {
@@ -6229,14 +5508,11 @@
                 null != g.goalColumn && (k.left = g.goalColumn);
                 e.push(k.left);
                 var l = Pe(c, k, a, b);
-                'page' == b &&
-                    g == d.sel.primary() &&
-                    lc(c, null, Yb(c, l, 'div').top - k.top);
+                'page' == b && g == d.sel.primary() && lc(c, null, Yb(c, l, 'div').top - k.top);
                 return l;
             }, Gb);
             if (e.length)
-                for (var g = 0; g < d.sel.ranges.length; g++)
-                    d.sel.ranges[g].goalColumn = e[g];
+                for (var g = 0; g < d.sel.ranges.length; g++) d.sel.ranges[g].goalColumn = e[g];
         }),
         findWordAt: function (a) {
             var b = u(this.doc, a.line).text,
@@ -6308,16 +5584,14 @@
                     Math.min(a.from.left, a.to.left),
                     Math.min(a.from.top, a.to.top) - a.margin,
                     Math.max(a.from.right, a.to.right),
-                    Math.max(a.from.bottom, a.to.bottom) + a.margin
+                    Math.max(a.from.bottom, a.to.bottom) + a.margin,
                 );
                 this.scrollTo(c.scrollLeft, c.scrollTop);
             }
         }),
         setSize: M(function (a, b) {
             function c(a) {
-                return 'number' == typeof a || /^\d+$/.test(String(a))
-                    ? a + 'px'
-                    : a;
+                return 'number' == typeof a || /^\d+$/.test(String(a)) ? a + 'px' : a;
             }
             var d = this;
             null != a && (d.display.wrapper.style.width = c(a));
@@ -6387,7 +5661,7 @@
         function (a, b) {
             a.setValue(b);
         },
-        !0
+        !0,
     );
     x(
         'mode',
@@ -6396,7 +5670,7 @@
             a.doc.modeOption = b;
             zc(a);
         },
-        !0
+        !0,
     );
     x('indentUnit', 2, zc, !0);
     x('indentWithTabs', !1);
@@ -6409,18 +5683,15 @@
             hb(a);
             Q(a);
         },
-        !0
+        !0,
     );
     x(
         'specialChars',
         /[\t\u0000-\u0019\u00ad\u200b-\u200f\u2028\u2029\ufeff]/g,
         function (a, b, c) {
-            a.state.specialChars = new RegExp(
-                b.source + (b.test('\t') ? '' : '|\t'),
-                'g'
-            );
+            a.state.specialChars = new RegExp(b.source + (b.test('\t') ? '' : '|\t'), 'g');
             c != q.Init && a.refresh();
-        }
+        },
     );
     x(
         'specialCharPlaceholder',
@@ -6433,18 +5704,16 @@
         function (a) {
             a.refresh();
         },
-        !0
+        !0,
     );
     x('electricChars', !0);
     x(
         'inputStyle',
         ab ? 'contenteditable' : 'textarea',
         function () {
-            throw Error(
-                'inputStyle can not (yet) be changed in a running editor'
-            );
+            throw Error('inputStyle can not (yet) be changed in a running editor');
         },
-        !0
+        !0,
     );
     x('rtlMoveVisually', !mg);
     x('wholeLineUpdateBefore', !0);
@@ -6455,7 +5724,7 @@
             Bd(a);
             ib(a);
         },
-        !0
+        !0,
     );
     x('keyMap', 'default', function (a, b, c) {
         b = pc(b);
@@ -6479,7 +5748,7 @@
                 Na(a);
             }, 100);
         },
-        !0
+        !0,
     );
     x(
         'gutters',
@@ -6488,7 +5757,7 @@
             wc(a.options);
             ib(a);
         },
-        !0
+        !0,
     );
     x(
         'fixedGutter',
@@ -6497,7 +5766,7 @@
             a.display.gutters.style.left = b ? Ic(a.display) + 'px' : '0';
             a.refresh();
         },
-        !0
+        !0,
     );
     x(
         'coverGutterNextToScrollbar',
@@ -6505,7 +5774,7 @@
         function (a) {
             Na(a);
         },
-        !0
+        !0,
     );
     x(
         'scrollbarStyle',
@@ -6516,7 +5785,7 @@
             a.display.scrollbars.setScrollTop(a.doc.scrollTop);
             a.display.scrollbars.setScrollLeft(a.doc.scrollLeft);
         },
-        !0
+        !0,
     );
     x(
         'lineNumbers',
@@ -6525,7 +5794,7 @@
             wc(a.options);
             ib(a);
         },
-        !0
+        !0,
     );
     x('firstLineNumber', 1, ib, !0);
     x(
@@ -6534,7 +5803,7 @@
             return a;
         },
         ib,
-        !0
+        !0,
     );
     x('showCursorWhenSelecting', !1, nb, !0);
     x('resetSelectionOnContextMenu', !0);
@@ -6550,7 +5819,7 @@
         function (a, b) {
             b || a.display.input.reset();
         },
-        !0
+        !0,
     );
     x('dragDrop', !0, function (a, b, c) {
         !b != !(c && c != q.Init) &&
@@ -6580,7 +5849,7 @@
         function (a) {
             a.refresh();
         },
-        !0
+        !0,
     );
     x('maxHighlightLength', 1e4, eb, !0);
     x('moveInputWithCursor', !0, function (a, b) {
@@ -6594,8 +5863,7 @@
         Hb = (q.mimeModes = {});
     q.defineMode = function (a, b) {
         q.defaults.mode || 'null' == a || (q.defaults.mode = a);
-        2 < arguments.length &&
-            (b.dependencies = Array.prototype.slice.call(arguments, 2));
+        2 < arguments.length && (b.dependencies = Array.prototype.slice.call(arguments, 2));
         pf[a] = b;
     };
     q.defineMIME = function (a, b) {
@@ -6621,8 +5889,7 @@
             var d = Ib[b.name],
                 e;
             for (e in d)
-                d.hasOwnProperty(e) &&
-                    (c.hasOwnProperty(e) && (c['_' + e] = c[e]), (c[e] = d[e]));
+                d.hasOwnProperty(e) && (c.hasOwnProperty(e) && (c['_' + e] = c[e]), (c[e] = d[e]));
         }
         c.name = b.name;
         b.helperType && (c.helperType = b.helperType);
@@ -6734,7 +6001,7 @@
                                 left: a.display.lineDiv.offsetWidth + 100,
                                 top: c,
                             },
-                            'div'
+                            'div',
                         );
                     return { from: b.from(), to: c };
                 });
@@ -6762,7 +6029,7 @@
                     function (b) {
                         return kf(a, b.head.line);
                     },
-                    { origin: '+move', bias: 1 }
+                    { origin: '+move', bias: 1 },
                 );
             },
             goLineStartSmart: function (a) {
@@ -6770,7 +6037,7 @@
                     function (b) {
                         return lf(a, b.head);
                     },
-                    { origin: '+move', bias: 1 }
+                    { origin: '+move', bias: 1 },
                 );
             },
             goLineEnd: function (a) {
@@ -6779,14 +6046,10 @@
                         b = b.head.line;
                         for (var c, d = u(a.doc, b); (c = Aa(d, !1)); )
                             (d = c.find(1, !0).line), (b = null);
-                        c = (c = Y(d))
-                            ? c[0].level % 2
-                                ? ac(d)
-                                : bc(d)
-                            : d.text.length;
+                        c = (c = Y(d)) ? (c[0].level % 2 ? ac(d) : bc(d)) : d.text.length;
                         return r(null == b ? F(d) : b, c);
                     },
-                    { origin: '+move', bias: -1 }
+                    { origin: '+move', bias: -1 },
                 );
             },
             goLineRight: function (a) {
@@ -6794,7 +6057,7 @@
                     b = a.charCoords(b.head, 'div').top + 5;
                     return a.coordsChar(
                         { left: a.display.lineDiv.offsetWidth + 100, top: b },
-                        'div'
+                        'div',
                     );
                 }, Gb);
             },
@@ -6808,9 +6071,7 @@
                 a.extendSelectionsBy(function (b) {
                     var c = a.charCoords(b.head, 'div').top + 5,
                         c = a.coordsChar({ left: 0, top: c }, 'div');
-                    return c.ch < a.getLine(c.line).search(/\S/)
-                        ? lf(a, b.head)
-                        : c;
+                    return c.ch < a.getLine(c.line).search(/\S/) ? lf(a, b.head) : c;
                 }, Gb);
             },
             goLineUp: function (a) {
@@ -6881,10 +6142,7 @@
             },
             insertSoftTab: function (a) {
                 for (
-                    var b = [],
-                        c = a.listSelections(),
-                        d = a.options.tabSize,
-                        e = 0;
+                    var b = [], c = a.listSelections(), d = a.options.tabSize, e = 0;
                     e < c.length;
                     e++
                 ) {
@@ -6895,42 +6153,30 @@
                 a.replaceSelections(b);
             },
             defaultTab: function (a) {
-                a.somethingSelected()
-                    ? a.indentSelection('add')
-                    : a.execCommand('insertTab');
+                a.somethingSelected() ? a.indentSelection('add') : a.execCommand('insertTab');
             },
             transposeChars: function (a) {
                 T(a, function () {
-                    for (
-                        var b = a.listSelections(), c = [], d = 0;
-                        d < b.length;
-                        d++
-                    ) {
+                    for (var b = a.listSelections(), c = [], d = 0; d < b.length; d++) {
                         var e = b[d].head,
                             f = u(a.doc, e.line).text;
                         if (f)
-                            if (
-                                (e.ch == f.length &&
-                                    (e = new r(e.line, e.ch - 1)),
-                                0 < e.ch)
-                            )
+                            if ((e.ch == f.length && (e = new r(e.line, e.ch - 1)), 0 < e.ch))
                                 (e = new r(e.line, e.ch + 1)),
                                     a.replaceRange(
                                         f.charAt(e.ch - 1) + f.charAt(e.ch - 2),
                                         r(e.line, e.ch - 2),
                                         e,
-                                        '+transpose'
+                                        '+transpose',
                                     );
                             else if (e.line > a.doc.first) {
                                 var g = u(a.doc, e.line - 1).text;
                                 g &&
                                     a.replaceRange(
-                                        f.charAt(0) +
-                                            '\n' +
-                                            g.charAt(g.length - 1),
+                                        f.charAt(0) + '\n' + g.charAt(g.length - 1),
                                         r(e.line - 1, g.length - 1),
                                         r(e.line, 1),
-                                        '+transpose'
+                                        '+transpose',
                                     );
                             }
                         c.push(new z(e, e));
@@ -7060,20 +6306,14 @@
                 var d = a[c];
                 if (!/^(name|fallthrough|(de|at)tach)$/.test(c)) {
                     if ('...' != d)
-                        for (
-                            var e = ob(c.split(' '), Wf), f = 0;
-                            f < e.length;
-                            f++
-                        ) {
+                        for (var e = ob(c.split(' '), Wf), f = 0; f < e.length; f++) {
                             var g, h;
                             f == e.length - 1
                                 ? ((h = c), (g = d))
-                                : ((h = e.slice(0, f + 1).join(' ')),
-                                  (g = '...'));
+                                : ((h = e.slice(0, f + 1).join(' ')), (g = '...'));
                             var k = b[h];
                             if (!k) b[h] = g;
-                            else if (k != g)
-                                throw Error('Inconsistent bindings for ' + h);
+                            else if (k != g) throw Error('Inconsistent bindings for ' + h);
                         }
                     delete a[c];
                 }
@@ -7088,10 +6328,7 @@
             if ('...' === e) return 'multi';
             if (null != e && c(e)) return 'handled';
             if (b.fallthrough) {
-                if (
-                    '[object Array]' !=
-                    Object.prototype.toString.call(b.fallthrough)
-                )
+                if ('[object Array]' != Object.prototype.toString.call(b.fallthrough))
                     return xb(a, b.fallthrough, c, d);
                 for (e = 0; e < b.fallthrough.length; e++) {
                     var f = xb(a, b.fallthrough[e], c, d);
@@ -7124,9 +6361,7 @@
         !b.placeholder && a.placeholder && (b.placeholder = a.placeholder);
         if (null == b.autofocus) {
             var d = fa();
-            b.autofocus =
-                d == a ||
-                (null != a.getAttribute('autofocus') && d == document.body);
+            b.autofocus = d == a || (null != a.getAttribute('autofocus') && d == document.body);
         }
         if (a.form && (v(a.form, 'submit', c), !b.leaveSubmitMethodAlone)) {
             var e = a.form,
@@ -7178,14 +6413,11 @@
             return this.string.charAt(this.pos) || void 0;
         },
         next: function () {
-            if (this.pos < this.string.length)
-                return this.string.charAt(this.pos++);
+            if (this.pos < this.string.length) return this.string.charAt(this.pos++);
         },
         eat: function (a) {
             var b = this.string.charAt(this.pos);
-            if (
-                'string' == typeof a ? b == a : b && (a.test ? a.test(b) : a(b))
-            )
+            if ('string' == typeof a ? b == a : b && (a.test ? a.test(b) : a(b)))
                 return ++this.pos, b;
         },
         eatWhile: function (a) {
@@ -7193,12 +6425,7 @@
             return this.pos > b;
         },
         eatSpace: function () {
-            for (
-                var a = this.pos;
-                /[\s\u00a0]/.test(this.string.charAt(this.pos));
-
-            )
-                ++this.pos;
+            for (var a = this.pos; /[\s\u00a0]/.test(this.string.charAt(this.pos)); ) ++this.pos;
             return this.pos > a;
         },
         skipToEnd: function () {
@@ -7218,22 +6445,18 @@
                     this.start,
                     this.tabSize,
                     this.lastColumnPos,
-                    this.lastColumnValue
+                    this.lastColumnValue,
                 )),
                 (this.lastColumnPos = this.start));
             return (
                 this.lastColumnValue -
-                (this.lineStart
-                    ? aa(this.string, this.lineStart, this.tabSize)
-                    : 0)
+                (this.lineStart ? aa(this.string, this.lineStart, this.tabSize) : 0)
             );
         },
         indentation: function () {
             return (
                 aa(this.string, null, this.tabSize) -
-                (this.lineStart
-                    ? aa(this.string, this.lineStart, this.tabSize)
-                    : 0)
+                (this.lineStart ? aa(this.string, this.lineStart, this.tabSize) : 0)
             );
         },
         match: function (a, b, c) {
@@ -7244,8 +6467,7 @@
                     e = this.string.substr(this.pos, a.length);
                 if (d(e) == d(a)) return !1 !== b && (this.pos += a.length), !0;
             } else {
-                if ((a = this.string.slice(this.pos).match(a)) && 0 < a.index)
-                    return null;
+                if ((a = this.string.slice(this.pos).match(a)) && 0 < a.index) return null;
                 a && !1 !== b && (this.pos += a[0].length);
                 return a;
             }
@@ -7284,21 +6506,11 @@
                     g = zb(f.markedSpans, this);
                 a && !this.collapsed
                     ? na(a, F(f), 'text')
-                    : a &&
-                      (null != g.to && (d = F(f)),
-                      null != g.from && (c = F(f)));
-                for (
-                    var h = f, k = f.markedSpans, l = g, m = void 0, p = 0;
-                    p < k.length;
-                    ++p
-                )
+                    : a && (null != g.to && (d = F(f)), null != g.from && (c = F(f)));
+                for (var h = f, k = f.markedSpans, l = g, m = void 0, p = 0; p < k.length; ++p)
                     k[p] != l && (m || (m = [])).push(k[p]);
                 h.markedSpans = m;
-                null == g.from &&
-                    this.collapsed &&
-                    !ya(this.doc, f) &&
-                    a &&
-                    ca(f, xa(a.display));
+                null == g.from && this.collapsed && !ya(this.doc, f) && a && ca(f, xa(a.display));
             }
             if (a && this.collapsed && !a.options.lineWrapping)
                 for (e = 0; e < this.lines.length; ++e)
@@ -7311,9 +6523,7 @@
             null != c && a && this.collapsed && Q(a, c, d + 1);
             this.lines.length = 0;
             this.explicitlyCleared = !0;
-            this.atomic &&
-                this.doc.cantEdit &&
-                ((this.doc.cantEdit = !1), a && ge(a.doc));
+            this.atomic && this.doc.cantEdit && ((this.doc.cantEdit = !1), a && ge(a.doc));
             a && L(a, 'markerCleared', a, this);
             b && La(a);
             this.parent && this.parent.clear();
@@ -7324,8 +6534,7 @@
         for (var c, d, e = 0; e < this.lines.length; ++e) {
             var f = this.lines[e],
                 g = zb(f.markedSpans, this);
-            if (null != g.from && ((c = r(b ? f : F(f), g.from)), -1 == a))
-                return c;
+            if (null != g.from && ((c = r(b ? f : F(f), g.from)), -1 == a)) return c;
             if (null != g.to && ((d = r(b ? f : F(f), g.to)), 1 == a)) return d;
         }
         return c && { from: c, to: d };
@@ -7339,24 +6548,18 @@
             T(c, function () {
                 var d = a.line,
                     e = F(a.line);
-                if ((e = Vc(c, e)))
-                    le(e),
-                        (c.curOp.selectionChanged = c.curOp.forceUpdate = !0);
+                if ((e = Vc(c, e))) le(e), (c.curOp.selectionChanged = c.curOp.forceUpdate = !0);
                 c.curOp.updateMaxLine = !0;
                 ya(b.doc, d) ||
                     null == b.height ||
-                    ((e = b.height),
-                    (b.height = null),
-                    (e = ub(b) - e) && ca(d, d.height + e));
+                    ((e = b.height), (b.height = null), (e = ub(b) - e) && ca(d, d.height + e));
             });
     };
     Ha.prototype.attachLine = function (a) {
         if (!this.lines.length && this.doc.cm) {
             var b = this.doc.cm.curOp;
             (b.maybeHiddenMarkers && -1 != D(b.maybeHiddenMarkers, this)) ||
-                (b.maybeUnhiddenMarkers || (b.maybeUnhiddenMarkers = [])).push(
-                    this
-                );
+                (b.maybeUnhiddenMarkers || (b.maybeUnhiddenMarkers = [])).push(this);
         }
         this.lines.push(a);
     };
@@ -7377,8 +6580,7 @@
     rc.prototype.clear = function () {
         if (!this.explicitlyCleared) {
             this.explicitlyCleared = !0;
-            for (var a = 0; a < this.markers.length; ++a)
-                this.markers[a].clear();
+            for (var a = 0; a < this.markers.length; ++a) this.markers[a].clear();
             L(this, 'clear');
         }
     };
@@ -7404,9 +6606,7 @@
             a &&
                 T(a, function () {
                     var b = -f;
-                    ea(c) <
-                        ((a.curOp && a.curOp.scrollTop) || a.doc.scrollTop) &&
-                        lc(a, null, b);
+                    ea(c) < ((a.curOp && a.curOp.scrollTop) || a.doc.scrollTop) && lc(a, null, b);
                     na(a, d, 'widget');
                 });
         }
@@ -7422,9 +6622,7 @@
             b &&
                 T(b, function () {
                     b.curOp.forceUpdate = !0;
-                    ea(c) <
-                        ((b.curOp && b.curOp.scrollTop) || b.doc.scrollTop) &&
-                        lc(b, null, d);
+                    ea(c) < ((b.curOp && b.curOp.scrollTop) || b.doc.scrollTop) && lc(b, null, d);
                 }));
     };
     var Ab = (q.Line = function (a, b, c) {
@@ -7458,10 +6656,7 @@
         },
         insertInner: function (a, b, c) {
             this.height += c;
-            this.lines = this.lines
-                .slice(0, a)
-                .concat(b)
-                .concat(this.lines.slice(a));
+            this.lines = this.lines.slice(0, a).concat(b).concat(this.lines.slice(a));
             for (a = 0; a < b.length; ++a) b[a].parent = this;
         },
         iterN: function (a, b, c) {
@@ -7488,16 +6683,14 @@
                 } else a -= e;
             }
             25 > this.size - b &&
-                (1 < this.children.length ||
-                    !(this.children[0] instanceof Bb)) &&
+                (1 < this.children.length || !(this.children[0] instanceof Bb)) &&
                 ((c = []),
                 this.collapse(c),
                 (this.children = [new Bb(c)]),
                 (this.children[0].parent = this));
         },
         collapse: function (a) {
-            for (var b = 0; b < this.children.length; ++b)
-                this.children[b].collapse(a);
+            for (var b = 0; b < this.children.length; ++b) this.children[b].collapse(a);
         },
         insertInner: function (a, b, c) {
             this.size += b.length;
@@ -7532,11 +6725,7 @@
                         a.height -= b.height;
                         var c = D(a.parent.children, a);
                         a.parent.children.splice(c + 1, 0, b);
-                    } else
-                        (c = new Cb(a.children)),
-                            (c.parent = a),
-                            (a.children = [c, b]),
-                            (a = c);
+                    } else (c = new Cb(a.children)), (c.parent = a), (a.children = [c, b]), (a = c);
                     b.parent = a.parent;
                 } while (10 < a.children.length);
                 a.parent.maybeSpill();
@@ -7604,7 +6793,7 @@
                     origin: 'setValue',
                     full: !0,
                 },
-                !0
+                !0,
             );
             H(this, ga(b));
         }),
@@ -7759,11 +6948,7 @@
             return this.extend;
         },
         historySize: function () {
-            for (
-                var a = this.history, b = 0, c = 0, d = 0;
-                d < a.done.length;
-                d++
-            )
+            for (var a = this.history, b = 0, c = 0, d = 0; d < a.done.length; d++)
                 a.done[d].ranges || ++b;
             for (d = 0; d < a.undone.length; d++) a.undone[d].ranges || ++c;
             return { undo: b, redo: c };
@@ -7775,11 +6960,7 @@
             this.cleanGeneration = this.changeGeneration(!0);
         },
         changeGeneration: function (a) {
-            a &&
-                (this.history.lastOp =
-                    this.history.lastSelOp =
-                    this.history.lastOrigin =
-                        null);
+            a && (this.history.lastOp = this.history.lastSelOp = this.history.lastOrigin = null);
             return this.history.generation;
         },
         isClean: function (a) {
@@ -7797,57 +6978,47 @@
             b.undone = Xa(a.undone.slice(0), null, !0);
         },
         addLineClass: N(function (a, b, c) {
-            return nc(
-                this,
-                a,
-                'gutter' == b ? 'gutter' : 'class',
-                function (a) {
-                    var e =
+            return nc(this, a, 'gutter' == b ? 'gutter' : 'class', function (a) {
+                var e =
+                    'text' == b
+                        ? 'textClass'
+                        : 'background' == b
+                        ? 'bgClass'
+                        : 'gutter' == b
+                        ? 'gutterClass'
+                        : 'wrapClass';
+                if (a[e]) {
+                    if (Fb(c).test(a[e])) return !1;
+                    a[e] += ' ' + c;
+                } else a[e] = c;
+                return !0;
+            });
+        }),
+        removeLineClass: N(function (a, b, c) {
+            return nc(this, a, 'gutter' == b ? 'gutter' : 'class', function (a) {
+                var e =
                         'text' == b
                             ? 'textClass'
                             : 'background' == b
                             ? 'bgClass'
                             : 'gutter' == b
                             ? 'gutterClass'
-                            : 'wrapClass';
-                    if (a[e]) {
-                        if (Fb(c).test(a[e])) return !1;
-                        a[e] += ' ' + c;
-                    } else a[e] = c;
-                    return !0;
-                }
-            );
-        }),
-        removeLineClass: N(function (a, b, c) {
-            return nc(
-                this,
-                a,
-                'gutter' == b ? 'gutter' : 'class',
-                function (a) {
-                    var e =
-                            'text' == b
-                                ? 'textClass'
-                                : 'background' == b
-                                ? 'bgClass'
-                                : 'gutter' == b
-                                ? 'gutterClass'
-                                : 'wrapClass',
-                        f = a[e];
-                    if (f)
-                        if (null == c) a[e] = null;
-                        else {
-                            var g = f.match(Fb(c));
-                            if (!g) return !1;
-                            var h = g.index + g[0].length;
-                            a[e] =
-                                f.slice(0, g.index) +
-                                    (g.index && h != f.length ? ' ' : '') +
-                                    f.slice(h) || null;
-                        }
-                    else return !1;
-                    return !0;
-                }
-            );
+                            : 'wrapClass',
+                    f = a[e];
+                if (f)
+                    if (null == c) a[e] = null;
+                    else {
+                        var g = f.match(Fb(c));
+                        if (!g) return !1;
+                        var h = g.index + g[0].length;
+                        a[e] =
+                            f.slice(0, g.index) +
+                                (g.index && h != f.length ? ' ' : '') +
+                                f.slice(h) || null;
+                    }
+                else return !1;
+                return !0;
+            });
         }),
         addLineWidget: N(function (a, b, c) {
             return $f(this, a, b, c);
@@ -7905,8 +7076,7 @@
             var a = [];
             this.iter(function (b) {
                 if ((b = b.markedSpans))
-                    for (var c = 0; c < b.length; ++c)
-                        null != b[c].from && a.push(b[c].marker);
+                    for (var c = 0; c < b.length; ++c) null != b[c].from && a.push(b[c].marker);
             });
             return a;
         },
@@ -7934,15 +7104,13 @@
             var b = new P(
                 xd(this, this.first, this.first + this.size),
                 this.modeOption,
-                this.first
+                this.first,
             );
             b.scrollTop = this.scrollTop;
             b.scrollLeft = this.scrollLeft;
             b.sel = this.sel;
             b.extend = !1;
-            a &&
-                ((b.history.undoDepth = this.history.undoDepth),
-                b.setHistory(this.getHistory()));
+            a && ((b.history.undoDepth = this.history.undoDepth), b.setHistory(this.getHistory()));
             return b;
         },
         linkedDoc: function (a) {
@@ -7988,7 +7156,7 @@
                     function (a) {
                         c.push(a.id);
                     },
-                    !0
+                    !0,
                 );
                 a.history = new uc(null);
                 a.history.done = Xa(this.history.done, c);
@@ -8032,8 +7200,7 @@
                 ? a.addEventListener(b, c, !1)
                 : a.attachEvent
                 ? a.attachEvent('on' + b, c)
-                : ((a = a._handlers || (a._handlers = {})),
-                  (a[b] || (a[b] = [])).push(c));
+                : ((a = a._handlers || (a._handlers = {})), (a[b] || (a[b] = [])).push(c));
         }),
         ka = (q.off = function (a, b, c) {
             if (a.removeEventListener) a.removeEventListener(b, c, !1);
@@ -8048,11 +7215,7 @@
         K = (q.signal = function (a, b) {
             var c = a._handlers && a._handlers[b];
             if (c)
-                for (
-                    var d = Array.prototype.slice.call(arguments, 2), e = 0;
-                    e < c.length;
-                    ++e
-                )
+                for (var d = Array.prototype.slice.call(arguments, 2), e = 0; e < c.length; ++e)
                     c[e].apply(null, d);
         }),
         Db = null,
@@ -8070,8 +7233,7 @@
         this.id = setTimeout(b, a);
     };
     var aa = (q.countColumn = function (a, b, c, d, e) {
-            null == b &&
-                ((b = a.search(/[^\s\u00a0]/)), -1 == b && (b = a.length));
+            null == b && ((b = a.search(/[^\s\u00a0]/)), -1 == b && (b = a.length));
             d = d || 0;
             for (e = e || 0; ; ) {
                 var f = a.indexOf('\t', d);
@@ -8099,10 +7261,7 @@
     var rg =
             /[\u00df\u0587\u0590-\u05f4\u0600-\u06ff\u3040-\u309f\u30a0-\u30ff\u3400-\u4db5\u4e00-\u9fcc\uac00-\ud7af]/,
         gf = (q.isWordChar = function (a) {
-            return (
-                /\w/.test(a) ||
-                ('' < a && (a.toUpperCase() != a.toLowerCase() || rg.test(a)))
-            );
+            return /\w/.test(a) || ('' < a && (a.toUpperCase() != a.toLowerCase() || rg.test(a)));
         }),
         ig =
             /[\u0300-\u036f\u0483-\u0489\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4\u05c5\u05c7\u0610-\u061a\u064b-\u065e\u0670\u06d6-\u06dc\u06de-\u06e4\u06e7\u06e8\u06ea-\u06ed\u0711\u0730-\u074a\u07a6-\u07b0\u07eb-\u07f3\u0816-\u0819\u081b-\u0823\u0825-\u0827\u0829-\u082d\u0900-\u0902\u093c\u0941-\u0948\u094d\u0951-\u0955\u0962\u0963\u0981\u09bc\u09be\u09c1-\u09c4\u09cd\u09d7\u09e2\u09e3\u0a01\u0a02\u0a3c\u0a41\u0a42\u0a47\u0a48\u0a4b-\u0a4d\u0a51\u0a70\u0a71\u0a75\u0a81\u0a82\u0abc\u0ac1-\u0ac5\u0ac7\u0ac8\u0acd\u0ae2\u0ae3\u0b01\u0b3c\u0b3e\u0b3f\u0b41-\u0b44\u0b4d\u0b56\u0b57\u0b62\u0b63\u0b82\u0bbe\u0bc0\u0bcd\u0bd7\u0c3e-\u0c40\u0c46-\u0c48\u0c4a-\u0c4d\u0c55\u0c56\u0c62\u0c63\u0cbc\u0cbf\u0cc2\u0cc6\u0ccc\u0ccd\u0cd5\u0cd6\u0ce2\u0ce3\u0d3e\u0d41-\u0d44\u0d4d\u0d57\u0d62\u0d63\u0dca\u0dcf\u0dd2-\u0dd4\u0dd6\u0ddf\u0e31\u0e34-\u0e3a\u0e47-\u0e4e\u0eb1\u0eb4-\u0eb9\u0ebb\u0ebc\u0ec8-\u0ecd\u0f18\u0f19\u0f35\u0f37\u0f39\u0f71-\u0f7e\u0f80-\u0f84\u0f86\u0f87\u0f90-\u0f97\u0f99-\u0fbc\u0fc6\u102d-\u1030\u1032-\u1037\u1039\u103a\u103d\u103e\u1058\u1059\u105e-\u1060\u1071-\u1074\u1082\u1085\u1086\u108d\u109d\u135f\u1712-\u1714\u1732-\u1734\u1752\u1753\u1772\u1773\u17b7-\u17bd\u17c6\u17c9-\u17d3\u17dd\u180b-\u180d\u18a9\u1920-\u1922\u1927\u1928\u1932\u1939-\u193b\u1a17\u1a18\u1a56\u1a58-\u1a5e\u1a60\u1a62\u1a65-\u1a6c\u1a73-\u1a7c\u1a7f\u1b00-\u1b03\u1b34\u1b36-\u1b3a\u1b3c\u1b42\u1b6b-\u1b73\u1b80\u1b81\u1ba2-\u1ba5\u1ba8\u1ba9\u1c2c-\u1c33\u1c36\u1c37\u1cd0-\u1cd2\u1cd4-\u1ce0\u1ce2-\u1ce8\u1ced\u1dc0-\u1de6\u1dfd-\u1dff\u200c\u200d\u20d0-\u20f0\u2cef-\u2cf1\u2de0-\u2dff\u302a-\u302f\u3099\u309a\ua66f-\ua672\ua67c\ua67d\ua6f0\ua6f1\ua802\ua806\ua80b\ua825\ua826\ua8c4\ua8e0-\ua8f1\ua926-\ua92d\ua947-\ua951\ua980-\ua982\ua9b3\ua9b6-\ua9b9\ua9bc\uaa29-\uaa2e\uaa31\uaa32\uaa35\uaa36\uaa43\uaa4c\uaab0\uaab2-\uaab4\uaab7\uaab8\uaabe\uaabf\uaac1\uabe5\uabe8\uabed\udc00-\udfff\ufb1e\ufe00-\ufe0f\ufe20-\ufe26\uff9e\uff9f]/,
@@ -8167,10 +7326,7 @@
                       for (var b = 0, c = [], d = a.length; b <= d; ) {
                           var e = a.indexOf('\n', b);
                           -1 == e && (e = a.length);
-                          var f = a.slice(
-                                  b,
-                                  '\r' == a.charAt(e - 1) ? e - 1 : e
-                              ),
+                          var f = a.slice(b, '\r' == a.charAt(e - 1) ? e - 1 : e),
                               g = f.indexOf('\r');
                           -1 != g
                               ? (c.push(f.slice(0, g)), (b += g + 1))
@@ -8269,13 +7425,13 @@
             function a(a) {
                 return 247 >= a
                     ? 'bbbbbbbbbtstwsbbbbbbbbbbbbbbssstwNN%%%NNNNNN,N,N1111111111NNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNNNLLLLLLLLLLLLLLLLLLLLLLLLLLNNNNbbbbbbsbbbbbbbbbbbbbbbbbbbbbbbbbb,N%%%%NNNNLNNNNN%%11NLNNN1LNNNNNLLLLLLLLLLLLLLLLLLLLLLLNLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLN'.charAt(
-                          a
+                          a,
                       )
                     : 1424 <= a && 1524 >= a
                     ? 'R'
                     : 1536 <= a && 1773 >= a
                     ? 'rrrrrrrrrrrr,rNNmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmrrrrrrrnnnnnnnnnn%nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmmmmmmmmmmmmmNmmmm'.charAt(
-                          a - 1536
+                          a - 1536,
                       )
                     : 1774 <= a && 2220 >= a
                     ? 'r'
@@ -8297,10 +7453,8 @@
                 g = /[1n]/;
             return function (h) {
                 if (!c.test(h)) return !1;
-                for (var k = h.length, l = [], m = 0, p; m < k; ++m)
-                    l.push(a(h.charCodeAt(m)));
-                for (var m = 0, n = 'L'; m < k; ++m)
-                    (p = l[m]), 'm' == p ? (l[m] = n) : (n = p);
+                for (var k = h.length, l = [], m = 0, p; m < k; ++m) l.push(a(h.charCodeAt(m)));
+                for (var m = 0, n = 'L'; m < k; ++m) (p = l[m]), 'm' == p ? (l[m] = n) : (n = p);
                 m = 0;
                 for (n = 'L'; m < k; ++m)
                     (p = l[m]),
@@ -8312,28 +7466,19 @@
                     (p = l[m]),
                         '+' == p && '1' == n && '1' == l[m + 1]
                             ? (l[m] = '1')
-                            : ',' != p ||
-                              n != l[m + 1] ||
-                              ('1' != n && 'n' != n) ||
-                              (l[m] = n),
+                            : ',' != p || n != l[m + 1] || ('1' != n && 'n' != n) || (l[m] = n),
                         (n = p);
                 for (m = 0; m < k; ++m)
                     if (((p = l[m]), ',' == p)) l[m] = 'N';
                     else if ('%' == p) {
                         for (n = m + 1; n < k && '%' == l[n]; ++n);
-                        var q =
-                            (m && '!' == l[m - 1]) || (n < k && '1' == l[n])
-                                ? '1'
-                                : 'N';
+                        var q = (m && '!' == l[m - 1]) || (n < k && '1' == l[n]) ? '1' : 'N';
                         for (p = m; p < n; ++p) l[p] = q;
                         m = n - 1;
                     }
                 m = 0;
                 for (n = 'L'; m < k; ++m)
-                    (p = l[m]),
-                        'L' == n && '1' == p
-                            ? (l[m] = 'L')
-                            : e.test(p) && (n = p);
+                    (p = l[m]), 'L' == n && '1' == p ? (l[m] = 'L') : e.test(p) && (n = p);
                 for (m = 0; m < k; ++m)
                     if (d.test(l[m])) {
                         for (n = m + 1; n < k && d.test(l[n]); ++n);
@@ -8363,12 +7508,10 @@
                     }
                 1 == n[0].level &&
                     (r = h.match(/^\s+/)) &&
-                    ((n[0].from = r[0].length),
-                    n.unshift(new b(0, 0, r[0].length)));
+                    ((n[0].from = r[0].length), n.unshift(new b(0, 0, r[0].length)));
                 1 == A(n).level &&
                     (r = h.match(/\s+$/)) &&
-                    ((A(n).to -= r[0].length),
-                    n.push(new b(0, k - r[0].length, k)));
+                    ((A(n).to -= r[0].length), n.push(new b(0, k - r[0].length, k)));
                 2 == n[0].level && n.unshift(new b(1, n[0].to, n[0].to));
                 n[0].level != A(n).level && n.push(new b(n[0].level, k, k));
                 return n;

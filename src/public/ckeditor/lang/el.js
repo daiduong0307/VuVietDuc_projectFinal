@@ -83,8 +83,7 @@ CKEDITOR.lang['el'] = {
             'Η τιμή για το εν σειρά στυλ πρέπει να περιέχει ένα ή περισσότερα ζεύγη με την μορφή "όνομα: τιμή" διαχωρισμένα με Ελληνικό ερωτηματικό.',
         cssLengthTooltip:
             'Εισάγεται μια τιμή σε pixel ή έναν αριθμό μαζί με μια έγκυρη μονάδα μέτρησης CSS (px, %, in, cm, mm, em, ex, pt, ή pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, δεν είναι διαθέσιμο</span>',
+        unavailable: '%1<span class="cke_accessibility">, δεν είναι διαθέσιμο</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Enter',
@@ -296,10 +295,8 @@ CKEDITOR.lang['el'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -468,11 +465,9 @@ CKEDITOR.lang['el'] = {
         alt: 'Εναλλακτικό Κείμενο',
         border: 'Περίγραμμα',
         btnUpload: 'Αποστολή στον Διακομιστή',
-        button2Img:
-            'Θέλετε να μετατρέψετε το επιλεγμένο κουμπί εικόνας σε απλή εικόνα;',
+        button2Img: 'Θέλετε να μετατρέψετε το επιλεγμένο κουμπί εικόνας σε απλή εικόνα;',
         hSpace: 'HSpace',
-        img2Button:
-            'Θέλετε να μεταμορφώσετε την επιλεγμένη εικόνα που είναι πάνω σε ένα κουμπί;',
+        img2Button: 'Θέλετε να μεταμορφώσετε την επιλεγμένη εικόνα που είναι πάνω σε ένα κουμπί;',
         infoTab: 'Πληροφορίες Εικόνας',
         linkTab: 'Σύνδεσμος',
         lockRatio: 'Κλείδωμα Αναλογίας',
@@ -579,8 +574,7 @@ CKEDITOR.lang['el'] = {
         type: 'Τύπος',
         upperAlpha: 'Κεφαλαία Λατινικά (A, B, C, D, E, κτλ)',
         upperRoman: 'Κεφαλαία Ρωμαϊκά (I, II, III, IV, V, κτλ)',
-        validateStartNumber:
-            'Ο αριθμός εκκίνησης της αρίθμησης πρέπει να είναι ακέραιος αριθμός.',
+        validateStartNumber: 'Ο αριθμός εκκίνησης της αρίθμησης πρέπει να είναι ακέραιος αριθμός.',
     },
     magicline: { title: 'Εισάγετε παράγραφο εδώ' },
     maximize: { maximize: 'Μεγιστοποίηση', minimize: 'Ελαχιστοποίηση' },
@@ -659,10 +653,8 @@ CKEDITOR.lang['el'] = {
             no: 'Όχι',
             invalidWidth: 'Το πλάτος του κελιού πρέπει να είναι αριθμός.',
             invalidHeight: 'Το ύψος του κελιού πρέπει να είναι αριθμός.',
-            invalidRowSpan:
-                'Το εύρος των γραμμών πρέπει να είναι ακέραιος αριθμός.',
-            invalidColSpan:
-                'Το εύρος των στηλών πρέπει να είναι ακέραιος αριθμός.',
+            invalidRowSpan: 'Το εύρος των γραμμών πρέπει να είναι ακέραιος αριθμός.',
+            invalidColSpan: 'Το εύρος των στηλών πρέπει να είναι ακέραιος αριθμός.',
             chooseColor: 'Επιλέξτε',
         },
         cellPad: 'Αναπλήρωση κελιών',
@@ -681,12 +673,9 @@ CKEDITOR.lang['el'] = {
         headersNone: 'Κανένα',
         headersRow: 'Πρώτη Γραμμή',
         heightUnit: 'height unit',
-        invalidBorder:
-            'Το πάχος του περιγράμματος πρέπει να είναι ένας αριθμός.',
-        invalidCellPadding:
-            'Η αναπλήρωση των κελιών πρέπει να είναι θετικός αριθμός.',
-        invalidCellSpacing:
-            'Η απόσταση μεταξύ των κελιών πρέπει να είναι ένας θετικός αριθμός.',
+        invalidBorder: 'Το πάχος του περιγράμματος πρέπει να είναι ένας αριθμός.',
+        invalidCellPadding: 'Η αναπλήρωση των κελιών πρέπει να είναι θετικός αριθμός.',
+        invalidCellSpacing: 'Η απόσταση μεταξύ των κελιών πρέπει να είναι ένας θετικός αριθμός.',
         invalidCols: 'Ο αριθμός των στηλών πρέπει να είναι μεγαλύτερος από 0.',
         invalidHeight: 'Το ύψος του πίνακα πρέπει να είναι αριθμός.',
         invalidRows: 'Ο αριθμός των σειρών πρέπει να είναι μεγαλύτερος από 0.',
@@ -716,7 +705,6 @@ CKEDITOR.lang['el'] = {
         doneOne: 'Αρχείο εστάλη επιτυχώς.',
         doneMany: 'Επιτυχής αποστολή %1 αρχείων.',
         uploadOne: 'Αποστολή αρχείου ({percentage}%)…',
-        uploadMany:
-            'Αποστολή αρχείων, {current} από {max} ολοκληρωμένα ({percentage}%)…',
+        uploadMany: 'Αποστολή αρχείων, {current} από {max} ολοκληρωμένα ({percentage}%)…',
     },
 };

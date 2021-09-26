@@ -6,8 +6,7 @@
     btnUndo: 'আন্ডু',
     changeTo: 'এতে বদলাও',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        'বানান পরীক্ষক ইনস্টল করা নেই। আপনি কি এখনই এটা ডাউনলোড করতে চান?',
+    ieSpellDownload: 'বানান পরীক্ষক ইনস্টল করা নেই। আপনি কি এখনই এটা ডাউনলোড করতে চান?',
     manyChanges: 'বানান পরীক্ষা শেষ: %1 গুলো শব্দ বদলে গ্যাছে',
     noChanges: 'বানান পরীক্ষা শেষ: কোন শব্দ পরিবর্তন করা হয়নি',
     noMispell: 'বানান পরীক্ষা শেষ: কোন ভুল বানান পাওয়া যায়নি',

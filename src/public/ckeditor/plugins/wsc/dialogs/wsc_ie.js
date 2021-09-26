@@ -36,8 +36,7 @@ CKEDITOR.dialog.add('checkspell', function (a) {
             schemaURI: c + 'wsc.css',
             userDictionaryName: a.config.wsc_userDictionaryName,
             customDictionaryName:
-                a.config.wsc_customDictionaryIds &&
-                a.config.wsc_customDictionaryIds.split(','),
+                a.config.wsc_customDictionaryIds && a.config.wsc_customDictionaryIds.split(','),
             domainName: a.config.wsc_domainName,
         });
         CKEDITOR.document.getById(h).setStyle('display', 'none');
@@ -67,10 +66,7 @@ CKEDITOR.dialog.add('checkspell', function (a) {
     a.config.wsc_customLoaderScript &&
         (k +=
             '\x3cp style\x3d"color:#000;font-size:11px;font-weight: normal;text-align:center;padding-top:10px"\x3e' +
-            a.lang.wsc.errorLoading.replace(
-                /%s/g,
-                a.config.wsc_customLoaderScript
-            ) +
+            a.lang.wsc.errorLoading.replace(/%s/g, a.config.wsc_customLoaderScript) +
             '\x3c/p\x3e');
     window._cancelOnError = function (b) {
         if ('undefined' == typeof window.WSC_Error) {
@@ -93,7 +89,7 @@ CKEDITOR.dialog.add('checkspell', function (a) {
                 CKEDITOR.document.getHead().append(
                     CKEDITOR.document.createElement('script', {
                         attributes: { type: 'text/javascript', src: n },
-                    })
+                    }),
                 );
             d = a.getData();
             CKEDITOR.document.getById(g).setValue(d);
@@ -119,8 +115,7 @@ CKEDITOR.dialog.on('resize', function (a) {
     a = a.data;
     var b = a.dialog;
     'checkspell' == b._.name &&
-        ((b =
-            (b = b.getContentElement('general', 'content').getElement()) &&
-            b.getChild(2)) && b.setSize('height', a.height),
+        ((b = (b = b.getContentElement('general', 'content').getElement()) && b.getChild(2)) &&
+            b.setSize('height', a.height),
         b && b.setSize('width', a.width));
 });

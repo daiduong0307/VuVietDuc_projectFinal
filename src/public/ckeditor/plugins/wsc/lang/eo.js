@@ -6,8 +6,7 @@
     btnUndo: 'Malfari',
     changeTo: 'Ŝanĝi al',
     errorLoading: 'Eraro en la servoelŝuto el la gastiga komputiko: %s.',
-    ieSpellDownload:
-        'Ortografikontrolilo ne instalita. Ĉu vi volas elŝuti ĝin nun?',
+    ieSpellDownload: 'Ortografikontrolilo ne instalita. Ĉu vi volas elŝuti ĝin nun?',
     manyChanges: 'Ortografikontrolado finita: %1 vortoj korektitaj',
     noChanges: 'Ortografikontrolado finita: neniu vorto korektita',
     noMispell: 'Ortografikontrolado finita: neniu eraro trovita',

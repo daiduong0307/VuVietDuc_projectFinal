@@ -14,12 +14,7 @@
             )
         )
             return !1;
-        for (
-            var d = l(b.previous), a = 0, f = d, r = q();
-            (f = f.getAscendant(r));
-
-        )
-            a++;
+        for (var d = l(b.previous), a = 0, f = d, r = q(); (f = f.getAscendant(r)); ) a++;
         return (a = m(b, a)) ? (d.add(a), a.filterChildren(c), !0) : !1;
     }
     function l(b) {
@@ -73,13 +68,11 @@
                         var f = CKEDITOR.tools.parseCssText(a.attributes.style);
                         if (
                             c.plugins.pagebreak &&
-                            ('always' === f['page-break-before'] ||
-                                'page' === f['break-before'])
+                            ('always' === f['page-break-before'] || 'page' === f['break-before'])
                         ) {
                             var b = CKEDITOR.plugins.pagebreak.createElement(c),
-                                b = CKEDITOR.htmlParser.fragment.fromHtml(
-                                    b.getOuterHtml()
-                                ).children[0];
+                                b = CKEDITOR.htmlParser.fragment.fromHtml(b.getOuterHtml())
+                                    .children[0];
                             b.insertBefore(a);
                         }
                         a.attributes.style = CKEDITOR.tools.writeCssText(f);
@@ -94,8 +87,7 @@
                             var c = a.attributes;
                             a = CKEDITOR.tools.parseCssText(a.attributes.style);
                             '#000080' === a.color && delete a.color;
-                            'underline' === a['text-decoration'] &&
-                                delete a['text-decoration'];
+                            'underline' === a['text-decoration'] && delete a['text-decoration'];
                             a = CKEDITOR.tools.writeCssText(a);
                             c.style = a;
                         }
@@ -124,12 +116,10 @@
                     font: function (a) {
                         var c;
                         c =
-                            'a' === a.parent.name &&
-                            '#000080' === a.attributes.color
+                            'a' === a.parent.name && '#000080' === a.attributes.color
                                 ? !0
                                 : 1 !== a.parent.children.length ||
-                                  ('sup' !== a.parent.name &&
-                                      'sub' !== a.parent.name) ||
+                                  ('sup' !== a.parent.name && 'sub' !== a.parent.name) ||
                                   '2' !== a.attributes.size
                                 ? !1
                                 : !0;
@@ -174,9 +164,7 @@
                     },
                     align: function (a, b) {
                         if ('img' !== b.name) {
-                            var c = CKEDITOR.tools.parseCssText(
-                                b.attributes.style
-                            );
+                            var c = CKEDITOR.tools.parseCssText(b.attributes.style);
                             c['text-align'] = b.attributes.align;
                             b.attributes.style = CKEDITOR.tools.writeCssText(c);
                             return !1;

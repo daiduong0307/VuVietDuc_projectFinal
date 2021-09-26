@@ -34,10 +34,7 @@
                     timeout: false,
                     timeoutCountdown: 5000,
                     onLoadEvent: true,
-                    browser: [
-                        'animation-duration',
-                        '-webkit-animation-duration',
-                    ],
+                    browser: ['animation-duration', '-webkit-animation-duration'],
                     // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
                     // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
                     overlay: false,
@@ -47,7 +44,7 @@
                         window.location.href = url;
                     },
                 },
-                options
+                options,
             );
 
             __.settings = {
@@ -80,14 +77,8 @@
                             return str;
                         };
                     }
-                    if (!this.length)
-                        console.log(
-                            'Animsition: Element does not exist on page.'
-                        );
-                    if (!support)
-                        console.log(
-                            'Animsition: Does not support this browser.'
-                        );
+                    if (!this.length) console.log('Animsition: Element does not exist on page.');
+                    if (!support) console.log('Animsition: Does not support this browser.');
                     return __.destroy.call(this);
                 }
             }
@@ -118,8 +109,7 @@
 
                     if (options.onLoadEvent) {
                         $window.on('load.' + namespace, function () {
-                            if (__.settings.timer)
-                                clearTimeout(__.settings.timer);
+                            if (__.settings.timer) clearTimeout(__.settings.timer);
                             __.in.call(_this);
                         });
                     }
@@ -131,57 +121,45 @@
                     // Firefox back button issue #4
                     $window.on('unload.' + namespace, function () {});
 
-                    $document.on(
-                        'click.' + namespace,
-                        options.linkElement,
-                        function (event) {
-                            event.preventDefault();
-                            var $self = $(this);
-                            var url = $self.attr('href');
+                    $document.on('click.' + namespace, options.linkElement, function (event) {
+                        event.preventDefault();
+                        var $self = $(this);
+                        var url = $self.attr('href');
 
-                            // middle mouse button issue #24
-                            // if(middle mouse button || command key || shift key || win control key)
-                            if (
-                                event.which === 2 ||
-                                event.metaKey ||
-                                event.shiftKey ||
-                                (navigator.platform
-                                    .toUpperCase()
-                                    .indexOf('WIN') !== -1 &&
-                                    event.ctrlKey)
-                            ) {
-                                window.open(url, '_blank');
-                            } else {
-                                __.out.call(_this, $self, url);
-                            }
+                        // middle mouse button issue #24
+                        // if(middle mouse button || command key || shift key || win control key)
+                        if (
+                            event.which === 2 ||
+                            event.metaKey ||
+                            event.shiftKey ||
+                            (navigator.platform.toUpperCase().indexOf('WIN') !== -1 &&
+                                event.ctrlKey)
+                        ) {
+                            window.open(url, '_blank');
+                        } else {
+                            __.out.call(_this, $self, url);
                         }
-                    );
+                    });
                 }
             }); // end each
         },
 
         addOverlay: function (options) {
             $(options.overlayParentElement).prepend(
-                '<div class="' + options.overlayClass + '"></div>'
+                '<div class="' + options.overlayClass + '"></div>',
             );
         },
 
         addLoading: function (options) {
             $(options.loadingParentElement).append(
-                '<div class="' +
-                    options.loadingClass +
-                    '">' +
-                    options.loadingInner +
-                    '</div>'
+                '<div class="' + options.loadingClass + '">' + options.loadingInner + '</div>',
             );
         },
 
         removeLoading: function () {
             var $this = $(this);
             var options = $this.data(namespace).options;
-            var $loading = $(options.loadingParentElement).children(
-                '.' + options.loadingClass
-            );
+            var $loading = $(options.loadingParentElement).children('.' + options.loadingClass);
 
             $loading.fadeOut().remove();
         },
@@ -231,8 +209,7 @@
             var options = $this.data(namespace).options;
             var dataType = typeof data;
             var dataDuration = !stateClass && dataType === 'number';
-            var dataClass =
-                stateClass && dataType === 'string' && data.length > 0;
+            var dataClass = stateClass && dataType === 'string' && data.length > 0;
 
             if (dataDuration || dataClass) {
                 data = data;
@@ -254,18 +231,8 @@
             var options = $this.data(namespace).options;
             var thisInDuration = $this.data(__.settings.data.inDuration);
             var thisInClass = $this.data(__.settings.data.inClass);
-            var inDuration = __.animationCheck.call(
-                _this,
-                thisInDuration,
-                false,
-                true
-            );
-            var inClass = __.animationCheck.call(
-                _this,
-                thisInClass,
-                true,
-                true
-            );
+            var inDuration = __.animationCheck.call(_this, thisInDuration, false, true);
+            var inClass = __.animationCheck.call(_this, thisInClass, true, true);
             var overlayMode = __.optionCheck.call(_this, options);
             var outClass = $this.data(namespace).outClass;
 
@@ -319,21 +286,9 @@
             var selfOutDuration = $self.data(__.settings.data.outDuration);
             var thisOutDuration = $this.data(__.settings.data.outDuration);
             var isOutClass = selfOutClass ? selfOutClass : thisOutClass;
-            var isOutDuration = selfOutDuration
-                ? selfOutDuration
-                : thisOutDuration;
-            var outClass = __.animationCheck.call(
-                _this,
-                isOutClass,
-                true,
-                false
-            );
-            var outDuration = __.animationCheck.call(
-                _this,
-                isOutDuration,
-                false,
-                false
-            );
+            var isOutDuration = selfOutDuration ? selfOutDuration : thisOutDuration;
+            var outClass = __.animationCheck.call(_this, isOutClass, true, false);
+            var outDuration = __.animationCheck.call(_this, isOutDuration, false, false);
             var overlayMode = __.optionCheck.call(_this, options);
 
             $this.data(namespace).outClass = outClass;
@@ -365,12 +320,7 @@
             var $this = $(this);
             var options = $this.data(namespace).options;
             var thisInClass = $this.data(__.settings.data.inClass);
-            var inClass = __.animationCheck.call(
-                _this,
-                thisInClass,
-                true,
-                true
-            );
+            var inClass = __.animationCheck.call(_this, thisInClass, true, true);
 
             // (outDuration + 1) | #55 outDuration: 0 crashes animsition on Safari only
             $(options.overlayParentElement)
@@ -407,16 +357,11 @@
 
     $.fn.animsition = function (method) {
         if (__[method]) {
-            return __[method].apply(
-                this,
-                Array.prototype.slice.call(arguments, 1)
-            );
+            return __[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
             return __.init.apply(this, arguments);
         } else {
-            $.error(
-                'Method ' + method + ' does not exist on jQuery.' + namespace
-            );
+            $.error('Method ' + method + ' does not exist on jQuery.' + namespace);
         }
     };
 });

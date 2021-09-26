@@ -6,11 +6,9 @@
     btnUndo: 'Desfacer',
     changeTo: 'Cambiar a',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        'O corrector ortográfico non está instalado. ¿Quere descargalo agora?',
+    ieSpellDownload: 'O corrector ortográfico non está instalado. ¿Quere descargalo agora?',
     manyChanges: 'Corrección ortográfica rematada: %1 verbas substituidas',
-    noChanges:
-        'Corrección ortográfica rematada: Non se substituiu nengunha verba',
+    noChanges: 'Corrección ortográfica rematada: Non se substituiu nengunha verba',
     noMispell: 'Corrección ortográfica rematada: Non se atoparon erros',
     noSuggestions: '- Sen candidatos -',
     notAvailable: 'Sorry, but service is unavailable now.',

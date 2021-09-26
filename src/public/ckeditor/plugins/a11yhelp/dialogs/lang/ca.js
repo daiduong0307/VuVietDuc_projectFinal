@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'ca', {
     title: "Instruccions d'Accessibilitat",
-    contents:
-        "Continguts de l'Ajuda. Per tancar aquest quadre de diàleg premi ESC.",
+    contents: "Continguts de l'Ajuda. Per tancar aquest quadre de diàleg premi ESC.",
     legend: [
         {
             name: 'General',

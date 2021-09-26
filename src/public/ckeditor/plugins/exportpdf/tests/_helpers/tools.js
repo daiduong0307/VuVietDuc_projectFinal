@@ -20,7 +20,7 @@
                     extraPlugins: 'exportpdf',
                     exportPdf_appId: 'cke4-tests-' + b,
                 },
-                a
+                a,
             );
         },
         initManualTest: function () {

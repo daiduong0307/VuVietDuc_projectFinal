@@ -14,15 +14,11 @@
                 position: 'left',
                 cssClass: 'button-a-soft',
                 clickCallback: function (a, b) {
-                    a[
-                        a.hasClass('button-a-background')
-                            ? 'removeClass'
-                            : 'addClass'
-                    ]('button-a-background');
+                    a[a.hasClass('button-a-background') ? 'removeClass' : 'addClass'](
+                        'button-a-background',
+                    );
                     this._toggleVisibilityEmptyElements();
-                    this.emptyVisible
-                        ? a.setText(b.text.active)
-                        : a.setText(b.text.inactive);
+                    this.emptyVisible ? a.setText(b.text.active) : a.setText(b.text.inactive);
                 },
             },
             {
@@ -50,9 +46,7 @@
                 cssClass: 'button-a-background',
                 clickCallback: function () {
                     if ('paste' === this.state) {
-                        var a = this.configContainer
-                            .findOne('textarea')
-                            .getValue();
+                        var a = this.configContainer.findOne('textarea').getValue();
                         (a = d.evaluateToolbarGroupsConfig(a))
                             ? this.setConfig(a)
                             : alert('Your pasted config is wrong.');
@@ -78,16 +72,12 @@
     }
     var l = ToolbarConfigurator.AbstractToolbarModifier;
     ToolbarConfigurator.ToolbarModifier = d;
-    d.prototype = Object.create(
-        ToolbarConfigurator.AbstractToolbarModifier.prototype
-    );
+    d.prototype = Object.create(ToolbarConfigurator.AbstractToolbarModifier.prototype);
     d.prototype.getActualConfig = function () {
         var a = l.prototype.getActualConfig.call(this);
         if (a.toolbarGroups)
             for (var b = a.toolbarGroups.length, c = 0; c < b; c += 1)
-                a.toolbarGroups[c] = d.parseGroupToConfigValue(
-                    a.toolbarGroups[c]
-                );
+                a.toolbarGroups[c] = d.parseGroupToConfigValue(a.toolbarGroups[c]);
         return a;
     };
     d.prototype._onInit = function (a, b, c) {
@@ -102,11 +92,9 @@
             ? (this.removedButtons = this.originalConfig.removeButtons
                   ? this.originalConfig.removeButtons.split(',')
                   : [])
-            : ((this.originalConfig.removeButtons = ''),
-              (this.removedButtons = []));
+            : ((this.originalConfig.removeButtons = ''), (this.removedButtons = []));
         this.actualConfig.toolbarGroups ||
-            (this.actualConfig.toolbarGroups =
-                this.fullToolbarEditor.getFullToolbarGroupsConfig());
+            (this.actualConfig.toolbarGroups = this.fullToolbarEditor.getFullToolbarGroupsConfig());
         this._fixGroups(this.actualConfig);
         this._calculateTotalBtns();
         this._createModifier();
@@ -124,11 +112,7 @@
             c;
         if (a.toolbarGroups) {
             b = a.toolbarGroups;
-            for (
-                var e = this.cfg.trimEmptyGroups, f = [], g = b.length, m = 0;
-                m < g;
-                m++
-            ) {
+            for (var e = this.cfg.trimEmptyGroups, f = [], g = b.length, m = 0; m < g; m++) {
                 var h = b[m];
                 if ('/' === h) f.push("'/'");
                 else {
@@ -137,7 +121,7 @@
                             0 ===
                                 d.getTotalSubGroupButtonsNumber(
                                     h.groups[k],
-                                    this.fullToolbarEditor
+                                    this.fullToolbarEditor,
                                 ) && h.groups.splice(k, 1);
                     (e && 0 === h.groups.length) ||
                         f.push(
@@ -145,7 +129,7 @@
                                 addSpaces: !0,
                                 noQuotesOnKey: !0,
                                 singleQuotes: !0,
-                            })
+                            }),
                         );
                 }
             }
@@ -165,10 +149,8 @@
     };
     d.prototype._toggleVisibilityEmptyElements = function () {
         this.modifyContainer.hasClass('empty-visible')
-            ? (this.modifyContainer.removeClass('empty-visible'),
-              (this.emptyVisible = !1))
-            : (this.modifyContainer.addClass('empty-visible'),
-              (this.emptyVisible = !0));
+            ? (this.modifyContainer.removeClass('empty-visible'), (this.emptyVisible = !1))
+            : (this.modifyContainer.addClass('empty-visible'), (this.emptyVisible = !0));
         this._refreshMoveBtnsAvalibility();
     };
     d.prototype._createModifier = function () {
@@ -184,10 +166,9 @@
             function () {
                 this._dehighlightActiveToolGroup();
             },
-            this
+            this,
         );
-        for (var e = c.count(), f = 0; f < e; f += 1)
-            c.getItem(f).on('mouseenter', a);
+        for (var e = c.count(), f = 0; f < e; f += 1) c.getItem(f).on('mouseenter', a);
         CKEDITOR.document.on('keypress', function (a) {
             a = a.data.$.keyCode;
             a = 32 === a || 13 === a;
@@ -204,13 +185,10 @@
                 e = new CKEDITOR.dom.element(c.target || c.srcElement);
             if ((a = d.getGroupOrSeparatorLiAncestor(e))) {
                 b.cachedActiveElement = document.activeElement;
-                if (e.$ instanceof HTMLInputElement)
-                    b._handleCheckboxClicked(e);
+                if (e.$ instanceof HTMLInputElement) b._handleCheckboxClicked(e);
                 else if (
                     e.$ instanceof HTMLButtonElement &&
-                    (c.preventDefault
-                        ? c.preventDefault()
-                        : (c.returnValue = !1),
+                    (c.preventDefault ? c.preventDefault() : (c.returnValue = !1),
                     (c = b._handleAnchorClicked(e.$)) && 'remove' == c.action)
                 )
                     return;
@@ -222,9 +200,7 @@
         });
         this.toolbarContainer ||
             (this._createToolbar(),
-            this.toolbarContainer.insertBefore(
-                this.mainContainer.getChildren().getItem(0)
-            ));
+            this.toolbarContainer.insertBefore(this.mainContainer.getChildren().getItem(0)));
         this.showToolbarBtnsByGroupName('edit');
         this.configContainer ||
             ((this.configContainer = new CKEDITOR.dom.element('div')),
@@ -236,16 +212,12 @@
     d.prototype.showToolbarBtnsByGroupName = function (a) {
         if (this.toolbarContainer)
             for (
-                var b = this.toolbarContainer.find('button'),
-                    c = b.count(),
-                    e = 0;
+                var b = this.toolbarContainer.find('button'), c = b.count(), e = 0;
                 e < c;
                 e += 1
             ) {
                 var d = b.getItem(e);
-                d.data('group') == a
-                    ? d.removeClass('hidden')
-                    : d.addClass('hidden');
+                d.data('group') == a ? d.removeClass('hidden') : d.addClass('hidden');
             }
     };
     d.parseGroupToConfigValue = function (a) {
@@ -266,15 +238,14 @@
     };
     d.prototype._setActiveElement = function (a, b) {
         this.currentActive && this.currentActive.elem.removeClass('active');
-        if (null === a)
-            this._dehighlightActiveToolGroup(), (this.currentActive = null);
+        if (null === a) this._dehighlightActiveToolGroup(), (this.currentActive = null);
         else {
             var c = this.mainContainer.findOne(
                 'ul[data-type\x3dtable-body] li[data-type\x3d"' +
                     a +
                     '"][data-name\x3d"' +
                     b +
-                    '"]'
+                    '"]',
             );
             c.addClass('active');
             this.currentActive = { type: a, name: b, elem: c };
@@ -284,9 +255,7 @@
     };
     d.prototype.getActiveToolGroup = function () {
         return this.editorInstance.container
-            ? this.editorInstance.container.findOne(
-                  '.cke_toolgroup.active, .cke_toolbar.active'
-              )
+            ? this.editorInstance.container.findOne('.cke_toolgroup.active, .cke_toolbar.active')
             : null;
     };
     d.prototype._dehighlightActiveToolGroup = function () {
@@ -298,9 +267,7 @@
     d.prototype._highlightGroup = function (a) {
         this.editorInstance.container &&
             ((a = this.getFirstEnabledButtonInGroup(a)),
-            (a = this.editorInstance.container.findOne(
-                '.cke_button__' + a + ', .cke_combo__' + a
-            )),
+            (a = this.editorInstance.container.findOne('.cke_button__' + a + ', .cke_combo__' + a)),
             this._dehighlightActiveToolGroup(),
             this.editorInstance.container &&
                 this.editorInstance.container.addClass('some-toolbar-active'),
@@ -324,10 +291,7 @@
     };
     d.prototype.getFirstEnabledButtonInSubgroup = function (a) {
         for (
-            var b = (a = this.fullToolbarEditor.buttonsByGroup[a])
-                    ? a.length
-                    : 0,
-                c = 0;
+            var b = (a = this.fullToolbarEditor.buttonsByGroup[a]) ? a.length : 0, c = 0;
             c < b;
             c += 1
         ) {
@@ -338,9 +302,7 @@
     };
     d.prototype._handleCheckboxClicked = function (a) {
         var b = a.getAscendant('li').data('name');
-        a.$.checked
-            ? this._removeButtonFromRemoved(b)
-            : this._addButtonToRemoved(b);
+        a.$.checked ? this._removeButtonFromRemoved(b) : this._addButtonToRemoved(b);
     };
     d.prototype._handleAnchorClicked = function (a) {
         a = new CKEDITOR.dom.element(a);
@@ -362,8 +324,7 @@
         if (!a.hasClass('move') || !m) return { action: null };
         if ('group' === e || 'separator' === e) h = this._moveGroup(g, d);
         'subgroup' === e &&
-            ((h = b.getAscendant('li').data('name')),
-            (h = this._moveSubgroup(g, h, d)));
+            ((h = b.getAscendant('li').data('name')), (h = this._moveSubgroup(g, h, d)));
         'up' === g && b.insertBefore(c.getChild(h));
         'down' === g && b.insertAfter(c.getChild(h));
         for (var k; (b = 'up' === g ? b.getPrevious() : b.getNext()); )
@@ -386,7 +347,7 @@
         for (
             var b = this,
                 c = this.mainContainer.find(
-                    'ul[data-type\x3dtable-body] li \x3e p \x3e span \x3e button.move.disabled'
+                    'ul[data-type\x3dtable-body] li \x3e p \x3e span \x3e button.move.disabled',
                 ),
                 e = c.count(),
                 d = 0;
@@ -395,17 +356,11 @@
         )
             c.getItem(d).removeClass('disabled');
         a(this.mainContainer.find('ul[data-type\x3dtable-body]'));
-        a(
-            this.mainContainer.find(
-                'ul[data-type\x3dtable-body] \x3e li \x3e ul'
-            )
-        );
+        a(this.mainContainer.find('ul[data-type\x3dtable-body] \x3e li \x3e ul'));
     };
     d.prototype._refreshBtnTabIndexes = function () {
         for (
-            var a = this.mainContainer.find('[data-tab\x3d"true"]'),
-                b = a.count(),
-                c = 0;
+            var a = this.mainContainer.find('[data-tab\x3d"true"]'), b = a.count(), c = 0;
             c < b;
             c++
         ) {
@@ -430,38 +385,25 @@
         }
     };
     d.prototype.getGroupIndex = function (a) {
-        for (
-            var b = this.actualConfig.toolbarGroups, c = b.length, d = 0;
-            d < c;
-            d += 1
-        )
+        for (var b = this.actualConfig.toolbarGroups, c = b.length, d = 0; d < c; d += 1)
             if (b[d].name === a) return d;
         return -1;
     };
     d.prototype._addSeparator = function () {
         var a = this._determineSeparatorToAddIndex(),
             b = d.createSeparatorLiteral(),
-            c = CKEDITOR.dom.element.createFromHtml(
-                d.getToolbarSeparatorString(b)
-            );
+            c = CKEDITOR.dom.element.createFromHtml(d.getToolbarSeparatorString(b));
         this.actualConfig.toolbarGroups.splice(a, 0, b);
-        c.insertBefore(
-            this.modifyContainer
-                .findOne('ul[data-type\x3dtable-body]')
-                .getChild(a)
-        );
+        c.insertBefore(this.modifyContainer.findOne('ul[data-type\x3dtable-body]').getChild(a));
         this._setActiveElement('separator', b.name);
         this._refreshMoveBtnsAvalibility();
         this._refreshBtnTabIndexes();
         this._refreshEditor();
     };
     d.prototype._removeSeparator = function (a) {
-        var b = CKEDITOR.tools.indexOf(
-            this.actualConfig.toolbarGroups,
-            function (b) {
-                return 'separator' == b.type && b.name == a;
-            }
-        );
+        var b = CKEDITOR.tools.indexOf(this.actualConfig.toolbarGroups, function (b) {
+            return 'separator' == b.type && b.name == a;
+        });
         this.actualConfig.toolbarGroups.splice(b, 1);
         this._refreshMoveBtnsAvalibility();
         this._refreshBtnTabIndexes();
@@ -521,8 +463,7 @@
     };
     d.prototype._removeButtonFromRemoved = function (a) {
         a = CKEDITOR.tools.indexOf(this.removedButtons, a);
-        if (-1 === a)
-            throw 'Trying to remove button from removed, but not found';
+        if (-1 === a) throw 'Trying to remove button from removed, but not found';
         this.removedButtons.splice(a, 1);
         this.actualConfig.removeButtons = this.removedButtons.join(',');
         this._refreshEditor();
@@ -582,10 +523,7 @@
         a = b.length;
         for (var e = 0; e < a; e += 1) {
             var f = b[e];
-            c += this._getToolbarSubgroupString(
-                f,
-                this.fullToolbarEditor.buttonsByGroup[f.name]
-            );
+            c += this._getToolbarSubgroupString(f, this.fullToolbarEditor.buttonsByGroup[f.name]);
         }
         return c + '\x3c/ul\x3e\x3c/li\x3e';
     };
@@ -604,8 +542,7 @@
         return '\x3cul data-type\x3d"table-header"\x3e\x3cli data-type\x3d"header"\x3e\x3cp\x3eToolbars\x3c/p\x3e\x3cul\x3e\x3cli\x3e\x3cp\x3eToolbar groups\x3c/p\x3e\x3cp\x3eToolbar group items\x3c/p\x3e\x3c/li\x3e\x3c/ul\x3e\x3c/li\x3e\x3c/ul\x3e';
     };
     d.getFirstAncestor = function (a, b) {
-        for (var c = a.getParents(), d = c.length; d--; )
-            if (b(c[d])) return c[d];
+        for (var c = a.getParents(), d = c.length; d--; ) if (b(c[d])) return c[d];
         return null;
     };
     d.getFirstElementIndexWith = function (a, b, c, d) {
@@ -624,11 +561,7 @@
         return c ? c.length : 0;
     };
     d.getTotalGroupButtonsNumber = function (a, b) {
-        for (
-            var c = 0, e = a.groups, f = e ? e.length : 0, g = 0;
-            g < f;
-            g += 1
-        )
+        for (var c = 0, e = a.groups, f = e ? e.length : 0, g = 0; g < f; g += 1)
             c += d.getTotalSubGroupButtonsNumber(e[g], b);
         return c;
     };
@@ -645,8 +578,7 @@
             ].join('');
         c += d.getToolbarElementPreString(a.name);
         c += '\x3cul\x3e';
-        for (var e = b ? b.length : 0, f = 0; f < e; f += 1)
-            c += this.getButtonString(b[f]);
+        for (var e = b ? b.length : 0, f = 0; f < e; f += 1) c += this.getButtonString(b[f]);
         return (c += '\x3c/ul\x3e\x3c/li\x3e');
     };
     d.prototype._getConfigButtonName = function (a) {
@@ -656,13 +588,7 @@
         return null;
     };
     d.prototype.isButtonRemoved = function (a) {
-        return (
-            -1 !=
-            CKEDITOR.tools.indexOf(
-                this.removedButtons,
-                this._getConfigButtonName(a)
-            )
-        );
+        return -1 != CKEDITOR.tools.indexOf(this.removedButtons, this._getConfigButtonName(a));
     };
     d.prototype.getButtonString = function (a) {
         var b = this.isButtonRemoved(a.name) ? '' : 'checked\x3d"checked"';

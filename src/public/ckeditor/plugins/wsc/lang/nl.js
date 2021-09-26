@@ -6,8 +6,7 @@
     btnUndo: 'Ongedaan maken',
     changeTo: 'Wijzig in',
     errorLoading: 'Er is een fout opgetreden bij het laden van de dienst: %s.',
-    ieSpellDownload:
-        'De spellingscontrole is niet geïnstalleerd. Wilt u deze nu downloaden?',
+    ieSpellDownload: 'De spellingscontrole is niet geïnstalleerd. Wilt u deze nu downloaden?',
     manyChanges: 'Klaar met spellingscontrole: %1 woorden aangepast',
     noChanges: 'Klaar met spellingscontrole: geen woorden aangepast',
     noMispell: 'Klaar met spellingscontrole: geen fouten gevonden',

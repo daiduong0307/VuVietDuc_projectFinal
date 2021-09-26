@@ -4,21 +4,13 @@
 */
 (function () {
     function C(c) {
-        return (
-            c.type == CKEDITOR.NODE_TEXT &&
-            0 < c.getLength() &&
-            (!m || !c.isReadOnly())
-        );
+        return c.type == CKEDITOR.NODE_TEXT && 0 < c.getLength() && (!m || !c.isReadOnly());
     }
     function v(c) {
         return !(
             c.type == CKEDITOR.NODE_ELEMENT &&
             c.isBlockBoundary(
-                CKEDITOR.tools.extend(
-                    {},
-                    CKEDITOR.dtd.$empty,
-                    CKEDITOR.dtd.$nonEditable
-                )
+                CKEDITOR.tools.extend({}, CKEDITOR.dtd.$empty, CKEDITOR.dtd.$nonEditable),
             )
         );
     }
@@ -27,9 +19,7 @@
             return {
                 textNode: this.textNode,
                 offset: this.offset,
-                character: this.textNode
-                    ? this.textNode.getText().charAt(this.offset)
-                    : null,
+                character: this.textNode ? this.textNode.getText().charAt(this.offset) : null,
                 hitMatchBoundary: this._.matchBoundary,
             };
         },
@@ -52,8 +42,7 @@
             c.evaluator = C;
             c.breakOnFalse = 1;
             a.startContainer.type == CKEDITOR.NODE_TEXT &&
-                ((this.textNode = a.startContainer),
-                (this.offset = a.startOffset - 1));
+                ((this.textNode = a.startContainer), (this.offset = a.startOffset - 1));
             this._ = { matchWord: b, walker: c, matchBoundary: !1 };
         }
         function y(a, b) {
@@ -67,8 +56,7 @@
                 d = c.editable();
             b && !a
                 ? ((a = b.clone()), a.collapse(!0))
-                : ((a = c.createRange()),
-                  a.setStartAt(d, CKEDITOR.POSITION_AFTER_START));
+                : ((a = c.createRange()), a.setStartAt(d, CKEDITOR.POSITION_AFTER_START));
             a.setEndAt(d, CKEDITOR.POSITION_BEFORE_END);
             return a;
         }
@@ -83,8 +71,8 @@
                     },
                 },
                 c.config.find_highlight,
-                !0
-            )
+                !0,
+            ),
         );
         n.prototype = {
             next: function () {
@@ -103,17 +91,11 @@
                     for (
                         b = null;
                         !b &&
-                        !((b = this._.walker[a ? 'previous' : 'next'].call(
-                            this._.walker
-                        )),
+                        !((b = this._.walker[a ? 'previous' : 'next'].call(this._.walker)),
                         (this._.matchWord && !b) || this._.walker._.end);
 
                     );
-                    this.offset = (this.textNode = b)
-                        ? a
-                            ? b.getLength() - 1
-                            : 0
-                        : 0;
+                    this.offset = (this.textNode = b) ? (a ? b.getLength() - 1 : 0) : 0;
                 }
                 return w.call(this);
             },
@@ -209,10 +191,7 @@
             getNextCharacterRange: function (a) {
                 var b, d;
                 d = this._.cursors;
-                d =
-                    (b = d[d.length - 1]) && b.textNode
-                        ? new n(y(b))
-                        : this._.walker;
+                d = (b = d[d.length - 1]) && b.textNode ? new n(y(b)) : this._.walker;
                 return new t(d, a);
             },
             getCursors: function () {
@@ -223,11 +202,7 @@
             var d = [-1];
             b && (a = a.toLowerCase());
             for (var c = 0; c < a.length; c++)
-                for (
-                    d.push(d[c] + 1);
-                    0 < d[c + 1] && a.charAt(c) != a.charAt(d[c + 1] - 1);
-
-                )
+                for (d.push(d[c] + 1); 0 < d[c + 1] && a.charAt(c) != a.charAt(d[c + 1] - 1); )
                     d[c + 1] = d[d[c + 1] - 1] + 1;
             this._ = { overlap: d, state: 0, ignoreCase: !!b, pattern: a };
         };
@@ -237,12 +212,9 @@
                     if (a == this._.pattern.charAt(this._.state))
                         return (
                             this._.state++,
-                            this._.state == this._.pattern.length
-                                ? ((this._.state = 0), 2)
-                                : 1
+                            this._.state == this._.pattern.length ? ((this._.state = 0), 2) : 1
                         );
-                    if (this._.state)
-                        this._.state = this._.overlap[this._.state];
+                    if (this._.state) this._.state = this._.overlap[this._.state];
                     else return 0;
                 }
             },
@@ -250,14 +222,11 @@
                 this._.state = 0;
             },
         };
-        var E =
-                /[.,"'?!;: \u0085\u00a0\u1680\u280e\u2028\u2029\u202f\u205f\u3000]/,
+        var E = /[.,"'?!;: \u0085\u00a0\u1680\u280e\u2028\u2029\u202f\u205f\u3000]/,
             B = function (a) {
                 if (!a) return !0;
                 var b = a.charCodeAt(0);
-                return (
-                    (9 <= b && 13 >= b) || (8192 <= b && 8202 >= b) || E.test(a)
-                );
+                return (9 <= b && 13 >= b) || (8192 <= b && 8202 >= b) || E.test(a);
             },
             f = {
                 searchRange: null,
@@ -265,12 +234,8 @@
                 find: function (a, b, d, e, D, u) {
                     this.matchRange
                         ? (this.matchRange.removeHighlight(),
-                          (this.matchRange =
-                              this.matchRange.getNextCharacterRange(a.length)))
-                        : (this.matchRange = new t(
-                              new n(this.searchRange),
-                              a.length
-                          ));
+                          (this.matchRange = this.matchRange.getNextCharacterRange(a.length)))
+                        : (this.matchRange = new t(new n(this.searchRange), a.length));
                     for (var h = new A(a, !b), k = 0, l = '%'; null !== l; ) {
                         for (
                             this.matchRange.moveNext();
@@ -279,8 +244,7 @@
                         ) {
                             k = h.feedCharacter(l);
                             if (2 == k) break;
-                            this.matchRange.moveNext().hitMatchBoundary &&
-                                h.reset();
+                            this.matchRange.moveNext().hitMatchBoundary && h.reset();
                         }
                         if (2 == k) {
                             if (d) {
@@ -288,10 +252,7 @@
                                     p = g[g.length - 1],
                                     g = g[0],
                                     m = c.createRange();
-                                m.setStartAt(
-                                    c.editable(),
-                                    CKEDITOR.POSITION_AFTER_START
-                                );
+                                m.setStartAt(c.editable(), CKEDITOR.POSITION_AFTER_START);
                                 m.setEnd(g.textNode, g.offset);
                                 g = m;
                                 p = y(p);
@@ -299,11 +260,7 @@
                                 p.trim();
                                 g = new n(g, !0);
                                 p = new n(p, !0);
-                                if (
-                                    !B(g.back().character) ||
-                                    !B(p.next().character)
-                                )
-                                    continue;
+                                if (!B(g.back().character) || !B(p.next().character)) continue;
                             }
                             this.matchRange.setMatched();
                             !1 !== D && this.matchRange.highlight();
@@ -315,10 +272,7 @@
                     return e && !u
                         ? ((this.searchRange = r(1)),
                           (this.matchRange = null),
-                          f.find.apply(
-                              this,
-                              Array.prototype.slice.call(arguments).concat([!0])
-                          ))
+                          f.find.apply(this, Array.prototype.slice.call(arguments).concat([!0])))
                         : !1;
                 },
                 replaceCounter: 0,
@@ -374,9 +328,7 @@
             resizable: CKEDITOR.DIALOG_RESIZE_NONE,
             minWidth: 350,
             minHeight: 170,
-            buttons: [
-                CKEDITOR.dialog.cancelButton(c, { label: c.lang.common.close }),
-            ],
+            buttons: [CKEDITOR.dialog.cancelButton(c, { label: c.lang.common.close })],
             contents: [
                 {
                     id: 'find',
@@ -406,18 +358,9 @@
                                         var a = this.getDialog();
                                         f.find(
                                             a.getValueOf('find', 'txtFindFind'),
-                                            a.getValueOf(
-                                                'find',
-                                                'txtFindCaseChk'
-                                            ),
-                                            a.getValueOf(
-                                                'find',
-                                                'txtFindWordChk'
-                                            ),
-                                            a.getValueOf(
-                                                'find',
-                                                'txtFindCyclic'
-                                            )
+                                            a.getValueOf('find', 'txtFindCaseChk'),
+                                            a.getValueOf('find', 'txtFindWordChk'),
+                                            a.getValueOf('find', 'txtFindCyclic'),
                                         ) || alert(e.notFoundMsg);
                                     },
                                 },
@@ -485,26 +428,11 @@
                                         var a = this.getDialog();
                                         f.replace(
                                             a,
-                                            a.getValueOf(
-                                                'replace',
-                                                'txtFindReplace'
-                                            ),
-                                            a.getValueOf(
-                                                'replace',
-                                                'txtReplace'
-                                            ),
-                                            a.getValueOf(
-                                                'replace',
-                                                'txtReplaceCaseChk'
-                                            ),
-                                            a.getValueOf(
-                                                'replace',
-                                                'txtReplaceWordChk'
-                                            ),
-                                            a.getValueOf(
-                                                'replace',
-                                                'txtReplaceCyclic'
-                                            )
+                                            a.getValueOf('replace', 'txtFindReplace'),
+                                            a.getValueOf('replace', 'txtReplace'),
+                                            a.getValueOf('replace', 'txtReplaceCaseChk'),
+                                            a.getValueOf('replace', 'txtReplaceWordChk'),
+                                            a.getValueOf('replace', 'txtReplaceCyclic'),
                                         ) || alert(e.notFoundMsg);
                                     },
                                 },
@@ -534,30 +462,17 @@
                                         f.replaceCounter = 0;
                                         f.searchRange = r(1);
                                         f.matchRange &&
-                                            (f.matchRange.removeHighlight(),
-                                            (f.matchRange = null));
+                                            (f.matchRange.removeHighlight(), (f.matchRange = null));
                                         for (
                                             c.fire('saveSnapshot');
                                             f.replace(
                                                 a,
-                                                a.getValueOf(
-                                                    'replace',
-                                                    'txtFindReplace'
-                                                ),
-                                                a.getValueOf(
-                                                    'replace',
-                                                    'txtReplace'
-                                                ),
-                                                a.getValueOf(
-                                                    'replace',
-                                                    'txtReplaceCaseChk'
-                                                ),
-                                                a.getValueOf(
-                                                    'replace',
-                                                    'txtReplaceWordChk'
-                                                ),
+                                                a.getValueOf('replace', 'txtFindReplace'),
+                                                a.getValueOf('replace', 'txtReplace'),
+                                                a.getValueOf('replace', 'txtReplaceCaseChk'),
+                                                a.getValueOf('replace', 'txtReplaceWordChk'),
                                                 !1,
-                                                !0
+                                                !0,
                                             );
 
                                         );
@@ -565,8 +480,8 @@
                                             ? (alert(
                                                   e.replaceSuccessMsg.replace(
                                                       /%1/,
-                                                      f.replaceCounter
-                                                  )
+                                                      f.replaceCounter,
+                                                  ),
                                               ),
                                               c.fire('saveSnapshot'))
                                             : alert(e.notFoundMsg);
@@ -618,65 +533,45 @@
                 this.on('show', function () {
                     d = 1;
                 });
-                this.selectPage = CKEDITOR.tools.override(
-                    this.selectPage,
-                    function (c) {
-                        return function (e) {
-                            c.call(a, e);
-                            var f = a._.tabs[e],
-                                h;
-                            h =
-                                'find' === e
-                                    ? 'txtFindWordChk'
-                                    : 'txtReplaceWordChk';
-                            b = a.getContentElement(
-                                e,
-                                'find' === e ? 'txtFindFind' : 'txtFindReplace'
-                            );
-                            a.getContentElement(e, h);
-                            f.initialized ||
-                                (CKEDITOR.document.getById(b._.inputId),
-                                (f.initialized = !0));
-                            if (d) {
-                                var k;
-                                e = 'find' === e ? 1 : 0;
-                                var f = 1 - e,
-                                    l,
-                                    g = q.length;
-                                for (l = 0; l < g; l++)
-                                    (h = this.getContentElement(x[e], q[l][e])),
-                                        (k = this.getContentElement(
-                                            x[f],
-                                            q[l][f]
-                                        )),
-                                        k.setValue(h.getValue());
-                            }
-                        };
-                    }
-                );
+                this.selectPage = CKEDITOR.tools.override(this.selectPage, function (c) {
+                    return function (e) {
+                        c.call(a, e);
+                        var f = a._.tabs[e],
+                            h;
+                        h = 'find' === e ? 'txtFindWordChk' : 'txtReplaceWordChk';
+                        b = a.getContentElement(e, 'find' === e ? 'txtFindFind' : 'txtFindReplace');
+                        a.getContentElement(e, h);
+                        f.initialized ||
+                            (CKEDITOR.document.getById(b._.inputId), (f.initialized = !0));
+                        if (d) {
+                            var k;
+                            e = 'find' === e ? 1 : 0;
+                            var f = 1 - e,
+                                l,
+                                g = q.length;
+                            for (l = 0; l < g; l++)
+                                (h = this.getContentElement(x[e], q[l][e])),
+                                    (k = this.getContentElement(x[f], q[l][f])),
+                                    k.setValue(h.getValue());
+                        }
+                    };
+                });
             },
             onShow: function () {
                 f.searchRange = r();
                 var a = this._.currentTabId,
                     b = this.getParentEditor().getSelection().getSelectedText(),
-                    c = this.getContentElement(
-                        a,
-                        'find' == a ? 'txtFindFind' : 'txtFindReplace'
-                    );
+                    c = this.getContentElement(a, 'find' == a ? 'txtFindFind' : 'txtFindReplace');
                 c.setValue(b);
                 c.select();
-                this[
-                    ('find' == a && this._.editor.readOnly ? 'hide' : 'show') +
-                        'Page'
-                ]('replace');
+                this[('find' == a && this._.editor.readOnly ? 'hide' : 'show') + 'Page']('replace');
             },
             onHide: function () {
                 var a;
                 f.matchRange &&
                     f.matchRange.isMatched() &&
                     (f.matchRange.removeHighlight(),
-                    (a = f.matchRange.toDomRange()) &&
-                        c.getSelection().selectRanges([a]),
+                    (a = f.matchRange.toDomRange()) && c.getSelection().selectRanges([a]),
                     c.focus());
                 delete f.matchRange;
             },

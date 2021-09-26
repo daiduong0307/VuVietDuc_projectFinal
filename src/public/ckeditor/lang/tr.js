@@ -126,8 +126,7 @@ CKEDITOR.lang['tr'] = {
     about: {
         copy: 'Copyright &copy; $1. Tüm hakları saklıdır.',
         dlgTitle: 'CKEditor Hakkında',
-        moreInfo:
-            'Lisanslama hakkında daha fazla bilgi almak için lütfen sitemizi ziyaret edin:',
+        moreInfo: 'Lisanslama hakkında daha fazla bilgi almak için lütfen sitemizi ziyaret edin:',
     },
     basicstyles: {
         bold: 'Kalın',
@@ -169,8 +168,7 @@ CKEDITOR.lang['tr'] = {
         pasteNotification:
             '%1 tuşuna yapıştırmak için tıklayın. Tarayıcınız, Araç Çubuğu yada İçerik Menüsünü kullanarak yapıştırmayı desteklemiyor.',
         pasteArea: 'Yapıştırma Alanı',
-        pasteMsg:
-            'İçeriğinizi alttaki bulunan alana yapıştırın ve TAMAM butonuna tıklayın',
+        pasteMsg: 'İçeriğinizi alttaki bulunan alana yapıştırın ve TAMAM butonuna tıklayın',
     },
     colorbutton: {
         auto: 'Otomatik',
@@ -294,8 +292,7 @@ CKEDITOR.lang['tr'] = {
     filetools: {
         loadError: 'Dosya okunurken hata oluştu.',
         networkError: 'Dosya gönderilirken ağ hatası oluştu.',
-        httpError404:
-            'Dosya gönderilirken HTTP hatası oluştu (404: Dosya bulunamadı).',
+        httpError404: 'Dosya gönderilirken HTTP hatası oluştu (404: Dosya bulunamadı).',
         httpError403: 'Dosya gönderilirken HTTP hatası oluştu (403: Yasaklı).',
         httpError: 'Dosya gönderilirken HTTP hatası oluştu (hata durumu: %1).',
         noUrlError: 'Gönderilecek URL belirtilmedi.',
@@ -695,7 +692,6 @@ CKEDITOR.lang['tr'] = {
         doneOne: 'Gönderim işlemi başarılı şekilde tamamlandı.',
         doneMany: '%1 dosya başarılı şekilde gönderildi.',
         uploadOne: 'Dosyanın ({percentage}%) gönderildi...',
-        uploadMany:
-            'Toplam {current} / {max} dosyanın ({percentage}%) gönderildi...',
+        uploadMany: 'Toplam {current} / {max} dosyanın ({percentage}%) gönderildi...',
     },
 };

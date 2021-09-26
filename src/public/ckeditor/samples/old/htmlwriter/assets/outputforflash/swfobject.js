@@ -2,9 +2,7 @@
     function w() {
         if (!u) {
             try {
-                var a = d
-                    .getElementsByTagName('body')[0]
-                    .appendChild(d.createElement('span'));
+                var a = d.getElementsByTagName('body')[0].appendChild(d.createElement('span'));
                 a.parentNode.removeChild(a);
             } catch (b) {
                 return;
@@ -17,10 +15,8 @@
         u ? a() : (z[z.length] = a);
     }
     function N(a) {
-        if ('undefined' != typeof n.addEventListener)
-            n.addEventListener('load', a, !1);
-        else if ('undefined' != typeof d.addEventListener)
-            d.addEventListener('load', a, !1);
+        if ('undefined' != typeof n.addEventListener) n.addEventListener('load', a, !1);
+        else if ('undefined' != typeof d.addEventListener) d.addEventListener('load', a, !1);
         else if ('undefined' != typeof n.attachEvent) U(n, 'onload', a);
         else if ('function' == typeof n.onload) {
             var b = n.onload;
@@ -42,11 +38,7 @@
                     var g = c.GetVariable('$version');
                     g &&
                         ((g = g.split(' ')[1].split(',')),
-                        (e.pv = [
-                            parseInt(g[0], 10),
-                            parseInt(g[1], 10),
-                            parseInt(g[2], 10),
-                        ]));
+                        (e.pv = [parseInt(g[0], 10), parseInt(g[1], 10), parseInt(g[2], 10)]));
                 } else if (10 > f) {
                     f++;
                     setTimeout(arguments.callee, 10);
@@ -74,10 +66,8 @@
                                 g.data = r[b].expressInstall;
                                 g.width = d.getAttribute('width') || '0';
                                 g.height = d.getAttribute('height') || '0';
-                                d.getAttribute('class') &&
-                                    (g.styleclass = d.getAttribute('class'));
-                                d.getAttribute('align') &&
-                                    (g.align = d.getAttribute('align'));
+                                d.getAttribute('class') && (g.styleclass = d.getAttribute('class'));
+                                d.getAttribute('align') && (g.align = d.getAttribute('align'));
                                 for (
                                     var h = {},
                                         d = d.getElementsByTagName('param'),
@@ -86,17 +76,11 @@
                                     l < k;
                                     l++
                                 )
-                                    'movie' !=
-                                        d[l]
-                                            .getAttribute('name')
-                                            .toLowerCase() &&
-                                        (h[d[l].getAttribute('name')] =
-                                            d[l].getAttribute('value'));
+                                    'movie' != d[l].getAttribute('name').toLowerCase() &&
+                                        (h[d[l].getAttribute('name')] = d[l].getAttribute('value'));
                                 G(g, h, c, f);
                             } else W(d), f && f(g);
-                        else
-                            v(c, !0),
-                                f && ((g.success = !0), (g.ref = H(c)), f(g));
+                        else v(c, !0), f && ((g.success = !0), (g.ref = H(c)), f(g));
                 } else
                     v(c, !0),
                         f &&
@@ -124,9 +108,7 @@
         O = { success: !1, id: c };
         var g = p(c);
         if (g) {
-            'OBJECT' == g.nodeName
-                ? ((y = J(g)), (C = null))
-                : ((y = g), (C = c));
+            'OBJECT' == g.nodeName ? ((y = J(g)), (C = null)) : ((y = g), (C = c));
             a.id = 'SWFObjectExprInst';
             if (
                 'undefined' == typeof a.width ||
@@ -147,10 +129,7 @@
                 f +
                 '\x26MMdoctitle\x3d' +
                 d.title;
-            b.flashvars =
-                'undefined' != typeof b.flashvars
-                    ? b.flashvars + ('\x26' + f)
-                    : f;
+            b.flashvars = 'undefined' != typeof b.flashvars ? b.flashvars + ('\x26' + f) : f;
             e.ie &&
                 e.win &&
                 4 != g.readyState &&
@@ -174,9 +153,7 @@
             b.parentNode.replaceChild(J(a), b);
             a.style.display = 'none';
             (function () {
-                4 == a.readyState
-                    ? a.parentNode.removeChild(a)
-                    : setTimeout(arguments.callee, 10);
+                4 == a.readyState ? a.parentNode.removeChild(a) : setTimeout(arguments.callee, 10);
             })();
         } else a.parentNode.replaceChild(J(a), a);
     }
@@ -210,12 +187,7 @@
                 h = '';
                 for (var k in b)
                     b[k] != Object.prototype[k] &&
-                        (h +=
-                            '\x3cparam name\x3d"' +
-                            k +
-                            '" value\x3d"' +
-                            b[k] +
-                            '" /\x3e');
+                        (h += '\x3cparam name\x3d"' + k + '" value\x3d"' + b[k] + '" /\x3e');
                 g.outerHTML =
                     '\x3cobject classid\x3d"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"' +
                     q +
@@ -231,8 +203,7 @@
                     a[l] != Object.prototype[l] &&
                         ('styleclass' == l.toLowerCase()
                             ? k.setAttribute('class', a[l])
-                            : 'classid' != l.toLowerCase() &&
-                              k.setAttribute(l, a[l]));
+                            : 'classid' != l.toLowerCase() && k.setAttribute(l, a[l]));
                 for (q in b)
                     b[q] != Object.prototype[q] &&
                         'movie' != q.toLowerCase() &&
@@ -258,8 +229,7 @@
                       if (4 == b.readyState) {
                           var c = p(a);
                           if (c) {
-                              for (var f in c)
-                                  'function' == typeof c[f] && (c[f] = null);
+                              for (var f in c) 'function' == typeof c[f] && (c[f] = null);
                               c.parentNode.removeChild(c);
                           }
                       } else setTimeout(arguments.callee, 10);
@@ -316,14 +286,11 @@
     function v(a, b) {
         if (R) {
             var c = b ? 'visible' : 'hidden';
-            u && p(a)
-                ? (p(a).style.visibility = c)
-                : Q('#' + a, 'visibility:' + c);
+            u && p(a) ? (p(a).style.visibility = c) : Q('#' + a, 'visibility:' + c);
         }
     }
     function S(a) {
-        return null != /[\\\"<>\.;]/.exec(a) &&
-            'undefined' != typeof encodeURIComponent
+        return null != /[\\\"<>\.;]/.exec(a) && 'undefined' != typeof encodeURIComponent
             ? encodeURIComponent(a)
             : a;
     }
@@ -363,15 +330,11 @@
                 g = !+'\v1',
                 e = [0, 0, 0],
                 h = null;
-            if (
-                'undefined' != typeof t.plugins &&
-                'object' == typeof t.plugins['Shockwave Flash']
-            )
+            if ('undefined' != typeof t.plugins && 'object' == typeof t.plugins['Shockwave Flash'])
                 !(h = t.plugins['Shockwave Flash'].description) ||
                     ('undefined' != typeof t.mimeTypes &&
                         t.mimeTypes['application/x-shockwave-flash'] &&
-                        !t.mimeTypes['application/x-shockwave-flash']
-                            .enabledPlugin) ||
+                        !t.mimeTypes['application/x-shockwave-flash'].enabledPlugin) ||
                     ((T = !0),
                     (g = !1),
                     (h = h.replace(/^.*\s+(\S+\s+\S+$)/, '$1')),
@@ -387,18 +350,13 @@
                         (h = k.GetVariable('$version')) &&
                         ((g = !0),
                         (h = h.split(' ')[1].split(',')),
-                        (e = [
-                            parseInt(h[0], 10),
-                            parseInt(h[1], 10),
-                            parseInt(h[2], 10),
-                        ]));
+                        (e = [parseInt(h[0], 10), parseInt(h[1], 10), parseInt(h[2], 10)]));
                 } catch (l) {}
             return { w3: a, pv: e, wk: b, ie: g, win: f, mac: c };
         })();
     (function () {
         e.w3 &&
-            ((('undefined' != typeof d.readyState &&
-                'complete' == d.readyState) ||
+            ((('undefined' != typeof d.readyState && 'complete' == d.readyState) ||
                 ('undefined' == typeof d.readyState &&
                     (d.getElementsByTagName('body')[0] || d.body))) &&
                 w(),
@@ -409,11 +367,7 @@
                     e.win &&
                     (d.attachEvent('onreadystatechange', function () {
                         'complete' == d.readyState &&
-                            (d.detachEvent(
-                                'onreadystatechange',
-                                arguments.callee
-                            ),
-                            w());
+                            (d.detachEvent('onreadystatechange', arguments.callee), w());
                     }),
                     n == top &&
                         (function () {
@@ -440,8 +394,7 @@
         e.ie &&
             e.win &&
             window.attachEvent('onunload', function () {
-                for (var a = x.length, b = 0; b < a; b++)
-                    x[b][0].detachEvent(x[b][1], x[b][2]);
+                for (var a = x.length, b = 0; b < a; b++) x[b][0].detachEvent(x[b][1], x[b][2]);
                 a = D.length;
                 for (b = 0; b < a; b++) P(D[b]);
                 for (var c in e) e[c] = null;
@@ -473,26 +426,20 @@
                       c += '';
                       d += '';
                       var e = {};
-                      if (l && 'object' === typeof l)
-                          for (var m in l) e[m] = l[m];
+                      if (l && 'object' === typeof l) for (var m in l) e[m] = l[m];
                       e.data = a;
                       e.width = c;
                       e.height = d;
                       m = {};
-                      if (k && 'object' === typeof k)
-                          for (var r in k) m[r] = k[r];
+                      if (k && 'object' === typeof k) for (var r in k) m[r] = k[r];
                       if (h && 'object' === typeof h)
                           for (var t in h)
                               m.flashvars =
                                   'undefined' != typeof m.flashvars
-                                      ? m.flashvars +
-                                        ('\x26' + t + '\x3d' + h[t])
+                                      ? m.flashvars + ('\x26' + t + '\x3d' + h[t])
                                       : t + '\x3d' + h[t];
                       if (A(g))
-                          (r = K(e, m, b)),
-                              e.id == b && v(b, !0),
-                              (p.success = !0),
-                              (p.ref = r);
+                          (r = K(e, m, b)), e.id == b && v(b, !0), (p.success = !0), (p.ref = r);
                       else {
                           if (q && F()) {
                               e.data = q;
@@ -544,9 +491,7 @@
                 a &&
                     y &&
                     (a.parentNode.replaceChild(y, a),
-                    C &&
-                        (v(C, !0),
-                        e.ie && e.win && (y.style.display = 'block')),
+                    C && (v(C, !0), e.ie && e.win && (y.style.display = 'block')),
                     I && I(O));
                 B = !1;
             }

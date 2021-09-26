@@ -129,13 +129,10 @@
 
         if (!params) return url;
         else {
-            for (var i in params)
-                queryString.push(i + '=' + encodeURIComponent(params[i]));
+            for (var i in params) queryString.push(i + '=' + encodeURIComponent(params[i]));
         }
 
-        return (
-            url + (url.indexOf('?') != -1 ? '&' : '?') + queryString.join('&')
-        );
+        return url + (url.indexOf('?') != -1 ? '&' : '?') + queryString.join('&');
     }
 
     // Function sniffs for CKFinder URLs, and adds required parameters if needed (#1835).
@@ -144,10 +141,7 @@
     // @param {String} url CKFinder's URL.
     // @returns {String} Decorated URL.
     function addMissingParams(url) {
-        if (
-            !url.match(/command=QuickUpload/) ||
-            url.match(/(\?|&)responseType=json/)
-        ) {
+        if (!url.match(/command=QuickUpload/) || url.match(/(\?|&)responseType=json/)) {
             return url;
         }
 
@@ -176,15 +170,11 @@
         editor._.filebrowserSe = this;
 
         var width =
-            editor.config[
-                'filebrowser' + ucFirst(dialog.getName()) + 'WindowWidth'
-            ] ||
+            editor.config['filebrowser' + ucFirst(dialog.getName()) + 'WindowWidth'] ||
             editor.config.filebrowserWindowWidth ||
             '80%';
         var height =
-            editor.config[
-                'filebrowser' + ucFirst(dialog.getName()) + 'WindowHeight'
-            ] ||
+            editor.config['filebrowser' + ucFirst(dialog.getName()) + 'WindowHeight'] ||
             editor.config.filebrowserWindowHeight ||
             '70%';
 
@@ -199,8 +189,7 @@
             url,
             width,
             height,
-            editor.config.filebrowserWindowFeatures ||
-                editor.config.fileBrowserWindowFeatures
+            editor.config.filebrowserWindowFeatures || editor.config.fileBrowserWindowFeatures,
         );
     }
 
@@ -246,19 +235,10 @@
         editor._.filebrowserSe = this;
 
         // If user didn't select the file, stop the upload.
-        if (
-            !dialog
-                .getContentElement(this['for'][0], this['for'][1])
-                .getInputElement().$.value
-        )
+        if (!dialog.getContentElement(this['for'][0], this['for'][1]).getInputElement().$.value)
             return false;
 
-        if (
-            !dialog
-                .getContentElement(this['for'][0], this['for'][1])
-                .getAction()
-        )
-            return false;
+        if (!dialog.getContentElement(this['for'][0], this['for'][1]).getAction()) return false;
 
         return true;
     }
@@ -298,24 +278,14 @@
         for (var i = elements.length; i--; ) {
             element = elements[i];
 
-            if (
-                element.type == 'hbox' ||
-                element.type == 'vbox' ||
-                element.type == 'fieldset'
-            )
-                attachFileBrowser(
-                    editor,
-                    dialogName,
-                    definition,
-                    element.children
-                );
+            if (element.type == 'hbox' || element.type == 'vbox' || element.type == 'fieldset')
+                attachFileBrowser(editor, dialogName, definition, element.children);
 
             if (!element.filebrowser) continue;
 
             if (typeof element.filebrowser == 'string') {
                 var fb = {
-                    action:
-                        element.type == 'fileButton' ? 'QuickUpload' : 'Browse',
+                    action: element.type == 'fileButton' ? 'QuickUpload' : 'Browse',
                     target: element.filebrowser,
                 };
                 element.filebrowser = fb;
@@ -324,12 +294,8 @@
             if (element.filebrowser.action == 'Browse') {
                 var url = element.filebrowser.url;
                 if (url === undefined) {
-                    url =
-                        editor.config[
-                            'filebrowser' + ucFirst(dialogName) + 'BrowseUrl'
-                        ];
-                    if (url === undefined)
-                        url = editor.config.filebrowserBrowseUrl;
+                    url = editor.config['filebrowser' + ucFirst(dialogName) + 'BrowseUrl'];
+                    if (url === undefined) url = editor.config.filebrowserBrowseUrl;
                 }
 
                 if (url) {
@@ -337,18 +303,11 @@
                     element.filebrowser.url = url;
                     element.hidden = false;
                 }
-            } else if (
-                element.filebrowser.action == 'QuickUpload' &&
-                element['for']
-            ) {
+            } else if (element.filebrowser.action == 'QuickUpload' && element['for']) {
                 url = element.filebrowser.url;
                 if (url === undefined) {
-                    url =
-                        editor.config[
-                            'filebrowser' + ucFirst(dialogName) + 'UploadUrl'
-                        ];
-                    if (url === undefined)
-                        url = editor.config.filebrowserUploadUrl;
+                    url = editor.config['filebrowser' + ucFirst(dialogName) + 'UploadUrl'];
+                    if (url === undefined) url = editor.config.filebrowserUploadUrl;
                 }
 
                 if (url) {
@@ -360,14 +319,10 @@
                         var sender = evt.sender,
                             fileInput = sender
                                 .getDialog()
-                                .getContentElement(
-                                    this['for'][0],
-                                    this['for'][1]
-                                )
+                                .getContentElement(this['for'][0], this['for'][1])
                                 .getInputElement(),
                             isFileUploadApiSupported =
-                                CKEDITOR.fileTools &&
-                                CKEDITOR.fileTools.isFileUploadSupported;
+                                CKEDITOR.fileTools && CKEDITOR.fileTools.isFileUploadSupported;
 
                         if (onClick && onClick.call(sender, evt) === false) {
                             return false;
@@ -376,37 +331,24 @@
                         if (uploadFile.call(sender, evt)) {
                             // Use one of two upload strategies, either form or XHR based (#643).
                             if (
-                                editor.config.filebrowserUploadMethod ===
-                                    'form' ||
+                                editor.config.filebrowserUploadMethod === 'form' ||
                                 !isFileUploadApiSupported
                             ) {
                                 // Append token preventing CSRF attacks.
                                 appendToken(fileInput);
                                 return true;
                             } else {
-                                var loader = editor.uploadRepository.create(
-                                    fileInput.$.files[0]
-                                );
+                                var loader = editor.uploadRepository.create(fileInput.$.files[0]);
 
                                 loader.on('uploaded', function (evt) {
                                     var response = evt.sender.responseData;
-                                    setUrl.call(
-                                        evt.sender.editor,
-                                        response.url,
-                                        response.message
-                                    );
+                                    setUrl.call(evt.sender.editor, response.url, response.message);
                                 });
 
                                 // Return non-false value will disable fileButton in dialogui,
                                 // below listeners takes care of such situation and re-enable "send" button.
-                                loader.on(
-                                    'error',
-                                    xhrUploadErrorHandler.bind(this)
-                                );
-                                loader.on(
-                                    'abort',
-                                    xhrUploadErrorHandler.bind(this)
-                                );
+                                loader.on('error', xhrUploadErrorHandler.bind(this));
+                                loader.on('abort', xhrUploadErrorHandler.bind(this));
 
                                 loader.loadAndUpload(addMissingParams(url));
 
@@ -420,10 +362,8 @@
                     element.hidden = false;
                     setupFileElement(
                         editor,
-                        definition
-                            .getContents(element['for'][0])
-                            .get(element['for'][1]),
-                        element.filebrowser
+                        definition.getContents(element['for'][0]).get(element['for'][1]),
+                        element.filebrowser,
                     );
                 }
             }
@@ -478,9 +418,7 @@
             return false;
         }
 
-        var elementFileBrowser = definition
-            .getContents(tabId)
-            .get(elementId).filebrowser;
+        var elementFileBrowser = definition.getContents(tabId).get(elementId).filebrowser;
         return elementFileBrowser && elementFileBrowser.url;
     }
 
@@ -489,20 +427,11 @@
             targetInput = this._.filebrowserSe['for'],
             onSelect = this._.filebrowserSe.filebrowser.onSelect;
 
-        if (targetInput)
-            dialog.getContentElement(targetInput[0], targetInput[1]).reset();
+        if (targetInput) dialog.getContentElement(targetInput[0], targetInput[1]).reset();
 
-        if (
-            typeof data == 'function' &&
-            data.call(this._.filebrowserSe) === false
-        )
-            return;
+        if (typeof data == 'function' && data.call(this._.filebrowserSe) === false) return;
 
-        if (
-            onSelect &&
-            onSelect.call(this._.filebrowserSe, fileUrl, data) === false
-        )
-            return;
+        if (onSelect && onSelect.call(this._.filebrowserSe, fileUrl, data) === false) return;
 
         // The "data" argument may be used to pass the error message to the editor.
         if (typeof data == 'string' && data) alert(data); // jshint ignore:line
@@ -529,18 +458,9 @@
         // Associate filebrowser to elements with 'filebrowser' attribute.
         for (var i = 0; i < definition.contents.length; ++i) {
             if ((element = definition.contents[i])) {
-                attachFileBrowser(
-                    evt.editor,
-                    evt.data.name,
-                    definition,
-                    element.elements
-                );
+                attachFileBrowser(evt.editor, evt.data.name, definition, element.elements);
                 if (element.hidden && element.filebrowser)
-                    element.hidden = !isConfigured(
-                        definition,
-                        element.id,
-                        element.filebrowser
-                    );
+                    element.hidden = !isConfigured(definition, element.id, element.filebrowser);
             }
         }
     });

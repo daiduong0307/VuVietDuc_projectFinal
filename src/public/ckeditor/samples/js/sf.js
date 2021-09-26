@@ -30,16 +30,13 @@ var SF = (function () {
                   return a.call(e, b);
               }
             : function (a, b) {
-                  for (var c = a.length, d = 0; d < c; d++)
-                      if (a[d] === b) return d;
+                  for (var c = a.length, d = 0; d < c; d++) if (a[d] === b) return d;
                   return -1;
               };
     })();
     b.accept = function (a, e) {
         var c;
-        a.children
-            ? ((c = a.children), e(a))
-            : 'number' === typeof a.length && (c = a);
+        a.children ? ((c = a.children), e(a)) : 'number' === typeof a.length && (c = a);
         for (var d = c ? c.length || 0 : 0; d--; ) b.accept(c[d], e);
     };
     b.getByClass = (function () {
@@ -101,9 +98,7 @@ var SF = (function () {
             e && e(a);
             window.removeEventListener('keydown', b);
         };
-        var f = new picoModal(c)
-            .afterCreate(c.afterCreate)
-            .afterClose(c.afterClose);
+        var f = new picoModal(c).afterCreate(c.afterCreate).afterClose(c.afterClose);
         return f;
     };
 })();
@@ -211,7 +206,7 @@ var SF = (function () {
                     backgroundColor: 'white',
                     padding: '20px',
                     borderRadius: '5px',
-                })
+                }),
             )
             .html(a('content'))
             .attr('role', 'dialog')
@@ -270,7 +265,7 @@ var SF = (function () {
                                   textAlign: 'center',
                                   lineHeight: '15px',
                                   background: '#CCC',
-                              })
+                              }),
                           )
                     : void 0;
                 t = { modal: c, overlay: b, close: d };

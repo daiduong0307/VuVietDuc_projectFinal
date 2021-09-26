@@ -44,8 +44,7 @@ CKEDITOR.lang['th'] = {
         validateNumberFailed: 'ค่านี้ไม่ใช่ตัวเลข',
         confirmNewPage:
             'การเปลี่ยนแปลงใดๆ ในเนื้อหานี้ ที่ไม่ได้ถูกบันทึกไว้ จะสูญหายทั้งหมด คุณแน่ใจว่าจะเรียกหน้าใหม่?',
-        confirmCancel:
-            'ตัวเลือกบางตัวมีการเปลี่ยนแปลง คุณแน่ใจว่าจะปิดกล่องโต้ตอบนี้?',
+        confirmCancel: 'ตัวเลือกบางตัวมีการเปลี่ยนแปลง คุณแน่ใจว่าจะปิดกล่องโต้ตอบนี้?',
         options: 'ตัวเลือก',
         target: 'การเปิดหน้าลิงค์',
         targetNew: 'หน้าต่างใหม่ (_blank)',
@@ -295,10 +294,8 @@ CKEDITOR.lang['th'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -467,11 +464,9 @@ CKEDITOR.lang['th'] = {
         alt: 'คำประกอบรูปภาพ',
         border: 'ขนาดขอบรูป',
         btnUpload: 'อัพโหลดไฟล์ไปเก็บไว้ที่เครื่องแม่ข่าย (เซิร์ฟเวอร์)',
-        button2Img:
-            'Do you want to transform the selected image button on a simple image?',
+        button2Img: 'Do you want to transform the selected image button on a simple image?',
         hSpace: 'ระยะแนวนอน',
-        img2Button:
-            'Do you want to transform the selected image on a image button?',
+        img2Button: 'Do you want to transform the selected image on a image button?',
         infoTab: 'ข้อมูลของรูปภาพ',
         linkTab: 'ลิ้งค์',
         lockRatio: 'กำหนดอัตราส่วน กว้าง-สูง แบบคงที่',
@@ -703,7 +698,6 @@ CKEDITOR.lang['th'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

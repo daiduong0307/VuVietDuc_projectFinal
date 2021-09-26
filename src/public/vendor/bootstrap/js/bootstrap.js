@@ -6,7 +6,7 @@
 
 if (typeof jQuery === 'undefined') {
     throw new Error(
-        "Bootstrap's JavaScript requires jQuery. jQuery must be included before Bootstrap's JavaScript."
+        "Bootstrap's JavaScript requires jQuery. jQuery must be included before Bootstrap's JavaScript.",
     );
 }
 
@@ -18,7 +18,7 @@ if (typeof jQuery === 'undefined') {
         version[0] >= 4
     ) {
         throw new Error(
-            "Bootstrap's JavaScript requires at least jQuery v1.9.1 but less than v4.0.0"
+            "Bootstrap's JavaScript requires at least jQuery v1.9.1 but less than v4.0.0",
         );
     }
 })(jQuery);
@@ -57,20 +57,15 @@ if (typeof jQuery === 'undefined') {
 
     function _possibleConstructorReturn(self, call) {
         if (!self) {
-            throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called"
-            );
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
         }
-        return call && (typeof call === 'object' || typeof call === 'function')
-            ? call
-            : self;
+        return call && (typeof call === 'object' || typeof call === 'function') ? call : self;
     }
 
     function _inherits(subClass, superClass) {
         if (typeof superClass !== 'function' && superClass !== null) {
             throw new TypeError(
-                'Super expression must either be null or a function, not ' +
-                    typeof superClass
+                'Super expression must either be null or a function, not ' + typeof superClass,
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -185,8 +180,7 @@ if (typeof jQuery === 'undefined') {
             $.fn.emulateTransitionEnd = transitionEndEmulator;
 
             if (Util.supportsTransitionEnd()) {
-                $.event.special[Util.TRANSITION_END] =
-                    getSpecialTransitionEndEvent();
+                $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
             }
         }
 
@@ -228,19 +222,12 @@ if (typeof jQuery === 'undefined') {
             supportsTransitionEnd: function supportsTransitionEnd() {
                 return Boolean(transition);
             },
-            typeCheckConfig: function typeCheckConfig(
-                componentName,
-                config,
-                configTypes
-            ) {
+            typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
                 for (var property in configTypes) {
                     if (configTypes.hasOwnProperty(property)) {
                         var expectedTypes = configTypes[property];
                         var value = config[property];
-                        var valueType =
-                            value && isElement(value)
-                                ? 'element'
-                                : toType(value);
+                        var valueType = value && isElement(value) ? 'element' : toType(value);
 
                         if (!new RegExp(expectedTypes).test(valueType)) {
                             throw new Error(
@@ -251,9 +238,7 @@ if (typeof jQuery === 'undefined') {
                                         '" provided type "' +
                                         valueType +
                                         '" ') +
-                                    ('but expected type "' +
-                                        expectedTypes +
-                                        '".')
+                                    ('but expected type "' + expectedTypes + '".'),
                             );
                         }
                     }
@@ -340,9 +325,7 @@ if (typeof jQuery === 'undefined') {
 
             // private
 
-            Alert.prototype._getRootElement = function _getRootElement(
-                element
-            ) {
+            Alert.prototype._getRootElement = function _getRootElement(element) {
                 var selector = Util.getSelectorFromElement(element);
                 var parent = false;
 
@@ -357,9 +340,7 @@ if (typeof jQuery === 'undefined') {
                 return parent;
             };
 
-            Alert.prototype._triggerCloseEvent = function _triggerCloseEvent(
-                element
-            ) {
+            Alert.prototype._triggerCloseEvent = function _triggerCloseEvent(element) {
                 var closeEvent = $.Event(Event.CLOSE);
 
                 $(element).trigger(closeEvent);
@@ -371,10 +352,7 @@ if (typeof jQuery === 'undefined') {
 
                 $(element).removeClass(ClassName.SHOW);
 
-                if (
-                    !Util.supportsTransitionEnd() ||
-                    !$(element).hasClass(ClassName.FADE)
-                ) {
+                if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
                     this._destroyElement(element);
                     return;
                 }
@@ -386,9 +364,7 @@ if (typeof jQuery === 'undefined') {
                     .emulateTransitionEnd(TRANSITION_DURATION);
             };
 
-            Alert.prototype._destroyElement = function _destroyElement(
-                element
-            ) {
+            Alert.prototype._destroyElement = function _destroyElement(element) {
                 $(element).detach().trigger(Event.CLOSED).remove();
             };
 
@@ -438,11 +414,7 @@ if (typeof jQuery === 'undefined') {
          * ------------------------------------------------------------------------
          */
 
-        $(document).on(
-            Event.CLICK_DATA_API,
-            Selector.DISMISS,
-            Alert._handleDismiss(new Alert())
-        );
+        $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
         /**
          * ------------------------------------------------------------------------
@@ -498,11 +470,7 @@ if (typeof jQuery === 'undefined') {
         var Event = {
             CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
             FOCUS_BLUR_DATA_API:
-                'focus' +
-                EVENT_KEY +
-                DATA_API_KEY +
-                ' ' +
-                ('blur' + EVENT_KEY + DATA_API_KEY),
+                'focus' + EVENT_KEY + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + DATA_API_KEY),
 
             /**
              * ------------------------------------------------------------------------
@@ -524,29 +492,20 @@ if (typeof jQuery === 'undefined') {
             Button.prototype.toggle = function toggle() {
                 var triggerChangeEvent = true;
                 var addAriaPressed = true;
-                var rootElement = $(this._element).closest(
-                    Selector.DATA_TOGGLE
-                )[0];
+                var rootElement = $(this._element).closest(Selector.DATA_TOGGLE)[0];
 
                 if (rootElement) {
                     var input = $(this._element).find(Selector.INPUT)[0];
 
                     if (input) {
                         if (input.type === 'radio') {
-                            if (
-                                input.checked &&
-                                $(this._element).hasClass(ClassName.ACTIVE)
-                            ) {
+                            if (input.checked && $(this._element).hasClass(ClassName.ACTIVE)) {
                                 triggerChangeEvent = false;
                             } else {
-                                var activeElement = $(rootElement).find(
-                                    Selector.ACTIVE
-                                )[0];
+                                var activeElement = $(rootElement).find(Selector.ACTIVE)[0];
 
                                 if (activeElement) {
-                                    $(activeElement).removeClass(
-                                        ClassName.ACTIVE
-                                    );
+                                    $(activeElement).removeClass(ClassName.ACTIVE);
                                 }
                             }
                         }
@@ -560,9 +519,7 @@ if (typeof jQuery === 'undefined') {
                             ) {
                                 return;
                             }
-                            input.checked = !$(this._element).hasClass(
-                                ClassName.ACTIVE
-                            );
+                            input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
                             $(input).trigger('change');
                         }
 
@@ -574,7 +531,7 @@ if (typeof jQuery === 'undefined') {
                 if (addAriaPressed) {
                     this._element.setAttribute(
                         'aria-pressed',
-                        !$(this._element).hasClass(ClassName.ACTIVE)
+                        !$(this._element).hasClass(ClassName.ACTIVE),
                     );
                 }
 
@@ -624,32 +581,21 @@ if (typeof jQuery === 'undefined') {
          */
 
         $(document)
-            .on(
-                Event.CLICK_DATA_API,
-                Selector.DATA_TOGGLE_CARROT,
-                function (event) {
-                    event.preventDefault();
+            .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
+                event.preventDefault();
 
-                    var button = event.target;
+                var button = event.target;
 
-                    if (!$(button).hasClass(ClassName.BUTTON)) {
-                        button = $(button).closest(Selector.BUTTON);
-                    }
-
-                    Button._jQueryInterface.call($(button), 'toggle');
+                if (!$(button).hasClass(ClassName.BUTTON)) {
+                    button = $(button).closest(Selector.BUTTON);
                 }
-            )
-            .on(
-                Event.FOCUS_BLUR_DATA_API,
-                Selector.DATA_TOGGLE_CARROT,
-                function (event) {
-                    var button = $(event.target).closest(Selector.BUTTON)[0];
-                    $(button).toggleClass(
-                        ClassName.FOCUS,
-                        /^focus(in)?$/.test(event.type)
-                    );
-                }
-            );
+
+                Button._jQueryInterface.call($(button), 'toggle');
+            })
+            .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
+                var button = $(event.target).closest(Selector.BUTTON)[0];
+                $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
+            });
 
         /**
          * ------------------------------------------------------------------------
@@ -767,9 +713,7 @@ if (typeof jQuery === 'undefined') {
 
                 this._config = this._getConfig(config);
                 this._element = $(element)[0];
-                this._indicatorsElement = $(this._element).find(
-                    Selector.INDICATORS
-                )[0];
+                this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
 
                 this._addEventListeners();
             }
@@ -802,10 +746,7 @@ if (typeof jQuery === 'undefined') {
                     this._isPaused = true;
                 }
 
-                if (
-                    $(this._element).find(Selector.NEXT_PREV)[0] &&
-                    Util.supportsTransitionEnd()
-                ) {
+                if ($(this._element).find(Selector.NEXT_PREV)[0] && Util.supportsTransitionEnd()) {
                     Util.triggerTransitionEnd(this._element);
                     this.cycle(true);
                 }
@@ -826,11 +767,8 @@ if (typeof jQuery === 'undefined') {
 
                 if (this._config.interval && !this._isPaused) {
                     this._interval = setInterval(
-                        (document.visibilityState
-                            ? this.nextWhenVisible
-                            : this.next
-                        ).bind(this),
-                        this._config.interval
+                        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
+                        this._config.interval,
                     );
                 }
             };
@@ -838,9 +776,7 @@ if (typeof jQuery === 'undefined') {
             Carousel.prototype.to = function to(index) {
                 var _this3 = this;
 
-                this._activeElement = $(this._element).find(
-                    Selector.ACTIVE_ITEM
-                )[0];
+                this._activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
 
                 var activeIndex = this._getItemIndex(this._activeElement);
 
@@ -861,8 +797,7 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                var direction =
-                    index > activeIndex ? Direction.NEXT : Direction.PREV;
+                var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
 
                 this._slide(direction, this._items[index]);
             };
@@ -889,47 +824,43 @@ if (typeof jQuery === 'undefined') {
                 return config;
             };
 
-            Carousel.prototype._addEventListeners =
-                function _addEventListeners() {
-                    var _this4 = this;
+            Carousel.prototype._addEventListeners = function _addEventListeners() {
+                var _this4 = this;
 
-                    if (this._config.keyboard) {
-                        $(this._element).on(Event.KEYDOWN, function (event) {
-                            return _this4._keydown(event);
+                if (this._config.keyboard) {
+                    $(this._element).on(Event.KEYDOWN, function (event) {
+                        return _this4._keydown(event);
+                    });
+                }
+
+                if (this._config.pause === 'hover') {
+                    $(this._element)
+                        .on(Event.MOUSEENTER, function (event) {
+                            return _this4.pause(event);
+                        })
+                        .on(Event.MOUSELEAVE, function (event) {
+                            return _this4.cycle(event);
+                        });
+                    if ('ontouchstart' in document.documentElement) {
+                        // if it's a touch-enabled device, mouseenter/leave are fired as
+                        // part of the mouse compatibility events on first tap - the carousel
+                        // would stop cycling until user tapped out of it;
+                        // here, we listen for touchend, explicitly pause the carousel
+                        // (as if it's the second time we tap on it, mouseenter compat event
+                        // is NOT fired) and after a timeout (to allow for mouse compatibility
+                        // events to fire) we explicitly restart cycling
+                        $(this._element).on(Event.TOUCHEND, function () {
+                            _this4.pause();
+                            if (_this4.touchTimeout) {
+                                clearTimeout(_this4.touchTimeout);
+                            }
+                            _this4.touchTimeout = setTimeout(function (event) {
+                                return _this4.cycle(event);
+                            }, TOUCHEVENT_COMPAT_WAIT + _this4._config.interval);
                         });
                     }
-
-                    if (this._config.pause === 'hover') {
-                        $(this._element)
-                            .on(Event.MOUSEENTER, function (event) {
-                                return _this4.pause(event);
-                            })
-                            .on(Event.MOUSELEAVE, function (event) {
-                                return _this4.cycle(event);
-                            });
-                        if ('ontouchstart' in document.documentElement) {
-                            // if it's a touch-enabled device, mouseenter/leave are fired as
-                            // part of the mouse compatibility events on first tap - the carousel
-                            // would stop cycling until user tapped out of it;
-                            // here, we listen for touchend, explicitly pause the carousel
-                            // (as if it's the second time we tap on it, mouseenter compat event
-                            // is NOT fired) and after a timeout (to allow for mouse compatibility
-                            // events to fire) we explicitly restart cycling
-                            $(this._element).on(Event.TOUCHEND, function () {
-                                _this4.pause();
-                                if (_this4.touchTimeout) {
-                                    clearTimeout(_this4.touchTimeout);
-                                }
-                                _this4.touchTimeout = setTimeout(function (
-                                    event
-                                ) {
-                                    return _this4.cycle(event);
-                                },
-                                TOUCHEVENT_COMPAT_WAIT + _this4._config.interval);
-                            });
-                        }
-                    }
-                };
+                }
+            };
 
             Carousel.prototype._keydown = function _keydown(event) {
                 if (/input|textarea/i.test(event.target.tagName)) {
@@ -951,42 +882,40 @@ if (typeof jQuery === 'undefined') {
             };
 
             Carousel.prototype._getItemIndex = function _getItemIndex(element) {
-                this._items = $.makeArray(
-                    $(element).parent().find(Selector.ITEM)
-                );
+                this._items = $.makeArray($(element).parent().find(Selector.ITEM));
                 return this._items.indexOf(element);
             };
 
-            Carousel.prototype._getItemByDirection =
-                function _getItemByDirection(direction, activeElement) {
-                    var isNextDirection = direction === Direction.NEXT;
-                    var isPrevDirection = direction === Direction.PREV;
-                    var activeIndex = this._getItemIndex(activeElement);
-                    var lastItemIndex = this._items.length - 1;
-                    var isGoingToWrap =
-                        (isPrevDirection && activeIndex === 0) ||
-                        (isNextDirection && activeIndex === lastItemIndex);
+            Carousel.prototype._getItemByDirection = function _getItemByDirection(
+                direction,
+                activeElement,
+            ) {
+                var isNextDirection = direction === Direction.NEXT;
+                var isPrevDirection = direction === Direction.PREV;
+                var activeIndex = this._getItemIndex(activeElement);
+                var lastItemIndex = this._items.length - 1;
+                var isGoingToWrap =
+                    (isPrevDirection && activeIndex === 0) ||
+                    (isNextDirection && activeIndex === lastItemIndex);
 
-                    if (isGoingToWrap && !this._config.wrap) {
-                        return activeElement;
-                    }
+                if (isGoingToWrap && !this._config.wrap) {
+                    return activeElement;
+                }
 
-                    var delta = direction === Direction.PREV ? -1 : 1;
-                    var itemIndex = (activeIndex + delta) % this._items.length;
+                var delta = direction === Direction.PREV ? -1 : 1;
+                var itemIndex = (activeIndex + delta) % this._items.length;
 
-                    return itemIndex === -1
-                        ? this._items[this._items.length - 1]
-                        : this._items[itemIndex];
-                };
+                return itemIndex === -1
+                    ? this._items[this._items.length - 1]
+                    : this._items[itemIndex];
+            };
 
             Carousel.prototype._triggerSlideEvent = function _triggerSlideEvent(
                 relatedTarget,
-                eventDirectionName
+                eventDirectionName,
             ) {
                 var targetIndex = this._getItemIndex(relatedTarget);
-                var fromIndex = this._getItemIndex(
-                    $(this._element).find(Selector.ACTIVE_ITEM)[0]
-                );
+                var fromIndex = this._getItemIndex($(this._element).find(Selector.ACTIVE_ITEM)[0]);
                 var slideEvent = $.Event(Event.SLIDE, {
                     relatedTarget: relatedTarget,
                     direction: eventDirectionName,
@@ -999,35 +928,29 @@ if (typeof jQuery === 'undefined') {
                 return slideEvent;
             };
 
-            Carousel.prototype._setActiveIndicatorElement =
-                function _setActiveIndicatorElement(element) {
-                    if (this._indicatorsElement) {
-                        $(this._indicatorsElement)
-                            .find(Selector.ACTIVE)
-                            .removeClass(ClassName.ACTIVE);
+            Carousel.prototype._setActiveIndicatorElement = function _setActiveIndicatorElement(
+                element,
+            ) {
+                if (this._indicatorsElement) {
+                    $(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
 
-                        var nextIndicator =
-                            this._indicatorsElement.children[
-                                this._getItemIndex(element)
-                            ];
+                    var nextIndicator =
+                        this._indicatorsElement.children[this._getItemIndex(element)];
 
-                        if (nextIndicator) {
-                            $(nextIndicator).addClass(ClassName.ACTIVE);
-                        }
+                    if (nextIndicator) {
+                        $(nextIndicator).addClass(ClassName.ACTIVE);
                     }
-                };
+                }
+            };
 
             Carousel.prototype._slide = function _slide(direction, element) {
                 var _this5 = this;
 
-                var activeElement = $(this._element).find(
-                    Selector.ACTIVE_ITEM
-                )[0];
+                var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
                 var activeElementIndex = this._getItemIndex(activeElement);
                 var nextElement =
                     element ||
-                    (activeElement &&
-                        this._getItemByDirection(direction, activeElement));
+                    (activeElement && this._getItemByDirection(direction, activeElement));
                 var nextElementIndex = this._getItemIndex(nextElement);
                 var isCycling = Boolean(this._interval);
 
@@ -1050,10 +973,7 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                var slideEvent = this._triggerSlideEvent(
-                    nextElement,
-                    eventDirectionName
-                );
+                var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
                 if (slideEvent.isDefaultPrevented()) {
                     return;
                 }
@@ -1078,10 +998,7 @@ if (typeof jQuery === 'undefined') {
                     to: nextElementIndex,
                 });
 
-                if (
-                    Util.supportsTransitionEnd() &&
-                    $(this._element).hasClass(ClassName.SLIDE)
-                ) {
+                if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.SLIDE)) {
                     $(nextElement).addClass(orderClassName);
 
                     Util.reflow(nextElement);
@@ -1092,9 +1009,7 @@ if (typeof jQuery === 'undefined') {
                     $(activeElement)
                         .one(Util.TRANSITION_END, function () {
                             $(nextElement)
-                                .removeClass(
-                                    directionalClassName + ' ' + orderClassName
-                                )
+                                .removeClass(directionalClassName + ' ' + orderClassName)
                                 .addClass(ClassName.ACTIVE);
 
                             $(activeElement).removeClass(
@@ -1102,7 +1017,7 @@ if (typeof jQuery === 'undefined') {
                                     ' ' +
                                     orderClassName +
                                     ' ' +
-                                    directionalClassName
+                                    directionalClassName,
                             );
 
                             _this5._isSliding = false;
@@ -1133,15 +1048,12 @@ if (typeof jQuery === 'undefined') {
                     var _config = $.extend({}, Default, $(this).data());
 
                     if (
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object'
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object'
                     ) {
                         $.extend(_config, config);
                     }
 
-                    var action =
-                        typeof config === 'string' ? config : _config.slide;
+                    var action = typeof config === 'string' ? config : _config.slide;
 
                     if (!data) {
                         data = new Carousel(this, _config);
@@ -1162,9 +1074,7 @@ if (typeof jQuery === 'undefined') {
                 });
             };
 
-            Carousel._dataApiClickHandler = function _dataApiClickHandler(
-                event
-            ) {
+            Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
                 var selector = Util.getSelectorFromElement(this);
 
                 if (!selector) {
@@ -1217,11 +1127,7 @@ if (typeof jQuery === 'undefined') {
          * ------------------------------------------------------------------------
          */
 
-        $(document).on(
-            Event.CLICK_DATA_API,
-            Selector.DATA_SLIDE,
-            Carousel._dataApiClickHandler
-        );
+        $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 
         $(window).on(Event.LOAD_DATA_API, function () {
             $(Selector.DATA_RIDE).each(function () {
@@ -1320,19 +1226,14 @@ if (typeof jQuery === 'undefined') {
                         '[data-toggle="collapse"][href="#' +
                             element.id +
                             '"],' +
-                            ('[data-toggle="collapse"][data-target="#' +
-                                element.id +
-                                '"]')
-                    )
+                            ('[data-toggle="collapse"][data-target="#' + element.id + '"]'),
+                    ),
                 );
                 var tabToggles = $(Selector.DATA_TOGGLE);
                 for (var i = 0; i < tabToggles.length; i++) {
                     var elem = tabToggles[i];
                     var selector = Util.getSelectorFromElement(elem);
-                    if (
-                        selector !== null &&
-                        $(selector).filter(element).length > 0
-                    ) {
+                    if (selector !== null && $(selector).filter(element).length > 0) {
                         this._triggerArray.push(elem);
                     }
                 }
@@ -1340,10 +1241,7 @@ if (typeof jQuery === 'undefined') {
                 this._parent = this._config.parent ? this._getParent() : null;
 
                 if (!this._config.parent) {
-                    this._addAriaAndCollapsedClass(
-                        this._element,
-                        this._triggerArray
-                    );
+                    this._addAriaAndCollapsedClass(this._element, this._triggerArray);
                 }
 
                 if (this._config.toggle) {
@@ -1366,10 +1264,7 @@ if (typeof jQuery === 'undefined') {
             Collapse.prototype.show = function show() {
                 var _this6 = this;
 
-                if (
-                    this._isTransitioning ||
-                    $(this._element).hasClass(ClassName.SHOW)
-                ) {
+                if (this._isTransitioning || $(this._element).hasClass(ClassName.SHOW)) {
                     return;
                 }
 
@@ -1377,9 +1272,7 @@ if (typeof jQuery === 'undefined') {
                 var activesData = void 0;
 
                 if (this._parent) {
-                    actives = $.makeArray(
-                        $(this._parent).children().children(Selector.ACTIVES)
-                    );
+                    actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES));
                     if (!actives.length) {
                         actives = null;
                     }
@@ -1407,9 +1300,7 @@ if (typeof jQuery === 'undefined') {
 
                 var dimension = this._getDimension();
 
-                $(this._element)
-                    .removeClass(ClassName.COLLAPSE)
-                    .addClass(ClassName.COLLAPSING);
+                $(this._element).removeClass(ClassName.COLLAPSE).addClass(ClassName.COLLAPSING);
 
                 this._element.style[dimension] = 0;
 
@@ -1439,25 +1330,20 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                var capitalizedDimension =
-                    dimension[0].toUpperCase() + dimension.slice(1);
+                var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
                 var scrollSize = 'scroll' + capitalizedDimension;
 
                 $(this._element)
                     .one(Util.TRANSITION_END, complete)
                     .emulateTransitionEnd(TRANSITION_DURATION);
 
-                this._element.style[dimension] =
-                    this._element[scrollSize] + 'px';
+                this._element.style[dimension] = this._element[scrollSize] + 'px';
             };
 
             Collapse.prototype.hide = function hide() {
                 var _this7 = this;
 
-                if (
-                    this._isTransitioning ||
-                    !$(this._element).hasClass(ClassName.SHOW)
-                ) {
+                if (this._isTransitioning || !$(this._element).hasClass(ClassName.SHOW)) {
                     return;
                 }
 
@@ -1516,9 +1402,7 @@ if (typeof jQuery === 'undefined') {
                     .emulateTransitionEnd(TRANSITION_DURATION);
             };
 
-            Collapse.prototype.setTransitioning = function setTransitioning(
-                isTransitioning
-            ) {
+            Collapse.prototype.setTransitioning = function setTransitioning(isTransitioning) {
                 this._isTransitioning = isTransitioning;
             };
 
@@ -1551,40 +1435,37 @@ if (typeof jQuery === 'undefined') {
 
                 var parent = $(this._config.parent)[0];
                 var selector =
-                    '[data-toggle="collapse"][data-parent="' +
-                    this._config.parent +
-                    '"]';
+                    '[data-toggle="collapse"][data-parent="' + this._config.parent + '"]';
 
                 $(parent)
                     .find(selector)
                     .each(function (i, element) {
-                        _this8._addAriaAndCollapsedClass(
-                            Collapse._getTargetFromElement(element),
-                            [element]
-                        );
+                        _this8._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [
+                            element,
+                        ]);
                     });
 
                 return parent;
             };
 
-            Collapse.prototype._addAriaAndCollapsedClass =
-                function _addAriaAndCollapsedClass(element, triggerArray) {
-                    if (element) {
-                        var isOpen = $(element).hasClass(ClassName.SHOW);
+            Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(
+                element,
+                triggerArray,
+            ) {
+                if (element) {
+                    var isOpen = $(element).hasClass(ClassName.SHOW);
 
-                        if (triggerArray.length) {
-                            $(triggerArray)
-                                .toggleClass(ClassName.COLLAPSED, !isOpen)
-                                .attr('aria-expanded', isOpen);
-                        }
+                    if (triggerArray.length) {
+                        $(triggerArray)
+                            .toggleClass(ClassName.COLLAPSED, !isOpen)
+                            .attr('aria-expanded', isOpen);
                     }
-                };
+                }
+            };
 
             // static
 
-            Collapse._getTargetFromElement = function _getTargetFromElement(
-                element
-            ) {
+            Collapse._getTargetFromElement = function _getTargetFromElement(element) {
                 var selector = Util.getSelectorFromElement(element);
                 return selector ? $(selector)[0] : null;
             };
@@ -1597,9 +1478,8 @@ if (typeof jQuery === 'undefined') {
                         {},
                         Default,
                         $this.data(),
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object' && config
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) ===
+                            'object' && config,
                     );
 
                     if (!data && _config.toggle && /show|hide/.test(config)) {
@@ -1644,24 +1524,20 @@ if (typeof jQuery === 'undefined') {
          * ------------------------------------------------------------------------
          */
 
-        $(document).on(
-            Event.CLICK_DATA_API,
-            Selector.DATA_TOGGLE,
-            function (event) {
-                if (!/input|textarea/i.test(event.target.tagName)) {
-                    event.preventDefault();
-                }
-
-                var $trigger = $(this);
-                var selector = Util.getSelectorFromElement(this);
-                $(selector).each(function () {
-                    var $target = $(this);
-                    var data = $target.data(DATA_KEY);
-                    var config = data ? 'toggle' : $trigger.data();
-                    Collapse._jQueryInterface.call($target, config);
-                });
+        $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+            if (!/input|textarea/i.test(event.target.tagName)) {
+                event.preventDefault();
             }
-        );
+
+            var $trigger = $(this);
+            var selector = Util.getSelectorFromElement(this);
+            $(selector).each(function () {
+                var $target = $(this);
+                var data = $target.data(DATA_KEY);
+                var config = data ? 'toggle' : $trigger.data();
+                Collapse._jQueryInterface.call($target, config);
+            });
+        });
 
         /**
          * ------------------------------------------------------------------------
@@ -1694,9 +1570,7 @@ if (typeof jQuery === 'undefined') {
          * Popper - https://popper.js.org
          */
         if (typeof Popper === 'undefined') {
-            throw new Error(
-                'Bootstrap dropdown require Popper.js (https://popper.js.org)'
-            );
+            throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
         }
 
         /**
@@ -1718,7 +1592,7 @@ if (typeof jQuery === 'undefined') {
         var ARROW_DOWN_KEYCODE = 40; // KeyboardEvent.which value for down arrow key
         var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
         var REGEXP_KEYDOWN = new RegExp(
-            ARROW_UP_KEYCODE + '|' + ARROW_DOWN_KEYCODE + '|' + ESCAPE_KEYCODE
+            ARROW_UP_KEYCODE + '|' + ARROW_DOWN_KEYCODE + '|' + ESCAPE_KEYCODE,
         );
 
         var Event = {
@@ -1790,10 +1664,7 @@ if (typeof jQuery === 'undefined') {
             // public
 
             Dropdown.prototype.toggle = function toggle() {
-                if (
-                    this._element.disabled ||
-                    $(this._element).hasClass(ClassName.DISABLED)
-                ) {
+                if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
                     return;
                 }
 
@@ -1827,11 +1698,7 @@ if (typeof jQuery === 'undefined') {
                         element = parent;
                     }
                 }
-                this._popper = new Popper(
-                    element,
-                    this._menu,
-                    this._getPopperConfig()
-                );
+                this._popper = new Popper(element, this._menu, this._getPopperConfig());
 
                 // if this is a touch-enabled device we add extra
                 // empty mouseover listeners to the body's immediate children;
@@ -1848,9 +1715,7 @@ if (typeof jQuery === 'undefined') {
                 this._element.setAttribute('aria-expanded', true);
 
                 $(this._menu).toggleClass(ClassName.SHOW);
-                $(parent)
-                    .toggleClass(ClassName.SHOW)
-                    .trigger($.Event(Event.SHOWN, relatedTarget));
+                $(parent).toggleClass(ClassName.SHOW).trigger($.Event(Event.SHOWN, relatedTarget));
             };
 
             Dropdown.prototype.dispose = function dispose() {
@@ -1873,36 +1738,25 @@ if (typeof jQuery === 'undefined') {
 
             // private
 
-            Dropdown.prototype._addEventListeners =
-                function _addEventListeners() {
-                    var _this9 = this;
+            Dropdown.prototype._addEventListeners = function _addEventListeners() {
+                var _this9 = this;
 
-                    $(this._element).on(Event.CLICK, function (event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        _this9.toggle();
-                    });
-                };
+                $(this._element).on(Event.CLICK, function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    _this9.toggle();
+                });
+            };
 
             Dropdown.prototype._getConfig = function _getConfig(config) {
                 var elementData = $(this._element).data();
                 if (elementData.placement !== undefined) {
-                    elementData.placement =
-                        AttachmentMap[elementData.placement.toUpperCase()];
+                    elementData.placement = AttachmentMap[elementData.placement.toUpperCase()];
                 }
 
-                config = $.extend(
-                    {},
-                    this.constructor.Default,
-                    $(this._element).data(),
-                    config
-                );
+                config = $.extend({}, this.constructor.Default, $(this._element).data(), config);
 
-                Util.typeCheckConfig(
-                    NAME,
-                    config,
-                    this.constructor.DefaultType
-                );
+                Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
                 return config;
             };
@@ -1966,9 +1820,7 @@ if (typeof jQuery === 'undefined') {
                 return this.each(function () {
                     var data = $(this).data(DATA_KEY);
                     var _config =
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object'
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object'
                             ? config
                             : null;
 
@@ -2014,10 +1866,8 @@ if (typeof jQuery === 'undefined') {
 
                     if (
                         event &&
-                        ((event.type === 'click' &&
-                            /input|textarea/i.test(event.target.tagName)) ||
-                            (event.type === 'keyup' &&
-                                event.which === TAB_KEYCODE)) &&
+                        ((event.type === 'click' && /input|textarea/i.test(event.target.tagName)) ||
+                            (event.type === 'keyup' && event.which === TAB_KEYCODE)) &&
                         $.contains(parent, event.target)
                     ) {
                         continue;
@@ -2044,9 +1894,7 @@ if (typeof jQuery === 'undefined') {
                 }
             };
 
-            Dropdown._getParentFromElement = function _getParentFromElement(
-                element
-            ) {
+            Dropdown._getParentFromElement = function _getParentFromElement(element) {
                 var parent = void 0;
                 var selector = Util.getSelectorFromElement(element);
 
@@ -2057,13 +1905,10 @@ if (typeof jQuery === 'undefined') {
                 return parent || element.parentNode;
             };
 
-            Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(
-                event
-            ) {
+            Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
                 if (
                     !REGEXP_KEYDOWN.test(event.which) ||
-                    (/button/i.test(event.target.tagName) &&
-                        event.which === SPACE_KEYCODE) ||
+                    (/button/i.test(event.target.tagName) && event.which === SPACE_KEYCODE) ||
                     /input|textarea/i.test(event.target.tagName)
                 ) {
                     return;
@@ -2081,11 +1926,8 @@ if (typeof jQuery === 'undefined') {
 
                 if (
                     (!isActive &&
-                        (event.which !== ESCAPE_KEYCODE ||
-                            event.which !== SPACE_KEYCODE)) ||
-                    (isActive &&
-                        (event.which === ESCAPE_KEYCODE ||
-                            event.which === SPACE_KEYCODE))
+                        (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE)) ||
+                    (isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE))
                 ) {
                     if (event.which === ESCAPE_KEYCODE) {
                         var toggle = $(parent).find(Selector.DATA_TOGGLE)[0];
@@ -2109,10 +1951,7 @@ if (typeof jQuery === 'undefined') {
                     index--;
                 }
 
-                if (
-                    event.which === ARROW_DOWN_KEYCODE &&
-                    index < items.length - 1
-                ) {
+                if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) {
                     // down
                     index++;
                 }
@@ -2155,20 +1994,9 @@ if (typeof jQuery === 'undefined') {
          */
 
         $(document)
-            .on(
-                Event.KEYDOWN_DATA_API,
-                Selector.DATA_TOGGLE,
-                Dropdown._dataApiKeydownHandler
-            )
-            .on(
-                Event.KEYDOWN_DATA_API,
-                Selector.MENU,
-                Dropdown._dataApiKeydownHandler
-            )
-            .on(
-                Event.CLICK_DATA_API + ' ' + Event.KEYUP_DATA_API,
-                Dropdown._clearMenus
-            )
+            .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler)
+            .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
+            .on(Event.CLICK_DATA_API + ' ' + Event.KEYUP_DATA_API, Dropdown._clearMenus)
             .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -2297,10 +2125,7 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                if (
-                    Util.supportsTransitionEnd() &&
-                    $(this._element).hasClass(ClassName.FADE)
-                ) {
+                if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
                     this._isTransitioning = true;
                 }
 
@@ -2324,23 +2149,16 @@ if (typeof jQuery === 'undefined') {
                 this._setEscapeEvent();
                 this._setResizeEvent();
 
-                $(this._element).on(
-                    Event.CLICK_DISMISS,
-                    Selector.DATA_DISMISS,
-                    function (event) {
-                        return _this10.hide(event);
-                    }
-                );
+                $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, function (event) {
+                    return _this10.hide(event);
+                });
 
                 $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
-                    $(_this10._element).one(
-                        Event.MOUSEUP_DISMISS,
-                        function (event) {
-                            if ($(event.target).is(_this10._element)) {
-                                _this10._ignoreBackdropClick = true;
-                            }
+                    $(_this10._element).one(Event.MOUSEUP_DISMISS, function (event) {
+                        if ($(event.target).is(_this10._element)) {
+                            _this10._ignoreBackdropClick = true;
                         }
-                    );
+                    });
                 });
 
                 this._showBackdrop(function () {
@@ -2360,8 +2178,7 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 var transition =
-                    Util.supportsTransitionEnd() &&
-                    $(this._element).hasClass(ClassName.FADE);
+                    Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
 
                 if (transition) {
                     this._isTransitioning = true;
@@ -2401,9 +2218,7 @@ if (typeof jQuery === 'undefined') {
             Modal.prototype.dispose = function dispose() {
                 $.removeData(this._element, DATA_KEY);
 
-                $(window, document, this._element, this._backdrop).off(
-                    EVENT_KEY
-                );
+                $(window, document, this._element, this._backdrop).off(EVENT_KEY);
 
                 this._config = null;
                 this._element = null;
@@ -2427,14 +2242,11 @@ if (typeof jQuery === 'undefined') {
                 return config;
             };
 
-            Modal.prototype._showElement = function _showElement(
-                relatedTarget
-            ) {
+            Modal.prototype._showElement = function _showElement(relatedTarget) {
                 var _this12 = this;
 
                 var transition =
-                    Util.supportsTransitionEnd() &&
-                    $(this._element).hasClass(ClassName.FADE);
+                    Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
 
                 if (
                     !this._element.parentNode ||
@@ -2499,15 +2311,12 @@ if (typeof jQuery === 'undefined') {
                 var _this14 = this;
 
                 if (this._isShown && this._config.keyboard) {
-                    $(this._element).on(
-                        Event.KEYDOWN_DISMISS,
-                        function (event) {
-                            if (event.which === ESCAPE_KEYCODE) {
-                                event.preventDefault();
-                                _this14.hide();
-                            }
+                    $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
+                        if (event.which === ESCAPE_KEYCODE) {
+                            event.preventDefault();
+                            _this14.hide();
                         }
-                    );
+                    });
                 } else if (!this._isShown) {
                     $(this._element).off(Event.KEYDOWN_DISMISS);
                 }
@@ -2549,9 +2358,7 @@ if (typeof jQuery === 'undefined') {
             Modal.prototype._showBackdrop = function _showBackdrop(callback) {
                 var _this17 = this;
 
-                var animate = $(this._element).hasClass(ClassName.FADE)
-                    ? ClassName.FADE
-                    : '';
+                var animate = $(this._element).hasClass(ClassName.FADE) ? ClassName.FADE : '';
 
                 if (this._isShown && this._config.backdrop) {
                     var doAnimate = Util.supportsTransitionEnd() && animate;
@@ -2608,10 +2415,7 @@ if (typeof jQuery === 'undefined') {
                         }
                     };
 
-                    if (
-                        Util.supportsTransitionEnd() &&
-                        $(this._element).hasClass(ClassName.FADE)
-                    ) {
+                    if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
                         $(this._backdrop)
                             .one(Util.TRANSITION_END, callbackRemove)
                             .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
@@ -2630,17 +2434,14 @@ if (typeof jQuery === 'undefined') {
 
             Modal.prototype._adjustDialog = function _adjustDialog() {
                 var isModalOverflowing =
-                    this._element.scrollHeight >
-                    document.documentElement.clientHeight;
+                    this._element.scrollHeight > document.documentElement.clientHeight;
 
                 if (!this._isBodyOverflowing && isModalOverflowing) {
-                    this._element.style.paddingLeft =
-                        this._scrollbarWidth + 'px';
+                    this._element.style.paddingLeft = this._scrollbarWidth + 'px';
                 }
 
                 if (this._isBodyOverflowing && !isModalOverflowing) {
-                    this._element.style.paddingRight =
-                        this._scrollbarWidth + 'px';
+                    this._element.style.paddingRight = this._scrollbarWidth + 'px';
                 }
             };
 
@@ -2650,8 +2451,7 @@ if (typeof jQuery === 'undefined') {
             };
 
             Modal.prototype._checkScrollbar = function _checkScrollbar() {
-                this._isBodyOverflowing =
-                    document.body.clientWidth < window.innerWidth;
+                this._isBodyOverflowing = document.body.clientWidth < window.innerWidth;
                 this._scrollbarWidth = this._getScrollbarWidth();
             };
 
@@ -2670,9 +2470,7 @@ if (typeof jQuery === 'undefined') {
                             .data('padding-right', actualPadding)
                             .css(
                                 'padding-right',
-                                parseFloat(calculatedPadding) +
-                                    _this18._scrollbarWidth +
-                                    'px'
+                                parseFloat(calculatedPadding) + _this18._scrollbarWidth + 'px',
                             );
                     });
 
@@ -2684,9 +2482,7 @@ if (typeof jQuery === 'undefined') {
                             .data('margin-right', actualMargin)
                             .css(
                                 'margin-right',
-                                parseFloat(calculatedMargin) +
-                                    _this18._scrollbarWidth +
-                                    'px'
+                                parseFloat(calculatedMargin) + _this18._scrollbarWidth + 'px',
                             );
                     });
 
@@ -2697,9 +2493,7 @@ if (typeof jQuery === 'undefined') {
                         .data('padding-right', actualPadding)
                         .css(
                             'padding-right',
-                            parseFloat(calculatedPadding) +
-                                this._scrollbarWidth +
-                                'px'
+                            parseFloat(calculatedPadding) + this._scrollbarWidth + 'px',
                         );
                 }
             };
@@ -2709,9 +2503,7 @@ if (typeof jQuery === 'undefined') {
                 $(Selector.FIXED_CONTENT).each(function (index, element) {
                     var padding = $(element).data('padding-right');
                     if (typeof padding !== 'undefined') {
-                        $(element)
-                            .css('padding-right', padding)
-                            .removeData('padding-right');
+                        $(element).css('padding-right', padding).removeData('padding-right');
                     }
                 });
 
@@ -2719,18 +2511,14 @@ if (typeof jQuery === 'undefined') {
                 $(Selector.NAVBAR_TOGGLER).each(function (index, element) {
                     var margin = $(element).data('margin-right');
                     if (typeof margin !== 'undefined') {
-                        $(element)
-                            .css('margin-right', margin)
-                            .removeData('margin-right');
+                        $(element).css('margin-right', margin).removeData('margin-right');
                     }
                 });
 
                 // Restore body padding
                 var padding = $('body').data('padding-right');
                 if (typeof padding !== 'undefined') {
-                    $('body')
-                        .css('padding-right', padding)
-                        .removeData('padding-right');
+                    $('body').css('padding-right', padding).removeData('padding-right');
                 }
             };
 
@@ -2740,27 +2528,22 @@ if (typeof jQuery === 'undefined') {
                 scrollDiv.className = ClassName.SCROLLBAR_MEASURER;
                 document.body.appendChild(scrollDiv);
                 var scrollbarWidth =
-                    scrollDiv.getBoundingClientRect().width -
-                    scrollDiv.clientWidth;
+                    scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
                 document.body.removeChild(scrollDiv);
                 return scrollbarWidth;
             };
 
             // static
 
-            Modal._jQueryInterface = function _jQueryInterface(
-                config,
-                relatedTarget
-            ) {
+            Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
                 return this.each(function () {
                     var data = $(this).data(DATA_KEY);
                     var _config = $.extend(
                         {},
                         Modal.Default,
                         $(this).data(),
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object' && config
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) ===
+                            'object' && config,
                     );
 
                     if (!data) {
@@ -2803,43 +2586,39 @@ if (typeof jQuery === 'undefined') {
          * ------------------------------------------------------------------------
          */
 
-        $(document).on(
-            Event.CLICK_DATA_API,
-            Selector.DATA_TOGGLE,
-            function (event) {
-                var _this19 = this;
+        $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+            var _this19 = this;
 
-                var target = void 0;
-                var selector = Util.getSelectorFromElement(this);
+            var target = void 0;
+            var selector = Util.getSelectorFromElement(this);
 
-                if (selector) {
-                    target = $(selector)[0];
-                }
-
-                var config = $(target).data(DATA_KEY)
-                    ? 'toggle'
-                    : $.extend({}, $(target).data(), $(this).data());
-
-                if (this.tagName === 'A' || this.tagName === 'AREA') {
-                    event.preventDefault();
-                }
-
-                var $target = $(target).one(Event.SHOW, function (showEvent) {
-                    if (showEvent.isDefaultPrevented()) {
-                        // only register focus restorer if modal will actually get shown
-                        return;
-                    }
-
-                    $target.one(Event.HIDDEN, function () {
-                        if ($(_this19).is(':visible')) {
-                            _this19.focus();
-                        }
-                    });
-                });
-
-                Modal._jQueryInterface.call($(target), config, this);
+            if (selector) {
+                target = $(selector)[0];
             }
-        );
+
+            var config = $(target).data(DATA_KEY)
+                ? 'toggle'
+                : $.extend({}, $(target).data(), $(this).data());
+
+            if (this.tagName === 'A' || this.tagName === 'AREA') {
+                event.preventDefault();
+            }
+
+            var $target = $(target).one(Event.SHOW, function (showEvent) {
+                if (showEvent.isDefaultPrevented()) {
+                    // only register focus restorer if modal will actually get shown
+                    return;
+                }
+
+                $target.one(Event.HIDDEN, function () {
+                    if ($(_this19).is(':visible')) {
+                        _this19.focus();
+                    }
+                });
+            });
+
+            Modal._jQueryInterface.call($(target), config, this);
+        });
 
         /**
          * ------------------------------------------------------------------------
@@ -2930,8 +2709,7 @@ if (typeof jQuery === 'undefined') {
                 _classCallCheck(this, ScrollSpy);
 
                 this._element = element;
-                this._scrollElement =
-                    element.tagName === 'BODY' ? window : element;
+                this._scrollElement = element.tagName === 'BODY' ? window : element;
                 this._config = this._getConfig(config);
                 this._selector =
                     this._config.target +
@@ -2966,14 +2744,9 @@ if (typeof jQuery === 'undefined') {
                         : OffsetMethod.OFFSET;
 
                 var offsetMethod =
-                    this._config.method === 'auto'
-                        ? autoMethod
-                        : this._config.method;
+                    this._config.method === 'auto' ? autoMethod : this._config.method;
 
-                var offsetBase =
-                    offsetMethod === OffsetMethod.POSITION
-                        ? this._getScrollTop()
-                        : 0;
+                var offsetBase = offsetMethod === OffsetMethod.POSITION ? this._getScrollTop() : 0;
 
                 this._offsets = [];
                 this._targets = [];
@@ -2985,8 +2758,7 @@ if (typeof jQuery === 'undefined') {
                 targets
                     .map(function (element) {
                         var target = void 0;
-                        var targetSelector =
-                            Util.getSelectorFromElement(element);
+                        var targetSelector = Util.getSelectorFromElement(element);
 
                         if (targetSelector) {
                             target = $(targetSelector)[0];
@@ -2996,10 +2768,7 @@ if (typeof jQuery === 'undefined') {
                             var targetBCR = target.getBoundingClientRect();
                             if (targetBCR.width || targetBCR.height) {
                                 // todo (fat): remove sketch reliance on jQuery position/offset
-                                return [
-                                    $(target)[offsetMethod]().top + offsetBase,
-                                    targetSelector,
-                                ];
+                                return [$(target)[offsetMethod]().top + offsetBase, targetSelector];
                             }
                         }
                         return null;
@@ -3058,10 +2827,7 @@ if (typeof jQuery === 'undefined') {
             ScrollSpy.prototype._getScrollHeight = function _getScrollHeight() {
                 return (
                     this._scrollElement.scrollHeight ||
-                    Math.max(
-                        document.body.scrollHeight,
-                        document.documentElement.scrollHeight
-                    )
+                    Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
                 );
             };
 
@@ -3074,10 +2840,7 @@ if (typeof jQuery === 'undefined') {
             ScrollSpy.prototype._process = function _process() {
                 var scrollTop = this._getScrollTop() + this._config.offset;
                 var scrollHeight = this._getScrollHeight();
-                var maxScroll =
-                    this._config.offset +
-                    scrollHeight -
-                    this._getOffsetHeight();
+                var maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
 
                 if (this._scrollHeight !== scrollHeight) {
                     this.refresh();
@@ -3092,11 +2855,7 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                if (
-                    this._activeTarget &&
-                    scrollTop < this._offsets[0] &&
-                    this._offsets[0] > 0
-                ) {
+                if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
                     this._activeTarget = null;
                     this._clear();
                     return;
@@ -3106,8 +2865,7 @@ if (typeof jQuery === 'undefined') {
                     var isActiveTarget =
                         this._activeTarget !== this._targets[i] &&
                         scrollTop >= this._offsets[i] &&
-                        (this._offsets[i + 1] === undefined ||
-                            scrollTop < this._offsets[i + 1]);
+                        (this._offsets[i + 1] === undefined || scrollTop < this._offsets[i + 1]);
 
                     if (isActiveTarget) {
                         this._activate(this._targets[i]);
@@ -3156,9 +2914,7 @@ if (typeof jQuery === 'undefined') {
             };
 
             ScrollSpy.prototype._clear = function _clear() {
-                $(this._selector)
-                    .filter(Selector.ACTIVE)
-                    .removeClass(ClassName.ACTIVE);
+                $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
             };
 
             // static
@@ -3167,9 +2923,8 @@ if (typeof jQuery === 'undefined') {
                 return this.each(function () {
                     var data = $(this).data(DATA_KEY);
                     var _config =
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object' && config;
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) ===
+                            'object' && config;
 
                     if (!data) {
                         data = new ScrollSpy(this, _config);
@@ -3276,8 +3031,7 @@ if (typeof jQuery === 'undefined') {
             DROPDOWN: '.dropdown',
             NAV_LIST_GROUP: '.nav, .list-group',
             ACTIVE: '.active',
-            DATA_TOGGLE:
-                '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
+            DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
             DROPDOWN_TOGGLE: '.dropdown-toggle',
             DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active',
 
@@ -3303,8 +3057,7 @@ if (typeof jQuery === 'undefined') {
 
                 if (
                     (this._element.parentNode &&
-                        this._element.parentNode.nodeType ===
-                            Node.ELEMENT_NODE &&
+                        this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
                         $(this._element).hasClass(ClassName.ACTIVE)) ||
                     $(this._element).hasClass(ClassName.DISABLED)
                 ) {
@@ -3313,15 +3066,11 @@ if (typeof jQuery === 'undefined') {
 
                 var target = void 0;
                 var previous = void 0;
-                var listElement = $(this._element).closest(
-                    Selector.NAV_LIST_GROUP
-                )[0];
+                var listElement = $(this._element).closest(Selector.NAV_LIST_GROUP)[0];
                 var selector = Util.getSelectorFromElement(this._element);
 
                 if (listElement) {
-                    previous = $.makeArray(
-                        $(listElement).find(Selector.ACTIVE)
-                    );
+                    previous = $.makeArray($(listElement).find(Selector.ACTIVE));
                     previous = previous[previous.length - 1];
                 }
 
@@ -3339,10 +3088,7 @@ if (typeof jQuery === 'undefined') {
 
                 $(this._element).trigger(showEvent);
 
-                if (
-                    showEvent.isDefaultPrevented() ||
-                    hideEvent.isDefaultPrevented()
-                ) {
+                if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) {
                     return;
                 }
 
@@ -3379,11 +3125,7 @@ if (typeof jQuery === 'undefined') {
 
             // private
 
-            Tab.prototype._activate = function _activate(
-                element,
-                container,
-                callback
-            ) {
+            Tab.prototype._activate = function _activate(element, container, callback) {
                 var _this23 = this;
 
                 var active = $(container).find(Selector.ACTIVE)[0];
@@ -3394,12 +3136,7 @@ if (typeof jQuery === 'undefined') {
                     $(active).hasClass(ClassName.FADE);
 
                 var complete = function complete() {
-                    return _this23._transitionComplete(
-                        element,
-                        active,
-                        isTransitioning,
-                        callback
-                    );
+                    return _this23._transitionComplete(element, active, isTransitioning, callback);
                 };
 
                 if (active && isTransitioning) {
@@ -3419,13 +3156,13 @@ if (typeof jQuery === 'undefined') {
                 element,
                 active,
                 isTransitioning,
-                callback
+                callback,
             ) {
                 if (active) {
                     $(active).removeClass(ClassName.ACTIVE);
 
                     var dropdownChild = $(active.parentNode).find(
-                        Selector.DROPDOWN_ACTIVE_CHILD
+                        Selector.DROPDOWN_ACTIVE_CHILD,
                     )[0];
 
                     if (dropdownChild) {
@@ -3445,13 +3182,8 @@ if (typeof jQuery === 'undefined') {
                     $(element).removeClass(ClassName.FADE);
                 }
 
-                if (
-                    element.parentNode &&
-                    $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)
-                ) {
-                    var dropdownElement = $(element).closest(
-                        Selector.DROPDOWN
-                    )[0];
+                if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
+                    var dropdownElement = $(element).closest(Selector.DROPDOWN)[0];
                     if (dropdownElement) {
                         $(dropdownElement)
                             .find(Selector.DROPDOWN_TOGGLE)
@@ -3505,14 +3237,10 @@ if (typeof jQuery === 'undefined') {
          * ------------------------------------------------------------------------
          */
 
-        $(document).on(
-            Event.CLICK_DATA_API,
-            Selector.DATA_TOGGLE,
-            function (event) {
-                event.preventDefault();
-                Tab._jQueryInterface.call($(this), 'show');
-            }
-        );
+        $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+            event.preventDefault();
+            Tab._jQueryInterface.call($(this), 'show');
+        });
 
         /**
          * ------------------------------------------------------------------------
@@ -3545,9 +3273,7 @@ if (typeof jQuery === 'undefined') {
          * Popper - https://popper.js.org
          */
         if (typeof Popper === 'undefined') {
-            throw new Error(
-                'Bootstrap tooltips require Popper.js (https://popper.js.org)'
-            );
+            throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)');
         }
 
         /**
@@ -3563,10 +3289,7 @@ if (typeof jQuery === 'undefined') {
         var JQUERY_NO_CONFLICT = $.fn[NAME];
         var TRANSITION_DURATION = 150;
         var CLASS_PREFIX = 'bs-tooltip';
-        var BSCLS_PREFIX_REGEX = new RegExp(
-            '(^|\\s)' + CLASS_PREFIX + '\\S+',
-            'g'
-        );
+        var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
 
         var DefaultType = {
             animation: 'boolean',
@@ -3691,13 +3414,12 @@ if (typeof jQuery === 'undefined') {
                     if (!context) {
                         context = new this.constructor(
                             event.currentTarget,
-                            this._getDelegateConfig()
+                            this._getDelegateConfig(),
                         );
                         $(event.currentTarget).data(dataKey, context);
                     }
 
-                    context._activeTrigger.click =
-                        !context._activeTrigger.click;
+                    context._activeTrigger.click = !context._activeTrigger.click;
 
                     if (context._isWithActiveTrigger()) {
                         context._enter(null, context);
@@ -3753,7 +3475,7 @@ if (typeof jQuery === 'undefined') {
 
                     var isInTheDom = $.contains(
                         this.element.ownerDocument.documentElement,
-                        this.element
+                        this.element,
                     );
 
                     if (showEvent.isDefaultPrevented() || !isInTheDom) {
@@ -3774,29 +3496,18 @@ if (typeof jQuery === 'undefined') {
 
                     var placement =
                         typeof this.config.placement === 'function'
-                            ? this.config.placement.call(
-                                  this,
-                                  tip,
-                                  this.element
-                              )
+                            ? this.config.placement.call(this, tip, this.element)
                             : this.config.placement;
 
                     var attachment = this._getAttachment(placement);
                     this.addAttachmentClass(attachment);
 
                     var container =
-                        this.config.container === false
-                            ? document.body
-                            : $(this.config.container);
+                        this.config.container === false ? document.body : $(this.config.container);
 
                     $(tip).data(this.constructor.DATA_KEY, this);
 
-                    if (
-                        !$.contains(
-                            this.element.ownerDocument.documentElement,
-                            this.tip
-                        )
-                    ) {
+                    if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
                         $(tip).appendTo(container);
                     }
 
@@ -3842,19 +3553,14 @@ if (typeof jQuery === 'undefined') {
                         var prevHoverState = _this24._hoverState;
                         _this24._hoverState = null;
 
-                        $(_this24.element).trigger(
-                            _this24.constructor.Event.SHOWN
-                        );
+                        $(_this24.element).trigger(_this24.constructor.Event.SHOWN);
 
                         if (prevHoverState === HoverState.OUT) {
                             _this24._leave(null, _this24);
                         }
                     };
 
-                    if (
-                        Util.supportsTransitionEnd() &&
-                        $(this.tip).hasClass(ClassName.FADE)
-                    ) {
+                    if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
                         $(this.tip)
                             .one(Util.TRANSITION_END, complete)
                             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
@@ -3870,18 +3576,13 @@ if (typeof jQuery === 'undefined') {
                 var tip = this.getTipElement();
                 var hideEvent = $.Event(this.constructor.Event.HIDE);
                 var complete = function complete() {
-                    if (
-                        _this25._hoverState !== HoverState.SHOW &&
-                        tip.parentNode
-                    ) {
+                    if (_this25._hoverState !== HoverState.SHOW && tip.parentNode) {
                         tip.parentNode.removeChild(tip);
                     }
 
                     _this25._cleanTipClass();
                     _this25.element.removeAttribute('aria-describedby');
-                    $(_this25.element).trigger(
-                        _this25.constructor.Event.HIDDEN
-                    );
+                    $(_this25.element).trigger(_this25.constructor.Event.HIDDEN);
                     if (_this25._popper !== null) {
                         _this25._popper.destroy();
                     }
@@ -3909,10 +3610,7 @@ if (typeof jQuery === 'undefined') {
                 this._activeTrigger[Trigger.FOCUS] = false;
                 this._activeTrigger[Trigger.HOVER] = false;
 
-                if (
-                    Util.supportsTransitionEnd() &&
-                    $(this.tip).hasClass(ClassName.FADE)
-                ) {
+                if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
                     $(tip)
                         .one(Util.TRANSITION_END, complete)
                         .emulateTransitionEnd(TRANSITION_DURATION);
@@ -3935,12 +3633,8 @@ if (typeof jQuery === 'undefined') {
                 return Boolean(this.getTitle());
             };
 
-            Tooltip.prototype.addAttachmentClass = function addAttachmentClass(
-                attachment
-            ) {
-                $(this.getTipElement()).addClass(
-                    CLASS_PREFIX + '-' + attachment
-                );
+            Tooltip.prototype.addAttachmentClass = function addAttachmentClass(attachment) {
+                $(this.getTipElement()).addClass(CLASS_PREFIX + '-' + attachment);
             };
 
             Tooltip.prototype.getTipElement = function getTipElement() {
@@ -3949,22 +3643,15 @@ if (typeof jQuery === 'undefined') {
 
             Tooltip.prototype.setContent = function setContent() {
                 var $tip = $(this.getTipElement());
-                this.setElementContent(
-                    $tip.find(Selector.TOOLTIP_INNER),
-                    this.getTitle()
-                );
+                this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
                 $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
             };
 
-            Tooltip.prototype.setElementContent = function setElementContent(
-                $element,
-                content
-            ) {
+            Tooltip.prototype.setElementContent = function setElementContent($element, content) {
                 var html = this.config.html;
                 if (
-                    (typeof content === 'undefined'
-                        ? 'undefined'
-                        : _typeof(content)) === 'object' &&
+                    (typeof content === 'undefined' ? 'undefined' : _typeof(content)) ===
+                        'object' &&
                     (content.nodeType || content.jquery)
                 ) {
                     // content is a DOM node or a jQuery
@@ -3995,9 +3682,7 @@ if (typeof jQuery === 'undefined') {
 
             // private
 
-            Tooltip.prototype._getAttachment = function _getAttachment(
-                placement
-            ) {
+            Tooltip.prototype._getAttachment = function _getAttachment(placement) {
                 return AttachmentMap[placement.toUpperCase()];
             };
 
@@ -4013,7 +3698,7 @@ if (typeof jQuery === 'undefined') {
                             _this26.config.selector,
                             function (event) {
                                 return _this26.toggle(event);
-                            }
+                            },
                         );
                     } else if (trigger !== Trigger.MANUAL) {
                         var eventIn =
@@ -4026,20 +3711,12 @@ if (typeof jQuery === 'undefined') {
                                 : _this26.constructor.Event.FOCUSOUT;
 
                         $(_this26.element)
-                            .on(
-                                eventIn,
-                                _this26.config.selector,
-                                function (event) {
-                                    return _this26._enter(event);
-                                }
-                            )
-                            .on(
-                                eventOut,
-                                _this26.config.selector,
-                                function (event) {
-                                    return _this26._leave(event);
-                                }
-                            );
+                            .on(eventIn, _this26.config.selector, function (event) {
+                                return _this26._enter(event);
+                            })
+                            .on(eventOut, _this26.config.selector, function (event) {
+                                return _this26._leave(event);
+                            });
                     }
 
                     $(_this26.element)
@@ -4060,16 +3737,11 @@ if (typeof jQuery === 'undefined') {
             };
 
             Tooltip.prototype._fixTitle = function _fixTitle() {
-                var titleType = _typeof(
-                    this.element.getAttribute('data-original-title')
-                );
-                if (
-                    this.element.getAttribute('title') ||
-                    titleType !== 'string'
-                ) {
+                var titleType = _typeof(this.element.getAttribute('data-original-title'));
+                if (this.element.getAttribute('title') || titleType !== 'string') {
                     this.element.setAttribute(
                         'data-original-title',
-                        this.element.getAttribute('title') || ''
+                        this.element.getAttribute('title') || '',
                     );
                     this.element.setAttribute('title', '');
                 }
@@ -4081,10 +3753,7 @@ if (typeof jQuery === 'undefined') {
                 context = context || $(event.currentTarget).data(dataKey);
 
                 if (!context) {
-                    context = new this.constructor(
-                        event.currentTarget,
-                        this._getDelegateConfig()
-                    );
+                    context = new this.constructor(event.currentTarget, this._getDelegateConfig());
                     $(event.currentTarget).data(dataKey, context);
                 }
 
@@ -4124,18 +3793,13 @@ if (typeof jQuery === 'undefined') {
                 context = context || $(event.currentTarget).data(dataKey);
 
                 if (!context) {
-                    context = new this.constructor(
-                        event.currentTarget,
-                        this._getDelegateConfig()
-                    );
+                    context = new this.constructor(event.currentTarget, this._getDelegateConfig());
                     $(event.currentTarget).data(dataKey, context);
                 }
 
                 if (event) {
                     context._activeTrigger[
-                        event.type === 'focusout'
-                            ? Trigger.FOCUS
-                            : Trigger.HOVER
+                        event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER
                     ] = false;
                 }
 
@@ -4159,24 +3823,18 @@ if (typeof jQuery === 'undefined') {
                 }, context.config.delay.hide);
             };
 
-            Tooltip.prototype._isWithActiveTrigger =
-                function _isWithActiveTrigger() {
-                    for (var trigger in this._activeTrigger) {
-                        if (this._activeTrigger[trigger]) {
-                            return true;
-                        }
+            Tooltip.prototype._isWithActiveTrigger = function _isWithActiveTrigger() {
+                for (var trigger in this._activeTrigger) {
+                    if (this._activeTrigger[trigger]) {
+                        return true;
                     }
+                }
 
-                    return false;
-                };
+                return false;
+            };
 
             Tooltip.prototype._getConfig = function _getConfig(config) {
-                config = $.extend(
-                    {},
-                    this.constructor.Default,
-                    $(this.element).data(),
-                    config
-                );
+                config = $.extend({}, this.constructor.Default, $(this.element).data(), config);
 
                 if (config.delay && typeof config.delay === 'number') {
                     config.delay = {
@@ -4193,32 +3851,24 @@ if (typeof jQuery === 'undefined') {
                     config.content = config.content.toString();
                 }
 
-                Util.typeCheckConfig(
-                    NAME,
-                    config,
-                    this.constructor.DefaultType
-                );
+                Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
                 return config;
             };
 
-            Tooltip.prototype._getDelegateConfig =
-                function _getDelegateConfig() {
-                    var config = {};
+            Tooltip.prototype._getDelegateConfig = function _getDelegateConfig() {
+                var config = {};
 
-                    if (this.config) {
-                        for (var key in this.config) {
-                            if (
-                                this.constructor.Default[key] !==
-                                this.config[key]
-                            ) {
-                                config[key] = this.config[key];
-                            }
+                if (this.config) {
+                    for (var key in this.config) {
+                        if (this.constructor.Default[key] !== this.config[key]) {
+                            config[key] = this.config[key];
                         }
                     }
+                }
 
-                    return config;
-                };
+                return config;
+            };
 
             Tooltip.prototype._cleanTipClass = function _cleanTipClass() {
                 var $tip = $(this.getTipElement());
@@ -4228,13 +3878,12 @@ if (typeof jQuery === 'undefined') {
                 }
             };
 
-            Tooltip.prototype._handlePopperPlacementChange =
-                function _handlePopperPlacementChange(data) {
-                    this._cleanTipClass();
-                    this.addAttachmentClass(
-                        this._getAttachment(data.placement)
-                    );
-                };
+            Tooltip.prototype._handlePopperPlacementChange = function _handlePopperPlacementChange(
+                data,
+            ) {
+                this._cleanTipClass();
+                this.addAttachmentClass(this._getAttachment(data.placement));
+            };
 
             Tooltip.prototype._fixTransition = function _fixTransition() {
                 var tip = this.getTipElement();
@@ -4255,9 +3904,8 @@ if (typeof jQuery === 'undefined') {
                 return this.each(function () {
                     var data = $(this).data(DATA_KEY);
                     var _config =
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object' && config;
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) ===
+                            'object' && config;
 
                     if (!data && /dispose|hide/.test(config)) {
                         return;
@@ -4361,10 +4009,7 @@ if (typeof jQuery === 'undefined') {
         var EVENT_KEY = '.' + DATA_KEY;
         var JQUERY_NO_CONFLICT = $.fn[NAME];
         var CLASS_PREFIX = 'bs-popover';
-        var BSCLS_PREFIX_REGEX = new RegExp(
-            '(^|\\s)' + CLASS_PREFIX + '\\S+',
-            'g'
-        );
+        var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
 
         var Default = $.extend({}, Tooltip.Default, {
             placement: 'right',
@@ -4415,10 +4060,7 @@ if (typeof jQuery === 'undefined') {
             function Popover() {
                 _classCallCheck(this, Popover);
 
-                return _possibleConstructorReturn(
-                    this,
-                    _Tooltip.apply(this, arguments)
-                );
+                return _possibleConstructorReturn(this, _Tooltip.apply(this, arguments));
             }
 
             // overrides
@@ -4427,12 +4069,8 @@ if (typeof jQuery === 'undefined') {
                 return this.getTitle() || this._getContent();
             };
 
-            Popover.prototype.addAttachmentClass = function addAttachmentClass(
-                attachment
-            ) {
-                $(this.getTipElement()).addClass(
-                    CLASS_PREFIX + '-' + attachment
-                );
+            Popover.prototype.addAttachmentClass = function addAttachmentClass(attachment) {
+                $(this.getTipElement()).addClass(CLASS_PREFIX + '-' + attachment);
             };
 
             Popover.prototype.getTipElement = function getTipElement() {
@@ -4443,14 +4081,8 @@ if (typeof jQuery === 'undefined') {
                 var $tip = $(this.getTipElement());
 
                 // we use append for html objects to maintain js events
-                this.setElementContent(
-                    $tip.find(Selector.TITLE),
-                    this.getTitle()
-                );
-                this.setElementContent(
-                    $tip.find(Selector.CONTENT),
-                    this._getContent()
-                );
+                this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
+                this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
                 $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
             };
@@ -4480,9 +4112,7 @@ if (typeof jQuery === 'undefined') {
                 return this.each(function () {
                     var data = $(this).data(DATA_KEY);
                     var _config =
-                        (typeof config === 'undefined'
-                            ? 'undefined'
-                            : _typeof(config)) === 'object'
+                        (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object'
                             ? config
                             : null;
 

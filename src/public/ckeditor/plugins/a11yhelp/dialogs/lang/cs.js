@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'cs', {
     title: 'Instrukce pro přístupnost',
-    contents:
-        'Obsah nápovědy. Pro uzavření tohoto dialogu stiskněte klávesu ESC.',
+    contents: 'Obsah nápovědy. Pro uzavření tohoto dialogu stiskněte klávesu ESC.',
     legend: [
         {
             name: 'Obecné',

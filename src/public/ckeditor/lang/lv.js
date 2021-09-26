@@ -44,8 +44,7 @@ CKEDITOR.lang['lv'] = {
         validateNumberFailed: 'Šī vērtība nav skaitlis',
         confirmNewPage:
             'Jebkuras nesaglabātās izmaiņas tiks zaudētas. Vai tiešām vēlaties atvērt jaunu lapu?',
-        confirmCancel:
-            'Daži no uzstādījumiem ir mainīti. Vai tiešām vēlaties aizvērt šo dialogu?',
+        confirmCancel: 'Daži no uzstādījumiem ir mainīti. Vai tiešām vēlaties aizvērt šo dialogu?',
         options: 'Uzstādījumi',
         target: 'Mērķis',
         targetNew: 'Jauns logs (_blank)',
@@ -295,8 +294,7 @@ CKEDITOR.lang['lv'] = {
     filetools: {
         loadError: 'Radās kļūda nolasot failu.',
         networkError: 'Radās tīkla kļūda, kamēr tika ielādēts fails.',
-        httpError404:
-            'Ielādējot failu, radās HTTP kļūda (404: Fails nav atrasts)',
+        httpError404: 'Ielādējot failu, radās HTTP kļūda (404: Fails nav atrasts)',
         httpError403: 'Ielādējot failu, radās HTTP kļūda (403: Pieeja liegta)',
         httpError: 'Ielādējot failu, radās HTTP kļūda (kļūdas statuss: %1)',
         noUrlError: 'Augšupielādes adrese nav norādīta.',
@@ -703,7 +701,6 @@ CKEDITOR.lang['lv'] = {
         doneOne: 'Fails veiksmīgi ielādēts.',
         doneMany: 'Veiksmīgi ielādēts %1 fails.',
         uploadOne: 'Ielādāju failu ({percentage}%)...',
-        uploadMany:
-            'Ielādēju failus, {curent} no {max} izpildīts ({percentage}%)...',
+        uploadMany: 'Ielādēju failus, {curent} no {max} izpildīts ({percentage}%)...',
     },
 };

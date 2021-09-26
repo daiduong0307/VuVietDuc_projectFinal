@@ -49,10 +49,7 @@ exports.allBlog = async (req, res) => {
 exports.listTag = async (req, res) => {
     const blogId = req.params.id;
 
-    const blog = await blogModel
-        .findOne({ _id: blogId })
-        .populate('categoryId')
-        .populate('tags');
+    const blog = await blogModel.findOne({ _id: blogId }).populate('categoryId').populate('tags');
     const findPostTag = await tagModel.find({ _id: blog.tags });
 
     res.json(findPostTag);
@@ -63,12 +60,10 @@ exports.allBookmark = async (req, res) => {
         .findOne({ accountId: req.session.userId })
         .populate('accountId');
 
-    const bookmarks = await bookmarkModel
-        .find({ author: userInfo._id })
-        .populate({
-            path: 'postId',
-            populate: [{ path: 'owner' }, { path: 'categoryId' }],
-        });
+    const bookmarks = await bookmarkModel.find({ author: userInfo._id }).populate({
+        path: 'postId',
+        populate: [{ path: 'owner' }, { path: 'categoryId' }],
+    });
 
     return res.json(bookmarks);
 };

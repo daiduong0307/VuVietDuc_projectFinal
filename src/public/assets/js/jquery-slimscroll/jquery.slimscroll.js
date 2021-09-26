@@ -172,8 +172,7 @@
                         height: '100%',
                         position: 'absolute',
                         top: 0,
-                        display:
-                            o.alwaysVisible && o.railVisible ? 'block' : 'none',
+                        display: o.alwaysVisible && o.railVisible ? 'block' : 'none',
                         'border-radius': o.railBorderRadius,
                         background: o.railColor,
                         opacity: o.railOpacity,
@@ -198,10 +197,7 @@
                     });
 
                 // set position
-                var posCss =
-                    o.position == 'right'
-                        ? { right: o.distance }
-                        : { left: o.distance };
+                var posCss = o.position == 'right' ? { right: o.distance } : { left: o.distance };
                 rail.css(posCss);
                 bar.css(posCss);
 
@@ -246,7 +242,7 @@
                     },
                     function () {
                         hideBar();
-                    }
+                    },
                 );
 
                 // on bar over
@@ -256,7 +252,7 @@
                     },
                     function () {
                         isOverBar = false;
-                    }
+                    },
                 );
 
                 // show on parent mouseover
@@ -269,7 +265,7 @@
                     function () {
                         isOverPanel = false;
                         hideBar();
-                    }
+                    },
                 );
 
                 // support for mobile
@@ -288,8 +284,7 @@
                     if (e.originalEvent.touches.length) {
                         // see how far user swiped
                         var diff =
-                            (touchDif - e.originalEvent.touches[0].pageY) /
-                            o.touchScrollStep;
+                            (touchDif - e.originalEvent.touches[0].pageY) / o.touchScrollStep;
                         // scroll content
                         scrollContent(diff, true);
                         touchDif = e.originalEvent.touches[0].pageY;
@@ -361,8 +356,7 @@
                         // move bar with mouse wheel
                         delta =
                             parseInt(bar.css('top')) +
-                            ((y * parseInt(o.wheelStep)) / 100) *
-                                bar.outerHeight();
+                            ((y * parseInt(o.wheelStep)) / 100) * bar.outerHeight();
 
                         // move bar, make sure it doesn't go out
                         delta = Math.min(Math.max(delta, 0), maxTop);
@@ -379,15 +373,12 @@
 
                     // calculate actual scroll amount
                     percentScroll =
-                        parseInt(bar.css('top')) /
-                        (me.outerHeight() - bar.outerHeight());
-                    delta =
-                        percentScroll * (me[0].scrollHeight - me.outerHeight());
+                        parseInt(bar.css('top')) / (me.outerHeight() - bar.outerHeight());
+                    delta = percentScroll * (me[0].scrollHeight - me.outerHeight());
 
                     if (isJump) {
                         delta = y;
-                        var offsetTop =
-                            (delta / me[0].scrollHeight) * me.outerHeight();
+                        var offsetTop = (delta / me[0].scrollHeight) * me.outerHeight();
                         offsetTop = Math.min(Math.max(offsetTop, 0), maxTop);
                         bar.css({ top: offsetTop + 'px' });
                     }
@@ -407,11 +398,7 @@
 
                 function attachWheel(target) {
                     if (window.addEventListener) {
-                        target.addEventListener(
-                            'DOMMouseScroll',
-                            _onWheel,
-                            false
-                        );
+                        target.addEventListener('DOMMouseScroll', _onWheel, false);
                         target.addEventListener('mousewheel', _onWheel, false);
                     } else {
                         document.attachEvent('onmousewheel', _onWheel);
@@ -421,15 +408,13 @@
                 function getBarHeight() {
                     // calculate scrollbar height and make sure it is not too small
                     barHeight = Math.max(
-                        (me.outerHeight() / me[0].scrollHeight) *
-                            me.outerHeight(),
-                        minBarHeight
+                        (me.outerHeight() / me[0].scrollHeight) * me.outerHeight(),
+                        minBarHeight,
                     );
                     bar.css({ height: barHeight + 'px' });
 
                     // hide scrollbar if content is not long enough
-                    var display =
-                        barHeight == me.outerHeight() ? 'none' : 'block';
+                    var display = barHeight == me.outerHeight() ? 'none' : 'block';
                     bar.css({ display: display });
                 }
 
@@ -469,11 +454,7 @@
                     // only hide when options allow it
                     if (!o.alwaysVisible) {
                         queueHide = setTimeout(function () {
-                            if (
-                                !(o.disableFadeOut && isOverPanel) &&
-                                !isOverBar &&
-                                !isDragg
-                            ) {
+                            if (!(o.disableFadeOut && isOverPanel) && !isOverBar && !isDragg) {
                                 bar.fadeOut('slow');
                                 rail.fadeOut('slow');
                             }

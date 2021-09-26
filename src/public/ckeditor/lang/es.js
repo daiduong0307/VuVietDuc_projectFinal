@@ -126,8 +126,7 @@ CKEDITOR.lang['es'] = {
     about: {
         copy: 'Copyright &copy; $1. Todos los derechos reservados.',
         dlgTitle: 'Acerca de CKEditor 4',
-        moreInfo:
-            'Para información de licencia, por favor visite nuestro sitio web:',
+        moreInfo: 'Para información de licencia, por favor visite nuestro sitio web:',
     },
     basicstyles: {
         bold: 'Negrita',
@@ -301,10 +300,8 @@ CKEDITOR.lang['es'] = {
         networkError: 'Error de red ocurrido durante carga de archivo.',
         httpError404:
             'Un error HTTP ha ocurrido durante la carga del archivo (404: Archivo no encontrado).',
-        httpError403:
-            'Un error HTTP ha ocurrido durante la carga del archivo (403: Prohibido).',
-        httpError:
-            'Error HTTP ocurrido durante la carga del archivo (Estado del error: %1).',
+        httpError403: 'Un error HTTP ha ocurrido durante la carga del archivo (403: Prohibido).',
+        httpError: 'Error HTTP ocurrido durante la carga del archivo (Estado del error: %1).',
         noUrlError: 'URL cargada no está definida.',
         responseError: 'Respueta del servidor incorrecta.',
     },
@@ -655,8 +652,7 @@ CKEDITOR.lang['es'] = {
             invalidWidth: 'La anchura de celda debe ser un número.',
             invalidHeight: 'La altura de celda debe ser un número.',
             invalidRowSpan: 'La expansión de filas debe ser un número entero.',
-            invalidColSpan:
-                'La expansión de columnas debe ser un número entero.',
+            invalidColSpan: 'La expansión de columnas debe ser un número entero.',
             chooseColor: 'Elegir',
         },
         cellPad: 'Esp. interior',
@@ -707,7 +703,6 @@ CKEDITOR.lang['es'] = {
         doneOne: 'Archivo cargado exitósamente.',
         doneMany: '%1 archivos exitósamente cargados.',
         uploadOne: 'Cargando archivo ({percentage}%)...',
-        uploadMany:
-            'Cargando archivos, {current} de {max} hecho ({percentage}%)...',
+        uploadMany: 'Cargando archivos, {current} de {max} hecho ({percentage}%)...',
     },
 };

@@ -6,12 +6,10 @@
     btnUndo: 'Desfés',
     changeTo: 'Reemplaça amb',
     errorLoading: 'Error carregant el servidor: %s.',
-    ieSpellDownload:
-        'Verificació ortogràfica no instal·lada. Voleu descarregar-ho ara?',
+    ieSpellDownload: 'Verificació ortogràfica no instal·lada. Voleu descarregar-ho ara?',
     manyChanges: "Verificació ortogràfica: s'han canviat %1 paraules",
     noChanges: "Verificació ortogràfica: no s'ha canviat cap paraula",
-    noMispell:
-        'Verificació ortogràfica acabada: no hi ha cap paraula mal escrita',
+    noMispell: 'Verificació ortogràfica acabada: no hi ha cap paraula mal escrita',
     noSuggestions: 'Cap suggeriment',
     notAvailable: 'El servei no es troba disponible ara.',
     notInDic: 'No és al diccionari',

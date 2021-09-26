@@ -50,21 +50,11 @@
                     c || (c = b.fontSize);
                     var e = this.topTextColor;
                     e || (e = b.color);
-                    a = d.text(
-                        b.container,
-                        a,
-                        e,
-                        b.fontFamily,
-                        c,
-                        void 0,
-                        this.topTextBold
-                    );
+                    a = d.text(b.container, a, e, b.fontFamily, c, void 0, this.topTextBold);
                     d.setCN(b, a, 'axis-top-label');
                     a.translate(
                         this.centerXReal,
-                        this.centerYReal -
-                            this.radiusReal / 2 +
-                            this.topTextYOffset
+                        this.centerYReal - this.radiusReal / 2 + this.topTextYOffset,
                     );
                     this.set.push(a);
                     this.topTF = a;
@@ -81,21 +71,11 @@
                     c || (c = b.fontSize);
                     var e = this.bottomTextColor;
                     e || (e = b.color);
-                    a = d.text(
-                        b.container,
-                        a,
-                        e,
-                        b.fontFamily,
-                        c,
-                        void 0,
-                        this.bottomTextBold
-                    );
+                    a = d.text(b.container, a, e, b.fontFamily, c, void 0, this.bottomTextBold);
                     d.setCN(b, a, 'axis-bottom-label');
                     a.translate(
                         this.centerXReal,
-                        this.centerYReal +
-                            this.radiusReal / 2 +
-                            this.bottomTextYOffset
+                        this.centerYReal + this.radiusReal / 2 + this.bottomTextYOffset,
                     );
                     this.bottomTF = a;
                     this.set.push(a);
@@ -188,13 +168,7 @@
                 ) {
                     var E;
                     E = this.usePrefixes
-                        ? d.addPrefix(
-                              q,
-                              a.prefixesOfBigNumbers,
-                              a.prefixesOfSmallNumbers,
-                              a.nf,
-                              !0
-                          )
+                        ? d.addPrefix(q, a.prefixesOfBigNumbers, a.prefixesOfSmallNumbers, a.nf, !0)
                         : d.formatNumber(q, a.nf, e);
                     var G = this.unit;
                     G && (E = 'left' == this.unitPosition ? G + E : E + G);
@@ -204,10 +178,7 @@
                     q = d.text(m, E, q, a.fontFamily, D);
                     d.setCN(a, q, 'axis-label');
                     D = q.getBBox();
-                    q.translate(
-                        F + ((u * D.width) / 2) * L,
-                        x + ((u * D.height) / 2) * y
-                    );
+                    q.translate(F + ((u * D.width) / 2) * L, x + ((u * D.height) / 2) * y);
                     b.push(q);
                 }
                 if (t < p - 1)
@@ -215,24 +186,9 @@
                         (y = r + K * q),
                             (u = h(A + C * Math.sin((y / 180) * Math.PI))),
                             (F = h(B - C * Math.cos((y / 180) * Math.PI))),
-                            (x = h(
-                                A + (C - H) * Math.sin((y / 180) * Math.PI)
-                            )),
-                            (y = h(
-                                B - (C - H) * Math.cos((y / 180) * Math.PI)
-                            )),
-                            (u = d.line(
-                                m,
-                                [u, x],
-                                [F, y],
-                                w,
-                                z,
-                                J,
-                                0,
-                                !1,
-                                !1,
-                                !0
-                            )),
+                            (x = h(A + (C - H) * Math.sin((y / 180) * Math.PI))),
+                            (y = h(B - (C - H) * Math.cos((y / 180) * Math.PI))),
+                            (u = d.line(m, [u, x], [F, y], w, z, J, 0, !1, !1, !0)),
                             d.setCN(a, u, 'axis-tick-minor'),
                             b.push(u);
             }
@@ -355,7 +311,7 @@
                 m,
                 void 0,
                 void 0,
-                'radial'
+                'radial',
             );
             d.setCN(e, h.wedge, 'axis-band');
             void 0 !== this.id && d.setCN(e, h.wedge, 'axis-band-' + this.id);
@@ -370,8 +326,7 @@
             var a = this.axis,
                 b = a.chart;
             if (a && a.value2angle) {
-                if (this.frame >= b.totalFrames)
-                    (b = this.endValue), (a = this.startValue);
+                if (this.frame >= b.totalFrames) (b = this.endValue), (a = this.startValue);
                 else {
                     this.frame++;
                     var c = d.getEffect(b.startEffect),
@@ -380,20 +335,19 @@
                             this.frame,
                             this.previousStartValue,
                             this.startValue - this.previousStartValue,
-                            b.totalFrames
+                            b.totalFrames,
                         ),
                         b = d[c](
                             0,
                             this.frame,
                             this.previousEndValue,
                             this.endValue - this.previousEndValue,
-                            b.totalFrames
+                            b.totalFrames,
                         );
                     isNaN(a) && (a = this.startValue);
                     isNaN(b) && (b = this.endValue);
                 }
-                (a == this.currentStartValue && b == this.currentEndValue) ||
-                    this.draw(a, b);
+                (a == this.currentStartValue && b == this.currentEndValue) || this.draw(a, b);
             }
         },
         setStartValue: function (a) {
@@ -449,20 +403,18 @@
                 '',
                 this.usePrefixes,
                 this.prefixesOfSmallNumbers,
-                this.prefixesOfBigNumbers
+                this.prefixesOfBigNumbers,
             ));
         },
         initChart: function () {
             d.AmAngularGauge.base.initChart.call(this);
             var a;
-            0 === this.axes.length &&
-                ((a = new d.GaugeAxis(this.theme)), this.addAxis(a));
+            0 === this.axes.length && ((a = new d.GaugeAxis(this.theme)), this.addAxis(a));
             var b;
             for (b = 0; b < this.axes.length; b++)
                 (a = this.axes[b]),
                     (a = d.processObject(a, d.GaugeAxis, this.theme)),
-                    a.id ||
-                        (a.id = 'axisAuto' + b + '_' + new Date().getTime()),
+                    a.id || (a.id = 'axisAuto' + b + '_' + new Date().getTime()),
                     (a.chart = this),
                     (this.axes[b] = a);
             var c = this.arrows;
@@ -516,7 +468,7 @@
                     this.faceBorderWidth,
                     this.faceBorderColor,
                     c,
-                    !1
+                    !1,
                 )),
                     f.translate(this.centerX, this.centerY),
                     f.toBack(),
@@ -528,9 +480,7 @@
                     c.draw(),
                     (l = 1),
                     -1 !== String(g).indexOf('%') &&
-                        (l =
-                            1 +
-                            (100 - Number(g.substr(0, g.length - 1))) / 100),
+                        (l = 1 + (100 - Number(g.substr(0, g.length - 1))) / 100),
                     c.width * l > a && (a = c.width * l),
                     c.height * l > k && (k = c.height * l);
             (b = this.legend) && b.invalidateSize();
@@ -541,10 +491,7 @@
                     f.height > k && (k = f.height));
                 f = 0;
                 if (p > k || e > a) f = Math.min(p - k, e - a);
-                5 < f &&
-                    ((this.extraHeight = f),
-                    (this.sizeAdjusted = !0),
-                    this.validateNow());
+                5 < f && ((this.extraHeight = f), (this.sizeAdjusted = !0), this.validateNow());
             }
             e = this.arrows.length;
             for (b = 0; b < e; b++) (p = this.arrows[b]), (p.drawnAngle = NaN);
@@ -593,7 +540,7 @@
                     a.nailAlpha,
                     a.nailBorderThickness,
                     m,
-                    a.nailBorderAlpha
+                    a.nailBorderAlpha,
                 )),
                 d.setCN(this, m, 'gauge-arrow-nail'),
                 a.set.push(m),
@@ -623,7 +570,7 @@
                     w,
                     a.borderAlpha,
                     void 0,
-                    !0
+                    !0,
                 );
             d.setCN(this, c, 'gauge-arrow');
             a.set.push(c);
@@ -631,15 +578,11 @@
             a.hidden && this.hideArrow(a);
         },
         setValue: function (a, b) {
-            a.axis &&
-                a.axis.value2angle &&
-                ((a.frame = 0), (a.previousValue = a.value));
+            a.axis && a.axis.value2angle && ((a.frame = 0), (a.previousValue = a.value));
             a.value = b;
             var c = this.legend;
             c && c.updateValues();
-            this.accessible &&
-                this.background &&
-                this.makeAccessible(this.background, b);
+            this.accessible && this.background && this.makeAccessible(this.background, b);
         },
         handleLegendEvent: function (a) {
             var b = a.type;
@@ -674,21 +617,18 @@
                             : (b.frame++,
                               b.clockWiseOnly &&
                                   b.value < b.previousValue &&
-                                  ((c = b.axis),
-                                  (b.previousValue -=
-                                      c.endValue - c.startValue)),
+                                  ((c = b.axis), (b.previousValue -= c.endValue - c.startValue)),
                               (c = d.getEffect(this.startEffect)),
                               (c = d[c](
                                   0,
                                   b.frame,
                                   b.previousValue,
                                   b.value - b.previousValue,
-                                  this.totalFrames
+                                  this.totalFrames,
                               )),
                               isNaN(c) && (c = b.value)),
                         (c = b.axis.value2angle(c)),
-                        b.drawnAngle != c &&
-                            (this.drawArrow(b, c), (b.drawnAngle = c)));
+                        b.drawnAngle != c && (this.drawArrow(b, c), (b.drawnAngle = c)));
             a = this.axes;
             for (b = a.length - 1; 0 <= b; b--)
                 if (((c = a[b]), c.bands))

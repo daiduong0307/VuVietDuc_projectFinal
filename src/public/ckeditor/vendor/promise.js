@@ -43,8 +43,7 @@
         };
     }
     function n() {
-        for (var a = 0; a < k; a += 2)
-            (0, q[a])(q[a + 1]), (q[a] = void 0), (q[a + 1] = void 0);
+        for (var a = 0; a < k; a += 2) (0, q[a])(q[a + 1]), (q[a] = void 0), (q[a + 1] = void 0);
         k = 0;
     }
     function U() {
@@ -102,7 +101,7 @@
                     function (b) {
                         e || ((e = !0), g(a, b));
                     },
-                    'Settle: ' + (a._label || ' unknown promise')
+                    'Settle: ' + (a._label || ' unknown promise'),
                 );
             !e && f && ((e = !0), g(a, f));
         }, a);
@@ -120,13 +119,11 @@
                   },
                   function (b) {
                       return g(a, b);
-                  }
+                  },
               );
     }
     function N(a, b, c) {
-        b.constructor === a.constructor &&
-        c === D &&
-        b.constructor.resolve === F
+        b.constructor === a.constructor && c === D && b.constructor.resolve === F
             ? X(a, b)
             : c === p
             ? (g(a, p.error), (p.error = null))
@@ -137,13 +134,10 @@
             : m(a, b);
     }
     function x(a, b) {
-        if (a === b)
-            g(a, new TypeError('You cannot resolve a promise with itself'));
+        if (a === b) g(a, new TypeError('You cannot resolve a promise with itself'));
         else {
             var c = typeof b;
-            null === b || ('object' !== c && 'function' !== c)
-                ? m(a, b)
-                : N(a, b, M(b));
+            null === b || ('object' !== c && 'function' !== c) ? m(a, b) : N(a, b, M(b));
         }
     }
     function Y(a) {
@@ -151,10 +145,7 @@
         G(a);
     }
     function m(a, b) {
-        a._state === u &&
-            ((a._result = b),
-            (a._state = y),
-            0 !== a._subscribers.length && l(G, a));
+        a._state === u && ((a._result = b), (a._state = y), 0 !== a._subscribers.length && l(G, a));
     }
     function g(a, b) {
         a._state === u && ((a._state = t), (a._result = b), l(Y, a));
@@ -172,11 +163,7 @@
         var b = a._subscribers,
             c = a._state;
         if (0 !== b.length) {
-            for (
-                var d = void 0, e = void 0, f = a._result, g = 0;
-                g < b.length;
-                g += 3
-            )
+            for (var d = void 0, e = void 0, f = a._result, g = 0; g < b.length; g += 3)
                 (d = b[g]), (e = b[g + c]), d ? L(c, d, e, f) : e(f);
             a._subscribers.length = 0;
         }
@@ -195,23 +182,11 @@
             }
             f === p ? ((l = !0), (h = f.error), (f.error = null)) : (k = !0);
             if (b === f) {
-                g(
-                    b,
-                    new TypeError(
-                        'A promises callback cannot return that same promise.'
-                    )
-                );
+                g(b, new TypeError('A promises callback cannot return that same promise.'));
                 return;
             }
         } else (f = d), (k = !0);
-        b._state === u &&
-            (e && k
-                ? x(b, f)
-                : l
-                ? g(b, h)
-                : a === y
-                ? m(b, f)
-                : a === t && g(b, f));
+        b._state === u && (e && k ? x(b, f) : l ? g(b, h) : a === y ? m(b, f) : a === t && g(b, f));
     }
     function Z(a, b) {
         try {
@@ -221,7 +196,7 @@
                 },
                 function (b) {
                     g(a, b);
-                }
+                },
             );
         } catch (c) {
             g(a, c);
@@ -287,16 +262,11 @@
                           ? m(this.promise, this._result)
                           : ((this.length = this.length || 0),
                             this._enumerate(c),
-                            0 === this._remaining &&
-                                m(this.promise, this._result)))
-                    : g(
-                          this.promise,
-                          Error('Array Methods must be provided an Array')
-                      );
+                            0 === this._remaining && m(this.promise, this._result)))
+                    : g(this.promise, Error('Array Methods must be provided an Array'));
             }
             a.prototype._enumerate = function (a) {
-                for (var c = 0; this._state === u && c < a.length; c++)
-                    this._eachEntry(a[c], c);
+                for (var c = 0; this._state === u && c < a.length; c++) this._eachEntry(a[c], c);
             };
             a.prototype._eachEntry = function (a, c) {
                 var d = this._instanceConstructor,
@@ -308,22 +278,18 @@
                           : 'function' !== typeof e
                           ? (this._remaining--, (this._result[c] = a))
                           : d === h
-                          ? ((d = new d(r)),
-                            N(d, a, e),
-                            this._willSettleAt(d, c))
+                          ? ((d = new d(r)), N(d, a, e), this._willSettleAt(d, c))
                           : this._willSettleAt(
                                 new d(function (c) {
                                     return c(a);
                                 }),
-                                c
+                                c,
                             ))
                     : this._willSettleAt(e(a), c);
             };
             a.prototype._settledAt = function (a, c, d) {
                 var e = this.promise;
-                e._state === u &&
-                    (this._remaining--,
-                    a === t ? g(e, d) : (this._result[c] = d));
+                e._state === u && (this._remaining--, a === t ? g(e, d) : (this._result[c] = d));
                 0 === this._remaining && m(e, this._result);
             };
             a.prototype._willSettleAt = function (a, c) {
@@ -336,7 +302,7 @@
                     },
                     function (a) {
                         return d._settledAt(t, c, a);
-                    }
+                    },
                 );
             };
             return a;
@@ -349,12 +315,12 @@
                 if (r !== b) {
                     if ('function' !== typeof b)
                         throw new TypeError(
-                            'You must pass a resolver function as the first argument to the promise constructor'
+                            'You must pass a resolver function as the first argument to the promise constructor',
                         );
                     if (this instanceof a) Z(this, b);
                     else
                         throw new TypeError(
-                            "Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function."
+                            "Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.",
                         );
                 }
             }
@@ -374,7 +340,7 @@
                               return c.resolve(a()).then(function () {
                                   throw d;
                               });
-                          }
+                          },
                       )
                     : this.then(a, a);
             };
@@ -388,8 +354,7 @@
         var b = this;
         return P(a)
             ? new b(function (c, d) {
-                  for (var e = a.length, f = 0; f < e; f++)
-                      b.resolve(a[f]).then(c, d);
+                  for (var e = a.length, f = 0; f < e; f++) b.resolve(a[f]).then(c, d);
               })
             : new b(function (a, b) {
                   return b(new TypeError('You must pass an array to race.'));
@@ -417,7 +382,7 @@
                 a = Function('return this')();
             } catch (b) {
                 throw Error(
-                    'polyfill failed because global object is unavailable in this environment'
+                    'polyfill failed because global object is unavailable in this environment',
                 );
             }
         var c = a.Promise;

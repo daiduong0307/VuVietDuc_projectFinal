@@ -28,7 +28,7 @@
             $this.removeClass('show');
             $this.find('> a').attr('aria-expanded', false);
             $this.find('.dropdown-menu').removeClass('show');
-        }
+        },
     );
 
     $('#dropdown04').on('show.bs.dropdown', function () {
@@ -144,17 +144,12 @@
         var i = 0;
         $('.element-animate').waypoint(
             function (direction) {
-                if (
-                    direction === 'down' &&
-                    !$(this.element).hasClass('element-animated')
-                ) {
+                if (direction === 'down' && !$(this.element).hasClass('element-animated')) {
                     i++;
 
                     $(this.element).addClass('item-animate');
                     setTimeout(function () {
-                        $('body .element-animate.item-animate').each(function (
-                            k
-                        ) {
+                        $('body .element-animate.item-animate').each(function (k) {
                             var el = $(this);
                             setTimeout(function () {
                                 var effect = el.data('animate-effect');
@@ -173,7 +168,7 @@
                     }, 100);
                 }
             },
-            { offset: '95%' }
+            { offset: '95%' },
         );
     };
     contentWayPoint();

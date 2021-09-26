@@ -44,8 +44,7 @@ CKEDITOR.lang['lt'] = {
         validateNumberFailed: 'Ši reikšmė nėra skaičius.',
         confirmNewPage:
             'Visas neišsaugotas turinys bus prarastas. Ar tikrai norite įkrauti naują puslapį?',
-        confirmCancel:
-            'Kai kurie parametrai pasikeitė. Ar tikrai norite užverti langą?',
+        confirmCancel: 'Kai kurie parametrai pasikeitė. Ar tikrai norite užverti langą?',
         options: 'Parametrai',
         target: 'Tikslinė nuoroda',
         targetNew: 'Naujas langas (_blank)',
@@ -171,8 +170,7 @@ CKEDITOR.lang['lt'] = {
         pasteNotification:
             'Spauskite %1 kad įkliuotumėte. Jūsų naršyklė nepalaiko įklijavimo paspaudus mygtuką arba kontekstinio menių galimybės.',
         pasteArea: 'Įkelti dalį',
-        pasteMsg:
-            'Įklijuokite savo turinį į žemiau esantį lauką ir paspauskite OK.',
+        pasteMsg: 'Įklijuokite savo turinį į žemiau esantį lauką ir paspauskite OK.',
     },
     colorbutton: {
         auto: 'Automatinis',
@@ -296,10 +294,8 @@ CKEDITOR.lang['lt'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -577,8 +573,7 @@ CKEDITOR.lang['lt'] = {
         type: 'Rūšis',
         upperAlpha: 'Didžiosios Alpha (A, B, C, D, E, t.t)',
         upperRoman: 'Didžiosios Romėnų (I, II, III, IV, V, t.t)',
-        validateStartNumber:
-            'Sąrašo pradžios skaitmuo turi būti sveikas skaičius.',
+        validateStartNumber: 'Sąrašo pradžios skaitmuo turi būti sveikas skaičius.',
     },
     magicline: { title: 'Įterpti pastraipą čia' },
     maximize: { maximize: 'Išdidinti', minimize: 'Sumažinti' },
@@ -709,7 +704,6 @@ CKEDITOR.lang['lt'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

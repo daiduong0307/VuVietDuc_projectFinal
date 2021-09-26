@@ -42,10 +42,7 @@
      */
     function isFunction(functionToCheck) {
         var getType = {};
-        return (
-            functionToCheck &&
-            getType.toString.call(functionToCheck) === '[object Function]'
-        );
+        return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
     }
 
     var classCallCheck = function (instance, Constructor) {
@@ -152,10 +149,7 @@
             var events =
                 typeof options.trigger === 'string'
                     ? options.trigger.split(' ').filter(function (trigger) {
-                          return (
-                              ['click', 'hover', 'focus'].indexOf(trigger) !==
-                              -1
-                          );
+                          return ['click', 'hover', 'focus'].indexOf(trigger) !== -1;
                       })
                     : [];
 
@@ -224,16 +218,13 @@
                     var tooltipNode = tooltipGenerator.childNodes[0];
 
                     // add unique ID to our tooltip (needed for accessibility reasons)
-                    tooltipNode.id =
-                        'tooltip_' + Math.random().toString(36).substr(2, 10);
+                    tooltipNode.id = 'tooltip_' + Math.random().toString(36).substr(2, 10);
 
                     // set initial `aria-hidden` state to `false` (it's visible!)
                     tooltipNode.setAttribute('aria-hidden', 'false');
 
                     // add title to tooltip
-                    var titleNode = tooltipGenerator.querySelector(
-                        this.innerSelector
-                    );
+                    var titleNode = tooltipGenerator.querySelector(this.innerSelector);
                     if (title.nodeType === 1) {
                         // if title is a node, append it only if allowHtml is true
                         allowHtml && titleNode.appendChild(title);
@@ -245,9 +236,7 @@
                             : (titleNode.innerText = titleText);
                     } else {
                         // if it's just a simple text, set innerText or innerHtml depending by `allowHtml` value
-                        allowHtml
-                            ? (titleNode.innerHTML = title)
-                            : (titleNode.innerText = title);
+                        allowHtml ? (titleNode.innerHTML = title) : (titleNode.innerText = title);
                     }
 
                     // return the generated tooltip node
@@ -272,8 +261,7 @@
                     }
 
                     // get title
-                    var title =
-                        reference.getAttribute('title') || options.title;
+                    var title = reference.getAttribute('title') || options.title;
 
                     // don't show tooltip if no title is defined
                     if (!title) {
@@ -285,17 +273,14 @@
                         reference,
                         options.template,
                         title,
-                        options.html
+                        options.html,
                     );
 
                     // Add `aria-describedby` to our reference element for accessibility reasons
                     reference.setAttribute('aria-describedby', tooltipNode.id);
 
                     // append tooltip to container
-                    var container = this._findContainer(
-                        options.container,
-                        reference
-                    );
+                    var container = this._findContainer(options.container, reference);
 
                     this._append(tooltipNode, container);
 
@@ -303,15 +288,11 @@
                         placement: options.placement,
                     });
 
-                    popperOptions.modifiers = _extends(
-                        {},
-                        popperOptions.modifiers,
-                        {
-                            arrow: {
-                                element: this.arrowSelector,
-                            },
-                        }
-                    );
+                    popperOptions.modifiers = _extends({}, popperOptions.modifiers, {
+                        arrow: {
+                            element: this.arrowSelector,
+                        },
+                    });
 
                     if (options.boundariesElement) {
                         popperOptions.modifiers.preventOverflow = {
@@ -319,11 +300,7 @@
                         };
                     }
 
-                    this.popperInstance = new Popper(
-                        reference,
-                        tooltipNode,
-                        popperOptions
-                    );
+                    this.popperInstance = new Popper(reference, tooltipNode, popperOptions);
 
                     this._tooltipNode = tooltipNode;
 
@@ -368,9 +345,7 @@
                         this._events = [];
 
                         // destroy tooltipNode
-                        this._tooltipNode.parentNode.removeChild(
-                            this._tooltipNode
-                        );
+                        this._tooltipNode.parentNode.removeChild(this._tooltipNode);
                         this._tooltipNode = null;
                     }
                     return this;
@@ -435,12 +410,7 @@
                                 return;
                             }
                             evt.usedByTooltip = true;
-                            _this2._scheduleShow(
-                                reference,
-                                options.delay,
-                                options,
-                                evt
-                            );
+                            _this2._scheduleShow(reference, options.delay, options, evt);
                         };
                         _this2._events.push({ event: event, func: func });
                         reference.addEventListener(event, func);
@@ -452,12 +422,7 @@
                             if (evt.usedByTooltip === true) {
                                 return;
                             }
-                            _this2._scheduleHide(
-                                reference,
-                                options.delay,
-                                options,
-                                evt
-                            );
+                            _this2._scheduleHide(reference, options.delay, options, evt);
                         };
                         _this2._events.push({ event: event, func: func });
                         reference.addEventListener(event, func);
@@ -466,11 +431,7 @@
             },
             {
                 key: '_scheduleShow',
-                value: function _scheduleShow(
-                    reference,
-                    delay,
-                    options /*, evt */
-                ) {
+                value: function _scheduleShow(reference, delay, options /*, evt */) {
                     var _this3 = this;
 
                     // defaults to 0
@@ -498,12 +459,7 @@
                         // if we are hiding because of a mouseleave, we must check that the new
                         // reference isn't the tooltip, because in this case we don't want to hide it
                         if (evt.type === 'mouseleave') {
-                            var isSet = _this4._setTooltipNodeEvent(
-                                evt,
-                                reference,
-                                delay,
-                                options
-                            );
+                            var isSet = _this4._setTooltipNodeEvent(evt, reference, delay, options);
 
                             // if we set the new event, don't hide the tooltip yet
                             // the new event will take care to hide it if necessary
@@ -575,12 +531,7 @@
                 // If the new reference is not the reference element
                 if (!reference.contains(relatedreference2)) {
                     // Schedule to hide tooltip
-                    _this5._scheduleHide(
-                        reference,
-                        options.delay,
-                        options,
-                        evt2
-                    );
+                    _this5._scheduleHide(reference, options.delay, options, evt2);
                 }
             };
 

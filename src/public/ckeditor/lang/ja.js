@@ -42,10 +42,8 @@ CKEDITOR.lang['ja'] = {
         generalTab: '全般',
         advancedTab: '高度な設定',
         validateNumberFailed: '値が数値ではありません',
-        confirmNewPage:
-            '変更内容を保存せず、 新しいページを開いてもよろしいでしょうか？',
-        confirmCancel:
-            'オプション設定を変更しました。ダイアログを閉じてもよろしいでしょうか？',
+        confirmNewPage: '変更内容を保存せず、 新しいページを開いてもよろしいでしょうか？',
+        confirmCancel: 'オプション設定を変更しました。ダイアログを閉じてもよろしいでしょうか？',
         options: 'オプション',
         target: 'ターゲット',
         targetNew: '新しいウインドウ (_blank)',
@@ -294,14 +292,10 @@ CKEDITOR.lang['ja'] = {
     },
     filetools: {
         loadError: 'ファイルの読み込み中にエラーが発生しました。',
-        networkError:
-            'ファイルのアップロード中にネットワークエラーが発生しました。',
-        httpError404:
-            'ファイルのアップロード中にHTTPエラーが発生しました。(404: File not found)',
-        httpError403:
-            'ファイルのアップロード中にHTTPエラーが発生しました。(403: Forbidden)',
-        httpError:
-            'ファイルのアップロード中にHTTPエラーが発生しました。(error status: %1)',
+        networkError: 'ファイルのアップロード中にネットワークエラーが発生しました。',
+        httpError404: 'ファイルのアップロード中にHTTPエラーが発生しました。(404: File not found)',
+        httpError403: 'ファイルのアップロード中にHTTPエラーが発生しました。(403: Forbidden)',
+        httpError: 'ファイルのアップロード中にHTTPエラーが発生しました。(error status: %1)',
         noUrlError: 'アップロードURLが定義されていません。',
         responseError: 'サーバーの応答が不正です。',
     },
@@ -700,7 +694,6 @@ CKEDITOR.lang['ja'] = {
         doneOne: 'ファイルのアップロードに成功しました。',
         doneMany: '%1個のファイルのアップロードに成功しました。',
         uploadOne: 'ファイルのアップロード中 ({percentage}%)...',
-        uploadMany:
-            '{max} 個中 {current} 個のファイルをアップロードしました。 ({percentage}%)...',
+        uploadMany: '{max} 個中 {current} 個のファイルをアップロードしました。 ({percentage}%)...',
     },
 };

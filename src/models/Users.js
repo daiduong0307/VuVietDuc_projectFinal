@@ -49,14 +49,13 @@ const userSchema = new Schema(
             ref: 'AppUser',
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 userSchema.pre('save', function (next) {
     // capitalize
     const user = this;
-    user.fullName.charAt(0).toUpperCase() +
-        user.fullName.slice(1).toLowerCase();
+    user.fullName.charAt(0).toUpperCase() + user.fullName.slice(1).toLowerCase();
     next();
 });
 

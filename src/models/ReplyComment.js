@@ -17,7 +17,7 @@ const replySchema = new Schema(
     },
     {
         timestamps: true,
-    }
+    },
 );
 
 replySchema.virtual('commentBlog', {

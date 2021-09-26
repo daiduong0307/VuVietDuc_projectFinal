@@ -7,17 +7,13 @@
         var e = this instanceof CKEDITOR.ui.dialog.checkbox;
         c.hasAttribute(this.id) &&
             ((c = c.getAttribute(this.id)),
-            e
-                ? this.setValue(g[this.id]['true'] == c.toLowerCase())
-                : this.setValue(c));
+            e ? this.setValue(g[this.id]['true'] == c.toLowerCase()) : this.setValue(c));
     }
     function f(c) {
         var e = this.getValue(),
             a = this.att || this.id,
             d = this instanceof CKEDITOR.ui.dialog.checkbox ? g[this.id][e] : e;
-        '' === e || ('tabindex' === a && !1 === e)
-            ? c.removeAttribute(a)
-            : c.setAttribute(a, d);
+        '' === e || ('tabindex' === a && !1 === e) ? c.removeAttribute(a) : c.setAttribute(a, d);
     }
     var g = {
         scrolling: { true: 'yes', false: 'no' },
@@ -50,9 +46,7 @@
             },
             onOk: function () {
                 var b;
-                b = this.fakeImage
-                    ? this.iframeNode
-                    : new CKEDITOR.dom.element('iframe');
+                b = this.fakeImage ? this.iframeNode : new CKEDITOR.dom.element('iframe');
                 var a = {},
                     d = {};
                 this.commitContent(b, a, d);
@@ -60,8 +54,7 @@
                 b.setAttributes(d);
                 b.setStyles(a);
                 this.fakeImage
-                    ? (b.replace(this.fakeImage),
-                      c.getSelection().selectElement(b))
+                    ? (b.replace(this.fakeImage), c.getSelection().selectElement(b))
                     : c.insertElement(b);
             },
             contents: [
@@ -79,9 +72,7 @@
                                     type: 'text',
                                     label: a.url,
                                     required: !0,
-                                    validate: CKEDITOR.dialog.validate.notEmpty(
-                                        e.noUrl
-                                    ),
+                                    validate: CKEDITOR.dialog.validate.notEmpty(e.noUrl),
                                     setup: d,
                                     commit: f,
                                 },
@@ -97,13 +88,9 @@
                                     style: 'width:100%',
                                     labelLayout: 'vertical',
                                     label: a.width,
-                                    validate:
-                                        CKEDITOR.dialog.validate.htmlLength(
-                                            a.invalidHtmlLength.replace(
-                                                '%1',
-                                                a.width
-                                            )
-                                        ),
+                                    validate: CKEDITOR.dialog.validate.htmlLength(
+                                        a.invalidHtmlLength.replace('%1', a.width),
+                                    ),
                                     setup: d,
                                     commit: f,
                                 },
@@ -114,13 +101,9 @@
                                     style: 'width:100%',
                                     labelLayout: 'vertical',
                                     label: a.height,
-                                    validate:
-                                        CKEDITOR.dialog.validate.htmlLength(
-                                            a.invalidHtmlLength.replace(
-                                                '%1',
-                                                a.height
-                                            )
-                                        ),
+                                    validate: CKEDITOR.dialog.validate.htmlLength(
+                                        a.invalidHtmlLength.replace('%1', a.height),
+                                    ),
                                     setup: d,
                                     commit: f,
                                 },
@@ -144,15 +127,12 @@
                                         d.apply(this, arguments);
                                         if (c) {
                                             var e = c.getAttribute('align');
-                                            this.setValue(
-                                                (e && e.toLowerCase()) || ''
-                                            );
+                                            this.setValue((e && e.toLowerCase()) || '');
                                         }
                                     },
                                     commit: function (a, c, d) {
                                         f.apply(this, arguments);
-                                        this.getValue() &&
-                                            (d.align = this.getValue());
+                                        this.getValue() && (d.align = this.getValue());
                                     },
                                 },
                             ],
@@ -219,12 +199,7 @@
                         },
                     ],
                 },
-                g &&
-                    g.createAdvancedTab(
-                        c,
-                        { id: 1, classes: 1, styles: 1 },
-                        'iframe'
-                    ),
+                g && g.createAdvancedTab(c, { id: 1, classes: 1, styles: 1 }, 'iframe'),
             ],
         };
     });

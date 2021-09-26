@@ -8,13 +8,8 @@
             p = c._.editor,
             n = p.config.linkPhoneRegExp,
             q = p.config.linkPhoneMsg,
-            p = CKEDITOR.dialog.validate
-                .notEmpty(p.lang.link.noTel)
-                .apply(this);
-        if (
-            !c.getContentElement('info', 'linkType') ||
-            'tel' != c.getValueOf('info', 'linkType')
-        )
+            p = CKEDITOR.dialog.validate.notEmpty(p.lang.link.noTel).apply(this);
+        if (!c.getContentElement('info', 'linkType') || 'tel' != c.getValueOf('info', 'linkType'))
             return !0;
         if (!0 !== p) return p;
         if (n) return CKEDITOR.dialog.validate.regex(n, q).call(this);
@@ -34,9 +29,7 @@
                     a = a.getContentElement('target', 'linkTargetName'),
                     r = this.getValue();
                 if (b && a)
-                    switch (
-                        ((b = b.getElement()), b.hide(), a.setValue(''), r)
-                    ) {
+                    switch (((b = b.getElement()), b.hide(), a.setValue(''), r)) {
                         case 'frame':
                             a.setLabel(c.lang.link.targetFrameName);
                             a.getElement().show();
@@ -69,10 +62,7 @@
             l;
         return {
             title: b.title,
-            minWidth:
-                'moono-lisa' == (CKEDITOR.skinName || c.config.skin)
-                    ? 450
-                    : 350,
+            minWidth: 'moono-lisa' == (CKEDITOR.skinName || c.config.skin) ? 450 : 350,
             minHeight: 240,
             getModel: function (a) {
                 return n.getSelectedLink(a, !0)[0] || null;
@@ -89,15 +79,11 @@
                             label: b.displayText,
                             setup: function () {
                                 this.enable();
-                                this.setValue(
-                                    c.getSelection().getSelectedText()
-                                );
+                                this.setValue(c.getSelection().getSelectedText());
                                 q = this.getValue();
                             },
                             commit: function (a) {
-                                a.linkText = this.isEnabled()
-                                    ? this.getValue()
-                                    : '';
+                                a.linkText = this.isEnabled() ? this.getValue() : '';
                             },
                         },
                         {
@@ -123,21 +109,14 @@
                                     f = a.definition.getContents('upload'),
                                     f = f && f.hidden;
                                 'url' == r
-                                    ? (c.config.linkShowTargetTab &&
-                                          a.showPage('target'),
+                                    ? (c.config.linkShowTargetTab && a.showPage('target'),
                                       f || a.showPage('upload'))
-                                    : (a.hidePage('target'),
-                                      f || a.hidePage('upload'));
+                                    : (a.hidePage('target'), f || a.hidePage('upload'));
                                 for (f = 0; f < b.length; f++) {
                                     var m = a.getContentElement('info', b[f]);
                                     m &&
-                                        ((m = m
-                                            .getElement()
-                                            .getParent()
-                                            .getParent()),
-                                        b[f] == r + 'Options'
-                                            ? m.show()
-                                            : m.hide());
+                                        ((m = m.getElement().getParent().getParent()),
+                                        b[f] == r + 'Options' ? m.show() : m.hide());
                                 }
                                 a.layout();
                             },
@@ -167,18 +146,13 @@
                                                 ['news://‎', 'news://'],
                                                 [b.other, ''],
                                             ],
-                                            default:
-                                                c.config.linkDefaultProtocol,
+                                            default: c.config.linkDefaultProtocol,
                                             setup: function (a) {
-                                                a.url &&
-                                                    this.setValue(
-                                                        a.url.protocol || ''
-                                                    );
+                                                a.url && this.setValue(a.url.protocol || '');
                                             },
                                             commit: function (a) {
                                                 a.url || (a.url = {});
-                                                a.url.protocol =
-                                                    this.getValue();
+                                                a.url.protocol = this.getValue();
                                             },
                                         },
                                         {
@@ -191,52 +165,30 @@
                                             },
                                             onKeyUp: function () {
                                                 this.allowOnChange = !1;
-                                                var a =
-                                                        this.getDialog().getContentElement(
-                                                            'info',
-                                                            'protocol'
-                                                        ),
+                                                var a = this.getDialog().getContentElement(
+                                                        'info',
+                                                        'protocol',
+                                                    ),
                                                     b = this.getValue(),
-                                                    c =
-                                                        /^((javascript:)|[#\/\.\?])/i,
-                                                    f =
-                                                        /^(http|https|ftp|news):\/\/(?=.)/i.exec(
-                                                            b
-                                                        );
+                                                    c = /^((javascript:)|[#\/\.\?])/i,
+                                                    f = /^(http|https|ftp|news):\/\/(?=.)/i.exec(b);
                                                 f
-                                                    ? (this.setValue(
-                                                          b.substr(f[0].length)
-                                                      ),
-                                                      a.setValue(
-                                                          f[0].toLowerCase()
-                                                      ))
-                                                    : c.test(b) &&
-                                                      a.setValue('');
+                                                    ? (this.setValue(b.substr(f[0].length)),
+                                                      a.setValue(f[0].toLowerCase()))
+                                                    : c.test(b) && a.setValue('');
                                                 this.allowOnChange = !0;
                                             },
                                             onChange: function () {
-                                                if (this.allowOnChange)
-                                                    this.onKeyUp();
+                                                if (this.allowOnChange) this.onKeyUp();
                                             },
                                             validate: function () {
                                                 var a = this.getDialog();
-                                                return a.getContentElement(
-                                                    'info',
-                                                    'linkType'
-                                                ) &&
-                                                    'url' !=
-                                                        a.getValueOf(
-                                                            'info',
-                                                            'linkType'
-                                                        )
+                                                return a.getContentElement('info', 'linkType') &&
+                                                    'url' != a.getValueOf('info', 'linkType')
                                                     ? !0
-                                                    : !c.config
-                                                          .linkJavaScriptLinksAllowed &&
-                                                      /javascript\:/.test(
-                                                          this.getValue()
-                                                      )
-                                                    ? (alert(h.invalidValue),
-                                                      !1)
+                                                    : !c.config.linkJavaScriptLinksAllowed &&
+                                                      /javascript\:/.test(this.getValue())
+                                                    ? (alert(h.invalidValue), !1)
                                                     : this.getDialog().fakeObj
                                                     ? !0
                                                     : CKEDITOR.dialog.validate
@@ -245,8 +197,7 @@
                                             },
                                             setup: function (a) {
                                                 this.allowOnChange = !1;
-                                                a.url &&
-                                                    this.setValue(a.url.url);
+                                                a.url && this.setValue(a.url.url);
                                                 this.allowOnChange = !0;
                                             },
                                             commit: function (a) {
@@ -258,10 +209,8 @@
                                         },
                                     ],
                                     setup: function () {
-                                        this.getDialog().getContentElement(
-                                            'info',
-                                            'linkType'
-                                        ) || this.getElement().show();
+                                        this.getDialog().getContentElement('info', 'linkType') ||
+                                            this.getElement().show();
                                     },
                                 },
                                 {
@@ -286,9 +235,7 @@
                                     label: b.selectAnchor,
                                     setup: function () {
                                         l = n.getEditorAnchors(c);
-                                        this.getElement()[
-                                            l && l.length ? 'show' : 'hide'
-                                        ]();
+                                        this.getElement()[l && l.length ? 'show' : 'hide']();
                                     },
                                     children: [
                                         {
@@ -306,34 +253,19 @@
                                                         this.clear();
                                                         this.add('');
                                                         if (l)
-                                                            for (
-                                                                var b = 0;
-                                                                b < l.length;
-                                                                b++
-                                                            )
-                                                                l[b].name &&
-                                                                    this.add(
-                                                                        l[b]
-                                                                            .name
-                                                                    );
-                                                        a.anchor &&
-                                                            this.setValue(
-                                                                a.anchor.name
-                                                            );
-                                                        (a =
-                                                            this.getDialog().getContentElement(
-                                                                'info',
-                                                                'linkType'
-                                                            )) &&
-                                                            'email' ==
-                                                                a.getValue() &&
+                                                            for (var b = 0; b < l.length; b++)
+                                                                l[b].name && this.add(l[b].name);
+                                                        a.anchor && this.setValue(a.anchor.name);
+                                                        (a = this.getDialog().getContentElement(
+                                                            'info',
+                                                            'linkType',
+                                                        )) &&
+                                                            'email' == a.getValue() &&
                                                             this.focus();
                                                     },
                                                     commit: function (a) {
-                                                        a.anchor ||
-                                                            (a.anchor = {});
-                                                        a.anchor.name =
-                                                            this.getValue();
+                                                        a.anchor || (a.anchor = {});
+                                                        a.anchor.name = this.getValue();
                                                     },
                                                 },
                                                 {
@@ -347,33 +279,19 @@
                                                         this.clear();
                                                         this.add('');
                                                         if (l)
-                                                            for (
-                                                                var b = 0;
-                                                                b < l.length;
-                                                                b++
-                                                            )
-                                                                l[b].id &&
-                                                                    this.add(
-                                                                        l[b].id
-                                                                    );
-                                                        a.anchor &&
-                                                            this.setValue(
-                                                                a.anchor.id
-                                                            );
+                                                            for (var b = 0; b < l.length; b++)
+                                                                l[b].id && this.add(l[b].id);
+                                                        a.anchor && this.setValue(a.anchor.id);
                                                     },
                                                     commit: function (a) {
-                                                        a.anchor ||
-                                                            (a.anchor = {});
-                                                        a.anchor.id =
-                                                            this.getValue();
+                                                        a.anchor || (a.anchor = {});
+                                                        a.anchor.id = this.getValue();
                                                     },
                                                 },
                                             ],
                                             setup: function () {
                                                 this.getElement()[
-                                                    l && l.length
-                                                        ? 'show'
-                                                        : 'hide'
+                                                    l && l.length ? 'show' : 'hide'
                                                 ]();
                                             },
                                         },
@@ -389,17 +307,13 @@
                                         '\x3c/div\x3e',
                                     focus: !0,
                                     setup: function () {
-                                        this.getElement()[
-                                            l && l.length ? 'hide' : 'show'
-                                        ]();
+                                        this.getElement()[l && l.length ? 'hide' : 'show']();
                                     },
                                 },
                             ],
                             setup: function () {
-                                this.getDialog().getContentElement(
-                                    'info',
-                                    'linkType'
-                                ) || this.getElement().hide();
+                                this.getDialog().getContentElement('info', 'linkType') ||
+                                    this.getElement().hide();
                             },
                         },
                         {
@@ -414,23 +328,18 @@
                                     required: !0,
                                     validate: function () {
                                         var a = this.getDialog();
-                                        return a.getContentElement(
-                                            'info',
-                                            'linkType'
-                                        ) &&
-                                            'email' ==
-                                                a.getValueOf('info', 'linkType')
+                                        return a.getContentElement('info', 'linkType') &&
+                                            'email' == a.getValueOf('info', 'linkType')
                                             ? CKEDITOR.dialog.validate
                                                   .notEmpty(b.noEmail)
                                                   .apply(this)
                                             : !0;
                                     },
                                     setup: function (a) {
-                                        a.email &&
-                                            this.setValue(a.email.address);
+                                        a.email && this.setValue(a.email.address);
                                         (a = this.getDialog().getContentElement(
                                             'info',
-                                            'linkType'
+                                            'linkType',
                                         )) &&
                                             'email' == a.getValue() &&
                                             this.select();
@@ -445,8 +354,7 @@
                                     id: 'emailSubject',
                                     label: b.emailSubject,
                                     setup: function (a) {
-                                        a.email &&
-                                            this.setValue(a.email.subject);
+                                        a.email && this.setValue(a.email.subject);
                                     },
                                     commit: function (a) {
                                         a.email || (a.email = {});
@@ -469,10 +377,8 @@
                                 },
                             ],
                             setup: function () {
-                                this.getDialog().getContentElement(
-                                    'info',
-                                    'linkType'
-                                ) || this.getElement().hide();
+                                this.getDialog().getContentElement('info', 'linkType') ||
+                                    this.getElement().hide();
                             },
                         },
                         {
@@ -490,7 +396,7 @@
                                         a.tel && this.setValue(a.tel);
                                         (a = this.getDialog().getContentElement(
                                             'info',
-                                            'linkType'
+                                            'linkType',
                                         )) &&
                                             'tel' == a.getValue() &&
                                             this.select();
@@ -501,10 +407,8 @@
                                 },
                             ],
                             setup: function () {
-                                this.getDialog().getContentElement(
-                                    'info',
-                                    'linkType'
-                                ) || this.getElement().hide();
+                                this.getDialog().getContentElement('info', 'linkType') ||
+                                    this.getElement().hide();
                             },
                         },
                     ],
@@ -536,10 +440,7 @@
                                     ],
                                     onChange: t,
                                     setup: function (a) {
-                                        a.target &&
-                                            this.setValue(
-                                                a.target.type || 'notSet'
-                                            );
+                                        a.target && this.setValue(a.target.type || 'notSet');
                                         t.call(this);
                                     },
                                     commit: function (a) {
@@ -553,14 +454,13 @@
                                     label: b.targetFrameName,
                                     default: '',
                                     setup: function (a) {
-                                        a.target &&
-                                            this.setValue(a.target.name);
+                                        a.target && this.setValue(a.target.name);
                                     },
                                     commit: function (a) {
                                         a.target || (a.target = {});
                                         a.target.name = this.getValue().replace(
                                             /([^\x00-\x7F]|\s)/gi,
-                                            ''
+                                            '',
                                         );
                                     },
                                 },
@@ -883,11 +783,9 @@
                                             requiredContent: 'a{cke-xyz}',
                                             default: '',
                                             id: 'advStyles',
-                                            validate:
-                                                CKEDITOR.dialog.validate.inlineStyle(
-                                                    c.lang.common
-                                                        .invalidInlineStyle
-                                                ),
+                                            validate: CKEDITOR.dialog.validate.inlineStyle(
+                                                c.lang.common.invalidInlineStyle,
+                                            ),
                                             setup: g,
                                             commit: k,
                                         },
@@ -904,15 +802,10 @@
                                             label: b.download,
                                             setup: function (a) {
                                                 void 0 !== a.download &&
-                                                    this.setValue(
-                                                        'checked',
-                                                        'checked'
-                                                    );
+                                                    this.setValue('checked', 'checked');
                                             },
                                             commit: function (a) {
-                                                this.getValue() &&
-                                                    (a.download =
-                                                        this.getValue());
+                                                this.getValue() && (a.download = this.getValue());
                                             },
                                         },
                                     ],
@@ -933,13 +826,9 @@
                     m = f[0] || null;
                 m &&
                     m.hasAttribute('href') &&
-                    (b.getSelectedElement() ||
-                        b.isInTable() ||
-                        b.selectElement(m));
+                    (b.getSelectedElement() || b.isInTable() || b.selectElement(m));
                 b = n.parseLinkAttributes(a, m);
-                1 >= f.length && n.showDisplayTextForElement(m, a)
-                    ? c.show()
-                    : c.hide();
+                1 >= f.length && n.showDisplayTextForElement(m, a) ? c.show() : c.hide();
                 this._.selectedElements = f;
                 this.setupContent(b);
             },
@@ -966,10 +855,7 @@
                         g.removeAttributes(h.removed);
                         if (m) e = a.linkText;
                         else if (d || l)
-                            e =
-                                'email' == a.type
-                                    ? a.email.address
-                                    : h.set['data-cke-saved-href'];
+                            e = 'email' == a.type ? a.email.address : h.set['data-cke-saved-href'];
                         e && g.setText(e);
                         f.push(p(c, g));
                     }
@@ -989,15 +875,12 @@
                                       ('email' == a.type
                                           ? a.email.address
                                           : b.set['data-cke-saved-href']),
-                                  c.document
+                                  c.document,
                               )),
                               d.insertNode(e),
                               d.selectNodeContents(e))
                             : q !== a.linkText &&
-                              ((e = new CKEDITOR.dom.text(
-                                  a.linkText,
-                                  c.document
-                              )),
+                              ((e = new CKEDITOR.dom.text(a.linkText, c.document)),
                               d.shrink(CKEDITOR.SHRINK_TEXT),
                               c.editable().extractHtmlFromRange(d),
                               d.insertNode(e));

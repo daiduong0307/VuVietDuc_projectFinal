@@ -44,8 +44,7 @@ CKEDITOR.lang['cs'] = {
         validateNumberFailed: 'Zadaná hodnota není číselná.',
         confirmNewPage:
             'Jakékoliv neuložené změny obsahu budou ztraceny. Skutečně chcete otevřít novou stránku?',
-        confirmCancel:
-            'Některá z nastavení byla změněna. Skutečně chcete zavřít dialogové okno?',
+        confirmCancel: 'Některá z nastavení byla změněna. Skutečně chcete zavřít dialogové okno?',
         options: 'Nastavení',
         target: 'Cíl',
         targetNew: 'Nové okno (_blank)',
@@ -292,12 +291,9 @@ CKEDITOR.lang['cs'] = {
     filetools: {
         loadError: 'Při čtení souboru došlo k chybě.',
         networkError: 'Při nahrávání souboru došlo k chybě v síti.',
-        httpError404:
-            'Při nahrávání souboru došlo k chybě HTTP (404: Soubor nenalezen).',
-        httpError403:
-            'Při nahrávání souboru došlo k chybě HTTP (403: Zakázáno).',
-        httpError:
-            'Při nahrávání souboru došlo k chybě HTTP (chybový stav: %1).',
+        httpError404: 'Při nahrávání souboru došlo k chybě HTTP (404: Soubor nenalezen).',
+        httpError403: 'Při nahrávání souboru došlo k chybě HTTP (403: Zakázáno).',
+        httpError: 'Při nahrávání souboru došlo k chybě HTTP (chybový stav: %1).',
         noUrlError: 'URL pro nahrání není zadána.',
         responseError: 'Nesprávná odpověď serveru.',
     },
@@ -465,11 +461,9 @@ CKEDITOR.lang['cs'] = {
         alt: 'Alternativní text',
         border: 'Okraje',
         btnUpload: 'Odeslat na server',
-        button2Img:
-            'Skutečně chcete převést zvolené obrázkové tlačítko na obyčejný obrázek?',
+        button2Img: 'Skutečně chcete převést zvolené obrázkové tlačítko na obyčejný obrázek?',
         hSpace: 'Horizontální mezera',
-        img2Button:
-            'Skutečně chcete převést zvolený obrázek na obrázkové tlačítko?',
+        img2Button: 'Skutečně chcete převést zvolený obrázek na obrázkové tlačítko?',
         infoTab: 'Informace o obrázku',
         linkTab: 'Odkaz',
         lockRatio: 'Zámek',
@@ -481,10 +475,8 @@ CKEDITOR.lang['cs'] = {
         urlMissing: 'Zadané URL zdroje obrázku nebylo nalezeno.',
         vSpace: 'Vertikální mezera',
         validateBorder: 'Okraj musí být nastaven v celých číslech.',
-        validateHSpace:
-            'Horizontální mezera musí být nastavena v celých číslech.',
-        validateVSpace:
-            'Vertikální mezera musí být nastavena v celých číslech.',
+        validateHSpace: 'Horizontální mezera musí být nastavena v celých číslech.',
+        validateVSpace: 'Vertikální mezera musí být nastavena v celých číslech.',
     },
     indent: { indent: 'Zvětšit odsazení', outdent: 'Zmenšit odsazení' },
     smiley: {
@@ -651,10 +643,8 @@ CKEDITOR.lang['cs'] = {
             no: 'Ne',
             invalidWidth: 'Šířka buňky musí být číslo.',
             invalidHeight: 'Zadaná výška buňky musí být číslená.',
-            invalidRowSpan:
-                'Zadaný počet sloučených řádků musí být celé číslo.',
-            invalidColSpan:
-                'Zadaný počet sloučených sloupců musí být celé číslo.',
+            invalidRowSpan: 'Zadaný počet sloučených řádků musí být celé číslo.',
+            invalidColSpan: 'Zadaný počet sloučených sloupců musí být celé číslo.',
             chooseColor: 'Výběr',
         },
         cellPad: 'Odsazení obsahu v buňce',
@@ -705,7 +695,6 @@ CKEDITOR.lang['cs'] = {
         doneOne: 'Soubor úspěšně nahrán.',
         doneMany: 'Úspěšně nahráno %1 souborů.',
         uploadOne: 'Nahrávání souboru ({percentage}%)...',
-        uploadMany:
-            'Nahrávání souborů, {current} z {max} hotovo ({percentage}%)...',
+        uploadMany: 'Nahrávání souborů, {current} z {max} hotovo ({percentage}%)...',
     },
 };

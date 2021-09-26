@@ -126,8 +126,7 @@ CKEDITOR.lang['mk'] = {
     about: {
         copy: 'Авторски права &copy; $1. Сите права се задржани.',
         dlgTitle: 'За CKEditor 4',
-        moreInfo:
-            'За информации околу лиценцата, ве молиме посетете го нашиот веб-сајт: ',
+        moreInfo: 'За информации околу лиценцата, ве молиме посетете го нашиот веб-сајт: ',
     },
     basicstyles: {
         bold: 'Здебелено',
@@ -295,10 +294,8 @@ CKEDITOR.lang['mk'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -467,8 +464,7 @@ CKEDITOR.lang['mk'] = {
         alt: 'Алтернативен текст',
         border: 'Раб',
         btnUpload: 'Прикачи на сервер',
-        button2Img:
-            'Дали сакате да направите сликата-копче да биде само слика?',
+        button2Img: 'Дали сакате да направите сликата-копче да биде само слика?',
         hSpace: 'Хоризонтален простор',
         img2Button: 'Дали сакате да ја претворите сликата во слика-копче?',
         infoTab: 'Информации за сликата',
@@ -702,7 +698,6 @@ CKEDITOR.lang['mk'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

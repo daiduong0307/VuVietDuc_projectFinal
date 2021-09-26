@@ -29,8 +29,7 @@
               (b.base = a.inherits.prototype),
               delete a.inherits)
             : ((b.prototype.createEvents = function () {
-                  for (var a = 0; a < arguments.length; a++)
-                      this.events[arguments[a]] = [];
+                  for (var a = 0; a < arguments.length; a++) this.events[arguments[a]] = [];
               }),
               (b.prototype.listenTo = function (a, b, c) {
                   this.removeListener(a, b, c);
@@ -38,14 +37,11 @@
               }),
               (b.prototype.addListener = function (a, b, c) {
                   this.removeListener(this, a, b);
-                  a &&
-                      this.events[a] &&
-                      this.events[a].push({ handler: b, scope: c });
+                  a && this.events[a] && this.events[a].push({ handler: b, scope: c });
               }),
               (b.prototype.removeListener = function (a, b, c) {
                   if (a && a.events && (a = a.events[b]))
-                      for (b = a.length - 1; 0 <= b; b--)
-                          a[b].handler === c && a.splice(b, 1);
+                      for (b = a.length - 1; 0 <= b; b--) a[b].handler === c && a.splice(b, 1);
               }),
               (b.prototype.fire = function (a) {
                   for (var b = this.events[a.type], c = 0; c < b.length; c++) {
@@ -59,8 +55,7 @@
     d.addChart = function (a) {
         window.requestAnimationFrame
             ? d.animationRequested ||
-              ((d.animationRequested = !0),
-              window.requestAnimationFrame(d.update))
+              ((d.animationRequested = !0), window.requestAnimationFrame(d.update))
             : d.updateInt ||
               (d.updateInt = setInterval(function () {
                   d.update();
@@ -68,12 +63,10 @@
         d.charts.push(a);
     };
     d.removeChart = function (a) {
-        for (var b = d.charts, c = b.length - 1; 0 <= c; c--)
-            b[c] == a && b.splice(c, 1);
+        for (var b = d.charts, c = b.length - 1; 0 <= c; c--) b[c] == a && b.splice(c, 1);
         0 === b.length &&
             (d.requestAnimation &&
-                (window.cancelAnimationFrame(d.requestAnimation),
-                (d.animationRequested = !1)),
+                (window.cancelAnimationFrame(d.requestAnimation), (d.animationRequested = !1)),
             d.updateInt && (clearInterval(d.updateInt), (d.updateInt = NaN)));
     };
     d.isModern = !0;
@@ -115,8 +108,7 @@
     d.dy = 0;
     if (document.addEventListener || window.opera)
         (d.isNN = !0), (d.isIE = !1), (d.dx = 0.5), (d.dy = 0.5);
-    document.attachEvent &&
-        ((d.isNN = !1), (d.isIE = !0), d.isModern || ((d.dx = 0), (d.dy = 0)));
+    document.attachEvent && ((d.isNN = !1), (d.isIE = !0), d.isModern || ((d.dx = 0), (d.dy = 0)));
     window.chrome && (d.chrome = !0);
     d.handleMouseUp = function (a) {
         for (var b = d.charts, c = 0; c < b.length; c++) {
@@ -166,9 +158,7 @@
         if (d.initHandlers)
             for (var c = 0; c < b.length; c++) {
                 var e = b[c];
-                e.types
-                    ? d.isInArray(e.types, a.type) && e.method(a)
-                    : e.method(a);
+                e.types ? d.isInArray(e.types, a.type) && e.method(a) : e.method(a);
             }
     };
     d.getUniqueId = function () {
@@ -340,16 +330,14 @@
             for (
                 k[f] = '';
                 h.length > b;
-                k[f] +=
-                    d.trim(h.slice(0, g)) + ((h = h.slice(g)).length ? c : '')
+                k[f] += d.trim(h.slice(0, g)) + ((h = h.slice(g)).length ? c : '')
             )
                 g =
                     2 == e || (g = h.slice(0, b + 1).match(/\S*(\s)?$/))[1]
                         ? b
                         : g.input.length - g[0].length ||
                           (1 == e && b) ||
-                          g.input.length +
-                              (g = h.slice(b).match(/^\S*/))[0].length;
+                          g.input.length + (g = h.slice(b).match(/^\S*/))[0].length;
             h = d.trim(h);
         }
         return k.join(c);
@@ -377,9 +365,7 @@
         var c = '';
         if (document.defaultView && document.defaultView.getComputedStyle)
             try {
-                c = document.defaultView
-                    .getComputedStyle(a, '')
-                    .getPropertyValue(b);
+                c = document.defaultView.getComputedStyle(a, '').getPropertyValue(b);
             } catch (e) {}
         else
             a.currentStyle &&
@@ -396,8 +382,7 @@
         if (a)
             if ('_self' != b && b)
                 if ('_top' == b && window.top) window.top.location.href = a;
-                else if ('_parent' == b && window.parent)
-                    window.parent.location.href = a;
+                else if ('_parent' == b && window.parent) window.parent.location.href = a;
                 else if ('_blank' == b) window.open(a);
                 else {
                     var c = document.getElementsByName(b)[0];
@@ -432,9 +417,7 @@
         }
     };
     d.toNumber = function (a) {
-        return 'number' == typeof a
-            ? a
-            : Number(String(a).replace(/[^0-9\-.]+/g, ''));
+        return 'number' == typeof a ? a : Number(String(a).replace(/[^0-9\-.]+/g, ''));
     };
     d.toColor = function (a) {
         if ('' !== a && void 0 !== a)
@@ -455,8 +438,7 @@
             c && c < b && (b = c),
             (e = Number(a)),
             -1 != a.indexOf('!') && (e = b - Number(a.substr(1))),
-            -1 != a.indexOf('%') &&
-                (e = (b * Number(a.substr(0, a.length - 1))) / 100));
+            -1 != a.indexOf('%') && (e = (b * Number(a.substr(0, a.length - 1))) / 100));
         return e;
     };
     d.fitToBounds = function (a, b, c) {
@@ -498,8 +480,7 @@
         if (a >= h[b].contains) {
             var l = a - Math.floor(a / h[b].contains) * h[b].contains;
             'ss' == b
-                ? ((l = d.formatNumber(l, g)),
-                  1 == l.split(k)[0].length && (l = '0' + l))
+                ? ((l = d.formatNumber(l, g)), 1 == l.split(k)[0].length && (l = '0' + l))
                 : (l = d.roundTo(l, g.precision));
             ('mm' == b || 'hh' == b) && 10 > l && (l = '0' + l);
             c = l + '' + e[b] + '' + c;
@@ -507,9 +488,7 @@
             b = h[b].nextInterval;
             return d.formatDuration(a, b, c, e, f, g);
         }
-        'ss' == b &&
-            ((a = d.formatNumber(a, g)),
-            1 == a.split(k)[0].length && (a = '0' + a));
+        'ss' == b && ((a = d.formatNumber(a, g)), 1 == a.split(k)[0].length && (a = '0' + a));
         ('mm' == b || 'hh' == b) && 10 > a && (a = '0' + a);
         c = a + '' + e[b] + '' + c;
         if (h[f].count > h[b].count)
@@ -587,12 +566,7 @@
         return String(e) + 'e' + c;
     };
     d.randomColor = function () {
-        return (
-            '#' +
-            ('00000' + ((16777216 * Math.random()) << 0).toString(16)).substr(
-                -6
-            )
-        );
+        return '#' + ('00000' + ((16777216 * Math.random()) << 0).toString(16)).substr(-6);
     };
     d.hitTest = function (a, b, c) {
         var e = !1,
@@ -609,10 +583,7 @@
         return e;
     };
     d.isInRectangle = function (a, b, c) {
-        return a >= c.x - 5 &&
-            a <= c.x + c.width + 5 &&
-            b >= c.y - 5 &&
-            b <= c.y + c.height + 5
+        return a >= c.x - 5 && a <= c.x + c.width + 5 && b >= c.y - 5 && b <= c.y + c.height + 5
             ? !0
             : !1;
     };
@@ -628,10 +599,7 @@
                     n = b[m];
                 void 0 !== n &&
                     ((n = g ? d.addPrefix(n, k, h, e) : d.formatNumber(n, e)),
-                    (a = a.replace(
-                        new RegExp('\\[\\[' + f + '' + m + '\\]\\]', 'g'),
-                        n
-                    )));
+                    (a = a.replace(new RegExp('\\[\\[' + f + '' + m + '\\]\\]', 'g'), n)));
             }
         }
         return a;
@@ -643,11 +611,7 @@
             for (e = 0; e < c.length; e++) {
                 var d = c[e],
                     d = d.substr(2, d.length - 4);
-                void 0 !== b[d] &&
-                    (a = a.replace(
-                        new RegExp('\\[\\[' + d + '\\]\\]', 'g'),
-                        b[d]
-                    ));
+                void 0 !== b[d] && (a = a.replace(new RegExp('\\[\\[' + d + '\\]\\]', 'g'), b[d]));
             }
         }
         return a;
@@ -751,11 +715,9 @@
     d.processObject = function (a, b, c, e) {
         if (
             !1 === a instanceof b &&
-            ((a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0)),
-            a.listeners)
+            ((a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0)), a.listeners)
         )
-            for (var f in a.listeners)
-                (b = a.listeners[f]), a.addListener(b.event, b.method);
+            for (var f in a.listeners) (b = a.listeners[f]), a.addListener(b.event, b.method);
         return a;
     };
     d.fixNewLines = function (a) {
@@ -775,14 +737,12 @@
             if (void 0 === b || null === b) b = 20;
             if (0 !== b)
                 if ('[object Array]' === Object.prototype.toString.call(a))
-                    for (var c = 0; c < a.length; c++)
-                        d.deleteObject(a[c], b - 1), (a[c] = null);
+                    for (var c = 0; c < a.length; c++) d.deleteObject(a[c], b - 1), (a[c] = null);
                 else if (a && !a.tagName)
                     try {
                         for (c in ((a.theme = null), a))
                             a[c] &&
-                                ('object' == typeof a[c] &&
-                                    d.deleteObject(a[c], b - 1),
+                                ('object' == typeof a[c] && d.deleteObject(a[c], b - 1),
                                 'function' != typeof a[c] && (a[c] = null));
                     } catch (e) {}
         }
@@ -815,16 +775,8 @@
         if (0 === b) return c;
         if (1 == (b /= d)) return c + e;
         g || (g = 0.3 * d);
-        h < Math.abs(e)
-            ? ((h = e), (a = g / 4))
-            : (a = (g / (2 * Math.PI)) * Math.asin(e / h));
-        return (
-            h *
-                Math.pow(2, -10 * b) *
-                Math.sin((2 * (b * d - a) * Math.PI) / g) +
-            e +
-            c
-        );
+        h < Math.abs(e) ? ((h = e), (a = g / 4)) : (a = (g / (2 * Math.PI)) * Math.asin(e / h));
+        return h * Math.pow(2, -10 * b) * Math.sin((2 * (b * d - a) * Math.PI) / g) + e + c;
     };
     d.fixStepE = function (a) {
         a = a.toExponential(0).split('e');
@@ -845,17 +797,11 @@
             var d = b.getAttribute('class');
             a = a.classNamePrefix + '-';
             e && (a = '');
-            d
-                ? b.setAttribute('class', d + ' ' + a + c)
-                : b.setAttribute('class', a + c);
+            d ? b.setAttribute('class', d + ' ' + a + c) : b.setAttribute('class', a + c);
         }
     };
     d.removeCN = function (a, b, c) {
-        b &&
-            (b = b.node) &&
-            c &&
-            (b = b.classList) &&
-            b.remove(a.classNamePrefix + '-' + c);
+        b && (b = b.node) && c && (b = b.classList) && b.remove(a.classNamePrefix + '-' + c);
     };
     d.parseDefs = function (a, b) {
         for (var c in a) {
@@ -900,20 +846,17 @@
                   d.VMLRenderer &&
                   ((d.VML = !0),
                   d.vmlStyleSheet ||
-                      (document.namespaces.add(
-                          'amvml',
-                          'urn:schemas-microsoft-com:vml'
-                      ),
+                      (document.namespaces.add('amvml', 'urn:schemas-microsoft-com:vml'),
                       31 > document.styleSheets.length
                           ? ((b = document.createStyleSheet()),
                             b.addRule(
                                 '.amvml',
-                                'behavior:url(#default#VML); display:inline-block; antialias:true'
+                                'behavior:url(#default#VML); display:inline-block; antialias:true',
                             ),
                             (d.vmlStyleSheet = b))
                           : document.styleSheets[0].addRule(
                                 '.amvml',
-                                'behavior:url(#default#VML); display:inline-block; antialias:true'
+                                'behavior:url(#default#VML); display:inline-block; antialias:true',
                             )),
                   (this.container = a),
                   (this.R = new d.VMLRenderer(this, e)),
@@ -937,8 +880,7 @@
         setSize: function (a, b) {
             0 < a &&
                 0 < b &&
-                ((this.container.style.width = a + 'px'),
-                (this.container.style.height = b + 'px'));
+                ((this.container.style.width = a + 'px'), (this.container.style.height = b + 'px'));
         },
         rect: function (a, b, c, e, f, g, h) {
             var k = new d.AmDObject('rect', this);
@@ -1031,9 +973,7 @@
                 a &&
                     (a.addCodeCredits &&
                         b.appendChild(
-                            document.createTextNode(
-                                'JavaScript chart by amCharts ' + a.version
-                            )
+                            document.createTextNode('JavaScript chart by amCharts ' + a.version),
                         ),
                     c.appendChild(b),
                     a.defs &&
@@ -1108,8 +1048,7 @@
         },
         clear: function () {
             var a = this.node;
-            if (a.hasChildNodes())
-                for (; 1 <= a.childNodes.length; ) a.removeChild(a.firstChild);
+            if (a.hasChildNodes()) for (; 1 <= a.childNodes.length; ) a.removeChild(a.firstChild);
         },
         hide: function () {
             this.setAttr('visibility', 'hidden');
@@ -1130,10 +1069,7 @@
         },
         toPrevious: function () {
             var a = this.node;
-            a &&
-                this.prevNextNode &&
-                (a = a.parentNode) &&
-                a.insertBefore(this.prevNextNode, null);
+            a && this.prevNextNode && (a = a.parentNode) && a.insertBefore(this.prevNextNode, null);
         },
         toBack: function () {
             var a = this.node;
@@ -1278,14 +1214,8 @@
                         l = c.to.split(',');
                         m = Number(l[0]);
                         l = Number(l[1]);
-                        m =
-                            0 === m - h
-                                ? m
-                                : Math.round(d[c.effect](0, f, h, m - h, e));
-                        c =
-                            0 === l - k
-                                ? l
-                                : Math.round(d[c.effect](0, f, k, l - k, e));
+                        m = 0 === m - h ? m : Math.round(d[c.effect](0, f, h, m - h, e));
+                        c = 0 === l - k ? l : Math.round(d[c.effect](0, f, k, l - k, e));
                         h = 'transform';
                         if (isNaN(m) || isNaN(c)) continue;
                         c = 'translate(' + m + ',' + c + ')';
@@ -1330,9 +1260,7 @@
                 this.D.rect(b, c, e, f, 0, 0, g),
                 k.appendChild(g),
                 (b = '#'),
-                d.baseHref &&
-                    !d.isIE &&
-                    (b = this.removeTarget(window.location.href) + b),
+                d.baseHref && !d.isIE && (b = this.removeTarget(window.location.href) + b),
                 this.setAttr(a, 'clip-path', 'url(' + b + h + ')'),
                 this.clipPathC++,
                 (a.clipPath = g));
@@ -1356,9 +1284,7 @@
         },
         setText: function (a, b) {
             var c = a.node;
-            c &&
-                (c.removeChild(c.firstChild),
-                c.appendChild(document.createTextNode(b)));
+            c && (c.removeChild(c.firstChild), c.appendChild(document.createTextNode(b)));
         },
         move: function (a, b, c, e) {
             isNaN(b) && (b = 0);
@@ -1418,9 +1344,7 @@
                     b.appendChild(h);
             f.parentNode.appendChild(b);
             c = '#';
-            d.baseHref &&
-                !d.isIE &&
-                (c = this.removeTarget(window.location.href) + c);
+            d.baseHref && !d.isIE && (c = this.removeTarget(window.location.href) + c);
             f.setAttribute('fill', 'url(' + c + g + ')');
             a.grad = b;
         },
@@ -1464,9 +1388,7 @@
                 g.appendChild(n));
             this.D.image(k, 0, 0, e, l, g).translate(c, m);
             k = '#';
-            d.baseHref &&
-                !d.isIE &&
-                (k = this.removeTarget(window.location.href) + k);
+            d.baseHref && !d.isIE && (k = this.removeTarget(window.location.href) + k);
             f.setAttribute('fill', 'url(' + k + h + ')');
             a.patternNode = g;
             f.parentNode.appendChild(g);
@@ -1497,7 +1419,7 @@
                 'drawn',
                 'failed',
                 'resized',
-                'animationFinished'
+                'animationFinished',
             );
             this.height = this.width = '100%';
             this.dataChanged = !0;
@@ -1579,14 +1501,10 @@
                 this.drawTitles(),
                 this.brr(),
                 this.renderFix(),
-                this.chartDiv &&
-                    (this.boundingRect =
-                        this.chartDiv.getBoundingClientRect()));
+                this.chartDiv && (this.boundingRect = this.chartDiv.getBoundingClientRect()));
         },
         makeAccessible: function (a, b, c) {
-            this.accessible &&
-                a &&
-                (c && a.setAttr('role', c), a.setAttr('aria-label', b));
+            this.accessible && a && (c && a.setAttr('role', c), a.setAttr('aria-label', b));
         },
         drawBackground: function () {
             d.remove(this.background);
@@ -1607,7 +1525,7 @@
                 c,
                 1,
                 this.borderColor,
-                this.borderAlpha
+                this.borderAlpha,
             );
             d.setCN(this, b, 'bg');
             this.background = b;
@@ -1644,16 +1562,12 @@
                             h,
                             'middle',
                             l,
-                            this.realWidth - 35 - this.marginRight - k
+                            this.realWidth - 35 - this.marginRight - k,
                         );
-                        g.translate(
-                            k + (this.realWidth - this.marginRight - k) / 2,
-                            c
-                        );
+                        g.translate(k + (this.realWidth - this.marginRight - k) / 2, c);
                         g.node.style.pointerEvents = 'none';
                         f.sprite = g;
-                        void 0 !== f.tabIndex &&
-                            g.setAttr('tabindex', f.tabIndex);
+                        void 0 !== f.tabIndex && g.setAttr('tabindex', f.tabIndex);
                         d.setCN(this, g, 'title');
                         f.id && d.setCN(this, g, 'title-' + f.id);
                         g.attr({ opacity: f.alpha });
@@ -1708,11 +1622,7 @@
                     (this.AmExport = new d.AmExport(this, b));
                 this.amExport &&
                     d.AmExport &&
-                    (this.AmExport = d.extend(
-                        this.amExport,
-                        new d.AmExport(this),
-                        !0
-                    ));
+                    (this.AmExport = d.extend(this.amExport, new d.AmExport(this), !0));
                 this.AmExport && this.AmExport.init && this.AmExport.init();
                 if (e) {
                     e = this.addLegend(e, e.divId);
@@ -1742,11 +1652,9 @@
                                 f.position = 'absolute';
                                 g.position = 'absolute';
                                 void 0 !== e.left && (f.left = e.left + 'px');
-                                void 0 !== e.right &&
-                                    (f.right = e.right + 'px');
+                                void 0 !== e.right && (f.right = e.right + 'px');
                                 void 0 !== e.top && (f.top = e.top + 'px');
-                                void 0 !== e.bottom &&
-                                    (f.bottom = e.bottom + 'px');
+                                void 0 !== e.bottom && (f.bottom = e.bottom + 'px');
                                 e.marginLeft = 0;
                                 e.marginRight = 0;
                                 k.appendChild(a);
@@ -1770,8 +1678,7 @@
                     else k.appendChild(a);
                     this.prevLegendPosition = e.position;
                 } else k.appendChild(a);
-                this.listenersAdded ||
-                    (this.addListeners(), (this.listenersAdded = !0));
+                this.listenersAdded || (this.addListeners(), (this.listenersAdded = !0));
                 (this.mouseWheelScrollEnabled || this.mouseWheelZoomEnabled) &&
                     d.addWheelListeners();
                 this.initChart();
@@ -1783,26 +1690,19 @@
             this.freeLabelsSet.push(this.labelsSet);
         },
         initChart: function () {
-            this.balloon = d.processObject(
-                this.balloon,
-                d.AmBalloon,
-                this.theme
-            );
+            this.balloon = d.processObject(this.balloon, d.AmBalloon, this.theme);
             window.AmCharts_path && (this.path = window.AmCharts_path);
             void 0 === this.path && (this.path = d.getPath());
             void 0 === this.path && (this.path = 'amcharts/');
             this.path = d.normalizeUrl(this.path);
-            void 0 === this.pathToImages &&
-                (this.pathToImages = this.path + 'images/');
+            void 0 === this.pathToImages && (this.pathToImages = this.path + 'images/');
             this.initHC || (d.callInitHandler(this), (this.initHC = !0));
             d.applyLang(this.language, this);
             var a = this.numberFormatter;
             a &&
                 (isNaN(a.precision) || (this.precision = a.precision),
-                void 0 !== a.thousandsSeparator &&
-                    (this.thousandsSeparator = a.thousandsSeparator),
-                void 0 !== a.decimalSeparator &&
-                    (this.decimalSeparator = a.decimalSeparator));
+                void 0 !== a.thousandsSeparator && (this.thousandsSeparator = a.thousandsSeparator),
+                void 0 !== a.decimalSeparator && (this.decimalSeparator = a.decimalSeparator));
             (a = this.percentFormatter) &&
                 !isNaN(a.precision) &&
                 (this.percentPrecision = a.precision);
@@ -1823,12 +1723,7 @@
                   (a.height = this.realHeight),
                   a.addDefs(this),
                   this.chartDiv.appendChild(a.container))
-                : (a = new d.AmDraw(
-                      this.chartDiv,
-                      this.realWidth,
-                      this.realHeight,
-                      this
-                  ));
+                : (a = new d.AmDraw(this.chartDiv, this.realWidth, this.realHeight, this));
             this.container = a;
             this.extension = '.png';
             this.svgIcons && d.SVG && (this.extension = '.svg');
@@ -1888,8 +1783,7 @@
                 var b = a.offsetWidth,
                     c = a.offsetHeight;
                 a.clientHeight && ((b = a.clientWidth), (c = a.clientHeight));
-                if (b != this.mw || c != this.mh)
-                    (this.mw = b), (this.mh = c), this.measure();
+                if (b != this.mw || c != this.mh) (this.mw = b), (this.mh = c), this.measure();
             }
         },
         measure: function () {
@@ -1911,14 +1805,8 @@
                     (b.style.height = g + 'px'),
                     (b.style.padding = 0),
                     f && f.setSize(a, g),
-                    (this.balloon = d.processObject(
-                        this.balloon,
-                        d.AmBalloon,
-                        this.theme
-                    )));
-                this.balloon &&
-                    this.balloon.setBounds &&
-                    this.balloon.setBounds(2, 2, a - 2, g);
+                    (this.balloon = d.processObject(this.balloon, d.AmBalloon, this.theme)));
+                this.balloon && this.balloon.setBounds && this.balloon.setBounds(2, 2, a - 2, g);
                 this.updateWidth();
                 this.balloon.chart = this;
                 this.realWidth = a;
@@ -1990,18 +1878,12 @@
                 this.scrollbarH,
                 this.chartCursor,
             ]);
-            this.chartCursor =
-                this.scrollbarH =
-                this.scrollbarV =
-                this.chartScrollbar =
-                    null;
+            this.chartCursor = this.scrollbarH = this.scrollbarV = this.chartScrollbar = null;
             this.clearTimeOuts();
             this.container &&
-                (this.container.remove(this.chartDiv),
-                this.container.remove(this.legendDiv));
+                (this.container.remove(this.chartDiv), this.container.remove(this.legendDiv));
             a || d.removeChart(this);
-            if ((a = this.div))
-                for (; a.firstChild; ) a.removeChild(a.firstChild);
+            if ((a = this.div)) for (; a.firstChild; ) a.removeChild(a.firstChild);
             this.legend && this.legend.destroy();
             this.AmExport && this.AmExport.clear && this.AmExport.clear();
         },
@@ -2040,9 +1922,7 @@
                 'right' == f && (f = 'end');
                 'center' == f &&
                     ((f = 'middle'),
-                    k
-                        ? (c = b.realHeight - c + c / 2)
-                        : (n = b.realWidth / 2 - n));
+                    k ? (c = b.realHeight - c + c / 2) : (n = b.realWidth / 2 - n));
                 void 0 === l && (l = 1);
                 void 0 === k && (k = 0);
                 c += g / 2;
@@ -2141,9 +2021,7 @@
         handleWheel: function (a) {
             var b = 0;
             a || (a = window.event);
-            a.wheelDelta
-                ? (b = a.wheelDelta / 120)
-                : a.detail && (b = -a.detail / 3);
+            a.wheelDelta ? (b = a.wheelDelta / 120) : a.detail && (b = -a.detail / 3);
             b && this.handleWheelReal(b, a.shiftKey);
             a.preventDefault && a.preventDefault();
         },
@@ -2160,8 +2038,7 @@
             0 < this.tmy &&
             this.tmy < this.divRealHeight
                 ? (this.handleMouseMove(),
-                  4 > Math.abs(this.mouseX - this.tmx) &&
-                  4 > Math.abs(this.mouseY - this.tmy)
+                  4 > Math.abs(this.mouseX - this.tmx) && 4 > Math.abs(this.mouseY - this.tmy)
                       ? ((this.tapped = !0),
                         this.panRequired &&
                             this.panEventsEnabled &&
@@ -2192,10 +2069,7 @@
             this.isTouchEvent = !1;
         },
         checkTouchMoved: function () {
-            if (
-                4 < Math.abs(this.mouseX - this.tmx) ||
-                4 < Math.abs(this.mouseY - this.tmy)
-            )
+            if (4 < Math.abs(this.mouseX - this.tmx) || 4 < Math.abs(this.mouseY - this.tmy))
                 return !0;
         },
         addListeners: function () {
@@ -2208,21 +2082,21 @@
                           function (b) {
                               a.handleTouchStart.call(a, b);
                           },
-                          !0
+                          !0,
                       ),
                       b.addEventListener(
                           'touchmove',
                           function (b) {
                               a.handleMouseMove.call(a, b);
                           },
-                          !0
+                          !0,
                       ),
                       b.addEventListener(
                           'touchend',
                           function (b) {
                               a.handleTouchEnd.call(a, b);
                           },
-                          !0
+                          !0,
                       ),
                       (a.docfn1 = function (b) {
                           a.handleDocTouchStart.call(a, b);
@@ -2240,28 +2114,28 @@
                           a.handleMouseDown.call(a, b);
                           a.handleDocTouchStart.call(a, b);
                       },
-                      !0
+                      !0,
                   ),
                   b.addEventListener(
                       'mouseover',
                       function (b) {
                           a.handleMouseOver.call(a, b);
                       },
-                      !0
+                      !0,
                   ),
                   b.addEventListener(
                       'mouseout',
                       function (b) {
                           a.handleMouseOut.call(a, b);
                       },
-                      !0
+                      !0,
                   ),
                   b.addEventListener(
                       'mouseup',
                       function (b) {
                           a.handleDocTouchEnd.call(a, b);
                       },
-                      !0
+                      !0,
                   ))
                 : (b.attachEvent('onmousedown', function (b) {
                       a.handleMouseDown.call(a, b);
@@ -2279,11 +2153,9 @@
                     ((this.dispatchDataUpdated = !1),
                     this.fire({ type: 'dataUpdated', chart: this })),
                 this.chartCreated ||
-                    ((this.chartCreated = !0),
-                    this.fire({ type: 'init', chart: this })),
+                    ((this.chartCreated = !0), this.fire({ type: 'init', chart: this })),
                 this.chartRendered ||
-                    (this.fire({ type: 'rendered', chart: this }),
-                    (this.chartRendered = !0)),
+                    (this.fire({ type: 'rendered', chart: this }), (this.chartRendered = !0)),
                 this.fire({ type: 'drawn', chart: this }));
             this.skipEvents = !1;
         },
@@ -2294,10 +2166,7 @@
             a.cssScale = 1;
             a.cssAngle = 0;
             a.checkTransform(a.div);
-            if (
-                a.divRealWidth != a.previousWidth ||
-                a.divRealHeight != a.previousHeight
-            ) {
+            if (a.divRealWidth != a.previousWidth || a.divRealHeight != a.previousHeight) {
                 var b = a.legend;
                 if (0 < a.realWidth && 0 < a.realHeight) {
                     a.sizeChanged = !0;
@@ -2343,9 +2212,7 @@
         },
         validateData: function (a) {
             this.chartCreated &&
-                ((this.dataChanged = !0),
-                (this.marginsUpdated = !1),
-                this.initChart(a));
+                ((this.dataChanged = !0), (this.marginsUpdated = !1), this.initChart(a));
         },
         validateNow: function (a, b) {
             this.initTO && clearTimeout(this.initTO);
@@ -2396,9 +2263,7 @@
                 g.changeColor(b),
                 !c || g.fixedPosition
                     ? (g.setPosition(e, d),
-                      isNaN(e) || isNaN(d)
-                          ? g.followCursor(!0)
-                          : g.followCursor(!1))
+                      isNaN(e) || isNaN(d) ? g.followCursor(!0) : g.followCursor(!1))
                     : g.followCursor(!0),
                 a && g.showBalloon(a));
         },
@@ -2439,22 +2304,17 @@
                     (c = a.clientY - this.boundingRect.top));
                 isNaN(e)
                     ? (this.mouseX = b)
-                    : ((this.mouseX = Math.min(b, e)),
-                      (this.mouse2X = Math.max(b, e)));
+                    : ((this.mouseX = Math.min(b, e)), (this.mouse2X = Math.max(b, e)));
                 isNaN(d)
                     ? (this.mouseY = c)
-                    : ((this.mouseY = Math.min(c, d)),
-                      (this.mouse2Y = Math.max(c, d)));
+                    : ((this.mouseY = Math.min(c, d)), (this.mouse2Y = Math.max(c, d)));
                 this.autoTransform &&
-                    ((this.mouseX /= this.cssScale),
-                    (this.mouseY /= this.cssScale));
+                    ((this.mouseX /= this.cssScale), (this.mouseY /= this.cssScale));
             }
         },
         handleTouchStart: function (a) {
             this.hideBalloonReal();
-            (a &&
-                ((a.touches && this.tapToActivate && !this.tapped) ||
-                    !this.panRequired)) ||
+            (a && ((a.touches && this.tapToActivate && !this.tapped) || !this.panRequired)) ||
                 (this.handleMouseMove(a), this.handleMouseDown(a));
         },
         handleTouchEnd: function (a) {
@@ -2471,9 +2331,7 @@
             this.mouseIsOver = !0;
             a &&
                 a.preventDefault &&
-                (this.panEventsEnabled
-                    ? a.preventDefault()
-                    : a.touches || a.preventDefault());
+                (this.panEventsEnabled ? a.preventDefault() : a.touches || a.preventDefault());
         },
         addLegend: function (a, b) {
             a = d.processObject(a, d.AmLegend, this.theme);
@@ -2494,8 +2352,7 @@
             this.legendDiv.innerHTML = '';
         },
         handleResize: function () {
-            (d.isPercents(this.width) || d.isPercents(this.height)) &&
-                this.invalidateSizeReal();
+            (d.isPercents(this.width) || d.isPercents(this.height)) && this.invalidateSizeReal();
             this.renderFix();
         },
         renderFix: function () {
@@ -2564,8 +2421,7 @@
                     e && (e.animationFinished ? a.splice(c, 1) : (b = !1));
                 }
                 b &&
-                    (this.fire({ type: 'animationFinished', chart: this }),
-                    (this.animatable = []));
+                    (this.fire({ type: 'animationFinished', chart: this }), (this.animatable = []));
             }
         },
         inIframe: function () {
@@ -2581,9 +2437,7 @@
                     b = window.location.hostname.split('.'),
                     c;
                 2 <= b.length && (c = b[b.length - 2] + '.' + b[b.length - 1]);
-                this.amLink &&
-                    (b = this.amLink.parentNode) &&
-                    b.removeChild(this.amLink);
+                this.amLink && (b = this.amLink.parentNode) && b.removeChild(this.amLink);
                 b = this.creditsPosition;
                 if (c != a || !0 === this.inIframe()) {
                     var a = 'http://www.' + a,
@@ -2720,8 +2574,7 @@
                         p = this.fillColor,
                         t = this.borderColor,
                         r = p;
-                    void 0 != n &&
-                        (this.adjustBorderColor ? (r = t = n) : (p = n));
+                    void 0 != n && (this.adjustBorderColor ? (r = t = n) : (p = n));
                     var q = this.horizontalPadding,
                         y = this.verticalPadding,
                         B = this.pointerWidth,
@@ -2734,12 +2587,7 @@
                         C = c.classNamePrefix;
                     n.className = C + '-balloon-div';
                     this.className &&
-                        (n.className =
-                            n.className +
-                            ' ' +
-                            C +
-                            '-balloon-div-' +
-                            this.className);
+                        (n.className = n.className + ' ' + C + '-balloon-div-' + this.className);
                     C = n.style;
                     this.disableMouseEvents && (C.pointerEvents = 'none');
                     C.position = 'absolute';
@@ -2758,8 +2606,7 @@
                     this.textDiv = n;
                     var F = n.offsetWidth,
                         E = n.offsetHeight;
-                    n.clientHeight &&
-                        ((F = n.clientWidth), (E = n.clientHeight));
+                    n.clientHeight && ((F = n.clientWidth), (E = n.clientHeight));
                     v = E + 2 * y;
                     z = F + 2 * q;
                     !isNaN(x) && z < x && (z = x);
@@ -2770,13 +2617,8 @@
                     'H' != u
                         ? ((x = a - z / 2),
                           b < k + v + 10 && 'down' != u
-                              ? ((H = !0),
-                                e && (b += A),
-                                (A = b + B),
-                                (this.deltaSignY = -1))
-                              : (e && (b -= A),
-                                (A = b - v - B),
-                                (this.deltaSignY = 1)))
+                              ? ((H = !0), e && (b += A), (A = b + B), (this.deltaSignY = -1))
+                              : (e && (b -= A), (A = b - v - B), (this.deltaSignY = 1)))
                         : (2 * B > v && (B = v / 2),
                           (A = b - v / 2),
                           a < h + (l - h) / 2
@@ -2802,21 +2644,16 @@
                           'V' == u && (u = 'down'),
                           'H' == u && (u = 'left'),
                           'down' == u && ((x = a + 1), (A = b - h - h / 3)),
-                          'up' == u &&
-                              ((l = 180), (x = a + 1), (A = b + h + h / 3)),
-                          'left' == u &&
-                              ((l = 270), (x = a + h + h / 3 + 2), (A = b)),
-                          'right' == u &&
-                              ((l = 90), (x = a - h - h / 3 + 2), (A = b)),
+                          'up' == u && ((l = 180), (x = a + 1), (A = b + h + h / 3)),
+                          'left' == u && ((l = 270), (x = a + h + h / 3 + 2), (A = b)),
+                          'right' == u && ((l = 90), (x = a - h - h / 3 + 2), (A = b)),
                           (k = A - E / 2 + 1),
                           (m = x - F / 2 - 1),
                           (p = d.drop(f, h, l, p, y, q, t, L)))
                         : 0 < w || 0 === B
                         ? (0 < G &&
                               ((a = d.rect(f, z, v, p, 0, q + 1, D, G, w)),
-                              d.isModern
-                                  ? a.translate(1, 1)
-                                  : a.translate(4, 4),
+                              d.isModern ? a.translate(1, 1) : a.translate(4, 4),
                               g.push(a)),
                           (p = d.rect(f, z, v, p, y, q, t, L, w)))
                         : ((r = []),
@@ -2835,26 +2672,8 @@
                                 (w = [0, u - B, b - A, u + B, v, v, 0, 0]),
                                 (r =
                                     a < h + (l - h) / 2
-                                        ? [
-                                              0,
-                                              0,
-                                              x < a ? 0 : a - x,
-                                              0,
-                                              0,
-                                              z,
-                                              z,
-                                              0,
-                                          ]
-                                        : [
-                                              z,
-                                              z,
-                                              x + z > a ? z : a - x,
-                                              z,
-                                              z,
-                                              0,
-                                              0,
-                                              z,
-                                          ])),
+                                        ? [0, 0, x < a ? 0 : a - x, 0, 0, z, z, 0]
+                                        : [z, z, x + z > a ? z : a - x, z, z, 0, 0, z])),
                           0 < G &&
                               ((a = d.polygon(f, r, w, p, 0, q, D, G)),
                               a.translate(1, 1),
@@ -2864,8 +2683,7 @@
                     g.push(p);
                     p.toFront();
                     d.setCN(c, p, 'balloon-bg');
-                    this.className &&
-                        d.setCN(c, p, 'balloon-bg-' + this.className);
+                    this.className && d.setCN(c, p, 'balloon-bg-' + this.className);
                     f = 1 * this.deltaSignX;
                     m += this.sdx;
                     k += this.sdy;
@@ -2881,11 +2699,7 @@
                         !e &&
                         !isNaN(this.prevX) &&
                         (g.translate(this.prevX, this.prevY, NaN, !0),
-                        g.animate(
-                            { translate: x - f + ',' + A },
-                            b,
-                            'easeOutSine'
-                        ),
+                        g.animate({ translate: x - f + ',' + A }, b, 'easeOutSine'),
                         n &&
                             ((C.left = this.prevTX + 'px'),
                             (C.top = this.prevTY + 'px'),
@@ -2896,7 +2710,7 @@
                                 m,
                                 b,
                                 'easeOutSine',
-                                'px'
+                                'px',
                             )),
                             (this.yAnim = c.animate(
                                 { node: n },
@@ -2905,7 +2719,7 @@
                                 k,
                                 b,
                                 'easeOutSine',
-                                'px'
+                                'px',
                             ))));
                     this.prevX = x - f;
                     this.prevY = A;
@@ -2928,19 +2742,12 @@
         },
         followMouse: function () {
             if (this.follow && this.show) {
-                var a =
-                        this.chart.mouseX -
-                        this.offsetX * this.deltaSignX -
-                        this.sdx,
+                var a = this.chart.mouseX - this.offsetX * this.deltaSignX - this.sdx,
                     b = this.chart.mouseY - this.sdy;
                 this.pointToX = a;
                 this.pointToY = b;
                 if (a != this.previousX || b != this.previousY)
-                    if (
-                        ((this.previousX = a),
-                        (this.previousY = b),
-                        0 === this.cornerRadius)
-                    )
+                    if (((this.previousX = a), (this.previousY = b), 0 === this.cornerRadius))
                         this.draw();
                     else {
                         var c = this.set;
@@ -3006,7 +2813,7 @@
                         0,
                         a,
                         'easeInSine',
-                        ''
+                        '',
                     ));
             } else (b.show = !1), (b.follow = !1), b.destroy();
         },
@@ -3061,9 +2868,7 @@
             'stroke-width': f,
             'stroke-opacity': h,
         };
-        a = isNaN(l)
-            ? a.circle(0, 0, b).attr(e)
-            : a.ellipse(0, 0, b, l).attr(e);
+        a = isNaN(l) ? a.circle(0, 0, b).attr(e) : a.ellipse(0, 0, b, l).attr(e);
         k && a.gradient('radialGradient', [c, d.adjustLuminosity(c, -0.6)]);
         return a;
     };
@@ -3099,13 +2904,9 @@
         void 0 !== n && 0 < n && (f['stroke-dasharray'] = n);
         n = d.dx;
         g = d.dy;
-        a.handDrawn &&
-            ((c = d.makeHD(b, c, a.handDrawScatter)), (b = c[0]), (c = c[1]));
+        a.handDrawn && ((c = d.makeHD(b, c, a.handDrawScatter)), (b = c[0]), (c = c[1]));
         h = Math.round;
-        m &&
-            ((b[r] = d.roundTo(b[r], 5)),
-            (c[r] = d.roundTo(c[r], 5)),
-            (h = Number));
+        m && ((b[r] = d.roundTo(b[r], 5)), (c[r] = d.roundTo(c[r], 5)), (h = Number));
         k = 'M' + (h(b[0]) + n) + ',' + (h(c[0]) + g);
         for (var r = 1; r < b.length; r++)
             m && ((b[r] = d.roundTo(b[r], 5)), (c[r] = d.roundTo(c[r], 5))),
@@ -3158,7 +2959,7 @@
                     k,
                     m - 180,
                     void 0,
-                    t
+                    t,
                 );
                 break;
             case 'rectangle':
@@ -3173,20 +2974,11 @@
                     k,
                     m - 180,
                     void 0,
-                    t
+                    t,
                 );
                 break;
             case 'diamond':
-                r = d.polygon(
-                    a,
-                    [-c / 2, 0, c / 2, 0],
-                    [0, -c / 2, 0, c / 2],
-                    e,
-                    f,
-                    g,
-                    h,
-                    k
-                );
+                r = d.polygon(a, [-c / 2, 0, c / 2, 0], [0, -c / 2, 0, c / 2], e, f, g, h, k);
                 break;
             case 'triangleUp':
                 r = d.triangle(a, c, 0, e, f, g, h, k);
@@ -3234,30 +3026,20 @@
         };
         b /= 2;
         var l;
-        0 === c &&
-            (l = ' M' + -b + ',' + b + ' L0,' + -b + ' L' + b + ',' + b + ' Z');
-        180 == c &&
-            (l =
-                ' M' + -b + ',' + -b + ' L0,' + b + ' L' + b + ',' + -b + ' Z');
-        90 == c &&
-            (l =
-                ' M' + -b + ',' + -b + ' L' + b + ',0 L' + -b + ',' + b + ' Z');
-        270 == c &&
-            (l = ' M' + -b + ',0 L' + b + ',' + b + ' L' + b + ',' + -b + ' Z');
+        0 === c && (l = ' M' + -b + ',' + b + ' L0,' + -b + ' L' + b + ',' + b + ' Z');
+        180 == c && (l = ' M' + -b + ',' + -b + ' L0,' + b + ' L' + b + ',' + -b + ' Z');
+        90 == c && (l = ' M' + -b + ',' + -b + ' L' + b + ',0 L' + -b + ',' + b + ' Z');
+        270 == c && (l = ' M' + -b + ',0 L' + b + ',' + b + ' L' + b + ',' + -b + ' Z');
         return a.path(l).attr(e);
     };
     d.line = function (a, b, c, e, f, g, h, k, l, m, n) {
-        if (a.handDrawn && !n)
-            return d.handDrawnLine(a, b, c, e, f, g, h, k, l, m, n);
+        if (a.handDrawn && !n) return d.handDrawnLine(a, b, c, e, f, g, h, k, l, m, n);
         g = { fill: 'none', 'stroke-width': g };
         void 0 !== h && 0 < h && (g['stroke-dasharray'] = h);
         isNaN(f) || (g['stroke-opacity'] = f);
         e && (g.stroke = e);
         e = Math.round;
-        m &&
-            ((e = Number),
-            (b[0] = d.roundTo(b[0], 5)),
-            (c[0] = d.roundTo(c[0], 5)));
+        m && ((e = Number), (b[0] = d.roundTo(b[0], 5)), (c[0] = d.roundTo(c[0], 5)));
         m = d.dx;
         f = d.dy;
         h = 'M' + (e(b[0]) + m) + ',' + (e(c[0]) + f);
@@ -3276,11 +3058,7 @@
                     k = Number(b[g - 1]),
                     l = Number(a[g]),
                     m = Number(b[g]),
-                    n =
-                        Math.round(
-                            Math.sqrt(Math.pow(l - h, 2) + Math.pow(m - k, 2)) /
-                                50
-                        ) + 1,
+                    n = Math.round(Math.sqrt(Math.pow(l - h, 2) + Math.pow(m - k, 2)) / 50) + 1,
                     l = (l - h) / n,
                     m = (m - k) / n,
                     p = 0;
@@ -3314,15 +3092,13 @@
                         [r[q - 1], r[q]],
                         e,
                         f,
-                        g +
-                            Math.random() * a.handDrawThickness -
-                            a.handDrawThickness / 2,
+                        g + Math.random() * a.handDrawThickness - a.handDrawThickness / 2,
                         h,
                         k,
                         l,
                         m,
-                        !0
-                    )
+                        !0,
+                    ),
                 );
         return p;
     };
@@ -3418,10 +3194,7 @@
             (h *= 10),
             (k *= 10),
             (y *= 10),
-            1 > Math.abs(f) &&
-                1 >= Math.abs(x - A) &&
-                1 >= Math.abs(z - C) &&
-                (G = !0));
+            1 > Math.abs(f) && 1 >= Math.abs(x - A) && 1 >= Math.abs(z - C) && (G = !0));
         f = '';
         var D;
         p &&
@@ -3484,18 +3257,7 @@
                       F +
                       ',' +
                       (w + l)),
-                  0 < k &&
-                      (D +=
-                          ' A' +
-                          k +
-                          ',' +
-                          y +
-                          ',0,' +
-                          H +
-                          ',0,' +
-                          u +
-                          ',' +
-                          (v + l)));
+                  0 < k && (D += ' A' + k + ',' + y + ',0,' + H + ',0,' + u + ',' + (v + l)));
             D += ' Z';
             var K = l;
             B && (K /= 10);
@@ -3529,7 +3291,7 @@
                         ' Z',
                     void 0,
                     void 0,
-                    '1000,1000'
+                    '1000,1000',
                 )
                 .attr(E);
             l = a
@@ -3557,7 +3319,7 @@
                         ' Z',
                     void 0,
                     void 0,
-                    '1000,1000'
+                    '1000,1000',
                 )
                 .attr(E);
             e.push(D);
@@ -3638,14 +3400,13 @@
                 [v, C],
                 m.stroke,
                 m.thickness * Math.random() * a.handDrawThickness,
-                m['stroke-opacity']
+                m['stroke-opacity'],
             )),
             e.push(k));
         a = a.path(h + ' Z', void 0, void 0, '1000,1000').attr(m);
         if (n) {
             k = [];
-            for (y = 0; y < n.length; y++)
-                k.push(d.adjustLuminosity(m.fill, n[y]));
+            for (y = 0; y < n.length; y++) k.push(d.adjustLuminosity(m.fill, n[y]));
             'radial' != r || d.isModern || (k = []);
             0 < k.length && a.gradient(r + 'Gradient', k);
         }
@@ -3663,7 +3424,7 @@
     };
     d.rgb2hex = function (a) {
         return (a = a.match(
-            /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i
+            /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i,
         )) && 4 === a.length
             ? '#' +
                   ('0' + parseInt(a[1], 10).toString(16)).slice(-2) +
@@ -3688,9 +3449,7 @@
             f;
         for (f = 0; 3 > f; f++)
             (e = parseInt(a.substr(2 * f, 2), 16)),
-                (e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(
-                    16
-                )),
+                (e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(16)),
                 (c += ('00' + e).substr(e.length));
         return c;
     };
@@ -3709,7 +3468,7 @@
                 'showItem',
                 'hideItem',
                 'clickMarker',
-                'clickLabel'
+                'clickLabel',
             );
             this.position = 'bottom';
             this.borderColor = this.color = '#000000';
@@ -3755,9 +3514,7 @@
             this.entries = [];
             this.valueLabels = [];
             var a = this.legendData;
-            this.enabled &&
-                (d.ifArray(a) || d.ifArray(this.data)) &&
-                this.drawLegend();
+            this.enabled && (d.ifArray(a) || d.ifArray(this.data)) && this.drawLegend();
         },
         drawLegend: function () {
             var a = this.chart,
@@ -3767,16 +3524,12 @@
                 f = a.divRealHeight,
                 g = this.div,
                 h = this.legendData;
-            this.data &&
-                (h = this.combineLegend
-                    ? this.legendData.concat(this.data)
-                    : this.data);
+            this.data && (h = this.combineLegend ? this.legendData.concat(this.data) : this.data);
             isNaN(this.fontSize) && (this.fontSize = a.fontSize);
             this.maxColumnsReal = this.maxColumns;
             if ('right' == b || 'left' == b)
                 (this.maxColumnsReal = 1),
-                    this.autoMargins &&
-                        (this.marginLeft = this.marginRight = 10);
+                    this.autoMargins && (this.marginLeft = this.marginRight = 10);
             else if (this.autoMargins) {
                 this.marginRight = a.marginRight;
                 this.marginLeft = a.marginLeft;
@@ -3798,8 +3551,7 @@
                   (f = g.offsetHeight),
                   g.clientHeight && ((c = g.clientWidth), (f = g.clientHeight)))
                 : (isNaN(c) || (g.style.width = c + 'px'),
-                  (g.className =
-                      'amChartsLegend ' + a.classNamePrefix + '-legend-div'));
+                  (g.className = 'amChartsLegend ' + a.classNamePrefix + '-legend-div'));
             this.divWidth = c;
             (b = this.container)
                 ? ((b.container.innerHTML = ''),
@@ -3824,21 +3576,17 @@
                     a.fontFamily,
                     this.fontSize,
                     'start',
-                    !0
+                    !0,
                 )),
                     d.setCN(a, f, 'legend-title'),
-                    f.translate(
-                        this.marginLeft,
-                        this.marginTop + this.verticalGap + this.ly + 1
-                    ),
+                    f.translate(this.marginLeft, this.marginTop + this.verticalGap + this.ly + 1),
                     (a = f.getBBox()),
                     (this.titleWidth = a.width + 15),
                     (this.titleHeight = a.height + 6);
             this.index = this.maxLabelWidth = 0;
             if (this.showEntries) {
                 for (a = 0; a < h.length; a++) this.createEntry(h[a]);
-                for (a = this.index = 0; a < h.length; a++)
-                    this.createValue(h[a]);
+                for (a = this.index = 0; a < h.length; a++) this.createValue(h[a]);
             }
             this.arrangeEntries();
             this.updateValues();
@@ -3889,17 +3637,11 @@
                 E + w.width > p &&
                     0 < v &&
                     0 !== A &&
-                    (r++,
-                    (E = A = 0),
-                    (C = E + w.width + g + n),
-                    (x = x + z + m),
-                    (z = 0));
+                    (r++, (E = A = 0), (C = E + w.width + g + n), (x = x + z + m), (z = 0));
                 w.height > z && (z = w.height);
                 F.translate(E, x);
                 A++;
-                !isNaN(l) &&
-                    A >= l &&
-                    ((A = 0), r++, (x = x + z + m), (C = g), (z = 0));
+                !isNaN(l) && A >= l && ((A = 0), r++, (x = x + z + m), (C = g), (z = 0));
                 B.push(F);
             }
             w = B.getBBox();
@@ -3918,19 +3660,14 @@
                 this.backgroundAlpha,
                 1,
                 this.borderColor,
-                this.borderAlpha
+                this.borderAlpha,
             );
             d.setCN(this.chart, c, 'legend-bg');
             y.push(c);
             y.translate(b, e);
             c.toBack();
             b = g;
-            if (
-                'top' == a ||
-                'bottom' == a ||
-                'absolute' == a ||
-                'outside' == a
-            )
+            if ('top' == a || 'bottom' == a || 'absolute' == a || 'outside' == a)
                 'center' == this.align
                     ? (b = g + (n - w.width) / 2)
                     : 'right' == this.align && (b = g + n - w.width);
@@ -3972,16 +3709,9 @@
                 if (e) {
                     e = a.type;
                     b.switchType = void 0;
-                    if (
-                        'line' == e ||
-                        'step' == e ||
-                        'smoothedLine' == e ||
-                        'ohlc' == e
-                    )
+                    if ('line' == e || 'step' == e || 'smoothedLine' == e || 'ohlc' == e)
                         (m = p.set()),
-                            a.hidden ||
-                                ((g = a.lineColorR),
-                                (k = a.bulletBorderColorR)),
+                            a.hidden || ((g = a.lineColorR), (k = a.bulletBorderColorR)),
                             (r = d.line(
                                 p,
                                 [0, 2 * t],
@@ -3989,7 +3719,7 @@
                                 g,
                                 a.lineAlpha,
                                 a.lineThickness,
-                                a.dashLength
+                                a.dashLength,
                             )),
                             d.setCN(c, r, 'graph-stroke'),
                             m.push(r),
@@ -4003,7 +3733,7 @@
                                     a.bulletAlpha,
                                     a.bulletBorderThickness,
                                     k,
-                                    a.bulletBorderAlpha
+                                    a.bulletBorderAlpha,
                                 ))) &&
                                 (d.setCN(c, r, 'graph-bullet'),
                                 r.translate(t + 1, t / 2),
@@ -4012,8 +3742,7 @@
                             (r = t),
                             (q = t / 3);
                     else {
-                        a.getGradRotation &&
-                            ((m = a.getGradRotation()), 0 === m && (m = 180));
+                        a.getGradRotation && ((m = a.getGradRotation()), 0 === m && (m = 180));
                         r = a.fillColorsR;
                         !0 === a.hidden && (r = g);
                         if (
@@ -4026,7 +3755,7 @@
                                 a.lineAlpha,
                                 m,
                                 l,
-                                a.dashLength
+                                a.dashLength,
                             ))
                         )
                             (y = t), m.translate(y, t / 2);
@@ -4038,16 +3767,8 @@
                 else {
                     var B;
                     isNaN(b.gradientRotation) || (B = 180 + b.gradientRotation);
-                    (m = b.createMarker(
-                        f,
-                        g,
-                        h,
-                        void 0,
-                        void 0,
-                        void 0,
-                        B,
-                        l
-                    )) && m.translate(t / 2, t / 2);
+                    (m = b.createMarker(f, g, h, void 0, void 0, void 0, B, l)) &&
+                        m.translate(t / 2, t / 2);
                 }
                 d.setCN(c, m, 'legend-marker');
                 b.addListeners(m, a);
@@ -4060,15 +3781,9 @@
                 k &&
                     'none' != k &&
                     0 < t &&
-                    ('x' == k
-                        ? ((u = b.createX()), u.translate(t / 2, t / 2))
-                        : (u = b.createV()),
+                    ('x' == k ? ((u = b.createX()), u.translate(t / 2, t / 2)) : (u = b.createV()),
                     (u.dItem = a),
-                    !0 !== a.hidden
-                        ? 'x' == k
-                            ? u.hide()
-                            : u.show()
-                        : 'x' != k && u.hide(),
+                    !0 !== a.hidden ? ('x' == k ? u.hide() : u.show()) : 'x' != k && u.hide(),
                     b.switchable || u.hide(),
                     b.addListeners(u, a),
                     (a.legendSwitch = u),
@@ -4108,17 +3823,7 @@
                     (w = b.labelWidth),
                     (w = isNaN(w)
                         ? d.text(b.container, g, k, c.fontFamily, l, 'start')
-                        : d.wrappedText(
-                              b.container,
-                              g,
-                              k,
-                              c.fontFamily,
-                              l,
-                              'start',
-                              !1,
-                              w,
-                              0
-                          )),
+                        : d.wrappedText(b.container, g, k, c.fontFamily, l, 'start', !1, w, 0)),
                     d.setCN(c, w, 'legend-label'),
                     w.translate(b.lx + r, b.ly),
                     p.push(w),
@@ -4171,11 +3876,8 @@
         rollOutLabel: function (a, b) {
             if (!a.hidden && this.textClickEnabled && a.legendLabel) {
                 var c = this.color;
-                void 0 !== this.selectedColor &&
-                    a.showBalloon &&
-                    (c = this.selectedColor);
-                this.useMarkerColorForLabels &&
-                    ((c = a.lineColor), void 0 === c && (c = a.color));
+                void 0 !== this.selectedColor && a.showBalloon && (c = this.selectedColor);
+                this.useMarkerColorForLabels && ((c = a.lineColor), void 0 === c && (c = a.color));
                 a.legendLabel.attr({ fill: c });
             }
             this.dispatch('rollOutItem', a, b);
@@ -4207,26 +3909,17 @@
                 var f = b.maxLabelWidth;
                 b.forceWidth && (f = b.labelWidth);
                 b.equalWidths || (b.valueAlign = 'left');
-                'left' == b.valueAlign &&
-                    a.legendLabel &&
-                    (f = a.legendLabel.getBBox().width);
+                'left' == b.valueAlign && a.legendLabel && (f = a.legendLabel.getBBox().width);
                 var g = f;
                 if (b.valueText && 0 < b.valueWidth) {
                     var h = b.color;
                     b.useMarkerColorForValues &&
-                        ((h = a.color),
-                        a.legendKeyColor && (h = a.legendKeyColor()));
+                        ((h = a.color), a.legendKeyColor && (h = a.legendKeyColor()));
                     !0 === a.hidden && (h = b.markerDisabledColor);
                     var k = b.valueText,
-                        f =
-                            f +
-                            b.lx +
-                            b.labelDx +
-                            b.markerLabelGap +
-                            b.valueWidth,
+                        f = f + b.lx + b.labelDx + b.markerLabelGap + b.valueWidth,
                         l = 'end';
-                    'left' == b.valueAlign &&
-                        ((f -= b.valueWidth), (l = 'start'));
+                    'left' == b.valueAlign && ((f -= b.valueWidth), (l = 'start'));
                     h = d.text(b.container, k, h, b.chart.fontFamily, c, l);
                     d.setCN(e, h, 'legend-value');
                     h.translate(f, b.ly);
@@ -4262,7 +3955,7 @@
                 this.container,
                 [a / 5, a / 2, a - a / 5, a / 2],
                 [a / 3, a - a / 5, a / 5, a / 1.7],
-                this.switchColor
+                this.switchColor,
             );
         },
         createX: function () {
@@ -4280,21 +3973,7 @@
             f || (f = b);
             isNaN(e) && (e = this.markerBorderThickness);
             isNaN(g) && (g = this.markerBorderAlpha);
-            return d.bullet(
-                n,
-                a,
-                m,
-                b,
-                c,
-                e,
-                f,
-                g,
-                m,
-                h,
-                k,
-                this.chart.path,
-                l
-            );
+            return d.bullet(n, a, m, b, c, e, f, g, m, h, k, this.chart.path, l);
         },
         validateNow: function () {
             this.invalidateSize();
@@ -4317,15 +3996,12 @@
                         if (void 0 !== g.type) {
                             var k = g.currentDataItem,
                                 l = this.periodValueText;
-                            g.legendPeriodValueText &&
-                                (l = g.legendPeriodValueText);
-                            g.legendPeriodValueTextR &&
-                                (l = g.legendPeriodValueTextR);
+                            g.legendPeriodValueText && (l = g.legendPeriodValueText);
+                            g.legendPeriodValueTextR && (l = g.legendPeriodValueTextR);
                             k
                                 ? ((h = this.valueText),
                                   g.legendValueText && (h = g.legendValueText),
-                                  g.legendValueTextR &&
-                                      (h = g.legendValueTextR),
+                                  g.legendValueTextR && (h = g.legendValueTextR),
                                   (h = b.formatString(h, k)))
                                 : l &&
                                   b.formatPeriodString &&
@@ -4351,17 +4027,15 @@
                                 l,
                                 h,
                                 g.periodDataItem,
-                                g.periodPercentDataItem
+                                g.periodPercentDataItem,
                             ));
                         f.text(h);
                         if (
                             !g.pattern &&
-                            (this.useMarkerColorForValues &&
-                                f.setAttr('fill', n),
+                            (this.useMarkerColorForValues && f.setAttr('fill', n),
                             this.useMarkerColorForLabels)
                         ) {
-                            if ((f = g.legendMarker))
-                                f.setAttr('fill', n), f.setAttr('stroke', n);
+                            if ((f = g.legendMarker)) f.setAttr('fill', n), f.setAttr('stroke', n);
                             (g = g.legendLabel) && g.setAttr('fill', n);
                         }
                     }
@@ -4401,7 +4075,7 @@
                 'positionChanged',
                 'writeDevInfo',
                 'click',
-                'descriptionClosed'
+                'descriptionClosed',
             );
             this.zoomDuration = 0.6;
             this.zoomControl = new d.ZoomControl(a);
@@ -4455,12 +4129,7 @@
                 b && b.init(this, a);
                 (b = this.valueLegend) && b.init(this, a);
                 this.sizeChanged = !1;
-                this.zoomToLongLat(
-                    this.zLevelTemp,
-                    this.zLongTemp,
-                    this.zLatTemp,
-                    !0
-                );
+                this.zoomToLongLat(this.zLevelTemp, this.zLongTemp, this.zLatTemp, !0);
                 this.previousWidth = this.realWidth;
                 this.previousHeight = this.realHeight;
                 this.updateSmallMap();
@@ -4511,11 +4180,7 @@
                     c = this.zoomControl,
                     e = c.zoomFactor;
                 this.wheelBusy = !0;
-                a = d.fitToBounds(
-                    0 < a ? b * e : b / e,
-                    c.minZoomLevel,
-                    c.maxZoomLevel
-                );
+                a = d.fitToBounds(0 < a ? b * e : b / e, c.minZoomLevel, c.maxZoomLevel);
                 e = this.mouseX / this.mapWidth;
                 c = this.mouseY / this.mapHeight;
                 e = (this.zoomX() - e) * (a / b) + e;
@@ -4548,21 +4213,13 @@
             d.AmMap.base.drawChart.call(this);
             var a = this.dataProvider;
             this.dataProvider = a = d.extend(a, new d.MapData(), !0);
-            this.areasSettings = d.processObject(
-                this.areasSettings,
-                d.AreasSettings,
-                this.theme
-            );
+            this.areasSettings = d.processObject(this.areasSettings, d.AreasSettings, this.theme);
             this.imagesSettings = d.processObject(
                 this.imagesSettings,
                 d.ImagesSettings,
-                this.theme
+                this.theme,
             );
-            this.linesSettings = d.processObject(
-                this.linesSettings,
-                d.LinesSettings,
-                this.theme
-            );
+            this.linesSettings = d.processObject(this.linesSettings, d.LinesSettings, this.theme);
             var b = this.container;
             this.mapContainer && this.mapContainer.remove();
             this.mapContainer = b.set();
@@ -4571,9 +4228,7 @@
             a.map && (c = d.maps[a.map]);
             a.mapVar && (c = a.mapVar);
             c
-                ? ((this.svgData = c.svg),
-                  this.getBounds(),
-                  this.buildEverything())
+                ? ((this.svgData = c.svg), this.getBounds(), this.buildEverything())
                 : (a = a.mapURL) && this.loadXml(a);
             this.balloonsSet.toFront();
         },
@@ -4596,21 +4251,14 @@
                 this.updatableImages = [];
                 var c = this.projection;
                 c && (this.projectionFunction = d[c]);
-                this.projectionFunction ||
-                    (this.projectionFunction = d.equirectangular);
+                this.projectionFunction || (this.projectionFunction = d.equirectangular);
                 this.dpProjectionFunction = d[b.projection];
-                this.dpProjectionFunction ||
-                    (this.dpProjectionFunction = d.equirectangular);
-                this.zoomControl = d.processObject(
-                    this.zoomControl,
-                    d.ZoomControl,
-                    this.theme
-                );
+                this.dpProjectionFunction || (this.dpProjectionFunction = d.equirectangular);
+                this.zoomControl = d.processObject(this.zoomControl, d.ZoomControl, this.theme);
                 this.zoomControl.init(this, a);
                 this.drawBg();
                 this.buildSVGMap();
-                (this.projectionFunction && c != b.projection) ||
-                this.forceNormalize
+                (this.projectionFunction && c != b.projection) || this.forceNormalize
                     ? (this.normalizeMap(), this.changeProjection())
                     : this.fixMapPosition();
                 if ((c = this.smallMap))
@@ -4622,10 +4270,7 @@
                     isNaN(b.zoomLatitude) &&
                     isNaN(b.zoomLongitude) &&
                     (this.centerMap
-                        ? ((c = this.xyToCoordinates(
-                              this.mapWidth / 2,
-                              this.mapHeight / 2
-                          )),
+                        ? ((c = this.xyToCoordinates(this.mapWidth / 2, this.mapHeight / 2)),
                           (b.zoomLongitudeC = c.longitude),
                           (b.zoomLatitudeC = c.latitude))
                         : ((b.zoomX = 0), (b.zoomY = 0)),
@@ -4633,12 +4278,10 @@
                 this.selectObject(this.dataProvider);
                 this.processAreas();
                 if ((b = this.valueLegend))
-                    (this.valueLegend = b =
-                        d.processObject(b, d.ValueLegend, this.theme)),
+                    (this.valueLegend = b = d.processObject(b, d.ValueLegend, this.theme)),
                         b.init(this, a);
                 this.objectList &&
-                    (a = this.objectList =
-                        d.processObject(this.objectList, d.ObjectList)) &&
+                    (a = this.objectList = d.processObject(this.objectList, d.ObjectList)) &&
                     (this.clearObjectList(), a.init(this));
                 this.dispDUpd();
                 this.updateSmallMap();
@@ -4662,26 +4305,20 @@
                 var d = a[e];
                 if (d.groupId == b) {
                     var g = d.displayObject;
-                    g &&
-                        (c
-                            ? ((d.hidden = !1), g.show())
-                            : ((d.hidden = !0), g.hide()));
+                    g && (c ? ((d.hidden = !1), g.show()) : ((d.hidden = !0), g.hide()));
                 }
             }
         },
         makeObjectAccessible: function (a) {
             if (a.accessibleLabel) {
                 var b = this.formatString(a.accessibleLabel, a);
-                a.displayObject &&
-                    this.makeAccessible(a.displayObject, b, 'menuitem');
+                a.displayObject && this.makeAccessible(a.displayObject, b, 'menuitem');
             }
         },
         update: function () {
             if (d.hasSVG) {
                 d.AmMap.base.update.call(this);
-                this.zoomControl &&
-                    this.zoomControl.update &&
-                    this.zoomControl.update();
+                this.zoomControl && this.zoomControl.update && this.zoomControl.update();
                 for (var a = 0, b = this.updatableImages.length; a < b; a++)
                     this.updatableImages[a].update();
             }
@@ -4728,26 +4365,20 @@
                 b + (this.finalX - b) * e,
                 c + (this.finalY - c) * e,
                 a,
-                !0
+                !0,
             );
             if (this.areasSettings.adjustOutlineThickness) {
                 for (var b = this.svgAreas, d = 0; d < b.length; d++)
                     (c = b[d]) &&
                         c.setAttr(
                             'stroke-width',
-                            this.areasSettings.outlineThickness /
-                                a /
-                                this.mapScale
+                            this.areasSettings.outlineThickness / a / this.mapScale,
                         );
                 if ((b = this.dataProvider.areas))
                     for (d = 0; d < b.length; d++) {
                         var c = b[d],
                             g = c.displayObject;
-                        g &&
-                            g.setAttr(
-                                'stroke-width',
-                                c.outlineThicknessReal / a / this.mapScale
-                            );
+                        g && g.setAttr('stroke-width', c.outlineThicknessReal / a / this.mapScale);
                     }
             }
             this.rescaleObjects();
@@ -4775,18 +4406,13 @@
             for (c = 0; c < b.length; c++)
                 (d = b[c]),
                     d.imageLabel &&
-                        this.imagesProcessor.positionLabel(
-                            d.imageLabel,
-                            d,
-                            d.labelPositionReal
-                        );
+                        this.imagesProcessor.positionLabel(d.imageLabel, d, d.labelPositionReal);
             b = this.linesProcessor;
             if ((d = b.linesToResize))
                 for (c = 0; c < d.length; c++)
                     (f = d[c]), f.line.setAttr('stroke-width', f.thickness / a);
             b = b.objectsToResize;
-            for (c = 0; c < b.length; c++)
-                (d = b[c]), d.translate(d.x, d.y, 1 / a, !0);
+            for (c = 0; c < b.length; c++) (d = b[c]), d.translate(d.x, d.y, 1 / a, !0);
         },
         handleTouchEnd: function (a) {
             this.initialDistance = NaN;
@@ -4824,9 +4450,7 @@
                     (e = e.clientY - this.boundingRect.top),
                     (this.middleXP = (b + (a - b) / 2) / this.realWidth),
                     (this.middleYP = (c + (e - c) / 2) / this.realHeight),
-                    (this.initialDistance = Math.sqrt(
-                        Math.pow(a - b, 2) + Math.pow(e - c, 2)
-                    )));
+                    (this.initialDistance = Math.sqrt(Math.pow(a - b, 2) + Math.pow(e - c, 2))));
             }
         },
         stopDrag: function () {
@@ -4891,11 +4515,7 @@
             var b = this;
             d.AmMap.base.handleMouseMove.call(b, a);
             if (!a || !a.touches || !b.tapToActivate || b.tapped) {
-                b.panEventsEnabled &&
-                    b.mouseIsOver &&
-                    a &&
-                    a.preventDefault &&
-                    a.preventDefault();
+                b.panEventsEnabled && b.mouseIsOver && a && a.preventDefault && a.preventDefault();
                 var c = b.previuosMouseX,
                     e = b.previuosMouseY,
                     f = b.mouseX,
@@ -4930,21 +4550,12 @@
                         (b.isDragging = !0);
                     if (!isNaN(k)) {
                         b.stopDrag();
-                        var r = Math.sqrt(
-                                Math.pow(k - f, 2) + Math.pow(l - g, 2)
-                            ),
+                        var r = Math.sqrt(Math.pow(k - f, 2) + Math.pow(l - g, 2)),
                             q = b.initialDistance;
-                        isNaN(q) &&
-                            (q = Math.sqrt(
-                                Math.pow(k - f, 2) + Math.pow(l - g, 2)
-                            ));
+                        isNaN(q) && (q = Math.sqrt(Math.pow(k - f, 2) + Math.pow(l - g, 2)));
                         if (!isNaN(q)) {
                             var k = (b.initialTouchZoom * r) / q,
-                                k = d.fitToBounds(
-                                    k,
-                                    h.minZoomLevel,
-                                    h.maxZoomLevel
-                                ),
+                                k = d.fitToBounds(k, h.minZoomLevel, h.maxZoomLevel),
                                 h = b.zoomLevel(),
                                 q = b.middleXP,
                                 l = b.middleYP,
@@ -4969,9 +4580,7 @@
                             (m = m / 2 - b.diffY * b.mapScale * k),
                             (c = d.fitToBounds(c, -p * k + n / 2, n / 2)),
                             (e = d.fitToBounds(e, t, m))),
-                        isNaN(c) ||
-                            isNaN(e) ||
-                            (a.translate(c, e, k, !0), b.updateSmallMap()));
+                        isNaN(c) || isNaN(e) || (a.translate(c, e, k, !0), b.updateSmallMap()));
                     b.previuosMouseX = f;
                     b.previuosMouseY = g;
                 }
@@ -5054,22 +4663,17 @@
                     void 0 !== h && e.setAttr('stroke', h);
                     void 0 !== k && e.setAttr('stroke-width', k);
                     'MapLine' == a.objectType &&
-                        ((l = a.lineSvg) && l.setAttr('stroke', g),
-                        (l = a.arrowSvg)) &&
+                        ((l = a.lineSvg) && l.setAttr('stroke', g), (l = a.arrowSvg)) &&
                         (l.setAttr('fill', g), l.setAttr('stroke', g));
                     if ((l = a.imageLabel))
-                        (m = a.selectedLabelColorReal),
-                            void 0 !== m && l.setAttr('fill', m);
+                        (m = a.selectedLabelColorReal), void 0 !== m && l.setAttr('fill', m);
                     a.selectable ||
-                        (e.setAttr('cursor', 'default'),
-                        l && l.setAttr('cursor', 'default'));
+                        (e.setAttr('cursor', 'default'), l && l.setAttr('cursor', 'default'));
                 }
             } else c.returnInitialColorReal(a);
             if ((e = a.groupId))
                 for (
-                    l = a.groupArray,
-                        l || ((l = c.getGroupById(e)), (a.groupArray = l)),
-                        m = 0;
+                    l = a.groupArray, l || ((l = c.getGroupById(e)), (a.groupArray = l)), m = 0;
                     m < l.length;
                     m++
                 )
@@ -5085,8 +4689,7 @@
                         void 0 !== h && e.setAttr('stroke', h);
                         void 0 !== k && e.setAttr('stroke-width', k);
                         'MapLine' == n.objectType &&
-                            ((e = n.lineSvg) && e.setAttr('stroke', g),
-                            (e = n.arrowSvg)) &&
+                            ((e = n.lineSvg) && e.setAttr('stroke', g), (e = n.arrowSvg)) &&
                             (e.setAttr('fill', g), e.setAttr('stroke', g));
                     }
             c.rescaleObjects();
@@ -5110,8 +4713,7 @@
         },
         outlinesToFront: function () {
             if (this.outlines)
-                for (var a = 0; a < this.outlines.length; a++)
-                    this.outlines[a].toFront();
+                for (var a = 0; a < this.outlines.length; a++) this.outlines[a].toFront();
         },
         closeAllDescriptions: function () {
             this.descriptionsDiv.innerHTML = '';
@@ -5191,7 +4793,7 @@
                 f = d.fitToBounds(
                     c / f > e / g ? (0.8 * f) / (c * h) : (0.8 * g) / (e * h),
                     k.minZoomLevel,
-                    k.maxZoomLevel
+                    k.maxZoomLevel,
                 );
             this.zoomToMapXY(f, (a + c / 2) * h, (b + e / 2) * h);
         },
@@ -5205,7 +4807,7 @@
                 g = d.fitToBounds(
                     h / l > k / f ? (0.8 * l) / h : (0.8 * f) / k,
                     g.minZoomLevel,
-                    g.maxZoomLevel
+                    g.maxZoomLevel,
                 );
             this.zoomToLongLat(g, a + (c - a) / 2, e + (b - e) / 2);
         },
@@ -5256,7 +4858,7 @@
                     g = this.mapSet.getBBox();
                 b = this.xyToCoordinates(
                     (b - this.mapContainer.x) / f - g.x * this.mapScale,
-                    (c - this.mapContainer.y) / f - g.y * this.mapScale
+                    (c - this.mapContainer.y) / f - g.y * this.mapScale,
                 );
                 this.zoomToLongLat(a, b.longitude, b.latitude, e);
             }
@@ -5272,7 +4874,7 @@
                 a,
                 -(b / f) * a + this.realWidth / f / 2,
                 -(c / g) * a + this.realHeight / g / 2,
-                d
+                d,
             );
         },
         zoomToObject: function (a) {
@@ -5400,10 +5002,8 @@
                     (this.imagesProcessor.reset(),
                     this.linesProcessor.reset(),
                     this.linesAboveImages
-                        ? (this.imagesProcessor.process(b),
-                          this.linesProcessor.process(b))
-                        : (this.linesProcessor.process(b),
-                          this.imagesProcessor.process(b)));
+                        ? (this.imagesProcessor.process(b), this.linesProcessor.process(b))
+                        : (this.linesProcessor.process(b), this.imagesProcessor.process(b)));
                 this.rescaleObjects();
             }
         },
@@ -5429,10 +5029,7 @@
                 if (this.areasSettings.preserveOriginalAttributes) {
                     k.customAttr = {};
                     for (var l in f)
-                        'd' != l &&
-                            'id' != l &&
-                            'title' != l &&
-                            (k.customAttr[l] = f[l]);
+                        'd' != l && 'id' != l && 'title' != l && (k.customAttr[l] = f[l]);
                 }
                 f.outline && (k.outline = !0);
                 k.path = g;
@@ -5477,9 +5074,7 @@
                     (c.tapToActivate && !c.tapped) ||
                         c.mapWasDragged ||
                         c.mapWasPinched ||
-                        ((c.balloonX = NaN),
-                        c.rollOverMapObject(b, !0, a),
-                        c.clickMapObject(b, a));
+                        ((c.balloonX = NaN), c.rollOverMapObject(b, !0, a), c.clickMapObject(b, a));
                 })
                 .touchstart(function (a) {
                     c.tmx = c.mouseX;
@@ -5521,33 +5116,23 @@
                 b.node.onmouseout = function () {};
                 b.node.onmouseover = function () {};
                 b.node.onclick = function () {};
-                !a.isFirst &&
-                    a.bringForwardOnHover &&
-                    (b.toFront(), (a.isFirst = !0));
+                !a.isFirst && a.bringForwardOnHover && (b.toFront(), (a.isFirst = !0));
                 var c = a.rollOverColorReal,
                     e;
                 a.preserveOriginalAttributes && (c = void 0);
                 'bubble' == a.type && (c = void 0);
                 void 0 == c &&
                     (isNaN(a.rollOverBrightnessReal) ||
-                        (c = d.adjustLuminosity(
-                            a.colorReal,
-                            a.rollOverBrightnessReal / 100
-                        )));
+                        (c = d.adjustLuminosity(a.colorReal, a.rollOverBrightnessReal / 100)));
                 if (void 0 != c)
-                    if ('MapImage' == a.objectType)
-                        (e = a.image) && e.setAttr('fill', c);
+                    if ('MapImage' == a.objectType) (e = a.image) && e.setAttr('fill', c);
                     else if ('MapLine' == a.objectType) {
-                        if (
-                            ((e = a.lineSvg) && e.setAttr('stroke', c),
-                            (e = a.arrowSvg))
-                        )
+                        if (((e = a.lineSvg) && e.setAttr('stroke', c), (e = a.arrowSvg)))
                             e.setAttr('fill', c), e.setAttr('stroke', c);
                     } else b.setAttr('fill', c);
                 (c = a.imageLabel) &&
                     !a.labelInactive &&
-                    ((e = a.labelRollOverColorReal),
-                    void 0 != e && c.setAttr('fill', e));
+                    ((e = a.labelRollOverColorReal), void 0 != e && c.setAttr('fill', e));
                 c = a.rollOverOutlineColorReal;
                 void 0 != c &&
                     ('MapImage' == a.objectType
@@ -5555,8 +5140,7 @@
                         : b.setAttr('stroke', c));
                 'MapImage' == a.objectType
                     ? ((c = this.imagesSettings.rollOverOutlineThickness),
-                      (e = a.image) &&
-                          (isNaN(c) || e.setAttr('stroke-width', c)))
+                      (e = a.image) && (isNaN(c) || e.setAttr('stroke-width', c)))
                     : ((c = this.areasSettings.rollOverOutlineThickness),
                       isNaN(c) || b.setAttr('stroke-width', c));
                 if ('MapArea' == a.objectType) {
@@ -5570,8 +5154,7 @@
                         (e = this.zoomLevel() * this.mapScale);
                     var f = c.rollOverOutlineThickness;
                     isNaN(f) || b.setAttr('stroke-width', f / e);
-                    (c = c.rollOverPattern) &&
-                        b.pattern(c, this.mapScale, this.path);
+                    (c = c.rollOverPattern) && b.pattern(c, this.mapScale, this.path);
                 }
                 'MapImage' == a.objectType &&
                     ((c = a.rollOverScaleReal),
@@ -5595,8 +5178,7 @@
                 var d = this.previouslyHovered;
                 d && d != a
                     ? (!1 === this.checkIfSelected(d) &&
-                          (this.returnInitialColor(d, !0),
-                          (this.previouslyHovered = null)),
+                          (this.returnInitialColor(d, !0), (this.previouslyHovered = null)),
                       this.balloon.hide(0))
                     : clearTimeout(this.hoverInt);
                 if (!this.preventHover) {
@@ -5604,8 +5186,7 @@
                         if ((d = a.groupId)) {
                             var d = this.getGroupById(d),
                                 f;
-                            for (f = 0; f < d.length; f++)
-                                d[f] != a && this.showAsRolledOver(d[f]);
+                            for (f = 0; f < d.length; f++) d[f] != a && this.showAsRolledOver(d[f]);
                         }
                         this.showAsRolledOver(a);
                     } else
@@ -5615,28 +5196,18 @@
                                 : d.setAttr('cursor', 'default'));
                     this.showDescriptionOnHover
                         ? this.showDescription(a)
-                        : (!this.showBalloonOnSelectedObject &&
-                              this.checkIfSelected(a)) ||
+                        : (!this.showBalloonOnSelectedObject && this.checkIfSelected(a)) ||
                           !1 === b ||
                           ((f = this.balloon),
                           (this.balloon.fixedPosition = !1),
                           (b = a.colorReal),
                           (d = ''),
-                          (void 0 !== b && this.useObjectColorForBalloon) ||
-                              (b = f.fillColor),
-                          (f = a.balloonTextReal) &&
-                              (d = this.formatString(f, a)),
-                          this.balloonLabelFunction &&
-                              (d = this.balloonLabelFunction(a, this)),
+                          (void 0 !== b && this.useObjectColorForBalloon) || (b = f.fillColor),
+                          (f = a.balloonTextReal) && (d = this.formatString(f, a)),
+                          this.balloonLabelFunction && (d = this.balloonLabelFunction(a, this)),
                           d &&
                               '' !== d &&
-                              this.showBalloon(
-                                  d,
-                                  b,
-                                  !1,
-                                  this.balloonX,
-                                  this.balloonY
-                              ));
+                              this.showBalloon(d, b, !1, this.balloonX, this.balloonY));
                     this.fire({
                         type: 'rollOverMapObject',
                         mapObject: a,
@@ -5649,15 +5220,13 @@
         },
         longitudeToX: function (a) {
             return (
-                (this.longitudeToCoordinate(a) + this.diffX * this.mapScale) *
-                    this.zoomLevel() +
+                (this.longitudeToCoordinate(a) + this.diffX * this.mapScale) * this.zoomLevel() +
                 this.mapContainer.x
             );
         },
         latitudeToY: function (a) {
             return (
-                (this.latitudeToCoordinate(a) + this.diffY * this.mapScale) *
-                    this.zoomLevel() +
+                (this.latitudeToCoordinate(a) + this.diffY * this.mapScale) * this.zoomLevel() +
                 this.mapContainer.y
             );
         },
@@ -5745,7 +5314,7 @@
                     f = c.mapSet.getBBox(),
                     d = c.xyToCoordinates(
                         (c.mouseX - c.mapContainer.x) / d - f.x * c.mapScale,
-                        (c.mouseY - c.mapContainer.y) / d - f.y * c.mapScale
+                        (c.mouseY - c.mapContainer.y) / d - f.y * c.mapScale,
                     );
                 c.clickLatitude = d.latitude;
                 c.clickLongitude = d.longitude;
@@ -5805,8 +5374,7 @@
                     c = c.height;
                 0 < g &&
                     0 < c &&
-                    (this.fitMapToContainer &&
-                        (b = g / d > c / f ? d / g : f / c),
+                    (this.fitMapToContainer && (b = g / d > c / f ? d / g : f / c),
                     a.translate(0, 0, b, !0),
                     (this.mapScale = b),
                     (this.mapHeight = c * b),
@@ -5908,9 +5476,7 @@
                 isNaN(l) || (f = l);
                 l = a.descriptionWindowY;
                 isNaN(l) || (g = l);
-                isNaN(f) &&
-                    ((f = this.mouseX),
-                    (f = f > this.realWidth / 2 ? f - c - 20 : f + 20));
+                isNaN(f) && ((f = this.mouseX), (f = f > this.realWidth / 2 ? f - c - 20 : f + 20));
                 isNaN(g) && (g = this.mouseY);
                 b.maxHeight = e;
                 l = a.title;
@@ -5972,28 +5538,23 @@
             var b,
                 c = this.dataProvider;
             this.mapSet &&
-                ((b = c.leftLongitude),
-                (b = ((a - b) / (c.rightLongitude - b)) * this.mapWidth));
+                ((b = c.leftLongitude), (b = ((a - b) / (c.rightLongitude - b)) * this.mapWidth));
             return b;
         },
         mercatorLatitudeToCoordinate: function (a) {
             89.5 < a && (a = 89.5);
             -89.5 > a && (a = -89.5);
             a = d.degreesToRadians(a);
-            return d.radiansToDegrees(
-                (0.5 * Math.log((1 + Math.sin(a)) / (1 - Math.sin(a)))) / 2
-            );
+            return d.radiansToDegrees((0.5 * Math.log((1 + Math.sin(a)) / (1 - Math.sin(a)))) / 2);
         },
         zoomLatitude: function () {
             if (this.mapContainer) {
                 var a = this.mapSet.getBBox(),
                     b =
-                        (-this.mapContainer.x + this.previousWidth / 2) /
-                            this.zoomLevel() -
+                        (-this.mapContainer.x + this.previousWidth / 2) / this.zoomLevel() -
                         a.x * this.mapScale,
                     a =
-                        (-this.mapContainer.y + this.previousHeight / 2) /
-                            this.zoomLevel() -
+                        (-this.mapContainer.y + this.previousHeight / 2) / this.zoomLevel() -
                         a.y * this.mapScale;
                 return this.xyToCoordinates(b, a).latitude;
             }
@@ -6002,12 +5563,10 @@
             if (this.mapContainer) {
                 var a = this.mapSet.getBBox(),
                     b =
-                        (-this.mapContainer.x + this.previousWidth / 2) /
-                            this.zoomLevel() -
+                        (-this.mapContainer.x + this.previousWidth / 2) / this.zoomLevel() -
                         a.x * this.mapScale,
                     a =
-                        (-this.mapContainer.y + this.previousHeight / 2) /
-                            this.zoomLevel() -
+                        (-this.mapContainer.y + this.previousHeight / 2) / this.zoomLevel() -
                         a.y * this.mapScale;
                 return this.xyToCoordinates(b, a).longitude;
             }
@@ -6018,7 +5577,7 @@
                 c = this.mapSet.getBBox();
             return this.xyToCoordinates(
                 (a.x + a.width / 2 + this.diffX) * b - c.x * b,
-                (a.y + a.height / 2 + this.diffY) * b - c.y * b
+                (a.y + a.height / 2 + this.diffY) * b - c.y * b,
             ).latitude;
         },
         getAreaCenterLongitude: function (a) {
@@ -6027,22 +5586,16 @@
                 c = this.mapSet.getBBox();
             return this.xyToCoordinates(
                 (a.x + a.width / 2 + this.diffX) * b - c.x * b,
-                (a.y + a.height / 2 + this.diffY) * b - c.y * b
+                (a.y + a.height / 2 + this.diffY) * b - c.y * b,
             ).longitude;
         },
         milesToPixels: function (a) {
             var b = this.dataProvider;
-            return (
-                ((this.mapWidth / (b.rightLongitude - b.leftLongitude)) * a) /
-                69.172
-            );
+            return ((this.mapWidth / (b.rightLongitude - b.leftLongitude)) * a) / 69.172;
         },
         kilometersToPixels: function (a) {
             var b = this.dataProvider;
-            return (
-                ((this.mapWidth / (b.rightLongitude - b.leftLongitude)) * a) /
-                111.325
-            );
+            return ((this.mapWidth / (b.rightLongitude - b.leftLongitude)) * a) / 111.325;
         },
         handleBackgroundClick: function () {
             if (this.backgroundZoomsToTop && !this.mapWasDragged) {
@@ -6087,20 +5640,13 @@
                                       a[b][l].push({}),
                                       (p = a[b][l][1]))
                                     : 'object' == typeof a[b][l] &&
-                                      (a[b][l].push({}),
-                                      (p = a[b][l][a[b][l].length - 1]))
+                                      (a[b][l].push({}), (p = a[b][l][a[b][l].length - 1]))
                                 : ((a[b][l] = {}), (p = a[b][l]));
                             if (g.attributes && g.attributes.length)
                                 for (m = 0; m < g.attributes.length; m++)
-                                    p[g.attributes[m].name] =
-                                        g.attributes[m].value;
+                                    p[g.attributes[m].name] = g.attributes[m].value;
                             void 0 !== a[b][l].length
-                                ? this.parseXMLNode(
-                                      a[b][l],
-                                      a[b][l].length - 1,
-                                      g,
-                                      d + '  '
-                                  )
+                                ? this.parseXMLNode(a[b][l], a[b][l].length - 1, g, d + '  ')
                                 : this.parseXMLNode(a[b], l, g, d + '  ');
                         }
                 }
@@ -6120,10 +5666,8 @@
             var a = this.zoomLevel(),
                 b = this.mapSet.getBBox(),
                 b = this.xyToCoordinates(
-                    (this.mouseX - this.mapContainer.x) / a -
-                        b.x * this.mapScale,
-                    (this.mouseY - this.mapContainer.y) / a -
-                        b.y * this.mapScale
+                    (this.mouseX - this.mapContainer.x) / a - b.x * this.mapScale,
+                    (this.mouseY - this.mapContainer.y) / a - b.y * this.mapScale,
                 ),
                 a = {
                     chart: this,
@@ -6139,21 +5683,12 @@
                     top: this.mouseY,
                     right: this.realWidth - this.mouseX,
                     bottom: this.realHeight - this.mouseY,
-                    percentLeft:
-                        Math.round((this.mouseX / this.realWidth) * 100) + '%',
-                    percentTop:
-                        Math.round((this.mouseY / this.realHeight) * 100) + '%',
+                    percentLeft: Math.round((this.mouseX / this.realWidth) * 100) + '%',
+                    percentTop: Math.round((this.mouseY / this.realHeight) * 100) + '%',
                     percentRight:
-                        Math.round(
-                            ((this.realWidth - this.mouseX) / this.realWidth) *
-                                100
-                        ) + '%',
+                        Math.round(((this.realWidth - this.mouseX) / this.realWidth) * 100) + '%',
                     percentBottom:
-                        Math.round(
-                            ((this.realHeight - this.mouseY) /
-                                this.realHeight) *
-                                100
-                        ) + '%',
+                        Math.round(((this.realHeight - this.mouseY) / this.realHeight) * 100) + '%',
                 },
                 b =
                     'zoomLevel:' +
@@ -6164,25 +5699,11 @@
                     a.zoomLatitude +
                     '\n',
                 b = b + ('zoomX:' + a.zoomX + ', zoomY:' + a.zoomY + '\n'),
-                b =
-                    b +
-                    ('latitude:' +
-                        a.latitude +
-                        ', longitude:' +
-                        a.longitude +
-                        '\n'),
+                b = b + ('latitude:' + a.latitude + ', longitude:' + a.longitude + '\n'),
                 b = b + ('left:' + a.left + ', top:' + a.top + '\n'),
                 b = b + ('right:' + a.right + ', bottom:' + a.bottom + '\n'),
-                b =
-                    b +
-                    ('left:' + a.percentLeft + ', top:' + a.percentTop + '\n'),
-                b =
-                    b +
-                    ('right:' +
-                        a.percentRight +
-                        ', bottom:' +
-                        a.percentBottom +
-                        '\n');
+                b = b + ('left:' + a.percentLeft + ', top:' + a.percentTop + '\n'),
+                b = b + ('right:' + a.percentRight + ', bottom:' + a.percentBottom + '\n');
             a.str = b;
             this.fire(a);
             return a;
@@ -6233,10 +5754,8 @@
                     var f = a[e];
                     f.parentObject = b;
                     'area' == c && d.extend(f, new d.MapArea(this.theme), !0);
-                    'image' == c &&
-                        (f = d.extend(f, new d.MapImage(this.theme), !0));
-                    'line' == c &&
-                        (f = d.extend(f, new d.MapLine(this.theme), !0));
+                    'image' == c && (f = d.extend(f, new d.MapImage(this.theme), !0));
+                    'line' == c && (f = d.extend(f, new d.MapLine(this.theme), !0));
                     a[e] = f;
                     f.areas && this.processObject(f.areas, f, 'area');
                     f.images && this.processObject(f.images, f, 'image');
@@ -6267,7 +5786,7 @@
                     if (
                         -1 ===
                         ' \n\r\t\f\x0B\u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000'.indexOf(
-                            a.charAt(b)
+                            a.charAt(b),
                         )
                     ) {
                         a = a.substring(b);
@@ -6277,7 +5796,7 @@
                     if (
                         -1 ===
                         ' \n\r\t\f\x0B\u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000'.indexOf(
-                            a.charAt(b)
+                            a.charAt(b),
                         )
                     ) {
                         a = a.substring(0, b + 1);
@@ -6285,7 +5804,7 @@
                     }
                 return -1 ===
                     ' \n\r\t\f\x0B\u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000'.indexOf(
-                        a.charAt(0)
+                        a.charAt(0),
                     )
                     ? a
                     : '';
@@ -6298,9 +5817,8 @@
             var b = this.dataProvider.leftLongitude;
             return (
                 Math.round(
-                    ((this.unscaledMapWidth * (a - b)) /
-                        (this.dataProvider.rightLongitude - b)) *
-                        100
+                    ((this.unscaledMapWidth * (a - b)) / (this.dataProvider.rightLongitude - b)) *
+                        100,
                 ) / 100
             );
         },
@@ -6308,9 +5826,8 @@
             var b = this.dataProvider.topLatitude;
             return (
                 Math.round(
-                    ((this.unscaledMapHeight * (a - b)) /
-                        (this.dataProvider.bottomLatitude - b)) *
-                        100
+                    ((this.unscaledMapHeight * (a - b)) / (this.dataProvider.bottomLatitude - b)) *
+                        100,
                 ) / 100
             );
         },
@@ -6346,7 +5863,7 @@
                                     Number(h[2]) - this.minMapY,
                                     this.dpProjectionFunction,
                                     this.sourceMapWidth,
-                                    this.sourceMapHeight
+                                    this.sourceMapHeight,
                                 );
                             f.push([h.longitude, h.latitude]);
                         }
@@ -6354,8 +5871,7 @@
                 }
             }
             b = '';
-            for (c = 0; c < a.pathsArray.length; c++)
-                b += this.redrawArea(a.pathsArray[c]);
+            for (c = 0; c < a.pathsArray.length; c++) b += this.redrawArea(a.pathsArray[c]);
             a.node.setAttribute('d', b);
             a.path = b;
         },
@@ -6369,17 +5885,13 @@
                     h = d.roundTo(this.x2c(d.radiansToDegrees(k[0])), 3),
                     k = d.roundTo(this.y2c(d.radiansToDegrees(k[1])), 3);
                 h < this.minMapXX &&
-                    ((this.minMapXX = h),
-                    (this.leftLongLat = { longitude: f, latitude: g }));
+                    ((this.minMapXX = h), (this.leftLongLat = { longitude: f, latitude: g }));
                 h > this.maxMapXX &&
-                    ((this.maxMapXX = h),
-                    (this.rightLongLat = { longitude: f, latitude: g }));
+                    ((this.maxMapXX = h), (this.rightLongLat = { longitude: f, latitude: g }));
                 k < this.minMapYY &&
-                    ((this.minMapYY = k),
-                    (this.topLongLat = { longitude: f, latitude: g }));
+                    ((this.minMapYY = k), (this.topLongLat = { longitude: f, latitude: g }));
                 k > this.maxMapYY &&
-                    ((this.maxMapYY = k),
-                    (this.bottomLongLat = { longitude: f, latitude: g }));
+                    ((this.maxMapYY = k), (this.bottomLongLat = { longitude: f, latitude: g }));
                 b ? (c += ' L ') : ((c += ' M '), (b = !0));
                 c += h + ' ' + k;
             }
@@ -6406,8 +5918,7 @@
             this.maxMapX = -Infinity;
             this.minMapY = Infinity;
             this.maxMapY = -Infinity;
-            for (m = 0; m < this.svgAreas.length; m++)
-                this.normalize(this.svgAreas[m]);
+            for (m = 0; m < this.svgAreas.length; m++) this.normalize(this.svgAreas[m]);
             this.sourceMapHeight = Math.abs(this.maxMapY - this.minMapY);
             this.sourceMapWidth = Math.abs(this.maxMapX - this.minMapX);
             this.unscaledMapWidth = this.sourceMapWidth * l;
@@ -6429,19 +5940,11 @@
             this.sourceMapWidth = this.mapWidth / this.mapScale;
             this.unscaledMapWidth = ((a - b) / (l - m)) * this.sourceMapWidth;
             this.unscaledMapHeight = ((c - e) / (h - k)) * this.sourceMapHeight;
-            b = this.coordinatesToXY(
-                d.radiansToDegrees(f),
-                d.radiansToDegrees(c)
-            );
-            a = this.coordinatesToXY(
-                d.radiansToDegrees(a),
-                d.radiansToDegrees(g)
-            );
+            b = this.coordinatesToXY(d.radiansToDegrees(f), d.radiansToDegrees(c));
+            a = this.coordinatesToXY(d.radiansToDegrees(a), d.radiansToDegrees(g));
             c = g = Infinity;
             for (e = 0; e < this.svgAreas.length; e++)
-                (f = this.svgAreas[e].getBBox()),
-                    f.y < g && (g = f.y),
-                    f.x < c && (c = f.x);
+                (f = this.svgAreas[e].getBBox()), f.y < g && (g = f.y), f.x < c && (c = f.x);
             this.diffY = b.y / this.mapScale - g;
             this.diffX = a.x / this.mapScale - c;
             for (e = 0; e < this.svgAreas.length; e++)
@@ -6453,8 +5956,7 @@
             this.minMapYY = Infinity;
             this.maxMapYY = -Infinity;
             this.projectionChanged = !1;
-            for (var a = 0; a < this.svgAreas.length; a++)
-                this.redraw(this.svgAreas[a]);
+            for (var a = 0; a < this.svgAreas.length; a++) this.redraw(this.svgAreas[a]);
             this.projectionChanged = !0;
             this.resizeMap();
         },
@@ -6465,18 +5967,10 @@
                 (c = this.dataProvider.wrappedLongitudes) &&
                 (a = this.recalcLongitude(a));
             this.projectionFunction
-                ? ((e = this.projectionFunction(
-                      d.degreesToRadians(a),
-                      d.degreesToRadians(b)
-                  )),
-                  (c =
-                      this.mapScale *
-                      d.roundTo(this.x2c(d.radiansToDegrees(e[0])), 3)),
-                  (e =
-                      this.mapScale *
-                      d.roundTo(this.y2c(d.radiansToDegrees(e[1])), 3)))
-                : ((c = this.longitudeToCoordinate(a)),
-                  (e = this.latitudeToCoordinate(b)));
+                ? ((e = this.projectionFunction(d.degreesToRadians(a), d.degreesToRadians(b))),
+                  (c = this.mapScale * d.roundTo(this.x2c(d.radiansToDegrees(e[0])), 3)),
+                  (e = this.mapScale * d.roundTo(this.y2c(d.radiansToDegrees(e[1])), 3)))
+                : ((c = this.longitudeToCoordinate(a)), (e = this.latitudeToCoordinate(b)));
             return { x: c, y: e };
         },
         coordinatesToStageXY: function (a, b) {
@@ -6487,12 +5981,8 @@
         },
         stageXYToCoordinates: function (a, b) {
             var c = this.mapSet.getBBox(),
-                d =
-                    (a - this.mapContainer.x) / this.zoomLevel() -
-                    c.x * this.mapScale,
-                c =
-                    (b - this.mapContainer.y) / this.zoomLevel() -
-                    c.y * this.mapScale;
+                d = (a - this.mapContainer.x) / this.zoomLevel() - c.x * this.mapScale,
+                c = (b - this.mapContainer.y) / this.zoomLevel() - c.y * this.mapScale;
             return this.xyToCoordinates(d, c);
         },
         xyToCoordinates: function (a, b, c, e, f) {
@@ -6507,51 +5997,41 @@
                     m = this.dataProvider.bottomLatitude,
                     n = h + (k - h) / 2,
                     p = l + (m - l) / 2,
-                    l = d.radiansToDegrees(
-                        c(d.degreesToRadians(n), d.degreesToRadians(l))[1]
-                    ),
-                    m = d.radiansToDegrees(
-                        c(d.degreesToRadians(n), d.degreesToRadians(m))[1]
-                    ),
-                    h = d.radiansToDegrees(
-                        c(d.degreesToRadians(h), d.degreesToRadians(p))[0]
-                    ),
-                    k = d.radiansToDegrees(
-                        c(d.degreesToRadians(k), d.degreesToRadians(p))[0]
-                    );
+                    l = d.radiansToDegrees(c(d.degreesToRadians(n), d.degreesToRadians(l))[1]),
+                    m = d.radiansToDegrees(c(d.degreesToRadians(n), d.degreesToRadians(m))[1]),
+                    h = d.radiansToDegrees(c(d.degreesToRadians(h), d.degreesToRadians(p))[0]),
+                    k = d.radiansToDegrees(c(d.degreesToRadians(k), d.degreesToRadians(p))[0]);
                 this.projectionChanged &&
                     ((l = d.radiansToDegrees(
                         c(
                             d.degreesToRadians(this.topLongLat.longitude),
-                            d.degreesToRadians(this.topLongLat.latitude)
-                        )[1]
+                            d.degreesToRadians(this.topLongLat.latitude),
+                        )[1],
                     )),
                     (m = d.radiansToDegrees(
                         c(
                             d.degreesToRadians(this.bottomLongLat.longitude),
-                            d.degreesToRadians(this.bottomLongLat.latitude)
-                        )[1]
+                            d.degreesToRadians(this.bottomLongLat.latitude),
+                        )[1],
                     )),
                     (h = d.radiansToDegrees(
                         c(
                             d.degreesToRadians(this.leftLongLat.longitude),
-                            d.degreesToRadians(this.leftLongLat.latitude)
-                        )[0]
+                            d.degreesToRadians(this.leftLongLat.latitude),
+                        )[0],
                     )),
                     (k = d.radiansToDegrees(
                         c(
                             d.degreesToRadians(this.rightLongLat.longitude),
-                            d.degreesToRadians(this.rightLongLat.latitude)
-                        )[0]
+                            d.degreesToRadians(this.rightLongLat.latitude),
+                        )[0],
                     )));
                 a = d.degreesToRadians((a / e) * (k - h) + h);
                 b = d.degreesToRadians((b / f) * (m - l) + l);
                 b = g(a, b);
                 g = d.radiansToDegrees(b[0]);
                 b = d.radiansToDegrees(b[1]);
-            } else
-                (g = this.coordinateToLongitude(a)),
-                    (b = this.coordinateToLatitude(b));
+            } else (g = this.coordinateToLongitude(a)), (b = this.coordinateToLatitude(b));
             return { longitude: d.roundTo(g, 4), latitude: d.roundTo(b, 4) };
         },
         coordinateToLatitude: function (a, b) {
@@ -6565,9 +6045,7 @@
                     ? ((e = this.mercatorLatitudeToCoordinate(f)),
                       (c = this.mercatorLatitudeToCoordinate(c)),
                       (c = 2 * d.degreesToRadians((a * (e - c)) / b + c)),
-                      (c = d.radiansToDegrees(
-                          2 * Math.atan(Math.exp(c)) - 0.5 * Math.PI
-                      )))
+                      (c = d.radiansToDegrees(2 * Math.atan(Math.exp(c)) - 0.5 * Math.PI)))
                     : (c = (a / b) * (f - c) + c);
             }
             return Math.round(1e6 * c) / 1e6;
@@ -6576,10 +6054,7 @@
             var c,
                 d = this.dataProvider;
             void 0 === b && (b = this.mapWidth);
-            this.mapSet &&
-                (c =
-                    (a / b) * (d.rightLongitude - d.leftLongitude) +
-                    d.leftLongitude);
+            this.mapSet && (c = (a / b) * (d.rightLongitude - d.leftLongitude) + d.leftLongitude);
             return Math.round(1e6 * c) / 1e6;
         },
     });
@@ -6640,16 +6115,11 @@
                 C = a.svgIcons,
                 x = a.getX(c.left),
                 z = a.getY(c.top);
-            isNaN(c.right) ||
-                ((x = a.getX(c.right, !0)), (x = h ? x - 3 * f : x - f));
+            isNaN(c.right) || ((x = a.getX(c.right, !0)), (x = h ? x - 3 * f : x - f));
             isNaN(c.bottom) ||
                 ((z = a.getY(c.bottom, !0)),
                 g && (z -= q + 3 * f),
-                (z = h
-                    ? z - 3 * f
-                    : c.homeButtonEnabled
-                    ? z - 0.5 * f
-                    : z + f));
+                (z = h ? z - 3 * f : c.homeButtonEnabled ? z - 0.5 * f : z + f));
             e.translate(x, z);
             c.previousDY = NaN;
             var F,
@@ -6670,7 +6140,7 @@
                         0,
                         '#000000',
                         0,
-                        4
+                        4,
                     )),
                     d.setCN(a, g, 'zoom-bg'),
                     g.translate(-3, -3),
@@ -6694,14 +6164,7 @@
                 F.push(D);
                 for (G = 1; G < H; G++)
                     (z = f + G * g),
-                        (z = d.line(
-                            b,
-                            [1, E - 2],
-                            [z, z],
-                            c.gridColor,
-                            c.gridAlpha,
-                            1
-                        )),
+                        (z = d.line(b, [1, E - 2], [z, z], c.gridColor, c.gridAlpha, 1)),
                         d.setCN(a, z, 'zoom-grid'),
                         D.push(z);
                 z = new d.SimpleButton();
@@ -6748,14 +6211,7 @@
                 F && F.translate(f, 4 * f),
                 (y = new d.SimpleButton()),
                 C
-                    ? (y.svgIcon = d.line(
-                          b,
-                          [x / 5, -x + x / 5, x / 5],
-                          [-x, 0, x],
-                          v,
-                          w,
-                          1
-                      ))
+                    ? (y.svgIcon = d.line(b, [x / 5, -x + x / 5, x / 5], [-x, 0, x], v, w, 1))
                     : y.setIcon(a.pathToImages + 'panLeft.gif', c.iconSize),
                 y.setClickHandler(a.moveLeft, a),
                 y.init(b, f, f, k, l, m, n, p, t, r, w, v, A),
@@ -6764,14 +6220,7 @@
                 h.push(y.set),
                 (y = new d.SimpleButton()),
                 C
-                    ? (y.svgIcon = d.line(
-                          b,
-                          [-x / 5, x - x / 5, -x / 5],
-                          [-x, 0, x],
-                          v,
-                          w,
-                          1
-                      ))
+                    ? (y.svgIcon = d.line(b, [-x / 5, x - x / 5, -x / 5], [-x, 0, x], v, w, 1))
                     : y.setIcon(a.pathToImages + 'panRight.gif', c.iconSize),
                 y.setClickHandler(a.moveRight, a),
                 y.init(b, f, f, k, l, m, n, p, t, r, w, v, A),
@@ -6780,14 +6229,7 @@
                 h.push(y.set),
                 (y = new d.SimpleButton()),
                 C
-                    ? (y.svgIcon = d.line(
-                          b,
-                          [-x, 0, x],
-                          [x / 5, -x + x / 5, x / 5],
-                          v,
-                          w,
-                          1
-                      ))
+                    ? (y.svgIcon = d.line(b, [-x, 0, x], [x / 5, -x + x / 5, x / 5], v, w, 1))
                     : y.setIcon(a.pathToImages + 'panUp.gif', c.iconSize),
                 y.setClickHandler(a.moveUp, a),
                 y.init(b, f, f, k, l, m, n, p, t, r, w, v, A),
@@ -6796,14 +6238,7 @@
                 h.push(y.set),
                 (y = new d.SimpleButton()),
                 C
-                    ? (y.svgIcon = d.line(
-                          b,
-                          [-x, 0, x],
-                          [-x / 5, x - x / 5, -x / 5],
-                          v,
-                          w,
-                          1
-                      ))
+                    ? (y.svgIcon = d.line(b, [-x, 0, x], [-x / 5, x - x / 5, -x / 5], v, w, 1))
                     : y.setIcon(a.pathToImages + 'panDown.gif', c.iconSize),
                 y.setClickHandler(a.moveDown, a),
                 y.init(b, f, f, k, l, m, n, p, t, r, w, v, A),
@@ -6816,33 +6251,19 @@
                 C
                     ? (h.svgIcon = d.polygon(
                           b,
-                          [
-                              -x,
-                              0,
-                              x,
-                              x - 1,
-                              x - 1,
-                              2,
-                              2,
-                              -2,
-                              -2,
-                              -x + 1,
-                              -x + 1,
-                          ],
+                          [-x, 0, x, x - 1, x - 1, 2, 2, -2, -2, -x + 1, -x + 1],
                           [0, -x, 0, 0, x - 1, x - 1, 2, 2, x - 1, x - 1, 0],
                           v,
                           w,
                           1,
                           v,
-                          w
+                          w,
                       ))
                     : h.setIcon(a.pathToImages + c.homeIconFile, c.iconSize),
                 h.setClickHandler(a.goHome, a),
                 c.panControlEnabled && (p = l = 0),
                 h.init(b, f, f, k, l, m, n, p, t, r, w, v, A),
-                c.panControlEnabled
-                    ? h.set.translate(f, f)
-                    : F && F.translate(0, 1.5 * f),
+                c.panControlEnabled ? h.set.translate(f, f) : F && F.translate(0, 1.5 * f),
                 d.setCN(a, h.set, 'pan-home'),
                 e.push(h.set));
             c.update();
@@ -6866,8 +6287,8 @@
                                 this.set.y -
                                 this.buttonSize -
                                 this.realStepSize / 2) /
-                                this.realStepSize
-                    )
+                                this.realStepSize,
+                    ),
             );
         },
         update: function () {
@@ -6884,14 +6305,8 @@
                     ? (h.stopDrag(),
                       (g = e.y + (h.mouseY - this.previousY)),
                       (g = d.fitToBounds(g, f, this.realGridHeight + f)),
-                      h.zoomTo(
-                          100 * Math.pow(a, c - (g - f) / b),
-                          NaN,
-                          NaN,
-                          !0
-                      ))
-                    : ((a = Math.log(h.zoomLevel() / 100) / Math.log(a)),
-                      (g = (c - a) * b + f)),
+                      h.zoomTo(100 * Math.pow(a, c - (g - f) / b), NaN, NaN, !0))
+                    : ((a = Math.log(h.zoomLevel() / 100) / Math.log(a)), (g = (c - a) * b + f)),
                 (this.previousY = h.mouseY),
                 this.previousDY != g &&
                     e &&
@@ -6912,9 +6327,7 @@
             m = a.set();
             r.set = m;
             t
-                ? ((b /= 2),
-                  (e = d.circle(a, b, e, f, g, h, k)),
-                  e.translate(b, b))
+                ? ((b /= 2), (e = d.circle(a, b, e, f, g, h, k)), e.translate(b, b))
                 : (e = d.rect(a, b, c, e, f, g, h, k, l));
             m.push(e);
             f = r.iconPath;
@@ -6924,14 +6337,9 @@
                 (g = (b - q) / 2),
                 t && (g = (2 * b - q) / 2),
                 (q = a.image(f, g, (c - q) / 2, q, q)));
-            r.svgIcon &&
-                ((q = r.svgIcon),
-                t ? q.translate(b, b) : q.translate(b / 2, b / 2));
+            r.svgIcon && ((q = r.svgIcon), t ? q.translate(b, b) : q.translate(b / 2, b / 2));
             m.setAttr('cursor', 'pointer');
-            q &&
-                (m.push(q),
-                q.setAttr('opacity', n),
-                (q.node.style.pointerEvents = 'none'));
+            q && (m.push(q), q.setAttr('opacity', n), (q.node.style.pointerEvents = 'none'));
             e.mousedown(function () {
                 r.handleDown();
             })
@@ -7028,7 +6436,7 @@
                         c.backgroundAlpha,
                         g,
                         h,
-                        c.borderAlpha
+                        c.borderAlpha,
                     );
                 d.setCN(a, k, 'small-map-bg');
                 k.translate(-g / 2, -g / 2);
@@ -7046,7 +6454,7 @@
                           [-p / 4, p / 4, -p / 4],
                           c.iconColor,
                           1,
-                          1
+                          1,
                       ))
                     : n.setIcon(a.pathToImages + 'arrowDown.gif', k);
                 n.setClickHandler(c.minimize, c);
@@ -7063,7 +6471,7 @@
                           [p / 4, -p / 4, p / 4],
                           c.iconColor,
                           1,
-                          1
+                          1,
                       ))
                     : t.setIcon(a.pathToImages + 'arrowUp.gif', k);
                 t.setClickHandler(c.maximize, c);
@@ -7076,12 +6484,10 @@
                 var r, q;
                 isNaN(c.top) || ((l = a.getY(c.top) + g), (q = 0));
                 isNaN(c.bottom) ||
-                    ((l = a.getY(c.bottom, !0) - c.height - g),
-                    (q = c.height - k + g / 2));
+                    ((l = a.getY(c.bottom, !0) - c.height - g), (q = c.height - k + g / 2));
                 isNaN(c.left) || ((m = a.getX(c.left) + g), (r = -g / 2));
                 isNaN(c.right) ||
-                    ((m = a.getX(c.right, !0) - c.width - g),
-                    (r = c.width - k + g / 2));
+                    ((m = a.getX(c.right, !0) - c.width - g), (r = c.width - k + g / 2));
                 g = b.set();
                 g.clipRect(1, 1, c.width, c.height);
                 f.push(g);
@@ -7093,10 +6499,7 @@
                     c.handleMouseUp();
                 });
                 c.drawRectangle();
-            } else
-                d.remove(c.allSet),
-                    d.remove(c.downButtonSet),
-                    d.remove(c.upButtonSet);
+            } else d.remove(c.allSet), d.remove(c.downButtonSet), d.remove(c.upButtonSet);
         },
         minimize: function () {
             this.downButtonSet.hide();
@@ -7131,8 +6534,7 @@
                 h = 0,
                 k = 0;
             a.centerMap &&
-                ((h = (this.width - b.width * c) / 2),
-                (k = (this.height - b.height * c) / 2));
+                ((h = (this.width - b.width * c) / 2), (k = (this.height - b.height * c) / 2));
             this.mapWidth = b.width * c;
             this.mapHeight = b.height * c;
             f += h;
@@ -7157,12 +6559,11 @@
                     h = this.rectangle;
                 h.translate(
                     -(a.mapContainer.x + g.x * b) * f + this.dx,
-                    -(a.mapContainer.y + g.y * b) * f + this.dy
+                    -(a.mapContainer.y + g.y * b) * f + this.dy,
                 );
                 0 < c &&
                     0 < d &&
-                    (h.setAttr('width', Math.ceil(c + 1)),
-                    h.setAttr('height', Math.ceil(d + 1)));
+                    (h.setAttr('width', Math.ceil(c + 1)), h.setAttr('height', Math.ceil(d + 1)));
                 this.rWidth = c;
                 this.rHeight = d;
             }
@@ -7170,16 +6571,7 @@
         drawRectangle: function () {
             var a = this.rectangle;
             d.remove(a);
-            a = d.rect(
-                this.container,
-                10,
-                10,
-                '#000',
-                0,
-                1,
-                this.rectangleColor,
-                1
-            );
+            a = d.rect(this.container, 10, 10, '#000', 0, 1, this.rectangleColor, 1);
             d.setCN(this.chart, a, 'small-map-rectangle');
             this.rectangleC.push(a);
             this.rectangle = a;
@@ -7189,10 +6581,8 @@
                 b = a.zoomLevel();
             a.zoomToMapXY(
                 b,
-                (a.mouseX - this.set.x - this.mapX) / this.size +
-                    a.diffX * a.mapScale,
-                (a.mouseY - this.set.y - this.mapY) / this.size +
-                    a.diffY * a.mapScale
+                (a.mouseX - this.set.x - this.mapX) / this.size + a.diffX * a.mapScale,
+                (a.mouseY - this.set.y - this.mapY) / this.size + a.diffY * a.mapScale,
             );
         },
     });
@@ -7217,12 +6607,7 @@
                 k = !1,
                 l = 0;
             for (d = 0; d < c; d++)
-                if (
-                    ((f = a[d]),
-                    (f.value = Number(f.value)),
-                    (f = f.value),
-                    !isNaN(f))
-                ) {
+                if (((f = a[d]), (f.value = Number(f.value)), (f = f.value), !isNaN(f))) {
                     if (!1 === h || h < f) h = f;
                     if (!1 === k || k > f) k = f;
                     g += Math.abs(f);
@@ -7238,8 +6623,7 @@
                 (f = a[d]),
                     isNaN(f.value)
                         ? (f.percents = void 0)
-                        : ((f.percents = ((f.value - k) / g) * 100),
-                          k == h && (f.percents = 100));
+                        : ((f.percents = ((f.value - k) / g) * 100), k == h && (f.percents = 100));
             for (d = 0; d < c; d++) (f = a[d]), this.createArea(f);
             b.outlinesToFront();
         },
@@ -7259,17 +6643,14 @@
             for (n = 0; n < h.length; n++) {
                 l = h[n];
                 if (b.preserveOriginalAttributes) {
-                    if (l.customAttr)
-                        for (var p in l.customAttr)
-                            l.setAttr(p, l.customAttr[p]);
+                    if (l.customAttr) for (var p in l.customAttr) l.setAttr(p, l.customAttr[p]);
                 } else {
                     void 0 != c && l.setAttr('fill', c);
                     isNaN(e) || l.setAttr('fill-opacity', e);
                     void 0 != f && l.setAttr('stroke', f);
                     isNaN(g) || l.setAttr('stroke-opacity', g);
                     var t = b.outlineThickness;
-                    b.adjustOutlineThickness &&
-                        (t = t / a.zoomLevel() / a.mapScale);
+                    b.adjustOutlineThickness && (t = t / a.zoomLevel() / a.mapScale);
                     l.setAttr('stroke-width', t);
                 }
                 d.setCN(a, l, 'map-area-unlisted');
@@ -7327,8 +6708,7 @@
             void 0 == e.colorSolid ||
                 isNaN(a.value) ||
                 ((q = Math.floor(
-                    (a.value - this.minValue) /
-                        ((this.maxValue - this.minValue) / b.colorSteps)
+                    (a.value - this.minValue) / ((this.maxValue - this.minValue) / b.colorSteps),
                 )),
                 q == b.colorSteps && q--,
                 (q *= 1 / (b.colorSteps - 1)),
@@ -7348,13 +6728,9 @@
             u = a.rollOverBrightness;
             void 0 == u && (u = p);
             void 0 == a.bringForwardOnHover && (a.bringForwardOnHover = w);
-            void 0 == a.preserveOriginalAttributes &&
-                (a.preserveOriginalAttributes = v);
+            void 0 == a.preserveOriginalAttributes && (a.preserveOriginalAttributes = v);
             isNaN(e.selectedBrightness) ||
-                (B = d.adjustLuminosity(
-                    a.colorReal,
-                    e.selectedBrightness / 100
-                ));
+                (B = d.adjustLuminosity(a.colorReal, e.selectedBrightness / 100));
             a.alphaReal = A;
             a.rollOverColorReal = n;
             a.rollOverAlphaReal = h;
@@ -7404,8 +6780,7 @@
                 p.node.setAttribute('class', '');
                 d.setCN(b, p, 'map-area');
                 d.setCN(b, p, 'map-area-' + p.id);
-                e.adjustOutlineThickness &&
-                    (r = r / b.zoomLevel() / b.mapScale);
+                e.adjustOutlineThickness && (r = r / b.zoomLevel() / b.mapScale);
                 a.preserveOriginalAttributes ||
                     (p.setAttr('fill', C),
                     p.setAttr('stroke', g),
@@ -7531,10 +6906,7 @@
             void 0 == a.selectable && (a.selectable = w);
             a.colorReal = G;
             isNaN(h.selectedBrightness) ||
-                (m = d.adjustLuminosity(
-                    a.colorReal,
-                    h.selectedBrightness / 100
-                ));
+                (m = d.adjustLuminosity(a.colorReal, h.selectedBrightness / 100));
             a.alphaReal = k;
             a.rollOverColorReal = q;
             a.balloonTextReal = p;
@@ -7558,8 +6930,7 @@
             E = a.height;
             w = a.scale;
             isNaN(a.percentWidth) || (C = (a.percentWidth / 100) * c.realWidth);
-            isNaN(a.percentHeight) ||
-                (E = (a.percentHeight / 100) * c.realHeight);
+            isNaN(a.percentHeight) || (E = (a.percentHeight / 100) * c.realHeight);
             var D;
             u || n || B || ((n = 'circle'), (C = 1), (l = k = 0));
             q = F = 0;
@@ -7568,17 +6939,14 @@
                 isNaN(C) && (C = 10);
                 isNaN(E) && (E = 10);
                 'kilometers' == a.widthAndHeightUnits &&
-                    ((C = c.kilometersToPixels(a.width)),
-                    (E = c.kilometersToPixels(a.height)));
+                    ((C = c.kilometersToPixels(a.width)), (E = c.kilometersToPixels(a.height)));
                 'miles' == a.widthAndHeightUnits &&
-                    ((C = c.milesToPixels(a.width)),
-                    (E = c.milesToPixels(a.height)));
+                    ((C = c.milesToPixels(a.width)), (E = c.milesToPixels(a.height)));
                 if ('circle' == n || 'bubble' == n) E = C;
                 D = this.createPredefinedImage(G, t, r, n, C, E);
                 q = F = 0;
                 a.centeredReal
-                    ? (isNaN(a.right) || (F = C * w),
-                      isNaN(a.bottom) || (q = E * w))
+                    ? (isNaN(a.right) || (F = C * w), isNaN(a.bottom) || (q = E * w))
                     : ((F = (C * w) / 2), (q = (E * w) / 2));
                 D.translate(F, q, w, !0);
             } else
@@ -7620,14 +6988,7 @@
                 (D && D.setAttr('fill', h), (G = a.selectedLabelColorReal));
             D = null;
             void 0 !== a.label &&
-                ((D = d.text(
-                    e,
-                    a.label,
-                    G,
-                    c.fontFamily,
-                    a.labelFontSizeReal,
-                    a.labelAlign
-                )),
+                ((D = d.text(e, a.label, G, c.fontFamily, a.labelFontSizeReal, a.labelAlign)),
                 d.setCN(c, D, 'map-image-label'),
                 void 0 !== a.id && d.setCN(c, D, 'map-image-label-' + a.id),
                 (G = a.labelBackgroundAlpha),
@@ -7636,8 +6997,7 @@
                     ((l = D.getBBox()),
                     (e = d.rect(e, l.width + 16, l.height + 10, k, G)),
                     d.setCN(c, e, 'map-image-label-background'),
-                    void 0 != a.id &&
-                        d.setCN(c, e, 'map-image-label-background-' + a.id),
+                    void 0 != a.id && d.setCN(c, e, 'map-image-label-background-' + a.id),
                     H.push(e),
                     (a.labelBG = e)),
                 (a.imageLabel = D),
@@ -7677,8 +7037,7 @@
             a.mouseEnabled && c.addObjectEventListeners(H, a);
             a.hidden && H.hide();
             d.removeFromArray(c.updatableImages, a);
-            a.animateAlongLine &&
-                (c.updatableImages.push(a), a.delayAnimateAlong());
+            a.animateAlongLine && (c.updatableImages.push(a), a.delayAnimateAlong());
             return a;
         },
         updateSizeAndPosition: function (a) {
@@ -7720,9 +7079,7 @@
                     a.fixedSize)
                 ) {
                     p = a.positionScale;
-                    isNaN(p)
-                        ? (p = 0)
-                        : (--p, (p *= 1 - 2 * Math.abs(m - 0.5)));
+                    isNaN(p) ? (p = 0) : (--p, (p *= 1 - 2 * Math.abs(m - 0.5)));
                     if ((m = a.objectToResize)) m.scale = 1 + p;
                     c.translate(e, f, 1 / n + p, !0);
                 } else c.translate(e, f, NaN, !0);
@@ -7757,7 +7114,7 @@
                         f - d.width / 2 + b.labelShiftX - 9,
                         g - a / 2 + b.labelShiftY - 4,
                         NaN,
-                        !0
+                        !0,
                     );
             }
         },
@@ -7779,7 +7136,7 @@
                         b,
                         1,
                         0,
-                        !0
+                        !0,
                     );
                     break;
                 case 'bubble':
@@ -7789,27 +7146,13 @@
                     (f /= Math.sqrt(3)),
                         (k = d.polygon(
                             h,
-                            [
-                                0.866 * f,
-                                0 * f,
-                                -0.866 * f,
-                                -0.866 * f,
-                                0 * f,
-                                0.866 * f,
-                            ],
-                            [
-                                0.5 * f,
-                                1 * f,
-                                0.5 * f,
-                                -0.5 * f,
-                                -1 * f,
-                                -0.5 * f,
-                            ],
+                            [0.866 * f, 0 * f, -0.866 * f, -0.866 * f, 0 * f, 0.866 * f],
+                            [0.5 * f, 1 * f, 0.5 * f, -0.5 * f, -1 * f, -0.5 * f],
                             a,
                             1,
                             c,
                             b,
-                            1
+                            1,
                         ));
             }
             return k;
@@ -7944,10 +7287,7 @@
                 a.colorReal = l;
                 a.arrowColor = m;
                 isNaN(e.selectedBrightness) ||
-                    (y = d.adjustLuminosity(
-                        a.colorReal,
-                        e.selectedBrightness / 100
-                    ));
+                    (y = d.adjustLuminosity(a.colorReal, e.selectedBrightness / 100));
                 a.alphaReal = r;
                 a.rollOverColorReal = u;
                 a.rollOverAlphaReal = q;
@@ -7966,9 +7306,7 @@
                 q = n.length;
                 if (0 < q)
                     for (v = [], C = [], u = 0; u < q; u++)
-                        (B = c.coordinatesToXY(n[u], e[u])),
-                            v.push(B.x),
-                            C.push(B.y);
+                        (B = c.coordinatesToXY(n[u], e[u])), v.push(B.x), C.push(B.y);
                 if (0 < v.length) {
                     a.segments = v.length;
                     d.dx = 0;
@@ -7985,8 +7323,7 @@
                     if (isNaN(q)) {
                         for (q = 0; q < v.length - 1; q++)
                             (H = Math.sqrt(
-                                Math.pow(v[q + 1] - v[q], 2) +
-                                    Math.pow(C[q + 1] - C[q], 2)
+                                Math.pow(v[q + 1] - v[q], 2) + Math.pow(C[q + 1] - C[q], 2),
                             )),
                                 (a.distances[q] = H);
                         q = d.line(x, v, C, l, 1, F / n, k, !1, !1, !0);
@@ -8009,9 +7346,7 @@
                                 J = v[D + 1],
                                 L = C[D],
                                 O = C[D + 1];
-                            H = Math.sqrt(
-                                Math.pow(J - K, 2) + Math.pow(O - L, 2)
-                            );
+                            H = Math.sqrt(Math.pow(J - K, 2) + Math.pow(O - L, 2));
                             G = (H / 2) * q;
                             E = 270 + (180 * Math.acos(H / 2 / G)) / Math.PI;
                             isNaN(E) && (E = 270);
@@ -8065,12 +7400,9 @@
                             (u = v[v.length - 1]),
                                 (D = C[C.length - 1]),
                                 1 < v.length
-                                    ? ((B = v[v.length - 2]),
-                                      (I = C[C.length - 2]))
+                                    ? ((B = v[v.length - 2]), (I = C[C.length - 2]))
                                     : ((B = u), (I = D)),
-                                (I =
-                                    (180 * Math.atan((D - I) / (u - B))) /
-                                    Math.PI),
+                                (I = (180 * Math.atan((D - I) / (u - B))) / Math.PI),
                                 isNaN(E) || (I += E),
                                 (M = u),
                                 (N = D),
@@ -8079,34 +7411,18 @@
                         k = [t, -0.5, t];
                         a.shiftArrow && 'middle' != A && (k = [0, 1.2 * -t, 0]);
                         'both' == A &&
-                            ((t = d.polygon(
-                                x,
-                                r,
-                                k,
-                                m,
-                                p,
-                                1,
-                                m,
-                                p,
-                                void 0,
-                                !0
-                            )),
+                            ((t = d.polygon(x, r, k, m, p, 1, m, p, void 0, !0)),
                             z.push(t),
                             t.translate(M, N, 1 / n, !0),
                             isNaN(I) || t.rotate(I),
                             d.setCN(c, q, 'map-line-arrow'),
-                            void 0 != a.id &&
-                                d.setCN(c, q, 'map-line-arrow-' + a.id),
+                            void 0 != a.id && d.setCN(c, q, 'map-line-arrow-' + a.id),
                             a.fixedSize && f.push(t));
                         if ('start' == A || 'both' == A)
                             (t = v[0]),
                                 (N = C[0]),
-                                1 < v.length
-                                    ? ((u = v[1]), (M = C[1]))
-                                    : ((u = t), (M = N)),
-                                (I =
-                                    (180 * Math.atan((N - M) / (t - u))) /
-                                    Math.PI),
+                                1 < v.length ? ((u = v[1]), (M = C[1])) : ((u = t), (M = N)),
+                                (I = (180 * Math.atan((N - M) / (t - u))) / Math.PI),
                                 isNaN(E) || (I -= E),
                                 (M = t),
                                 (I = 0 > t - u ? I - 90 : I + 90);
@@ -8118,8 +7434,7 @@
                                 : ((B = u), (I = D)),
                             (M = B + (u - B) / 2),
                             (N = I + (D - I) / 2),
-                            (I =
-                                (180 * Math.atan((D - I) / (u - B))) / Math.PI),
+                            (I = (180 * Math.atan((D - I) / (u - B))) / Math.PI),
                             isNaN(E) ||
                                 ((E = H / 2),
                                 (G -= Math.sqrt(G * G - E * E)),
@@ -8131,13 +7446,11 @@
                             (I = 0 > u - B ? I - 90 : I + 90));
                         t = d.polygon(x, r, k, m, p, 1, m, p, void 0, !0);
                         d.setCN(c, q, 'map-line-arrow');
-                        void 0 != a.id &&
-                            d.setCN(c, q, 'map-line-arrow-' + a.id);
+                        void 0 != a.id && d.setCN(c, q, 'map-line-arrow-' + a.id);
                         z.push(t);
                         t.translate(M, N, 1 / n, !0);
                         isNaN(I) || t.rotate(I);
-                        a.fixedSize &&
-                            (f.push(t), a.arrays.push({ arr: f, el: t }));
+                        a.fixedSize && (f.push(t), a.arrays.push({ arr: f, el: t }));
                         a.arrowSvg = t;
                     }
                     a.fixedSize &&
@@ -8255,19 +7568,14 @@
         },
         getCoordinates: function (a, b) {
             isNaN(b) && (b = 0);
-            isNaN(this.arc) ||
-                this.isValid ||
-                ((this.isValid = !0), this.validate());
+            isNaN(this.arc) || this.isValid || ((this.isValid = !0), this.validate());
             if (!isNaN(a)) {
                 var c, e, f, g, h, k;
                 if (1 < this.longitudes.length) {
-                    e = this.chart.coordinatesToXY(
-                        this.longitudes[b],
-                        this.latitudes[b]
-                    );
+                    e = this.chart.coordinatesToXY(this.longitudes[b], this.latitudes[b]);
                     var l = this.chart.coordinatesToXY(
                         this.longitudes[b + 1],
-                        this.latitudes[b + 1]
+                        this.latitudes[b + 1],
                     );
                     c = e.x;
                     f = l.x;
@@ -8286,24 +7594,11 @@
                 var m = Math.atan2(g - e, f - c);
                 if (!isNaN(this.arc) && 0 !== this.arc && this.arcRadius) {
                     var n = 0;
-                    c < f &&
-                        ((n = c),
-                        (c = f),
-                        (f = n),
-                        (n = e),
-                        (e = g),
-                        (g = n),
-                        (n = Math.PI));
+                    c < f && ((n = c), (c = f), (f = n), (n = e), (e = g), (g = n), (n = Math.PI));
                     k = this.arcRadius[b];
                     0 > this.arc && (l = -l);
-                    h =
-                        c +
-                        (f - c) / 2 +
-                        (Math.sqrt(k * k - (l / 2) * (l / 2)) * (e - g)) / l;
-                    var p =
-                        e +
-                        (g - e) / 2 +
-                        (Math.sqrt(k * k - (l / 2) * (l / 2)) * (f - c)) / l;
+                    h = c + (f - c) / 2 + (Math.sqrt(k * k - (l / 2) * (l / 2)) * (e - g)) / l;
+                    var p = e + (g - e) / 2 + (Math.sqrt(k * k - (l / 2) * (l / 2)) * (f - c)) / l;
                     c = (180 * Math.atan2(e - p, c - h)) / Math.PI;
                     f = (180 * Math.atan2(g - p, f - h)) / Math.PI;
                     180 < f - c && (f -= 360);
@@ -8321,10 +7616,7 @@
             if (0 < this.latitudes.length) {
                 this.y = [];
                 for (var a = 0; a < this.latitudes.length; a++) {
-                    var b = this.chart.coordinatesToStageXY(
-                        this.longitudes[a],
-                        this.latitudes[a]
-                    );
+                    var b = this.chart.coordinatesToStageXY(this.longitudes[a], this.latitudes[a]);
                     this.y.push(b.y);
                     this.x.push(b.x);
                 }
@@ -8337,10 +7629,7 @@
             if (0 < this.y.length) {
                 this.latitudes = [];
                 for (var a = 0; a < this.y.length; a++) {
-                    var b = this.chart.stageXYToCoordinates(
-                        this.x[a],
-                        this.y[a]
-                    );
+                    var b = this.chart.stageXYToCoordinates(this.x[a], this.y[a]);
                     this.latitudes.push(b.latitude);
                     this.longitudes.push(b.longitude);
                 }
@@ -8414,9 +7703,7 @@
             this.line &&
                 a.adjustAnimationSpeed &&
                 (this.line.distances &&
-                    ((b =
-                        this.line.distances[this.lineSegment] *
-                        this.chart.zoomLevel()),
+                    ((b = this.line.distances[this.lineSegment] * this.chart.zoomLevel()),
                     (b = Math.abs(b / a.baseAnimationDistance))),
                 (this.totalFrames = Math.round(b * this.totalFrames)));
             this.frame = 0;
@@ -8443,15 +7730,11 @@
                     -1 == this.direction && (a = 1 - a);
                     this.animatingAlong
                         ? (this.positionOnLine = a)
-                        : ((b =
-                              this.initialX +
-                              (this.finalX - this.initialX) * a),
+                        : ((b = this.initialX + (this.finalX - this.initialX) * a),
                           isNaN(this.longitude) || (this.longitude = b),
                           isNaN(this.left) || (this.left = b),
                           isNaN(this.right) || (this.right = b),
-                          (a =
-                              this.initialY +
-                              (this.finalY - this.initialY) * a),
+                          (a = this.initialY + (this.finalY - this.initialY) * a),
                           isNaN(this.latitude) || (this.latitude = a),
                           isNaN(this.top) || (this.top = a),
                           isNaN(this.bottom) || (this.bottom = a));
@@ -8476,8 +7759,7 @@
                                       (this.extraAngle = 180),
                                       this.delayAnimateAlong())
                                     : this.loop &&
-                                      (this.delayAnimateAlong(),
-                                      (this.lineSegment = 0))
+                                      (this.delayAnimateAlong(), (this.lineSegment = 0))
                                 : 0 < this.lineSegment
                                 ? (this.lineSegment--,
                                   this.delayAnimateAlong(),
@@ -8490,15 +7772,11 @@
         },
         delayAnimateAlong: function () {
             this.animateAlongLine &&
-                (this.delayCounter =
-                    this.chart.imagesSettings.pauseDuration * d.updateRate);
+                (this.delayCounter = this.chart.imagesSettings.pauseDuration * d.updateRate);
         },
         fixToStage: function () {
             if (!isNaN(this.longitude)) {
-                var a = this.chart.coordinatesToStageXY(
-                    this.longitude,
-                    this.latitude
-                );
+                var a = this.chart.coordinatesToStageXY(this.longitude, this.latitude);
                 this.left = a.x;
                 this.top = a.y;
                 this.latitude = this.longitude = void 0;
@@ -8546,22 +7824,14 @@
         ];
     };
     d.processDescriptionWindow = function (a, b) {
-        isNaN(b.descriptionWindowX) &&
-            (b.descriptionWindowX = a.descriptionWindowX);
-        isNaN(b.descriptionWindowY) &&
-            (b.descriptionWindowY = a.descriptionWindowY);
-        isNaN(b.descriptionWindowLeft) &&
-            (b.descriptionWindowLeft = a.descriptionWindowLeft);
-        isNaN(b.descriptionWindowRight) &&
-            (b.descriptionWindowRight = a.descriptionWindowRight);
-        isNaN(b.descriptionWindowTop) &&
-            (b.descriptionWindowTop = a.descriptionWindowTop);
-        isNaN(b.descriptionWindowBottom) &&
-            (b.descriptionWindowBottom = a.descriptionWindowBottom);
-        isNaN(b.descriptionWindowWidth) &&
-            (b.descriptionWindowWidth = a.descriptionWindowWidth);
-        isNaN(b.descriptionWindowHeight) &&
-            (b.descriptionWindowHeight = a.descriptionWindowHeight);
+        isNaN(b.descriptionWindowX) && (b.descriptionWindowX = a.descriptionWindowX);
+        isNaN(b.descriptionWindowY) && (b.descriptionWindowY = a.descriptionWindowY);
+        isNaN(b.descriptionWindowLeft) && (b.descriptionWindowLeft = a.descriptionWindowLeft);
+        isNaN(b.descriptionWindowRight) && (b.descriptionWindowRight = a.descriptionWindowRight);
+        isNaN(b.descriptionWindowTop) && (b.descriptionWindowTop = a.descriptionWindowTop);
+        isNaN(b.descriptionWindowBottom) && (b.descriptionWindowBottom = a.descriptionWindowBottom);
+        isNaN(b.descriptionWindowWidth) && (b.descriptionWindowWidth = a.descriptionWindowWidth);
+        isNaN(b.descriptionWindowHeight) && (b.descriptionWindowHeight = a.descriptionWindowHeight);
     };
     d.normalizePath = function (a) {
         for (
@@ -8585,8 +7855,7 @@
             'H' == p && ((p = 'L'), (n = f));
             'v' == p && ((p = 'L'), (t = e), (n += f));
             'V' == p && ((p = 'L'), (t = e));
-            if ('m' === p || 'l' === p)
-                (p = p.toUpperCase()), (t += e), (n += f);
+            if ('m' === p || 'l' === p) (p = p.toUpperCase()), (t += e), (n += f);
             t = d.roundTo(t, 3);
             n = d.roundTo(n, 3);
             e = t;
@@ -8595,10 +7864,7 @@
             t < g && (g = t);
             n > l && (l = n);
             n < k && (k = n);
-            b =
-                'z' == p.toLowerCase()
-                    ? b + 'Z '
-                    : b + (p + ' ' + t + ' ' + n + ' ');
+            b = 'z' == p.toLowerCase() ? b + 'Z ' : b + (p + ' ' + t + ' ' + n + ' ');
         }
         a.setAttribute('d', b);
         return { minX: g, maxX: h, minY: k, maxY: l };
@@ -8695,10 +7961,7 @@
     };
     d.eckert5 = function (a, b) {
         var c = Math.PI;
-        return [
-            (a * (1 + Math.cos(b))) / Math.sqrt(2 + c),
-            (2 * b) / Math.sqrt(2 + c),
-        ];
+        return [(a * (1 + Math.cos(b))) / Math.sqrt(2 + c), (2 * b) / Math.sqrt(2 + c)];
     };
     d.eckert5.invert = function (a, b) {
         var c = Math.sqrt(2 + Math.PI),
@@ -8718,10 +7981,7 @@
     d.eckert6.invert = function (a, b) {
         var c = 1 + Math.PI / 2,
             e = Math.sqrt(c / 2);
-        return [
-            (2 * a * e) / (1 + Math.cos((b *= e))),
-            d.asin((b + Math.sin(b)) / c),
-        ];
+        return [(2 * a * e) / (1 + Math.cos((b *= e))), d.asin((b + Math.sin(b)) / c)];
     };
     d.mercator = function (a, b) {
         b >= Math.PI / 2 - 0.02 && (b = Math.PI / 2 - 0.02);
@@ -8740,18 +8000,12 @@
     d.eckert3 = function (a, b) {
         var c = Math.PI,
             d = Math.sqrt(c * (4 + c));
-        return [
-            (2 / d) * a * (1 + Math.sqrt(1 - (4 * b * b) / (c * c))),
-            (4 / d) * b,
-        ];
+        return [(2 / d) * a * (1 + Math.sqrt(1 - (4 * b * b) / (c * c))), (4 / d) * b];
     };
     d.eckert3.invert = function (a, b) {
         var c = Math.PI,
             e = Math.sqrt(c * (4 + c)) / 2;
-        return [
-            (a * e) / (1 + d.asqrt(1 - (b * b * (4 + c)) / (4 * c))),
-            (b * e) / 2,
-        ];
+        return [(a * e) / (1 + d.asqrt(1 - (b * b * (4 + c)) / (4 * c))), (b * e) / 2];
     };
 })();
 (function () {
@@ -8787,8 +8041,7 @@
             var k = '.gif';
             a.svgIcons && (k = '.svg');
             var l = document.createElement('img');
-            l.className =
-                'ammapDescriptionWindowCloseButton ' + h + 'close-img';
+            l.className = 'ammapDescriptionWindowCloseButton ' + h + 'close-img';
             l.src = a.pathToImages + 'xIcon' + k;
             l.style.cssFloat = 'right';
             l.style.cursor = 'pointer';
@@ -8818,8 +8071,7 @@
         },
         close: function () {
             try {
-                this.div.parentNode.removeChild(this.div),
-                    this.chart.fireClosed();
+                this.div.parentNode.removeChild(this.div), this.chart.fireClosed();
             } catch (a) {}
         },
     });
@@ -8886,7 +8138,7 @@
                         this.borderColor,
                         1,
                         0,
-                        0
+                        0,
                     )),
                         d.setCN(a, c, 'value-legend-gradient'),
                         c.translate(0, h),
@@ -8902,7 +8154,7 @@
                                 1,
                                 this.borderThickness,
                                 this.borderColor,
-                                1
+                                1,
                             )),
                             d.setCN(a, n, 'value-legend-color'),
                             d.setCN(a, n, 'value-legend-color-' + m),
@@ -8935,8 +8187,7 @@
             this.container && (b = this.container);
             this.div = 'object' != typeof b ? document.getElementById(b) : b;
             b = document.createElement('div');
-            b.className =
-                'ammapObjectList ' + a.classNamePrefix + '-object-list-div';
+            b.className = 'ammapObjectList ' + a.classNamePrefix + '-object-list-div';
             this.div.appendChild(b);
             this.addObjects(a.dataProvider, b);
         },
@@ -8948,21 +8199,18 @@
             if (a.areas)
                 for (f = 0; f < a.areas.length; f++) {
                     var g = a.areas[f];
-                    void 0 === g.showInList &&
-                        (g.showInList = c.showAreasInList);
+                    void 0 === g.showInList && (g.showInList = c.showAreasInList);
                     this.addObject(g, d);
                 }
             if (a.images)
                 for (f = 0; f < a.images.length; f++)
                     (g = a.images[f]),
-                        void 0 === g.showInList &&
-                            (g.showInList = c.showImagesInList),
+                        void 0 === g.showInList && (g.showInList = c.showImagesInList),
                         this.addObject(g, d);
             if (a.lines)
                 for (f = 0; f < a.lines.length; f++)
                     (g = a.lines[f]),
-                        void 0 === g.showInList &&
-                            (g.showInList = c.showLinesInList),
+                        void 0 === g.showInList && (g.showInList = c.showLinesInList),
                         this.addObject(g, d);
             0 < d.childNodes.length && b.appendChild(d);
         },

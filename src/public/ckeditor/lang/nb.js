@@ -126,8 +126,7 @@ CKEDITOR.lang['nb'] = {
     about: {
         copy: 'Copyright &copy; $1. Alle rettigheter reservert.',
         dlgTitle: 'Om CKEditor 4',
-        moreInfo:
-            'For lisensieringsinformasjon, vennligst besøk vårt nettsted:',
+        moreInfo: 'For lisensieringsinformasjon, vennligst besøk vårt nettsted:',
     },
     basicstyles: {
         bold: 'Fet',
@@ -295,10 +294,8 @@ CKEDITOR.lang['nb'] = {
     filetools: {
         loadError: 'Feil oppsto under filinnlesing.',
         networkError: 'Nettverksfeil oppsto under filopplasting.',
-        httpError404:
-            'HTTP-feil oppsto under filopplasting (404: Fant ikke filen).',
-        httpError403:
-            'HTTP-feil oppsto under filopplasting (403: Ikke tillatt).',
+        httpError404: 'HTTP-feil oppsto under filopplasting (404: Fant ikke filen).',
+        httpError403: 'HTTP-feil oppsto under filopplasting (403: Ikke tillatt).',
         httpError: 'HTTP-feil oppsto under filopplasting (feilstatus: %1).',
         noUrlError: 'URL for opplasting er ikke oppgitt.',
         responseError: 'Ukorrekt svar fra serveren.',
@@ -701,7 +698,6 @@ CKEDITOR.lang['nb'] = {
         doneOne: 'Filen har blitt lastet opp.',
         doneMany: 'Fullført opplasting av %1 filer.',
         uploadOne: 'Laster opp fil ({percentage}%)...',
-        uploadMany:
-            'Laster opp filer, {current} av {max} fullført ({percentage}%)...',
+        uploadMany: 'Laster opp filer, {current} av {max} fullført ({percentage}%)...',
     },
 };

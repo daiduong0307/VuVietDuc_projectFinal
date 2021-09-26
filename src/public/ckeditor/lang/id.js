@@ -44,8 +44,7 @@ CKEDITOR.lang['id'] = {
         validateNumberFailed: 'Nilai ini tidak sebuah angka',
         confirmNewPage:
             'Semua perubahan yang tidak disimpan di konten ini akan hilang. Apakah anda yakin ingin memuat halaman baru?',
-        confirmCancel:
-            'Beberapa opsi telah berubah. Apakah anda yakin ingin menutup dialog?',
+        confirmCancel: 'Beberapa opsi telah berubah. Apakah anda yakin ingin menutup dialog?',
         options: 'Opsi',
         target: 'Sasaran',
         targetNew: 'Jendela Baru (_blank)',
@@ -83,8 +82,7 @@ CKEDITOR.lang['id'] = {
             'Nilai pada inline style merupakan pasangan nama dan nilai dengan format "nama : nilai", yang dipisahkan dengan titik dua.',
         cssLengthTooltip:
             'Masukkan sebuah angka untuk sebuah nilai dalam pixel atau sebuah angka dengan unit CSS yang sah (px, %, in, cm, mm, em, ex, pt, or pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, tidak tersedia</span>',
+        unavailable: '%1<span class="cke_accessibility">, tidak tersedia</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Enter',
@@ -295,12 +293,9 @@ CKEDITOR.lang['id'] = {
     filetools: {
         loadError: 'Error terjadi ketika berkas dibaca',
         networkError: 'Jaringan error terjadi ketika mengunggah berkas',
-        httpError404:
-            'HTTP error terjadi ketika mengunggah berkas (404: Berkas tidak ditemukan)',
-        httpError403:
-            'HTTP error terjadi ketika mengunggah berkas (403: Gangguan)',
-        httpError:
-            'HTTP error terjadi ketika mengunggah berkas (status error: %1)',
+        httpError404: 'HTTP error terjadi ketika mengunggah berkas (404: Berkas tidak ditemukan)',
+        httpError403: 'HTTP error terjadi ketika mengunggah berkas (403: Gangguan)',
+        httpError: 'HTTP error terjadi ketika mengunggah berkas (status error: %1)',
         noUrlError: 'Unggahan URL tidak terdefinisi',
         responseError: 'Respon server tidak sesuai',
     },
@@ -468,11 +463,9 @@ CKEDITOR.lang['id'] = {
         alt: 'Teks alternatif',
         border: 'Batas',
         btnUpload: 'Kirim ke Server',
-        button2Img:
-            'Do you want to transform the selected image button on a simple image?',
+        button2Img: 'Do you want to transform the selected image button on a simple image?',
         hSpace: 'HSpace',
-        img2Button:
-            'Apakah anda ingin mengubah gambar yang dipilih pada tombol gambar?',
+        img2Button: 'Apakah anda ingin mengubah gambar yang dipilih pada tombol gambar?',
         infoTab: 'Info Gambar',
         linkTab: 'Tautan',
         lockRatio: 'Lock Ratio',
@@ -707,7 +700,6 @@ CKEDITOR.lang['id'] = {
         doneOne: 'Berkas telah berhasil diunggah',
         doneMany: 'Pengunggahan berkas %1 berhasil',
         uploadOne: 'Mengunggah berkas ({percentage}%)...',
-        uploadMany:
-            'Pengunggahan berkas {current} dari {max} berhasil ({percentage}%)...',
+        uploadMany: 'Pengunggahan berkas {current} dari {max} berhasil ({percentage}%)...',
     },
 };

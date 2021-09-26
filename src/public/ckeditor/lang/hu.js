@@ -44,8 +44,7 @@ CKEDITOR.lang['hu'] = {
         validateNumberFailed: 'A mezőbe csak számokat írhat.',
         confirmNewPage:
             'Minden nem mentett változás el fog veszni! Biztosan be szeretné tölteni az oldalt?',
-        confirmCancel:
-            'Pár beállítást megváltoztatott. Biztosan be szeretné zárni az ablakot?',
+        confirmCancel: 'Pár beállítást megváltoztatott. Biztosan be szeretné zárni az ablakot?',
         options: 'Beállítások',
         target: 'Cél',
         targetNew: 'Új ablak (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['hu'] = {
     about: {
         copy: 'Copyright &copy; $1. Minden jog fenntartva.',
         dlgTitle: 'A CKEditor 4-ről',
-        moreInfo:
-            'Licenszelési információkért kérjük látogassa meg weboldalunkat:',
+        moreInfo: 'Licenszelési információkért kérjük látogassa meg weboldalunkat:',
     },
     basicstyles: {
         bold: 'Félkövér',
@@ -172,8 +170,7 @@ CKEDITOR.lang['hu'] = {
         pasteNotification:
             'Nyomja meg a %1 gombot a beillesztéshez. A böngésző nem támogatja a beillesztést az eszköztárról vagy a menüből.',
         pasteArea: 'Beillesztési terület',
-        pasteMsg:
-            'Illessze be a tartalmat az alábbi mezőbe, és nyomja meg az OK-t.',
+        pasteMsg: 'Illessze be a tartalmat az alábbi mezőbe, és nyomja meg az OK-t.',
     },
     colorbutton: {
         auto: 'Automatikus',
@@ -297,12 +294,9 @@ CKEDITOR.lang['hu'] = {
     filetools: {
         loadError: 'Hiba történt a fájl olvasása közben.',
         networkError: 'Hálózati hiba történt a fájl feltöltése közben.',
-        httpError404:
-            'HTTP hiba történt a fájl feltöltése alatt (404: A fájl nem található).',
-        httpError403:
-            'HTTP hiba történt a fájl feltöltése alatt (403: Tiltott).',
-        httpError:
-            'HTTP hiba történt a fájl feltöltése alatt (hiba státusz: %1).',
+        httpError404: 'HTTP hiba történt a fájl feltöltése alatt (404: A fájl nem található).',
+        httpError403: 'HTTP hiba történt a fájl feltöltése alatt (403: Tiltott).',
+        httpError: 'HTTP hiba történt a fájl feltöltése alatt (hiba státusz: %1).',
         noUrlError: 'Feltöltési URL nincs megadva.',
         responseError: 'Helytelen szerver válasz.',
     },
@@ -652,10 +646,8 @@ CKEDITOR.lang['hu'] = {
             no: 'Nem',
             invalidWidth: 'A szélesség mezőbe csak számokat írhat.',
             invalidHeight: 'A magasság mezőbe csak számokat írhat.',
-            invalidRowSpan:
-                'A függőleges egyesítés mezőbe csak számokat írhat.',
-            invalidColSpan:
-                'A vízszintes egyesítés mezőbe csak számokat írhat.',
+            invalidRowSpan: 'A függőleges egyesítés mezőbe csak számokat írhat.',
+            invalidColSpan: 'A vízszintes egyesítés mezőbe csak számokat írhat.',
             chooseColor: 'Válasszon',
         },
         cellPad: 'Cella belső margó',
@@ -703,7 +695,6 @@ CKEDITOR.lang['hu'] = {
         doneOne: 'A fájl sikeresen feltöltve.',
         doneMany: '%1 fájl sikeresen feltöltve.',
         uploadOne: 'Fájl feltöltése ({percentage}%)...',
-        uploadMany:
-            'Fájlok feltöltése, {current}/{max} kész ({percentage}%)...',
+        uploadMany: 'Fájlok feltöltése, {current}/{max} kész ({percentage}%)...',
     },
 };

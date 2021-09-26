@@ -126,8 +126,7 @@ CKEDITOR.lang['pt-br'] = {
     about: {
         copy: 'Copyright &copy; $1. Todos os direitos reservados.',
         dlgTitle: 'Sobre o CKEditor 4',
-        moreInfo:
-            'Para informações sobre a licença por favor visite o nosso site:',
+        moreInfo: 'Para informações sobre a licença por favor visite o nosso site:',
     },
     basicstyles: {
         bold: 'Negrito',
@@ -301,10 +300,8 @@ CKEDITOR.lang['pt-br'] = {
         networkError: 'Um erro de rede ocorreu durante o envio do arquivo.',
         httpError404:
             'Um erro HTTP ocorreu durante o envio do arquivo (404: Arquivo não encontrado).',
-        httpError403:
-            'Um erro HTTP ocorreu durante o envio do arquivo (403: Proibido).',
-        httpError:
-            'Um erro HTTP ocorreu durante o envio do arquivo (status do erro: %1)',
+        httpError403: 'Um erro HTTP ocorreu durante o envio do arquivo (403: Proibido).',
+        httpError: 'Um erro HTTP ocorreu durante o envio do arquivo (status do erro: %1)',
         noUrlError: 'A URL de upload não está definida.',
         responseError: 'Resposta incorreta do servidor.',
     },
@@ -578,8 +575,7 @@ CKEDITOR.lang['pt-br'] = {
         type: 'Tipo',
         upperAlpha: 'Numeração Alfabética Maiúscula (A, B, C, D, E, etc.)',
         upperRoman: 'Numeração Romana maiúscula (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'O número inicial da lista deve ser um número inteiro.',
+        validateStartNumber: 'O número inicial da lista deve ser um número inteiro.',
     },
     magicline: { title: 'Inserir um parágrafo aqui' },
     maximize: { maximize: 'Maximizar', minimize: 'Minimize' },
@@ -676,8 +672,7 @@ CKEDITOR.lang['pt-br'] = {
         headersRow: 'Primeira linha',
         heightUnit: 'Unidade para altura',
         invalidBorder: 'O tamanho da borda tem que ser um número.',
-        invalidCellPadding:
-            'A margem interna das células tem que ser um número.',
+        invalidCellPadding: 'A margem interna das células tem que ser um número.',
         invalidCellSpacing: 'O espaçamento das células tem que ser um número.',
         invalidCols: 'O número de colunas tem que ser um número maior que 0.',
         invalidHeight: 'A altura da tabela tem que ser um número.',
@@ -705,7 +700,6 @@ CKEDITOR.lang['pt-br'] = {
         doneOne: 'Arquivo enviado com sucesso.',
         doneMany: 'Enviados %1 arquivos com sucesso.',
         uploadOne: 'Enviando arquivo({percentage}%)...',
-        uploadMany:
-            'Enviando arquivos, {current} de {max} completos ({percentage}%)...',
+        uploadMany: 'Enviando arquivos, {current} de {max} completos ({percentage}%)...',
     },
 };

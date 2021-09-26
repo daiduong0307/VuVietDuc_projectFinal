@@ -29,30 +29,27 @@ $(document).ready(function () {
         $this
             .parents('.card')
             .append(
-                '<div class="card-loader"><i class="icofont icofont-refresh rotate-refresh"></div>'
+                '<div class="card-loader"><i class="icofont icofont-refresh rotate-refresh"></div>',
             );
         setTimeout(function () {
             $this.parents('.card').children('.card-loader').remove();
             $this.parents('.card').removeClass('card-load');
         }, 3000);
     });
-    $('.card-header-right .card-option .icofont-simple-left').on(
-        'click',
-        function () {
-            var $this = $(this);
-            if ($this.hasClass('icofont-simple-right')) {
-                $this.parents('.card-option').animate({
-                    width: '35px',
-                });
-            } else {
-                $this.parents('.card-option').animate({
-                    width: '180px',
-                });
-            }
-            $(this).toggleClass('icofont-simple-right').fadeIn('slow');
-            // $this.children("li .icofont-simple-left").toggleClass("");
+    $('.card-header-right .card-option .icofont-simple-left').on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('icofont-simple-right')) {
+            $this.parents('.card-option').animate({
+                width: '35px',
+            });
+        } else {
+            $this.parents('.card-option').animate({
+                width: '180px',
+            });
         }
-    );
+        $(this).toggleClass('icofont-simple-right').fadeIn('slow');
+        // $this.children("li .icofont-simple-left").toggleClass("");
+    });
 
     $('.card-header-right .minimize-card').on('click', function () {
         var $this = $(this);
@@ -67,12 +64,9 @@ $(document).ready(function () {
         $(this).toggleClass('icofont-resize');
     });
 
-    $('.card-header-right .icofont-spinner-alt-5').on(
-        'mouseenter mouseleave',
-        function () {
-            $(this).toggleClass('rotate-refresh').fadeIn('slow');
-        }
-    );
+    $('.card-header-right .icofont-spinner-alt-5').on('mouseenter mouseleave', function () {
+        $(this).toggleClass('rotate-refresh').fadeIn('slow');
+    });
     $('#more-details').on('click', function () {
         $('.more-details').slideToggle(500);
     });
@@ -120,9 +114,7 @@ function toggleFullScreen() {
         } else if (document.documentElement.mozRequestFullScreen) {
             document.documentElement.mozRequestFullScreen();
         } else if (document.documentElement.webkitRequestFullscreen) {
-            document.documentElement.webkitRequestFullscreen(
-                Element.ALLOW_KEYBOARD_INPUT
-            );
+            document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
         }
     } else {
         if (document.cancelFullScreen) {

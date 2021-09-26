@@ -44,8 +44,7 @@ CKEDITOR.lang['hr'] = {
         validateNumberFailed: 'Ova vrijednost nije broj.',
         confirmNewPage:
             'Sve napravljene promjene će biti izgubljene ukoliko ih niste snimili. Sigurno želite učitati novu stranicu?',
-        confirmCancel:
-            'Neke od opcija su promjenjene. Sigurno želite zatvoriti ovaj prozor?',
+        confirmCancel: 'Neke od opcija su promjenjene. Sigurno želite zatvoriti ovaj prozor?',
         options: 'Opcije',
         target: 'Odredište',
         targetNew: 'Novi prozor (_blank)',
@@ -294,8 +293,7 @@ CKEDITOR.lang['hr'] = {
     filetools: {
         loadError: 'Greška prilikom čitanja datoteke.',
         networkError: 'Mrežna greška prilikom slanja datoteke.',
-        httpError404:
-            'HTTP greška tijekom slanja datoteke (404: datoteka nije pronađena).',
+        httpError404: 'HTTP greška tijekom slanja datoteke (404: datoteka nije pronađena).',
         httpError403: 'HTTP greška tijekom slanja datoteke  (403: Zabranjeno).',
         httpError: 'HTTP greška tijekom slanja datoteke (greška status: %1).',
         noUrlError: 'URL za slanje nije podešen.',
@@ -570,8 +568,7 @@ CKEDITOR.lang['hr'] = {
         start: 'Početak',
         type: 'Vrsta',
         upperAlpha: 'Znakovi velika slova (A, B, C, D, E, itd.)',
-        upperRoman:
-            'Romanska numeracija velika slova (I, II, III, IV, V, itd.)',
+        upperRoman: 'Romanska numeracija velika slova (I, II, III, IV, V, itd.)',
         validateStartNumber: 'Početak brojčane liste mora biti cijeli broj.',
     },
     magicline: { title: 'Ubaci paragraf ovdje' },
@@ -697,7 +694,6 @@ CKEDITOR.lang['hr'] = {
         doneOne: 'Datoteka uspješno poslana.',
         doneMany: 'Uspješno poslano %1 datoteka.',
         uploadOne: 'Slanje datoteke ({percentage}%)...',
-        uploadMany:
-            'Slanje datoteka, {current} od {max} gotovo ({percentage}%)...',
+        uploadMany: 'Slanje datoteka, {current} od {max} gotovo ({percentage}%)...',
     },
 };

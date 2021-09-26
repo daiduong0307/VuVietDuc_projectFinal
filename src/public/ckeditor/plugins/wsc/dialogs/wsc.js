@@ -4,15 +4,10 @@
 */
 (function () {
     function A(a) {
-        return a && a.domId && a.getInputElement().$
-            ? a.getInputElement()
-            : a && a.$
-            ? a
-            : !1;
+        return a && a.domId && a.getInputElement().$ ? a.getInputElement() : a && a.$ ? a : !1;
     }
     function J(a) {
-        if (!a)
-            throw 'Languages-by-groups list are required for construct selectbox';
+        if (!a) throw 'Languages-by-groups list are required for construct selectbox';
         var d = [],
             c = '',
             e;
@@ -56,8 +51,7 @@
                 f && f.toUTCString && (e.expires = f.toUTCString());
                 b = encodeURIComponent(b);
                 a = a + '\x3d' + b;
-                for (var k in e)
-                    (b = e[k]), (a += '; ' + k), !0 !== b && (a += '\x3d' + b);
+                for (var k in e) (b = e[k]), (a += '; ' + k), !0 !== b && (a += '\x3d' + b);
                 document.cookie = a;
             };
             return {
@@ -75,8 +69,7 @@
                             k = a.message || { id: f };
                         a.message &&
                             '[object Object]' == b.call(a.message) &&
-                            (a.message.id ? a.message.id : (a.message.id = f),
-                            (k = a.message));
+                            (a.message.id ? a.message.id : (a.message.id = f), (k = a.message));
                         a = window.JSON.stringify(k, e);
                         h.postMessage(a, '*');
                     },
@@ -93,12 +86,9 @@
                         return (a = document.cookie.match(
                             new RegExp(
                                 '(?:^|; )' +
-                                    a.replace(
-                                        /([\.$?*|{}\(\)\[\]\\\/\+^])/g,
-                                        '\\$1'
-                                    ) +
-                                    '\x3d([^;]*)'
-                            )
+                                    a.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
+                                    '\x3d([^;]*)',
+                            ),
                         ))
                             ? decodeURIComponent(a[1])
                             : void 0;
@@ -112,7 +102,7 @@
                         var b = null;
                         a &&
                             (b = a.find(
-                                'a[href], area[href], input, select, textarea, button, *[tabindex], *[contenteditable]'
+                                'a[href], area[href], input, select, textarea, button, *[tabindex], *[contenteditable]',
                             ));
                         return b;
                     },
@@ -121,12 +111,8 @@
                         (b = 0 === a.offsetWidth || 0 == a.offsetHeight) ||
                             (b =
                                 'none' ===
-                                (document.defaultView &&
-                                document.defaultView.getComputedStyle
-                                    ? document.defaultView.getComputedStyle(
-                                          a,
-                                          null
-                                      ).display
+                                (document.defaultView && document.defaultView.getComputedStyle
+                                    ? document.defaultView.getComputedStyle(a, null).display
                                     : a.currentStyle
                                     ? a.currentStyle.display
                                     : a.style.display));
@@ -135,9 +121,7 @@
                     hasClass: function (a, b) {
                         return !(
                             !a.className ||
-                            !a.className.match(
-                                new RegExp('(\\s|^)' + b + '(\\s|$)')
-                            )
+                            !a.className.match(new RegExp('(\\s|^)' + b + '(\\s|$)'))
                         );
                     },
                 },
@@ -212,14 +196,10 @@
     var K = function (b) {
             var d, c, e;
             for (e in b) {
-                if (
-                    (d = a.dialog.getContentElement(a.dialog._.currentTabId, e))
-                )
+                if ((d = a.dialog.getContentElement(a.dialog._.currentTabId, e)))
                     d = d.getElement();
                 else if (b[e].instance)
-                    d =
-                        b[e].instance.getElement().getFirst() ||
-                        b[e].instance.getElement();
+                    d = b[e].instance.getElement().getFirst() || b[e].instance.getElement();
                 else continue;
                 c = b[e].localizationID || e;
                 d.setText(a.LocalizationComing[c]);
@@ -231,8 +211,7 @@
                 (d = a.dialog.getContentElement(a.dialog._.currentTabId, e)),
                     d || (d = b[e].instance),
                     d.setLabel &&
-                        ((c = b[e].localizationID || e),
-                        d.setLabel(a.LocalizationComing[c] + ':'));
+                        ((c = b[e].localizationID || e), d.setLabel(a.LocalizationComing[c] + ':'));
         },
         t,
         B;
@@ -258,7 +237,7 @@
             : c.contentDocument;
         c.document.open();
         c.document.write(
-            '\x3c!DOCTYPE html\x3e\x3chtml\x3e\x3chead\x3e\x3cmeta charset\x3d"UTF-8"\x3e\x3ctitle\x3eiframe\x3c/title\x3e\x3cstyle\x3ehtml,body{margin: 0;height: 100%;font: 13px/1.555 "Trebuchet MS", sans-serif;}a{color: #888;font-weight: bold;text-decoration: none;border-bottom: 1px solid #888;}.main-box {color:#252525;padding: 3px 5px;text-align: justify;}.main-box p{margin: 0 0 14px;}.main-box .cerr{color: #f00000;border-bottom-color: #f00000;}\x3c/style\x3e\x3c/head\x3e\x3cbody\x3e\x3cdiv id\x3d"content" class\x3d"main-box"\x3e\x3c/div\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"spelltext" name\x3d"spelltext" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"loadsuggestfirst" name\x3d"loadsuggestfirst" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"loadspellsuggestall" name\x3d"loadspellsuggestall" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"loadOptionsForm" name\x3d"loadOptionsForm" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3cscript\x3e(function(window) {var ManagerPostMessage \x3d function() {var _init \x3d function(handler) {if (document.addEventListener) {window.addEventListener("message", handler, false);} else {window.attachEvent("onmessage", handler);};};var _sendCmd \x3d function(o) {var str,type \x3d Object.prototype.toString,fn \x3d o.fn || null,id \x3d o.id || "",target \x3d o.target || window,message \x3d o.message || { "id": id };if (o.message \x26\x26 type.call(o.message) \x3d\x3d "[object Object]") {(o.message["id"]) ? o.message["id"] : o.message["id"] \x3d id;message \x3d o.message;};str \x3d JSON.stringify(message, fn);target.postMessage(str, "*");};return {init: _init,send: _sendCmd};};var manageMessageTmp \x3d new ManagerPostMessage;var appString \x3d (function(){var spell \x3d parent.CKEDITOR.config.wsc.DefaultParams.scriptPath;var serverUrl \x3d parent.CKEDITOR.config.wsc.DefaultParams.serviceHost;return serverUrl + spell;})();function loadScript(src, callback) {var scriptTag \x3d document.createElement("script");scriptTag.type \x3d "text/javascript";callback ? callback : callback \x3d function() {};if(scriptTag.readyState) {scriptTag.onreadystatechange \x3d function() {if (scriptTag.readyState \x3d\x3d "loaded" ||scriptTag.readyState \x3d\x3d "complete") {scriptTag.onreadystatechange \x3d null;setTimeout(function(){scriptTag.parentNode.removeChild(scriptTag)},1);callback();}};}else{scriptTag.onload \x3d function() {setTimeout(function(){scriptTag.parentNode.removeChild(scriptTag)},1);callback();};};scriptTag.src \x3d src;document.getElementsByTagName("head")[0].appendChild(scriptTag);};window.onload \x3d function(){loadScript(appString, function(){manageMessageTmp.send({"id": "iframeOnload","target": window.parent});});}})(this);\x3c/script\x3e\x3c/body\x3e\x3c/html\x3e'
+            '\x3c!DOCTYPE html\x3e\x3chtml\x3e\x3chead\x3e\x3cmeta charset\x3d"UTF-8"\x3e\x3ctitle\x3eiframe\x3c/title\x3e\x3cstyle\x3ehtml,body{margin: 0;height: 100%;font: 13px/1.555 "Trebuchet MS", sans-serif;}a{color: #888;font-weight: bold;text-decoration: none;border-bottom: 1px solid #888;}.main-box {color:#252525;padding: 3px 5px;text-align: justify;}.main-box p{margin: 0 0 14px;}.main-box .cerr{color: #f00000;border-bottom-color: #f00000;}\x3c/style\x3e\x3c/head\x3e\x3cbody\x3e\x3cdiv id\x3d"content" class\x3d"main-box"\x3e\x3c/div\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"spelltext" name\x3d"spelltext" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"loadsuggestfirst" name\x3d"loadsuggestfirst" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"loadspellsuggestall" name\x3d"loadspellsuggestall" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3ciframe src\x3d"" frameborder\x3d"0" id\x3d"loadOptionsForm" name\x3d"loadOptionsForm" style\x3d"display:none; width: 100%" \x3e\x3c/iframe\x3e\x3cscript\x3e(function(window) {var ManagerPostMessage \x3d function() {var _init \x3d function(handler) {if (document.addEventListener) {window.addEventListener("message", handler, false);} else {window.attachEvent("onmessage", handler);};};var _sendCmd \x3d function(o) {var str,type \x3d Object.prototype.toString,fn \x3d o.fn || null,id \x3d o.id || "",target \x3d o.target || window,message \x3d o.message || { "id": id };if (o.message \x26\x26 type.call(o.message) \x3d\x3d "[object Object]") {(o.message["id"]) ? o.message["id"] : o.message["id"] \x3d id;message \x3d o.message;};str \x3d JSON.stringify(message, fn);target.postMessage(str, "*");};return {init: _init,send: _sendCmd};};var manageMessageTmp \x3d new ManagerPostMessage;var appString \x3d (function(){var spell \x3d parent.CKEDITOR.config.wsc.DefaultParams.scriptPath;var serverUrl \x3d parent.CKEDITOR.config.wsc.DefaultParams.serviceHost;return serverUrl + spell;})();function loadScript(src, callback) {var scriptTag \x3d document.createElement("script");scriptTag.type \x3d "text/javascript";callback ? callback : callback \x3d function() {};if(scriptTag.readyState) {scriptTag.onreadystatechange \x3d function() {if (scriptTag.readyState \x3d\x3d "loaded" ||scriptTag.readyState \x3d\x3d "complete") {scriptTag.onreadystatechange \x3d null;setTimeout(function(){scriptTag.parentNode.removeChild(scriptTag)},1);callback();}};}else{scriptTag.onload \x3d function() {setTimeout(function(){scriptTag.parentNode.removeChild(scriptTag)},1);callback();};};scriptTag.src \x3d src;document.getElementsByTagName("head")[0].appendChild(scriptTag);};window.onload \x3d function(){loadScript(appString, function(){manageMessageTmp.send({"id": "iframeOnload","target": window.parent});});}})(this);\x3c/script\x3e\x3c/body\x3e\x3c/html\x3e',
         );
         c.document.close();
         a.div_overlay.setEnable();
@@ -275,9 +254,8 @@
         c.setStyle('height', '90px');
     };
     a.setHeightFrame = function () {
-        document.getElementById(
-            a.iframeNumber + '_' + a.dialog._.currentTabId
-        ).style.height = '240px';
+        document.getElementById(a.iframeNumber + '_' + a.dialog._.currentTabId).style.height =
+            '240px';
     };
     a.sendData = function (b) {
         var d = b._.currentTabId,
@@ -342,8 +320,7 @@
             c.appendChild(e);
         }
         for (e = 0; e < c.options.length; e++)
-            c.options[e].value == a.selectingLang &&
-                (c.options[e].selected = 'selected');
+            c.options[e].value == a.selectingLang && (c.options[e].selected = 'selected');
     };
     a.buildOptionSynonyms = function (b) {
         b = a.selectNodeResponce[b];
@@ -356,9 +333,7 @@
             d.$.add(e, c);
         }
         a.selectNode.Synonyms.getInputElement().$.firstChild.selected = !0;
-        a.textNode.Thesaurus.setValue(
-            a.selectNode.Synonyms.getInputElement().getValue()
-        );
+        a.textNode.Thesaurus.setValue(a.selectNode.Synonyms.getInputElement().getValue());
     };
     var C = function (a) {
             var d = document,
@@ -444,8 +419,7 @@
                 a.div_overlay.setEnable();
                 a.selectingLang = this.value;
                 c = a.cmd[c];
-                (b && v[b] && v[b].allowedTabCommands[c]) ||
-                    (c = v[b].defaultTabCommand);
+                (b && v[b] && v[b].allowedTabCommands[c]) || (c = v[b].defaultTabCommand);
                 for (var k in a.cmd)
                     if (a.cmd[k] == c) {
                         a.previousTab = k;
@@ -467,10 +441,8 @@
             var d,
                 c = function (b) {
                     b =
-                        a.dialog.getContentElement(
-                            a.dialog._.currentTabId,
-                            b
-                        ) || a.LocalizationButton[b].instance;
+                        a.dialog.getContentElement(a.dialog._.currentTabId, b) ||
+                        a.LocalizationButton[b].instance;
                     b.getElement().hasClass('cke_disabled')
                         ? b.getElement().setStyle('color', '#a0a0a0')
                         : b.disable();
@@ -485,16 +457,12 @@
             'no_any_suggestions' == b
                 ? ((b = 'No suggestions'),
                   (d =
-                      a.dialog.getContentElement(
-                          a.dialog._.currentTabId,
-                          'ChangeTo_button'
-                      ) || a.LocalizationButton.ChangeTo_button.instance),
+                      a.dialog.getContentElement(a.dialog._.currentTabId, 'ChangeTo_button') ||
+                      a.LocalizationButton.ChangeTo_button.instance),
                   d.disable(),
                   (d =
-                      a.dialog.getContentElement(
-                          a.dialog._.currentTabId,
-                          'ChangeAll'
-                      ) || a.LocalizationButton.ChangeAll.instance),
+                      a.dialog.getContentElement(a.dialog._.currentTabId, 'ChangeAll') ||
+                      a.LocalizationButton.ChangeAll.instance),
                   d.disable(),
                   c('ChangeTo_button'),
                   c('ChangeAll'))
@@ -540,8 +508,7 @@
                 a.textNodeInfo.GrammTab.getElement().setText(b.info);
                 b = b.grammSuggest;
                 for (var d = b.length, c = !0, e = 0; e < d; e++)
-                    a.grammerSuggest.getElement().append(M(b[e], b[e], c)),
-                        (c = !1);
+                    a.grammerSuggest.getElement().append(M(b[e], b[e], c)), (c = !1);
                 p();
                 a.div_overlay.setDisable();
             },
@@ -561,11 +528,8 @@
                         (b.value = e),
                         d.$.add(b, c),
                         c++;
-                d =
-                    a.selectNode.Categories.getInputElement().getChildren().$[0]
-                        .value;
-                a.selectNode.Categories.getInputElement().getChildren().$[0].selected =
-                    !0;
+                d = a.selectNode.Categories.getInputElement().getChildren().$[0].value;
+                a.selectNode.Categories.getInputElement().getChildren().$[0].selected = !0;
                 a.buildOptionSynonyms(d);
                 p();
                 a.div_overlay.setDisable();
@@ -574,10 +538,7 @@
                 delete b.id;
                 O();
                 b = a.dialog
-                    .getContentElement(
-                        a.dialog._.currentTabId,
-                        'BlockFinishChecking'
-                    )
+                    .getContentElement(a.dialog._.currentTabId, 'BlockFinishChecking')
                     .getElement();
                 b.removeStyle('display');
                 b.removeStyle('position');
@@ -610,47 +571,24 @@
                     if (f) {
                         var x = function () {
                             if (k)
-                                for (
-                                    l = k.split(','), g = 0;
-                                    g < l.length;
-                                    g += 1
-                                )
+                                for (l = k.split(','), g = 0; g < l.length; g += 1)
                                     f.addWordToUserDictionary(l[g]);
-                            else
-                                c.wsc.DataStorage.setData(
-                                    'scayt_user_dictionary',
-                                    []
-                                );
+                            else c.wsc.DataStorage.setData('scayt_user_dictionary', []);
                             d();
                         };
                         e.state.scayt[c.name] && f.setMarkupPaused(!1);
                         h
-                            ? (c.wsc.DataStorage.setData(
-                                  'scayt_user_dictionary_name',
-                                  h
-                              ),
+                            ? (c.wsc.DataStorage.setData('scayt_user_dictionary_name', h),
                               f.restoreUserDictionary(h, x, x))
-                            : (c.wsc.DataStorage.setData(
-                                  'scayt_user_dictionary_name',
-                                  ''
-                              ),
+                            : (c.wsc.DataStorage.setData('scayt_user_dictionary_name', ''),
                               f.removeUserDictionary(void 0, x, x));
                     } else
                         h
-                            ? c.wsc.DataStorage.setData(
-                                  'scayt_user_dictionary_name',
-                                  h
-                              )
-                            : c.wsc.DataStorage.setData(
-                                  'scayt_user_dictionary_name',
-                                  ''
-                              ),
+                            ? c.wsc.DataStorage.setData('scayt_user_dictionary_name', h)
+                            : c.wsc.DataStorage.setData('scayt_user_dictionary_name', ''),
                             k &&
                                 ((l = k.split(',')),
-                                c.wsc.DataStorage.setData(
-                                    'scayt_user_dictionary',
-                                    l
-                                )),
+                                c.wsc.DataStorage.setData('scayt_user_dictionary', l)),
                             d();
                 } else d();
             },
@@ -678,9 +616,7 @@
                 };
                 g.postMessage.send({
                     message: b,
-                    target: a.targetFromFrame[
-                        a.iframeNumber + '_' + a.dialog._.currentTabId
-                    ],
+                    target: a.targetFromFrame[a.iframeNumber + '_' + a.dialog._.currentTabId],
                     id: 'options_outer__page',
                 });
             },
@@ -729,9 +665,7 @@
                 };
                 g.postMessage.send({
                     message: b,
-                    target: a.targetFromFrame[
-                        a.iframeNumber + '_' + a.dialog._.currentTabId
-                    ],
+                    target: a.targetFromFrame[a.iframeNumber + '_' + a.dialog._.currentTabId],
                 });
             },
             data: function (a) {
@@ -853,18 +787,14 @@
             a.dialog.showPage('SpellTab');
         },
         p = function () {
-            var b = a.dialog
-                .getContentElement(a.dialog._.currentTabId, 'bottomGroup')
-                .getElement();
+            var b = a.dialog.getContentElement(a.dialog._.currentTabId, 'bottomGroup').getElement();
             b.removeStyle('display');
             b.removeStyle('position');
             b.removeStyle('left');
             b.show();
         },
         O = function () {
-            var b = a.dialog
-                    .getContentElement(a.dialog._.currentTabId, 'bottomGroup')
-                    .getElement(),
+            var b = a.dialog.getContentElement(a.dialog._.currentTabId, 'bottomGroup').getElement(),
                 d = document.activeElement,
                 c;
             b.setStyles({
@@ -900,10 +830,7 @@
         },
         D = function () {
             var b = a.dialog
-                    .getContentElement(
-                        a.dialog._.currentTabId,
-                        'BlockFinishChecking'
-                    )
+                    .getContentElement(a.dialog._.currentTabId, 'BlockFinishChecking')
                     .getElement(),
                 d = document.activeElement,
                 c;
@@ -957,7 +884,7 @@
                                 CKEDITOR.env.gecko ||
                                 CKEDITOR.env.opera ||
                                 (CKEDITOR.env.ie && CKEDITOR.env.quirks)
-                            )
+                            ),
                         ),
                     E = n.width - a.parts.contents.getSize('width', 1);
                 if (e < f.minWidth || isNaN(e)) e = f.minWidth;
@@ -970,11 +897,7 @@
                 a.resize(e, g);
                 setTimeout(function () {
                     a._.fromResizeEvent = !1;
-                    CKEDITOR.dialog.fire(
-                        'resize',
-                        { dialog: a, width: e, height: g },
-                        b
-                    );
+                    CKEDITOR.dialog.fire('resize', { dialog: a, width: e, height: g }, b);
                 }, 300);
             }
             a._.moved ||
@@ -997,16 +920,10 @@
                                 ? 'undefined'
                                 : null === a
                                 ? 'null'
-                                : Object.prototype.toString
-                                      .call(a)
-                                      .slice(8, -1);
+                                : Object.prototype.toString.call(a).slice(8, -1);
                         },
                         convertDataToString: function (a) {
-                            return (
-                                this.getDataType(a).toLowerCase() +
-                                this.separator +
-                                a
-                            );
+                            return this.getDataType(a).toLowerCase() + this.separator + a;
                         },
                         restoreDataFromString: function (a) {
                             var b = a,
@@ -1016,9 +933,7 @@
                                 switch (
                                     ((b = a.indexOf(this.separator)),
                                     (c = a.substring(0, b)),
-                                    (b = a.substring(
-                                        b + this.separator.length
-                                    )),
+                                    (b = a.substring(b + this.separator.length)),
                                     c)
                                 ) {
                                     case 'boolean':
@@ -1049,8 +964,7 @@
                                         ('[' === a[0] && ']' === a[a.length - 1]
                                             ? ((a = a.replace('[', '')),
                                               (a = a.replace(']', '')),
-                                              (b =
-                                                  '' === a ? [] : a.split(',')))
+                                              (b = '' === a ? [] : a.split(',')))
                                             : (b =
                                                   'true' === a || 'false' === a
                                                       ? 'true' === a
@@ -1061,9 +975,7 @@
                     },
                     c = {
                         get: function (a) {
-                            return b.restoreDataFromString(
-                                window.localStorage.getItem(a)
-                            );
+                            return b.restoreDataFromString(window.localStorage.getItem(a));
                         },
                         set: function (a, c) {
                             var d = b.convertDataToString(c);
@@ -1092,12 +1004,9 @@
                             return (a = document.cookie.match(
                                 new RegExp(
                                     '(?:^|; )' +
-                                        a.replace(
-                                            /([\.$?*|{}\(\)\[\]\\\/\+^])/g,
-                                            '\\$1'
-                                        ) +
-                                        '\x3d([^;]*)'
-                                )
+                                        a.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
+                                        '\x3d([^;]*)',
+                                ),
                             ))
                                 ? decodeURIComponent(a[1])
                                 : void 0;
@@ -1114,20 +1023,14 @@
                             b = encodeURIComponent(b);
                             a = a + '\x3d' + b;
                             for (var h in c)
-                                (b = c[h]),
-                                    (a += '; ' + h),
-                                    !0 !== b && (a += '\x3d' + b);
+                                (b = c[h]), (a += '; ' + h), !0 !== b && (a += '\x3d' + b);
                             document.cookie = a;
                         },
                         deleteCookie: function (a) {
                             this.setCookie(a, null, { expires: -1 });
                         },
                         clear: function () {
-                            for (
-                                var a = document.cookie.split(';'), b = 0;
-                                b < a.length;
-                                b++
-                            ) {
+                            for (var a = document.cookie.split(';'), b = 0; b < a.length; b++) {
                                 var c = a[b],
                                     d = c.indexOf('\x3d'),
                                     c = -1 < d ? c.substr(0, d) : c;
@@ -1154,9 +1057,7 @@
             b.wsc.operationWithUDN = function (b, c) {
                 g.postMessage.send({
                     message: { udn: c, id: 'operationWithUDN', udnCmd: b },
-                    target: a.targetFromFrame[
-                        a.iframeNumber + '_' + a.dialog._.currentTabId
-                    ],
+                    target: a.targetFromFrame[a.iframeNumber + '_' + a.dialog._.currentTabId],
                 });
             };
             b.wsc.getLocalStorageUDN = function () {
@@ -1203,9 +1104,7 @@
                 });
                 ('ChangeTo' != f && 'ChangeAll' != f) || b.fire('saveSnapshot');
                 'FinishChecking' == f &&
-                    b.config.wsc_onFinish.call(
-                        CKEDITOR.document.getWindow().getFrame()
-                    );
+                    b.config.wsc_onFinish.call(CKEDITOR.document.getWindow().getFrame());
             },
             f = { minWidth: 560, minHeight: 444 };
         return {
@@ -1237,25 +1136,19 @@
                         'https://www.webspellchecker.net/spellcheck31/lf/22/js/wsc_fck2plugin.js';
                     d(this);
                     CKEDITOR.scriptLoader.load(c, function (c) {
-                        CKEDITOR.config &&
-                        CKEDITOR.config.wsc &&
-                        CKEDITOR.config.wsc.DefaultParams
+                        CKEDITOR.config && CKEDITOR.config.wsc && CKEDITOR.config.wsc.DefaultParams
                             ? ((a.serverLocationHash =
                                   CKEDITOR.config.wsc.DefaultParams.serviceHost),
-                              (a.logotype =
-                                  CKEDITOR.config.wsc.DefaultParams.logoPath),
-                              (a.loadIcon =
-                                  CKEDITOR.config.wsc.DefaultParams.iconPath),
+                              (a.logotype = CKEDITOR.config.wsc.DefaultParams.logoPath),
+                              (a.loadIcon = CKEDITOR.config.wsc.DefaultParams.iconPath),
                               (a.loadIconEmptyEditor =
                                   CKEDITOR.config.wsc.DefaultParams.iconPathEmptyEditor),
                               (a.LangComparer =
                                   new CKEDITOR.config.wsc.DefaultParams._SP_FCK_LangCompare()))
-                            : ((a.serverLocationHash =
-                                  DefaultParams.serviceHost),
+                            : ((a.serverLocationHash = DefaultParams.serviceHost),
                               (a.logotype = DefaultParams.logoPath),
                               (a.loadIcon = DefaultParams.iconPath),
-                              (a.loadIconEmptyEditor =
-                                  DefaultParams.iconPathEmptyEditor),
+                              (a.loadIconEmptyEditor = DefaultParams.iconPathEmptyEditor),
                               (a.LangComparer = new _SP_FCK_LangCompare()));
                         a.pluginPath = CKEDITOR.getUrl(b.plugins.wsc.path);
                         a.iframeNumber = a.TextAreaNumber;
@@ -1269,40 +1162,27 @@
                         a.selectingLang = a.currentLang;
                         a.div_overlay = new C({
                             opacity: '1',
-                            background:
-                                '#fff url(' +
-                                a.loadIcon +
-                                ') no-repeat 50% 50%',
+                            background: '#fff url(' + a.loadIcon + ') no-repeat 50% 50%',
                             target: a.OverlayPlace,
                         });
                         var d = a.dialog.parts.tabs.getId(),
                             d = CKEDITOR.document.getById(d);
                         d.setStyle('width', '97%');
                         d.getElementsByTag('DIV').count() ||
-                            d.append(
-                                a.buildSelectLang(
-                                    a.dialog.getParentEditor().name
-                                )
-                            );
+                            d.append(a.buildSelectLang(a.dialog.getParentEditor().name));
                         a.div_overlay_no_check = new C({
                             opacity: '1',
                             id: 'no_check_over',
-                            background:
-                                '#fff url(' +
-                                a.loadIconEmptyEditor +
-                                ') no-repeat 50% 50%',
+                            background: '#fff url(' + a.loadIconEmptyEditor + ') no-repeat 50% 50%',
                             target: a.OverlayPlace,
                         });
                         c && (I(a.dialog), a.dialog.setupContent(a.dialog));
                         b.plugins.scayt &&
                             (b.wsc.isSsrvSame = (function () {
-                                var a =
-                                        CKEDITOR.config.wsc.DefaultParams.serviceHost
-                                            .replace('lf/22/js/../../../', '')
-                                            .split('//')[1],
-                                    c =
-                                        CKEDITOR.config.wsc.DefaultParams
-                                            .ssrvHost,
+                                var a = CKEDITOR.config.wsc.DefaultParams.serviceHost
+                                        .replace('lf/22/js/../../../', '')
+                                        .split('//')[1],
+                                    c = CKEDITOR.config.wsc.DefaultParams.ssrvHost,
                                     d = b.config.scayt_srcUrl,
                                     e,
                                     f,
@@ -1315,12 +1195,8 @@
                                     h.split('//'),
                                     (g = h.split('//')[1].split('/')[0]),
                                     (l =
-                                        h
-                                            .split(g + '/')[1]
-                                            .replace(
-                                                '/lf/scayt3/ckscayt/',
-                                                ''
-                                            ) + '/script/ssrv.cgi'));
+                                        h.split(g + '/')[1].replace('/lf/scayt3/ckscayt/', '') +
+                                        '/script/ssrv.cgi'));
                                 !d ||
                                     h ||
                                     b.config.scayt_servicePath ||
@@ -1329,10 +1205,8 @@
                                     (f =
                                         d
                                             .split(e + '/')[1]
-                                            .replace(
-                                                '/lf/scayt3/ckscayt/ckscayt.js',
-                                                ''
-                                            ) + '/script/ssrv.cgi'));
+                                            .replace('/lf/scayt3/ckscayt/ckscayt.js', '') +
+                                        '/script/ssrv.cgi'));
                                 return (
                                     '//' + a + c ===
                                     '//' +
@@ -1349,14 +1223,11 @@
                                     ((a = JSON.parse(a.data)),
                                     a.ud && 'undefined' !== a.ud
                                         ? (b.wsc.ud = a.ud)
-                                        : 'undefined' === a.ud &&
-                                          (b.wsc.ud = void 0),
+                                        : 'undefined' === a.ud && (b.wsc.ud = void 0),
                                     a.udn && 'undefined' !== a.udn
                                         ? (b.wsc.udn = a.udn)
-                                        : 'undefined' === a.udn &&
-                                          (b.wsc.udn = void 0),
-                                    b.wsc.syncIsDone ||
-                                        (f(b.wsc.ud), (b.wsc.syncIsDone = !0)));
+                                        : 'undefined' === a.udn && (b.wsc.udn = void 0),
+                                    b.wsc.syncIsDone || (f(b.wsc.ud), (b.wsc.syncIsDone = !0)));
                             };
                             var f = function (c) {
                                 c = b.wsc.getLocalStorageUD();
@@ -1376,8 +1247,7 @@
                                 : window.attachEvent('onmessage', c);
                             setTimeout(function () {
                                 var a = b.wsc.getLocalStorageUDN();
-                                void 0 !== a &&
-                                    b.wsc.operationWithUDN('restore', a);
+                                void 0 !== a && b.wsc.operationWithUDN('restore', a);
                             }, 500);
                         }
                     });
@@ -1435,17 +1305,15 @@
                                                     type: 'text',
                                                     id: 'ChangeTo_label',
                                                     label:
-                                                        a.LocalizationLabel
-                                                            .ChangeTo_label
-                                                            .text + ':',
+                                                        a.LocalizationLabel.ChangeTo_label.text +
+                                                        ':',
                                                     labelLayout: 'horizontal',
                                                     labelStyle:
                                                         'font: 12px/25px arial, sans-serif;',
                                                     width: '140px',
                                                     default: '',
                                                     onShow: function () {
-                                                        a.textNode.SpellTab =
-                                                            this;
+                                                        a.textNode.SpellTab = this;
                                                         a.LocalizationLabel.ChangeTo_label.instance =
                                                             this;
                                                     },
@@ -1467,19 +1335,15 @@
                                                                     type: 'text',
                                                                     id: 'labelSuggestions',
                                                                     label:
-                                                                        a
-                                                                            .LocalizationLabel
-                                                                            .Suggestions
-                                                                            .text +
-                                                                        ':',
+                                                                        a.LocalizationLabel
+                                                                            .Suggestions.text + ':',
                                                                     onShow: function () {
                                                                         a.LocalizationLabel.Suggestions.instance =
                                                                             this;
                                                                         this.getInputElement().setStyles(
                                                                             {
-                                                                                display:
-                                                                                    'none',
-                                                                            }
+                                                                                display: 'none',
+                                                                            },
                                                                         );
                                                                     },
                                                                 },
@@ -1487,19 +1351,15 @@
                                                                     type: 'html',
                                                                     id: 'logo',
                                                                     html: '',
-                                                                    setup: function (
-                                                                        b
-                                                                    ) {
+                                                                    setup: function (b) {
                                                                         this.getElement().$.src =
                                                                             a.logotype;
                                                                         this.getElement()
                                                                             .getParent()
-                                                                            .setStyles(
-                                                                                {
-                                                                                    'text-align':
-                                                                                        'left',
-                                                                                }
-                                                                            );
+                                                                            .setStyles({
+                                                                                'text-align':
+                                                                                    'left',
+                                                                            });
                                                                     },
                                                                 },
                                                             ],
@@ -1512,18 +1372,15 @@
                                                             size: '6',
                                                             inputStyle:
                                                                 'width: 140px; height: auto;',
-                                                            items: [
-                                                                ['loading...'],
-                                                            ],
+                                                            items: [['loading...']],
                                                             onShow: function () {
                                                                 B = this;
                                                             },
-                                                            onChange:
-                                                                function () {
-                                                                    a.textNode.SpellTab.setValue(
-                                                                        this.getValue()
-                                                                    );
-                                                                },
+                                                            onChange: function () {
+                                                                a.textNode.SpellTab.setValue(
+                                                                    this.getValue(),
+                                                                );
+                                                            },
                                                         },
                                                     ],
                                                 },
@@ -1540,24 +1397,19 @@
                                         {
                                             type: 'vbox',
                                             id: 'rightCol_col__left',
-                                            widths: [
-                                                '50%',
-                                                '50%',
-                                                '50%',
-                                                '50%',
-                                            ],
+                                            widths: ['50%', '50%', '50%', '50%'],
                                             children: [
                                                 {
                                                     type: 'button',
                                                     id: 'ChangeTo_button',
-                                                    label: a.LocalizationButton
-                                                        .ChangeTo_button.text,
+                                                    label: a.LocalizationButton.ChangeTo_button
+                                                        .text,
                                                     title: 'Change to',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'ChangeTo'
+                                                            'ChangeTo',
                                                         );
                                                         a.LocalizationButton.ChangeTo_button.instance =
                                                             this;
@@ -1567,14 +1419,13 @@
                                                 {
                                                     type: 'button',
                                                     id: 'ChangeAll',
-                                                    label: a.LocalizationButton
-                                                        .ChangeAll.text,
+                                                    label: a.LocalizationButton.ChangeAll.text,
                                                     title: 'Change All',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
                                                         a.LocalizationButton.ChangeAll.instance =
                                                             this;
@@ -1584,14 +1435,13 @@
                                                 {
                                                     type: 'button',
                                                     id: 'AddWord',
-                                                    label: a.LocalizationButton
-                                                        .AddWord.text,
+                                                    label: a.LocalizationButton.AddWord.text,
                                                     title: 'Add word',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
                                                         a.LocalizationButton.AddWord.instance =
                                                             this;
@@ -1602,14 +1452,13 @@
                                                     type: 'button',
                                                     id: 'FinishChecking_button',
                                                     label: a.LocalizationButton
-                                                        .FinishChecking_button
-                                                        .text,
+                                                        .FinishChecking_button.text,
                                                     title: 'Finish Checking',
                                                     style: 'width: 100%;margin-top: 9px;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'FinishChecking'
+                                                            'FinishChecking',
                                                         );
                                                         a.LocalizationButton.FinishChecking_button.instance =
                                                             this;
@@ -1626,14 +1475,13 @@
                                                 {
                                                     type: 'button',
                                                     id: 'IgnoreWord',
-                                                    label: a.LocalizationButton
-                                                        .IgnoreWord.text,
+                                                    label: a.LocalizationButton.IgnoreWord.text,
                                                     title: 'Ignore word',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
                                                         a.LocalizationButton.IgnoreWord.instance =
                                                             this;
@@ -1643,14 +1491,13 @@
                                                 {
                                                     type: 'button',
                                                     id: 'IgnoreAllWords',
-                                                    label: a.LocalizationButton
-                                                        .IgnoreAllWords.text,
+                                                    label: a.LocalizationButton.IgnoreAllWords.text,
                                                     title: 'Ignore all words',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
                                                         a.LocalizationButton.IgnoreAllWords.instance =
                                                             this;
@@ -1660,31 +1507,23 @@
                                                 {
                                                     type: 'button',
                                                     id: 'Options',
-                                                    label: a.LocalizationButton
-                                                        .Options.text,
+                                                    label: a.LocalizationButton.Options.text,
                                                     title: 'Option',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         a.LocalizationButton.Options.instance =
                                                             this;
-                                                        'file:' ==
-                                                            document.location
-                                                                .protocol &&
+                                                        'file:' == document.location.protocol &&
                                                             this.disable();
                                                     },
                                                     onClick: function () {
                                                         this.getElement().focus();
-                                                        'file:' ==
-                                                        document.location
-                                                            .protocol
+                                                        'file:' == document.location.protocol
                                                             ? alert(
-                                                                  'WSC: Options functionality is disabled when runing from file system'
+                                                                  'WSC: Options functionality is disabled when runing from file system',
                                                               )
-                                                            : ((z =
-                                                                  document.activeElement),
-                                                              b.openDialog(
-                                                                  'options'
-                                                              ));
+                                                            : ((z = document.activeElement),
+                                                              b.openDialog('options'));
                                                     },
                                                 },
                                             ],
@@ -1717,8 +1556,7 @@
                                             type: 'vbox',
                                             id: 'rightCol1',
                                             setup: function () {
-                                                this.getChild()[0].getElement().$.src =
-                                                    a.logotype;
+                                                this.getChild()[0].getElement().$.src = a.logotype;
                                                 this.getChild()[0]
                                                     .getElement()
                                                     .getParent()
@@ -1749,47 +1587,38 @@
                                                 {
                                                     type: 'button',
                                                     id: 'Option_button',
-                                                    label: a.LocalizationButton
-                                                        .Options.text,
+                                                    label: a.LocalizationButton.Options.text,
                                                     title: 'Option',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
-                                                        'file:' ==
-                                                            document.location
-                                                                .protocol &&
+                                                        'file:' == document.location.protocol &&
                                                             this.disable();
                                                     },
                                                     onClick: function () {
                                                         this.getElement().focus();
-                                                        'file:' ==
-                                                        document.location
-                                                            .protocol
+                                                        'file:' == document.location.protocol
                                                             ? alert(
-                                                                  'WSC: Options functionality is disabled when runing from file system'
+                                                                  'WSC: Options functionality is disabled when runing from file system',
                                                               )
-                                                            : ((z =
-                                                                  document.activeElement),
-                                                              b.openDialog(
-                                                                  'options'
-                                                              ));
+                                                            : ((z = document.activeElement),
+                                                              b.openDialog('options'));
                                                     },
                                                 },
                                                 {
                                                     type: 'button',
                                                     id: 'FinishChecking_button_block',
                                                     label: a.LocalizationButton
-                                                        .FinishChecking_button_block
-                                                        .text,
+                                                        .FinishChecking_button_block.text,
                                                     title: 'Finish Checking',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'FinishChecking'
+                                                            'FinishChecking',
                                                         );
                                                     },
                                                     onClick: e,
@@ -1820,10 +1649,7 @@
                             label: 'GrammarContent',
                             html: '',
                             setup: function () {
-                                var b =
-                                        a.iframeNumber +
-                                        '_' +
-                                        a.dialog._.currentTabId,
+                                var b = a.iframeNumber + '_' + a.dialog._.currentTabId,
                                     c = document.getElementById(b);
                                 a.targetFromFrame[b] = c.contentWindow;
                             },
@@ -1848,12 +1674,10 @@
                                                     labelLayout: 'horizontal',
                                                     labelStyle:
                                                         'font: 12px/25px arial, sans-serif;',
-                                                    inputStyle:
-                                                        'float: right; width: 200px;',
+                                                    inputStyle: 'float: right; width: 200px;',
                                                     default: '',
                                                     onShow: function () {
-                                                        a.textNode.GrammTab =
-                                                            this;
+                                                        a.textNode.GrammTab = this;
                                                     },
                                                     onHide: function () {
                                                         this.reset();
@@ -1864,8 +1688,7 @@
                                                     id: 'html_text',
                                                     html: "\x3cdiv style\x3d'min-height: 17px; line-height: 17px; padding: 5px; text-align: left;background: #F1F1F1;color: #595959; white-space: normal!important;'\x3e\x3c/div\x3e",
                                                     onShow: function (b) {
-                                                        a.textNodeInfo.GrammTab =
-                                                            this;
+                                                        a.textNodeInfo.GrammTab = this;
                                                     },
                                                 },
                                                 {
@@ -1890,7 +1713,7 @@
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'ChangeTo'
+                                                            'ChangeTo',
                                                         );
                                                     },
                                                     onClick: e,
@@ -1904,7 +1727,7 @@
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
                                                     },
                                                     onClick: e,
@@ -1918,7 +1741,7 @@
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            this.id
+                                                            this.id,
                                                         );
                                                     },
                                                     onClick: e,
@@ -1927,14 +1750,13 @@
                                                     type: 'button',
                                                     id: 'FinishChecking_button',
                                                     label: a.LocalizationButton
-                                                        .FinishChecking_button
-                                                        .text,
+                                                        .FinishChecking_button.text,
                                                     title: 'Finish Checking',
                                                     style: 'width: 133px; float: right; margin-top: 9px;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'FinishChecking'
+                                                            'FinishChecking',
                                                         );
                                                     },
                                                     onClick: e,
@@ -1974,14 +1796,10 @@
                                                     id: 'logo',
                                                     html: '',
                                                     setup: function () {
-                                                        this.getElement().$.src =
-                                                            a.logotype;
-                                                        this.getElement()
-                                                            .getParent()
-                                                            .setStyles({
-                                                                'text-align':
-                                                                    'center',
-                                                            });
+                                                        this.getElement().$.src = a.logotype;
+                                                        this.getElement().getParent().setStyles({
+                                                            'text-align': 'center',
+                                                        });
                                                     },
                                                 },
                                             ],
@@ -2002,14 +1820,13 @@
                                                     type: 'button',
                                                     id: 'FinishChecking_button_block',
                                                     label: a.LocalizationButton
-                                                        .FinishChecking_button_block
-                                                        .text,
+                                                        .FinishChecking_button_block.text,
                                                     title: 'Finish Checking',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'FinishChecking'
+                                                            'FinishChecking',
                                                         );
                                                     },
                                                     onClick: e,
@@ -2040,10 +1857,7 @@
                             label: 'spellContent',
                             html: '',
                             setup: function () {
-                                var b =
-                                        a.iframeNumber +
-                                        '_' +
-                                        a.dialog._.currentTabId,
+                                var b = a.iframeNumber + '_' + a.dialog._.currentTabId,
                                     c = document.getElementById(b);
                                 a.targetFromFrame[b] = c.contentWindow;
                             },
@@ -2068,22 +1882,15 @@
                                                             type: 'text',
                                                             id: 'ChangeTo_label',
                                                             label:
-                                                                a
-                                                                    .LocalizationLabel
-                                                                    .ChangeTo_label
+                                                                a.LocalizationLabel.ChangeTo_label
                                                                     .text + ':',
-                                                            labelLayout:
-                                                                'horizontal',
-                                                            inputStyle:
-                                                                'width: 160px;',
+                                                            labelLayout: 'horizontal',
+                                                            inputStyle: 'width: 160px;',
                                                             labelStyle:
                                                                 'font: 12px/25px arial, sans-serif;',
                                                             default: '',
-                                                            onShow: function (
-                                                                b
-                                                            ) {
-                                                                a.textNode.Thesaurus =
-                                                                    this;
+                                                            onShow: function (b) {
+                                                                a.textNode.Thesaurus = this;
                                                                 a.LocalizationLabel.ChangeTo_label.instance =
                                                                     this;
                                                             },
@@ -2094,16 +1901,14 @@
                                                         {
                                                             type: 'button',
                                                             id: 'ChangeTo_button',
-                                                            label: a
-                                                                .LocalizationButton
-                                                                .ChangeTo_button
-                                                                .text,
+                                                            label: a.LocalizationButton
+                                                                .ChangeTo_button.text,
                                                             title: 'Change to',
                                                             style: 'width: 121px; margin-top: 1px;',
                                                             onLoad: function () {
                                                                 this.getElement().setAttribute(
                                                                     'title-cmd',
-                                                                    'ChangeTo'
+                                                                    'ChangeTo',
                                                                 );
                                                                 a.LocalizationButton.ChangeTo_button.instance =
                                                                     this;
@@ -2119,9 +1924,7 @@
                                                             type: 'select',
                                                             id: 'Categories',
                                                             label:
-                                                                a
-                                                                    .LocalizationLabel
-                                                                    .Categories
+                                                                a.LocalizationLabel.Categories
                                                                     .text + ':',
                                                             labelStyle:
                                                                 'font: 12px/25px arial, sans-serif;',
@@ -2130,26 +1933,22 @@
                                                                 'width: 180px; height: auto;',
                                                             items: [],
                                                             onShow: function () {
-                                                                a.selectNode.Categories =
-                                                                    this;
+                                                                a.selectNode.Categories = this;
                                                                 a.LocalizationLabel.Categories.instance =
                                                                     this;
                                                             },
-                                                            onChange:
-                                                                function () {
-                                                                    a.buildOptionSynonyms(
-                                                                        this.getValue()
-                                                                    );
-                                                                },
+                                                            onChange: function () {
+                                                                a.buildOptionSynonyms(
+                                                                    this.getValue(),
+                                                                );
+                                                            },
                                                         },
                                                         {
                                                             type: 'select',
                                                             id: 'Synonyms',
                                                             label:
-                                                                a
-                                                                    .LocalizationLabel
-                                                                    .Synonyms
-                                                                    .text + ':',
+                                                                a.LocalizationLabel.Synonyms.text +
+                                                                ':',
                                                             labelStyle:
                                                                 'font: 12px/25px arial, sans-serif;',
                                                             size: '5',
@@ -2157,19 +1956,16 @@
                                                                 'width: 180px; height: auto;',
                                                             items: [],
                                                             onShow: function () {
-                                                                a.selectNode.Synonyms =
-                                                                    this;
+                                                                a.selectNode.Synonyms = this;
                                                                 a.textNode.Thesaurus.setValue(
-                                                                    this.getValue()
+                                                                    this.getValue(),
                                                                 );
                                                                 a.LocalizationLabel.Synonyms.instance =
                                                                     this;
                                                             },
-                                                            onChange: function (
-                                                                b
-                                                            ) {
+                                                            onChange: function (b) {
                                                                 a.textNode.Thesaurus.setValue(
-                                                                    this.getValue()
+                                                                    this.getValue(),
                                                                 );
                                                             },
                                                         },
@@ -2188,28 +1984,23 @@
                                                     label: 'WebSpellChecker.net',
                                                     html: '',
                                                     setup: function () {
-                                                        this.getElement().$.src =
-                                                            a.logotype;
-                                                        this.getElement()
-                                                            .getParent()
-                                                            .setStyles({
-                                                                'text-align':
-                                                                    'center',
-                                                            });
+                                                        this.getElement().$.src = a.logotype;
+                                                        this.getElement().getParent().setStyles({
+                                                            'text-align': 'center',
+                                                        });
                                                     },
                                                 },
                                                 {
                                                     type: 'button',
                                                     id: 'FinishChecking_button',
                                                     label: a.LocalizationButton
-                                                        .FinishChecking_button
-                                                        .text,
+                                                        .FinishChecking_button.text,
                                                     title: 'Finish Checking',
                                                     style: 'width: 100%; float: right; margin-top: 9px;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'FinishChecking'
+                                                            'FinishChecking',
                                                         );
                                                     },
                                                     onClick: e,
@@ -2248,14 +2039,10 @@
                                                     id: 'logo',
                                                     html: '',
                                                     setup: function () {
-                                                        this.getElement().$.src =
-                                                            a.logotype;
-                                                        this.getElement()
-                                                            .getParent()
-                                                            .setStyles({
-                                                                'text-align':
-                                                                    'center',
-                                                            });
+                                                        this.getElement().$.src = a.logotype;
+                                                        this.getElement().getParent().setStyles({
+                                                            'text-align': 'center',
+                                                        });
                                                     },
                                                 },
                                             ],
@@ -2276,14 +2063,13 @@
                                                     type: 'button',
                                                     id: 'FinishChecking_button_block',
                                                     label: a.LocalizationButton
-                                                        .FinishChecking_button_block
-                                                        .text,
+                                                        .FinishChecking_button_block.text,
                                                     title: 'Finish Checking',
                                                     style: 'width: 100%;',
                                                     onLoad: function () {
                                                         this.getElement().setAttribute(
                                                             'title-cmd',
-                                                            'FinishChecking'
+                                                            'FinishChecking',
                                                         );
                                                     },
                                                     onClick: e,
@@ -2319,9 +2105,7 @@
             g.cookie.set('osp', a);
             g.cookie.set('udnCmd', h ? h : 'ignore');
             'delete' != h &&
-                ((a = ''),
-                '' !== t.getValue() && (a = t.getValue()),
-                g.cookie.set('udn', a));
+                ((a = ''), '' !== t.getValue() && (a = t.getValue()), g.cookie.set('udn', a));
             g.postMessage.send({ id: 'options_dic_send' });
         };
         var k = function () {
@@ -2383,13 +2167,11 @@
                                                                 'margin-left: 5px; font: 12px/16px arial, sans-serif;display: inline-block;white-space: normal;',
                                                             style: 'float:left; min-height: 16px;',
                                                             default: '',
-                                                            onClick:
-                                                                function () {
-                                                                    e[this.id] =
-                                                                        this.getValue()
-                                                                            ? 1
-                                                                            : 0;
-                                                                },
+                                                            onClick: function () {
+                                                                e[this.id] = this.getValue()
+                                                                    ? 1
+                                                                    : 0;
+                                                            },
                                                         },
                                                         {
                                                             type: 'checkbox',
@@ -2399,13 +2181,11 @@
                                                                 'margin-left: 5px; font: 12px/16px arial, sans-serif;display: inline-block;white-space: normal;',
                                                             style: 'float:left; min-height: 16px;',
                                                             default: '',
-                                                            onClick:
-                                                                function () {
-                                                                    e[this.id] =
-                                                                        this.getValue()
-                                                                            ? 1
-                                                                            : 0;
-                                                                },
+                                                            onClick: function () {
+                                                                e[this.id] = this.getValue()
+                                                                    ? 1
+                                                                    : 0;
+                                                            },
                                                         },
                                                         {
                                                             type: 'checkbox',
@@ -2415,13 +2195,11 @@
                                                                 'margin-left: 5px; font: 12px/16px arial, sans-serif;display: inline-block;white-space: normal;',
                                                             style: 'float:left; min-height: 16px;',
                                                             default: '',
-                                                            onClick:
-                                                                function () {
-                                                                    e[this.id] =
-                                                                        this.getValue()
-                                                                            ? 1
-                                                                            : 0;
-                                                                },
+                                                            onClick: function () {
+                                                                e[this.id] = this.getValue()
+                                                                    ? 1
+                                                                    : 0;
+                                                            },
                                                         },
                                                         {
                                                             type: 'checkbox',
@@ -2431,13 +2209,11 @@
                                                                 'margin-left: 5px; font: 12px/16px arial, sans-serif;display: inline-block;white-space: normal;',
                                                             style: 'float:left; min-height: 16px;',
                                                             default: '',
-                                                            onClick:
-                                                                function () {
-                                                                    e[this.id] =
-                                                                        this.getValue()
-                                                                            ? 1
-                                                                            : 0;
-                                                                },
+                                                            onClick: function () {
+                                                                e[this.id] = this.getValue()
+                                                                    ? 1
+                                                                    : 0;
+                                                            },
                                                         },
                                                     ],
                                                 },
@@ -2458,28 +2234,20 @@
                                                     default: '',
                                                     onLoad: function () {
                                                         t = this;
-                                                        var b =
-                                                            a.userDictionaryName
-                                                                ? a.userDictionaryName
-                                                                : (g.cookie.get(
-                                                                      'udn'
-                                                                  ),
-                                                                  this.getValue());
+                                                        var b = a.userDictionaryName
+                                                            ? a.userDictionaryName
+                                                            : (g.cookie.get('udn'),
+                                                              this.getValue());
                                                         this.setValue(b);
                                                     },
                                                     onShow: function () {
                                                         t = this;
-                                                        var b = g.cookie.get(
-                                                            'udn'
-                                                        )
-                                                            ? g.cookie.get(
-                                                                  'udn'
-                                                              )
+                                                        var b = g.cookie.get('udn')
+                                                            ? g.cookie.get('udn')
                                                             : this.getValue();
                                                         this.setValue(b);
                                                         this.setLabel(
-                                                            a.LocalizationComing
-                                                                .DictionaryName
+                                                            a.LocalizationComing.DictionaryName,
                                                         );
                                                     },
                                                     onHide: function () {
@@ -2493,10 +2261,7 @@
                                                         {
                                                             type: 'vbox',
                                                             id: 'Options_leftCol_col',
-                                                            widths: [
-                                                                '50%',
-                                                                '50%',
-                                                            ],
+                                                            widths: ['50%', '50%'],
                                                             children: [
                                                                 {
                                                                     type: 'button',
@@ -2507,8 +2272,7 @@
                                                                     onLoad: function () {
                                                                         this.getElement().setAttribute(
                                                                             'title-cmd',
-                                                                            this
-                                                                                .id
+                                                                            this.id,
                                                                         );
                                                                     },
                                                                     onShow: function () {
@@ -2516,9 +2280,8 @@
                                                                             this.getElement().getFirst() ||
                                                                             this.getElement()
                                                                         ).setText(
-                                                                            a
-                                                                                .LocalizationComing
-                                                                                .Create
+                                                                            a.LocalizationComing
+                                                                                .Create,
                                                                         );
                                                                     },
                                                                     onClick: b,
@@ -2532,8 +2295,7 @@
                                                                     onLoad: function () {
                                                                         this.getElement().setAttribute(
                                                                             'title-cmd',
-                                                                            this
-                                                                                .id
+                                                                            this.id,
                                                                         );
                                                                     },
                                                                     onShow: function () {
@@ -2541,9 +2303,8 @@
                                                                             this.getElement().getFirst() ||
                                                                             this.getElement()
                                                                         ).setText(
-                                                                            a
-                                                                                .LocalizationComing
-                                                                                .Restore
+                                                                            a.LocalizationComing
+                                                                                .Restore,
                                                                         );
                                                                     },
                                                                     onClick: b,
@@ -2553,10 +2314,7 @@
                                                         {
                                                             type: 'vbox',
                                                             id: 'Options_rightCol_col',
-                                                            widths: [
-                                                                '50%',
-                                                                '50%',
-                                                            ],
+                                                            widths: ['50%', '50%'],
                                                             children: [
                                                                 {
                                                                     type: 'button',
@@ -2567,8 +2325,7 @@
                                                                     onLoad: function () {
                                                                         this.getElement().setAttribute(
                                                                             'title-cmd',
-                                                                            this
-                                                                                .id
+                                                                            this.id,
                                                                         );
                                                                     },
                                                                     onShow: function () {
@@ -2576,9 +2333,8 @@
                                                                             this.getElement().getFirst() ||
                                                                             this.getElement()
                                                                         ).setText(
-                                                                            a
-                                                                                .LocalizationComing
-                                                                                .Rename
+                                                                            a.LocalizationComing
+                                                                                .Rename,
                                                                         );
                                                                     },
                                                                     onClick: b,
@@ -2592,8 +2348,7 @@
                                                                     onLoad: function () {
                                                                         this.getElement().setAttribute(
                                                                             'title-cmd',
-                                                                            this
-                                                                                .id
+                                                                            this.id,
                                                                         );
                                                                     },
                                                                     onShow: function () {
@@ -2601,9 +2356,8 @@
                                                                             this.getElement().getFirst() ||
                                                                             this.getElement()
                                                                         ).setText(
-                                                                            a
-                                                                                .LocalizationComing
-                                                                                .Remove
+                                                                            a.LocalizationComing
+                                                                                .Remove,
                                                                         );
                                                                     },
                                                                     onClick: b,
@@ -2625,13 +2379,11 @@
                                             style: 'text-align: justify;margin-top: 15px;white-space: normal!important; font-size: 12px;color:#777;',
                                             html:
                                                 '\x3cdiv\x3e' +
-                                                a.LocalizationComing
-                                                    .OptionsTextIntro +
+                                                a.LocalizationComing.OptionsTextIntro +
                                                 '\x3c/div\x3e',
                                             onShow: function () {
                                                 this.getElement().setText(
-                                                    a.LocalizationComing
-                                                        .OptionsTextIntro
+                                                    a.LocalizationComing.OptionsTextIntro,
                                                 );
                                             },
                                         },
@@ -2657,22 +2409,10 @@
             },
             onLoad: function () {
                 d = this;
-                c.IgnoreAllCapsWords = d.getContentElement(
-                    'OptionsTab',
-                    'IgnoreAllCapsWords'
-                );
-                c.IgnoreWordsNumbers = d.getContentElement(
-                    'OptionsTab',
-                    'IgnoreWordsNumbers'
-                );
-                c.IgnoreMixedCaseWords = d.getContentElement(
-                    'OptionsTab',
-                    'IgnoreMixedCaseWords'
-                );
-                c.IgnoreDomainNames = d.getContentElement(
-                    'OptionsTab',
-                    'IgnoreDomainNames'
-                );
+                c.IgnoreAllCapsWords = d.getContentElement('OptionsTab', 'IgnoreAllCapsWords');
+                c.IgnoreWordsNumbers = d.getContentElement('OptionsTab', 'IgnoreWordsNumbers');
+                c.IgnoreMixedCaseWords = d.getContentElement('OptionsTab', 'IgnoreMixedCaseWords');
+                c.IgnoreDomainNames = d.getContentElement('OptionsTab', 'IgnoreDomainNames');
             },
             onShow: function () {
                 g.postMessage.init(k);
@@ -2695,9 +2435,7 @@
                     : c.IgnoreDomainNames.setValue('', !1);
                 e.IgnoreAllCapsWords = c.IgnoreAllCapsWords.getValue() ? 1 : 0;
                 e.IgnoreWordsNumbers = c.IgnoreWordsNumbers.getValue() ? 1 : 0;
-                e.IgnoreMixedCaseWords = c.IgnoreMixedCaseWords.getValue()
-                    ? 1
-                    : 0;
+                e.IgnoreMixedCaseWords = c.IgnoreMixedCaseWords.getValue() ? 1 : 0;
                 e.IgnoreDomainNames = c.IgnoreDomainNames.getValue() ? 1 : 0;
                 c.IgnoreAllCapsWords.getElement().$.lastChild.innerHTML =
                     a.LocalizationComing.IgnoreAllCapsWords;
@@ -2720,9 +2458,7 @@
     CKEDITOR.dialog.on('resize', function (b) {
         b = b.data;
         var d = b.dialog,
-            c = CKEDITOR.document.getById(
-                a.iframeNumber + '_' + d._.currentTabId
-            );
+            c = CKEDITOR.document.getById(a.iframeNumber + '_' + d._.currentTabId);
         'checkspell' == d._.name &&
             (a.bnr
                 ? c && c.setSize('height', b.height - 310)
@@ -2744,16 +2480,14 @@
                 function (b) {
                     d.dialog
                         .getParentEditor()
-                        .config.wsc_onClose.call(
-                            this.document.getWindow().getFrame()
-                        );
+                        .config.wsc_onClose.call(this.document.getWindow().getFrame());
                     a.div_overlay.setDisable();
                     a.onLoadOverlay.setDisable();
                     return !1;
                 },
                 this,
                 null,
-                -1
+                -1,
             );
         }
     });

@@ -29,10 +29,7 @@ exports.allManager = async (req, res) => {
 };
 
 exports.allUser = async (req, res) => {
-    const users = await userModel
-        .find({})
-        .sort({ createdAt: -1 })
-        .populate('accountId');
+    const users = await userModel.find({}).sort({ createdAt: -1 }).populate('accountId');
 
     res.json(users);
 };

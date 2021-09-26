@@ -71,12 +71,10 @@ CKEDITOR.lang['zh'] = {
         invalidValue: '無效值。',
         invalidHeight: '高度必須為數字。',
         invalidWidth: '寬度必須為數字。',
-        invalidLength:
-            '為「%1」欄位指定的值必須為正值，可包含或不包含測量單位（%2）。',
+        invalidLength: '為「%1」欄位指定的值必須為正值，可包含或不包含測量單位（%2）。',
         invalidCssLength:
             '「%1」的值應為正數，並可包含有效的 CSS 單位 (px, %, in, cm, mm, em, ex, pt, 或 pc)。',
-        invalidHtmlLength:
-            '「%1」的值應為正數，並可包含有效的 HTML 單位 (px 或 %)。',
+        invalidHtmlLength: '「%1」的值應為正數，並可包含有效的 HTML 單位 (px 或 %)。',
         invalidInlineStyle:
             '行內樣式的值應包含一個以上的變數值組，其格式如「名稱:值」，並以分號區隔之。',
         cssLengthTooltip:
@@ -163,8 +161,7 @@ CKEDITOR.lang['zh'] = {
         cutError:
             '瀏覽器的安全性設定不允許編輯器自動執行剪下動作。請使用鏐盤快捷鍵 (Ctrl/Cmd+X) 剪下。',
         paste: '貼上',
-        pasteNotification:
-            '請按下「%1」貼上。您的瀏覽器不支援工具列按鈕或是內容功能表選項。',
+        pasteNotification: '請按下「%1」貼上。您的瀏覽器不支援工具列按鈕或是內容功能表選項。',
         pasteArea: '貼上區',
         pasteMsg: '請將您的內容貼於下方區域中並按下「OK」。',
     },
@@ -568,8 +565,7 @@ CKEDITOR.lang['zh'] = {
     pagebreak: { alt: '換頁', toolbar: '插入換頁符號以便列印' },
     pastetext: {
         button: '貼成純文字',
-        pasteNotification:
-            '請按下「%1」貼上。您的瀏覽器不支援工具列按鈕或是內容功能表選項。 ',
+        pasteNotification: '請按下「%1」貼上。您的瀏覽器不支援工具列按鈕或是內容功能表選項。 ',
         title: '貼成純文字',
     },
     pastefromword: {
@@ -685,7 +681,6 @@ CKEDITOR.lang['zh'] = {
         doneOne: '檔案成功上傳。',
         doneMany: '成功上傳 %1 檔案。',
         uploadOne: '正在上傳檔案（{percentage}%）...',
-        uploadMany:
-            '正在上傳檔案，{max} 中的 {current} 已完成（{percentage}%）...',
+        uploadMany: '正在上傳檔案，{max} 中的 {current} 已完成（{percentage}%）...',
     },
 };

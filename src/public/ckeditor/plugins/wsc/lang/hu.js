@@ -6,8 +6,7 @@
     btnUndo: 'Visszavonás',
     changeTo: 'Módosítás',
     errorLoading: 'Hiba a szolgáltatás host betöltése közben: %s.',
-    ieSpellDownload:
-        'A helyesírás-ellenőrző nincs telepítve. Szeretné letölteni most?',
+    ieSpellDownload: 'A helyesírás-ellenőrző nincs telepítve. Szeretné letölteni most?',
     manyChanges: 'Helyesírás-ellenőrzés kész: %1 szó cserélve',
     noChanges: 'Helyesírás-ellenőrzés kész: Nincs változtatott szó',
     noMispell: 'Helyesírás-ellenőrzés kész: Nem találtam hibát',

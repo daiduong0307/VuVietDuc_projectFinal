@@ -16,8 +16,7 @@
             var b, c;
             if (a && 'tr' === a.name) {
                 b = a.children;
-                for (c = 0; c < f.length && b[c]; c++)
-                    b[c].attributes.width = f[c];
+                for (c = 0; c < f.length && b[c]; c++) b[c].attributes.width = f[c];
                 d(a.next, f);
             }
         }
@@ -33,7 +32,7 @@
                 function (a, b) {
                     return a + b;
                 },
-                0
+                0,
             );
         })(b);
         c.attributes.width = a;
@@ -47,7 +46,7 @@
                     ? a.children[0]
                     : a;
             })(c),
-            b
+            b,
         );
     }
     var e = CKEDITOR.plugins.pastetools,
@@ -82,21 +81,13 @@
                     },
                     colgroup: k,
                     span: function (a) {
-                        c.createStyleStack(
-                            a,
-                            l,
-                            e,
-                            /vertical-align|white-space|font-variant/
-                        );
+                        c.createStyleStack(a, l, e, /vertical-align|white-space|font-variant/);
                         var b = /vertical-align:\s*sub/,
                             d = a.attributes.style;
                         /vertical-align:\s*super/.test(d)
                             ? (a.name = 'sup')
                             : b.test(d) && (a.name = 'sub');
-                        a.attributes.style = d.replace(
-                            /vertical-align\s*.+?;?/,
-                            ''
-                        );
+                        a.attributes.style = d.replace(/vertical-align\s*.+?;?/, '');
                     },
                     b: function (a) {
                         d.elements.replaceWithChildren(a);

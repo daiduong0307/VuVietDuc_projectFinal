@@ -13,10 +13,7 @@
         C = t.createAttributeStack,
         z = t.lists.getElementIndentation,
         D = ['o:p', 'xml', 'script', 'meta', 'link'],
-        E =
-            'v:arc v:curve v:line v:oval v:polyline v:rect v:roundrect v:group'.split(
-                ' '
-            ),
+        E = 'v:arc v:curve v:line v:oval v:polyline v:rect v:roundrect v:group'.split(' '),
         A = {},
         y = 0,
         q = {},
@@ -26,17 +23,14 @@
     CKEDITOR.plugins.pastefromword = q;
     q.rules = function (c, b, d) {
         function e(a) {
-            (a.attributes['o:gfxdata'] || 'v:group' === a.parent.name) &&
-                l.push(a.attributes.id);
+            (a.attributes['o:gfxdata'] || 'v:group' === a.parent.name) && l.push(a.attributes.id);
         }
         var f = Boolean(c.match(/mso-list:\s*l\d+\s+level\d+\s+lfo\d+/)),
             l = [],
             w = {
                 root: function (a) {
                     a.filterChildren(d);
-                    CKEDITOR.plugins.pastefromword.lists.cleanup(
-                        g.createLists(a)
-                    );
+                    CKEDITOR.plugins.pastefromword.lists.cleanup(g.createLists(a));
                 },
                 elementNames: [
                     [/^\?xml:namespace$/, ''],
@@ -55,27 +49,17 @@
                                 return;
                             }
                         }
-                        if (
-                            a.attributes.href &&
-                            a.attributes.href.match(/#.+$/)
-                        ) {
+                        if (a.attributes.href && a.attributes.href.match(/#.+$/)) {
                             var b = a.attributes.href.match(/#(.+)$/)[1];
                             A[b] = a;
                         }
                         a.attributes.name &&
                             A[a.attributes.name] &&
                             ((a = A[a.attributes.name]),
-                            (a.attributes.href = a.attributes.href.replace(
-                                /.*#(.*)$/,
-                                '#$1'
-                            )));
+                            (a.attributes.href = a.attributes.href.replace(/.*#(.*)$/, '#$1')));
                     },
                     div: function (a) {
-                        if (
-                            b.plugins.pagebreak &&
-                            a.attributes['data-cke-pagebreak']
-                        )
-                            return a;
+                        if (b.plugins.pagebreak && a.attributes['data-cke-pagebreak']) return a;
                         k.createStyleStack(a, d, b);
                     },
                     img: function (a) {
@@ -91,9 +75,7 @@
                             a.attributes.alt &&
                             a.attributes.alt.match(/^https?:\/\//) &&
                             (a.attributes.src = a.attributes.alt);
-                        a = a.attributes['v:shapes']
-                            ? a.attributes['v:shapes'].split(' ')
-                            : [];
+                        a = a.attributes['v:shapes'] ? a.attributes['v:shapes'].split(' ') : [];
                         b = CKEDITOR.tools.array.every(a, function (a) {
                             return -1 < l.indexOf(a);
                         });
@@ -101,10 +83,7 @@
                     },
                     p: function (a) {
                         a.filterChildren(d);
-                        if (
-                            a.attributes.style &&
-                            a.attributes.style.match(/display:\s*none/i)
-                        )
+                        if (a.attributes.style && a.attributes.style.match(/display:\s*none/i))
                             return !1;
                         if (g.thisIsAListItem(b, a))
                             p.isEdgeListItem(b, a) && p.cleanupEdgeListItem(a),
@@ -114,14 +93,14 @@
                                     function (a, b) {
                                         'p' === b.name &&
                                             (0 < a &&
-                                                new CKEDITOR.htmlParser.element(
-                                                    'br'
-                                                ).insertBefore(b),
+                                                new CKEDITOR.htmlParser.element('br').insertBefore(
+                                                    b,
+                                                ),
                                             b.replaceWithChildren(),
                                             (a += 1));
                                         return a;
                                     },
-                                    0
+                                    0,
                                 );
                         else {
                             var c = a.getAscendant(function (a) {
@@ -135,53 +114,43 @@
                                 (c.attributes['cke-list-level'] =
                                     f['mso-list'].match(/level(\d+)/)[1]);
                             b.config.enterMode == CKEDITOR.ENTER_BR &&
-                                (delete a.name,
-                                a.add(new CKEDITOR.htmlParser.element('br')));
+                                (delete a.name, a.add(new CKEDITOR.htmlParser.element('br')));
                         }
                         k.createStyleStack(a, d, b);
                     },
                     pre: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     h1: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     h2: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     h3: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     h4: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     h5: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     h6: function (a) {
-                        g.thisIsAListItem(b, a) &&
-                            g.convertToFakeListItem(b, a);
+                        g.thisIsAListItem(b, a) && g.convertToFakeListItem(b, a);
                         k.createStyleStack(a, d, b);
                     },
                     font: function (a) {
                         if (a.getHtml().match(/^\s*$/))
                             return (
                                 a.parent.type === CKEDITOR.NODE_ELEMENT &&
-                                    new CKEDITOR.htmlParser.text(
-                                        ' '
-                                    ).insertAfter(a),
+                                    new CKEDITOR.htmlParser.text(' ').insertAfter(a),
                                 !1
                             );
                         b &&
@@ -189,10 +158,10 @@
                             a.attributes.size &&
                             delete a.attributes.size;
                         CKEDITOR.dtd.tr[a.parent.name] &&
-                        CKEDITOR.tools.arrayCompare(
-                            CKEDITOR.tools.object.keys(a.attributes),
-                            ['class', 'style']
-                        )
+                        CKEDITOR.tools.arrayCompare(CKEDITOR.tools.object.keys(a.attributes), [
+                            'class',
+                            'style',
+                        ])
                             ? k.createStyleStack(a, d, b)
                             : C(a, d);
                     },
@@ -201,11 +170,7 @@
                             return (
                                 'li' == a.parent.name &&
                                     0 === n.indexOf(a.parent.children, a) &&
-                                    k.setStyle(
-                                        a.parent,
-                                        'list-style-type',
-                                        'none'
-                                    ),
+                                    k.setStyle(a.parent, 'list-style-type', 'none'),
                                 g.dissolveList(a),
                                 !1
                             );
@@ -213,19 +178,14 @@
                     li: function (a) {
                         p.correctLevelShift(a);
                         f &&
-                            ((a.attributes.style = k.normalizedStyles(a, b)),
-                            k.pushStylesLower(a));
+                            ((a.attributes.style = k.normalizedStyles(a, b)), k.pushStylesLower(a));
                     },
                     ol: function (a) {
                         if (f)
                             return (
                                 'li' == a.parent.name &&
                                     0 === n.indexOf(a.parent.children, a) &&
-                                    k.setStyle(
-                                        a.parent,
-                                        'list-style-type',
-                                        'none'
-                                    ),
+                                    k.setStyle(a.parent, 'list-style-type', 'none'),
                                 g.dissolveList(a),
                                 !1
                             );
@@ -235,9 +195,7 @@
                         a.attributes.style = k.normalizedStyles(a, b);
                         if (
                             !a.attributes.style ||
-                            a.attributes.style.match(
-                                /^mso\-bookmark:OLE_LINK\d+$/
-                            ) ||
+                            a.attributes.style.match(/^mso\-bookmark:OLE_LINK\d+$/) ||
                             a.getHtml().match(/^(\s|&nbsp;)+$/)
                         )
                             return t.elements.replaceWithChildren(a), !1;
@@ -247,7 +205,7 @@
                                     a.value = a.value.replace(/&nbsp;/g, '');
                                 },
                                 CKEDITOR.NODE_TEXT,
-                                !0
+                                !0,
                             );
                         k.createStyleStack(a, d, b);
                     },
@@ -259,8 +217,7 @@
                             a.parent.find(function (c) {
                                 'img' == c.name &&
                                     c.attributes &&
-                                    c.attributes['v:shapes'] ==
-                                        a.attributes.id &&
+                                    c.attributes['v:shapes'] == a.attributes.id &&
                                     (b = !0);
                             }, !0);
                             if (b) return !1;
@@ -274,7 +231,7 @@
                                               (c = a.attributes.src);
                                       },
                                       CKEDITOR.NODE_ELEMENT,
-                                      !0
+                                      !0,
                                   ),
                                   a.filterChildren(d),
                                   (a.name = 'img'),
@@ -292,17 +249,11 @@
                         if (
                             b.plugins.pagebreak &&
                             ((a = n.parseCssText(a.attributes.style, !0)),
-                            'always' === a['page-break-before'] ||
-                                'page' === a['break-before'])
+                            'always' === a['page-break-before'] || 'page' === a['break-before'])
                         )
                             return (
-                                (a =
-                                    CKEDITOR.plugins.pagebreak.createElement(
-                                        b
-                                    )),
-                                CKEDITOR.htmlParser.fragment.fromHtml(
-                                    a.getOuterHtml()
-                                ).children[0]
+                                (a = CKEDITOR.plugins.pagebreak.createElement(b)),
+                                CKEDITOR.htmlParser.fragment.fromHtml(a.getOuterHtml()).children[0]
                             );
                     },
                 },
@@ -311,10 +262,7 @@
                         return k.normalizedStyles(c, b) || !1;
                     },
                     class: function (a) {
-                        a = a.replace(
-                            /(el\d+)|(font\d+)|msonormal|msolistparagraph\w*/gi,
-                            ''
-                        );
+                        a = a.replace(/(el\d+)|(font\d+)|msonormal|msolistparagraph\w*/gi, '');
                         return '' === a ? !1 : a;
                     },
                     cellspacing: r,
@@ -392,7 +340,7 @@
                     'cke:li' == c.name && ((c.name = 'li'), b.push(c));
                 },
                 CKEDITOR.NODE_ELEMENT,
-                !1
+                !1,
             );
             return b;
         },
@@ -430,12 +378,9 @@
                 c.attributes['cke-list-style-type'] = e['list-style-type'];
             } else
                 (f = { '·': 'disc', o: 'circle', '§': 'square' }),
-                    !e['list-style-type'] &&
-                        f[b] &&
-                        (e['list-style-type'] = f[b]);
+                    !e['list-style-type'] && f[b] && (e['list-style-type'] = f[b]);
             g.setListSymbol.removeRedundancies(e, d);
-            (c.attributes.style = CKEDITOR.tools.writeCssText(e)) ||
-                delete c.attributes.style;
+            (c.attributes.style = CKEDITOR.tools.writeCssText(e)) || delete c.attributes.style;
         },
         setListStart: function (c) {
             for (var b = [], d = 0, e = 0; e < c.children.length; e++)
@@ -444,23 +389,17 @@
             switch (c.attributes['cke-list-style-type']) {
                 case 'lower-roman':
                 case 'upper-roman':
-                    c.attributes.start =
-                        g.toArabic(g.getSubsectionSymbol(b[d])) - d;
+                    c.attributes.start = g.toArabic(g.getSubsectionSymbol(b[d])) - d;
                     break;
                 case 'lower-alpha':
                 case 'upper-alpha':
                     c.attributes.start =
-                        g
-                            .getSubsectionSymbol(b[d])
-                            .replace(/\W/g, '')
-                            .toLowerCase()
-                            .charCodeAt(0) -
+                        g.getSubsectionSymbol(b[d]).replace(/\W/g, '').toLowerCase().charCodeAt(0) -
                         96 -
                         d;
                     break;
                 case 'decimal':
-                    c.attributes.start =
-                        parseInt(g.getSubsectionSymbol(b[d]), 10) - d || 1;
+                    c.attributes.start = parseInt(g.getSubsectionSymbol(b[d]), 10) - d || 1;
             }
             '1' == c.attributes.start && delete c.attributes.start;
             delete c.attributes['cke-list-style-type'];
@@ -470,10 +409,7 @@
                 function d(b) {
                     b = b.toUpperCase();
                     for (var c = 1, d = 1; 0 < b.length; d *= 26)
-                        (c +=
-                            'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.indexOf(
-                                b.charAt(b.length - 1)
-                            ) * d),
+                        (c += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.indexOf(b.charAt(b.length - 1)) * d),
                             (b = b.substr(0, b.length - 1));
                     return c;
                 }
@@ -495,11 +431,7 @@
                     ];
                     b = b.toUpperCase();
                     for (var d = c.length, a = 0, e = 0; e < d; ++e)
-                        for (
-                            var g = c[e], u = g[1].length;
-                            b.substr(0, u) == g[1];
-                            b = b.substr(u)
-                        )
+                        for (var g = c[e], u = g[1].length; b.substr(0, u) == g[1]; b = b.substr(u))
                             a += g[0];
                     return a;
                 }
@@ -540,16 +472,14 @@
                 d = 0;
             c.forEach(function (c) {
                 'li' == c.name &&
-                    ('rtl' ==
-                    (c.attributes.dir || c.attributes.DIR || '').toLowerCase()
+                    ('rtl' == (c.attributes.dir || c.attributes.DIR || '').toLowerCase()
                         ? d++
                         : b++);
             }, CKEDITOR.ELEMENT_NODE);
             d > b && (c.attributes.dir = 'rtl');
         },
         createList: function (c) {
-            return (c.attributes['cke-symbol'].match(/([\da-np-zA-NP-Z]).?/) ||
-                [])[1]
+            return (c.attributes['cke-symbol'].match(/([\da-np-zA-NP-Z]).?/) || [])[1]
                 ? new CKEDITOR.htmlParser.element('ol')
                 : new CKEDITOR.htmlParser.element('ul');
         },
@@ -559,12 +489,10 @@
                     b,
                     function (b, a) {
                         if (a.attributes && a.attributes.style)
-                            var c = CKEDITOR.tools.parseCssText(
-                                a.attributes.style
-                            )['margin-left'];
+                            var c = CKEDITOR.tools.parseCssText(a.attributes.style)['margin-left'];
                         return c ? b + parseInt(c, 10) : b;
                     },
-                    0
+                    0,
                 );
             }
             var d,
@@ -600,18 +528,12 @@
                         h.push(v);
                         u.push(v);
                         m = v;
-                        e == h.length &&
-                            g.setListSymbol(v, d.attributes['cke-symbol'], e);
+                        e == h.length && g.setListSymbol(v, d.attributes['cke-symbol'], e);
                     }
                     for (; e < h.length; )
                         h.pop(),
                             (m = h[h.length - 1]),
-                            e == h.length &&
-                                g.setListSymbol(
-                                    m,
-                                    d.attributes['cke-symbol'],
-                                    e
-                                );
+                            e == h.length && g.setListSymbol(m, d.attributes['cke-symbol'], e);
                     d.remove();
                     m.add(d);
                 }
@@ -622,12 +544,10 @@
                         (f = h[0].children[1].attributes['cke-symbol']),
                     f && g.setListSymbol(h[0], f));
                 for (f = 0; f < u.length; f++) g.setListStart(u[f]);
-                for (f = 0; f < a.length; f++)
-                    this.determineListItemValue(a[f]);
+                for (f = 0; f < a.length; f++) this.determineListItemValue(a[f]);
             }
             CKEDITOR.tools.array.forEach(l, function (a) {
-                for (var c = [], d = a.parent; d; )
-                    'li' === d.name && c.push(d), (d = d.parent);
+                for (var c = [], d = a.parent; d; ) 'li' === d.name && c.push(d), (d = d.parent);
                 var c = b(c),
                     e;
                 c &&
@@ -661,9 +581,7 @@
                     e;
                 d &&
                     ((d = d[d.length - 1]),
-                    (e =
-                        c.parent.attributes['cke-list-style-type'] ||
-                        this.numbering.getStyle(d)),
+                    (e = c.parent.attributes['cke-list-style-type'] || this.numbering.getStyle(d)),
                     (d = this.numbering.toNumber(d, e)),
                     d !== b && (c.attributes.value = d));
             }
@@ -682,10 +600,7 @@
                         void 0 !== f.attributes.value &&
                         ((e = g), (d = parseInt(f.attributes.value, 10)));
             null === d &&
-                ((d =
-                    void 0 !== b.attributes.start
-                        ? parseInt(b.attributes.start, 10)
-                        : 1),
+                ((d = void 0 !== b.attributes.start ? parseInt(b.attributes.start, 10) : 1),
                 (e = 0));
             return d + (c - e);
         },
@@ -709,11 +624,7 @@
             }
             function d(a, b) {
                 function c(b, d) {
-                    return b && b.parent
-                        ? a(b.parent)
-                            ? c(b.parent, d + 1)
-                            : c(b.parent, d)
-                        : d;
+                    return b && b.parent ? (a(b.parent) ? c(b.parent, d + 1) : c(b.parent, d)) : d;
                 }
                 return c(b, 0);
             }
@@ -734,7 +645,7 @@
                     w.push(b);
                 },
                 CKEDITOR.NODE_ELEMENT,
-                !1
+                !1,
             );
             a = g.filter(w, e('li'));
             var m = g.filter(w, f);
@@ -742,8 +653,7 @@
                 var c = a.attributes.type,
                     h = parseInt(a.attributes.start, 10) || 1,
                     m = d(f, a) + 1;
-                c ||
-                    (c = n.parseCssText(a.attributes.style)['list-style-type']);
+                c || (c = n.parseCssText(a.attributes.style)['list-style-type']);
                 g.forEach(g.filter(a.children, e('li')), function (d, e) {
                     var f;
                     switch (c) {
@@ -801,11 +711,8 @@
                         k.setStyle(a, 'mso-list', d['mso-list'], !0);
                         k.setStyle(c, 'mso-list', '');
                         delete a['cke-list-level'];
-                        (c = d.display
-                            ? 'display'
-                            : d.DISPLAY
-                            ? 'DISPLAY'
-                            : '') && k.setStyle(a, 'display', d[c], !0);
+                        (c = d.display ? 'display' : d.DISPLAY ? 'DISPLAY' : '') &&
+                            k.setStyle(a, 'display', d[c], !0);
                     }
                     if (1 === a.children.length && f(a.children[0])) return b;
                     a.name = 'p';
@@ -813,7 +720,7 @@
                     b.push(a);
                     return b;
                 },
-                []
+                [],
             );
             for (h = a.length - 1; 0 <= h; h--) a[h].insertAfter(c);
             for (h = m.length - 1; 0 <= h; h--) delete m[h].name;
@@ -824,15 +731,12 @@
                 e = [[c[0]]],
                 f = e[0];
             d = c[0];
-            d.attributes['cke-indentation'] =
-                d.attributes['cke-indentation'] || z(d);
+            d.attributes['cke-indentation'] = d.attributes['cke-indentation'] || z(d);
             for (b = 1; b < c.length; b++) {
                 d = c[b];
                 var l = c[b - 1];
-                d.attributes['cke-indentation'] =
-                    d.attributes['cke-indentation'] || z(d);
-                d.previous !== l &&
-                    (g.chopDiscontinuousLists(f, e), e.push((f = [])));
+                d.attributes['cke-indentation'] = d.attributes['cke-indentation'] || z(d);
+                d.previous !== l && (g.chopDiscontinuousLists(f, e), e.push((f = [])));
                 f.push(d);
             }
             g.chopDiscontinuousLists(f, e);
@@ -845,25 +749,15 @@
                     h,
                     m;
                 k
-                    ? ((m =
-                          k.type.match(/alpha/) && 7 == k.index ? 'alpha' : m),
-                      (m =
-                          'o' == c[l].attributes['cke-symbol'] && 14 == k.index
-                              ? 'alpha'
-                              : m),
+                    ? ((m = k.type.match(/alpha/) && 7 == k.index ? 'alpha' : m),
+                      (m = 'o' == c[l].attributes['cke-symbol'] && 14 == k.index ? 'alpha' : m),
                       (h = g.getSymbolInfo(c[l].attributes['cke-symbol'], m)),
                       (a = this.getListItemInfo(c[l])),
                       (k.type != h.type ||
-                          (f &&
-                              a.id != f.id &&
-                              !this.isAListContinuation(c[l]))) &&
+                          (f && a.id != f.id && !this.isAListContinuation(c[l]))) &&
                           e.push([]))
                     : (h = g.getSymbolInfo(c[l].attributes['cke-symbol']));
-                for (
-                    f = parseInt(c[l].attributes['cke-list-level'], 10) + 1;
-                    20 > f;
-                    f++
-                )
+                for (f = parseInt(c[l].attributes['cke-list-level'], 10) + 1; 20 > f; f++)
                     d[f] && delete d[f];
                 d[c[l].attributes['cke-list-level']] = h;
                 e[e.length - 1].push(c[l]);
@@ -876,14 +770,8 @@
             do
                 if ((b = b.previous) && b.type === CKEDITOR.NODE_ELEMENT) {
                     if (void 0 === b.attributes['cke-list-level']) break;
-                    if (
-                        b.attributes['cke-list-level'] ===
-                        c.attributes['cke-list-level']
-                    )
-                        return (
-                            b.attributes['cke-list-id'] ===
-                            c.attributes['cke-list-id']
-                        );
+                    if (b.attributes['cke-list-level'] === c.attributes['cke-list-level'])
+                        return b.attributes['cke-list-id'] === c.attributes['cke-list-id'];
                 }
             while (b);
             return !1;
@@ -922,9 +810,7 @@
                     type: 'decimal',
                 };
             c = c.replace(/\W/g, '').toLowerCase();
-            return (!b && c.match(/[ivxl]+/i)) ||
-                (b && 'alpha' != b) ||
-                'roman' == b
+            return (!b && c.match(/[ivxl]+/i)) || (b && 'alpha' != b) || 'roman' == b
                 ? { index: g.toArabic(c), type: d + 'roman' }
                 : c.match(/[a-z]/i)
                 ? { index: c.charCodeAt(0) - 97, type: d + 'alpha' }
@@ -953,19 +839,13 @@
     g = q.lists;
     q.heuristics = {
         isEdgeListItem: function (c, b) {
-            if (
-                !CKEDITOR.env.edge ||
-                !c.config.pasteFromWord_heuristicsEdgeList
-            )
-                return !1;
+            if (!CKEDITOR.env.edge || !c.config.pasteFromWord_heuristicsEdgeList) return !1;
             var d = '';
             b.forEach &&
                 b.forEach(function (b) {
                     d += b.value;
                 }, CKEDITOR.NODE_TEXT);
-            return d.match(
-                /^(?: |&nbsp;)*\(?[a-zA-Z0-9]+?[\.\)](?: |&nbsp;){2,}/
-            )
+            return d.match(/^(?: |&nbsp;)*\(?[a-zA-Z0-9]+?[\.\)](?: |&nbsp;){2,}/)
                 ? !0
                 : p.isDegenerateListItem(c, b);
         },
@@ -989,15 +869,11 @@
                             c.getHtml().match(/^[a-zA-Z0-9]+?[\.\)]$/)
                         )
                             return !0;
-                        var e = n.parseCssText(
-                            c.attributes && c.attributes.style,
-                            !0
-                        );
+                        var e = n.parseCssText(c.attributes && c.attributes.style, !0);
                         if (!e) return !1;
                         var f = e['font-family'] || '';
                         return (
-                            ((e.font || e['font-size'] || '').match(/7pt/i) &&
-                                !!c.previous) ||
+                            ((e.font || e['font-size'] || '').match(/7pt/i) && !!c.previous) ||
                             f.match(/symbol/i)
                         );
                     }, !0).length)
@@ -1006,11 +882,7 @@
         assignListLevels: function (c, b) {
             if (!b.attributes || void 0 === b.attributes['cke-list-level']) {
                 for (
-                    var d = [z(b)],
-                        e = [b],
-                        f = [],
-                        g = CKEDITOR.tools.array,
-                        k = g.map;
+                    var d = [z(b)], e = [b], f = [], g = CKEDITOR.tools.array, k = g.map;
                     b.next &&
                     b.next.attributes &&
                     !b.next.attributes['cke-list-level'] &&
@@ -1024,7 +896,7 @@
                     h = this.guessIndentationStep(
                         g.filter(d, function (a) {
                             return 0 !== a;
-                        })
+                        }),
                     ),
                     f = k(d, function (a) {
                         return Math.round(a / h);
@@ -1051,14 +923,12 @@
                         b,
                         function (b, c) {
                             return (
-                                c.children &&
-                                1 == c.children.length &&
-                                p.isShifted(c.children[0])
+                                c.children && 1 == c.children.length && p.isShifted(c.children[0])
                                     ? [c]
                                     : c.children
                             ).concat(b);
                         },
-                        []
+                        [],
                     );
                 CKEDITOR.tools.array.forEach(b, function (b) {
                     b.remove();
@@ -1085,8 +955,7 @@
     };
     p = q.heuristics;
     g.setListSymbol.removeRedundancies = function (c, b) {
-        ((1 === b && 'disc' === c['list-style-type']) ||
-            'decimal' === c['list-style-type']) &&
+        ((1 === b && 'disc' === c['list-style-type']) || 'decimal' === c['list-style-type']) &&
             delete c['list-style-type'];
     };
     CKEDITOR.cleanWord = CKEDITOR.pasteFilters.word = B.createFilter({

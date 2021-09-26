@@ -21,8 +21,7 @@
                     this.commit(1, c);
                     a = [].concat(a);
                     for (var d = a.length, h, e = 0; e < d; e++)
-                        (h = b.getContentElement.apply(b, a[e].split(':'))) &&
-                            h.setup(1, c);
+                        (h = b.getContentElement.apply(b, a[e].split(':'))) && h.setup(1, c);
                 }
                 v = 0;
             }
@@ -39,19 +38,10 @@
                     ((c = b.originalElement),
                     'true' == c.getCustomData('isReady') &&
                         ('txtHeight' == this.id
-                            ? (a &&
-                                  '0' != a &&
-                                  (a = Math.round(
-                                      (a / c.$.height) * c.$.width
-                                  )),
+                            ? (a && '0' != a && (a = Math.round((a / c.$.height) * c.$.width)),
                               isNaN(a) || b.setValueOf('info', 'txtWidth', a))
-                            : (a &&
-                                  '0' != a &&
-                                  (a = Math.round(
-                                      (a / c.$.width) * c.$.height
-                                  )),
-                              isNaN(a) ||
-                                  b.setValueOf('info', 'txtHeight', a))));
+                            : (a && '0' != a && (a = Math.round((a / c.$.width) * c.$.height)),
+                              isNaN(a) || b.setValueOf('info', 'txtHeight', a))));
                 e(b);
             },
             e = function (a) {
@@ -65,18 +55,14 @@
                 var c = a.originalElement;
                 if (!c) return null;
                 if ('check' == b) {
-                    if (
-                        !a.userlockRatio &&
-                        'true' == c.getCustomData('isReady')
-                    ) {
+                    if (!a.userlockRatio && 'true' == c.getCustomData('isReady')) {
                         var d = a.getValueOf('info', 'txtWidth'),
                             h = a.getValueOf('info', 'txtHeight'),
                             c = c.$.width / c.$.height,
                             e = d / h;
                         a.lockRatio = !1;
                         d || h
-                            ? 1 == Math.round((c / e) * 100) / 100 &&
-                              (a.lockRatio = !0)
+                            ? 1 == Math.round((c / e) * 100) / 100 && (a.lockRatio = !0)
                             : (a.lockRatio = !0);
                     }
                 } else
@@ -84,9 +70,7 @@
                         ? (a.lockRatio = b)
                         : ((a.userlockRatio = 1), (a.lockRatio = !a.lockRatio));
                 d = CKEDITOR.document.getById(r);
-                a.lockRatio
-                    ? d.removeClass('cke_btn_unlocked')
-                    : d.addClass('cke_btn_unlocked');
+                a.lockRatio ? d.removeClass('cke_btn_unlocked') : d.addClass('cke_btn_unlocked');
                 d.setAttribute('aria-checked', a.lockRatio);
                 CKEDITOR.env.hc &&
                     d
@@ -98,7 +82,7 @@
                                     : '▣'
                                 : CKEDITOR.env.ie
                                 ? '□'
-                                : '▢'
+                                : '▢',
                         );
                 return a.lockRatio;
             },
@@ -117,9 +101,7 @@
             B = function (a, b) {
                 function c(a, b) {
                     var c = a.match(l);
-                    return c
-                        ? ('%' == c[2] && ((c[1] += '%'), m(d, !1)), c[1])
-                        : b;
+                    return c ? ('%' == c[2] && ((c[1] += '%'), m(d, !1)), c[1]) : b;
                 }
                 if (1 == a) {
                     var d = this.getDialog(),
@@ -140,15 +122,14 @@
                 a.removeListener('error', f);
                 a.removeListener('abort', f);
                 b && b.setStyle('display', 'none');
-                this.dontResetSize ||
-                    A(this, !1 === d.config.image_prefillDimensions);
+                this.dontResetSize || A(this, !1 === d.config.image_prefillDimensions);
                 this.firstLoad &&
                     CKEDITOR.tools.setTimeout(
                         function () {
                             m(this, 'check');
                         },
                         0,
-                        this
+                        this,
                     );
                 this.dontResetSize = this.firstLoad = !1;
                 e(this);
@@ -159,9 +140,7 @@
                 a.removeListener('load', t);
                 a.removeListener('error', f);
                 a.removeListener('abort', f);
-                a = CKEDITOR.getUrl(
-                    CKEDITOR.plugins.get('image').path + 'images/noimage.png'
-                );
+                a = CKEDITOR.getUrl(CKEDITOR.plugins.get('image').path + 'images/noimage.png');
                 this.preview && this.preview.setAttribute('src', a);
                 b && b.setStyle('display', 'none');
                 m(this, !1);
@@ -176,27 +155,15 @@
             C = p('previewImage');
         return {
             title: d.lang.image['image' == k ? 'title' : 'titleButton'],
-            minWidth:
-                'moono-lisa' == (CKEDITOR.skinName || d.config.skin)
-                    ? 500
-                    : 420,
+            minWidth: 'moono-lisa' == (CKEDITOR.skinName || d.config.skin) ? 500 : 420,
             minHeight: 360,
             getModel: function (a) {
-                var b =
-                        (a = a.getSelection().getSelectedElement()) &&
-                        'img' === a.getName(),
-                    c =
-                        a &&
-                        'input' === a.getName() &&
-                        'image' === a.getAttribute('type');
+                var b = (a = a.getSelection().getSelectedElement()) && 'img' === a.getName(),
+                    c = a && 'input' === a.getName() && 'image' === a.getAttribute('type');
                 return b || c ? a : null;
             },
             onShow: function () {
-                this.linkEditMode =
-                    this.imageEditMode =
-                    this.linkElement =
-                    this.imageElement =
-                        !1;
+                this.linkEditMode = this.imageEditMode = this.linkElement = this.imageElement = !1;
                 this.lockRatio = !0;
                 this.userlockRatio = 0;
                 this.dontResetSize = !1;
@@ -204,9 +171,7 @@
                 this.addLink = !1;
                 var a = this.getParentEditor(),
                     b = a.getSelection(),
-                    c =
-                        (b = b && b.getSelectedElement()) &&
-                        a.elementPath(b).contains('a', 1),
+                    c = (b = b && b.getSelectedElement()) && a.elementPath(b).contains('a', 1),
                     d = CKEDITOR.document.getById(n);
                 d && d.setStyle('display', 'none');
                 w = new CKEDITOR.dom.element('img', a.document);
@@ -225,8 +190,7 @@
                             ((this.imageElement = a.getItem(0)),
                             this.imageElement.is('img')
                                 ? (this.imageEditMode = 'img')
-                                : this.imageElement.is('input') &&
-                                  (this.imageEditMode = 'input'))),
+                                : this.imageElement.is('input') && (this.imageEditMode = 'input'))),
                     'image' == k && this.setupContent(2, c));
                 if (this.customImageElement)
                     (this.imageEditMode = 'img'),
@@ -234,9 +198,7 @@
                         delete this.customImageElement;
                 else if (
                     (b && 'img' == b.getName() && !b.data('cke-realelement')) ||
-                    (b &&
-                        'input' == b.getName() &&
-                        'image' == b.getAttribute('type'))
+                    (b && 'input' == b.getName() && 'image' == b.getAttribute('type'))
                 )
                     (this.imageEditMode = b.getName()), (this.imageElement = b);
                 this.imageEditMode &&
@@ -245,24 +207,17 @@
                     this.setupContent(1, this.imageElement));
                 m(this, !0);
                 CKEDITOR.tools.trim(this.getValueOf('info', 'txtUrl')) ||
-                    (this.preview.removeAttribute('src'),
-                    this.preview.setStyle('display', 'none'));
+                    (this.preview.removeAttribute('src'), this.preview.setStyle('display', 'none'));
             },
             onOk: function () {
                 if (this.imageEditMode) {
                     var a = this.imageEditMode;
-                    'image' == k &&
-                    'input' == a &&
-                    confirm(d.lang.image.button2Img)
-                        ? ((this.imageElement =
-                              d.document.createElement('img')),
+                    'image' == k && 'input' == a && confirm(d.lang.image.button2Img)
+                        ? ((this.imageElement = d.document.createElement('img')),
                           this.imageElement.setAttribute('alt', ''),
                           d.insertElement(this.imageElement))
-                        : 'image' != k &&
-                          'img' == a &&
-                          confirm(d.lang.image.img2Button)
-                        ? ((this.imageElement =
-                              d.document.createElement('input')),
+                        : 'image' != k && 'img' == a && confirm(d.lang.image.img2Button)
+                        ? ((this.imageElement = d.document.createElement('input')),
                           this.imageElement.setAttributes({
                               type: 'image',
                               alt: '',
@@ -273,12 +228,10 @@
                 } else
                     'image' == k
                         ? (this.imageElement = d.document.createElement('img'))
-                        : ((this.imageElement =
-                              d.document.createElement('input')),
+                        : ((this.imageElement = d.document.createElement('input')),
                           this.imageElement.setAttribute('type', 'image')),
                         this.imageElement.setAttribute('alt', '');
-                this.linkEditMode ||
-                    (this.linkElement = d.document.createElement('a'));
+                this.linkEditMode || (this.linkElement = d.document.createElement('a'));
                 this.commitContent(1, this.imageElement);
                 this.commitContent(2, this.linkElement);
                 this.imageElement.getAttribute('style') ||
@@ -293,9 +246,7 @@
                           d.insertElement(this.imageElement))
                     : this.addLink
                     ? this.linkEditMode
-                        ? this.linkElement.equals(
-                              d.getSelection().getSelectedElement()
-                          )
+                        ? this.linkElement.equals(d.getSelection().getSelectedElement())
                             ? (this.linkElement.setHtml(''),
                               this.linkElement.append(this.imageElement, !1))
                             : d.insertElement(this.imageElement)
@@ -307,8 +258,7 @@
                 'image' != k && this.hidePage('Link');
                 var a = this._.element.getDocument();
                 this.getContentElement('info', 'ratioLock') &&
-                    (this.addFocusable(a.getById(x), 5),
-                    this.addFocusable(a.getById(r), 5));
+                    (this.addFocusable(a.getById(x), 5), this.addFocusable(a.getById(r), 5));
                 this.commitContent = u;
             },
             onHide: function () {
@@ -348,83 +298,44 @@
                                                 if (0 < b.length) {
                                                     var a = this.getDialog(),
                                                         c = a.originalElement;
-                                                    a.preview &&
-                                                        a.preview.removeStyle(
-                                                            'display'
-                                                        );
-                                                    c.setCustomData(
-                                                        'isReady',
-                                                        'false'
-                                                    );
-                                                    var d =
-                                                        CKEDITOR.document.getById(
-                                                            n
-                                                        );
-                                                    d &&
-                                                        d.setStyle(
-                                                            'display',
-                                                            ''
-                                                        );
+                                                    a.preview && a.preview.removeStyle('display');
+                                                    c.setCustomData('isReady', 'false');
+                                                    var d = CKEDITOR.document.getById(n);
+                                                    d && d.setStyle('display', '');
                                                     c.on('load', t, a);
                                                     c.on('error', f, a);
                                                     c.on('abort', f, a);
                                                     c.setAttribute('src', b);
                                                     a.preview &&
-                                                        (w.setAttribute(
-                                                            'src',
-                                                            b
-                                                        ),
-                                                        a.preview.setAttribute(
-                                                            'src',
-                                                            w.$.src
-                                                        ),
+                                                        (w.setAttribute('src', b),
+                                                        a.preview.setAttribute('src', w.$.src),
                                                         e(a));
                                                 } else
                                                     a.preview &&
-                                                        (a.preview.removeAttribute(
-                                                            'src'
-                                                        ),
-                                                        a.preview.setStyle(
-                                                            'display',
-                                                            'none'
-                                                        ));
+                                                        (a.preview.removeAttribute('src'),
+                                                        a.preview.setStyle('display', 'none'));
                                             },
                                             setup: function (a, b) {
                                                 if (1 == a) {
                                                     var c =
-                                                        b.data(
-                                                            'cke-saved-src'
-                                                        ) ||
+                                                        b.data('cke-saved-src') ||
                                                         b.getAttribute('src');
-                                                    this.getDialog().dontResetSize =
-                                                        !0;
+                                                    this.getDialog().dontResetSize = !0;
                                                     this.setValue(c);
                                                     this.setInitValue();
                                                 }
                                             },
                                             commit: function (a, b) {
-                                                1 == a &&
-                                                (this.getValue() ||
-                                                    this.isChanged())
-                                                    ? (b.data(
-                                                          'cke-saved-src',
-                                                          this.getValue()
-                                                      ),
-                                                      b.setAttribute(
-                                                          'src',
-                                                          this.getValue()
-                                                      ))
+                                                1 == a && (this.getValue() || this.isChanged())
+                                                    ? (b.data('cke-saved-src', this.getValue()),
+                                                      b.setAttribute('src', this.getValue()))
                                                     : 8 == a &&
-                                                      (b.setAttribute(
-                                                          'src',
-                                                          ''
-                                                      ),
+                                                      (b.setAttribute('src', ''),
                                                       b.removeAttribute('src'));
                                             },
-                                            validate:
-                                                CKEDITOR.dialog.validate.notEmpty(
-                                                    d.lang.image.urlMissing
-                                                ),
+                                            validate: CKEDITOR.dialog.validate.notEmpty(
+                                                d.lang.image.urlMissing,
+                                            ),
                                         },
                                         {
                                             type: 'button',
@@ -469,8 +380,7 @@
                                     children: [
                                         {
                                             type: 'hbox',
-                                            requiredContent:
-                                                'img{width,height}',
+                                            requiredContent: 'img{width,height}',
                                             widths: ['50%', '50%'],
                                             children: [
                                                 {
@@ -481,198 +391,135 @@
                                                             type: 'text',
                                                             width: '45px',
                                                             id: 'txtWidth',
-                                                            label: d.lang.common
-                                                                .width,
+                                                            label: d.lang.common.width,
                                                             onKeyUp: z,
-                                                            onChange:
-                                                                function () {
-                                                                    g.call(
-                                                                        this,
-                                                                        'advanced:txtdlgGenStyle'
-                                                                    );
-                                                                },
-                                                            validate:
-                                                                function () {
-                                                                    var a =
-                                                                        this.getValue().match(
-                                                                            y
-                                                                        );
-                                                                    (a = !(
-                                                                        !a ||
-                                                                        0 ===
-                                                                            parseInt(
-                                                                                a[1],
-                                                                                10
+                                                            onChange: function () {
+                                                                g.call(
+                                                                    this,
+                                                                    'advanced:txtdlgGenStyle',
+                                                                );
+                                                            },
+                                                            validate: function () {
+                                                                var a = this.getValue().match(y);
+                                                                (a = !(
+                                                                    !a || 0 === parseInt(a[1], 10)
+                                                                )) ||
+                                                                    alert(
+                                                                        d.lang.common.invalidLength
+                                                                            .replace(
+                                                                                '%1',
+                                                                                d.lang.common.width,
                                                                             )
-                                                                    )) ||
-                                                                        alert(
-                                                                            d.lang.common.invalidLength
-                                                                                .replace(
-                                                                                    '%1',
-                                                                                    d
-                                                                                        .lang
-                                                                                        .common
-                                                                                        .width
-                                                                                )
-                                                                                .replace(
-                                                                                    '%2',
-                                                                                    'px, %'
-                                                                                )
-                                                                        );
-                                                                    return a;
-                                                                },
+                                                                            .replace('%2', 'px, %'),
+                                                                    );
+                                                                return a;
+                                                            },
                                                             setup: B,
-                                                            commit: function (
-                                                                a,
-                                                                b
-                                                            ) {
-                                                                var c =
-                                                                    this.getValue();
+                                                            commit: function (a, b) {
+                                                                var c = this.getValue();
                                                                 1 == a
                                                                     ? (c &&
                                                                       d.activeFilter.check(
-                                                                          'img{width,height}'
+                                                                          'img{width,height}',
                                                                       )
                                                                           ? b.setStyle(
                                                                                 'width',
                                                                                 CKEDITOR.tools.cssLength(
-                                                                                    c
-                                                                                )
+                                                                                    c,
+                                                                                ),
                                                                             )
-                                                                          : b.removeStyle(
-                                                                                'width'
-                                                                            ),
-                                                                      b.removeAttribute(
-                                                                          'width'
-                                                                      ))
+                                                                          : b.removeStyle('width'),
+                                                                      b.removeAttribute('width'))
                                                                     : 4 == a
                                                                     ? c.match(l)
                                                                         ? b.setStyle(
                                                                               'width',
                                                                               CKEDITOR.tools.cssLength(
-                                                                                  c
-                                                                              )
+                                                                                  c,
+                                                                              ),
                                                                           )
                                                                         : ((c =
                                                                               this.getDialog()
                                                                                   .originalElement),
                                                                           'true' ==
                                                                               c.getCustomData(
-                                                                                  'isReady'
+                                                                                  'isReady',
                                                                               ) &&
                                                                               b.setStyle(
                                                                                   'width',
-                                                                                  c
-                                                                                      .$
-                                                                                      .width +
-                                                                                      'px'
+                                                                                  c.$.width + 'px',
                                                                               ))
                                                                     : 8 == a &&
-                                                                      (b.removeAttribute(
-                                                                          'width'
-                                                                      ),
-                                                                      b.removeStyle(
-                                                                          'width'
-                                                                      ));
+                                                                      (b.removeAttribute('width'),
+                                                                      b.removeStyle('width'));
                                                             },
                                                         },
                                                         {
                                                             type: 'text',
                                                             id: 'txtHeight',
                                                             width: '45px',
-                                                            label: d.lang.common
-                                                                .height,
+                                                            label: d.lang.common.height,
                                                             onKeyUp: z,
-                                                            onChange:
-                                                                function () {
-                                                                    g.call(
-                                                                        this,
-                                                                        'advanced:txtdlgGenStyle'
-                                                                    );
-                                                                },
-                                                            validate:
-                                                                function () {
-                                                                    var a =
-                                                                        this.getValue().match(
-                                                                            y
-                                                                        );
-                                                                    (a = !(
-                                                                        !a ||
-                                                                        0 ===
-                                                                            parseInt(
-                                                                                a[1],
-                                                                                10
+                                                            onChange: function () {
+                                                                g.call(
+                                                                    this,
+                                                                    'advanced:txtdlgGenStyle',
+                                                                );
+                                                            },
+                                                            validate: function () {
+                                                                var a = this.getValue().match(y);
+                                                                (a = !(
+                                                                    !a || 0 === parseInt(a[1], 10)
+                                                                )) ||
+                                                                    alert(
+                                                                        d.lang.common.invalidLength
+                                                                            .replace(
+                                                                                '%1',
+                                                                                d.lang.common
+                                                                                    .height,
                                                                             )
-                                                                    )) ||
-                                                                        alert(
-                                                                            d.lang.common.invalidLength
-                                                                                .replace(
-                                                                                    '%1',
-                                                                                    d
-                                                                                        .lang
-                                                                                        .common
-                                                                                        .height
-                                                                                )
-                                                                                .replace(
-                                                                                    '%2',
-                                                                                    'px, %'
-                                                                                )
-                                                                        );
-                                                                    return a;
-                                                                },
+                                                                            .replace('%2', 'px, %'),
+                                                                    );
+                                                                return a;
+                                                            },
                                                             setup: B,
-                                                            commit: function (
-                                                                a,
-                                                                b
-                                                            ) {
-                                                                var c =
-                                                                    this.getValue();
+                                                            commit: function (a, b) {
+                                                                var c = this.getValue();
                                                                 1 == a
                                                                     ? (c &&
                                                                       d.activeFilter.check(
-                                                                          'img{width,height}'
+                                                                          'img{width,height}',
                                                                       )
                                                                           ? b.setStyle(
                                                                                 'height',
                                                                                 CKEDITOR.tools.cssLength(
-                                                                                    c
-                                                                                )
+                                                                                    c,
+                                                                                ),
                                                                             )
-                                                                          : b.removeStyle(
-                                                                                'height'
-                                                                            ),
-                                                                      b.removeAttribute(
-                                                                          'height'
-                                                                      ))
+                                                                          : b.removeStyle('height'),
+                                                                      b.removeAttribute('height'))
                                                                     : 4 == a
                                                                     ? c.match(l)
                                                                         ? b.setStyle(
                                                                               'height',
                                                                               CKEDITOR.tools.cssLength(
-                                                                                  c
-                                                                              )
+                                                                                  c,
+                                                                              ),
                                                                           )
                                                                         : ((c =
                                                                               this.getDialog()
                                                                                   .originalElement),
                                                                           'true' ==
                                                                               c.getCustomData(
-                                                                                  'isReady'
+                                                                                  'isReady',
                                                                               ) &&
                                                                               b.setStyle(
                                                                                   'height',
-                                                                                  c
-                                                                                      .$
-                                                                                      .height +
-                                                                                      'px'
+                                                                                  c.$.height + 'px',
                                                                               ))
                                                                     : 8 == a &&
-                                                                      (b.removeAttribute(
-                                                                          'height'
-                                                                      ),
-                                                                      b.removeStyle(
-                                                                          'height'
-                                                                      ));
+                                                                      (b.removeAttribute('height'),
+                                                                      b.removeStyle('height'));
                                                             },
                                                         },
                                                     ],
@@ -680,18 +527,11 @@
                                                 {
                                                     id: 'ratioLock',
                                                     type: 'html',
-                                                    className:
-                                                        'cke_dialog_image_ratiolock',
+                                                    className: 'cke_dialog_image_ratiolock',
                                                     style: 'margin-top:30px;width:40px;height:40px;',
                                                     onLoad: function () {
-                                                        var a =
-                                                                CKEDITOR.document.getById(
-                                                                    x
-                                                                ),
-                                                            b =
-                                                                CKEDITOR.document.getById(
-                                                                    r
-                                                                );
+                                                        var a = CKEDITOR.document.getById(x),
+                                                            b = CKEDITOR.document.getById(r);
                                                         a &&
                                                             (a.on(
                                                                 'click',
@@ -700,86 +540,70 @@
                                                                     a.data &&
                                                                         a.data.preventDefault();
                                                                 },
-                                                                this.getDialog()
+                                                                this.getDialog(),
                                                             ),
                                                             a.on(
                                                                 'mouseover',
                                                                 function () {
-                                                                    this.addClass(
-                                                                        'cke_btn_over'
-                                                                    );
+                                                                    this.addClass('cke_btn_over');
                                                                 },
-                                                                a
+                                                                a,
                                                             ),
                                                             a.on(
                                                                 'mouseout',
                                                                 function () {
                                                                     this.removeClass(
-                                                                        'cke_btn_over'
+                                                                        'cke_btn_over',
                                                                     );
                                                                 },
-                                                                a
+                                                                a,
                                                             ));
                                                         b &&
                                                             (b.on(
                                                                 'click',
                                                                 function (a) {
                                                                     m(this);
-                                                                    var b =
-                                                                            this
-                                                                                .originalElement,
-                                                                        d =
-                                                                            this.getValueOf(
-                                                                                'info',
-                                                                                'txtWidth'
-                                                                            );
+                                                                    var b = this.originalElement,
+                                                                        d = this.getValueOf(
+                                                                            'info',
+                                                                            'txtWidth',
+                                                                        );
                                                                     'true' ==
                                                                         b.getCustomData(
-                                                                            'isReady'
+                                                                            'isReady',
                                                                         ) &&
                                                                         d &&
                                                                         ((b =
-                                                                            (b.$
-                                                                                .height /
-                                                                                b
-                                                                                    .$
-                                                                                    .width) *
+                                                                            (b.$.height /
+                                                                                b.$.width) *
                                                                             d),
-                                                                        isNaN(
-                                                                            b
-                                                                        ) ||
+                                                                        isNaN(b) ||
                                                                             (this.setValueOf(
                                                                                 'info',
                                                                                 'txtHeight',
-                                                                                Math.round(
-                                                                                    b
-                                                                                )
+                                                                                Math.round(b),
                                                                             ),
-                                                                            e(
-                                                                                this
-                                                                            )));
+                                                                            e(this)));
                                                                     a.data &&
                                                                         a.data.preventDefault();
                                                                 },
-                                                                this.getDialog()
+                                                                this.getDialog(),
                                                             ),
                                                             b.on(
                                                                 'mouseover',
                                                                 function () {
-                                                                    this.addClass(
-                                                                        'cke_btn_over'
-                                                                    );
+                                                                    this.addClass('cke_btn_over');
                                                                 },
-                                                                b
+                                                                b,
                                                             ),
                                                             b.on(
                                                                 'mouseout',
                                                                 function () {
                                                                     this.removeClass(
-                                                                        'cke_btn_over'
+                                                                        'cke_btn_over',
                                                                     );
                                                                 },
-                                                                b
+                                                                b,
                                                             ));
                                                     },
                                                     html:
@@ -806,8 +630,7 @@
                                                 {
                                                     type: 'text',
                                                     id: 'txtBorder',
-                                                    requiredContent:
-                                                        'img{border-width}',
+                                                    requiredContent: 'img{border-width}',
                                                     width: '60px',
                                                     label: d.lang.image.border,
                                                     default: '',
@@ -815,16 +638,11 @@
                                                         e(this.getDialog());
                                                     },
                                                     onChange: function () {
-                                                        g.call(
-                                                            this,
-                                                            'advanced:txtdlgGenStyle'
-                                                        );
+                                                        g.call(this, 'advanced:txtdlgGenStyle');
                                                     },
-                                                    validate:
-                                                        CKEDITOR.dialog.validate.integer(
-                                                            d.lang.image
-                                                                .validateBorder
-                                                        ),
+                                                    validate: CKEDITOR.dialog.validate.integer(
+                                                        d.lang.image.validateBorder,
+                                                    ),
                                                     setup: function (a, b) {
                                                         if (1 == a) {
                                                             var c;
@@ -832,64 +650,37 @@
                                                                 (c =
                                                                     (c =
                                                                         b.getStyle(
-                                                                            'border-width'
+                                                                            'border-width',
                                                                         )) &&
                                                                     c.match(
-                                                                        /^(\d+px)(?: \1 \1 \1)?$/
-                                                                    )) &&
-                                                                parseInt(
-                                                                    c[1],
-                                                                    10
-                                                                );
-                                                            isNaN(
-                                                                parseInt(c, 10)
-                                                            ) &&
-                                                                (c =
-                                                                    b.getAttribute(
-                                                                        'border'
-                                                                    ));
+                                                                        /^(\d+px)(?: \1 \1 \1)?$/,
+                                                                    )) && parseInt(c[1], 10);
+                                                            isNaN(parseInt(c, 10)) &&
+                                                                (c = b.getAttribute('border'));
                                                             this.setValue(c);
                                                         }
                                                     },
                                                     commit: function (a, b) {
-                                                        var c = parseInt(
-                                                            this.getValue(),
-                                                            10
-                                                        );
+                                                        var c = parseInt(this.getValue(), 10);
                                                         1 == a || 4 == a
                                                             ? (isNaN(c)
                                                                   ? !c &&
                                                                     this.isChanged() &&
-                                                                    b.removeStyle(
-                                                                        'border'
-                                                                    )
+                                                                    b.removeStyle('border')
                                                                   : (b.setStyle(
                                                                         'border-width',
-                                                                        CKEDITOR.tools.cssLength(
-                                                                            c
-                                                                        )
+                                                                        CKEDITOR.tools.cssLength(c),
                                                                     ),
                                                                     b.setStyle(
                                                                         'border-style',
-                                                                        'solid'
+                                                                        'solid',
                                                                     )),
-                                                              1 == a &&
-                                                                  b.removeAttribute(
-                                                                      'border'
-                                                                  ))
+                                                              1 == a && b.removeAttribute('border'))
                                                             : 8 == a &&
-                                                              (b.removeAttribute(
-                                                                  'border'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'border-width'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'border-style'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'border-color'
-                                                              ));
+                                                              (b.removeAttribute('border'),
+                                                              b.removeStyle('border-width'),
+                                                              b.removeStyle('border-style'),
+                                                              b.removeStyle('border-color'));
                                                     },
                                                 },
                                                 {
@@ -904,83 +695,47 @@
                                                         e(this.getDialog());
                                                     },
                                                     onChange: function () {
-                                                        g.call(
-                                                            this,
-                                                            'advanced:txtdlgGenStyle'
-                                                        );
+                                                        g.call(this, 'advanced:txtdlgGenStyle');
                                                     },
-                                                    validate:
-                                                        CKEDITOR.dialog.validate.integer(
-                                                            d.lang.image
-                                                                .validateHSpace
-                                                        ),
+                                                    validate: CKEDITOR.dialog.validate.integer(
+                                                        d.lang.image.validateHSpace,
+                                                    ),
                                                     setup: function (a, b) {
                                                         if (1 == a) {
                                                             var c, d;
-                                                            c =
-                                                                b.getStyle(
-                                                                    'margin-left'
-                                                                );
-                                                            d =
-                                                                b.getStyle(
-                                                                    'margin-right'
-                                                                );
+                                                            c = b.getStyle('margin-left');
+                                                            d = b.getStyle('margin-right');
                                                             c = c && c.match(q);
                                                             d = d && d.match(q);
                                                             c = parseInt(c, 10);
                                                             d = parseInt(d, 10);
                                                             c = c == d && c;
-                                                            isNaN(
-                                                                parseInt(c, 10)
-                                                            ) &&
-                                                                (c =
-                                                                    b.getAttribute(
-                                                                        'hspace'
-                                                                    ));
+                                                            isNaN(parseInt(c, 10)) &&
+                                                                (c = b.getAttribute('hspace'));
                                                             this.setValue(c);
                                                         }
                                                     },
                                                     commit: function (a, b) {
-                                                        var c = parseInt(
-                                                            this.getValue(),
-                                                            10
-                                                        );
+                                                        var c = parseInt(this.getValue(), 10);
                                                         1 == a || 4 == a
                                                             ? (isNaN(c)
                                                                   ? !c &&
                                                                     this.isChanged() &&
-                                                                    (b.removeStyle(
-                                                                        'margin-left'
-                                                                    ),
-                                                                    b.removeStyle(
-                                                                        'margin-right'
-                                                                    ))
+                                                                    (b.removeStyle('margin-left'),
+                                                                    b.removeStyle('margin-right'))
                                                                   : (b.setStyle(
                                                                         'margin-left',
-                                                                        CKEDITOR.tools.cssLength(
-                                                                            c
-                                                                        )
+                                                                        CKEDITOR.tools.cssLength(c),
                                                                     ),
                                                                     b.setStyle(
                                                                         'margin-right',
-                                                                        CKEDITOR.tools.cssLength(
-                                                                            c
-                                                                        )
+                                                                        CKEDITOR.tools.cssLength(c),
                                                                     )),
-                                                              1 == a &&
-                                                                  b.removeAttribute(
-                                                                      'hspace'
-                                                                  ))
+                                                              1 == a && b.removeAttribute('hspace'))
                                                             : 8 == a &&
-                                                              (b.removeAttribute(
-                                                                  'hspace'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'margin-left'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'margin-right'
-                                                              ));
+                                                              (b.removeAttribute('hspace'),
+                                                              b.removeStyle('margin-left'),
+                                                              b.removeStyle('margin-right'));
                                                     },
                                                 },
                                                 {
@@ -995,122 +750,69 @@
                                                         e(this.getDialog());
                                                     },
                                                     onChange: function () {
-                                                        g.call(
-                                                            this,
-                                                            'advanced:txtdlgGenStyle'
-                                                        );
+                                                        g.call(this, 'advanced:txtdlgGenStyle');
                                                     },
-                                                    validate:
-                                                        CKEDITOR.dialog.validate.integer(
-                                                            d.lang.image
-                                                                .validateVSpace
-                                                        ),
+                                                    validate: CKEDITOR.dialog.validate.integer(
+                                                        d.lang.image.validateVSpace,
+                                                    ),
                                                     setup: function (a, b) {
                                                         if (1 == a) {
                                                             var c, d;
-                                                            c =
-                                                                b.getStyle(
-                                                                    'margin-top'
-                                                                );
-                                                            d =
-                                                                b.getStyle(
-                                                                    'margin-bottom'
-                                                                );
+                                                            c = b.getStyle('margin-top');
+                                                            d = b.getStyle('margin-bottom');
                                                             c = c && c.match(q);
                                                             d = d && d.match(q);
                                                             c = parseInt(c, 10);
                                                             d = parseInt(d, 10);
                                                             c = c == d && c;
-                                                            isNaN(
-                                                                parseInt(c, 10)
-                                                            ) &&
-                                                                (c =
-                                                                    b.getAttribute(
-                                                                        'vspace'
-                                                                    ));
+                                                            isNaN(parseInt(c, 10)) &&
+                                                                (c = b.getAttribute('vspace'));
                                                             this.setValue(c);
                                                         }
                                                     },
                                                     commit: function (a, b) {
-                                                        var c = parseInt(
-                                                            this.getValue(),
-                                                            10
-                                                        );
+                                                        var c = parseInt(this.getValue(), 10);
                                                         1 == a || 4 == a
                                                             ? (isNaN(c)
                                                                   ? !c &&
                                                                     this.isChanged() &&
-                                                                    (b.removeStyle(
-                                                                        'margin-top'
-                                                                    ),
-                                                                    b.removeStyle(
-                                                                        'margin-bottom'
-                                                                    ))
+                                                                    (b.removeStyle('margin-top'),
+                                                                    b.removeStyle('margin-bottom'))
                                                                   : (b.setStyle(
                                                                         'margin-top',
-                                                                        CKEDITOR.tools.cssLength(
-                                                                            c
-                                                                        )
+                                                                        CKEDITOR.tools.cssLength(c),
                                                                     ),
                                                                     b.setStyle(
                                                                         'margin-bottom',
-                                                                        CKEDITOR.tools.cssLength(
-                                                                            c
-                                                                        )
+                                                                        CKEDITOR.tools.cssLength(c),
                                                                     )),
-                                                              1 == a &&
-                                                                  b.removeAttribute(
-                                                                      'vspace'
-                                                                  ))
+                                                              1 == a && b.removeAttribute('vspace'))
                                                             : 8 == a &&
-                                                              (b.removeAttribute(
-                                                                  'vspace'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'margin-top'
-                                                              ),
-                                                              b.removeStyle(
-                                                                  'margin-bottom'
-                                                              ));
+                                                              (b.removeAttribute('vspace'),
+                                                              b.removeStyle('margin-top'),
+                                                              b.removeStyle('margin-bottom'));
                                                     },
                                                 },
                                                 {
                                                     id: 'cmbAlign',
-                                                    requiredContent:
-                                                        'img{float}',
+                                                    requiredContent: 'img{float}',
                                                     type: 'select',
                                                     widths: ['35%', '65%'],
                                                     style: 'width:90px',
                                                     label: d.lang.common.align,
                                                     default: '',
                                                     items: [
-                                                        [
-                                                            d.lang.common
-                                                                .notSet,
-                                                            '',
-                                                        ],
-                                                        [
-                                                            d.lang.common.left,
-                                                            'left',
-                                                        ],
-                                                        [
-                                                            d.lang.common.right,
-                                                            'right',
-                                                        ],
+                                                        [d.lang.common.notSet, ''],
+                                                        [d.lang.common.left, 'left'],
+                                                        [d.lang.common.right, 'right'],
                                                     ],
                                                     onChange: function () {
                                                         e(this.getDialog());
-                                                        g.call(
-                                                            this,
-                                                            'advanced:txtdlgGenStyle'
-                                                        );
+                                                        g.call(this, 'advanced:txtdlgGenStyle');
                                                     },
                                                     setup: function (a, b) {
                                                         if (1 == a) {
-                                                            var c =
-                                                                b.getStyle(
-                                                                    'float'
-                                                                );
+                                                            var c = b.getStyle('float');
                                                             switch (c) {
                                                                 case 'inherit':
                                                                 case 'none':
@@ -1118,9 +820,7 @@
                                                             }
                                                             !c &&
                                                                 (c = (
-                                                                    b.getAttribute(
-                                                                        'align'
-                                                                    ) || ''
+                                                                    b.getAttribute('align') || ''
                                                                 ).toLowerCase());
                                                             this.setValue(c);
                                                         }
@@ -1130,34 +830,22 @@
                                                         if (1 == a || 4 == a) {
                                                             if (
                                                                 (c
-                                                                    ? b.setStyle(
-                                                                          'float',
-                                                                          c
-                                                                      )
-                                                                    : b.removeStyle(
-                                                                          'float'
-                                                                      ),
+                                                                    ? b.setStyle('float', c)
+                                                                    : b.removeStyle('float'),
                                                                 1 == a)
                                                             )
                                                                 switch (
                                                                     ((c = (
-                                                                        b.getAttribute(
-                                                                            'align'
-                                                                        ) || ''
+                                                                        b.getAttribute('align') ||
+                                                                        ''
                                                                     ).toLowerCase()),
                                                                     c)
                                                                 ) {
                                                                     case 'left':
                                                                     case 'right':
-                                                                        b.removeAttribute(
-                                                                            'align'
-                                                                        );
+                                                                        b.removeAttribute('align');
                                                                 }
-                                                        } else
-                                                            8 == a &&
-                                                                b.removeStyle(
-                                                                    'float'
-                                                                );
+                                                        } else 8 == a && b.removeStyle('float');
                                                     },
                                                 },
                                             ],
@@ -1174,9 +862,7 @@
                                             style: 'width:95%;',
                                             html:
                                                 '\x3cdiv\x3e' +
-                                                CKEDITOR.tools.htmlEncode(
-                                                    d.lang.common.preview
-                                                ) +
+                                                CKEDITOR.tools.htmlEncode(d.lang.common.preview) +
                                                 '\x3cbr\x3e\x3cdiv id\x3d"' +
                                                 n +
                                                 '" class\x3d"ImagePreviewLoader" style\x3d"display:none"\x3e\x3cdiv class\x3d"loading"\x3e\x26nbsp;\x3c/div\x3e\x3c/div\x3e\x3cdiv class\x3d"ImagePreviewBox"\x3e\x3ctable\x3e\x3ctr\x3e\x3ctd\x3e\x3ca href\x3d"javascript:void(0)" target\x3d"_blank" onclick\x3d"return false;" id\x3d"' +
@@ -1214,15 +900,11 @@
                                 }
                             },
                             commit: function (a, b) {
-                                if (
-                                    2 == a &&
-                                    (this.getValue() || this.isChanged())
-                                ) {
+                                if (2 == a && (this.getValue() || this.isChanged())) {
                                     var c = this.getValue();
                                     b.data('cke-saved-href', c);
                                     b.setAttribute('href', c);
-                                    this.getValue() ||
-                                    !d.config.image_removeLinkByEmptyURL
+                                    this.getValue() || !d.config.image_removeLinkByEmptyURL
                                         ? (this.getDialog().addLink = !0)
                                         : (this.getDialog().addLink = !1);
                                 }
@@ -1255,10 +937,7 @@
                                 [d.lang.common.targetParent, '_parent'],
                             ],
                             setup: function (a, b) {
-                                2 == a &&
-                                    this.setValue(
-                                        b.getAttribute('target') || ''
-                                    );
+                                2 == a && this.setValue(b.getAttribute('target') || '');
                             },
                             commit: function (a, b) {
                                 2 == a &&
@@ -1304,17 +983,12 @@
                                     requiredContent: 'img[id]',
                                     label: d.lang.common.id,
                                     setup: function (a, b) {
-                                        1 == a &&
-                                            this.setValue(b.getAttribute('id'));
+                                        1 == a && this.setValue(b.getAttribute('id'));
                                     },
                                     commit: function (a, b) {
                                         1 == a &&
-                                            (this.getValue() ||
-                                                this.isChanged()) &&
-                                            b.setAttribute(
-                                                'id',
-                                                this.getValue()
-                                            );
+                                            (this.getValue() || this.isChanged()) &&
+                                            b.setAttribute('id', this.getValue());
                                     },
                                 },
                                 {
@@ -1330,19 +1004,12 @@
                                         [d.lang.common.langDirRtl, 'rtl'],
                                     ],
                                     setup: function (a, b) {
-                                        1 == a &&
-                                            this.setValue(
-                                                b.getAttribute('dir')
-                                            );
+                                        1 == a && this.setValue(b.getAttribute('dir'));
                                     },
                                     commit: function (a, b) {
                                         1 == a &&
-                                            (this.getValue() ||
-                                                this.isChanged()) &&
-                                            b.setAttribute(
-                                                'dir',
-                                                this.getValue()
-                                            );
+                                            (this.getValue() || this.isChanged()) &&
+                                            b.setAttribute('dir', this.getValue());
                                     },
                                 },
                                 {
@@ -1352,19 +1019,12 @@
                                     label: d.lang.common.langCode,
                                     default: '',
                                     setup: function (a, b) {
-                                        1 == a &&
-                                            this.setValue(
-                                                b.getAttribute('lang')
-                                            );
+                                        1 == a && this.setValue(b.getAttribute('lang'));
                                     },
                                     commit: function (a, b) {
                                         1 == a &&
-                                            (this.getValue() ||
-                                                this.isChanged()) &&
-                                            b.setAttribute(
-                                                'lang',
-                                                this.getValue()
-                                            );
+                                            (this.getValue() || this.isChanged()) &&
+                                            b.setAttribute('lang', this.getValue());
                                     },
                                 },
                             ],
@@ -1375,8 +1035,7 @@
                             requiredContent: 'img[longdesc]',
                             label: d.lang.common.longDescr,
                             setup: function (a, b) {
-                                1 == a &&
-                                    this.setValue(b.getAttribute('longDesc'));
+                                1 == a && this.setValue(b.getAttribute('longDesc'));
                             },
                             commit: function (a, b) {
                                 1 == a &&
@@ -1395,19 +1054,12 @@
                                     label: d.lang.common.cssClass,
                                     default: '',
                                     setup: function (a, b) {
-                                        1 == a &&
-                                            this.setValue(
-                                                b.getAttribute('class')
-                                            );
+                                        1 == a && this.setValue(b.getAttribute('class'));
                                     },
                                     commit: function (a, b) {
                                         1 == a &&
-                                            (this.getValue() ||
-                                                this.isChanged()) &&
-                                            b.setAttribute(
-                                                'class',
-                                                this.getValue()
-                                            );
+                                            (this.getValue() || this.isChanged()) &&
+                                            b.setAttribute('class', this.getValue());
                                     },
                                 },
                                 {
@@ -1420,26 +1072,15 @@
                                         e(this.getDialog());
                                     },
                                     setup: function (a, b) {
-                                        1 == a &&
-                                            this.setValue(
-                                                b.getAttribute('title')
-                                            );
+                                        1 == a && this.setValue(b.getAttribute('title'));
                                     },
                                     commit: function (a, b) {
                                         1 == a
-                                            ? (this.getValue() ||
-                                                  this.isChanged()) &&
-                                              b.setAttribute(
-                                                  'title',
-                                                  this.getValue()
-                                              )
+                                            ? (this.getValue() || this.isChanged()) &&
+                                              b.setAttribute('title', this.getValue())
                                             : 4 == a
-                                            ? b.setAttribute(
-                                                  'title',
-                                                  this.getValue()
-                                              )
-                                            : 8 == a &&
-                                              b.removeAttribute('title');
+                                            ? b.setAttribute('title', this.getValue())
+                                            : 8 == a && b.removeAttribute('title');
                                     },
                                 },
                             ],
@@ -1450,15 +1091,13 @@
                             requiredContent: 'img{cke-xyz}',
                             label: d.lang.common.cssStyle,
                             validate: CKEDITOR.dialog.validate.inlineStyle(
-                                d.lang.common.invalidInlineStyle
+                                d.lang.common.invalidInlineStyle,
                             ),
                             default: '',
                             setup: function (a, b) {
                                 if (1 == a) {
                                     var c = b.getAttribute('style');
-                                    !c &&
-                                        b.$.style.cssText &&
-                                        (c = b.$.style.cssText);
+                                    !c && b.$.style.cssText && (c = b.$.style.cssText);
                                     this.setValue(c);
                                     var d = b.$.style.height,
                                         c = b.$.style.width,
@@ -1474,8 +1113,8 @@
                                 g.call(
                                     this,
                                     'info:cmbFloat info:cmbAlign info:txtVSpace info:txtHSpace info:txtBorder info:txtWidth info:txtHeight'.split(
-                                        ' '
-                                    )
+                                        ' ',
+                                    ),
                                 );
                                 e(this);
                             },

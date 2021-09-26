@@ -40,18 +40,13 @@ CKEDITOR.dialog.add('radio', function (c) {
                         default: '',
                         accessKey: 'N',
                         setup: function (a) {
-                            this.setValue(
-                                a.data('cke-saved-name') ||
-                                    a.getAttribute('name') ||
-                                    ''
-                            );
+                            this.setValue(a.data('cke-saved-name') || a.getAttribute('name') || '');
                         },
                         commit: function (a) {
                             a = a.element;
                             this.getValue()
                                 ? a.data('cke-saved-name', this.getValue())
-                                : (a.data('cke-saved-name', !1),
-                                  a.removeAttribute('name'));
+                                : (a.data('cke-saved-name', !1), a.removeAttribute('name'));
                         },
                     },
                     {
@@ -90,7 +85,7 @@ CKEDITOR.dialog.add('radio', function (c) {
                                         '\x3cinput type\x3d"radio"' +
                                             (e ? ' checked\x3d"checked"' : '') +
                                             '\x3e\x3c/input\x3e',
-                                        c.document
+                                        c.document,
                                     )),
                                     b.copyAttributes(d, {
                                         type: 1,

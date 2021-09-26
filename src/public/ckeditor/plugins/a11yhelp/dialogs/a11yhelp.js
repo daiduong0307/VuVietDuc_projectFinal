@@ -5,9 +5,7 @@
 CKEDITOR.dialog.add('a11yHelp', function (f) {
     function m(a) {
         for (var b, c, h = [], d = 0; d < g.length; d++)
-            (c = g[d]),
-                (b = a / g[d]),
-                1 < b && 2 >= b && ((a -= c), h.push(e[c]));
+            (c = g[d]), (b = a / g[d]), 1 < b && 2 >= b && ((a -= c), h.push(e[c]));
         h.push(e[a] || String.fromCharCode(a));
         return h.join('+');
     }
@@ -123,18 +121,13 @@ CKEDITOR.dialog.add('a11yHelp', function (f) {
                                     d++
                                 ) {
                                     for (
-                                        var f = c[d],
-                                            g = [],
-                                            r = f.items,
-                                            m = r.length,
-                                            n = 0;
+                                        var f = c[d], g = [], r = f.items, m = r.length, n = 0;
                                         n < m;
                                         n++
                                     ) {
                                         var k = r[n],
                                             l =
-                                                CKEDITOR.env.edge &&
-                                                k.legendEdge
+                                                CKEDITOR.env.edge && k.legendEdge
                                                     ? k.legendEdge
                                                     : k.legend,
                                             l = l.replace(q, t);
@@ -142,13 +135,13 @@ CKEDITOR.dialog.add('a11yHelp', function (f) {
                                             g.push(
                                                 '\x3cdt\x3e%1\x3c/dt\x3e\x3cdd\x3e%2\x3c/dd\x3e'
                                                     .replace('%1', k.name)
-                                                    .replace('%2', l)
+                                                    .replace('%2', l),
                                             );
                                     }
                                     e.push(
                                         '\x3ch1\x3e%1\x3c/h1\x3e\x3cdl\x3e%2\x3c/dl\x3e'
                                             .replace('%1', f.name)
-                                            .replace('%2', g.join(''))
+                                            .replace('%2', g.join('')),
                                     );
                                 }
                                 return b.replace('%1', e.join(''));

@@ -42,9 +42,7 @@
     };
     e.prototype.getGroupByName = function (b) {
         for (
-            var a =
-                    this.editorInstance.config.toolbarGroups ||
-                    this.getFullToolbarGroupsConfig(),
+            var a = this.editorInstance.config.toolbarGroups || this.getFullToolbarGroupsConfig(),
                 d = a.length,
                 c = 0;
             c < d;
@@ -61,11 +59,7 @@
     };
     e.prototype.getFullToolbarGroupsConfig = function (b) {
         b = !0 === b ? !0 : !1;
-        for (
-            var a = [], d = this.editorInstance.toolbar, c = d.length, f = 0;
-            f < c;
-            f += 1
-        ) {
+        for (var a = [], d = this.editorInstance.toolbar, c = d.length, f = 0; f < c; f += 1) {
             var e = d[f],
                 g = {};
             'string' != typeof e.name
@@ -129,12 +123,7 @@
     e.createIcon = function (b, a, d) {
         var c = CKEDITOR.skin.getIconStyle(b, 'rtl' == CKEDITOR.lang.dir),
             c =
-                (c =
-                    c ||
-                    CKEDITOR.skin.getIconStyle(
-                        a,
-                        'rtl' == CKEDITOR.lang.dir
-                    )) ||
+                (c = c || CKEDITOR.skin.getIconStyle(a, 'rtl' == CKEDITOR.lang.dir)) ||
                 CKEDITOR.skin.getIconStyle(d, 'rtl' == CKEDITOR.lang.dir);
         a = new CKEDITOR.dom.element('span');
         a.addClass('cke_button_icon');
@@ -155,11 +144,7 @@
         return d;
     };
     e.groupToButtons = function (b) {
-        for (
-            var a = [], d = (b = b.items) ? b.length : 0, c = 0;
-            c < d;
-            c += 1
-        ) {
+        for (var a = [], d = (b = b.items) ? b.length : 0, c = 0; c < d; c += 1) {
             var f = b[c];
             if (
                 f instanceof CKEDITOR.ui.button ||

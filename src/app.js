@@ -10,9 +10,7 @@ const session = require('express-session');
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart();
 const fs = require('fs');
-const {
-    allowInsecurePrototypeAccess,
-} = require('@handlebars/allow-prototype-access');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
 const auth = require('./middleware/checkLogin');
 const passwordReset = require('./routes/passwordReset');
@@ -35,7 +33,7 @@ app.use(
         resave: true,
         saveUninitialized: false,
         cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
-    })
+    }),
 );
 app.use(function (req, res, next) {
     res.locals.session = req.session;
@@ -57,55 +55,52 @@ Handlebars.registerHelper('ifCond', function (a, b, options) {
     }
 });
 
-Handlebars.registerHelper(
-    'pagination',
-    function (currentPage, totalPage, size, options) {
-        let startPage, endPage, context;
+Handlebars.registerHelper('pagination', function (currentPage, totalPage, size, options) {
+    let startPage, endPage, context;
 
-        if (arguments.length === 3) {
-            options = size;
-            size = 5;
-        }
+    if (arguments.length === 3) {
+        options = size;
+        size = 5;
+    }
 
-        startPage = currentPage - Math.floor(size / 2);
-        endPage = currentPage + Math.floor(size / 2);
+    startPage = currentPage - Math.floor(size / 2);
+    endPage = currentPage + Math.floor(size / 2);
 
-        if (startPage <= 0) {
-            endPage -= startPage - 1;
+    if (startPage <= 0) {
+        endPage -= startPage - 1;
+        startPage = 1;
+    }
+
+    if (endPage > totalPage) {
+        endPage = totalPage;
+        if (endPage - size + 1 > 0) {
+            startPage = endPage - size + 1;
+        } else {
             startPage = 1;
         }
-
-        if (endPage > totalPage) {
-            endPage = totalPage;
-            if (endPage - size + 1 > 0) {
-                startPage = endPage - size + 1;
-            } else {
-                startPage = 1;
-            }
-        }
-
-        context = {
-            startFromFirstPage: false,
-            pages: [],
-            endAtLastPage: false,
-            endPage,
-        };
-        if (startPage === 1) {
-            context.startFromFirstPage = true;
-        }
-        for (let i = startPage; i <= endPage; i++) {
-            context.pages.push({
-                page: i,
-                isCurrent: i == currentPage,
-            });
-        }
-        if (endPage === totalPage) {
-            context.endAtLastPage = true;
-        }
-
-        return options.fn(context);
     }
-);
+
+    context = {
+        startFromFirstPage: false,
+        pages: [],
+        endAtLastPage: false,
+        endPage,
+    };
+    if (startPage === 1) {
+        context.startFromFirstPage = true;
+    }
+    for (let i = startPage; i <= endPage; i++) {
+        context.pages.push({
+            page: i,
+            isCurrent: i == currentPage,
+        });
+    }
+    if (endPage === totalPage) {
+        context.endAtLastPage = true;
+    }
+
+    return options.fn(context);
+});
 
 app.engine(
     'hbs',
@@ -116,7 +111,7 @@ app.engine(
         handlebars: allowInsecurePrototypeAccess(Handlebars),
         extname: '.hbs',
         helpers: require('handlebars-helpers')(),
-    })
+    }),
 );
 app.set('view engine', 'hbs');
 
@@ -136,14 +131,13 @@ app.use(
             delete req.body._method;
             return method;
         }
-    })
+    }),
 );
 
 app.post('/upload', multipartMiddleware, (req, res) => {
     try {
         fs.readFile(req.files.upload.path, function (err, data) {
-            const newPath =
-                __dirname + '/public/images/' + req.files.upload.name;
+            const newPath = __dirname + '/public/images/' + req.files.upload.name;
             fs.writeFile(newPath, data, function (err) {
                 if (err) console.log({ err });
                 else {
@@ -161,7 +155,7 @@ app.post('/upload', multipartMiddleware, (req, res) => {
                             url +
                             "','" +
                             msg +
-                            "');</script>"
+                            "');</script>",
                     );
                 }
             });

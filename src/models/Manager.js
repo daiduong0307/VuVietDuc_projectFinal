@@ -42,7 +42,7 @@ const managerSchema = new Schema(
     },
     {
         timestamps: true,
-    }
+    },
 );
 
 managerSchema.pre('remove', function (next) {

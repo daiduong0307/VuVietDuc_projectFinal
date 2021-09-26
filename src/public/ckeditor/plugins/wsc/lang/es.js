@@ -6,8 +6,7 @@
     btnUndo: 'Deshacer',
     changeTo: 'Cambiar a',
     errorLoading: 'Error cargando la aplicación del servidor: %s.',
-    ieSpellDownload:
-        'Módulo de Control de Ortografía no instalado.\r\n¿Desea descargarlo ahora?',
+    ieSpellDownload: 'Módulo de Control de Ortografía no instalado.\r\n¿Desea descargarlo ahora?',
     manyChanges: 'Control finalizado: se ha cambiado %1 palabras',
     noChanges: 'Control finalizado: no se ha cambiado ninguna palabra',
     noMispell: 'Control finalizado: no se encontraron errores',

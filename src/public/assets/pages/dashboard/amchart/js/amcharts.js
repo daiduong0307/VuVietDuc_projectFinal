@@ -29,8 +29,7 @@
               (b.base = a.inherits.prototype),
               delete a.inherits)
             : ((b.prototype.createEvents = function () {
-                  for (var a = 0; a < arguments.length; a++)
-                      this.events[arguments[a]] = [];
+                  for (var a = 0; a < arguments.length; a++) this.events[arguments[a]] = [];
               }),
               (b.prototype.listenTo = function (a, b, c) {
                   this.removeListener(a, b, c);
@@ -38,14 +37,11 @@
               }),
               (b.prototype.addListener = function (a, b, c) {
                   this.removeListener(this, a, b);
-                  a &&
-                      this.events[a] &&
-                      this.events[a].push({ handler: b, scope: c });
+                  a && this.events[a] && this.events[a].push({ handler: b, scope: c });
               }),
               (b.prototype.removeListener = function (a, b, c) {
                   if (a && a.events && (a = a.events[b]))
-                      for (b = a.length - 1; 0 <= b; b--)
-                          a[b].handler === c && a.splice(b, 1);
+                      for (b = a.length - 1; 0 <= b; b--) a[b].handler === c && a.splice(b, 1);
               }),
               (b.prototype.fire = function (a) {
                   for (var b = this.events[a.type], c = 0; c < b.length; c++) {
@@ -59,8 +55,7 @@
     d.addChart = function (a) {
         window.requestAnimationFrame
             ? d.animationRequested ||
-              ((d.animationRequested = !0),
-              window.requestAnimationFrame(d.update))
+              ((d.animationRequested = !0), window.requestAnimationFrame(d.update))
             : d.updateInt ||
               (d.updateInt = setInterval(function () {
                   d.update();
@@ -68,12 +63,10 @@
         d.charts.push(a);
     };
     d.removeChart = function (a) {
-        for (var b = d.charts, c = b.length - 1; 0 <= c; c--)
-            b[c] == a && b.splice(c, 1);
+        for (var b = d.charts, c = b.length - 1; 0 <= c; c--) b[c] == a && b.splice(c, 1);
         0 === b.length &&
             (d.requestAnimation &&
-                (window.cancelAnimationFrame(d.requestAnimation),
-                (d.animationRequested = !1)),
+                (window.cancelAnimationFrame(d.requestAnimation), (d.animationRequested = !1)),
             d.updateInt && (clearInterval(d.updateInt), (d.updateInt = NaN)));
     };
     d.isModern = !0;
@@ -115,8 +108,7 @@
     d.dy = 0;
     if (document.addEventListener || window.opera)
         (d.isNN = !0), (d.isIE = !1), (d.dx = 0.5), (d.dy = 0.5);
-    document.attachEvent &&
-        ((d.isNN = !1), (d.isIE = !0), d.isModern || ((d.dx = 0), (d.dy = 0)));
+    document.attachEvent && ((d.isNN = !1), (d.isIE = !0), d.isModern || ((d.dx = 0), (d.dy = 0)));
     window.chrome && (d.chrome = !0);
     d.handleMouseUp = function (a) {
         for (var b = d.charts, c = 0; c < b.length; c++) {
@@ -165,9 +157,7 @@
         if (d.initHandlers)
             for (var c = 0; c < b.length; c++) {
                 var e = b[c];
-                e.types
-                    ? d.isInArray(e.types, a.type) && e.method(a)
-                    : e.method(a);
+                e.types ? d.isInArray(e.types, a.type) && e.method(a) : e.method(a);
             }
     };
     d.getUniqueId = function () {
@@ -339,16 +329,14 @@
             for (
                 k[h] = '';
                 g.length > b;
-                k[h] +=
-                    d.trim(g.slice(0, f)) + ((g = g.slice(f)).length ? c : '')
+                k[h] += d.trim(g.slice(0, f)) + ((g = g.slice(f)).length ? c : '')
             )
                 f =
                     2 == e || (f = g.slice(0, b + 1).match(/\S*(\s)?$/))[1]
                         ? b
                         : f.input.length - f[0].length ||
                           (1 == e && b) ||
-                          f.input.length +
-                              (f = g.slice(b).match(/^\S*/))[0].length;
+                          f.input.length + (f = g.slice(b).match(/^\S*/))[0].length;
             g = d.trim(g);
         }
         return k.join(c);
@@ -376,9 +364,7 @@
         var c = '';
         if (document.defaultView && document.defaultView.getComputedStyle)
             try {
-                c = document.defaultView
-                    .getComputedStyle(a, '')
-                    .getPropertyValue(b);
+                c = document.defaultView.getComputedStyle(a, '').getPropertyValue(b);
             } catch (e) {}
         else
             a.currentStyle &&
@@ -395,8 +381,7 @@
         if (a)
             if ('_self' != b && b)
                 if ('_top' == b && window.top) window.top.location.href = a;
-                else if ('_parent' == b && window.parent)
-                    window.parent.location.href = a;
+                else if ('_parent' == b && window.parent) window.parent.location.href = a;
                 else if ('_blank' == b) window.open(a);
                 else {
                     var c = document.getElementsByName(b)[0];
@@ -431,9 +416,7 @@
         }
     };
     d.toNumber = function (a) {
-        return 'number' == typeof a
-            ? a
-            : Number(String(a).replace(/[^0-9\-.]+/g, ''));
+        return 'number' == typeof a ? a : Number(String(a).replace(/[^0-9\-.]+/g, ''));
     };
     d.toColor = function (a) {
         if ('' !== a && void 0 !== a)
@@ -454,8 +437,7 @@
             c && c < b && (b = c),
             (e = Number(a)),
             -1 != a.indexOf('!') && (e = b - Number(a.substr(1))),
-            -1 != a.indexOf('%') &&
-                (e = (b * Number(a.substr(0, a.length - 1))) / 100));
+            -1 != a.indexOf('%') && (e = (b * Number(a.substr(0, a.length - 1))) / 100));
         return e;
     };
     d.fitToBounds = function (a, b, c) {
@@ -494,8 +476,7 @@
         if (a >= g[b].contains) {
             var l = a - Math.floor(a / g[b].contains) * g[b].contains;
             'ss' == b
-                ? ((l = d.formatNumber(l, f)),
-                  1 == l.split(k)[0].length && (l = '0' + l))
+                ? ((l = d.formatNumber(l, f)), 1 == l.split(k)[0].length && (l = '0' + l))
                 : (l = d.roundTo(l, f.precision));
             ('mm' == b || 'hh' == b) && 10 > l && (l = '0' + l);
             c = l + '' + e[b] + '' + c;
@@ -503,9 +484,7 @@
             b = g[b].nextInterval;
             return d.formatDuration(a, b, c, e, h, f);
         }
-        'ss' == b &&
-            ((a = d.formatNumber(a, f)),
-            1 == a.split(k)[0].length && (a = '0' + a));
+        'ss' == b && ((a = d.formatNumber(a, f)), 1 == a.split(k)[0].length && (a = '0' + a));
         ('mm' == b || 'hh' == b) && 10 > a && (a = '0' + a);
         c = a + '' + e[b] + '' + c;
         if (g[h].count > g[b].count)
@@ -583,12 +562,7 @@
         return String(e) + 'e' + c;
     };
     d.randomColor = function () {
-        return (
-            '#' +
-            ('00000' + ((16777216 * Math.random()) << 0).toString(16)).substr(
-                -6
-            )
-        );
+        return '#' + ('00000' + ((16777216 * Math.random()) << 0).toString(16)).substr(-6);
     };
     d.hitTest = function (a, b, c) {
         var e = !1,
@@ -605,10 +579,7 @@
         return e;
     };
     d.isInRectangle = function (a, b, c) {
-        return a >= c.x - 5 &&
-            a <= c.x + c.width + 5 &&
-            b >= c.y - 5 &&
-            b <= c.y + c.height + 5
+        return a >= c.x - 5 && a <= c.x + c.width + 5 && b >= c.y - 5 && b <= c.y + c.height + 5
             ? !0
             : !1;
     };
@@ -624,10 +595,7 @@
                     p = b[m];
                 void 0 !== p &&
                     ((p = f ? d.addPrefix(p, k, g, e) : d.formatNumber(p, e)),
-                    (a = a.replace(
-                        new RegExp('\\[\\[' + h + '' + m + '\\]\\]', 'g'),
-                        p
-                    )));
+                    (a = a.replace(new RegExp('\\[\\[' + h + '' + m + '\\]\\]', 'g'), p)));
             }
         }
         return a;
@@ -639,11 +607,7 @@
             for (e = 0; e < c.length; e++) {
                 var d = c[e],
                     d = d.substr(2, d.length - 4);
-                void 0 !== b[d] &&
-                    (a = a.replace(
-                        new RegExp('\\[\\[' + d + '\\]\\]', 'g'),
-                        b[d]
-                    ));
+                void 0 !== b[d] && (a = a.replace(new RegExp('\\[\\[' + d + '\\]\\]', 'g'), b[d]));
             }
         }
         return a;
@@ -747,11 +711,9 @@
     d.processObject = function (a, b, c, e) {
         if (
             !1 === a instanceof b &&
-            ((a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0)),
-            a.listeners)
+            ((a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0)), a.listeners)
         )
-            for (var h in a.listeners)
-                (b = a.listeners[h]), a.addListener(b.event, b.method);
+            for (var h in a.listeners) (b = a.listeners[h]), a.addListener(b.event, b.method);
         return a;
     };
     d.fixNewLines = function (a) {
@@ -771,14 +733,12 @@
             if (void 0 === b || null === b) b = 20;
             if (0 !== b)
                 if ('[object Array]' === Object.prototype.toString.call(a))
-                    for (var c = 0; c < a.length; c++)
-                        d.deleteObject(a[c], b - 1), (a[c] = null);
+                    for (var c = 0; c < a.length; c++) d.deleteObject(a[c], b - 1), (a[c] = null);
                 else if (a && !a.tagName)
                     try {
                         for (c in ((a.theme = null), a))
                             a[c] &&
-                                ('object' == typeof a[c] &&
-                                    d.deleteObject(a[c], b - 1),
+                                ('object' == typeof a[c] && d.deleteObject(a[c], b - 1),
                                 'function' != typeof a[c] && (a[c] = null));
                     } catch (e) {}
         }
@@ -811,16 +771,8 @@
         if (0 === b) return c;
         if (1 == (b /= d)) return c + e;
         f || (f = 0.3 * d);
-        g < Math.abs(e)
-            ? ((g = e), (a = f / 4))
-            : (a = (f / (2 * Math.PI)) * Math.asin(e / g));
-        return (
-            g *
-                Math.pow(2, -10 * b) *
-                Math.sin((2 * (b * d - a) * Math.PI) / f) +
-            e +
-            c
-        );
+        g < Math.abs(e) ? ((g = e), (a = f / 4)) : (a = (f / (2 * Math.PI)) * Math.asin(e / g));
+        return g * Math.pow(2, -10 * b) * Math.sin((2 * (b * d - a) * Math.PI) / f) + e + c;
     };
     d.fixStepE = function (a) {
         a = a.toExponential(0).split('e');
@@ -841,17 +793,11 @@
             var d = b.getAttribute('class');
             a = a.classNamePrefix + '-';
             e && (a = '');
-            d
-                ? b.setAttribute('class', d + ' ' + a + c)
-                : b.setAttribute('class', a + c);
+            d ? b.setAttribute('class', d + ' ' + a + c) : b.setAttribute('class', a + c);
         }
     };
     d.removeCN = function (a, b, c) {
-        b &&
-            (b = b.node) &&
-            c &&
-            (b = b.classList) &&
-            b.remove(a.classNamePrefix + '-' + c);
+        b && (b = b.node) && c && (b = b.classList) && b.remove(a.classNamePrefix + '-' + c);
     };
     d.parseDefs = function (a, b) {
         for (var c in a) {
@@ -880,7 +826,7 @@
                 'rollOutItem',
                 'rollOverGuide',
                 'rollOutGuide',
-                'clickGuide'
+                'clickGuide',
             );
             this.titleDY = this.y = this.x = this.dy = this.dx = 0;
             this.axisThickness = 1;
@@ -915,10 +861,7 @@
             this.bcn = 'axis-';
             this.centerLabels = !1;
             this.firstDayOfWeek = 1;
-            this.centerLabelOnFullPeriod =
-                this.markPeriodChange =
-                this.boldPeriodBeginning =
-                    !0;
+            this.centerLabelOnFullPeriod = this.markPeriodChange = this.boldPeriodBeginning = !0;
             this.periods = [
                 { period: 'fff', count: 1 },
                 { period: 'fff', count: 5 },
@@ -1010,8 +953,7 @@
             this.axisLine = new this.axisRenderer(this);
             this.autoGridCount
                 ? ('V' == this.orientation
-                      ? ((a = this.height / this.minVerticalGap),
-                        3 > a && (a = 3))
+                      ? ((a = this.height / this.minVerticalGap), 3 > a && (a = 3))
                       : (a = this.width / this.minHorizontalGap),
                   (this.gridCountR = Math.max(a, 1)))
                 : (this.gridCountR = this.gridCount);
@@ -1030,15 +972,7 @@
                 void 0 === c && (c = b.color);
                 var e = this.titleFontSize;
                 isNaN(e) && (e = b.fontSize + 1);
-                a = d.text(
-                    b.container,
-                    a,
-                    c,
-                    b.fontFamily,
-                    e,
-                    this.titleAlign,
-                    this.titleBold
-                );
+                a = d.text(b.container, a, c, b.fontFamily, e, this.titleAlign, this.titleBold);
                 d.setCN(b, a, this.bcn + 'title');
                 this.titleLabel = a;
             }
@@ -1082,19 +1016,12 @@
                         b = e - 10 - p;
                         q && (b -= 5);
                         m = -90;
-                        c =
-                            ('left' == n ? l + 1 : 'right' == n ? -1 : l / 2) +
-                            this.titleDY;
+                        c = ('left' == n ? l + 1 : 'right' == n ? -1 : l / 2) + this.titleDY;
                         break;
                     case 'right':
                         (b = e + g + 10 + p),
                             q && (b += 7),
-                            (c =
-                                ('left' == n
-                                    ? l + 2
-                                    : 'right' == n
-                                    ? -2
-                                    : l / 2) + this.titleDY),
+                            (c = ('left' == n ? l + 2 : 'right' == n ? -2 : l / 2) + this.titleDY),
                             (m = -90);
                 }
                 this.marginsChanged
@@ -1137,11 +1064,7 @@
             });
         },
         addGuide: function (a) {
-            for (
-                var b = this.guides, c = !1, e = b.length, h = 0;
-                h < b.length;
-                h++
-            )
+            for (var b = this.guides, c = !1, e = b.length, h = 0; h < b.length; h++)
                 b[h] == a && ((c = !0), (e = h));
             a = d.processObject(a, d.Guide, this.theme);
             a.id || (a.id = 'guideAuto' + e + '_' + new Date().getTime());
@@ -1207,8 +1130,7 @@
             d.remove(this.grid0);
         },
         chooseMinorFrequency: function (a) {
-            for (var b = 10; 0 < b; b--)
-                if (a / b == Math.round(a / b)) return a / b;
+            for (var b = 10; 0 < b; b--) if (a / b == Math.round(a / b)) return a / b;
         },
         parseDatesDraw: function () {
             var a,
@@ -1239,16 +1161,13 @@
             'WW' == g && (g = 'DD');
             this.stepWidth = this.getStepWidth(this.timeDifference);
             var B = Math.ceil(this.timeDifference / z) + 5,
-                D = (l = d
-                    .resetDateToMin(new Date(this.startTime - z), A, u, t)
-                    .getTime());
+                D = (l = d.resetDateToMin(new Date(this.startTime - z), A, u, t).getTime());
             if (
                 (g == A && 1 == u && this.centerLabelOnFullPeriod) ||
                 this.autoWrap ||
                 this.centerLabels
             )
-                (p = z * this.stepWidth),
-                    this.autoWrap && !this.centerLabels && (p = -p);
+                (p = z * this.stepWidth), this.autoWrap && !this.centerLabels && (p = -p);
             this.cellWidth = k * this.stepWidth;
             q = Math.round(l / z);
             k = -1;
@@ -1277,17 +1196,12 @@
                     'MM' == A &&
                         ((h = (n - l) / z),
                         1.5 <= (n - l) / z &&
-                            ((n =
-                                n - (h - 1) * z + d.getPeriodDuration('DD', 3)),
+                            ((n = n - (h - 1) * z + d.getPeriodDuration('DD', 3)),
                             (n = d.resetDateToMin(new Date(n), A, 1).getTime()),
                             (C += z)));
                     h = (n - this.startTime) * this.stepWidth;
                     if ('radar' == b.type) {
-                        if (
-                            ((h = this.axisWidth - h),
-                            0 > h || h > this.axisWidth)
-                        )
-                            continue;
+                        if (((h = this.axisWidth - h), 0 > h || h > this.axisWidth)) continue;
                     } else
                         this.rotate
                             ? 'date' == this.type &&
@@ -1296,19 +1210,12 @@
                             : 'date' == this.type && (h = this.axisWidth - h);
                     f = !1;
                     this.nextPeriod[g] &&
-                        (f = this.checkPeriodChange(
-                            this.nextPeriod[g],
-                            1,
-                            n,
-                            l,
-                            g
-                        ));
+                        (f = this.checkPeriodChange(this.nextPeriod[g], 1, n, l, g));
                     l = !1;
                     f && this.markPeriodChange
                         ? ((f = this.dateFormatsObject[this.nextPeriod[g]]),
                           this.twoLineMode &&
-                              ((f = this.dateFormatsObject[g] + '\n' + f),
-                              (f = d.fixBrakes(f))),
+                              ((f = this.dateFormatsObject[g] + '\n' + f), (f = d.fixBrakes(f))),
                           (l = !0))
                         : (f = this.dateFormatsObject[g]);
                     r || (l = !1);
@@ -1316,14 +1223,7 @@
                     f = d.formatDate(new Date(n), f, b);
                     if ((a == k && !c) || (a == B && !e)) f = ' ';
                     this.labelFunction &&
-                        (f = this.labelFunction(
-                            f,
-                            new Date(n),
-                            this,
-                            A,
-                            u,
-                            m
-                        ).toString());
+                        (f = this.labelFunction(f, new Date(n), this, A, u, m).toString());
                     this.boldLabels && (l = !0);
                     m = new this.axisItemRenderer(this, h, f, !1, p, K, !1, l);
                     this.pushAxisItem(m);
@@ -1332,9 +1232,7 @@
                         for (h = 1; h < u; h += w)
                             (this.gridAlpha = this.minorGridAlpha),
                                 (f = n + x * h),
-                                (f = d
-                                    .resetDateToMin(new Date(f), A, w, t)
-                                    .getTime()),
+                                (f = d.resetDateToMin(new Date(f), A, w, t).getTime()),
                                 (f = new this.axisItemRenderer(
                                     this,
                                     (f - this.startTime) * this.stepWidth,
@@ -1345,17 +1243,14 @@
                                     void 0,
                                     void 0,
                                     void 0,
-                                    !0
+                                    !0,
                                 )),
                                 this.pushAxisItem(f);
                     this.gridAlpha = y;
                 }
         },
         choosePeriod: function (a) {
-            var b = d.getPeriodDuration(
-                    this.periods[a].period,
-                    this.periods[a].count
-                ),
+            var b = d.getPeriodDuration(this.periods[a].period, this.periods[a].count),
                 c = this.periods;
             return this.timeDifference < b && 0 < a
                 ? c[a - 1]
@@ -1368,8 +1263,7 @@
         getStepWidth: function (a) {
             var b;
             this.startOnAxis
-                ? ((b = this.axisWidth / (a - 1)),
-                  1 == a && (b = this.axisWidth))
+                ? ((b = this.axisWidth / (a - 1)), 1 == a && (b = this.axisWidth))
                 : (b = this.axisWidth / a);
             return b;
         },
@@ -1449,8 +1343,7 @@
             if ((d = this.chart.chartCursor)) f = d.index;
             if (this.balloon && void 0 !== e && this.balloon.enabled) {
                 if (this.balloonTextFunction) {
-                    if ('date' == this.type || !0 === this.parseDates)
-                        e = new Date(e);
+                    if ('date' == this.type || !0 === this.parseDates) e = new Date(e);
                     e = this.balloonTextFunction(e);
                 } else
                     this.balloonText
@@ -1473,8 +1366,7 @@
                 ((b = b.cursorPosition),
                 'mouse' != b && (this.stickBalloonToCategory = !0),
                 'start' == b && (this.stickBalloonToStart = !0),
-                'ValueAxis' == this.cname &&
-                    (this.stickBalloonToCategory = !1));
+                'ValueAxis' == this.cname && (this.stickBalloonToCategory = !1));
             this.balloon &&
                 (this.balloon.destroy && this.balloon.destroy(),
                 d.extend(this.balloon, a.balloon, !0));
@@ -1522,9 +1414,7 @@
                         g ? ((c = 0), (e = k)) : ((c = -1e3), (e = 0));
                         break;
                     case 'right':
-                        (d = 0),
-                            (f = l),
-                            g ? ((c = 0), (e = k)) : ((c = k), (e = k + 1e3));
+                        (d = 0), (f = l), g ? ((c = 0), (e = k)) : ((c = k), (e = k + 1e3));
                 }
                 a.drop || (a.pointerOrientation = b);
                 a.setBounds(c, d, e, f);
@@ -1542,7 +1432,7 @@
                 'axisChanged',
                 'logarithmicAxisFailed',
                 'axisZoomed',
-                'axisIntZoomed'
+                'axisIntZoomed',
             );
             d.ValueAxis.base.construct.call(this, a);
             this.dataChanged = !0;
@@ -1585,12 +1475,9 @@
             this.recalculateToPercents && this.recalculate();
             this.synchronizationMultiplier && this.synchronizeWith
                 ? (d.isString(this.synchronizeWith) &&
-                      (this.synchronizeWith = a.getValueAxisById(
-                          this.synchronizeWith
-                      )),
+                      (this.synchronizeWith = a.getValueAxisById(this.synchronizeWith)),
                   this.synchronizeWith &&
-                      (this.synchronizeWithAxis(this.synchronizeWith),
-                      (this.foundGraphs = !0)))
+                      (this.synchronizeWithAxis(this.synchronizeWith), (this.foundGraphs = !0)))
                 : ((this.foundGraphs = !1),
                   this.getMinMax(),
                   0 === this.start &&
@@ -1605,17 +1492,13 @@
                           isNaN(this.maximum) || (this.fullMax = this.maximum)),
                       this.logarithmic &&
                           ((this.fullMin = this.logMin),
-                          0 === this.fullMin &&
-                              (this.fullMin = this.treatZeroAs)),
+                          0 === this.fullMin && (this.fullMin = this.treatZeroAs)),
                       'date' == this.type &&
                           (this.minimumDate || (this.fullMin = this.minRR),
                           this.maximumDate || (this.fullMax = this.maxRR),
                           this.strictMinMax &&
-                              (this.minimumDate &&
-                                  (this.fullMin = this.minimumDate.getTime()),
-                              this.maximumDate &&
-                                  (this.fullMax =
-                                      this.maximumDate.getTime())))));
+                              (this.minimumDate && (this.fullMin = this.minimumDate.getTime()),
+                              this.maximumDate && (this.fullMax = this.maximumDate.getTime())))));
         },
         draw: function () {
             d.ValueAxis.base.draw.call(this);
@@ -1624,15 +1507,10 @@
             this.labelRotationR = this.labelRotation;
             d.setCN(a, this.set, 'value-axis value-axis-' + this.id);
             d.setCN(a, this.labelsSet, 'value-axis value-axis-' + this.id);
-            d.setCN(
-                a,
-                this.axisLine.axisSet,
-                'value-axis value-axis-' + this.id
-            );
+            d.setCN(a, this.axisLine.axisSet, 'value-axis value-axis-' + this.id);
             var c = this.type;
             'duration' == c && (this.duration = 'ss');
-            !0 === this.dataChanged &&
-                (this.updateData(), (this.dataChanged = !1));
+            !0 === this.dataChanged && (this.updateData(), (this.dataChanged = !1));
             'date' == c &&
                 ((this.logarithmic = !1),
                 (this.min = this.minRR),
@@ -1670,8 +1548,7 @@
             else {
                 'date' == this.type &&
                     this.min == this.max &&
-                    ((this.max += this.minDuration()),
-                    (this.min -= this.minDuration()));
+                    ((this.max += this.minDuration()), (this.min -= this.minDuration()));
                 var m = this.labelFrequency,
                     p = this.showFirstLabel,
                     q = this.showLastLabel,
@@ -1689,60 +1566,45 @@
                 isNaN(this.minZoom) || (this.minReal = this.min = this.minZoom);
                 isNaN(this.maxZoom) || (this.max = this.maxZoom);
                 if (this.logarithmic) {
-                    g =
-                        Math.log(this.fullMax) * Math.LOG10E -
-                        Math.log(this.fullMin) * Math.LOG10E;
-                    var r =
-                        Math.log(this.max) / Math.LN10 -
-                        Math.log(this.fullMin) * Math.LOG10E;
+                    g = Math.log(this.fullMax) * Math.LOG10E - Math.log(this.fullMin) * Math.LOG10E;
+                    var r = Math.log(this.max) / Math.LN10 - Math.log(this.fullMin) * Math.LOG10E;
                     this.relativeStart = d.roundTo(
                         (Math.log(this.minReal) / Math.LN10 -
                             Math.log(this.fullMin) * Math.LOG10E) /
                             g,
-                        5
+                        5,
                     );
                     this.relativeEnd = d.roundTo(r / g, 5);
                 } else
                     (this.relativeStart = d.roundTo(
                         d.fitToBounds(
-                            (this.min - this.fullMin) /
-                                (this.fullMax - this.fullMin),
+                            (this.min - this.fullMin) / (this.fullMax - this.fullMin),
                             0,
-                            1
+                            1,
                         ),
-                        5
+                        5,
                     )),
                         (this.relativeEnd = d.roundTo(
                             d.fitToBounds(
-                                (this.max - this.fullMin) /
-                                    (this.fullMax - this.fullMin),
+                                (this.max - this.fullMin) / (this.fullMax - this.fullMin),
                                 0,
-                                1
+                                1,
                             ),
-                            5
+                            5,
                         ));
-                var r =
-                        Math.round((this.maxCalc - this.minCalc) / this.step) +
-                        1,
+                var r = Math.round((this.maxCalc - this.minCalc) / this.step) + 1,
                     w;
                 !0 === h
                     ? ((w =
-                          Math.log(this.max) * Math.LOG10E -
-                          Math.log(this.minReal) * Math.LOG10E),
+                          Math.log(this.max) * Math.LOG10E - Math.log(this.minReal) * Math.LOG10E),
                       (this.stepWidth = this.axisWidth / w),
                       w > this.logGridLimit &&
-                          ((r =
-                              Math.ceil(Math.log(this.max) * Math.LOG10E) + 1),
-                          (t = Math.round(
-                              Math.log(this.minReal) * Math.LOG10E
-                          )),
-                          r > this.gridCountR &&
-                              (n = Math.ceil(r / this.gridCountR))))
+                          ((r = Math.ceil(Math.log(this.max) * Math.LOG10E) + 1),
+                          (t = Math.round(Math.log(this.minReal) * Math.LOG10E)),
+                          r > this.gridCountR && (n = Math.ceil(r / this.gridCountR))))
                     : (this.stepWidth = this.axisWidth / (this.max - this.min));
                 var y = 0;
-                1 > this.step &&
-                    -1 < this.step &&
-                    (y = d.getDecimals(this.step));
+                1 > this.step && -1 < this.step && (y = d.getDecimals(this.step));
                 this.integersOnly && (y = 0);
                 y > this.maxDecCount && (y = this.maxDecCount);
                 var x = this.precision;
@@ -1761,16 +1623,11 @@
                     var A = d.roundTo(this.step * g + this.min, y);
                     -1 != String(A).indexOf('e') && (this.exponential = !0);
                 }
-                this.duration &&
-                    (this.maxInterval = d.getMaxInterval(
-                        this.max,
-                        this.duration
-                    ));
+                this.duration && (this.maxInterval = d.getMaxInterval(this.max, this.duration));
                 var y = this.step,
                     z,
                     A = this.minorGridAlpha;
-                this.minorGridEnabled &&
-                    (z = this.getMinorGridStep(y, this.stepWidth * y));
+                this.minorGridEnabled && (z = this.getMinorGridStep(y, this.stepWidth * y));
                 if (this.autoGridCount || 0 !== this.gridCount)
                     if ('date' == c)
                         this.generateDFObject(),
@@ -1797,22 +1654,15 @@
                             )
                                 if (isNaN(x) || Number(d.toFixed(t, x)) == t) {
                                     if (!0 === h)
-                                        if (w > this.logGridLimit)
-                                            t = Math.pow(10, g);
-                                        else if (
-                                            0 >= t &&
-                                            ((t = c + y * g + y / 2), 0 >= t)
-                                        )
+                                        if (w > this.logGridLimit) t = Math.pow(10, g);
+                                        else if (0 >= t && ((t = c + y * g + y / 2), 0 >= t))
                                             continue;
                                     u = this.formatValue(t, !1, g);
                                     Math.round(g / m) != g / m && (u = void 0);
-                                    if ((0 === g && !p) || (g == r - 1 && !q))
-                                        u = ' ';
+                                    if ((0 === g && !p) || (g == r - 1 && !q)) u = ' ';
                                     f = this.getCoordinate(t);
                                     var B;
-                                    this.rotate &&
-                                        this.autoWrap &&
-                                        (B = this.stepWidth * y - 10);
+                                    this.rotate && this.autoWrap && (B = this.stepWidth * y - 10);
                                     u = new this.axisItemRenderer(
                                         this,
                                         f,
@@ -1821,13 +1671,10 @@
                                         B,
                                         void 0,
                                         void 0,
-                                        this.boldLabels
+                                        this.boldLabels,
                                     );
                                     this.pushAxisItem(u);
-                                    if (
-                                        t == this.baseValue &&
-                                        'radar' != a.type
-                                    ) {
+                                    if (t == this.baseValue && 'radar' != a.type) {
                                         var D,
                                             C,
                                             K = this.width,
@@ -1835,20 +1682,13 @@
                                         'H' == this.orientation
                                             ? 0 <= f &&
                                               f <= K + 1 &&
-                                              ((D = [f, f, f + k]),
-                                              (C = [H, 0, l]))
+                                              ((D = [f, f, f + k]), (C = [H, 0, l]))
                                             : 0 <= f &&
                                               f <= H + 1 &&
-                                              ((D = [0, K, K + k]),
-                                              (C = [f, f, f + l]));
+                                              ((D = [0, K, K + k]), (C = [f, f, f + l]));
                                         D &&
-                                            ((f = d.fitToBounds(
-                                                2 * this.gridAlpha,
-                                                0,
-                                                1
-                                            )),
-                                            isNaN(this.zeroGridAlpha) ||
-                                                (f = this.zeroGridAlpha),
+                                            ((f = d.fitToBounds(2 * this.gridAlpha, 0, 1)),
+                                            isNaN(this.zeroGridAlpha) || (f = this.zeroGridAlpha),
                                             (f = d.line(
                                                 a.container,
                                                 D,
@@ -1856,43 +1696,27 @@
                                                 this.gridColor,
                                                 f,
                                                 1,
-                                                this.dashLength
+                                                this.dashLength,
                                             )),
                                             f.translate(this.x, this.y),
                                             (this.grid0 = f),
                                             a.axesSet.push(f),
                                             f.toBack(),
-                                            d.setCN(
-                                                a,
-                                                f,
-                                                this.bcn +
-                                                    'zero-grid-' +
-                                                    this.id
-                                            ),
-                                            d.setCN(
-                                                a,
-                                                f,
-                                                this.bcn + 'zero-grid'
-                                            ));
+                                            d.setCN(a, f, this.bcn + 'zero-grid-' + this.id),
+                                            d.setCN(a, f, this.bcn + 'zero-grid'));
                                     }
                                     if (!isNaN(z) && 0 < A && g < r - 1) {
                                         f = y / z;
                                         h &&
                                             ((z = y * (g + n) + this.minCalc),
-                                            (z = d.roundTo(
-                                                z,
-                                                this.maxDecCount + 1
-                                            )),
-                                            w > this.logGridLimit &&
-                                                (z = Math.pow(10, g + n)),
+                                            (z = d.roundTo(z, this.maxDecCount + 1)),
+                                            w > this.logGridLimit && (z = Math.pow(10, g + n)),
                                             (f = 9),
                                             (z = (z - t) / f));
                                         K = this.gridAlpha;
                                         this.gridAlpha = this.minorGridAlpha;
                                         for (H = 1; H < f; H++) {
-                                            var Q = this.getCoordinate(
-                                                    t + z * H
-                                                ),
+                                            var Q = this.getCoordinate(t + z * H),
                                                 Q = new this.axisItemRenderer(
                                                     this,
                                                     Q,
@@ -1903,7 +1727,7 @@
                                                     !1,
                                                     !1,
                                                     0,
-                                                    !0
+                                                    !0,
                                                 );
                                             this.pushAxisItem(Q);
                                         }
@@ -1920,15 +1744,7 @@
                             (z = C.above),
                             isNaN(C.toValue) ||
                                 ((k = this.getCoordinate(C.toValue)),
-                                (u = new this.axisItemRenderer(
-                                    this,
-                                    k,
-                                    '',
-                                    !0,
-                                    NaN,
-                                    NaN,
-                                    C
-                                )),
+                                (u = new this.axisItemRenderer(this, k, '', !0, NaN, NaN, C)),
                                 this.pushAxisItem(u, z)),
                             (l = NaN),
                             isNaN(C.value) ||
@@ -1940,19 +1756,14 @@
                                     !0,
                                     NaN,
                                     (k - l) / 2,
-                                    C
+                                    C,
                                 )),
                                 this.pushAxisItem(u, z)),
                             isNaN(k) && ((l -= 3), (k = l + 3)),
                             u && (m = u.label) && this.addEventListeners(m, C),
                             isNaN(k - l) ||
                                 (0 > l && 0 > k) ||
-                                ((k = new this.guideFillRenderer(
-                                    this,
-                                    l,
-                                    k,
-                                    C
-                                )),
+                                ((k = new this.guideFillRenderer(this, l, k, C)),
                                 this.pushAxisItem(k, z),
                                 (z = k.graphics()),
                                 (C.graphics = z),
@@ -1960,12 +1771,8 @@
                     this.fillAlpha = D;
                 }
                 u = this.baseValue;
-                this.min > this.baseValue &&
-                    this.max > this.baseValue &&
-                    (u = this.min);
-                this.min < this.baseValue &&
-                    this.max < this.baseValue &&
-                    (u = this.max);
+                this.min > this.baseValue && this.max > this.baseValue && (u = this.min);
+                this.min < this.baseValue && this.max < this.baseValue && (u = this.max);
                 h && u < this.minReal && (u = this.minReal);
                 this.baseCoord = this.getCoordinate(u, !0);
                 u = { type: 'axisChanged', target: this, chart: a };
@@ -1980,9 +1787,7 @@
             u.translate(this.x, this.y);
             this.positionTitle();
             'radar' != a.type && h.toFront();
-            !this.visible || e
-                ? (b.hide(), h.hide(), u.hide())
-                : (b.show(), h.show(), u.show());
+            !this.visible || e ? (b.hide(), h.hide(), u.hide()) : (b.show(), h.show(), u.show());
             this.axisY = this.y;
             this.axisX = this.x;
         },
@@ -1992,7 +1797,7 @@
                     (this.minimumDate = d.getDate(
                         this.minimumDate,
                         this.chart.dataDateFormat,
-                        'fff'
+                        'fff',
                     )),
                 (this.min = this.minimumDate.getTime()));
             this.maximumDate &&
@@ -2000,7 +1805,7 @@
                     (this.maximumDate = d.getDate(
                         this.maximumDate,
                         this.chart.dataDateFormat,
-                        'fff'
+                        'fff',
                     )),
                 (this.max = this.maximumDate.getTime()));
         },
@@ -2011,22 +1816,16 @@
                 g = this.chart;
             if (f)
                 return (
-                    !0 === this.logarithmic &&
-                        (e = -1 != String(a).indexOf('e') ? !0 : !1),
+                    !0 === this.logarithmic && (e = -1 != String(a).indexOf('e') ? !0 : !1),
                     this.useScientificNotation && (e = !0),
                     this.usePrefixes && (e = !1),
                     e
-                        ? ((c =
-                              -1 == String(a).indexOf('e')
-                                  ? a.toExponential(15)
-                                  : String(a)),
+                        ? ((c = -1 == String(a).indexOf('e') ? a.toExponential(15) : String(a)),
                           (e = c.split('e')),
                           (c = Number(e[0])),
                           (e = Number(e[1])),
                           (c = d.roundTo(c, 14)),
-                          b ||
-                              isNaN(this.precision) ||
-                              (c = d.roundTo(c, this.precision)),
+                          b || isNaN(this.precision) || (c = d.roundTo(c, this.precision)),
                           10 == c && ((c = 1), (e += 1)),
                           (c = c + 'e' + e),
                           0 === a && (c = '0'),
@@ -2037,9 +1836,7 @@
                                   ? ((f.precision = e[1].length),
                                     0 > c && (f.precision = Math.abs(c)),
                                     b && 1 < a && (f.precision = 0),
-                                    b ||
-                                        isNaN(this.precision) ||
-                                        (f.precision = this.precision))
+                                    b || isNaN(this.precision) || (f.precision = this.precision))
                                   : (f.precision = -1)),
                           (c = this.usePrefixes
                               ? d.addPrefix(
@@ -2047,7 +1844,7 @@
                                     g.prefixesOfBigNumbers,
                                     g.prefixesOfSmallNumbers,
                                     f,
-                                    !b
+                                    !b,
                                 )
                               : d.formatNumber(a, f, f.precision))),
                     this.duration &&
@@ -2058,26 +1855,17 @@
                             '',
                             this.durationUnits,
                             this.maxInterval,
-                            f
+                            f,
                         ))),
                     'date' == this.type &&
-                        (c = d.formatDate(
-                            new Date(a),
-                            this.currentDateFormat,
-                            g
-                        )),
+                        (c = d.formatDate(new Date(a), this.currentDateFormat, g)),
                     this.recalculateToPercents
                         ? (c += '%')
-                        : (b = this.unit) &&
-                          (c = 'left' == this.unitPosition ? b + c : c + b),
+                        : (b = this.unit) && (c = 'left' == this.unitPosition ? b + c : c + b),
                     this.labelFunction &&
                         (c =
                             'date' == this.type
-                                ? this.labelFunction(
-                                      c,
-                                      new Date(a),
-                                      this
-                                  ).toString()
+                                ? this.labelFunction(c, new Date(a), this).toString()
                                 : this.labelFunction(a, c, this).toString()),
                     c
                 );
@@ -2094,8 +1882,7 @@
                     g = Math.floor(Math.log(Math.abs(f)) * Math.LOG10E);
                 if (!(1 < Math.abs(e - g)))
                     if (1 > a) {
-                        if (((g = Math.pow(10, -g) * f), g == Math.round(g)))
-                            return f;
+                        if (((g = Math.pow(10, -g) * f), g == Math.round(g))) return f;
                     } else if (f == Math.round(f)) return f;
             }
         },
@@ -2138,14 +1925,10 @@
             for (n = p; n <= l; n++) {
                 var w = 0;
                 for (q = 0; q < k.length; q++)
-                    if (((p = k[q]), p.hidden))
-                        p.newStack && ((h[n] = NaN), (e[n] = NaN));
+                    if (((p = k[q]), p.hidden)) p.newStack && ((h[n] = NaN), (e[n] = NaN));
                     else if (
                         ((m = p.type),
-                        p.chart == this.chart &&
-                            p.valueAxis == this &&
-                            a == m &&
-                            p.stackable)
+                        p.chart == this.chart && p.valueAxis == this && a == m && p.stackable)
                     )
                         if (
                             ((m = this.data[n].axes[this.id].graphs[p.id]),
@@ -2156,9 +1939,7 @@
                         else {
                             var y = d.getDecimals(g);
                             w < y && (w = y);
-                            isNaN(f[n])
-                                ? (f[n] = Math.abs(g))
-                                : (f[n] += Math.abs(g));
+                            isNaN(f[n]) ? (f[n] = Math.abs(g)) : (f[n] += Math.abs(g));
                             f[n] = d.roundTo(f[n], w);
                             y = p.fillToGraph;
                             r &&
@@ -2183,14 +1964,12 @@
                                         ? ((m.values.close = g),
                                           isNaN(e[n])
                                               ? (m.values.open = t)
-                                              : ((m.values.close += e[n]),
-                                                (m.values.open = e[n])),
+                                              : ((m.values.close += e[n]), (m.values.open = e[n])),
                                           (e[n] = m.values.close))
                                         : ((m.values.close = g),
                                           isNaN(h[n])
                                               ? (m.values.open = t)
-                                              : ((m.values.close += h[n]),
-                                                (m.values.open = h[n])),
+                                              : ((m.values.close += h[n]), (m.values.open = h[n])),
                                           (h[n] = m.values.close))));
                         }
             }
@@ -2214,18 +1993,10 @@
                                       (isNaN(e[n]) && (e[n] = 0),
                                       isNaN(h[n]) && (h[n] = 0),
                                       0 > c
-                                          ? ((m.values.close = d.fitToBounds(
-                                                c + e[n],
-                                                -100,
-                                                100
-                                            )),
+                                          ? ((m.values.close = d.fitToBounds(c + e[n], -100, 100)),
                                             (m.values.open = e[n]),
                                             (e[n] = m.values.close))
-                                          : ((m.values.close = d.fitToBounds(
-                                                c + h[n],
-                                                -100,
-                                                100
-                                            )),
+                                          : ((m.values.close = d.fitToBounds(c + h[n], -100, 100)),
                                             (m.values.open = h[n]),
                                             (h[n] = m.values.close))))));
         },
@@ -2241,11 +2012,7 @@
                     var f,
                         g,
                         k = this.end + 2,
-                        k = d.fitToBounds(
-                            this.end + 1,
-                            0,
-                            this.data.length - 1
-                        ),
+                        k = d.fitToBounds(this.end + 1, 0, this.data.length - 1),
                         l = this.start;
                     0 < l && l--;
                     var m;
@@ -2254,14 +2021,8 @@
                     if (!isNaN(a.startTime) && (m = a.categoryAxis)) {
                         var p = m.minDuration(),
                             p = new Date(a.startTime + p / 2),
-                            q = d
-                                .resetDateToMin(
-                                    new Date(a.startTime),
-                                    m.minPeriod
-                                )
-                                .getTime();
-                        d.resetDateToMin(new Date(p), m.minPeriod).getTime() >
-                            q && g++;
+                            q = d.resetDateToMin(new Date(a.startTime), m.minPeriod).getTime();
+                        d.resetDateToMin(new Date(p), m.minPeriod).getTime() > q && g++;
                     }
                     if ((m = a.recalculateFromDate))
                         (m = d.getDate(m, a.dataDateFormat, 'fff')),
@@ -2271,7 +2032,7 @@
                                 m.getTime(),
                                 !0,
                                 0,
-                                a.chartData.length
+                                a.chartData.length,
                             )),
                             (k = a.chartData.length - 1);
                     for (
@@ -2280,10 +2041,7 @@
                         ((g = this.data[m].axes[this.id].graphs[e.id]),
                         (f = g.values[h]),
                         e.recalculateValue &&
-                            (f =
-                                g.dataContext[
-                                    e.valueField + e.recalculateValue
-                                ]),
+                            (f = g.dataContext[e.valueField + e.recalculateValue]),
                         isNaN(f));
                         m++
                     );
@@ -2294,8 +2052,7 @@
                         var l = g.values,
                             n;
                         for (n in l)
-                            g.percents[n] =
-                                'percents' != n ? (l[n] / f) * 100 - 100 : l[n];
+                            g.percents[n] = 'percents' != n ? (l[n] / f) * 100 - 100 : l[n];
                     }
                 }
             }
@@ -2311,15 +2068,12 @@
                     this.expandMinMax &&
                     (a = !0);
             }
-            a &&
-                (0 < this.start && this.start--,
-                this.end < this.data.length - 1 && this.end++);
+            a && (0 < this.start && this.start--, this.end < this.data.length - 1 && this.end++);
             'serial' == b.type &&
                 (!0 !== b.categoryAxis.parseDates ||
                     a ||
                     (this.end < this.data.length - 1 && this.end++));
-            this.includeAllValues &&
-                ((this.start = 0), (this.end = this.data.length - 1));
+            this.includeAllValues && ((this.start = 0), (this.end = this.data.length - 1));
             a = this.minMaxMultiplier;
             b = this.getExtremes(this.start, this.end);
             this.min = b.min;
@@ -2340,8 +2094,7 @@
             isNaN(this.minimum) || (this.min = this.minimum);
             isNaN(this.maximum) || (this.max = this.maximum);
             'date' == this.type && this.getDateMinMax();
-            this.min > this.max &&
-                ((a = this.max), (this.max = this.min), (this.min = a));
+            this.min > this.max && ((a = this.max), (this.max = this.min), (this.min = a));
             isNaN(this.minZoom) || (this.min = this.minZoom);
             isNaN(this.maxZoom) || (this.max = this.maxZoom);
             this.minCalc = this.min;
@@ -2355,31 +2108,18 @@
             c = this.max - this.min;
             e =
                 0 === c
-                    ? Math.pow(
-                          10,
-                          Math.floor(Math.log(Math.abs(this.max)) * Math.LOG10E)
-                      ) / 10
-                    : Math.pow(
-                          10,
-                          Math.floor(Math.log(Math.abs(c)) * Math.LOG10E)
-                      ) / 10;
+                    ? Math.pow(10, Math.floor(Math.log(Math.abs(this.max)) * Math.LOG10E)) / 10
+                    : Math.pow(10, Math.floor(Math.log(Math.abs(c)) * Math.LOG10E)) / 10;
             isNaN(this.maximum) && (this.max = Math.ceil(this.max / e) * e + e);
-            isNaN(this.minimum) &&
-                (this.min = Math.floor(this.min / e) * e - e);
+            isNaN(this.minimum) && (this.min = Math.floor(this.min / e) * e - e);
             0 > this.min && 0 <= a && (this.min = 0);
             0 < this.max && 0 >= b && (this.max = 0);
             '100%' == this.stackType &&
-                ((this.min = 0 > this.min ? -100 : 0),
-                (this.max = 0 > this.max ? 0 : 100));
+                ((this.min = 0 > this.min ? -100 : 0), (this.max = 0 > this.max ? 0 : 100));
             c = this.max - this.min;
-            e =
-                Math.pow(10, Math.floor(Math.log(Math.abs(c)) * Math.LOG10E)) /
-                10;
+            e = Math.pow(10, Math.floor(Math.log(Math.abs(c)) * Math.LOG10E)) / 10;
             this.step = Math.ceil(c / this.gridCountR / e) * e;
-            c = Math.pow(
-                10,
-                Math.floor(Math.log(Math.abs(this.step)) * Math.LOG10E)
-            );
+            c = Math.pow(10, Math.floor(Math.log(Math.abs(this.step)) * Math.LOG10E));
             c = d.fixStepE(c);
             e = Math.ceil(this.step / c);
             5 < e && (e = 10);
@@ -2387,9 +2127,7 @@
             this.step = Math.ceil(this.step / (c * e)) * c * e;
             isNaN(this.setStep) || (this.step = this.setStep);
             1 > c
-                ? ((this.maxDecCount = Math.abs(
-                      Math.log(Math.abs(c)) * Math.LOG10E
-                  )),
+                ? ((this.maxDecCount = Math.abs(Math.log(Math.abs(c)) * Math.LOG10E)),
                   (this.maxDecCount = Math.round(this.maxDecCount)),
                   (this.step = d.roundTo(this.step, this.maxDecCount + 1)))
                 : (this.maxDecCount = 0);
@@ -2400,40 +2138,21 @@
             1 < this.minReal &&
                 1 < this.max - this.minReal &&
                 (this.minReal = Math.floor(this.minReal));
-            c = Math.pow(
-                10,
-                Math.floor(Math.log(Math.abs(this.minReal)) * Math.LOG10E)
-            );
+            c = Math.pow(10, Math.floor(Math.log(Math.abs(this.minReal)) * Math.LOG10E));
             0 === this.min && (this.minReal = c);
             0 === this.min && 1 < this.minReal && (this.minReal = 1);
             0 < this.min &&
                 0 < this.minReal - this.step &&
                 (this.minReal =
-                    this.min + this.step < this.minReal
-                        ? this.min + this.step
-                        : this.min);
+                    this.min + this.step < this.minReal ? this.min + this.step : this.min);
             this.logarithmic &&
                 (2 < Math.log(b) * Math.LOG10E - Math.log(a) * Math.LOG10E
                     ? ((this.minReal = this.min =
-                          Math.pow(
-                              10,
-                              Math.floor(Math.log(Math.abs(a)) * Math.LOG10E)
-                          )),
+                          Math.pow(10, Math.floor(Math.log(Math.abs(a)) * Math.LOG10E))),
                       (this.maxReal = this.max =
-                          Math.pow(
-                              10,
-                              Math.ceil(Math.log(Math.abs(b)) * Math.LOG10E)
-                          )))
-                    : ((a =
-                          Math.pow(
-                              10,
-                              Math.floor(Math.log(Math.abs(a)) * Math.LOG10E)
-                          ) / 10),
-                      Math.pow(
-                          10,
-                          Math.floor(Math.log(Math.abs(this.min)) * Math.LOG10E)
-                      ) /
-                          10 <
+                          Math.pow(10, Math.ceil(Math.log(Math.abs(b)) * Math.LOG10E))))
+                    : ((a = Math.pow(10, Math.floor(Math.log(Math.abs(a)) * Math.LOG10E)) / 10),
+                      Math.pow(10, Math.floor(Math.log(Math.abs(this.min)) * Math.LOG10E)) / 10 <
                           a && (this.minReal = this.min = 10 * a)));
         },
         getExtremes: function (a, b) {
@@ -2444,10 +2163,7 @@
                 for (g in f)
                     if (f.hasOwnProperty(g)) {
                         var k = this.chart.graphsById[g];
-                        if (
-                            k.includeInMinMax &&
-                            (!k.hidden || this.includeHidden)
-                        ) {
+                        if (k.includeInMinMax && (!k.hidden || this.includeHidden)) {
                             isNaN(c) && (c = Infinity);
                             isNaN(e) && (e = -Infinity);
                             this.foundGraphs = !0;
@@ -2455,18 +2171,14 @@
                             this.recalculateToPercents && (k = f[g].percents);
                             var l;
                             if (this.minMaxField)
-                                (l = k[this.minMaxField]),
-                                    l < c && (c = l),
-                                    l > e && (e = l);
+                                (l = k[this.minMaxField]), l < c && (c = l), l > e && (e = l);
                             else
                                 for (var m in k)
                                     k.hasOwnProperty(m) &&
                                         'percents' != m &&
                                         'total' != m &&
                                         'error' != m &&
-                                        ((l = k[m]),
-                                        l < c && (c = l),
-                                        l > e && (e = l));
+                                        ((l = k[m]), l < c && (c = l), l > e && (e = l));
                         }
                     }
             }
@@ -2506,8 +2218,7 @@
             if (this.logarithmic) {
                 var h = Math.log(h) * Math.LOG10E - Math.log(e) * Math.LOG10E,
                     f = Math.log(b) / Math.LN10 - Math.log(e) * Math.LOG10E;
-                this.relativeStart =
-                    (Math.log(a) / Math.LN10 - Math.log(e) * Math.LOG10E) / h;
+                this.relativeStart = (Math.log(a) / Math.LN10 - Math.log(e) * Math.LOG10E) / h;
                 this.relativeEnd = f / h;
             }
             if (this.minZoom != a || this.maxZoom != b)
@@ -2521,8 +2232,7 @@
                     (e.endValue = b),
                     (e.relativeStart = this.relativeStart),
                     (e.relativeEnd = this.relativeEnd),
-                    (this.prevStartValue == a && this.prevEndValue == b) ||
-                        this.fire(e),
+                    (this.prevStartValue == a && this.prevEndValue == b) || this.fire(e),
                     (this.prevStartValue = a),
                     (this.prevEndValue = b),
                     c ||
@@ -2547,14 +2257,8 @@
             return !0 === this.logarithmic
                 ? Math.pow(
                       10,
-                      (d
-                          ? !0 === e
-                              ? (b - a) / c
-                              : a / c
-                          : !0 === e
-                          ? a / c
-                          : (b - a) / c) +
-                          Math.log(g) * Math.LOG10E
+                      (d ? (!0 === e ? (b - a) / c : a / c) : !0 === e ? a / c : (b - a) / c) +
+                          Math.log(g) * Math.LOG10E,
                   )
                 : !0 === e
                 ? d
@@ -2575,13 +2279,7 @@
             !0 === this.logarithmic
                 ? (0 === a && (a = this.treatZeroAs),
                   (g = Math.log(a) * Math.LOG10E - Math.log(k) * Math.LOG10E),
-                  (c = c
-                      ? !0 === e
-                          ? d - f * g
-                          : f * g
-                      : !0 === e
-                      ? f * g
-                      : d - f * g))
+                  (c = c ? (!0 === e ? d - f * g : f * g) : !0 === e ? f * g : d - f * g))
                 : (c =
                       !0 === e
                           ? c
@@ -2596,18 +2294,12 @@
         },
         synchronizeWithAxis: function (a) {
             this.synchronizeWith = a;
-            this.listenTo(
-                this.synchronizeWith,
-                'axisChanged',
-                this.handleSynchronization
-            );
+            this.listenTo(this.synchronizeWith, 'axisChanged', this.handleSynchronization);
         },
         handleSynchronization: function () {
             if (this.synchronizeWith) {
                 d.isString(this.synchronizeWith) &&
-                    (this.synchronizeWith = this.chart.getValueAxisById(
-                        this.synchronizeWith
-                    ));
+                    (this.synchronizeWith = this.chart.getValueAxisById(this.synchronizeWith));
                 var a = this.synchronizeWith,
                     b = a.min,
                     c = a.max,
@@ -2622,13 +2314,10 @@
                             Math.abs(
                                 Math.pow(
                                     10,
-                                    Math.floor(
-                                        Math.log(Math.abs(this.step)) *
-                                            Math.LOG10E
-                                    )
-                                )
-                            )
-                        ) * Math.LOG10E
+                                    Math.floor(Math.log(Math.abs(this.step)) * Math.LOG10E),
+                                ),
+                            ),
+                        ) * Math.LOG10E,
                     )),
                     (this.maxDecCount = b = Math.round(b)),
                     this.draw());
@@ -2663,9 +2352,7 @@
                       ? ((e = d.line(n, [0, 0, -g], [0, p, p - k], e, h, c)),
                         (k = m + k),
                         (c = c / 2 + f + g + q + l - 1))
-                      : ((e = d.line(n, [0, 0], [0, p], e, h, c)),
-                        (k = m),
-                        (c = -c / 2 - f + l)));
+                      : ((e = d.line(n, [0, 0], [0, p], e, h, c)), (k = m), (c = -c / 2 - f + l)));
             e.translate(c, k);
             c = b.container.set();
             c.push(e);
@@ -2721,8 +2408,7 @@
                 fa,
                 Ba;
             g
-                ? (void 0 !== g.id &&
-                      (q = n.classNamePrefix + '-guide-' + g.id),
+                ? (void 0 !== g.id && (q = n.classNamePrefix + '-guide-' + g.id),
                   (P = !0),
                   isNaN(g.tickLength) || (B = g.tickLength),
                   void 0 != g.lineColor && (K = g.lineColor),
@@ -2767,32 +2453,16 @@
                         (0 < B &&
                             0 < z &&
                             b + l <= xa + 1 &&
-                            ((fa = d.line(y, [b + l, b + l], [0, B], A, z, C)),
-                            x.push(fa)),
+                            ((fa = d.line(y, [b + l, b + l], [0, B], A, z, C)), x.push(fa)),
                         0 < D &&
-                            ((Ba = d.line(
-                                y,
-                                [b, b + ma, b + ma],
-                                [X, X + na, na],
-                                K,
-                                D,
-                                C,
-                                H
-                            )),
+                            ((Ba = d.line(y, [b, b + ma, b + ma], [X, X + na, na], K, D, C, H)),
                             x.push(Ba))),
                     (v = 0),
                     (G = b),
                     g && 90 == p && I && (G -= r),
                     !1 === e
                         ? ((ga = 'start'),
-                          (v =
-                              'bottom' == Z
-                                  ? I
-                                      ? v + B
-                                      : v - B
-                                  : I
-                                  ? v - B
-                                  : v + B),
+                          (v = 'bottom' == Z ? (I ? v + B : v - B) : I ? v - B : v + B),
                           (G += 3),
                           0 < h && ((G += h / 2 - 3), (ga = 'middle')),
                           0 < p && (ga = 'middle'))
@@ -2818,23 +2488,14 @@
                                           (G += (ha / 2) * Math.cos(V) - 4 + 2))
                                     : 0 > p
                                     ? ((v = X + ha * Math.sin(V) - B - 3 + 2),
-                                      (G +=
-                                          -ha * Math.cos(V) -
-                                          Qa * Math.sin(V) -
-                                          4))
+                                      (G += -ha * Math.cos(V) - Qa * Math.sin(V) - 4))
                                     : (v -= B + r + 3 + 3),
                                 (v -= aa))
                               : (0 < p
                                     ? ((v = X + (ha / 2) * Math.sin(V) + B + 3),
-                                      a.centerRotatedLabels ||
-                                          (G -= (ha / 2) * Math.cos(V)))
+                                      a.centerRotatedLabels || (G -= (ha / 2) * Math.cos(V)))
                                     : 0 > p
-                                    ? ((v =
-                                          X +
-                                          B +
-                                          3 -
-                                          (ha / 2) * Math.sin(V) +
-                                          2),
+                                    ? ((v = X + B + 3 - (ha / 2) * Math.sin(V) + 2),
                                       (G += (ha / 2) * Math.cos(V)))
                                     : (v += B + u + 3 + 3),
                                 (v += aa)))
@@ -2843,14 +2504,12 @@
                           I
                               ? (0 < p
                                     ? ((v = (ha / 2) * Math.sin(V) + B + 3),
-                                      a.centerRotatedLabels ||
-                                          (G -= (ha / 2) * Math.cos(V)))
+                                      a.centerRotatedLabels || (G -= (ha / 2) * Math.cos(V)))
                                     : (v += B + 3),
                                 (v += aa))
                               : (0 < p
                                     ? ((v = -(ha / 2) * Math.sin(V) - B - 6),
-                                      a.centerRotatedLabels ||
-                                          (G += (ha / 2) * Math.cos(V)))
+                                      a.centerRotatedLabels || (G += (ha / 2) * Math.cos(V)))
                                     : (v -= B + r + 3 + u + 3),
                                 (v -= aa))),
                     'bottom' == Z
@@ -2859,10 +2518,7 @@
                     f && (G += f),
                     (r = G),
                     0 < p && (r += (ha / 2) * Math.cos(V)),
-                    ca &&
-                        ((f = 0),
-                        I && (f = (ha / 2) * Math.cos(V)),
-                        r + f > xa + 2 || 0 > r))
+                    ca && ((f = 0), I && (f = (ha / 2) * Math.cos(V)), r + f > xa + 2 || 0 > r))
                 )
                     ca.remove(), (ca = null);
             } else {
@@ -2871,22 +2527,12 @@
                     (0 < B &&
                         0 < z &&
                         b + l <= X + 1 &&
-                        ((fa = d.line(y, [0, B + 1], [b + l, b + l], A, z, C)),
-                        x.push(fa)),
+                        ((fa = d.line(y, [0, B + 1], [b + l, b + l], A, z, C)), x.push(fa)),
                     0 < D &&
-                        ((Ba = d.line(
-                            y,
-                            [0, ma, xa + ma],
-                            [b, b + na, b + na],
-                            K,
-                            D,
-                            C,
-                            H
-                        )),
+                        ((Ba = d.line(y, [0, ma, xa + ma], [b, b + na, b + na], K, D, C, H)),
                         x.push(Ba)));
                 ga = 'end';
-                if ((!0 === I && 'left' == Z) || (!1 === I && 'right' == Z))
-                    ga = 'start';
+                if ((!0 === I && 'left' == Z) || (!1 === I && 'right' == Z)) ga = 'start';
                 v = b - Qa / 2 + 2;
                 1 == ia &&
                     0 < M &&
@@ -2895,13 +2541,7 @@
                     ((e = d.fitToBounds(b, 0, X)),
                     (da = d.fitToBounds(da, 0, X)),
                     (V = e - da),
-                    (Da = d.polygon(
-                        y,
-                        [0, a.width, a.width, 0],
-                        [0, 0, V, V],
-                        Q,
-                        M
-                    )),
+                    (Da = d.polygon(y, [0, a.width, a.width, 0], [0, 0, V, V], Q, M)),
                     Da.translate(ma, e - V + na),
                     x.push(Da));
                 v += r / 2;
@@ -2919,24 +2559,19 @@
                     : ((G += -B - u - 4 - 2 - ea), (v -= 2), (G -= aa));
                 fa &&
                     ('right' == Z
-                        ? ((oa += ma + ea + xa - 1),
-                          (Y += na),
-                          (oa = I ? oa - u : oa + u))
+                        ? ((oa += ma + ea + xa - 1), (Y += na), (oa = I ? oa - u : oa + u))
                         : ((oa -= ea), I || (oa -= B + u)));
                 f && (v += f);
                 I = -3;
                 'right' == Z && (I += na);
-                ca &&
-                    (v > X + 1 || v < I - r / 10) &&
-                    (ca.remove(), (ca = null));
+                ca && (v > X + 1 || v < I - r / 10) && (ca.remove(), (ca = null));
             }
             fa &&
                 (fa.translate(oa, Y),
                 d.setCN(n, fa, a.bcn + 'tick'),
                 d.setCN(n, fa, q, !0),
                 g && d.setCN(n, fa, 'guide'));
-            !1 === a.visible &&
-                (fa && fa.remove(), ca && (ca.remove(), (ca = null)));
+            !1 === a.visible && (fa && fa.remove(), ca && (ca.remove(), (ca = null)));
             ca &&
                 (ca.attr({ 'text-anchor': ga }),
                 ca.translate(G, v, NaN, !0),
@@ -2982,19 +2617,14 @@
             var l = a.chart.container,
                 p = e.fillColor;
             'V' == g
-                ? ((b = d.fitToBounds(b, 0, a.height)),
-                  (c = d.fitToBounds(c, 0, a.height)))
-                : ((b = d.fitToBounds(b, 0, a.width)),
-                  (c = d.fitToBounds(c, 0, a.width)));
+                ? ((b = d.fitToBounds(b, 0, a.height)), (c = d.fitToBounds(c, 0, a.height)))
+                : ((b = d.fitToBounds(b, 0, a.width)), (c = d.fitToBounds(c, 0, a.width)));
             c -= b;
             isNaN(c) && ((c = 4), (k = 2), (m = 0));
-            0 > c &&
-                'object' == typeof p &&
-                (p = p.join(',').split(',').reverse());
+            0 > c && 'object' == typeof p && (p = p.join(',').split(',').reverse());
             'V' == g
                 ? ((g = d.rect(l, a.width, c, p, m)), g.translate(h, b - k + f))
-                : ((g = d.rect(l, c, a.height, p, m)),
-                  g.translate(b - k + h, f));
+                : ((g = d.rect(l, c, a.height, p, m)), g.translate(b - k + h, f));
             d.setCN(a.chart, g, 'guide-fill');
             e.id && d.setCN(a.chart, g, 'guide-fill-' + e.id);
             this.set = l.set([g]);
@@ -3023,7 +2653,7 @@
                 'drawn',
                 'failed',
                 'resized',
-                'animationFinished'
+                'animationFinished',
             );
             this.height = this.width = '100%';
             this.dataChanged = !0;
@@ -3105,14 +2735,10 @@
                 this.drawTitles(),
                 this.brr(),
                 this.renderFix(),
-                this.chartDiv &&
-                    (this.boundingRect =
-                        this.chartDiv.getBoundingClientRect()));
+                this.chartDiv && (this.boundingRect = this.chartDiv.getBoundingClientRect()));
         },
         makeAccessible: function (a, b, c) {
-            this.accessible &&
-                a &&
-                (c && a.setAttr('role', c), a.setAttr('aria-label', b));
+            this.accessible && a && (c && a.setAttr('role', c), a.setAttr('aria-label', b));
         },
         drawBackground: function () {
             d.remove(this.background);
@@ -3133,7 +2759,7 @@
                 c,
                 1,
                 this.borderColor,
-                this.borderAlpha
+                this.borderAlpha,
             );
             d.setCN(this, b, 'bg');
             this.background = b;
@@ -3170,16 +2796,12 @@
                             g,
                             'middle',
                             l,
-                            this.realWidth - 35
+                            this.realWidth - 35,
                         );
-                        f.translate(
-                            k + (this.realWidth - this.marginRight - k) / 2,
-                            c
-                        );
+                        f.translate(k + (this.realWidth - this.marginRight - k) / 2, c);
                         f.node.style.pointerEvents = 'none';
                         h.sprite = f;
-                        void 0 !== h.tabIndex &&
-                            f.setAttr('tabindex', h.tabIndex);
+                        void 0 !== h.tabIndex && f.setAttr('tabindex', h.tabIndex);
                         d.setCN(this, f, 'title');
                         h.id && d.setCN(this, f, 'title-' + h.id);
                         f.attr({ opacity: h.alpha });
@@ -3234,11 +2856,7 @@
                     (this.AmExport = new d.AmExport(this, b));
                 this.amExport &&
                     d.AmExport &&
-                    (this.AmExport = d.extend(
-                        this.amExport,
-                        new d.AmExport(this),
-                        !0
-                    ));
+                    (this.AmExport = d.extend(this.amExport, new d.AmExport(this), !0));
                 this.AmExport && this.AmExport.init && this.AmExport.init();
                 if (e) {
                     e = this.addLegend(e, e.divId);
@@ -3268,11 +2886,9 @@
                                 h.position = 'absolute';
                                 f.position = 'absolute';
                                 void 0 !== e.left && (h.left = e.left + 'px');
-                                void 0 !== e.right &&
-                                    (h.right = e.right + 'px');
+                                void 0 !== e.right && (h.right = e.right + 'px');
                                 void 0 !== e.top && (h.top = e.top + 'px');
-                                void 0 !== e.bottom &&
-                                    (h.bottom = e.bottom + 'px');
+                                void 0 !== e.bottom && (h.bottom = e.bottom + 'px');
                                 e.marginLeft = 0;
                                 e.marginRight = 0;
                                 k.appendChild(a);
@@ -3296,8 +2912,7 @@
                     else k.appendChild(a);
                     this.prevLegendPosition = e.position;
                 } else k.appendChild(a);
-                this.listenersAdded ||
-                    (this.addListeners(), (this.listenersAdded = !0));
+                this.listenersAdded || (this.addListeners(), (this.listenersAdded = !0));
                 (this.mouseWheelScrollEnabled || this.mouseWheelZoomEnabled) &&
                     d.addWheelListeners();
                 this.initChart();
@@ -3309,26 +2924,19 @@
             this.freeLabelsSet.push(this.labelsSet);
         },
         initChart: function () {
-            this.balloon = d.processObject(
-                this.balloon,
-                d.AmBalloon,
-                this.theme
-            );
+            this.balloon = d.processObject(this.balloon, d.AmBalloon, this.theme);
             window.AmCharts_path && (this.path = window.AmCharts_path);
             void 0 === this.path && (this.path = d.getPath());
             void 0 === this.path && (this.path = 'amcharts/');
             this.path = d.normalizeUrl(this.path);
-            void 0 === this.pathToImages &&
-                (this.pathToImages = this.path + 'images/');
+            void 0 === this.pathToImages && (this.pathToImages = this.path + 'images/');
             this.initHC || (d.callInitHandler(this), (this.initHC = !0));
             d.applyLang(this.language, this);
             var a = this.numberFormatter;
             a &&
                 (isNaN(a.precision) || (this.precision = a.precision),
-                void 0 !== a.thousandsSeparator &&
-                    (this.thousandsSeparator = a.thousandsSeparator),
-                void 0 !== a.decimalSeparator &&
-                    (this.decimalSeparator = a.decimalSeparator));
+                void 0 !== a.thousandsSeparator && (this.thousandsSeparator = a.thousandsSeparator),
+                void 0 !== a.decimalSeparator && (this.decimalSeparator = a.decimalSeparator));
             (a = this.percentFormatter) &&
                 !isNaN(a.precision) &&
                 (this.percentPrecision = a.precision);
@@ -3349,12 +2957,7 @@
                   (a.height = this.realHeight),
                   a.addDefs(this),
                   this.chartDiv.appendChild(a.container))
-                : (a = new d.AmDraw(
-                      this.chartDiv,
-                      this.realWidth,
-                      this.realHeight,
-                      this
-                  ));
+                : (a = new d.AmDraw(this.chartDiv, this.realWidth, this.realHeight, this));
             this.container = a;
             this.extension = '.png';
             this.svgIcons && d.SVG && (this.extension = '.svg');
@@ -3414,8 +3017,7 @@
                 var b = a.offsetWidth,
                     c = a.offsetHeight;
                 a.clientHeight && ((b = a.clientWidth), (c = a.clientHeight));
-                if (b != this.mw || c != this.mh)
-                    (this.mw = b), (this.mh = c), this.measure();
+                if (b != this.mw || c != this.mh) (this.mw = b), (this.mh = c), this.measure();
             }
         },
         measure: function () {
@@ -3437,14 +3039,8 @@
                     (b.style.height = f + 'px'),
                     (b.style.padding = 0),
                     h && h.setSize(a, f),
-                    (this.balloon = d.processObject(
-                        this.balloon,
-                        d.AmBalloon,
-                        this.theme
-                    )));
-                this.balloon &&
-                    this.balloon.setBounds &&
-                    this.balloon.setBounds(2, 2, a - 2, f);
+                    (this.balloon = d.processObject(this.balloon, d.AmBalloon, this.theme)));
+                this.balloon && this.balloon.setBounds && this.balloon.setBounds(2, 2, a - 2, f);
                 this.updateWidth();
                 this.balloon.chart = this;
                 this.realWidth = a;
@@ -3516,18 +3112,12 @@
                 this.scrollbarH,
                 this.chartCursor,
             ]);
-            this.chartCursor =
-                this.scrollbarH =
-                this.scrollbarV =
-                this.chartScrollbar =
-                    null;
+            this.chartCursor = this.scrollbarH = this.scrollbarV = this.chartScrollbar = null;
             this.clearTimeOuts();
             this.container &&
-                (this.container.remove(this.chartDiv),
-                this.container.remove(this.legendDiv));
+                (this.container.remove(this.chartDiv), this.container.remove(this.legendDiv));
             a || d.removeChart(this);
-            if ((a = this.div))
-                for (; a.firstChild; ) a.removeChild(a.firstChild);
+            if ((a = this.div)) for (; a.firstChild; ) a.removeChild(a.firstChild);
             this.legend && this.legend.destroy();
             this.AmExport && this.AmExport.clear && this.AmExport.clear();
         },
@@ -3566,9 +3156,7 @@
                 'right' == h && (h = 'end');
                 'center' == h &&
                     ((h = 'middle'),
-                    k
-                        ? (c = b.realHeight - c + c / 2)
-                        : (p = b.realWidth / 2 - p));
+                    k ? (c = b.realHeight - c + c / 2) : (p = b.realWidth / 2 - p));
                 void 0 === l && (l = 1);
                 void 0 === k && (k = 0);
                 c += f / 2;
@@ -3667,9 +3255,7 @@
         handleWheel: function (a) {
             var b = 0;
             a || (a = window.event);
-            a.wheelDelta
-                ? (b = a.wheelDelta / 120)
-                : a.detail && (b = -a.detail / 3);
+            a.wheelDelta ? (b = a.wheelDelta / 120) : a.detail && (b = -a.detail / 3);
             b && this.handleWheelReal(b, a.shiftKey);
             a.preventDefault && a.preventDefault();
         },
@@ -3686,8 +3272,7 @@
             0 < this.tmy &&
             this.tmy < this.divRealHeight
                 ? (this.handleMouseMove(),
-                  4 > Math.abs(this.mouseX - this.tmx) &&
-                  4 > Math.abs(this.mouseY - this.tmy)
+                  4 > Math.abs(this.mouseX - this.tmx) && 4 > Math.abs(this.mouseY - this.tmy)
                       ? ((this.tapped = !0),
                         this.panRequired &&
                             this.panEventsEnabled &&
@@ -3718,10 +3303,7 @@
             this.isTouchEvent = !1;
         },
         checkTouchMoved: function () {
-            if (
-                4 < Math.abs(this.mouseX - this.tmx) ||
-                4 < Math.abs(this.mouseY - this.tmy)
-            )
+            if (4 < Math.abs(this.mouseX - this.tmx) || 4 < Math.abs(this.mouseY - this.tmy))
                 return !0;
         },
         addListeners: function () {
@@ -3734,21 +3316,21 @@
                           function (b) {
                               a.handleTouchStart.call(a, b);
                           },
-                          !0
+                          !0,
                       ),
                       b.addEventListener(
                           'touchmove',
                           function (b) {
                               a.handleMouseMove.call(a, b);
                           },
-                          !0
+                          !0,
                       ),
                       b.addEventListener(
                           'touchend',
                           function (b) {
                               a.handleTouchEnd.call(a, b);
                           },
-                          !0
+                          !0,
                       ),
                       (a.docfn1 = function (b) {
                           a.handleDocTouchStart.call(a, b);
@@ -3766,28 +3348,28 @@
                           a.handleMouseDown.call(a, b);
                           a.handleDocTouchStart.call(a, b);
                       },
-                      !0
+                      !0,
                   ),
                   b.addEventListener(
                       'mouseover',
                       function (b) {
                           a.handleMouseOver.call(a, b);
                       },
-                      !0
+                      !0,
                   ),
                   b.addEventListener(
                       'mouseout',
                       function (b) {
                           a.handleMouseOut.call(a, b);
                       },
-                      !0
+                      !0,
                   ),
                   b.addEventListener(
                       'mouseup',
                       function (b) {
                           a.handleDocTouchEnd.call(a, b);
                       },
-                      !0
+                      !0,
                   ))
                 : (b.attachEvent('onmousedown', function (b) {
                       a.handleMouseDown.call(a, b);
@@ -3805,11 +3387,9 @@
                     ((this.dispatchDataUpdated = !1),
                     this.fire({ type: 'dataUpdated', chart: this })),
                 this.chartCreated ||
-                    ((this.chartCreated = !0),
-                    this.fire({ type: 'init', chart: this })),
+                    ((this.chartCreated = !0), this.fire({ type: 'init', chart: this })),
                 this.chartRendered ||
-                    (this.fire({ type: 'rendered', chart: this }),
-                    (this.chartRendered = !0)),
+                    (this.fire({ type: 'rendered', chart: this }), (this.chartRendered = !0)),
                 this.fire({ type: 'drawn', chart: this }));
             this.skipEvents = !1;
         },
@@ -3820,10 +3400,7 @@
             a.cssScale = 1;
             a.cssAngle = 0;
             a.checkTransform(a.div);
-            if (
-                a.divRealWidth != a.previousWidth ||
-                a.divRealHeight != a.previousHeight
-            ) {
+            if (a.divRealWidth != a.previousWidth || a.divRealHeight != a.previousHeight) {
                 var b = a.legend;
                 if (0 < a.realWidth && 0 < a.realHeight) {
                     a.sizeChanged = !0;
@@ -3869,9 +3446,7 @@
         },
         validateData: function (a) {
             this.chartCreated &&
-                ((this.dataChanged = !0),
-                (this.marginsUpdated = !1),
-                this.initChart(a));
+                ((this.dataChanged = !0), (this.marginsUpdated = !1), this.initChart(a));
         },
         validateNow: function (a, b) {
             this.initTO && clearTimeout(this.initTO);
@@ -3922,9 +3497,7 @@
                 f.changeColor(b),
                 !c || f.fixedPosition
                     ? (f.setPosition(e, d),
-                      isNaN(e) || isNaN(d)
-                          ? f.followCursor(!0)
-                          : f.followCursor(!1))
+                      isNaN(e) || isNaN(d) ? f.followCursor(!0) : f.followCursor(!1))
                     : f.followCursor(!0),
                 a && f.showBalloon(a));
         },
@@ -3965,22 +3538,17 @@
                     (c = a.clientY - this.boundingRect.top));
                 isNaN(e)
                     ? (this.mouseX = b)
-                    : ((this.mouseX = Math.min(b, e)),
-                      (this.mouse2X = Math.max(b, e)));
+                    : ((this.mouseX = Math.min(b, e)), (this.mouse2X = Math.max(b, e)));
                 isNaN(d)
                     ? (this.mouseY = c)
-                    : ((this.mouseY = Math.min(c, d)),
-                      (this.mouse2Y = Math.max(c, d)));
+                    : ((this.mouseY = Math.min(c, d)), (this.mouse2Y = Math.max(c, d)));
                 this.autoTransform &&
-                    ((this.mouseX /= this.cssScale),
-                    (this.mouseY /= this.cssScale));
+                    ((this.mouseX /= this.cssScale), (this.mouseY /= this.cssScale));
             }
         },
         handleTouchStart: function (a) {
             this.hideBalloonReal();
-            (a &&
-                ((a.touches && this.tapToActivate && !this.tapped) ||
-                    !this.panRequired)) ||
+            (a && ((a.touches && this.tapToActivate && !this.tapped) || !this.panRequired)) ||
                 (this.handleMouseMove(a), this.handleMouseDown(a));
         },
         handleTouchEnd: function (a) {
@@ -3997,9 +3565,7 @@
             this.mouseIsOver = !0;
             a &&
                 a.preventDefault &&
-                (this.panEventsEnabled
-                    ? a.preventDefault()
-                    : a.touches || a.preventDefault());
+                (this.panEventsEnabled ? a.preventDefault() : a.touches || a.preventDefault());
         },
         addLegend: function (a, b) {
             a = d.processObject(a, d.AmLegend, this.theme);
@@ -4020,8 +3586,7 @@
             this.legendDiv.innerHTML = '';
         },
         handleResize: function () {
-            (d.isPercents(this.width) || d.isPercents(this.height)) &&
-                this.invalidateSizeReal();
+            (d.isPercents(this.width) || d.isPercents(this.height)) && this.invalidateSizeReal();
             this.renderFix();
         },
         renderFix: function () {
@@ -4090,8 +3655,7 @@
                     e && (e.animationFinished ? a.splice(c, 1) : (b = !1));
                 }
                 b &&
-                    (this.fire({ type: 'animationFinished', chart: this }),
-                    (this.animatable = []));
+                    (this.fire({ type: 'animationFinished', chart: this }), (this.animatable = []));
             }
         },
         inIframe: function () {
@@ -4107,9 +3671,7 @@
                     b = window.location.hostname.split('.'),
                     c;
                 2 <= b.length && (c = b[b.length - 2] + '.' + b[b.length - 1]);
-                this.amLink &&
-                    (b = this.amLink.parentNode) &&
-                    b.removeChild(this.amLink);
+                this.amLink && (b = this.amLink.parentNode) && b.removeChild(this.amLink);
                 b = this.creditsPosition;
                 if (c != a || !0 === this.inIframe()) {
                     var a = 'http://www.' + a,
@@ -4193,7 +3755,7 @@
                 'rightClickGraphItem',
                 'clickGraph',
                 'rollOverGraph',
-                'rollOutGraph'
+                'rollOutGraph',
             );
             this.type = 'line';
             this.stackable = !0;
@@ -4220,10 +3782,7 @@
             this.bulletBorderAlpha = 0;
             this.bulletAlpha = 1;
             this.bulletSize = 8;
-            this.cornerRadiusTop =
-                this.hideBulletsCount =
-                this.bulletOffset =
-                    0;
+            this.cornerRadiusTop = this.hideBulletsCount = this.bulletOffset = 0;
             this.cursorBulletAlpha = 1;
             this.gradientOrientation = 'vertical';
             this.dy = this.dx = 0;
@@ -4289,16 +3848,13 @@
                     ((f = this.valueAxis.stackType),
                     (h = 'top'),
                     'column' == this.type &&
-                        (a.rotate && (h = 'right'),
-                        '100%' == f || 'regular' == f) &&
+                        (a.rotate && (h = 'right'), '100%' == f || 'regular' == f) &&
                         (h = 'middle'),
                     (this.labelPosition = h));
                 d.ifArray(this.data) &&
                     ((a = !1),
                     'xy' == b
-                        ? this.xAxis.axisCreated &&
-                          this.yAxis.axisCreated &&
-                          (a = !0)
+                        ? this.xAxis.axisCreated && this.yAxis.axisCreated && (a = !0)
                         : this.valueAxis.axisCreated && (a = !0),
                     !this.hidden && a && this.createGraph());
                 e.push(c);
@@ -4313,8 +3869,7 @@
             void 0 === a.fillAlphas && (a.fillAlphas = 0);
             a.bulletColorR = a.bulletColor;
             void 0 === a.bulletColorR &&
-                ((a.bulletColorR = a.lineColorR),
-                (a.bulletColorNegative = a.negativeLineColor));
+                ((a.bulletColorR = a.lineColorR), (a.bulletColorNegative = a.negativeLineColor));
             void 0 === a.bulletAlpha && (a.bulletAlpha = a.lineAlpha);
             if ('step' == c || d.VML) a.noRounding = !1;
             var c = b.type;
@@ -4398,15 +3953,9 @@
                     : ((q = p.values.close), (n = p.values.open));
                 if (isNaN(q))
                     this.connect ||
-                        (this.drawLineGraph(b, c, e, d),
-                        (b = []),
-                        (c = []),
-                        (e = []),
-                        (d = []));
+                        (this.drawLineGraph(b, c, e, d), (b = []), (c = []), (e = []), (d = []));
                 else {
-                    var t =
-                            this.valueAxis.getCoordinate(q, this.noRounding) -
-                            this.height,
+                    var t = this.valueAxis.getCoordinate(q, this.noRounding) - this.height,
                         t = t * this.valueAxis.rMultiplier,
                         r = (-360 / (this.end - this.start + 1)) * m;
                     'middle' == this.valueAxis.pointPosition &&
@@ -4416,11 +3965,7 @@
                     b.push(q);
                     c.push(t);
                     if (!isNaN(n)) {
-                        var w =
-                                this.valueAxis.getCoordinate(
-                                    n,
-                                    this.noRounding
-                                ) - this.height,
+                        var w = this.valueAxis.getCoordinate(n, this.noRounding) - this.height,
                             w = w * this.valueAxis.rMultiplier,
                             y = w * Math.sin((r / 180) * Math.PI),
                             r = w * Math.cos((r / 180) * Math.PI);
@@ -4509,10 +4054,7 @@
                         break;
                     case 'middle':
                         'column' == this.type &&
-                            ((l = !0),
-                            q
-                                ? (b -= (b - r) / 2 + y - 3)
-                                : (c -= (c - w) / 2 + y - 3));
+                            ((l = !0), q ? (b -= (b - r) / 2 + y - 3) : (c -= (c - w) / 2 + y - 3));
                 }
                 'auto' != this.labelAnchor && (k = this.labelAnchor);
                 e.attr({ 'text-anchor': k });
@@ -4521,8 +4063,7 @@
                 !this.showAllValueLabels &&
                     t &&
                     l &&
-                    ((p = e.getBBox()),
-                    p.height > a.columnHeight || p.width > a.columnWidth) &&
+                    ((p = e.getBBox()), p.height > a.columnHeight || p.width > a.columnWidth) &&
                     (e.remove(), (e = null));
                 if (e && 'radar' != f.type)
                     if (q) {
@@ -4548,10 +4089,7 @@
             return (this.gradientRotation = a);
         },
         createSerialGraph: function () {
-            this.dashLengthSwitched =
-                this.fillColorsSwitched =
-                this.lineColorSwitched =
-                    void 0;
+            this.dashLengthSwitched = this.fillColorsSwitched = this.lineColorSwitched = void 0;
             var a = this.chart,
                 b = this.id,
                 c = this.index,
@@ -4649,9 +4187,7 @@
                       (ub = q),
                       (vb = Math.abs(ib - Ka)),
                       (hb = tb = 0),
-                      f.reversed
-                          ? ((ca = 0), (gb = Ka))
-                          : ((ca = Ka), (gb = 0)))
+                      f.reversed ? ((ca = 0), (gb = Ka)) : ((ca = Ka), (gb = 0)))
                     : ((Qa = p),
                       (ha = Math.abs(Mb - Ka)),
                       (vb = p),
@@ -4689,34 +4225,21 @@
                         }
                     if (this.lineColorField)
                         for (L = P; -1 < L; L--)
-                            if (
-                                ((G = e[L]),
-                                (v = G.axes[f.id].graphs[b]),
-                                v.lineColor)
-                            ) {
+                            if (((G = e[L]), (v = G.axes[f.id].graphs[b]), v.lineColor)) {
                                 this.lineColorSwitched = v.lineColor;
                                 void 0 === this.bulletColor &&
-                                    (this.bulletColorSwitched =
-                                        this.lineColorSwitched);
+                                    (this.bulletColorSwitched = this.lineColorSwitched);
                                 break;
                             }
                     if (this.fillColorsField)
                         for (L = P; -1 < L; L--)
-                            if (
-                                ((G = e[L]),
-                                (v = G.axes[f.id].graphs[b]),
-                                v.fillColors)
-                            ) {
+                            if (((G = e[L]), (v = G.axes[f.id].graphs[b]), v.fillColors)) {
                                 this.fillColorsSwitched = v.fillColors;
                                 break;
                             }
                     if (this.dashLengthField)
                         for (L = P; -1 < L; L--)
-                            if (
-                                ((G = e[L]),
-                                (v = G.axes[f.id].graphs[b]),
-                                !isNaN(v.dashLength))
-                            ) {
+                            if (((G = e[L]), (v = G.axes[f.id].graphs[b]), !isNaN(v.dashLength))) {
                                 this.dashLengthSwitched = v.dashLength;
                                 break;
                             }
@@ -4738,12 +4261,7 @@
                 U = [],
                 Ma = !1;
             if ('line' == g || 'step' == g || 'smoothedLine' == g)
-                if (
-                    (this.stackable && 'regular' == M) ||
-                    '100%' == M ||
-                    this.fillToGraph
-                )
-                    Ma = !0;
+                if ((this.stackable && 'regular' == M) || '100%' == M || this.fillToGraph) Ma = !0;
             var Ob = this.noStepRisers,
                 jb = -1e3,
                 kb = -1e3,
@@ -4803,15 +4321,9 @@
                 isNaN(v.dashLength) || (ea = v.dashLength);
                 var Ia = v.values;
                 f.recalculateToPercents && (Ia = v.percents);
-                'none' == M &&
-                    (Z = isNaN(v.columnIndex)
-                        ? this.columnIndex
-                        : v.columnIndex);
+                'none' == M && (Z = isNaN(v.columnIndex) ? this.columnIndex : v.columnIndex);
                 if (Ia) {
-                    W =
-                        this.stackable && 'none' != M && '3d' != M
-                            ? Ia.close
-                            : Ia.value;
+                    W = this.stackable && 'none' != M && '3d' != M ? Ia.close : Ia.value;
                     if ('candlestick' == g || 'ohlc' == g)
                         (W = Ia.close),
                             (Ab = Ia.low),
@@ -4822,10 +4334,7 @@
                     F = f.getCoordinate(W, xb);
                     isNaN(ua) ||
                         ((N = f.getCoordinate(ua, xb)),
-                        m &&
-                            'regular' != M &&
-                            '100%' != M &&
-                            ((Ta = ua), (ua = N = NaN)));
+                        m && 'regular' != M && '100%' != M && ((Ta = ua), (ua = N = NaN)));
                     m &&
                         (void 0 == this.openField
                             ? ab &&
@@ -4852,10 +4361,8 @@
                     var wa = Math.floor(Y / 2) + Math.floor((Wa * Y) / 2),
                         Ga = wa,
                         nb = 0;
-                    'left' == this.stepDirection &&
-                        ((nb = (2 * Y + Wa * Y) / 2), (ja -= nb));
-                    'center' == this.stepDirection &&
-                        ((nb = Y / 2), (ja -= nb));
+                    'left' == this.stepDirection && ((nb = (2 * Y + Wa * Y) / 2), (ja -= nb));
+                    'center' == this.stepDirection && ((nb = Y / 2), (ja -= nb));
                     'start' == this.pointPosition &&
                         ((ja -= Y / 2 + Math.floor((Wa * Y) / 2)),
                         (wa = 0),
@@ -4878,8 +4385,7 @@
                           isNaN(ua) && !this.fillToGraph && (O = na),
                           (qa = ra),
                           (sa = ta))
-                        : ((O = E = ja),
-                          isNaN(ua) && !this.fillToGraph && (N = na));
+                        : ((O = E = ja), isNaN(ua) && !this.fillToGraph && (N = na));
                     if ((!Bb && W < ua) || (Bb && W < Ba))
                         (v.isNegative = !0),
                             Ra && (Na = Ra),
@@ -4896,8 +4402,7 @@
                     var Pb = !1;
                     I && a.chartScrollbar.ignoreCustomColors && (Pb = !0);
                     Pb ||
-                        (void 0 != v.color && (Na = v.color),
-                        v.fillColors && (Na = v.fillColors));
+                        (void 0 != v.color && (Na = v.color), v.fillColors && (Na = v.fillColors));
                     F = d.fitToBounds(F, -3e4, 3e4);
                     switch (g) {
                         case 'line':
@@ -4909,27 +4414,19 @@
                                     (T = []),
                                     (U = []));
                             else {
-                                if (
-                                    Math.abs(E - jb) >= lb ||
-                                    Math.abs(F - kb) >= lb
-                                )
+                                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb)
                                     x.push(E), u.push(F), (jb = E), (kb = F);
                                 ya = E;
                                 Ea = F;
                                 ka = E;
                                 la = F;
-                                !Ma ||
-                                    isNaN(N) ||
-                                    isNaN(O) ||
-                                    (T.push(O), U.push(N));
+                                !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N));
                                 if (
                                     $a ||
                                     (void 0 != v.lineColor &&
-                                        v.lineColor !=
-                                            this.lineColorSwitched) ||
+                                        v.lineColor != this.lineColorSwitched) ||
                                     (void 0 != v.fillColors &&
-                                        v.fillColors !=
-                                            this.fillColorsSwitched) ||
+                                        v.fillColors != this.fillColorsSwitched) ||
                                     !isNaN(v.dashLength)
                                 )
                                     this.drawLineGraph(x, u, T, U),
@@ -4937,32 +4434,21 @@
                                         (u = [F]),
                                         (T = []),
                                         (U = []),
-                                        !Ma ||
-                                            isNaN(N) ||
-                                            isNaN(O) ||
-                                            (T.push(O), U.push(N)),
+                                        !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N)),
                                         m
                                             ? (Sa
-                                                  ? ((this.lineColorSwitched =
-                                                        xa),
-                                                    (this.fillColorsSwitched =
-                                                        wb))
-                                                  : ((this.lineColorSwitched =
-                                                        Ja),
-                                                    (this.fillColorsSwitched =
-                                                        Ra)),
+                                                  ? ((this.lineColorSwitched = xa),
+                                                    (this.fillColorsSwitched = wb))
+                                                  : ((this.lineColorSwitched = Ja),
+                                                    (this.fillColorsSwitched = Ra)),
                                               void 0 === this.bulletColor &&
-                                                  (this.bulletColorSwitched =
-                                                      xa))
-                                            : ((this.lineColorSwitched =
-                                                  v.lineColor),
-                                              (this.fillColorsSwitched =
-                                                  v.fillColors),
+                                                  (this.bulletColorSwitched = xa))
+                                            : ((this.lineColorSwitched = v.lineColor),
+                                              (this.fillColorsSwitched = v.fillColors),
                                               void 0 === this.bulletColor &&
                                                   (this.bulletColorSwitched =
                                                       this.lineColorSwitched)),
-                                        (this.dashLengthSwitched =
-                                            v.dashLength);
+                                        (this.dashLengthSwitched = v.dashLength);
                                 v.gap &&
                                     (this.drawLineGraph(x, u, T, U),
                                     (x = []),
@@ -4980,19 +4466,13 @@
                                     (T = []),
                                     (U = []));
                             else {
-                                if (
-                                    Math.abs(E - jb) >= lb ||
-                                    Math.abs(F - kb) >= lb
-                                )
+                                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb)
                                     x.push(E), u.push(F), (jb = E), (kb = F);
                                 ya = E;
                                 Ea = F;
                                 ka = E;
                                 la = F;
-                                !Ma ||
-                                    isNaN(N) ||
-                                    isNaN(O) ||
-                                    (T.push(O), U.push(N));
+                                !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N));
                                 (void 0 == v.lineColor &&
                                     void 0 == v.fillColors &&
                                     isNaN(v.dashLength)) ||
@@ -5001,10 +4481,7 @@
                                     (u = [F]),
                                     (T = []),
                                     (U = []),
-                                    !Ma ||
-                                        isNaN(N) ||
-                                        isNaN(O) ||
-                                        (T.push(O), U.push(N)),
+                                    !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N)),
                                     (this.lineColorSwitched = v.lineColor),
                                     (this.fillColorsSwitched = v.fillColors),
                                     (this.dashLengthSwitched = v.dashLength));
@@ -5027,8 +4504,7 @@
                                       !Ma ||
                                           isNaN(N) ||
                                           isNaN(O) ||
-                                          (isNaN(B) ||
-                                              (T.push(B), U.push(N - wa)),
+                                          (isNaN(B) || (T.push(B), U.push(N - wa)),
                                           T.push(O),
                                           U.push(N - wa),
                                           T.push(O),
@@ -5041,8 +4517,7 @@
                                       !Ma ||
                                           isNaN(N) ||
                                           isNaN(O) ||
-                                          (isNaN(D) ||
-                                              (T.push(O - wa), U.push(D)),
+                                          (isNaN(D) || (T.push(O - wa), U.push(D)),
                                           T.push(O - wa),
                                           U.push(N),
                                           T.push(O + Ga),
@@ -5072,12 +4547,8 @@
                                     u = [dc];
                                     T = [];
                                     U = [];
-                                    Ma &&
-                                        ((T = [Db, Db + wa + Ga]),
-                                        (U = [D, D]));
-                                    t
-                                        ? (u.push(F + Ga), x.push(E))
-                                        : (x.push(E + Ga), u.push(F));
+                                    Ma && ((T = [Db, Db + wa + Ga]), (U = [D, D]));
+                                    t ? (u.push(F + Ga), x.push(E)) : (x.push(E + Ga), u.push(F));
                                     this.lineColorSwitched = v.lineColor;
                                     this.fillColorsSwitched = v.fillColors;
                                     this.dashLengthSwitched = v.dashLength;
@@ -5113,37 +4584,23 @@
                             void 0 != v.lineColor && (Ca = v.lineColor);
                             if (!isNaN(W)) {
                                 m || (v.isNegative = W < Pa ? !0 : !1);
-                                v.isNegative &&
-                                    (Ra && (Na = Ra),
-                                    void 0 != Ja && (Ca = Ja));
+                                v.isNegative && (Ra && (Na = Ra), void 0 != Ja && (Ca = Ja));
                                 var Qb = f.min,
                                     Rb = f.max,
                                     ob = ua;
                                 isNaN(ob) && (ob = Pa);
-                                if (
-                                    !(
-                                        (W < Qb && ob < Qb) ||
-                                        (W > Rb && ob > Rb)
-                                    )
-                                ) {
+                                if (!((W < Qb && ob < Qb) || (W > Rb && ob > Rb))) {
                                     var Aa;
                                     if (t) {
                                         '3d' == M
                                             ? ((R =
                                                   F -
-                                                  (r / 2 -
-                                                      this.depthCount +
-                                                      1) *
-                                                      (k + V) +
+                                                  (r / 2 - this.depthCount + 1) * (k + V) +
                                                   V / 2 +
                                                   Q * Z),
                                               (S = O + H * Z),
                                               (Aa = Z))
-                                            : ((R = Math.floor(
-                                                  F -
-                                                      (r / 2 - Z) * (k + V) +
-                                                      V / 2
-                                              )),
+                                            : ((R = Math.floor(F - (r / 2 - Z) * (k + V) + V / 2)),
                                               (S = O),
                                               (Aa = 0));
                                         J = k;
@@ -5151,27 +4608,17 @@
                                         Ea = R + k / 2;
                                         ka = E;
                                         la = R + k / 2;
-                                        R + J > q + Aa * Q &&
-                                            (J = q - R + Aa * Q);
+                                        R + J > q + Aa * Q && (J = q - R + Aa * Q);
                                         R < Aa * Q && ((J += R), (R = Aa * Q));
                                         ba = E - O;
                                         var ec = S;
                                         S = d.fitToBounds(S, 0, p);
                                         ba += ec - S;
-                                        ba = d.fitToBounds(
-                                            ba,
-                                            -S,
-                                            p - S + H * Z
-                                        );
+                                        ba = d.fitToBounds(ba, -S, p - S + H * Z);
                                         v.labelIsNegative = 0 > ba ? !0 : !1;
-                                        0 === ba &&
-                                            1 / W === 1 / -0 &&
-                                            (v.labelIsNegative = !0);
+                                        0 === ba && 1 / W === 1 / -0 && (v.labelIsNegative = !0);
                                         isNaN(G.percentWidthValue) ||
-                                            ((J =
-                                                (this.height *
-                                                    G.percentWidthValue) /
-                                                100),
+                                            ((J = (this.height * G.percentWidthValue) / 100),
                                             (R = ja - J / 2),
                                             (Ea = R + J / 2));
                                         J = d.roundTo(J, 2);
@@ -5195,7 +4642,7 @@
                                                 ea,
                                                 bb,
                                                 mb,
-                                                aa
+                                                aa,
                                             )),
                                             (v.columnWidth = Math.abs(ba)),
                                             (v.columnHeight = Math.abs(J)));
@@ -5203,18 +4650,12 @@
                                         '3d' == M
                                             ? ((S =
                                                   E -
-                                                  (r / 2 -
-                                                      this.depthCount +
-                                                      1) *
-                                                      (k + V) +
+                                                  (r / 2 - this.depthCount + 1) * (k + V) +
                                                   V / 2 +
                                                   H * Z),
                                               (R = N + Q * Z),
                                               (Aa = Z))
-                                            : ((S =
-                                                  E -
-                                                  (r / 2 - Z) * (k + V) +
-                                                  V / 2),
+                                            : ((S = E - (r / 2 - Z) * (k + V) + V / 2),
                                               (R = N),
                                               (Aa = 0));
                                         J = k;
@@ -5222,10 +4663,8 @@
                                         Ea = F;
                                         ka = S + k / 2;
                                         la = F;
-                                        S + J > p + Aa * H &&
-                                            (J = p - S + Aa * H);
-                                        S < Aa * H &&
-                                            ((J += S - Aa * H), (S = Aa * H));
+                                        S + J > p + Aa * H && (J = p - S + Aa * H);
+                                        S < Aa * H && ((J += S - Aa * H), (S = Aa * H));
                                         ba = F - N;
                                         v.labelIsNegative = 0 < ba ? !0 : !1;
                                         0 === ba &&
@@ -5234,16 +4673,9 @@
                                         var fc = R;
                                         R = d.fitToBounds(R, this.dy, q);
                                         ba += fc - R;
-                                        ba = d.fitToBounds(
-                                            ba,
-                                            -R + Q * Aa,
-                                            q - R
-                                        );
+                                        ba = d.fitToBounds(ba, -R + Q * Aa, q - R);
                                         isNaN(G.percentWidthValue) ||
-                                            ((J =
-                                                (this.width *
-                                                    G.percentWidthValue) /
-                                                100),
+                                            ((J = (this.width * G.percentWidthValue) / 100),
                                             (S = ja - J / 2),
                                             (ya = S + J / 2));
                                         J = d.roundTo(J, 2);
@@ -5268,7 +4700,7 @@
                                                 ea,
                                                 bb,
                                                 mb,
-                                                aa
+                                                aa,
                                             )),
                                             (v.columnHeight = Math.abs(ba)),
                                             (v.columnWidth = Math.abs(J)));
@@ -5278,8 +4710,7 @@
                                     za = va.set;
                                     d.setCN(a, va.set, 'graph-' + this.type);
                                     d.setCN(a, va.set, 'graph-' + this.id);
-                                    v.className &&
-                                        d.setCN(a, va.set, v.className, !0);
+                                    v.className && d.setCN(a, va.set, v.className, !0);
                                     v.columnGraphics = za;
                                     S = d.roundTo(S, 2);
                                     R = d.roundTo(R, 2);
@@ -5288,9 +4719,7 @@
                                         za.setAttr('cursor', 'pointer');
                                     if (!I) {
                                         'none' == M &&
-                                            (K = t
-                                                ? (this.end + 1 - L) * C - c
-                                                : C * L + c);
+                                            (K = t ? (this.end + 1 - L) * C - c : C * L + c);
                                         '3d' == M &&
                                             (t
                                                 ? ((K =
@@ -5300,9 +4729,7 @@
                                                   (ya += H * Z),
                                                   (ka += H * Z),
                                                   (v.y += H * Z))
-                                                : ((K =
-                                                      (C - c) * (L + 1) +
-                                                      1e3 * this.depthCount),
+                                                : ((K = (C - c) * (L + 1) + 1e3 * this.depthCount),
                                                   (Ea += Q * Z),
                                                   (la += Q * Z),
                                                   (v.y += Q * Z)));
@@ -5323,10 +4750,7 @@
                                         this.animateColumns(va, L, E, O, F, N);
                                         this.addListeners(za, v);
                                         void 0 !== this.tabIndex &&
-                                            za.setAttr(
-                                                'tabindex',
-                                                this.tabIndex
-                                            );
+                                            za.setAttr('tabindex', this.tabIndex);
                                     }
                                     this.columnsSet.push(za);
                                 }
@@ -5348,20 +4772,8 @@
                                     O = d.fitToBounds(O, 0, pa);
                                     qa = d.fitToBounds(qa, 0, pa);
                                     sa = d.fitToBounds(sa, 0, pa);
-                                    if (
-                                        0 === E &&
-                                        0 === O &&
-                                        0 === qa &&
-                                        0 === sa
-                                    )
-                                        continue;
-                                    if (
-                                        E == pa &&
-                                        O == pa &&
-                                        qa == pa &&
-                                        sa == pa
-                                    )
-                                        continue;
+                                    if (0 === E && 0 === O && 0 === qa && 0 === sa) continue;
+                                    if (E == pa && O == pa && qa == pa && sa == pa) continue;
                                     R = F - k / 2;
                                     S = O;
                                     J = k;
@@ -5376,22 +4788,8 @@
                                             !isNaN(qa) &&
                                             F < q &&
                                             0 < F &&
-                                            ((Xa = d.line(
-                                                h,
-                                                Eb,
-                                                [F, F],
-                                                Ca,
-                                                X,
-                                                da
-                                            )),
-                                            (cb = d.line(
-                                                h,
-                                                Fb,
-                                                [F, F],
-                                                Ca,
-                                                X,
-                                                da
-                                            )));
+                                            ((Xa = d.line(h, Eb, [F, F], Ca, X, da)),
+                                            (cb = d.line(h, Fb, [F, F], Ca, X, da)));
                                         ba = E - O;
                                         va = new d.Cuboid(
                                             h,
@@ -5410,7 +4808,7 @@
                                             ea,
                                             bb,
                                             mb,
-                                            aa
+                                            aa,
                                         );
                                     }
                                 } else {
@@ -5421,20 +4819,8 @@
                                     N = d.fitToBounds(N, 0, Fa);
                                     ra = d.fitToBounds(ra, 0, Fa);
                                     ta = d.fitToBounds(ta, 0, Fa);
-                                    if (
-                                        0 === F &&
-                                        0 === N &&
-                                        0 === ra &&
-                                        0 === ta
-                                    )
-                                        continue;
-                                    if (
-                                        F == Fa &&
-                                        N == Fa &&
-                                        ra == Fa &&
-                                        ta == Fa
-                                    )
-                                        continue;
+                                    if (0 === F && 0 === N && 0 === ra && 0 === ta) continue;
+                                    if (F == Fa && N == Fa && ra == Fa && ta == Fa) continue;
                                     S = E - k / 2;
                                     R = N + da / 2;
                                     J = k;
@@ -5460,7 +4846,7 @@
                                                 ea,
                                                 bb,
                                                 mb,
-                                                aa
+                                                aa,
                                             ),
                                             Gb,
                                             Hb;
@@ -5471,41 +4857,12 @@
                                             !isNaN(ra) &&
                                             E < p &&
                                             0 < E &&
-                                            ((Xa = d.line(
-                                                h,
-                                                [E, E],
-                                                Gb,
-                                                Ca,
-                                                X,
-                                                da
-                                            )),
-                                            (cb = d.line(
-                                                h,
-                                                [E, E],
-                                                Hb,
-                                                Ca,
-                                                X,
-                                                da
-                                            )),
-                                            d.setCN(
-                                                a,
-                                                Xa,
-                                                this.bcn + 'line-high'
-                                            ),
-                                            v.className &&
-                                                d.setCN(a, Xa, v.className, !0),
-                                            d.setCN(
-                                                a,
-                                                cb,
-                                                this.bcn + 'line-low'
-                                            ),
-                                            v.className &&
-                                                d.setCN(
-                                                    a,
-                                                    cb,
-                                                    v.className,
-                                                    !0
-                                                ));
+                                            ((Xa = d.line(h, [E, E], Gb, Ca, X, da)),
+                                            (cb = d.line(h, [E, E], Hb, Ca, X, da)),
+                                            d.setCN(a, Xa, this.bcn + 'line-high'),
+                                            v.className && d.setCN(a, Xa, v.className, !0),
+                                            d.setCN(a, cb, this.bcn + 'line-low'),
+                                            v.className && d.setCN(a, cb, v.className, !0));
                                     }
                                 }
                                 va &&
@@ -5521,26 +4878,14 @@
                                         this.animateColumns(va, L, E, O, F, N),
                                         this.addListeners(za, v),
                                         void 0 !== this.tabIndex &&
-                                            za.setAttr(
-                                                'tabindex',
-                                                this.tabIndex
-                                            )));
+                                            za.setAttr('tabindex', this.tabIndex)));
                             }
                             break;
                         case 'ohlc':
-                            if (
-                                !(
-                                    isNaN(ua) ||
-                                    isNaN(zb) ||
-                                    isNaN(Ab) ||
-                                    isNaN(W)
-                                )
-                            ) {
+                            if (!(isNaN(ua) || isNaN(zb) || isNaN(Ab) || isNaN(W))) {
                                 var Sb = h.set();
                                 fa.push(Sb);
-                                W < ua &&
-                                    ((v.isNegative = !0),
-                                    void 0 != Ja && (Ha = Ja));
+                                W < ua && ((v.isNegative = !0), void 0 != Ja && (Ha = Ja));
                                 void 0 != v.lineColor && (Ha = v.lineColor);
                                 var pb, qb, rb;
                                 if (t) {
@@ -5551,20 +4896,8 @@
                                     'low' == l && (ka = qa);
                                     qa = d.fitToBounds(qa, 0, pa);
                                     sa = d.fitToBounds(sa, 0, pa);
-                                    if (
-                                        0 === E &&
-                                        0 === O &&
-                                        0 === qa &&
-                                        0 === sa
-                                    )
-                                        continue;
-                                    if (
-                                        E == pa &&
-                                        O == pa &&
-                                        qa == pa &&
-                                        sa == pa
-                                    )
-                                        continue;
+                                    if (0 === E && 0 === O && 0 === qa && 0 === sa) continue;
+                                    if (E == pa && O == pa && qa == pa && sa == pa) continue;
                                     var Ib = F - k / 2,
                                         Ib = d.fitToBounds(Ib, 0, q),
                                         Tb = d.fitToBounds(F, 0, q),
@@ -5572,37 +4905,13 @@
                                         Jb = d.fitToBounds(Jb, 0, q);
                                     0 <= O &&
                                         O <= pa &&
-                                        (qb = d.line(
-                                            h,
-                                            [O, O],
-                                            [Ib, Tb],
-                                            Ha,
-                                            X,
-                                            da,
-                                            ea
-                                        ));
+                                        (qb = d.line(h, [O, O], [Ib, Tb], Ha, X, da, ea));
                                     0 < F &&
                                         F < q &&
-                                        (pb = d.line(
-                                            h,
-                                            [qa, sa],
-                                            [F, F],
-                                            Ha,
-                                            X,
-                                            da,
-                                            ea
-                                        ));
+                                        (pb = d.line(h, [qa, sa], [F, F], Ha, X, da, ea));
                                     0 <= E &&
                                         E <= pa &&
-                                        (rb = d.line(
-                                            h,
-                                            [E, E],
-                                            [Tb, Jb],
-                                            Ha,
-                                            X,
-                                            da,
-                                            ea
-                                        ));
+                                        (rb = d.line(h, [E, E], [Tb, Jb], Ha, X, da, ea));
                                 } else {
                                     la = F;
                                     'open' == l && (la = N);
@@ -5618,37 +4927,13 @@
                                         Lb = d.fitToBounds(Lb, 0, p);
                                     0 <= N &&
                                         N <= Fa &&
-                                        (qb = d.line(
-                                            h,
-                                            [Kb, Ub],
-                                            [N, N],
-                                            Ha,
-                                            X,
-                                            da,
-                                            ea
-                                        ));
+                                        (qb = d.line(h, [Kb, Ub], [N, N], Ha, X, da, ea));
                                     0 < E &&
                                         E < p &&
-                                        (pb = d.line(
-                                            h,
-                                            [E, E],
-                                            [ra, ta],
-                                            Ha,
-                                            X,
-                                            da,
-                                            ea
-                                        ));
+                                        (pb = d.line(h, [E, E], [ra, ta], Ha, X, da, ea));
                                     0 <= F &&
                                         F <= Fa &&
-                                        (rb = d.line(
-                                            h,
-                                            [Ub, Lb],
-                                            [F, F],
-                                            Ha,
-                                            X,
-                                            da,
-                                            ea
-                                        ));
+                                        (rb = d.line(h, [Ub, Lb], [F, F], Ha, X, da, ea));
                                 }
                                 fa.push(qb);
                                 fa.push(pb);
@@ -5675,11 +4960,7 @@
                             if ('regular' == M || '100%' == M) {
                                 var Zb = f.totalText;
                                 if (Zb) {
-                                    var Oa = this.createLabel(
-                                        v,
-                                        Zb,
-                                        f.totalTextColor
-                                    );
+                                    var Oa = this.createLabel(v, Zb, f.totalTextColor);
                                     d.setCN(a, Oa, this.bcn + 'label-total');
                                     this.allBullets.push(Oa);
                                     if (Oa) {
@@ -5698,20 +4979,12 @@
                                               (db =
                                                   0 > W
                                                       ? E - ac / 2 - 2 - fb - sb
-                                                      : E +
-                                                        ac / 2 +
-                                                        3 +
-                                                        fb +
-                                                        sb))
+                                                      : E + ac / 2 + 3 + fb + sb))
                                             : ((db = ya),
                                               (eb =
                                                   0 > W
                                                       ? F + bc / 2 + fb + sb
-                                                      : F -
-                                                        bc / 2 -
-                                                        3 -
-                                                        fb -
-                                                        sb));
+                                                      : F - bc / 2 - 3 - fb - sb));
                                         Oa.translate(db, eb);
                                         f.totals[L] = Oa;
                                         t
@@ -5840,10 +5113,7 @@
                         (q = k.type),
                         'serial' == q || 'radar' == q
                             ? 0 < c.length
-                                ? (c.reverse(),
-                                  e.reverse(),
-                                  (n = a.concat(c)),
-                                  (r = b.concat(e)))
+                                ? (c.reverse(), e.reverse(), (n = a.concat(c)), (r = b.concat(e)))
                                 : 'radar' == q
                                 ? (r.push(0), n.push(0))
                                 : h.rotate
@@ -5988,9 +5258,7 @@
             if (0 < b && !a.animationPlayed) {
                 var c = a.set,
                     e = a.bulletSet;
-                d.VML ||
-                    (c.attr({ opacity: a.startAlpha }),
-                    e.attr({ opacity: a.startAlpha }));
+                d.VML || (c.attr({ opacity: a.startAlpha }), e.attr({ opacity: a.startAlpha }));
                 c.hide();
                 e.hide();
                 a.seqAn
@@ -6025,18 +5293,14 @@
             !a && 0 < c.length && ((a = c[0]), c.shift());
             c = d[d.getEffect(b.startEffect)];
             b = b.startDuration;
-            a &&
-                (this.rotate ? a.animateWidth(b, c) : a.animateHeight(b, c),
-                a.set.show());
+            a && (this.rotate ? a.animateWidth(b, c) : a.animateHeight(b, c), a.set.show());
         },
         legendKeyColor: function () {
             var a = this.legendColor,
                 b = this.lineAlpha;
             void 0 === a &&
                 ((a = this.lineColorR),
-                0 === b &&
-                    (b = this.fillColorsR) &&
-                    (a = 'object' == typeof b ? b[0] : b));
+                0 === b && (b = this.fillColorsR) && (a = 'object' == typeof b ? b[0] : b));
             return a;
         },
         legendKeyAlpha: function () {
@@ -6052,10 +5316,7 @@
             if (
                 !isNaN(b) &&
                 !isNaN(c) &&
-                ('none' != this.bullet ||
-                    this.customBullet ||
-                    a.bullet ||
-                    a.customBullet)
+                ('none' != this.bullet || this.customBullet || a.bullet || a.customBullet)
             ) {
                 var e = this.chart,
                     h = this.container,
@@ -6068,8 +5329,7 @@
                     p = this.maxBulletSize,
                     q = this.minBulletSize;
                 isNaN(l) ||
-                    (isNaN(k) || (g = ((k - m) / (l - m)) * (p - q) + q),
-                    m == l && (g = p));
+                    (isNaN(k) || (g = ((k - m) / (l - m)) * (p - q) + q), m == l && (g = p));
                 l = g;
                 this.bulletAxis &&
                     ((g = a.values.error),
@@ -6101,9 +5361,7 @@
                 m || (m = q);
                 this.useLineColorForBulletBorder &&
                     ((m = this.lineColorR),
-                    a.isNegative &&
-                        this.negativeLineColor &&
-                        (m = this.negativeLineColor),
+                    a.isNegative && this.negativeLineColor && (m = this.negativeLineColor),
                     this.lineColorSwitched && (m = this.lineColorSwitched));
                 var r = a.alpha;
                 isNaN(r) || (t = r);
@@ -6129,18 +5387,11 @@
                         : ((n = h.set()),
                           (l = h.image(l, 0, 0, g, g)),
                           n.push(l),
-                          this.centerCustomBullets &&
-                              l.translate(-g / 2, -g / 2)));
+                          this.centerCustomBullets && l.translate(-g / 2, -g / 2)));
                 if (n) {
-                    (a.url || this.showHandOnHover) &&
-                        n.setAttr('cursor', 'pointer');
+                    (a.url || this.showHandOnHover) && n.setAttr('cursor', 'pointer');
                     if ('serial' == e.type || 'gantt' == e.type)
-                        if (
-                            -0.5 > b ||
-                            b > this.width ||
-                            c < -g / 2 ||
-                            c > this.height
-                        )
+                        if (-0.5 > b || b > this.width || c < -g / 2 || c > this.height)
                             n.remove(), (n = null);
                     n &&
                         (this.bulletSet.push(n),
@@ -6161,8 +5412,7 @@
                             this.bulletSet.push(h),
                             this.addListeners(h, a);
                     a.bulletGraphics = n;
-                    void 0 !== this.tabIndex &&
-                        n.setAttr('tabindex', this.tabIndex);
+                    void 0 !== this.tabIndex && n.setAttr('tabindex', this.tabIndex);
                 } else n = { size: 0 };
                 n.graphDataItem = a;
                 return n;
@@ -6266,14 +5516,10 @@
                 c.isRolledOverBullet = !1;
             }
             this.handleGraphEvent(b, 'rollOutGraph');
-            ((c = c.chartCursor) && c.valueBalloonsEnabled) ||
-                this.hideBalloon();
+            ((c = c.chartCursor) && c.valueBalloonsEnabled) || this.hideBalloon();
         },
         handleClick: function (a, b) {
-            if (
-                !this.chart.checkTouchMoved() &&
-                this.chart.checkTouchDuration(b)
-            ) {
+            if (!this.chart.checkTouchMoved() && this.chart.checkTouchDuration(b)) {
                 if (a) {
                     var c = {
                         type: 'clickGraphItem',
@@ -6361,9 +5607,7 @@
         },
         createBalloon: function () {
             var a = this.chart;
-            this.balloon
-                ? this.balloon.destroy && this.balloon.destroy()
-                : (this.balloon = {});
+            this.balloon ? this.balloon.destroy && this.balloon.destroy() : (this.balloon = {});
             var b = this.balloon;
             d.extend(b, a.balloon, !0);
             b.chart = a;
@@ -6373,9 +5617,7 @@
         hideBalloon: function () {
             var a = this,
                 b = a.chart;
-            b.chartCursor
-                ? b.chartCursor.valueBalloonsEnabled || b.hideBalloon()
-                : b.hideBalloon();
+            b.chartCursor ? b.chartCursor.valueBalloonsEnabled || b.hideBalloon() : b.hideBalloon();
             clearTimeout(a.hoverInt);
             a.hoverInt = setTimeout(function () {
                 a.hideBalloonReal.call(a);
@@ -6452,9 +5694,7 @@
                                 (b < k || b > a + k || h < l - 0.5 || h > q + l)
                                     ? (g.showBalloon(m), g.hide(0))
                                     : (g.followCursor(c), g.showBalloon(m))))
-                        : (this.hideBalloonReal(),
-                          g.hide(),
-                          this.resizeBullet(a, e, h));
+                        : (this.hideBalloonReal(), g.hide(), this.resizeBullet(a, e, h));
                 } else this.hideBalloonReal();
             }
         },
@@ -6465,9 +5705,7 @@
                 e &&
                     !e.doNotScale &&
                     (e.translate(a.bx, a.by, b),
-                    isNaN(c) ||
-                        (e.setAttr('fill-opacity', c),
-                        e.setAttr('stroke-opacity', c)),
+                    isNaN(c) || (e.setAttr('fill-opacity', c), e.setAttr('stroke-opacity', c)),
                     (this.resizedDItem = a));
             }
         },
@@ -6487,7 +5725,7 @@
                 'selected',
                 'moved',
                 'panning',
-                'zoomStarted'
+                'zoomStarted',
             );
             this.enabled = !0;
             this.cursorAlpha = 1;
@@ -6534,15 +5772,10 @@
             a.cursorSet.push(b);
             this.createElements();
             d.isString(this.limitToGraph) &&
-                ((this.limitToGraph = d.getObjById(
-                    a.graphs,
-                    this.limitToGraph
-                )),
+                ((this.limitToGraph = d.getObjById(a.graphs, this.limitToGraph)),
                 (this.fullWidth = !1),
                 (this.cursorPosition = 'middle'));
-            this.pointer = this.balloonPointerOrientation
-                .substr(0, 1)
-                .toUpperCase();
+            this.pointer = this.balloonPointerOrientation.substr(0, 1).toUpperCase();
             this.isHidden = !1;
             this.hideLines();
             this.valueLineAxis || (this.valueLineAxis = a.valueAxes[0]);
@@ -6560,24 +5793,10 @@
                 m = a.valueLineAlpha;
             a.rotate ? ((g = m), (k = l)) : ((k = m), (g = l));
             'xy' == b.type && ((k = l), void 0 !== m && (k = m), (g = l));
-            a.vvLine = d.line(
-                a.container,
-                [c, 0, 0],
-                [e, 0, f],
-                a.cursorColor,
-                g,
-                1
-            );
+            a.vvLine = d.line(a.container, [c, 0, 0], [e, 0, f], a.cursorColor, g, 1);
             d.setCN(b, a.vvLine, 'cursor-line');
             d.setCN(b, a.vvLine, 'cursor-line-vertical');
-            a.hhLine = d.line(
-                a.container,
-                [0, h, h + c],
-                [0, 0, e],
-                a.cursorColor,
-                k,
-                1
-            );
+            a.hhLine = d.line(a.container, [0, h, h + c], [0, 0, e], a.cursorColor, k, 1);
             d.setCN(b, a.hhLine, 'cursor-line');
             d.setCN(b, a.hhLine, 'cursor-line-horizontal');
             a.vLine = a.rotate ? a.vvLine : a.hhLine;
@@ -6613,8 +5832,7 @@
                     (37 != a.keyCode && 40 != a.keyCode) || b--,
                     (39 != a.keyCode && 38 != a.keyCode) || b++,
                     (b = d.fitToBounds(b, c.startIndex, c.endIndex)),
-                    (a = this.chart.chartData[b]) &&
-                        this.setPosition(a.x.categoryAxis),
+                    (a = this.chart.chartData[b]) && this.setPosition(a.x.categoryAxis),
                     (this.prevIndex = b));
             }
         },
@@ -6641,9 +5859,7 @@
                               !isNaN(this.fy) ||
                               (a.rotate && this.limitToGraph) ||
                               this.hhLine.translate(0, c),
-                          isNaN(this.mouse2X)
-                              ? this.dispatchMovedEvent(b, c)
-                              : (e = !1))
+                          isNaN(this.mouse2X) ? this.dispatchMovedEvent(b, c) : (e = !1))
                         : this.forceShow || this.hideCursor();
                     if (this.zooming) {
                         if (!isNaN(this.mouse2X)) {
@@ -6679,7 +5895,7 @@
                     [this.drawStartY + b, this.mouseY + b],
                     this.cursorColor,
                     1,
-                    1
+                    1,
                 );
             }
         },
@@ -6697,7 +5913,7 @@
                     this.cursorColor,
                     this.cursorAlpha,
                     this.cursorAlpha,
-                    this.cursorColor
+                    this.cursorColor,
                 );
                 d.setCN(this.chart, c, 'cursor-fill');
                 c.translate(-a / 2 - 1, 0);
@@ -6714,13 +5930,7 @@
                 b && (b.remove(), (c = b.y));
                 b = this.container.set();
                 b.translate(0, c);
-                c = d.rect(
-                    this.container,
-                    this.width,
-                    a,
-                    this.cursorColor,
-                    this.cursorAlpha
-                );
+                c = d.rect(this.container, this.width, a, this.cursorColor, this.cursorAlpha);
                 c.translate(0, -a / 2);
                 b.push(c);
                 this.fullLines.push(b);
@@ -6737,26 +5947,17 @@
                         var d = this.chart.categoryAxis;
                         d &&
                             (this.chart.rotate ||
-                                (c =
-                                    'bottom' == d.position
-                                        ? this.height
-                                        : -this.height),
+                                (c = 'bottom' == d.position ? this.height : -this.height),
                             (e = a));
                     }
                     this.vvLine.translate(e, c);
-                } else
-                    this.prevLineX != a &&
-                        this.vvLine.translate(this.prevLineX, this.prevLineY);
+                } else this.prevLineX != a && this.vvLine.translate(this.prevLineX, this.prevLineY);
                 this.fx = a;
                 this.prevLineX != a &&
                     ((c = this.animationDuration),
                     this.zooming && (c = 0),
                     this.vvLine.stop(),
-                    this.vvLine.animate(
-                        { translate: a + ',' + b },
-                        c,
-                        'easeOutSine'
-                    ),
+                    this.vvLine.animate({ translate: a + ',' + b }, c, 'easeOutSine'),
                     (this.prevLineX = a),
                     (this.prevLineY = b));
             }
@@ -6770,26 +5971,17 @@
                         var d = this.chart.categoryAxis;
                         d &&
                             (this.chart.rotate &&
-                                (c =
-                                    'right' == d.position
-                                        ? this.width
-                                        : -this.width),
+                                (c = 'right' == d.position ? this.width : -this.width),
                             (e = a));
                     }
                     this.hhLine.translate(c, e);
-                } else
-                    this.prevLineY != a &&
-                        this.hhLine.translate(this.prevLineX, this.prevLineY);
+                } else this.prevLineY != a && this.hhLine.translate(this.prevLineX, this.prevLineY);
                 this.fy = a;
                 this.prevLineY != a &&
                     ((c = this.animationDuration),
                     this.zooming && (c = 0),
                     this.hhLine.stop(),
-                    this.hhLine.animate(
-                        { translate: b + ',' + a },
-                        c,
-                        'easeOutSine'
-                    ),
+                    this.hhLine.animate({ translate: b + ',' + a }, c, 'easeOutSine'),
                     (this.prevLineY = a),
                     (this.prevLineX = b));
             }
@@ -6873,13 +6065,7 @@
                     0 < Math.abs(h) &&
                     0 < Math.abs(f) &&
                     ((a = this.chart),
-                    (b = d.rect(
-                        this.container,
-                        h,
-                        f,
-                        this.cursorColor,
-                        this.selectionAlpha
-                    )),
+                    (b = d.rect(this.container, h, f, this.cursorColor, this.selectionAlpha)),
                     d.setCN(a, b, 'cursor-selection'),
                     (b.width = h),
                     (b.height = f),
@@ -6962,10 +6148,8 @@
                 ((this.zooming = !1),
                 this.selectWithoutZooming
                     ? this.dispatchZoomEvent('selected')
-                    : (this.hZoomEnabled || this.vZoomEnabled) &&
-                      this.dispatchZoomEvent('zoomed'),
-                this.rolledOver &&
-                    this.dispatchMovedEvent(this.mouseX, this.mouseY));
+                    : (this.hZoomEnabled || this.vZoomEnabled) && this.dispatchZoomEvent('zoomed'),
+                this.rolledOver && this.dispatchMovedEvent(this.mouseX, this.mouseY));
             this.mouse2Y0 = this.mouse2X0 = this.mouseY0 = this.mouseX0 = NaN;
         },
         dispatchZoomEvent: function (a) {
@@ -6982,9 +6166,7 @@
                     l &&
                         l.parseDates &&
                         !l.equalSpacing &&
-                        ((d = k[c]
-                            ? k[c].time
-                            : Math.min(this.timestamp0, this.timestamp)),
+                        ((d = k[c] ? k[c].time : Math.min(this.timestamp0, this.timestamp)),
                         (f = k[e]
                             ? g.getEndTime(k[e].time)
                             : Math.max(this.timestamp0, this.timestamp)));
@@ -7023,10 +6205,7 @@
         dispatchMovedEvent: function (a, b, c, e) {
             a = Math.round(a);
             b = Math.round(b);
-            if (
-                !this.isHidden &&
-                (a != this.prevX || b != this.prevY || 'changed' == c)
-            ) {
+            if (!this.isHidden && (a != this.prevX || b != this.prevY || 'changed' == c)) {
                 c || (c = 'moved');
                 var d = this.fx,
                     f = this.fy;
@@ -7064,18 +6243,9 @@
         dispatchPanEvent: function () {
             if (this.mouseIsDown) {
                 var a = d.roundTo((this.mouseX - this.mouseX0) / this.width, 3),
-                    b = d.roundTo(
-                        (this.mouseY - this.mouseY0) / this.height,
-                        3
-                    ),
-                    c = d.roundTo(
-                        (this.mouse2X - this.mouse2X0) / this.width,
-                        3
-                    ),
-                    e = d.roundTo(
-                        (this.mouse2Y - this.mouse2Y0) / this.height,
-                        2
-                    ),
+                    b = d.roundTo((this.mouseY - this.mouseY0) / this.height, 3),
+                    c = d.roundTo((this.mouse2X - this.mouse2X0) / this.width, 3),
+                    e = d.roundTo((this.mouse2Y - this.mouse2Y0) / this.height, 2),
                     h = !1;
                 0 !== Math.abs(a) && 0 !== Math.abs(b) && (h = !0);
                 if (this.prevDeltaX == a || this.prevDeltaY == b) h = !1;
@@ -7120,13 +6290,7 @@
         setIndex: function (a, b) {
             a != this.index &&
                 ((this.index = a),
-                b ||
-                    this.isHidden ||
-                    this.dispatchMovedEvent(
-                        this.mouseX,
-                        this.mouseY,
-                        'changed'
-                    ));
+                b || this.isHidden || this.dispatchMovedEvent(this.mouseX, this.mouseY, 'changed'));
         },
         handleMouseOut: function () {
             this.enabled &&
@@ -7153,15 +6317,11 @@
                         ? this.fixHLine(a, 0)
                         : this.fixVLine(a, 0)
                     : (this.showCursor(),
-                      c.rotate
-                          ? this.hhLine.translate(0, a)
-                          : this.vvLine.translate(a, 0));
+                      c.rotate ? this.hhLine.translate(0, a) : this.vvLine.translate(a, 0));
                 c.rotate ? (d = a) : (f = a);
                 c.rotate
-                    ? (this.vvLine && this.vvLine.hide(),
-                      this.hhLine && this.hhLine.show())
-                    : (this.hhLine && this.hhLine.hide(),
-                      this.vvLine && this.vvLine.show());
+                    ? (this.vvLine && this.vvLine.hide(), this.hhLine && this.hhLine.show())
+                    : (this.hhLine && this.hhLine.hide(), this.vvLine && this.vvLine.show());
                 this.updateFullLine();
                 this.isHidden = !1;
                 this.dispatchMovedEvent(f, d, 'moved', !0);
@@ -7174,10 +6334,7 @@
         },
         syncWithCursor: function (a, b) {
             clearTimeout(this.syncTO);
-            a &&
-                (a.isHidden
-                    ? this.hideCursor(!0)
-                    : this.syncWithCursorReal(a, b));
+            a && (a.isHidden ? this.hideCursor(!0) : this.syncWithCursorReal(a, b));
         },
         isZooming: function (a) {
             this.zooming = a;
@@ -7211,16 +6368,12 @@
                   this.vvLine && this.vvLine.hide(),
                   this.hhLine &&
                       e &&
-                      (isNaN(a.fy)
-                          ? this.hhLine.translate(0, a.mouseY)
-                          : this.fixHLine(a.fy, 0)))
+                      (isNaN(a.fy) ? this.hhLine.translate(0, a.mouseY) : this.fixHLine(a.fy, 0)))
                 : ((f = NaN),
                   this.hhLine && this.hhLine.hide(),
                   this.vvLine &&
                       c &&
-                      (isNaN(a.fx)
-                          ? this.vvLine.translate(a.mouseX, 0)
-                          : this.fixVLine(a.fx, 0)));
+                      (isNaN(a.fx) ? this.vvLine.translate(a.mouseX, 0) : this.fixVLine(a.fx, 0)));
             this.dispatchMovedEvent(d, f, 'moved', !0);
         },
     });
@@ -7274,9 +6427,7 @@
                 e.panRequired = !0;
                 var h = b.set();
                 a.set = h;
-                c
-                    ? d.setCN(e, h, 'scrollbar-vertical')
-                    : d.setCN(e, h, 'scrollbar-horizontal');
+                c ? d.setCN(e, h, 'scrollbar-vertical') : d.setCN(e, h, 'scrollbar-horizontal');
                 e.scrollbarsSet.push(h);
                 var f, g;
                 c
@@ -7292,7 +6443,7 @@
                         a.backgroundAlpha,
                         1,
                         a.backgroundColor,
-                        a.backgroundAlpha
+                        a.backgroundAlpha,
                     );
                     d.setCN(e, k, 'scrollbar-bg');
                     a.bg = k;
@@ -7312,13 +6463,7 @@
                         .touchend(function () {
                             a.handleBgClick();
                         });
-                    k = d.rect(
-                        b,
-                        f,
-                        g,
-                        a.selectedBackgroundColor,
-                        a.selectedBackgroundAlpha
-                    );
+                    k = d.rect(b, f, g, a.selectedBackgroundColor, a.selectedBackgroundAlpha);
                     d.setCN(e, k, 'scrollbar-bg-selected');
                     a.selectedBG = k;
                     h.push(k);
@@ -7446,10 +6591,8 @@
                 var f = d,
                     d = e,
                     e = f;
-            if (37 == a.keyCode || 40 == a.keyCode)
-                (e -= 0.02 * b), (d -= 0.02 * c);
-            if (39 == a.keyCode || 38 == a.keyCode)
-                (e += 0.02 * b), (d += 0.02 * c);
+            if (37 == a.keyCode || 40 == a.keyCode) (e -= 0.02 * b), (d -= 0.02 * c);
+            if (39 == a.keyCode || 38 == a.keyCode) (e += 0.02 * b), (d += 0.02 * c);
             this.rotate && ((a = d), (d = e), (e = a));
             isNaN(d) || isNaN(e) || this.percentZoom(e, d, !0);
         },
@@ -7521,23 +6664,18 @@
                     if (m)
                         if (
                             ((a = p - e),
-                            !isNaN(this.maxHeight) &&
-                                a > this.maxHeight &&
-                                (a = this.maxHeight),
+                            !isNaN(this.maxHeight) && a > this.maxHeight && (a = this.maxHeight),
                             a + e > n + f && (a = n - e + f),
                             0 > a)
                         )
-                            (this.resizingRight = !1),
-                                (b = this.resizingLeft = !0);
+                            (this.resizingRight = !1), (b = this.resizingLeft = !0);
                         else {
                             if (0 === a || isNaN(a)) a = 0.1;
                             g.setAttr('height', a);
                         }
                     else if (
                         ((a = t - c),
-                        !isNaN(this.maxWidth) &&
-                            a > this.maxWidth &&
-                            (a = this.maxWidth),
+                        !isNaN(this.maxWidth) && a > this.maxWidth && (a = this.maxWidth),
                         a + c > q + d && (a = q - c + d),
                         0 > a)
                     )
@@ -7605,23 +6743,12 @@
                     b = b.height,
                     f = !1;
                 if (this.rotate) {
-                    if (
-                        ((c = 0),
-                        (d = this.width + 1),
-                        this.clipY != e || this.clipH != b)
-                    )
-                        f = !0;
-                } else if (
-                    ((e = 0),
-                    (b = this.height + 1),
-                    this.clipX != c || this.clipW != d)
-                )
+                    if (((c = 0), (d = this.width + 1), this.clipY != e || this.clipH != b)) f = !0;
+                } else if (((e = 0), (b = this.height + 1), this.clipX != c || this.clipW != d))
                     f = !0;
                 f &&
                     (this.clipAndUpdate(c, e, d, b),
-                    a &&
-                        (this.updateOnReleaseOnly ||
-                            this.dispatchScrollbarEvent()));
+                    a && (this.updateOnReleaseOnly || this.dispatchScrollbarEvent()));
             }
         },
         maskGraphs: function () {},
@@ -7647,9 +6774,7 @@
                     h = b.width,
                     b = b.height;
                 this.getPercents();
-                this.rotate
-                    ? ((c = d), (h = this.height / b))
-                    : (h = this.width / h);
+                this.rotate ? ((c = d), (h = this.height / b)) : (h = this.width / h);
                 this.fire({
                     type: 'zoomed',
                     position: c,
@@ -7726,36 +6851,26 @@
                 var a = this.chart;
                 this.dragger.stop();
                 this.removeCursors();
-                d.isModern &&
-                    this.dragger.node.setAttribute(
-                        'style',
-                        this.dragCursorDown
-                    );
+                d.isModern && this.dragger.node.setAttribute('style', this.dragCursorDown);
                 this.dragging = !0;
                 var b = this.getDBox();
                 this.rotate
-                    ? ((this.initialCoord = b.y),
-                      (this.initialMouse = a.mouseY))
-                    : ((this.initialCoord = b.x),
-                      (this.initialMouse = a.mouseX));
+                    ? ((this.initialCoord = b.y), (this.initialMouse = a.mouseY))
+                    : ((this.initialCoord = b.x), (this.initialMouse = a.mouseX));
             }
         },
         handleDragStop: function () {
             this.updateOnReleaseOnly &&
-                (this.update(),
-                (this.skipEvent = !1),
-                this.dispatchScrollbarEvent());
+                (this.update(), (this.skipEvent = !1), this.dispatchScrollbarEvent());
             this.dragging = !1;
             this.mouseIsOver && this.removeCursors();
-            d.isModern &&
-                this.dragger.node.setAttribute('style', this.dragCursorHover);
+            d.isModern && this.dragger.node.setAttribute('style', this.dragCursorHover);
             this.update();
             this.fireZoomEvent('zoomEnded');
         },
         handleDraggerOver: function () {
             this.handleMouseOver();
-            d.isModern &&
-                this.dragger.node.setAttribute('style', this.dragCursorHover);
+            d.isModern && this.dragger.node.setAttribute('style', this.dragCursorHover);
         },
         leftDragStart: function () {
             this.fireZoomEvent('zoomStarted');
@@ -7802,10 +6917,8 @@
         },
         iconRollOver: function () {
             this.rotate
-                ? this.vResizeCursor &&
-                  this.chart.setMouseCursor(this.vResizeCursor)
-                : this.hResizeCursor &&
-                  this.chart.setMouseCursor(this.hResizeCursor);
+                ? this.vResizeCursor && this.chart.setMouseCursor(this.vResizeCursor)
+                : this.hResizeCursor && this.chart.setMouseCursor(this.hResizeCursor);
             this.handleMouseOver();
         },
         getDBox: function () {
@@ -7840,9 +6953,7 @@
                       a.clipDragger())
                     : ((a.animating = !0),
                       (c = Math.round(c)),
-                      m
-                          ? h.animate({ y: c }, e, '>')
-                          : h.animate({ x: c }, e, '>'),
+                      m ? h.animate({ y: c }, e, '>') : h.animate({ x: c }, e, '>'),
                       (a.forceClip = !0),
                       clearTimeout(a.forceTO),
                       (a.forceTO = setTimeout(function () {
@@ -7852,17 +6963,12 @@
         },
         updateOnRelease: function () {
             this.updateOnReleaseOnly &&
-                (this.update(),
-                (this.skipEvent = !1),
-                this.dispatchScrollbarEvent());
+                (this.update(), (this.skipEvent = !1), this.dispatchScrollbarEvent());
         },
         handleReleaseOutside: function () {
             if (this.set) {
                 if (this.resizingLeft || this.resizingRight || this.dragging)
-                    (this.dragging =
-                        this.resizingRight =
-                        this.resizingLeft =
-                            !1),
+                    (this.dragging = this.resizingRight = this.resizingLeft = !1),
                         this.updateOnRelease(),
                         this.removeCursors();
                 this.animating = this.mouseIsOver = !1;
@@ -7912,9 +7018,7 @@
                 c = this.gridAxis;
             a ||
                 ('CategoryAxis' == this.gridAxis.cname
-                    ? ((this.catScrollbar = !0),
-                      (a = new d.CategoryAxis()),
-                      (a.id = 'scrollbar'))
+                    ? ((this.catScrollbar = !0), (a = new d.CategoryAxis()), (a.id = 'scrollbar'))
                     : ((a = new d.ValueAxis()),
                       (a.data = b.chartData),
                       (a.id = c.id),
@@ -7938,8 +7042,7 @@
             a.fontSize = this.fontSize;
             a.tickLength = 0;
             a.axisAlpha = 0;
-            d.isString(this.graph) &&
-                (this.graph = d.getObjById(b.graphs, this.graph));
+            d.isString(this.graph) && (this.graph = d.getObjById(b.graphs, this.graph));
             (a = this.graph) &&
                 this.catScrollbar &&
                 ((c = this.valueAxis),
@@ -7998,9 +7101,7 @@
                 e.tickLength = 0;
                 e.axisAlpha = 0;
                 e.autoGridCount = a.autoGridCount;
-                e.parseDates &&
-                    !e.equalSpacing &&
-                    e.timeZoom(b.firstTime, b.lastTime);
+                e.parseDates && !e.equalSpacing && e.timeZoom(b.firstTime, b.lastTime);
                 e.minimum = a.gridAxis.fullMin;
                 e.maximum = a.gridAxis.fullMax;
                 e.strictMinMax = !0;
@@ -8027,11 +7128,7 @@
                         var r = c[t].axes[n.id].graphs[m.id].values,
                             w;
                         for (w in r)
-                            if (
-                                r.hasOwnProperty(w) &&
-                                'percents' != w &&
-                                'total' != w
-                            ) {
+                            if (r.hasOwnProperty(w) && 'percents' != w && 'total' != w) {
                                 var y = r[w];
                                 y < f && (f = y);
                                 y > g && (g = y);
@@ -8175,9 +7272,7 @@
                         ((a = g.lastTime),
                         (g = g.firstTime),
                         (k = Math.round(b / l) + g),
-                        (b = this.dragging
-                            ? k + this.timeDifference
-                            : Math.round((b + c) / l) + g),
+                        (b = this.dragging ? k + this.timeDifference : Math.round((b + c) / l) + g),
                         k > b && (k = b),
                         0 < h &&
                             b - k < h &&
@@ -8214,22 +7309,14 @@
                     if (h != this.start || this.end != b)
                         k.startOnAxis &&
                             (this.resizingRight && h == b && b++,
-                            this.resizingLeft &&
-                                h == b &&
-                                (0 < h ? h-- : (b = 1))),
+                            this.resizingLeft && h == b && (0 < h ? h-- : (b = 1))),
                             (this.start = h),
-                            (this.end = this.dragging
-                                ? this.start + this.difference
-                                : b),
+                            (this.end = this.dragging ? this.start + this.difference : b),
                             (f.start = this.start),
                             (f.end = this.end),
                             k.parseDates &&
-                                (a[this.start] &&
-                                    (f.startDate = new Date(
-                                        a[this.start].time
-                                    )),
-                                a[this.end] &&
-                                    (f.endDate = new Date(a[this.end].time))),
+                                (a[this.start] && (f.startDate = new Date(a[this.start].time)),
+                                a[this.end] && (f.endDate = new Date(a[this.end].time))),
                             this.fire(f);
                     this.percentStart = h;
                     this.percentEnd = b;
@@ -8239,12 +7326,7 @@
         },
         zoomScrollbar: function (a) {
             if (
-                (!(
-                    this.dragging ||
-                    this.resizingLeft ||
-                    this.resizingRight ||
-                    this.animating
-                ) ||
+                (!(this.dragging || this.resizingLeft || this.resizingRight || this.animating) ||
                     a) &&
                 this.dragger &&
                 this.enabled
@@ -8352,8 +7434,7 @@
                         q = this.fillColor,
                         n = this.borderColor,
                         t = q;
-                    void 0 != p &&
-                        (this.adjustBorderColor ? (t = n = p) : (q = p));
+                    void 0 != p && (this.adjustBorderColor ? (t = n = p) : (q = p));
                     var r = this.horizontalPadding,
                         w = this.verticalPadding,
                         y = this.pointerWidth,
@@ -8366,12 +7447,7 @@
                         B = c.classNamePrefix;
                     p.className = B + '-balloon-div';
                     this.className &&
-                        (p.className =
-                            p.className +
-                            ' ' +
-                            B +
-                            '-balloon-div-' +
-                            this.className);
+                        (p.className = p.className + ' ' + B + '-balloon-div-' + this.className);
                     B = p.style;
                     this.disableMouseEvents && (B.pointerEvents = 'none');
                     B.position = 'absolute';
@@ -8398,8 +7474,7 @@
                     this.textDiv = p;
                     var K = p.offsetWidth,
                         H = p.offsetHeight;
-                    p.clientHeight &&
-                        ((K = p.clientWidth), (H = p.clientHeight));
+                    p.clientHeight && ((K = p.clientWidth), (H = p.clientHeight));
                     A = H + 2 * w;
                     C = K + 2 * r;
                     !isNaN(D) && C < D && (C = D);
@@ -8410,13 +7485,8 @@
                     'H' != x
                         ? ((D = a - C / 2),
                           b < k + A + 10 && 'down' != x
-                              ? ((Q = !0),
-                                e && (b += z),
-                                (z = b + y),
-                                (this.deltaSignY = -1))
-                              : (e && (b -= z),
-                                (z = b - A - y),
-                                (this.deltaSignY = 1)))
+                              ? ((Q = !0), e && (b += z), (z = b + y), (this.deltaSignY = -1))
+                              : (e && (b -= z), (z = b - A - y), (this.deltaSignY = 1)))
                         : (2 * y > A && (y = A / 2),
                           (z = b - A / 2),
                           a < g + (l - g) / 2
@@ -8442,21 +7512,16 @@
                           'V' == x && (x = 'down'),
                           'H' == x && (x = 'left'),
                           'down' == x && ((D = a + 1), (z = b - g - g / 3)),
-                          'up' == x &&
-                              ((l = 180), (D = a + 1), (z = b + g + g / 3)),
-                          'left' == x &&
-                              ((l = 270), (D = a + g + g / 3 + 2), (z = b)),
-                          'right' == x &&
-                              ((l = 90), (D = a - g - g / 3 + 2), (z = b)),
+                          'up' == x && ((l = 180), (D = a + 1), (z = b + g + g / 3)),
+                          'left' == x && ((l = 270), (D = a + g + g / 3 + 2), (z = b)),
+                          'right' == x && ((l = 90), (D = a - g - g / 3 + 2), (z = b)),
                           (k = z - H / 2 + 1),
                           (m = D - K / 2 - 1),
                           (q = d.drop(h, g, l, q, w, r, n, aa)))
                         : 0 < u || 0 === y
                         ? (0 < M &&
                               ((a = d.rect(h, C, A, q, 0, r + 1, P, M, u)),
-                              d.isModern
-                                  ? a.translate(1, 1)
-                                  : a.translate(4, 4),
+                              d.isModern ? a.translate(1, 1) : a.translate(4, 4),
                               f.push(a)),
                           (q = d.rect(h, C, A, q, w, r, n, aa, u)))
                         : ((t = []),
@@ -8475,26 +7540,8 @@
                                 (u = [0, x - y, b - z, x + y, A, A, 0, 0]),
                                 (t =
                                     a < g + (l - g) / 2
-                                        ? [
-                                              0,
-                                              0,
-                                              D < a ? 0 : a - D,
-                                              0,
-                                              0,
-                                              C,
-                                              C,
-                                              0,
-                                          ]
-                                        : [
-                                              C,
-                                              C,
-                                              D + C > a ? C : a - D,
-                                              C,
-                                              C,
-                                              0,
-                                              0,
-                                              C,
-                                          ])),
+                                        ? [0, 0, D < a ? 0 : a - D, 0, 0, C, C, 0]
+                                        : [C, C, D + C > a ? C : a - D, C, C, 0, 0, C])),
                           0 < M &&
                               ((a = d.polygon(h, t, u, q, 0, r, P, M)),
                               a.translate(1, 1),
@@ -8504,8 +7551,7 @@
                     f.push(q);
                     q.toFront();
                     d.setCN(c, q, 'balloon-bg');
-                    this.className &&
-                        d.setCN(c, q, 'balloon-bg-' + this.className);
+                    this.className && d.setCN(c, q, 'balloon-bg-' + this.className);
                     h = 1 * this.deltaSignX;
                     m += this.sdx;
                     k += this.sdy;
@@ -8521,11 +7567,7 @@
                         !e &&
                         !isNaN(this.prevX) &&
                         (f.translate(this.prevX, this.prevY, NaN, !0),
-                        f.animate(
-                            { translate: D - h + ',' + z },
-                            b,
-                            'easeOutSine'
-                        ),
+                        f.animate({ translate: D - h + ',' + z }, b, 'easeOutSine'),
                         p &&
                             ((B.left = this.prevTX + 'px'),
                             (B.top = this.prevTY + 'px'),
@@ -8536,7 +7578,7 @@
                                 m,
                                 b,
                                 'easeOutSine',
-                                'px'
+                                'px',
                             )),
                             (this.yAnim = c.animate(
                                 { node: p },
@@ -8545,7 +7587,7 @@
                                 k,
                                 b,
                                 'easeOutSine',
-                                'px'
+                                'px',
                             ))));
                     this.prevX = D - h;
                     this.prevY = z;
@@ -8568,19 +7610,12 @@
         },
         followMouse: function () {
             if (this.follow && this.show) {
-                var a =
-                        this.chart.mouseX -
-                        this.offsetX * this.deltaSignX -
-                        this.sdx,
+                var a = this.chart.mouseX - this.offsetX * this.deltaSignX - this.sdx,
                     b = this.chart.mouseY - this.sdy;
                 this.pointToX = a;
                 this.pointToY = b;
                 if (a != this.previousX || b != this.previousY)
-                    if (
-                        ((this.previousX = a),
-                        (this.previousY = b),
-                        0 === this.cornerRadius)
-                    )
+                    if (((this.previousX = a), (this.previousY = b), 0 === this.cornerRadius))
                         this.draw();
                     else {
                         var c = this.set;
@@ -8646,7 +7681,7 @@
                         0,
                         a,
                         'easeInSine',
-                        ''
+                        '',
                     ));
             } else (b.show = !1), (b.follow = !1), b.destroy();
         },
@@ -8702,7 +7737,7 @@
                 'rightClickGraphItem',
                 'clickGraph',
                 'rollOverGraph',
-                'rollOutGraph'
+                'rollOutGraph',
             );
             this.startAlpha = 1;
             this.startDuration = 0;
@@ -8710,7 +7745,7 @@
             this.sequencedAnimation = !0;
             this.colors =
                 '#FF6600 #FCD202 #B0DE09 #0D8ECF #2A0CD0 #CD0D74 #CC0000 #00CC00 #0000CC #DDDDDD #999999 #333333 #990000'.split(
-                    ' '
+                    ' ',
                 );
             this.balloonDateFormat = 'MMM DD, YYYY';
             this.valueAxes = [];
@@ -8723,12 +7758,7 @@
             d.AmCoordinateChart.base.initChart.call(this);
             this.drawGraphs = !0;
             var a = this.categoryAxis;
-            a &&
-                (this.categoryAxis = d.processObject(
-                    a,
-                    d.CategoryAxis,
-                    this.theme
-                ));
+            a && (this.categoryAxis = d.processObject(a, d.CategoryAxis, this.theme));
             this.processValueAxes();
             this.createValueAxes();
             this.processGraphs();
@@ -8736,9 +7766,7 @@
             d.VML && (this.startAlpha = 1);
             this.setLegendData(this.graphs);
             this.gridAboveGraphs &&
-                (this.gridSet.toFront(),
-                this.bulletSet.toFront(),
-                this.balloonsSet.toFront());
+                (this.gridSet.toFront(), this.bulletSet.toFront(), this.balloonsSet.toFront());
         },
         createValueAxes: function () {
             if (0 === this.valueAxes.length) {
@@ -8758,9 +7786,7 @@
                     var b = a.length / this.processCount;
                     this.parseCount = Math.ceil(b) - 1;
                     for (var c = 0; c < b; c++) this.delayParseSerialData(a, c);
-                } else
-                    (this.parseCount = 0),
-                        this.parsePartSerialData(a, 0, a.length, 0);
+                } else (this.parseCount = 0), this.parsePartSerialData(a, 0, a.length, 0);
             else this.onDataUpdated();
         },
         delayParseSerialData: function (a, b) {
@@ -8846,10 +7872,7 @@
                             var aa = D;
                             b.dataProvider && (aa = f);
                             I.values = this.processValues(aa, b, ia);
-                            if (
-                                !b.connect ||
-                                (b.forceGap && !isNaN(b.gapPeriod))
-                            )
+                            if (!b.connect || (b.forceGap && !isNaN(b.gapPeriod)))
                                 if (
                                     (z &&
                                         z[M] &&
@@ -8874,8 +7897,7 @@
                 this.chartData[u] = B;
             }
             if (this.parseCount == e) {
-                for (a = 0; a < h.length; a++)
-                    (b = h[a]), b.dataProvider && this.parseGraphData(b);
+                for (a = 0; a < h.length; a++) (b = h[a]), b.dataProvider && this.parseGraphData(b);
                 this.dataChanged = !1;
                 this.dispatchDataUpdated = !0;
                 this.onDataUpdated();
@@ -8885,27 +7907,17 @@
             var e = {},
                 h,
                 f = !1;
-            ('candlestick' != b.type && 'ohlc' != b.type) ||
-                '' === c ||
-                (f = !0);
-            for (
-                var g = 'value error open close low high'.split(' '), k = 0;
-                k < g.length;
-                k++
-            ) {
+            ('candlestick' != b.type && 'ohlc' != b.type) || '' === c || (f = !0);
+            for (var g = 'value error open close low high'.split(' '), k = 0; k < g.length; k++) {
                 var l = g[k];
-                'value' != l &&
-                    'error' != l &&
-                    f &&
-                    (c = l.charAt(0).toUpperCase() + l.slice(1));
+                'value' != l && 'error' != l && f && (c = l.charAt(0).toUpperCase() + l.slice(1));
                 var m = a[b[l + 'Field'] + c];
                 null !== m &&
                     ((h = Number(m)),
                     isNaN(h) || (e[l] = h),
                     'date' == b.valueAxis.type &&
                         void 0 !== m &&
-                        ((h = d.getDate(m, b.chart.dataDateFormat)),
-                        (e[l] = h.getTime())));
+                        ((h = d.getDate(m, b.chart.dataDateFormat)), (e[l] = h.getTime())));
             }
             return e;
         },
@@ -8955,8 +7967,7 @@
         removeGraph: function (a) {
             var b = this.graphs,
                 c;
-            for (c = b.length - 1; 0 <= c; c--)
-                b[c] == a && (b.splice(c, 1), a.destroy());
+            for (c = b.length - 1; 0 <= c; c--) b[c] == a && (b.splice(c, 1), a.destroy());
             this.validateData();
         },
         handleValueAxisZoom: function () {},
@@ -8970,8 +7981,7 @@
                 c.chart = this;
                 c.init();
                 this.listenTo(c, 'axisIntZoomed', this.handleValueAxisZoom);
-                c.id ||
-                    (c.id = 'valueAxisAuto' + b + '_' + new Date().getTime());
+                c.id || (c.id = 'valueAxisAuto' + b + '_' + new Date().getTime());
                 void 0 === c.usePrefixes && (c.usePrefixes = this.usePrefixes);
             }
         },
@@ -8981,11 +7991,8 @@
             if (a)
                 for (var c = 0; c < a.length; c++) {
                     var e = a[c];
-                    (void 0 !== e.category || void 0 !== e.date) &&
-                        b &&
-                        b.addGuide(e);
-                    e.id ||
-                        (e.id = 'guideAuto' + c + '_' + new Date().getTime());
+                    (void 0 !== e.category || void 0 !== e.date) && b && b.addGuide(e);
+                    e.id || (e.id = 'guideAuto' + c + '_' + new Date().getTime());
                     var h = e.valueAxis;
                     h
                         ? (d.isString(h) && (h = this.getValueAxisById(h)),
@@ -9004,8 +8011,7 @@
                 this.chooseGraphColor(c, b);
                 c.chart = this;
                 c.init();
-                d.isString(c.valueAxis) &&
-                    (c.valueAxis = this.getValueAxisById(c.valueAxis));
+                d.isString(c.valueAxis) && (c.valueAxis = this.getValueAxisById(c.valueAxis));
                 c.valueAxis || (c.valueAxis = this.valueAxes[0]);
                 c.id || (c.id = 'graphAuto' + b + '_' + new Date().getTime());
                 this.graphsById[c.id] = c;
@@ -9022,7 +8028,7 @@
                     '',
                     h.durationUnits,
                     h.maxInterval,
-                    h.numberFormatter
+                    h.numberFormatter,
                 )),
                 (a = a.split('[[value]]').join(h)));
             a = d.massReplace(a, {
@@ -9064,7 +8070,7 @@
             }
             e =
                 'lineColor color alpha fillColors description bullet customBullet bulletSize bulletConfig url labelColor dashLength pattern gap className columnIndex'.split(
-                    ' '
+                    ' ',
                 );
             for (h = 0; h < e.length; h++) {
                 var f = e[h],
@@ -9102,14 +8108,10 @@
                 switch (b) {
                     case 'clickMarker':
                         this.textClickEnabled &&
-                            (d
-                                ? this.hideGraphsBalloon(a)
-                                : this.showGraphsBalloon(a));
+                            (d ? this.hideGraphsBalloon(a) : this.showGraphsBalloon(a));
                         break;
                     case 'clickLabel':
-                        d
-                            ? this.hideGraphsBalloon(a)
-                            : this.showGraphsBalloon(a);
+                        d ? this.hideGraphsBalloon(a) : this.showGraphsBalloon(a);
                         break;
                     case 'rollOverItem':
                         c || this.highlightGraph(a);
@@ -9225,33 +8227,14 @@
                     (a.initialDate = l),
                     (e = k.dateToCoordinate(l))),
                 m && (e = k.categoryToCoordinate(m)),
-                p &&
-                    ((p = d.getDate(p, A, 'fff')),
-                    (a.finalDate = p),
-                    (h = k.dateToCoordinate(p))),
+                p && ((p = d.getDate(p, A, 'fff')), (a.finalDate = p), (h = k.dateToCoordinate(p))),
                 q && (h = k.categoryToCoordinate(q)));
-            t &&
-                !u &&
-                (isNaN(r) || (e = t.getCoordinate(r)),
-                isNaN(w) || (h = t.getCoordinate(w)));
-            n &&
-                !u &&
-                (isNaN(y) || (f = n.getCoordinate(y)),
-                isNaN(x) || (g = n.getCoordinate(x)));
+            t && !u && (isNaN(r) || (e = t.getCoordinate(r)), isNaN(w) || (h = t.getCoordinate(w)));
+            n && !u && (isNaN(y) || (f = n.getCoordinate(y)), isNaN(x) || (g = n.getCoordinate(x)));
             if (!(isNaN(e) || isNaN(h) || isNaN(f) || isNaN(f))) {
-                b.rotate
-                    ? ((k = [f, g]), (g = [e, h]))
-                    : ((k = [e, h]), (g = [f, g]));
+                b.rotate ? ((k = [f, g]), (g = [e, h])) : ((k = [e, h]), (g = [f, g]));
                 l = a.lineColor;
-                f = d.line(
-                    c,
-                    k,
-                    g,
-                    l,
-                    a.lineAlpha,
-                    a.lineThickness,
-                    a.dashLength
-                );
+                f = d.line(c, k, g, l, a.lineAlpha, a.lineThickness, a.dashLength);
                 e = k;
                 h = g;
                 q = k[1] - k[0];
@@ -9265,7 +8248,7 @@
                     Math.asin(
                         q /
                             (((q * n) / Math.abs(q * n)) *
-                                Math.sqrt(Math.pow(q, 2) + Math.pow(n, 2)))
+                                Math.sqrt(Math.pow(q, 2) + Math.pow(n, 2))),
                     );
                 q = Math.abs(5 * Math.cos(n));
                 n = Math.abs(5 * Math.sin(n));
@@ -9321,7 +8304,7 @@
                     this.lineColor,
                     !0,
                     this.x + a.x + a.width / 2,
-                    this.y + a.y + a.height / 2
+                    this.y + a.y + a.height / 2,
                 ));
             this.fire({ type: 'rollOver', trendLine: this, chart: this.chart });
         },
@@ -9367,11 +8350,7 @@
                 a.balloonText &&
                     c
                         .mouseover(function () {
-                            a.chart.showBalloon(
-                                a.balloonText,
-                                a.balloonColor,
-                                !0
-                            );
+                            a.chart.showBalloon(a.balloonText, a.balloonColor, !0);
                         })
                         .mouseout(function () {
                             a.chart.hideBalloon();
@@ -9380,11 +8359,7 @@
                             a.chart.hideBalloon();
                         })
                         .touchstart(function () {
-                            a.chart.showBalloon(
-                                a.balloonText,
-                                a.balloonColor,
-                                !0
-                            );
+                            a.chart.showBalloon(a.balloonText, a.balloonColor, !0);
                         }),
                 a.set.push(c));
         },
@@ -9407,9 +8382,7 @@
             'stroke-width': h,
             'stroke-opacity': g,
         };
-        a = isNaN(l)
-            ? a.circle(0, 0, b).attr(e)
-            : a.ellipse(0, 0, b, l).attr(e);
+        a = isNaN(l) ? a.circle(0, 0, b).attr(e) : a.ellipse(0, 0, b, l).attr(e);
         k && a.gradient('radialGradient', [c, d.adjustLuminosity(c, -0.6)]);
         return a;
     };
@@ -9445,13 +8418,9 @@
         void 0 !== p && 0 < p && (h['stroke-dasharray'] = p);
         p = d.dx;
         f = d.dy;
-        a.handDrawn &&
-            ((c = d.makeHD(b, c, a.handDrawScatter)), (b = c[0]), (c = c[1]));
+        a.handDrawn && ((c = d.makeHD(b, c, a.handDrawScatter)), (b = c[0]), (c = c[1]));
         g = Math.round;
-        m &&
-            ((b[t] = d.roundTo(b[t], 5)),
-            (c[t] = d.roundTo(c[t], 5)),
-            (g = Number));
+        m && ((b[t] = d.roundTo(b[t], 5)), (c[t] = d.roundTo(c[t], 5)), (g = Number));
         k = 'M' + (g(b[0]) + p) + ',' + (g(c[0]) + f);
         for (var t = 1; t < b.length; t++)
             m && ((b[t] = d.roundTo(b[t], 5)), (c[t] = d.roundTo(c[t], 5))),
@@ -9504,7 +8473,7 @@
                     k,
                     m - 180,
                     void 0,
-                    n
+                    n,
                 );
                 break;
             case 'rectangle':
@@ -9519,20 +8488,11 @@
                     k,
                     m - 180,
                     void 0,
-                    n
+                    n,
                 );
                 break;
             case 'diamond':
-                t = d.polygon(
-                    a,
-                    [-c / 2, 0, c / 2, 0],
-                    [0, -c / 2, 0, c / 2],
-                    e,
-                    h,
-                    f,
-                    g,
-                    k
-                );
+                t = d.polygon(a, [-c / 2, 0, c / 2, 0], [0, -c / 2, 0, c / 2], e, h, f, g, k);
                 break;
             case 'triangleUp':
                 t = d.triangle(a, c, 0, e, h, f, g, k);
@@ -9580,30 +8540,20 @@
         };
         b /= 2;
         var l;
-        0 === c &&
-            (l = ' M' + -b + ',' + b + ' L0,' + -b + ' L' + b + ',' + b + ' Z');
-        180 == c &&
-            (l =
-                ' M' + -b + ',' + -b + ' L0,' + b + ' L' + b + ',' + -b + ' Z');
-        90 == c &&
-            (l =
-                ' M' + -b + ',' + -b + ' L' + b + ',0 L' + -b + ',' + b + ' Z');
-        270 == c &&
-            (l = ' M' + -b + ',0 L' + b + ',' + b + ' L' + b + ',' + -b + ' Z');
+        0 === c && (l = ' M' + -b + ',' + b + ' L0,' + -b + ' L' + b + ',' + b + ' Z');
+        180 == c && (l = ' M' + -b + ',' + -b + ' L0,' + b + ' L' + b + ',' + -b + ' Z');
+        90 == c && (l = ' M' + -b + ',' + -b + ' L' + b + ',0 L' + -b + ',' + b + ' Z');
+        270 == c && (l = ' M' + -b + ',0 L' + b + ',' + b + ' L' + b + ',' + -b + ' Z');
         return a.path(l).attr(d);
     };
     d.line = function (a, b, c, e, h, f, g, k, l, m, p) {
-        if (a.handDrawn && !p)
-            return d.handDrawnLine(a, b, c, e, h, f, g, k, l, m, p);
+        if (a.handDrawn && !p) return d.handDrawnLine(a, b, c, e, h, f, g, k, l, m, p);
         f = { fill: 'none', 'stroke-width': f };
         void 0 !== g && 0 < g && (f['stroke-dasharray'] = g);
         isNaN(h) || (f['stroke-opacity'] = h);
         e && (f.stroke = e);
         e = Math.round;
-        m &&
-            ((e = Number),
-            (b[0] = d.roundTo(b[0], 5)),
-            (c[0] = d.roundTo(c[0], 5)));
+        m && ((e = Number), (b[0] = d.roundTo(b[0], 5)), (c[0] = d.roundTo(c[0], 5)));
         m = d.dx;
         h = d.dy;
         g = 'M' + (e(b[0]) + m) + ',' + (e(c[0]) + h);
@@ -9622,11 +8572,7 @@
                     k = Number(b[f - 1]),
                     l = Number(a[f]),
                     m = Number(b[f]),
-                    p =
-                        Math.round(
-                            Math.sqrt(Math.pow(l - g, 2) + Math.pow(m - k, 2)) /
-                                50
-                        ) + 1,
+                    p = Math.round(Math.sqrt(Math.pow(l - g, 2) + Math.pow(m - k, 2)) / 50) + 1,
                     l = (l - g) / p,
                     m = (m - k) / p,
                     q = 0;
@@ -9660,15 +8606,13 @@
                         [t[r - 1], t[r]],
                         e,
                         h,
-                        f +
-                            Math.random() * a.handDrawThickness -
-                            a.handDrawThickness / 2,
+                        f + Math.random() * a.handDrawThickness - a.handDrawThickness / 2,
                         g,
                         k,
                         l,
                         m,
-                        !0
-                    )
+                        !0,
+                    ),
                 );
         return q;
     };
@@ -9764,10 +8708,7 @@
             (g *= 10),
             (k *= 10),
             (w *= 10),
-            1 > Math.abs(h) &&
-                1 >= Math.abs(D - z) &&
-                1 >= Math.abs(C - B) &&
-                (M = !0));
+            1 > Math.abs(h) && 1 >= Math.abs(D - z) && 1 >= Math.abs(C - B) && (M = !0));
         h = '';
         var P;
         q &&
@@ -9830,18 +8771,7 @@
                       K +
                       ',' +
                       (u + l)),
-                  0 < k &&
-                      (P +=
-                          ' A' +
-                          k +
-                          ',' +
-                          w +
-                          ',0,' +
-                          Q +
-                          ',0,' +
-                          x +
-                          ',' +
-                          (A + l)));
+                  0 < k && (P += ' A' + k + ',' + w + ',0,' + Q + ',0,' + x + ',' + (A + l)));
             P += ' Z';
             var ia = l;
             y && (ia /= 10);
@@ -9875,7 +8805,7 @@
                         ' Z',
                     void 0,
                     void 0,
-                    '1000,1000'
+                    '1000,1000',
                 )
                 .attr(H);
             l = a
@@ -9903,7 +8833,7 @@
                         ' Z',
                     void 0,
                     void 0,
-                    '1000,1000'
+                    '1000,1000',
                 )
                 .attr(H);
             e.push(P);
@@ -9984,14 +8914,13 @@
                 [A, B],
                 m.stroke,
                 m.thickness * Math.random() * a.handDrawThickness,
-                m['stroke-opacity']
+                m['stroke-opacity'],
             )),
             e.push(k));
         a = a.path(g + ' Z', void 0, void 0, '1000,1000').attr(m);
         if (p) {
             k = [];
-            for (w = 0; w < p.length; w++)
-                k.push(d.adjustLuminosity(m.fill, p[w]));
+            for (w = 0; w < p.length; w++) k.push(d.adjustLuminosity(m.fill, p[w]));
             'radial' != t || d.isModern || (k = []);
             0 < k.length && a.gradient(t + 'Gradient', k);
         }
@@ -10009,7 +8938,7 @@
     };
     d.rgb2hex = function (a) {
         return (a = a.match(
-            /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i
+            /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i,
         )) && 4 === a.length
             ? '#' +
                   ('0' + parseInt(a[1], 10).toString(16)).slice(-2) +
@@ -10034,9 +8963,7 @@
             h;
         for (h = 0; 3 > h; h++)
             (e = parseInt(a.substr(2 * h, 2), 16)),
-                (e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(
-                    16
-                )),
+                (e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(16)),
                 (c += ('00' + e).substr(e.length));
         return c;
     };
@@ -10052,9 +8979,7 @@
             isNaN(q.bezierY) || (t = q.bezierY);
             isNaN(n) && (q.rotate ? ((n = 20), (t = 4)) : ((t = 20), (n = 4)));
             var r, w;
-            'object' == typeof g &&
-                1 < g.length &&
-                ((w = !0), (r = g), (g = g[0]));
+            'object' == typeof g && 1 < g.length && ((w = !0), (r = g), (g = g[0]));
             'object' == typeof k && (k = k[0]);
             0 === k && (g = 'none');
             f = { fill: g, 'fill-opacity': k, 'stroke-width': f };
@@ -10066,8 +8991,7 @@
             for (l = 0; l < b.length; l++)
                 isNaN(b[l]) || isNaN(c[l])
                     ? ((e += this.drawSegment(h, n, t)),
-                      l < b.length - 1 &&
-                          (e += 'L' + b[l + 1] + ',' + c[l + 1] + ' '),
+                      l < b.length - 1 && (e += 'L' + b[l + 1] + ',' + c[l + 1] + ' '),
                       (h = []))
                     : h.push({ x: Number(b[l]), y: Number(c[l]) });
             e += this.drawSegment(h, n, t);
@@ -10157,20 +9081,17 @@
                   d.VMLRenderer &&
                   ((d.VML = !0),
                   d.vmlStyleSheet ||
-                      (document.namespaces.add(
-                          'amvml',
-                          'urn:schemas-microsoft-com:vml'
-                      ),
+                      (document.namespaces.add('amvml', 'urn:schemas-microsoft-com:vml'),
                       31 > document.styleSheets.length
                           ? ((b = document.createStyleSheet()),
                             b.addRule(
                                 '.amvml',
-                                'behavior:url(#default#VML); display:inline-block; antialias:true'
+                                'behavior:url(#default#VML); display:inline-block; antialias:true',
                             ),
                             (d.vmlStyleSheet = b))
                           : document.styleSheets[0].addRule(
                                 '.amvml',
-                                'behavior:url(#default#VML); display:inline-block; antialias:true'
+                                'behavior:url(#default#VML); display:inline-block; antialias:true',
                             )),
                   (this.container = a),
                   (this.R = new d.VMLRenderer(this, e)),
@@ -10194,8 +9115,7 @@
         setSize: function (a, b) {
             0 < a &&
                 0 < b &&
-                ((this.container.style.width = a + 'px'),
-                (this.container.style.height = b + 'px'));
+                ((this.container.style.width = a + 'px'), (this.container.style.height = b + 'px'));
         },
         rect: function (a, b, c, e, h, f, g) {
             var k = new d.AmDObject('rect', this);
@@ -10288,9 +9208,7 @@
                 a &&
                     (a.addCodeCredits &&
                         b.appendChild(
-                            document.createTextNode(
-                                'JavaScript chart by amCharts ' + a.version
-                            )
+                            document.createTextNode('JavaScript chart by amCharts ' + a.version),
                         ),
                     c.appendChild(b),
                     a.defs &&
@@ -10365,8 +9283,7 @@
         },
         clear: function () {
             var a = this.node;
-            if (a.hasChildNodes())
-                for (; 1 <= a.childNodes.length; ) a.removeChild(a.firstChild);
+            if (a.hasChildNodes()) for (; 1 <= a.childNodes.length; ) a.removeChild(a.firstChild);
         },
         hide: function () {
             this.setAttr('visibility', 'hidden');
@@ -10387,10 +9304,7 @@
         },
         toPrevious: function () {
             var a = this.node;
-            a &&
-                this.prevNextNode &&
-                (a = a.parentNode) &&
-                a.insertBefore(this.prevNextNode, null);
+            a && this.prevNextNode && (a = a.parentNode) && a.insertBefore(this.prevNextNode, null);
         },
         toBack: function () {
             var a = this.node;
@@ -10497,12 +9411,9 @@
         },
         create: function (a, b) {
             var c;
-            if ('group' == b)
-                (c = document.createElement('div')), (a.type = 'div');
-            else if ('text' == b)
-                (c = document.createElement('div')), (a.type = 'text');
-            else if ('image' == b)
-                (c = document.createElement('img')), (a.type = 'image');
+            if ('group' == b) (c = document.createElement('div')), (a.type = 'div');
+            else if ('text' == b) (c = document.createElement('div')), (a.type = 'text');
+            else if ('image' == b) (c = document.createElement('img')), (a.type = 'image');
             else {
                 a.type = 'shape';
                 a.shapeType = this.cNames[b];
@@ -10534,10 +9445,8 @@
                     g = h.style;
                 'r' == b && ((g.width = 2 * c), (g.height = 2 * c));
                 'oval' == a.shapeType &&
-                    ('rx' == b && (g.width = 2 * c),
-                    'ry' == b && (g.height = 2 * c));
-                'roundrect' == a.shapeType &&
-                    (('width' != b && 'height' != b) || --c);
+                    ('rx' == b && (g.width = 2 * c), 'ry' == b && (g.height = 2 * c));
+                'roundrect' == a.shapeType && (('width' != b && 'height' != b) || --c);
                 'cursor' == b && (g.cursor = c);
                 'cx' == b && (g.left = c - d.removePx(g.width) / 2);
                 'cy' == b && (g.top = c - d.removePx(g.height) / 2);
@@ -10550,13 +9459,11 @@
                         (k = h.clientWidth),
                         'end' == c && (g.marginLeft = -k + 'px'),
                         'middle' == c &&
-                            ((g.marginLeft = -(k / 2) + 'px'),
-                            (g.textAlign = 'center')),
+                            ((g.marginLeft = -(k / 2) + 'px'), (g.textAlign = 'center')),
                         'start' == c && (g.marginLeft = '0px')),
                     'fill' == b && (g.color = c),
                     'font-weight' == b && (g.fontWeight = c));
-                if ((g = a.children))
-                    for (k = 0; k < g.length; k++) g[k].setAttr(b, c);
+                if ((g = a.children)) for (k = 0; k < g.length; k++) g[k].setAttr(b, c);
                 if ('shape' == f) {
                     'cs' == b &&
                         ((h.style.width = '100px'),
@@ -10566,12 +9473,9 @@
                     'dd' == b && h.setAttribute('path', c);
                     f = a.stroke;
                     a = a.fill;
-                    'stroke' == b &&
-                        (e ? (f.color = c) : f.setAttribute('color', c));
-                    'stroke-width' == b &&
-                        (e ? (f.weight = c) : f.setAttribute('weight', c));
-                    'stroke-opacity' == b &&
-                        (e ? (f.opacity = c) : f.setAttribute('opacity', c));
+                    'stroke' == b && (e ? (f.color = c) : f.setAttribute('color', c));
+                    'stroke-width' == b && (e ? (f.weight = c) : f.setAttribute('weight', c));
+                    'stroke-opacity' == b && (e ? (f.opacity = c) : f.setAttribute('opacity', c));
                     'stroke-dasharray' == b &&
                         ((g = 'solid'),
                         0 < c && 3 > c && (g = 'dot'),
@@ -10586,12 +9490,8 @@
                             : e
                             ? (a.opacity = c)
                             : a.setAttribute('opacity', c);
-                    'fill' == b &&
-                        (e ? (a.color = c) : a.setAttribute('color', c));
-                    'rx' == b &&
-                        (e
-                            ? (h.arcSize = c + '%')
-                            : h.setAttribute('arcsize', c + '%'));
+                    'fill' == b && (e ? (a.color = c) : a.setAttribute('color', c));
+                    'rx' == b && (e ? (h.arcSize = c + '%') : h.setAttribute('arcsize', c + '%'));
                 }
             }
         },
@@ -10647,13 +9547,10 @@
                 h = e.style;
             'text' == a.type && (c -= d.removePx(h.fontSize) / 2 - 1);
             'oval' == a.shapeType &&
-                ((b -= d.removePx(h.width) / 2),
-                (c -= d.removePx(h.height) / 2));
+                ((b -= d.removePx(h.width) / 2), (c -= d.removePx(h.height) / 2));
             a = a.bw;
             isNaN(a) || ((b -= a), (c -= a));
-            isNaN(b) ||
-                isNaN(c) ||
-                ((e.style.left = b + 'px'), (e.style.top = c + 'px'));
+            isNaN(b) || isNaN(c) || ((e.style.left = b + 'px'), (e.style.top = c + 'px'));
         },
         svgPathToVml: function (a) {
             var b = a.split(' ');
@@ -10681,19 +9578,7 @@
                     p = d(p / 3 + (2 / 3) * n);
                     q = d((2 / 3) * q + l / 3);
                     n = d((2 / 3) * n + t / 3);
-                    a +=
-                        ' c ' +
-                        c +
-                        ',' +
-                        p +
-                        ',' +
-                        q +
-                        ',' +
-                        n +
-                        ',' +
-                        l +
-                        ',' +
-                        t;
+                    a += ' c ' + c + ',' + p + ',' + q + ',' + n + ',' + l + ',' + t;
                 }
                 'C' == g &&
                     (a +=
@@ -10734,15 +9619,7 @@
                   (a.style.height = h + 'px'),
                   (a.style.overflow = 'hidden'))
                 : (a.style.clip =
-                      'rect(' +
-                      c +
-                      'px ' +
-                      (b + d) +
-                      'px ' +
-                      (c + h) +
-                      'px ' +
-                      b +
-                      'px)');
+                      'rect(' + c + 'px ' + (b + d) + 'px ' + (c + h) + 'px ' + b + 'px)');
         },
         rotate: function (a, b, c) {
             if (0 !== Number(b)) {
@@ -10759,16 +9636,8 @@
                     l = e.offsetWidth,
                     e = e.offsetHeight;
                 b /= Math.abs(b);
-                a.left =
-                    g +
-                    l / 2 -
-                    (l / 2) * Math.cos(c) -
-                    ((b * e) / 2) * Math.sin(c) +
-                    3;
-                a.top =
-                    k -
-                    ((b * l) / 2) * Math.sin(c) +
-                    ((b * e) / 2) * Math.sin(c);
+                a.left = g + l / 2 - (l / 2) * Math.cos(c) - ((b * e) / 2) * Math.sin(c) + 3;
+                a.top = k - ((b * l) / 2) * Math.sin(c) + ((b * e) / 2) * Math.sin(c);
                 a.cssText =
                     a.cssText +
                     "; filter:progid:DXImageTransform.Microsoft.Matrix(M11='" +
@@ -10786,9 +9655,7 @@
             var b = '#FFFFFF';
             if (a.style) {
                 var c = a.style.backgroundColor;
-                '' !== c
-                    ? (b = c)
-                    : a.parentNode && (b = this.getBGColor(a.parentNode));
+                '' !== c ? (b = c) : a.parentNode && (b = this.getBGColor(a.parentNode));
             }
             return b;
         },
@@ -10810,13 +9677,7 @@
                 (h += Math.round((100 * f) / (c.length - 1)) + '% ' + c[f]),
                     f < c.length - 1 && (h += ',');
             a = a.fill;
-            90 == d
-                ? (d = 0)
-                : 270 == d
-                ? (d = 180)
-                : 180 == d
-                ? (d = 90)
-                : 0 === d && (d = 270);
+            90 == d ? (d = 0) : 270 == d ? (d = 180) : 180 == d ? (d = 90) : 0 === d && (d = 270);
             8 === document.documentMode
                 ? ((a.type = b), (a.angle = d))
                 : (a.setAttribute('type', b), a.setAttribute('angle', d));
@@ -10909,14 +9770,8 @@
                         l = c.to.split(',');
                         m = Number(l[0]);
                         l = Number(l[1]);
-                        m =
-                            0 === m - g
-                                ? m
-                                : Math.round(d[c.effect](0, h, g, m - g, e));
-                        c =
-                            0 === l - k
-                                ? l
-                                : Math.round(d[c.effect](0, h, k, l - k, e));
+                        m = 0 === m - g ? m : Math.round(d[c.effect](0, h, g, m - g, e));
+                        c = 0 === l - k ? l : Math.round(d[c.effect](0, h, k, l - k, e));
                         g = 'transform';
                         if (isNaN(m) || isNaN(c)) continue;
                         c = 'translate(' + m + ',' + c + ')';
@@ -10961,9 +9816,7 @@
                 this.D.rect(b, c, e, h, 0, 0, f),
                 k.appendChild(f),
                 (b = '#'),
-                d.baseHref &&
-                    !d.isIE &&
-                    (b = this.removeTarget(window.location.href) + b),
+                d.baseHref && !d.isIE && (b = this.removeTarget(window.location.href) + b),
                 this.setAttr(a, 'clip-path', 'url(' + b + g + ')'),
                 this.clipPathC++,
                 (a.clipPath = f));
@@ -10987,9 +9840,7 @@
         },
         setText: function (a, b) {
             var c = a.node;
-            c &&
-                (c.removeChild(c.firstChild),
-                c.appendChild(document.createTextNode(b)));
+            c && (c.removeChild(c.firstChild), c.appendChild(document.createTextNode(b)));
         },
         move: function (a, b, c, d) {
             isNaN(b) && (b = 0);
@@ -11049,9 +9900,7 @@
                     b.appendChild(g);
             h.parentNode.appendChild(b);
             c = '#';
-            d.baseHref &&
-                !d.isIE &&
-                (c = this.removeTarget(window.location.href) + c);
+            d.baseHref && !d.isIE && (c = this.removeTarget(window.location.href) + c);
             h.setAttribute('fill', 'url(' + c + f + ')');
             a.grad = b;
         },
@@ -11095,9 +9944,7 @@
                 f.appendChild(p));
             this.D.image(k, 0, 0, e, l, f).translate(c, m);
             k = '#';
-            d.baseHref &&
-                !d.isIE &&
-                (k = this.removeTarget(window.location.href) + k);
+            d.baseHref && !d.isIE && (k = this.removeTarget(window.location.href) + k);
             h.setAttribute('fill', 'url(' + k + g + ')');
             a.patternNode = f;
             h.parentNode.appendChild(f);
@@ -11124,7 +9971,7 @@
                 'showItem',
                 'hideItem',
                 'clickMarker',
-                'clickLabel'
+                'clickLabel',
             );
             this.position = 'bottom';
             this.borderColor = this.color = '#000000';
@@ -11170,9 +10017,7 @@
             this.entries = [];
             this.valueLabels = [];
             var a = this.legendData;
-            this.enabled &&
-                (d.ifArray(a) || d.ifArray(this.data)) &&
-                this.drawLegend();
+            this.enabled && (d.ifArray(a) || d.ifArray(this.data)) && this.drawLegend();
         },
         drawLegend: function () {
             var a = this.chart,
@@ -11182,16 +10027,12 @@
                 h = a.divRealHeight,
                 f = this.div,
                 g = this.legendData;
-            this.data &&
-                (g = this.combineLegend
-                    ? this.legendData.concat(this.data)
-                    : this.data);
+            this.data && (g = this.combineLegend ? this.legendData.concat(this.data) : this.data);
             isNaN(this.fontSize) && (this.fontSize = a.fontSize);
             this.maxColumnsReal = this.maxColumns;
             if ('right' == b || 'left' == b)
                 (this.maxColumnsReal = 1),
-                    this.autoMargins &&
-                        (this.marginLeft = this.marginRight = 10);
+                    this.autoMargins && (this.marginLeft = this.marginRight = 10);
             else if (this.autoMargins) {
                 this.marginRight = a.marginRight;
                 this.marginLeft = a.marginLeft;
@@ -11213,8 +10054,7 @@
                   (h = f.offsetHeight),
                   f.clientHeight && ((c = f.clientWidth), (h = f.clientHeight)))
                 : (isNaN(c) || (f.style.width = c + 'px'),
-                  (f.className =
-                      'amChartsLegend ' + a.classNamePrefix + '-legend-div'));
+                  (f.className = 'amChartsLegend ' + a.classNamePrefix + '-legend-div'));
             this.divWidth = c;
             (b = this.container)
                 ? ((b.container.innerHTML = ''),
@@ -11239,21 +10079,17 @@
                     a.fontFamily,
                     this.fontSize,
                     'start',
-                    !0
+                    !0,
                 )),
                     d.setCN(a, h, 'legend-title'),
-                    h.translate(
-                        this.marginLeft,
-                        this.marginTop + this.verticalGap + this.ly + 1
-                    ),
+                    h.translate(this.marginLeft, this.marginTop + this.verticalGap + this.ly + 1),
                     (a = h.getBBox()),
                     (this.titleWidth = a.width + 15),
                     (this.titleHeight = a.height + 6);
             this.index = this.maxLabelWidth = 0;
             if (this.showEntries) {
                 for (a = 0; a < g.length; a++) this.createEntry(g[a]);
-                for (a = this.index = 0; a < g.length; a++)
-                    this.createValue(g[a]);
+                for (a = this.index = 0; a < g.length; a++) this.createValue(g[a]);
             }
             this.arrangeEntries();
             this.updateValues();
@@ -11304,17 +10140,11 @@
                 H + u.width > q &&
                     0 < A &&
                     0 !== z &&
-                    (t++,
-                    (H = z = 0),
-                    (B = H + u.width + f + p),
-                    (D = D + C + m),
-                    (C = 0));
+                    (t++, (H = z = 0), (B = H + u.width + f + p), (D = D + C + m), (C = 0));
                 u.height > C && (C = u.height);
                 K.translate(H, D);
                 z++;
-                !isNaN(l) &&
-                    z >= l &&
-                    ((z = 0), t++, (D = D + C + m), (B = f), (C = 0));
+                !isNaN(l) && z >= l && ((z = 0), t++, (D = D + C + m), (B = f), (C = 0));
                 y.push(K);
             }
             u = y.getBBox();
@@ -11333,19 +10163,14 @@
                 this.backgroundAlpha,
                 1,
                 this.borderColor,
-                this.borderAlpha
+                this.borderAlpha,
             );
             d.setCN(this.chart, c, 'legend-bg');
             w.push(c);
             w.translate(b, e);
             c.toBack();
             b = f;
-            if (
-                'top' == a ||
-                'bottom' == a ||
-                'absolute' == a ||
-                'outside' == a
-            )
+            if ('top' == a || 'bottom' == a || 'absolute' == a || 'outside' == a)
                 'center' == this.align
                     ? (b = f + (p - u.width) / 2)
                     : 'right' == this.align && (b = f + p - u.width);
@@ -11387,16 +10212,9 @@
                 if (e) {
                     e = a.type;
                     b.switchType = void 0;
-                    if (
-                        'line' == e ||
-                        'step' == e ||
-                        'smoothedLine' == e ||
-                        'ohlc' == e
-                    )
+                    if ('line' == e || 'step' == e || 'smoothedLine' == e || 'ohlc' == e)
                         (m = q.set()),
-                            a.hidden ||
-                                ((f = a.lineColorR),
-                                (k = a.bulletBorderColorR)),
+                            a.hidden || ((f = a.lineColorR), (k = a.bulletBorderColorR)),
                             (t = d.line(
                                 q,
                                 [0, 2 * n],
@@ -11404,7 +10222,7 @@
                                 f,
                                 a.lineAlpha,
                                 a.lineThickness,
-                                a.dashLength
+                                a.dashLength,
                             )),
                             d.setCN(c, t, 'graph-stroke'),
                             m.push(t),
@@ -11418,7 +10236,7 @@
                                     a.bulletAlpha,
                                     a.bulletBorderThickness,
                                     k,
-                                    a.bulletBorderAlpha
+                                    a.bulletBorderAlpha,
                                 ))) &&
                                 (d.setCN(c, t, 'graph-bullet'),
                                 t.translate(n + 1, n / 2),
@@ -11427,8 +10245,7 @@
                             (t = n),
                             (r = n / 3);
                     else {
-                        a.getGradRotation &&
-                            ((m = a.getGradRotation()), 0 === m && (m = 180));
+                        a.getGradRotation && ((m = a.getGradRotation()), 0 === m && (m = 180));
                         t = a.fillColorsR;
                         !0 === a.hidden && (t = f);
                         if (
@@ -11441,7 +10258,7 @@
                                 a.lineAlpha,
                                 m,
                                 l,
-                                a.dashLength
+                                a.dashLength,
                             ))
                         )
                             (w = n), m.translate(w, n / 2);
@@ -11453,16 +10270,8 @@
                 else {
                     var y;
                     isNaN(b.gradientRotation) || (y = 180 + b.gradientRotation);
-                    (m = b.createMarker(
-                        h,
-                        f,
-                        g,
-                        void 0,
-                        void 0,
-                        void 0,
-                        y,
-                        l
-                    )) && m.translate(n / 2, n / 2);
+                    (m = b.createMarker(h, f, g, void 0, void 0, void 0, y, l)) &&
+                        m.translate(n / 2, n / 2);
                 }
                 d.setCN(c, m, 'legend-marker');
                 b.addListeners(m, a);
@@ -11475,15 +10284,9 @@
                 k &&
                     'none' != k &&
                     0 < n &&
-                    ('x' == k
-                        ? ((x = b.createX()), x.translate(n / 2, n / 2))
-                        : (x = b.createV()),
+                    ('x' == k ? ((x = b.createX()), x.translate(n / 2, n / 2)) : (x = b.createV()),
                     (x.dItem = a),
-                    !0 !== a.hidden
-                        ? 'x' == k
-                            ? x.hide()
-                            : x.show()
-                        : 'x' != k && x.hide(),
+                    !0 !== a.hidden ? ('x' == k ? x.hide() : x.show()) : 'x' != k && x.hide(),
                     b.switchable || x.hide(),
                     b.addListeners(x, a),
                     (a.legendSwitch = x),
@@ -11523,17 +10326,7 @@
                     (u = b.labelWidth),
                     (u = isNaN(u)
                         ? d.text(b.container, f, k, c.fontFamily, l, 'start')
-                        : d.wrappedText(
-                              b.container,
-                              f,
-                              k,
-                              c.fontFamily,
-                              l,
-                              'start',
-                              !1,
-                              u,
-                              0
-                          )),
+                        : d.wrappedText(b.container, f, k, c.fontFamily, l, 'start', !1, u, 0)),
                     d.setCN(c, u, 'legend-label'),
                     u.translate(b.lx + t, b.ly),
                     q.push(u),
@@ -11586,11 +10379,8 @@
         rollOutLabel: function (a, b) {
             if (!a.hidden && this.textClickEnabled && a.legendLabel) {
                 var c = this.color;
-                void 0 !== this.selectedColor &&
-                    a.showBalloon &&
-                    (c = this.selectedColor);
-                this.useMarkerColorForLabels &&
-                    ((c = a.lineColor), void 0 === c && (c = a.color));
+                void 0 !== this.selectedColor && a.showBalloon && (c = this.selectedColor);
+                this.useMarkerColorForLabels && ((c = a.lineColor), void 0 === c && (c = a.color));
                 a.legendLabel.attr({ fill: c });
             }
             this.dispatch('rollOutItem', a, b);
@@ -11622,26 +10412,17 @@
                 var h = b.maxLabelWidth;
                 b.forceWidth && (h = b.labelWidth);
                 b.equalWidths || (b.valueAlign = 'left');
-                'left' == b.valueAlign &&
-                    a.legendLabel &&
-                    (h = a.legendLabel.getBBox().width);
+                'left' == b.valueAlign && a.legendLabel && (h = a.legendLabel.getBBox().width);
                 var f = h;
                 if (b.valueText && 0 < b.valueWidth) {
                     var g = b.color;
                     b.useMarkerColorForValues &&
-                        ((g = a.color),
-                        a.legendKeyColor && (g = a.legendKeyColor()));
+                        ((g = a.color), a.legendKeyColor && (g = a.legendKeyColor()));
                     !0 === a.hidden && (g = b.markerDisabledColor);
                     var k = b.valueText,
-                        h =
-                            h +
-                            b.lx +
-                            b.labelDx +
-                            b.markerLabelGap +
-                            b.valueWidth,
+                        h = h + b.lx + b.labelDx + b.markerLabelGap + b.valueWidth,
                         l = 'end';
-                    'left' == b.valueAlign &&
-                        ((h -= b.valueWidth), (l = 'start'));
+                    'left' == b.valueAlign && ((h -= b.valueWidth), (l = 'start'));
                     g = d.text(b.container, k, g, b.chart.fontFamily, c, l);
                     d.setCN(e, g, 'legend-value');
                     g.translate(h, b.ly);
@@ -11677,7 +10458,7 @@
                 this.container,
                 [a / 5, a / 2, a - a / 5, a / 2],
                 [a / 3, a - a / 5, a / 5, a / 1.7],
-                this.switchColor
+                this.switchColor,
             );
         },
         createX: function () {
@@ -11695,21 +10476,7 @@
             h || (h = b);
             isNaN(e) && (e = this.markerBorderThickness);
             isNaN(f) && (f = this.markerBorderAlpha);
-            return d.bullet(
-                p,
-                a,
-                m,
-                b,
-                c,
-                e,
-                h,
-                f,
-                m,
-                g,
-                k,
-                this.chart.path,
-                l
-            );
+            return d.bullet(p, a, m, b, c, e, h, f, m, g, k, this.chart.path, l);
         },
         validateNow: function () {
             this.invalidateSize();
@@ -11732,10 +10499,8 @@
                         if (void 0 !== f.type) {
                             var k = f.currentDataItem,
                                 l = this.periodValueText;
-                            f.legendPeriodValueText &&
-                                (l = f.legendPeriodValueText);
-                            f.legendPeriodValueTextR &&
-                                (l = f.legendPeriodValueTextR);
+                            f.legendPeriodValueText && (l = f.legendPeriodValueText);
+                            f.legendPeriodValueTextR && (l = f.legendPeriodValueTextR);
                             k
                                 ? ((g = this.valueText),
                                   f.legendValueText && (g = f.legendValueText),
@@ -11764,17 +10529,15 @@
                                 l,
                                 g,
                                 f.periodDataItem,
-                                f.periodPercentDataItem
+                                f.periodPercentDataItem,
                             ));
                         h.text(g);
                         if (
                             !f.pattern &&
-                            (this.useMarkerColorForValues &&
-                                h.setAttr('fill', p),
+                            (this.useMarkerColorForValues && h.setAttr('fill', p),
                             this.useMarkerColorForLabels)
                         ) {
-                            if ((h = f.legendMarker))
-                                h.setAttr('fill', p), h.setAttr('stroke', p);
+                            if ((h = f.legendMarker)) h.setAttr('fill', p), h.setAttr('stroke', p);
                             (f = f.legendLabel) && f.setAttr('fill', p);
                         }
                     }
@@ -11830,7 +10593,7 @@
                   a.getHours(),
                   a.getMinutes(),
                   a.getSeconds(),
-                  a.getMilliseconds()
+                  a.getMilliseconds(),
               );
     };
     d.resetDateToMin = function (a, b, c, e) {
@@ -11888,9 +10651,7 @@
                 p = Math.floor(p / c) * c;
         }
         d.useUTC
-            ? ((a = new Date()),
-              a.setUTCFullYear(h, f, g),
-              a.setUTCHours(k, l, m, p))
+            ? ((a = new Date()), a.setUTCFullYear(h, f, g), a.setUTCHours(k, l, m, p))
             : (a = new Date(h, f, g, k, l, m, p));
         return a;
     };
@@ -11934,23 +10695,18 @@
     d.getMaxInterval = function (a, b) {
         var c = d.intervals;
         return a >= c[b].contains
-            ? ((a = Math.round(a / c[b].contains)),
-              (b = c[b].nextInterval),
-              d.getMaxInterval(a, b))
+            ? ((a = Math.round(a / c[b].contains)), (b = c[b].nextInterval), d.getMaxInterval(a, b))
             : 'ss' == b
             ? c[b].nextInterval
             : b;
     };
-    d.dayNames =
-        'Sunday Monday Tuesday Wednesday Thursday Friday Saturday'.split(' ');
+    d.dayNames = 'Sunday Monday Tuesday Wednesday Thursday Friday Saturday'.split(' ');
     d.shortDayNames = 'Sun Mon Tue Wed Thu Fri Sat'.split(' ');
     d.monthNames =
         'January February March April May June July August September October November December'.split(
-            ' '
+            ' ',
         );
-    d.shortMonthNames = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(
-        ' '
-    );
+    d.shortMonthNames = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ');
     d.getWeekNumber = function (a) {
         a = new Date(a);
         a.setHours(0, 0, 0);
@@ -11990,14 +10746,12 @@
             g,
             k,
             l;
-        for (l = 0; l < e.length; l++)
-            (k = e[l].period), (c[k] = 0), 'date' == k && (c[k] = 1);
+        for (l = 0; l < e.length; l++) (k = e[l].period), (c[k] = 0), 'date' == k && (c[k] = 1);
         for (l = 0; l < e.length; l++)
             if (((g = e[l].pattern), (k = e[l].period), -1 != b.indexOf(g))) {
                 var m = d.getFromDateString(g, a, f);
                 b = b.replace(g, '');
-                if ('KK' == g || 'K' == g || 'LL' == g || 'L' == g)
-                    h || (m += 12);
+                if ('KK' == g || 'K' == g || 'LL' == g || 'L' == g) h || (m += 12);
                 c[k] = m;
             }
         d.useUTC
@@ -12011,7 +10765,7 @@
                   c.hours,
                   c.minutes,
                   c.seconds,
-                  c.milliseconds
+                  c.milliseconds,
               ));
         return e;
     };
@@ -12137,10 +10891,7 @@
         b = b.replace(/@PPP@/g, c.shortDayNames[g]);
         b = b.replace(/@PP@/g, t);
         b = b.replace(/@P@/g, g);
-        return (b =
-            12 > k
-                ? b.replace(/@A@/g, c.amString)
-                : b.replace(/@A@/g, c.pmString));
+        return (b = 12 > k ? b.replace(/@A@/g, c.amString) : b.replace(/@A@/g, c.pmString));
     };
     d.changeDate = function (a, b, c, e, h) {
         if (d.useUTC) return d.changeUTCDate(a, b, c, e, h);

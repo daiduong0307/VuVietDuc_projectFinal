@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $('#newPwdForm').on('submit', (e) => {
+    $('#newPwdForm').on('submit', e => {
         e.preventDefault();
 
         var formData = $('#newPwdForm').serializeArray();

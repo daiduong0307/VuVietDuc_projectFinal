@@ -40,8 +40,7 @@ window.Modernizr = (function (window, document, undefined) {
         /**
          * Create the input element for various Web Forms feature tests.
          */
-        inputElem /*>>inputelem*/ =
-            document.createElement('input') /*>>inputelem*/,
+        inputElem /*>>inputelem*/ = document.createElement('input') /*>>inputelem*/,
         /*>>smile*/
         smile = ':)',
         /*>>smile*/
@@ -107,14 +106,7 @@ window.Modernizr = (function (window, document, undefined) {
             // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
             // msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
             // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
-            style = [
-                '&#173;',
-                '<style id="s',
-                mod,
-                '">',
-                rule,
-                '</style>',
-            ].join('');
+            style = ['&#173;', '<style id="s', mod, '">', rule, '</style>'].join('');
             div.id = mod;
             // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
             // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
@@ -162,7 +154,7 @@ window.Modernizr = (function (window, document, undefined) {
                         (window.getComputedStyle
                             ? getComputedStyle(node, null)
                             : node.currentStyle)['position'] == 'absolute';
-                }
+                },
             );
 
             return bool;
@@ -190,9 +182,7 @@ window.Modernizr = (function (window, document, undefined) {
             };
 
             function isEventSupported(eventName, element) {
-                element =
-                    element ||
-                    document.createElement(TAGNAMES[eventName] || 'div');
+                element = element || document.createElement(TAGNAMES[eventName] || 'div');
                 eventName = 'on' + eventName;
 
                 // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and "resize", whereas `in` "catches" those
@@ -228,20 +218,14 @@ window.Modernizr = (function (window, document, undefined) {
         _hasOwnProperty = {}.hasOwnProperty,
         hasOwnProp;
 
-    if (
-        !is(_hasOwnProperty, 'undefined') &&
-        !is(_hasOwnProperty.call, 'undefined')
-    ) {
+    if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
         hasOwnProp = function (object, property) {
             return _hasOwnProperty.call(object, property);
         };
     } else {
         hasOwnProp = function (object, property) {
             /* yes, this can give false positives/negatives, but most of the time we don't care about those */
-            return (
-                property in object &&
-                is(object.constructor.prototype[property], 'undefined')
-            );
+            return property in object && is(object.constructor.prototype[property], 'undefined');
         };
     }
 
@@ -263,19 +247,13 @@ window.Modernizr = (function (window, document, undefined) {
                         F.prototype = target.prototype;
                         var self = new F();
 
-                        var result = target.apply(
-                            self,
-                            args.concat(slice.call(arguments))
-                        );
+                        var result = target.apply(self, args.concat(slice.call(arguments)));
                         if (Object(result) === result) {
                             return result;
                         }
                         return self;
                     } else {
-                        return target.apply(
-                            that,
-                            args.concat(slice.call(arguments))
-                        );
+                        return target.apply(that, args.concat(slice.call(arguments)));
                     }
                 };
 
@@ -376,12 +354,7 @@ window.Modernizr = (function (window, document, undefined) {
      */
     function testPropsAll(prop, prefixed, elem) {
         var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
-            props = (
-                prop +
-                ' ' +
-                cssomPrefixes.join(ucProp + ' ') +
-                ucProp
-            ).split(' ');
+            props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
 
         // did they call .prefixed('boxSizing') or are we just testing a prop?
         if (is(prefixed, 'string') || is(prefixed, 'undefined')) {
@@ -389,12 +362,7 @@ window.Modernizr = (function (window, document, undefined) {
 
             // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
         } else {
-            props = (
-                prop +
-                ' ' +
-                domPrefixes.join(ucProp + ' ') +
-                ucProp
-            ).split(' ');
+            props = (prop + ' ' + domPrefixes.join(ucProp + ' ') + ucProp).split(' ');
             return testDOMProps(props, prefixed, elem);
         }
     }
@@ -431,10 +399,7 @@ window.Modernizr = (function (window, document, undefined) {
     tests['canvastext'] = function () {
         return !!(
             Modernizr['canvas'] &&
-            is(
-                document.createElement('canvas').getContext('2d').fillText,
-                'function'
-            )
+            is(document.createElement('canvas').getContext('2d').fillText, 'function')
         );
     };
 
@@ -480,7 +445,7 @@ window.Modernizr = (function (window, document, undefined) {
                 ].join(''),
                 function (node) {
                     bool = node.offsetTop === 9;
-                }
+                },
             );
         }
 
@@ -565,10 +530,7 @@ window.Modernizr = (function (window, document, undefined) {
 
         setCss('background-color:hsla(120,40%,100%,.5)');
 
-        return (
-            contains(mStyle.backgroundColor, 'rgba') ||
-            contains(mStyle.backgroundColor, 'hsla')
-        );
+        return contains(mStyle.backgroundColor, 'rgba') || contains(mStyle.backgroundColor, 'hsla');
     };
 
     tests['multiplebgs'] = function () {
@@ -646,8 +608,7 @@ window.Modernizr = (function (window, document, undefined) {
          */
 
         var str1 = 'background-image:',
-            str2 =
-                'gradient(linear,left top,right bottom,from(#9f9),to(white));',
+            str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
             str3 = 'linear-gradient(left top,#9f9, white);';
 
         setCss(
@@ -657,7 +618,7 @@ window.Modernizr = (function (window, document, undefined) {
                 '-webkit- '.split(' ').join(str2 + str1) +
                 // standard syntax             // trailing 'background-image:'
                 prefixes.join(str3 + str1)
-            ).slice(0, -str1.length)
+            ).slice(0, -str1.length),
         );
 
         return contains(mStyle.backgroundImage, 'gradient');
@@ -685,7 +646,7 @@ window.Modernizr = (function (window, document, undefined) {
                 '@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}',
                 function (node, rule) {
                     ret = node.offsetLeft === 9 && node.offsetHeight === 3;
-                }
+                },
             );
         }
         return ret;
@@ -716,10 +677,8 @@ window.Modernizr = (function (window, document, undefined) {
                             : sheet.cssText || ''
                         : '';
 
-                bool =
-                    /src/i.test(cssText) &&
-                    cssText.indexOf(rule.split(' ')[0]) === 0;
-            }
+                bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
+            },
         );
 
         return bool;
@@ -742,7 +701,7 @@ window.Modernizr = (function (window, document, undefined) {
             ].join(''),
             function (node) {
                 bool = node.offsetHeight >= 3;
-            }
+            },
         );
 
         return bool;
@@ -770,14 +729,10 @@ window.Modernizr = (function (window, document, undefined) {
         try {
             if ((bool = !!elem.canPlayType)) {
                 bool = new Boolean(bool);
-                bool.ogg = elem
-                    .canPlayType('video/ogg; codecs="theora"')
-                    .replace(/^no$/, '');
+                bool.ogg = elem.canPlayType('video/ogg; codecs="theora"').replace(/^no$/, '');
 
                 // Without QuickTime, this value will be `undefined`. github.com/Modernizr/Modernizr/issues/546
-                bool.h264 = elem
-                    .canPlayType('video/mp4; codecs="avc1.42E01E"')
-                    .replace(/^no$/, '');
+                bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/, '');
 
                 bool.webm = elem
                     .canPlayType('video/webm; codecs="vp8, vorbis"')
@@ -795,20 +750,15 @@ window.Modernizr = (function (window, document, undefined) {
         try {
             if ((bool = !!elem.canPlayType)) {
                 bool = new Boolean(bool);
-                bool.ogg = elem
-                    .canPlayType('audio/ogg; codecs="vorbis"')
-                    .replace(/^no$/, '');
+                bool.ogg = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '');
                 bool.mp3 = elem.canPlayType('audio/mpeg;').replace(/^no$/, '');
 
                 // Mimetypes accepted:
                 //   developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
                 //   bit.ly/iphoneoscodecs
-                bool.wav = elem
-                    .canPlayType('audio/wav; codecs="1"')
-                    .replace(/^no$/, '');
+                bool.wav = elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, '');
                 bool.m4a = (
-                    elem.canPlayType('audio/x-m4a;') ||
-                    elem.canPlayType('audio/aac;')
+                    elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')
                 ).replace(/^no$/, '');
             }
         } catch (e) {}
@@ -864,8 +814,7 @@ window.Modernizr = (function (window, document, undefined) {
     // Thanks to Erik Dahlstrom
     tests['svg'] = function () {
         return (
-            !!document.createElementNS &&
-            !!document.createElementNS(ns.svg, 'svg').createSVGRect
+            !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect
         );
     };
 
@@ -881,9 +830,7 @@ window.Modernizr = (function (window, document, undefined) {
     tests['smil'] = function () {
         return (
             !!document.createElementNS &&
-            /SVGAnimate/.test(
-                toString.call(document.createElementNS(ns.svg, 'animate'))
-            )
+            /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')))
         );
     };
 
@@ -895,9 +842,7 @@ window.Modernizr = (function (window, document, undefined) {
     tests['svgclippaths'] = function () {
         return (
             !!document.createElementNS &&
-            /SVGClipPath/.test(
-                toString.call(document.createElementNS(ns.svg, 'clipPath'))
-            )
+            /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')))
         );
     };
 
@@ -923,16 +868,13 @@ window.Modernizr = (function (window, document, undefined) {
             if (attrs.list) {
                 // safari false positive's on datalist: webk.it/74252
                 // see also github.com/Modernizr/Modernizr/issues/146
-                attrs.list = !!(
-                    document.createElement('datalist') &&
-                    window.HTMLDataListElement
-                );
+                attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
             }
             return attrs;
         })(
             'autocomplete autofocus list placeholder max min multiple pattern required step'.split(
-                ' '
-            )
+                ' ',
+            ),
         );
         /*>>input*/
 
@@ -944,11 +886,7 @@ window.Modernizr = (function (window, document, undefined) {
 
         // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
         Modernizr['inputtypes'] = (function (props) {
-            for (
-                var i = 0, bool, inputElemType, defaultView, len = props.length;
-                i < len;
-                i++
-            ) {
+            for (var i = 0, bool, inputElemType, defaultView, len = props.length; i < len; i++) {
                 inputElem.setAttribute('type', (inputElemType = props[i]));
                 bool = inputElem.type !== 'text';
 
@@ -957,8 +895,7 @@ window.Modernizr = (function (window, document, undefined) {
                 // If the value doesn't stick, we know there's input sanitization which infers a custom UI
                 if (bool) {
                     inputElem.value = smile;
-                    inputElem.style.cssText =
-                        'position:absolute;visibility:hidden;';
+                    inputElem.style.cssText = 'position:absolute;visibility:hidden;';
 
                     if (
                         /^range$/.test(inputElemType) &&
@@ -970,8 +907,8 @@ window.Modernizr = (function (window, document, undefined) {
                         // Safari 2-4 allows the smiley as a value, despite making a slider
                         bool =
                             defaultView.getComputedStyle &&
-                            defaultView.getComputedStyle(inputElem, null)
-                                .WebkitAppearance !== 'textfield' &&
+                            defaultView.getComputedStyle(inputElem, null).WebkitAppearance !==
+                                'textfield' &&
                             // Mobile android web browser has false positive, so must
                             // check the height to see if the widget is actually there.
                             inputElem.offsetHeight !== 0;
@@ -984,9 +921,7 @@ window.Modernizr = (function (window, document, undefined) {
                         //  even make it here.
                     } else if (/^(url|email)$/.test(inputElemType)) {
                         // Real url and email support comes with prebaked validation.
-                        bool =
-                            inputElem.checkValidity &&
-                            inputElem.checkValidity() === false;
+                        bool = inputElem.checkValidity && inputElem.checkValidity() === false;
                     } else {
                         // If the upgraded input compontent rejects the :) text, we got a winner
                         bool = inputElem.value != smile;
@@ -998,8 +933,8 @@ window.Modernizr = (function (window, document, undefined) {
             return inputs;
         })(
             'search tel url email datetime date month week time datetime-local number range color'.split(
-                ' '
-            )
+                ' ',
+            ),
         );
         /*>>inputtypes*/
     }
@@ -1082,8 +1017,7 @@ window.Modernizr = (function (window, document, undefined) {
         var options = window.html5 || {};
 
         /** Used to skip problem elements */
-        var reSkip =
-            /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
+        var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
 
         /** Not all elements can be cloned in IE **/
         var saveClones =
@@ -1142,8 +1076,7 @@ window.Modernizr = (function (window, document, undefined) {
         function addStyleSheet(ownerDocument, cssText) {
             var p = ownerDocument.createElement('p'),
                 parent =
-                    ownerDocument.getElementsByTagName('head')[0] ||
-                    ownerDocument.documentElement;
+                    ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
 
             p.innerHTML = 'x<style>' + cssText + '</style>';
             return parent.insertBefore(p.lastChild, parent.firstChild);
@@ -1198,8 +1131,7 @@ window.Modernizr = (function (window, document, undefined) {
             if (data.cache[nodeName]) {
                 node = data.cache[nodeName].cloneNode();
             } else if (saveClones.test(nodeName)) {
-                node = (data.cache[nodeName] =
-                    data.createElem(nodeName)).cloneNode();
+                node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
             } else {
                 node = data.createElem(nodeName);
             }
@@ -1211,9 +1143,7 @@ window.Modernizr = (function (window, document, undefined) {
             //   a 403 response, will cause the tab/window to crash
             // * Script elements appended to fragments will execute when their `src`
             //   or `text` property is set
-            return node.canHaveChildren &&
-                !reSkip.test(nodeName) &&
-                !node.tagUrn
+            return node.canHaveChildren && !reSkip.test(nodeName) && !node.tagUrn
                 ? data.frag.appendChild(node)
                 : node;
         }
@@ -1277,7 +1207,7 @@ window.Modernizr = (function (window, document, undefined) {
                             data.frag.createElement(nodeName);
                             return 'c("' + nodeName + '")';
                         }) +
-                    ');return n}'
+                    ');return n}',
             )(html5, data.frag);
         }
 
@@ -1303,7 +1233,7 @@ window.Modernizr = (function (window, document, undefined) {
                         // adds styling not present in IE6/7/8/9
                         'mark{background:#FF0;color:#000}' +
                         // hides non-rendered elements
-                        'template{display:none}'
+                        'template{display:none}',
                 );
             }
             if (!supportsUnknownElements) {

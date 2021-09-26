@@ -6,9 +6,7 @@
     if ('undefined' == typeof a)
         throw Error('jQuery should be loaded before CKEditor jQuery adapter.');
     if ('undefined' == typeof CKEDITOR)
-        throw Error(
-            'CKEditor should be loaded before CKEditor jQuery adapter.'
-        );
+        throw Error('CKEditor should be loaded before CKEditor jQuery adapter.');
     CKEDITOR.config.jqueryOverrideVal =
         'undefined' == typeof CKEDITOR.config.jqueryOverrideVal
             ? !0
@@ -16,13 +14,11 @@
     a.extend(a.fn, {
         ckeditorGet: function () {
             var a = this.eq(0).data('ckeditorInstance');
-            if (!a)
-                throw 'CKEditor is not initialized yet, use ckeditor() with a callback.';
+            if (!a) throw 'CKEditor is not initialized yet, use ckeditor() with a callback.';
             return a;
         },
         ckeditor: function (g, e) {
-            if (!CKEDITOR.env.isCompatible)
-                throw Error('The environment is incompatible.');
+            if (!CKEDITOR.env.isCompatible) throw Error('The environment is incompatible.');
             if (!a.isFunction(g)) {
                 var m = e;
                 e = g;
@@ -44,14 +40,13 @@
                         function () {
                             setTimeout(function d() {
                                 c.element
-                                    ? (c.element.$ == h && g && g.apply(c, [h]),
-                                      l.resolve())
+                                    ? (c.element.$ == h && g && g.apply(c, [h]), l.resolve())
                                     : setTimeout(d, 100);
                             }, 0);
                         },
                         null,
                         null,
-                        9999
+                        9999,
                     );
                 else {
                     if (
@@ -62,9 +57,7 @@
                         e.autoUpdateElementJquery = !0;
                     e.autoUpdateElement = !1;
                     b.data('_ckeditorInstanceLock', !0);
-                    c = a(this).is('textarea')
-                        ? CKEDITOR.replace(h, e)
-                        : CKEDITOR.inline(h, e);
+                    c = a(this).is('textarea') ? CKEDITOR.replace(h, e) : CKEDITOR.inline(h, e);
                     b.data('ckeditorInstance', c);
                     c.on(
                         'instanceReady',
@@ -77,20 +70,14 @@
                                         b.trigger('dataReady.ckeditor', [d]);
                                     });
                                     d.on('setData', function (a) {
-                                        b.trigger('setData.ckeditor', [
-                                            d,
-                                            a.data,
-                                        ]);
+                                        b.trigger('setData.ckeditor', [d, a.data]);
                                     });
                                     d.on(
                                         'getData',
                                         function (a) {
-                                            b.trigger('getData.ckeditor', [
-                                                d,
-                                                a.data,
-                                            ]);
+                                            b.trigger('getData.ckeditor', [d, a.data]);
                                         },
-                                        999
+                                        999,
                                     );
                                     d.on('destroy', function () {
                                         b.trigger('destroy.ckeditor', [d]);
@@ -103,7 +90,7 @@
                                         },
                                         null,
                                         null,
-                                        20
+                                        20,
                                     );
                                     if (
                                         d.config.autoUpdateElementJquery &&
@@ -119,10 +106,7 @@
                                         a(h.form).bind('form-pre-serialize', c);
                                         b.bind('destroy.ckeditor', function () {
                                             a(h.form).unbind('submit', c);
-                                            a(h.form).unbind(
-                                                'form-pre-serialize',
-                                                c
-                                            );
+                                            a(h.form).unbind('form-pre-serialize', c);
                                         });
                                     }
                                     d.on('destroy', function () {
@@ -137,7 +121,7 @@
                         },
                         null,
                         null,
-                        9999
+                        9999,
                     );
                 }
             });

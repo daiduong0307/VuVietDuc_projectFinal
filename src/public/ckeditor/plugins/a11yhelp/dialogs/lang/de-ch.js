@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'de-ch', {
     title: 'Barrierefreiheitinformationen',
-    contents:
-        'Hilfeinhalt. Um den Dialog zu schliessen, die Taste ESC drücken.',
+    contents: 'Hilfeinhalt. Um den Dialog zu schliessen, die Taste ESC drücken.',
     legend: [
         {
             name: 'Allgemein',
@@ -63,8 +62,7 @@ CKEDITOR.plugins.setLang('a11yhelp', 'de-ch', {
                 {
                     name: 'Als Klartext einfügen',
                     legend: 'Drücken Sie ${pastetext}',
-                    legendEdge:
-                        'Drücken Sie ${pastetext} und anschliessend ${paste}',
+                    legendEdge: 'Drücken Sie ${pastetext} und anschliessend ${paste}',
                 },
             ],
         },

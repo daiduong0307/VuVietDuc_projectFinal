@@ -71,14 +71,12 @@ CKEDITOR.lang['zh-cn'] = {
         invalidValue: '无效的值。',
         invalidHeight: '高度必须为数字格式',
         invalidWidth: '宽度必须为数字格式',
-        invalidLength:
-            '为 "%1" 字段设置的值必须是一个正数或者没有一个有效的度量单位 (%2)。',
+        invalidLength: '为 "%1" 字段设置的值必须是一个正数或者没有一个有效的度量单位 (%2)。',
         invalidCssLength:
             '此“%1”字段的值必须为正数，可以包含或不包含一个有效的 CSS 长度单位(px, %, in, cm, mm, em, ex, pt 或 pc)',
         invalidHtmlLength:
             '此“%1”字段的值必须为正数，可以包含或不包含一个有效的 HTML 长度单位(px 或 %)',
-        invalidInlineStyle:
-            '内联样式必须为格式是以分号分隔的一个或多个“属性名 : 属性值”。',
+        invalidInlineStyle: '内联样式必须为格式是以分号分隔的一个或多个“属性名 : 属性值”。',
         cssLengthTooltip:
             '输入一个表示像素值的数字，或加上一个有效的 CSS 长度单位(px, %, in, cm, mm, em, ex, pt 或 pc)。',
         unavailable: '%1<span class="cke_accessibility">，不可用</span>',
@@ -163,8 +161,7 @@ CKEDITOR.lang['zh-cn'] = {
         cutError:
             '您的浏览器安全设置不允许编辑器自动执行剪切操作，请使用键盘快捷键(Ctrl/Cmd+X)来完成。',
         paste: '粘贴',
-        pasteNotification:
-            '您的浏览器不支持通过工具栏或右键菜单进行粘贴，请按 %1 进行粘贴。',
+        pasteNotification: '您的浏览器不支持通过工具栏或右键菜单进行粘贴，请按 %1 进行粘贴。',
         pasteArea: '粘贴区域',
         pasteMsg: '将您的内容粘贴到下方区域，然后按确定。',
     },
@@ -561,13 +558,11 @@ CKEDITOR.lang['zh-cn'] = {
     pagebreak: { alt: '分页符', toolbar: '插入打印分页符' },
     pastetext: {
         button: '粘贴为无格式文本',
-        pasteNotification:
-            '您的浏览器不支持通过工具栏或右键菜单进行粘贴，请按 %1 进行粘贴。',
+        pasteNotification: '您的浏览器不支持通过工具栏或右键菜单进行粘贴，请按 %1 进行粘贴。',
         title: '粘贴为无格式文本',
     },
     pastefromword: {
-        confirmCleanup:
-            '您要粘贴的内容好像是来自 MS Word，是否要清除 MS Word 格式后再粘贴？',
+        confirmCleanup: '您要粘贴的内容好像是来自 MS Word，是否要清除 MS Word 格式后再粘贴？',
         error: '由于内部错误无法清理要粘贴的数据',
         title: '从 MS Word 粘贴',
         toolbar: '从 MS Word 粘贴',

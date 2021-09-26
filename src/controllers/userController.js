@@ -209,15 +209,13 @@ exports.updateUserAcc = async (req, res) => {
                 const errorPassword =
                     `Password must be at least 8 characters !!!` +
                     `\nPassword cannot contain "password"`;
-                return res.redirect(
-                    `/users/updateProfile?accError=${errorPassword}`
-                );
+                return res.redirect(`/users/updateProfile?accError=${errorPassword}`);
             }
         } else {
             const updateAcc = await appUserModel.findOneAndUpdate(
                 { _id },
                 { $set: newValues },
-                { new: true }
+                { new: true },
             );
         }
 
@@ -248,13 +246,11 @@ exports.updateUserInfo = async (req, res) => {
     }
 
     try {
-        if (!fullName || !introduction || !DoB || !email) {
-            const updateInfo = await userModel.findOneAndUpdate(
-                { _id },
-                { $set: newValues },
-                { new: true, useFindAndModify: false }
-            );
-        }
+        const updateInfo = await userModel.findOneAndUpdate(
+            { _id },
+            { $set: newValues },
+            { new: true, useFindAndModify: false },
+        );
 
         const msgSucceed = 'Information changed Successfully !!!';
         return res.redirect(`/users/updateProfile?infoSucceed=${msgSucceed}`);
@@ -388,9 +384,7 @@ exports.blogByTag = async (req, res) => {
 exports.getUploadPage = async (req, res) => {
     const title = 'Upload new blog';
 
-    const user = await userModel
-        .findOne({ accountId: req.session.userId })
-        .populate('accountId');
+    const user = await userModel.findOne({ accountId: req.session.userId }).populate('accountId');
     const categories = await categoryModel.find({});
     const tags = await tagModel.find({});
 
@@ -437,16 +431,14 @@ exports.uploadBlog = async (req, res) => {
         const pushTag = await blogModel.findOneAndUpdate(
             { _id: savePost._id },
             { $push: { tags: tagId } },
-            { new: true, useFindAndModify: false, multi: true }
+            { new: true, useFindAndModify: false, multi: true },
         );
         await pushTag.save();
 
         await userInfo.posts.push(pushTag);
         await userInfo.save();
 
-        const findBlog = await blogModel
-            .findOne({ _id: savePost._id })
-            .populate('owner');
+        const findBlog = await blogModel.findOne({ _id: savePost._id }).populate('owner');
 
         const manager = await managerModel.findOne({ categoryId: _id });
         const body = {
@@ -457,7 +449,7 @@ exports.uploadBlog = async (req, res) => {
             manager.email,
             'You have receive a new Request',
             body.Author,
-            body.title
+            body.title,
         );
         console.log('Email sent...', sentEmail);
 
@@ -544,7 +536,7 @@ exports.blogDetails = async (req, res) => {
         const blogUpdate = await blogModel.findOneAndUpdate(
             { _id: blogId },
             { $set: { views: count } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
         res.render('userViews/blogDetail', {
             title,
@@ -656,7 +648,7 @@ exports.deleteComment = async (req, res) => {
         const pullComment = await blogModel.findOneAndUpdate(
             { comments: commentId },
             { $pull: { comments: commentId } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const deleteReplies = await replyModel.deleteMany({
@@ -710,7 +702,7 @@ exports.deleteReply = async (req, res) => {
         const pullReply = await commentModel.findOneAndUpdate(
             { replies: replyId },
             { $pull: { replies: replyId } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const obj = {
@@ -817,10 +809,7 @@ exports.getUpdateBlog = async (req, res) => {
         .findOne({ accountId: req.session.userId })
         .populate('accountId');
 
-    const blog = await blogModel
-        .findOne({ _id: blogId })
-        .populate('categoryId')
-        .populate('tags');
+    const blog = await blogModel.findOne({ _id: blogId }).populate('categoryId').populate('tags');
 
     const latestPost = await blogModel
         .find({ isPublish: 'Approved' })
@@ -875,14 +864,14 @@ exports.updateOneBlog = async (req, res) => {
         const updateBlog = await blogModel.findOneAndUpdate(
             { _id },
             { $set: newValues },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         if (categoryId) {
             const updateCategory = await categoryModel.findOneAndUpdate(
                 { posts: _id },
                 { $pull: { posts: _id } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
             await category.posts.push(updateBlog);
             await category.save();
@@ -899,7 +888,7 @@ exports.updateOneBlog = async (req, res) => {
         const pushTag = await blogModel.findOneAndUpdate(
             { _id },
             { $push: { tags: tagId } },
-            { new: true, useFindAndModify: false, multi: true }
+            { new: true, useFindAndModify: false, multi: true },
         );
 
         const msg = 'Update Successfully !!!';
@@ -918,7 +907,7 @@ exports.deleteBlogTag = async (req, res) => {
             const pushTag = await blogModel.findOneAndUpdate(
                 { tags: tagId },
                 { $pull: { tags: tagId } },
-                { new: true, useFindAndModify: false, multi: true }
+                { new: true, useFindAndModify: false, multi: true },
             );
             await pushTag.save();
         }
@@ -945,12 +934,12 @@ exports.deleteOneBlog = async (req, res) => {
             const pullCate = await categoryModel.findOneAndUpdate(
                 { posts: blog._id },
                 { $pull: { posts: blog._id } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
             const pullUser = await userModel.findOneAndUpdate(
                 { posts: blog._id },
                 { $pull: { posts: blog._id } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
             const deleteComment = await commentModel.deleteMany({
                 _id: blog.comments,
@@ -980,12 +969,10 @@ exports.getAllBookmark = async (req, res) => {
         .findOne({ accountId: req.session.userId })
         .populate('accountId');
 
-    const bookmarks = await bookmarkModel
-        .find({ author: userInfo._id })
-        .populate({
-            path: 'postId',
-            populate: [{ path: 'owner' }, { path: 'categoryId' }],
-        });
+    const bookmarks = await bookmarkModel.find({ author: userInfo._id }).populate({
+        path: 'postId',
+        populate: [{ path: 'owner' }, { path: 'categoryId' }],
+    });
 
     const latestPost = await blogModel
         .find({ isPublish: 'Approved' })
@@ -1108,7 +1095,7 @@ exports.unBookmark = async (req, res) => {
         const updateBlog = await userModel.findOneAndUpdate(
             { bookmarks: bookmark._id },
             { $pull: { bookmarks: bookmark._id } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const obj = {

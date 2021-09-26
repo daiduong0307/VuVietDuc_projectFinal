@@ -33,9 +33,7 @@ CKEDITOR.dialog.add('textfield', function (b) {
             var a = this.getParentEditor(),
                 b = this.getModel(a),
                 c = this.getMode(a) == CKEDITOR.dialog.CREATION_MODE;
-            c &&
-                ((b = a.document.createElement('input')),
-                b.setAttribute('type', 'text'));
+            c && ((b = a.document.createElement('input')), b.setAttribute('type', 'text'));
             b = { element: b };
             c && a.insertElement(b.element);
             this.commitContent(b);
@@ -43,8 +41,7 @@ CKEDITOR.dialog.add('textfield', function (b) {
         },
         onLoad: function () {
             this.foreach(function (a) {
-                a.getValue &&
-                    (a.setup || (a.setup = f), a.commit || (a.commit = e));
+                a.getValue && (a.setup || (a.setup = f), a.commit || (a.commit = e));
             });
         },
         contents: [
@@ -65,20 +62,14 @@ CKEDITOR.dialog.add('textfield', function (b) {
                                 accessKey: 'N',
                                 setup: function (a) {
                                     this.setValue(
-                                        a.data('cke-saved-name') ||
-                                            a.getAttribute('name') ||
-                                            ''
+                                        a.data('cke-saved-name') || a.getAttribute('name') || '',
                                     );
                                 },
                                 commit: function (a) {
                                     a = a.element;
                                     this.getValue()
-                                        ? a.data(
-                                              'cke-saved-name',
-                                              this.getValue()
-                                          )
-                                        : (a.data('cke-saved-name', !1),
-                                          a.removeAttribute('name'));
+                                        ? a.data('cke-saved-name', this.getValue())
+                                        : (a.data('cke-saved-name', !1), a.removeAttribute('name'));
                                 },
                             },
                             {
@@ -90,10 +81,7 @@ CKEDITOR.dialog.add('textfield', function (b) {
                                 commit: function (a) {
                                     if (CKEDITOR.env.ie && !this.getValue()) {
                                         var d = a.element,
-                                            c = new CKEDITOR.dom.element(
-                                                'input',
-                                                b.document
-                                            );
+                                            c = new CKEDITOR.dom.element('input', b.document);
                                         d.copyAttributes(c, { value: 1 });
                                         c.replace(d);
                                         a.element = c;
@@ -114,7 +102,7 @@ CKEDITOR.dialog.add('textfield', function (b) {
                                 accessKey: 'C',
                                 style: 'width:50px',
                                 validate: CKEDITOR.dialog.validate.integer(
-                                    b.lang.common.validateNumberFailed
+                                    b.lang.common.validateNumberFailed,
                                 ),
                             },
                             {
@@ -125,13 +113,12 @@ CKEDITOR.dialog.add('textfield', function (b) {
                                 accessKey: 'M',
                                 style: 'width:50px',
                                 validate: CKEDITOR.dialog.validate.integer(
-                                    b.lang.common.validateNumberFailed
+                                    b.lang.common.validateNumberFailed,
                                 ),
                             },
                         ],
                         onLoad: function () {
-                            CKEDITOR.env.ie7Compat &&
-                                this.getElement().setStyle('zoom', '100%');
+                            CKEDITOR.env.ie7Compat && this.getElement().setStyle('zoom', '100%');
                         },
                     },
                     {
@@ -158,10 +145,8 @@ CKEDITOR.dialog.add('textfield', function (b) {
                                     e = this.getValue();
                                 c != e &&
                                     ((c = CKEDITOR.dom.element.createFromHtml(
-                                        '\x3cinput type\x3d"' +
-                                            e +
-                                            '"\x3e\x3c/input\x3e',
-                                        b.document
+                                        '\x3cinput type\x3d"' + e + '"\x3e\x3c/input\x3e',
+                                        b.document,
                                     )),
                                     d.copyAttributes(c, { type: 1 }),
                                     c.replace(d),

@@ -83,8 +83,7 @@ CKEDITOR.lang['ro'] = {
             'Valoarea specificată pentru stil trebuie să conțină una sau mai multe construcții de tipul "name : value", separate prin punct și virgulă.',
         cssLengthTooltip:
             'Introdu un număr pentru o valoare în pixeli sau un număr pentru o unitate de măsură validă CSS (px, %, in, cm, mm, em, ex, pt, sau pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, nu este disponibil</span>',
+        unavailable: '%1<span class="cke_accessibility">, nu este disponibil</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Enter',
@@ -127,8 +126,7 @@ CKEDITOR.lang['ro'] = {
     about: {
         copy: 'Copyright &copy; $1. Toate drepturile rezervate.',
         dlgTitle: 'Despre CKEeditor 4',
-        moreInfo:
-            'Pentru informații despre licențiere, vă rugăm vizitați web site-ul nostru:',
+        moreInfo: 'Pentru informații despre licențiere, vă rugăm vizitați web site-ul nostru:',
     },
     basicstyles: {
         bold: 'Îngroşat (bold)',
@@ -173,8 +171,7 @@ CKEDITOR.lang['ro'] = {
         pasteNotification:
             'Apasă %1 pentru adăugare. Navigatorul (browser) tău nu suportă adăugarea din clipboard cu butonul din toolbar sau cu opțiunea din meniul contextual.',
         pasteArea: 'Suprafața de adăugare',
-        pasteMsg:
-            'Adaugă conținutul tău înăuntru zonei de mai jos și apasă OK.',
+        pasteMsg: 'Adaugă conținutul tău înăuntru zonei de mai jos și apasă OK.',
     },
     colorbutton: {
         auto: 'Automat',
@@ -298,12 +295,9 @@ CKEDITOR.lang['ro'] = {
     filetools: {
         loadError: 'Eroare în timpul citirii fișierului.',
         networkError: 'Eroare de rețea în timpul încărcării fișierului.',
-        httpError404:
-            'Eroare HTTP în timpul încărcării fișierului (404: Fișier negăsit).',
-        httpError403:
-            'Eroare HTTP în timpul încărcării fișierului (403: Operașie nepermisă).',
-        httpError:
-            'Eroare HTTP în timpul încărcării fișierului (stare eroiare: %1).',
+        httpError404: 'Eroare HTTP în timpul încărcării fișierului (404: Fișier negăsit).',
+        httpError403: 'Eroare HTTP în timpul încărcării fișierului (403: Operașie nepermisă).',
+        httpError: 'Eroare HTTP în timpul încărcării fișierului (stare eroiare: %1).',
         noUrlError: 'URL-ul de ăncărcare nu este specificat.',
         responseError: 'Răspuns server incorect.',
     },
@@ -681,8 +675,7 @@ CKEDITOR.lang['ro'] = {
         heightUnit: 'height unit',
         invalidBorder: 'Dimensiunea bordurii trebuie să aibe un număr.',
         invalidCellPadding: 'Spațierea celulei trebuie sa fie un număr pozitiv',
-        invalidCellSpacing:
-            'Spațierea celului trebuie să fie un număr pozitiv.',
+        invalidCellSpacing: 'Spațierea celului trebuie să fie un număr pozitiv.',
         invalidCols: 'Numărul coloanelor trebuie să fie mai mare decât 0.',
         invalidHeight: 'Inaltimea celulei trebuie sa fie un numar.',
         invalidRows: 'Numărul rândurilor trebuie să fie mai mare decât 0.',
@@ -712,7 +705,6 @@ CKEDITOR.lang['ro'] = {
         doneOne: 'Fișier încărcat cu succes.',
         doneMany: '%1 fișiere încărcate cu succes.',
         uploadOne: 'Încărcare fișier ({percentage}%)...',
-        uploadMany:
-            'Încărcare fișiere, {current} din {max} realizat ({percentage}%)...',
+        uploadMany: 'Încărcare fișiere, {current} din {max} realizat ({percentage}%)...',
     },
 };

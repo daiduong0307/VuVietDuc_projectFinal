@@ -44,8 +44,7 @@ CKEDITOR.lang['fr-ca'] = {
         validateNumberFailed: "Cette valeur n'est pas un nombre.",
         confirmNewPage:
             'Les changements non sauvegardés seront perdus. Êtes-vous certain de vouloir charger une nouvelle page?',
-        confirmCancel:
-            'Certaines options ont été modifiées.  Êtes-vous certain de vouloir fermer?',
+        confirmCancel: 'Certaines options ont été modifiées.  Êtes-vous certain de vouloir fermer?',
         options: 'Options',
         target: 'Cible',
         targetNew: 'Nouvelle fenêtre (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['fr-ca'] = {
     about: {
         copy: 'Copyright &copy; $1. Tous droits réservés.',
         dlgTitle: 'À propos de CKEditor 4',
-        moreInfo:
-            'Pour les informations de licence, consulter notre site internet:',
+        moreInfo: 'Pour les informations de licence, consulter notre site internet:',
     },
     basicstyles: {
         bold: 'Gras',
@@ -295,10 +293,8 @@ CKEDITOR.lang['fr-ca'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -467,11 +463,9 @@ CKEDITOR.lang['fr-ca'] = {
         alt: 'Texte alternatif',
         border: 'Bordure',
         btnUpload: 'Envoyer sur le serveur',
-        button2Img:
-            "Désirez-vous transformer l'image sélectionnée en image simple?",
+        button2Img: "Désirez-vous transformer l'image sélectionnée en image simple?",
         hSpace: 'Espacement horizontal',
-        img2Button:
-            "Désirez-vous transformer l'image sélectionnée en bouton image?",
+        img2Button: "Désirez-vous transformer l'image sélectionnée en bouton image?",
         infoTab: "Informations sur l'image",
         linkTab: 'Lien',
         lockRatio: 'Verrouiller les proportions',
@@ -675,10 +669,8 @@ CKEDITOR.lang['fr-ca'] = {
         headersRow: 'Première ligne',
         heightUnit: 'height unit',
         invalidBorder: 'La taille de bordure doit être un nombre.',
-        invalidCellPadding:
-            'La marge interne des cellules doit être un nombre positif.',
-        invalidCellSpacing:
-            "L'espacement des cellules doit être un nombre positif.",
+        invalidCellPadding: 'La marge interne des cellules doit être un nombre positif.',
+        invalidCellSpacing: "L'espacement des cellules doit être un nombre positif.",
         invalidCols: 'Le nombre de colonnes doit être supérieur à 0.',
         invalidHeight: 'La hauteur du tableau doit être un nombre.',
         invalidRows: 'Le nombre de lignes doit être supérieur à 0.',
@@ -705,7 +697,6 @@ CKEDITOR.lang['fr-ca'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

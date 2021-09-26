@@ -6,11 +6,7 @@
             e.AmRectangularChart.base.construct.call(this, a);
             this.theme = a;
             this.createEvents('zoomed', 'changed');
-            this.marginRight =
-                this.marginBottom =
-                this.marginTop =
-                this.marginLeft =
-                    20;
+            this.marginRight = this.marginBottom = this.marginTop = this.marginLeft = 20;
             this.depth3D = this.angle = 0;
             this.plotAreaFillColors = '#FFFFFF';
             this.plotAreaFillAlphas = 0;
@@ -62,16 +58,12 @@
                 for (b = 0; b < c.length; b++) {
                     var g = c[b];
                     g.ignoreAxisWidth ||
-                        (g.setOrientation(!0),
-                        g.fixAxisPosition(),
-                        (a[g.position] = !0));
+                        (g.setOrientation(!0), g.fixAxisPosition(), (a[g.position] = !0));
                 }
                 for (b = 0; b < d.length; b++)
                     (c = d[b]),
                         c.ignoreAxisWidth ||
-                            (c.setOrientation(!1),
-                            c.fixAxisPosition(),
-                            (a[c.position] = !0));
+                            (c.setOrientation(!1), c.fixAxisPosition(), (a[c.position] = !0));
             } else {
                 d = this.valueAxes;
                 for (b = 0; b < d.length; b++)
@@ -132,17 +124,13 @@
                     (this.marginRight = this.minMarginRight));
             d.top &&
                 e < c + this.titleHeight &&
-                ((this.marginTop = Math.round(
-                    this.marginTop - e + c + this.titleHeight
-                )),
+                ((this.marginTop = Math.round(this.marginTop - e + c + this.titleHeight)),
                 !isNaN(this.minMarginTop) &&
                     this.marginTop < this.minMarginTop &&
                     (this.marginTop = this.minMarginTop));
             d.bottom &&
                 b > h - c &&
-                ((this.marginBottom = Math.round(
-                    this.marginBottom + b - h + c
-                )),
+                ((this.marginBottom = Math.round(this.marginBottom + b - h + c)),
                 !isNaN(this.minMarginBottom) &&
                     this.marginBottom < this.minMarginBottom &&
                     (this.marginBottom = this.minMarginBottom));
@@ -195,8 +183,7 @@
                     (m.fontSize && (d = m.fontSize),
                     m.color && (c = m.color),
                     m.backgroundColor && (k = m.backgroundColor),
-                    isNaN(m.backgroundAlpha) ||
-                        (a.zoomOutButtonRollOverAlpha = m.backgroundAlpha));
+                    isNaN(m.backgroundAlpha) || (a.zoomOutButtonRollOverAlpha = m.backgroundAlpha));
                 var u = (m = 0),
                     u = a.pathToImages;
                 if (h) {
@@ -217,16 +204,7 @@
                 n = b.getBBox();
                 c = 1;
                 e.isModern || (c = 0);
-                k = e.rect(
-                    a.container,
-                    n.width + 2 * p + 5,
-                    n.height + 2 * p - 2,
-                    k,
-                    1,
-                    1,
-                    k,
-                    c
-                );
+                k = e.rect(a.container, n.width + 2 * p + 5, n.height + 2 * p - 2, k, 1, 1, k, c);
                 k.setAttr('opacity', l);
                 k.translate(-p, -p);
                 e.setCN(a, k, 'zoom-out-bg');
@@ -234,10 +212,7 @@
                 k.toBack();
                 a.zbBG = k;
                 n = k.getBBox();
-                b.translate(
-                    a.marginLeftReal + a.plotAreaWidth - n.width + p,
-                    a.marginTopReal + p
-                );
+                b.translate(a.marginLeftReal + a.plotAreaWidth - n.width + p, a.marginTopReal + p);
                 b.hide();
                 b.mouseover(function () {
                     a.rollOverZB();
@@ -301,7 +276,7 @@
                 1,
                 l,
                 m,
-                this.plotAreaGradientAngle
+                this.plotAreaGradientAngle,
             );
             e.setCN(this, f, 'plot-area');
             f.translate(c + a, d + b);
@@ -319,7 +294,7 @@
                     k,
                     1,
                     l,
-                    m
+                    m,
                 )),
                 e.setCN(this, g, 'plot-area-bottom'),
                 g.translate(c, d + h),
@@ -332,7 +307,7 @@
                     k,
                     1,
                     l,
-                    m
+                    m,
                 )),
                 e.setCN(this, a, 'plot-area-left'),
                 a.translate(c, d),
@@ -357,26 +332,16 @@
             this.plotBalloonsSet.translate(c, d);
         },
         updateDxy: function () {
-            this.dx = Math.round(
-                this.depth3D * Math.cos((this.angle * Math.PI) / 180)
-            );
-            this.dy = Math.round(
-                -this.depth3D * Math.sin((this.angle * Math.PI) / 180)
-            );
-            this.d3x = Math.round(
-                this.columnSpacing3D * Math.cos((this.angle * Math.PI) / 180)
-            );
-            this.d3y = Math.round(
-                -this.columnSpacing3D * Math.sin((this.angle * Math.PI) / 180)
-            );
+            this.dx = Math.round(this.depth3D * Math.cos((this.angle * Math.PI) / 180));
+            this.dy = Math.round(-this.depth3D * Math.sin((this.angle * Math.PI) / 180));
+            this.d3x = Math.round(this.columnSpacing3D * Math.cos((this.angle * Math.PI) / 180));
+            this.d3y = Math.round(-this.columnSpacing3D * Math.sin((this.angle * Math.PI) / 180));
         },
         updateMargins: function () {
             var a = this.getTitleHeight();
             this.titleHeight = a;
             this.marginTopReal = this.marginTop - this.dy;
-            this.fixMargins &&
-                !this.fixMargins.top &&
-                (this.marginTopReal += a);
+            this.fixMargins && !this.fixMargins.top && (this.marginTopReal += a);
             this.marginBottomReal = this.marginBottom;
             this.marginLeftReal = this.marginLeft;
             this.marginRightReal = this.marginRight;
@@ -425,8 +390,7 @@
         processScrollbars: function () {
             var a = this.chartScrollbar;
             a &&
-                ((a = e.processObject(a, e.ChartScrollbar, this.theme)),
-                this.addChartScrollbar(a));
+                ((a = e.processObject(a, e.ChartScrollbar, this.theme)), this.addChartScrollbar(a));
         },
         updateScrollbars: function () {},
         removeChartCursor: function () {
@@ -440,9 +404,7 @@
                 var c = a[b];
                 c.valueAxis.recalculateToPercents
                     ? c.set && c.set.hide()
-                    : ((c.x = this.marginLeftReal),
-                      (c.y = this.marginTopReal),
-                      c.draw());
+                    : ((c.x = this.marginLeftReal), (c.y = this.marginTopReal), c.draw());
             }
         },
         handleCursorValueZoom: function () {},
@@ -450,8 +412,7 @@
             this.trendLines.push(a);
         },
         zoomOutValueAxes: function () {
-            for (var a = this.valueAxes, b = 0; b < a.length; b++)
-                a[b].zoomOut();
+            for (var a = this.valueAxes, b = 0; b < a.length; b++) a[b].zoomOut();
         },
         removeTrendLine: function (a) {
             var b = this.trendLines,
@@ -497,46 +458,30 @@
                         : ((a.y = c - g + f - e), (a.x = d + h))
                     : b
                     ? ((a.y = c + f), (a.x = d + this.plotAreaWidth + h + e))
-                    : ((a.y = c + this.plotAreaHeight + e),
-                      (a.x = this.marginLeftReal));
+                    : ((a.y = c + this.plotAreaHeight + e), (a.x = this.marginLeftReal));
             }
         },
         showZB: function (a) {
             var b = this.zbSet;
-            a &&
-                ((b = this.zoomOutText),
-                '' !== b && b && this.drawZoomOutButton());
+            a && ((b = this.zoomOutText), '' !== b && b && this.drawZoomOutButton());
             if ((b = this.zbSet))
-                this.zoomButtonSet.push(b),
-                    a ? b.show() : b.hide(),
-                    this.rollOutZB();
+                this.zoomButtonSet.push(b), a ? b.show() : b.hide(), this.rollOutZB();
         },
         handleReleaseOutside: function (a) {
             e.AmRectangularChart.base.handleReleaseOutside.call(this, a);
-            (a = this.chartCursor) &&
-                a.handleReleaseOutside &&
-                a.handleReleaseOutside();
+            (a = this.chartCursor) && a.handleReleaseOutside && a.handleReleaseOutside();
         },
         handleMouseDown: function (a) {
             e.AmRectangularChart.base.handleMouseDown.call(this, a);
             var b = this.chartCursor;
-            b &&
-                b.handleMouseDown &&
-                !this.rolledOverZB &&
-                b.handleMouseDown(a);
+            b && b.handleMouseDown && !this.rolledOverZB && b.handleMouseDown(a);
         },
         update: function () {
             e.AmRectangularChart.base.update.call(this);
-            this.chartCursor &&
-                this.chartCursor.update &&
-                this.chartCursor.update();
+            this.chartCursor && this.chartCursor.update && this.chartCursor.update();
         },
         handleScrollbarValueZoom: function (a) {
-            this.relativeZoomValueAxes(
-                a.target.valueAxes,
-                a.relativeStart,
-                a.relativeEnd
-            );
+            this.relativeZoomValueAxes(a.target.valueAxes, a.relativeStart, a.relativeEnd);
             this.zoomAxesAndGraphs();
         },
         zoomValueScrollbar: function (a) {
@@ -639,7 +584,7 @@
                     b + f * (c - b),
                     g + e * (d - g),
                     g + l * (d - g),
-                    a
+                    a,
                 );
             }
         },
@@ -678,11 +623,7 @@
         },
         initChart: function () {
             e.AmSerialChart.base.initChart.call(this);
-            this.updateCategoryAxis(
-                this.categoryAxis,
-                this.rotate,
-                'categoryAxis'
-            );
+            this.updateCategoryAxis(this.categoryAxis, this.rotate, 'categoryAxis');
             if (this.dataChanged) this.parseData();
             else this.onDataUpdated();
             this.drawGraphs = !0;
@@ -713,20 +654,15 @@
                 if (0 < a.length) {
                     var d = 0;
                     for (c = 0; c < a.length; c++)
-                        (b = a[c]),
-                            d < b.gridCountReal && (d = b.gridCountReal);
+                        (b = a[c]), d < b.gridCountReal && (d = b.gridCountReal);
                     var g = !1;
                     for (c = 0; c < a.length; c++)
                         if (((b = a[c]), b.gridCountReal < d)) {
                             var h = (d - b.gridCountReal) / 2,
                                 f = (g = h);
                             0 !== h - Math.round(h) && ((g -= 0.5), (f += 0.5));
-                            0 <= b.min &&
-                                0 > b.min - g * b.step &&
-                                ((f += g), (g = 0));
-                            0 >= b.max &&
-                                0 < b.max + f * b.step &&
-                                ((g += f), (f = 0));
+                            0 <= b.min && 0 > b.min - g * b.step && ((f += g), (g = 0));
+                            0 >= b.max && 0 < b.max + f * b.step && ((g += f), (f = 0));
                             h = e.getDecimals(b.step);
                             b.minimum = e.roundTo(b.min - g * b.step, h);
                             b.maximum = e.roundTo(b.max + f * b.step, h);
@@ -756,9 +692,7 @@
                     var l = k.mouseX,
                         k = k.mouseY;
                     e != f &&
-                        ((l = this.rotate
-                            ? k / this.plotAreaHeight
-                            : l / this.plotAreaWidth),
+                        ((l = this.rotate ? k / this.plotAreaHeight : l / this.plotAreaWidth),
                         (e *= l),
                         (f *= 1 - l));
                     l = 0.05 * (this.end - this.start);
@@ -766,8 +700,7 @@
                     1 > l && (l = 1);
                     e *= l;
                     f *= l;
-                    if (!d || c.equalSpacing)
-                        (e = Math.round(e)), (f = Math.round(f));
+                    if (!d || c.equalSpacing) (e = Math.round(e)), (f = Math.round(f));
                 }
                 k = this.chartData.length;
                 c = this.lastTime;
@@ -818,20 +751,14 @@
                 var a = this.chartData;
                 if (e.ifArray(a)) {
                     var b = this.chartScrollbar;
-                    !b ||
-                        (!this.marginsUpdated && this.autoMargins) ||
-                        b.draw();
+                    !b || (!this.marginsUpdated && this.autoMargins) || b.draw();
                     (b = this.valueScrollbar) && b.draw();
                     var b = a.length - 1,
                         c,
                         d;
                     c = this.categoryAxis;
                     if (c.parseDates && !c.equalSpacing) {
-                        if (
-                            ((c = this.startTime),
-                            (d = this.endTime),
-                            isNaN(c) || isNaN(d))
-                        )
+                        if (((c = this.startTime), (d = this.endTime), isNaN(c) || isNaN(d)))
                             (c = this.firstTime), (d = this.lastTime);
                     } else {
                         c = this.start;
@@ -845,7 +772,7 @@
                                     this.startTime,
                                     !0,
                                     0,
-                                    a.length
+                                    a.length,
                                 )));
                         isNaN(d) &&
                             (isNaN(this.endTime) ||
@@ -855,15 +782,11 @@
                                     this.endTime,
                                     !1,
                                     0,
-                                    a.length
+                                    a.length,
                                 )));
                         if (isNaN(c) || isNaN(d)) (c = 0), (d = b);
                     }
-                    this.endTime =
-                        this.startTime =
-                        this.end =
-                        this.start =
-                            void 0;
+                    this.endTime = this.startTime = this.end = this.start = void 0;
                     this.zoom(c, d);
                 }
             } else this.cleanChart();
@@ -902,32 +825,20 @@
         },
         getStartTime: function (a) {
             var b = this.categoryAxis;
-            return e
-                .resetDateToMin(new Date(a), b.minPeriod, 1, b.firstDayOfWeek)
-                .getTime();
+            return e.resetDateToMin(new Date(a), b.minPeriod, 1, b.firstDayOfWeek).getTime();
         },
         getEndTime: function (a) {
             var b = e.extractPeriod(this.categoryAxis.minPeriod);
-            return (
-                e.changeDate(new Date(a), b.period, b.count, !0).getTime() - 1
-            );
+            return e.changeDate(new Date(a), b.period, b.count, !0).getTime() - 1;
         },
         updateMargins: function () {
             e.AmSerialChart.base.updateMargins.call(this);
             var a = this.chartScrollbar;
             a &&
-                (this.getScrollbarPosition(
-                    a,
-                    this.rotate,
-                    this.categoryAxis.position
-                ),
+                (this.getScrollbarPosition(a, this.rotate, this.categoryAxis.position),
                 this.adjustMargins(a, this.rotate));
             if ((a = this.valueScrollbar))
-                this.getScrollbarPosition(
-                    a,
-                    !this.rotate,
-                    this.valueAxes[0].position
-                ),
+                this.getScrollbarPosition(a, !this.rotate, this.valueAxes[0].position),
                     this.adjustMargins(a, !this.rotate);
         },
         updateScrollbars: function () {
@@ -1033,9 +944,7 @@
                     this.zoomAxesAndGraphs(),
                     this.zoomScrollbar(),
                     this.fixCursor(),
-                    0 !== a || b != this.chartData.length - 1
-                        ? this.showZB(!0)
-                        : this.showZB(!1),
+                    0 !== a || b != this.chartData.length - 1 ? this.showZB(!0) : this.showZB(!1),
                     this.syncGrid(),
                     this.updateColumnsDepth(),
                     this.dispatchIndexZoomEvent();
@@ -1048,8 +957,7 @@
                 var c = a[b];
                 c.columnWidthReal = this.columnWidth;
                 c.categoryAxis = this.categoryAxis;
-                e.isString(c.fillToGraph) &&
-                    (c.fillToGraph = this.graphsById[c.fillToGraph]);
+                e.isString(c.fillToGraph) && (c.fillToGraph = this.graphsById[c.fillToGraph]);
             }
         },
         zoomAxesAndGraphs: function () {
@@ -1067,8 +975,7 @@
                     var d = c.columnsArray;
                     if (d) {
                         var g;
-                        for (g = 0; g < d.length; g++)
-                            this.columnsArray.push(d[g]);
+                        for (g = 0; g < d.length; g++) this.columnsArray.push(d[g]);
                     }
                 }
                 this.columnsArray.sort(this.compareDepth);
@@ -1110,10 +1017,8 @@
                     c = e.processObject(c, e.TrendLine, this.theme);
                 a[b] = c;
                 c.chart = this;
-                c.id ||
-                    (c.id = 'trendLineAuto' + b + '_' + new Date().getTime());
-                e.isString(c.valueAxis) &&
-                    (c.valueAxis = this.getValueAxisById(c.valueAxis));
+                c.id || (c.id = 'trendLineAuto' + b + '_' + new Date().getTime());
+                e.isString(c.valueAxis) && (c.valueAxis = this.getValueAxisById(c.valueAxis));
                 c.valueAxis || (c.valueAxis = this.valueAxes[0]);
                 c.categoryAxis = this.categoryAxis;
             }
@@ -1138,9 +1043,7 @@
                             d.valueAxis == g &&
                                 'column' == d.type &&
                                 (!e && d.stackable && (a++, (e = !0)),
-                                ((!d.stackable && d.clustered) ||
-                                    (d.newStack && 0 !== m)) &&
-                                    a++,
+                                ((!d.stackable && d.clustered) || (d.newStack && 0 !== m)) && a++,
                                 (d.columnIndex = a - 1),
                                 d.clustered || (d.columnIndex = 0),
                                 m++);
@@ -1154,19 +1057,13 @@
                                     ? ((d.tcc = 1),
                                       d.newStack && (a = 0),
                                       d.hidden || ((d.columnIndex = a), a++))
-                                    : d.hidden ||
-                                      ((m = !0),
-                                      (d.tcc = 1),
-                                      (d.columnIndex = 0)));
+                                    : d.hidden || ((m = !0), (d.tcc = 1), (d.columnIndex = 0)));
                     m && 0 === a && (a = 1);
                 }
                 if ('3d' == l) {
                     g = 1;
                     for (m = 0; m < c; m++)
-                        (d = this.graphs[m]),
-                            d.newStack && g++,
-                            (d.depthCount = g),
-                            (d.tcc = a);
+                        (d = this.graphs[m]), d.newStack && g++, (d.depthCount = g), (d.tcc = a);
                     a = g;
                 }
             }
@@ -1188,8 +1085,7 @@
         dispatchTimeZoomEvent: function () {
             if (
                 this.drawGraphs &&
-                (this.prevStartTime != this.startTime ||
-                    this.prevEndTime != this.endTime)
+                (this.prevStartTime != this.startTime || this.prevEndTime != this.endTime)
             ) {
                 var a = { type: 'zoomed' };
                 a.startDate = new Date(this.startTime);
@@ -1215,8 +1111,7 @@
         dispatchIndexZoomEvent: function () {
             if (
                 this.drawGraphs &&
-                (this.prevStartIndex != this.start ||
-                    this.prevEndIndex != this.end)
+                (this.prevStartIndex != this.start || this.prevEndIndex != this.end)
             ) {
                 this.startIndex = this.start;
                 this.endIndex = this.end;
@@ -1277,41 +1172,22 @@
             var c = this.chartData;
             if (c)
                 if (this.categoryAxis.equalSpacing) {
-                    var d = this.getClosestIndex(
-                        c,
-                        'time',
-                        a.getTime(),
-                        !0,
-                        0,
-                        c.length
-                    );
+                    var d = this.getClosestIndex(c, 'time', a.getTime(), !0, 0, c.length);
                     b = e.resetDateToMin(b, this.categoryAxis.minPeriod, 1);
-                    c = this.getClosestIndex(
-                        c,
-                        'time',
-                        b.getTime(),
-                        !1,
-                        0,
-                        c.length
-                    );
+                    c = this.getClosestIndex(c, 'time', b.getTime(), !1, 0, c.length);
                     this.zoom(d, c);
                 } else this.zoom(a.getTime(), b.getTime());
         },
         zoomToCategoryValues: function (a, b) {
             this.chartData &&
-                this.zoom(
-                    this.getCategoryIndexByValue(a),
-                    this.getCategoryIndexByValue(b)
-                );
+                this.zoom(this.getCategoryIndexByValue(a), this.getCategoryIndexByValue(b));
         },
         formatPeriodString: function (a, b) {
             if (b) {
                 b.periodDataItem = {};
                 b.periodPercentDataItem = {};
                 var c = ['value', 'open', 'low', 'high', 'close'],
-                    d = 'value open low high close average sum count'.split(
-                        ' '
-                    ),
+                    d = 'value open low high close average sum count'.split(' '),
                     g = b.valueAxis,
                     h = this.chartData,
                     f = b.numberFormatter;
@@ -1345,10 +1221,8 @@
                                     var z = A.values[l],
                                         D = D.x.categoryAxis;
                                     if (this.rotate) {
-                                        if (0 > D || D > A.graph.height)
-                                            z = NaN;
-                                    } else if (0 > D || D > A.graph.width)
-                                        z = NaN;
+                                        if (0 > D || D > A.graph.height) z = NaN;
+                                    } else if (0 > D || D > A.graph.width) z = NaN;
                                     if (!isNaN(z)) {
                                         isNaN(v) && (v = z);
                                         x = z;
@@ -1362,10 +1236,7 @@
                                         r = m / p;
                                     }
                                 }
-                                if (
-                                    A.percents &&
-                                    ((A = A.percents[l]), !isNaN(A))
-                                ) {
+                                if (A.percents && ((A = A.percents[l]), !isNaN(A))) {
                                     isNaN(B) && (B = A);
                                     q = A;
                                     if (isNaN(w) || w > A) w = A;
@@ -1406,15 +1277,9 @@
                         l + '\\.',
                         this.usePrefixes,
                         this.prefixesOfSmallNumbers,
-                        this.prefixesOfBigNumbers
+                        this.prefixesOfBigNumbers,
                     );
-                    a = e.formatValue(
-                        a,
-                        n,
-                        d,
-                        this.pf,
-                        'percents\\.' + l + '\\.'
-                    );
+                    a = e.formatValue(a, n, d, this.pf, 'percents\\.' + l + '\\.');
                     b.periodDataItem[l] = m;
                     b.periodPercentDataItem[l] = n;
                 }
@@ -1430,18 +1295,12 @@
                         if (this.categoryAxis.parseDates) {
                             var h = this.balloonDateFormat,
                                 f = this.chartCursor;
-                            f &&
-                                f.categoryBalloonDateFormat &&
-                                (h = f.categoryBalloonDateFormat);
+                            f && f.categoryBalloonDateFormat && (h = f.categoryBalloonDateFormat);
                             h = e.formatDate(g, h, this);
-                            -1 != h.indexOf('fff') &&
-                                (h = e.formatMilliseconds(h, g));
+                            -1 != h.indexOf('fff') && (h = e.formatMilliseconds(h, g));
                             g = h;
                         }
-                        a = a.replace(
-                            /\[\[category\]\]/g,
-                            String(g.replace('$', '$$$'))
-                        );
+                        a = a.replace(/\[\[category\]\]/g, String(g.replace('$', '$$$')));
                     }
                     g = d.numberFormatter;
                     g || (g = this.nf);
@@ -1454,22 +1313,14 @@
                             '',
                             h.durationUnits,
                             h.maxInterval,
-                            g
+                            g,
                         )),
                         (a = a.replace(RegExp('\\[\\[value\\]\\]', 'g'), f)));
                     'date' == h.type &&
-                        ((h = e.formatDate(
-                            new Date(b.values.value),
-                            d.dateFormat,
-                            this
-                        )),
+                        ((h = e.formatDate(new Date(b.values.value), d.dateFormat, this)),
                         (f = RegExp('\\[\\[value\\]\\]', 'g')),
                         (a = a.replace(f, h)),
-                        (h = e.formatDate(
-                            new Date(b.values.open),
-                            d.dateFormat,
-                            this
-                        )),
+                        (h = e.formatDate(new Date(b.values.open), d.dateFormat, this)),
                         (f = RegExp('\\[\\[open\\]\\]', 'g')),
                         (a = a.replace(f, h)));
                     d = 'value open low high close total'.split(' ');
@@ -1483,11 +1334,10 @@
                         '',
                         this.usePrefixes,
                         this.prefixesOfSmallNumbers,
-                        this.prefixesOfBigNumbers
+                        this.prefixesOfBigNumbers,
                     );
                     a = e.formatValue(a, b.values, ['percents'], h);
-                    -1 != a.indexOf('[[') &&
-                        (a = e.formatDataContextValue(a, b.dataContext));
+                    -1 != a.indexOf('[[') && (a = e.formatDataContextValue(a, b.dataContext));
                     -1 != a.indexOf('[[') &&
                         b.graph.customData &&
                         (a = e.formatDataContextValue(a, b.graph.customData));
@@ -1509,12 +1359,8 @@
                     f = a.zoomable,
                     k = a.valueLineEnabled;
                 this.rotate
-                    ? ((a.vLineEnabled = k),
-                      (a.hZoomEnabled = h),
-                      (a.vZoomEnabled = f))
-                    : ((a.hLineEnabled = k),
-                      (a.vZoomEnabled = h),
-                      (a.hZoomEnabled = f));
+                    ? ((a.vLineEnabled = k), (a.hZoomEnabled = h), (a.vZoomEnabled = f))
+                    : ((a.hLineEnabled = k), (a.vZoomEnabled = h), (a.hZoomEnabled = f));
                 if (a.valueLineBalloonEnabled)
                     for (k = 0; k < this.valueAxes.length; k++)
                         (h = this.valueAxes[k]),
@@ -1528,8 +1374,7 @@
                             (h.balloon = f);
                 else
                     for (f = 0; f < this.valueAxes.length; f++)
-                        (h = this.valueAxes[f]),
-                            h.balloon && (h.balloon = null);
+                        (h = this.valueAxes[f]), h.balloon && (h.balloon = null);
                 b &&
                     ((b.balloonTextFunction = a.categoryBalloonFunction),
                     (a.categoryLineAxis = b),
@@ -1543,15 +1388,12 @@
                         (f.borderColor = d),
                         (f.color = g),
                         (b.balloon = f)),
-                    b.balloon &&
-                        (b.balloon.enabled = a.categoryBalloonEnabled));
+                    b.balloon && (b.balloon.enabled = a.categoryBalloonEnabled));
             }
         },
         addChartScrollbar: function (a) {
             e.callMethod('destroy', [this.chartScrollbar]);
-            a &&
-                ((a.chart = this),
-                this.listenTo(a, 'zoomed', this.handleScrollbarZoom));
+            a && ((a.chart = this), this.listenTo(a, 'zoomed', this.handleScrollbarZoom));
             this.rotate
                 ? void 0 === a.width && (a.width = a.scrollbarHeight)
                 : void 0 === a.height && (a.height = a.scrollbarHeight);
@@ -1582,19 +1424,12 @@
         },
         handleReleaseOutside: function (a) {
             e.AmSerialChart.base.handleReleaseOutside.call(this, a);
-            e.callMethod('handleReleaseOutside', [
-                this.chartScrollbar,
-                this.valueScrollbar,
-            ]);
+            e.callMethod('handleReleaseOutside', [this.chartScrollbar, this.valueScrollbar]);
         },
         update: function () {
             e.AmSerialChart.base.update.call(this);
-            this.chartScrollbar &&
-                this.chartScrollbar.update &&
-                this.chartScrollbar.update();
-            this.valueScrollbar &&
-                this.valueScrollbar.update &&
-                this.valueScrollbar.update();
+            this.chartScrollbar && this.chartScrollbar.update && this.chartScrollbar.update();
+            this.valueScrollbar && this.valueScrollbar.update && this.valueScrollbar.update();
         },
         processScrollbars: function () {
             e.AmSerialChart.base.processScrollbars.call(this);
@@ -1619,11 +1454,7 @@
             if (b + 1 < c.length)
                 for (b += 1; b < c.length; b++)
                     if ((a = c[b]))
-                        if (
-                            ((a = a.axes[d.valueAxis.id].graphs[d.id]),
-                            !isNaN(a.y))
-                        )
-                            return a;
+                        if (((a = a.axes[d.valueAxis.id].graphs[d.id]), !isNaN(a.y))) return a;
         },
         handleCursorZoomReal: function (a, b, c, d, e) {
             var h = e.target,
@@ -1653,8 +1484,7 @@
                 var a = a[0],
                     b = a.relativeStart,
                     c = a.relativeEnd;
-                a.reversed &&
-                    ((b = 1 - a.relativeEnd), (c = 1 - a.relativeStart));
+                a.reversed && ((b = 1 - a.relativeEnd), (c = 1 - a.relativeStart));
                 this.rotate
                     ? ((this.startX0 = b), (this.endX0 = c))
                     : ((this.startY0 = b), (this.endY0 = c));
@@ -1684,12 +1514,7 @@
                         if (b.oneBalloonOnly && b.valueBalloonsEnabled) {
                             var m = Infinity;
                             for (h = d.length - 1; 0 <= h; h--)
-                                if (
-                                    ((f = d[h]),
-                                    f.balloon.enabled &&
-                                        f.showBalloon &&
-                                        !f.hidden)
-                                ) {
+                                if (((f = d[h]), f.balloon.enabled && f.showBalloon && !f.hidden)) {
                                     k = f.valueAxis.id;
                                     k = g.axes[k].graphs[f.id];
                                     if (
@@ -1700,21 +1525,15 @@
                                         continue;
                                     k = k.y;
                                     'top' == f.showBalloonAt && (k = 0);
-                                    'bottom' == f.showBalloonAt &&
-                                        (k = this.height);
+                                    'bottom' == f.showBalloonAt && (k = this.height);
                                     var p = b.mouseX,
                                         n = b.mouseY;
-                                    k = this.rotate
-                                        ? Math.abs(p - k)
-                                        : Math.abs(n - k);
+                                    k = this.rotate ? Math.abs(p - k) : Math.abs(n - k);
                                     k < m && ((m = k), (l = f));
                                 }
                             b.mostCloseGraph = l;
                         }
-                        if (
-                            this.prevCursorItem != g ||
-                            l != this.prevMostCloseGraph
-                        ) {
+                        if (this.prevCursorItem != g || l != this.prevMostCloseGraph) {
                             m = [];
                             for (h = 0; h < d.length; h++) {
                                 f = d[h];
@@ -1734,12 +1553,11 @@
                                           b.pointer,
                                           !1,
                                           b.graphBulletSize,
-                                          b.graphBulletAlpha
+                                          b.graphBulletAlpha,
                                       ),
                                       f.balloon.hide(0))
                                     : b.valueBalloonsEnabled
-                                    ? ((f.balloon.showBullet =
-                                          b.bulletsEnabled),
+                                    ? ((f.balloon.showBullet = b.bulletsEnabled),
                                       (f.balloon.bulletSize = b.bulletSize / 2),
                                       a.hideBalloons ||
                                           (f.showGraphBalloon(
@@ -1747,7 +1565,7 @@
                                               b.pointer,
                                               !1,
                                               b.graphBulletSize,
-                                              b.graphBulletAlpha
+                                              b.graphBulletAlpha,
                                           ),
                                           f.balloon.set &&
                                               m.push({
@@ -1755,14 +1573,9 @@
                                                   y: f.balloon.pointToY,
                                               })))
                                     : ((f.currentDataItem = k),
-                                      f.resizeBullet(
-                                          k,
-                                          b.graphBulletSize,
-                                          b.graphBulletAlpha
-                                      ));
+                                      f.resizeBullet(k, b.graphBulletSize, b.graphBulletAlpha));
                             }
-                            b.avoidBalloonOverlapping &&
-                                this.arrangeBalloons(m);
+                            b.avoidBalloonOverlapping && this.arrangeBalloons(m);
                             this.prevCursorItem = g;
                         }
                         this.prevMostCloseGraph = l;
@@ -1810,8 +1623,7 @@
                     (a = e.fitToBounds(c + l * f, 0, 1 - m));
             c = e.fitToBounds(k, m, 1);
             var p;
-            b.valueZoomable &&
-                (p = this.relativeZoomValueAxes(this.valueAxes, a, c));
+            b.valueZoomable && (p = this.relativeZoomValueAxes(this.valueAxes, a, c));
             var n;
             c = this.categoryAxis;
             this.rotate && ((d = g), (h = f));
@@ -1889,9 +1701,7 @@
                 0 < c &&
                     b - k < e + 3 &&
                     d.setBounds &&
-                    (d.setBounds(0, e + 3, h, e + k + 3),
-                    d.restorePrevious(),
-                    d.draw());
+                    (d.setBounds(0, e + 3, h, e + k + 3), d.restorePrevious(), d.draw());
                 d.set && d.set.show();
                 e = d.bottom;
             }
@@ -1904,25 +1714,7 @@
 (function () {
     var e = window.AmCharts;
     e.Cuboid = e.Class({
-        construct: function (
-            a,
-            b,
-            c,
-            d,
-            e,
-            h,
-            f,
-            k,
-            l,
-            m,
-            p,
-            n,
-            u,
-            v,
-            x,
-            E,
-            t
-        ) {
+        construct: function (a, b, c, d, e, h, f, k, l, m, p, n, u, v, x, E, t) {
             this.set = a.set();
             this.container = a;
             this.h = Math.round(c);
@@ -1988,52 +1780,12 @@
                     (z = q),
                         (q = e.adjustLuminosity(B, -0.2)),
                         (q = e.adjustLuminosity(B, -0.2)),
-                        (w = e.polygon(
-                            b,
-                            [0, h, d + h, d, 0],
-                            [0, f, f, 0, 0],
-                            q,
-                            l,
-                            1,
-                            p,
-                            0,
-                            u
-                        )),
-                        0 < n &&
-                            (M = e.line(
-                                b,
-                                [0, h, d + h],
-                                [0, f, f],
-                                p,
-                                n,
-                                m,
-                                x
-                            )),
-                        (y = e.polygon(
-                            b,
-                            [0, 0, d, d, 0],
-                            [0, g, g, 0, 0],
-                            q,
-                            l,
-                            1,
-                            p,
-                            0,
-                            u
-                        )),
+                        (w = e.polygon(b, [0, h, d + h, d, 0], [0, f, f, 0, 0], q, l, 1, p, 0, u)),
+                        0 < n && (M = e.line(b, [0, h, d + h], [0, f, f], p, n, m, x)),
+                        (y = e.polygon(b, [0, 0, d, d, 0], [0, g, g, 0, 0], q, l, 1, p, 0, u)),
                         y.translate(h, f),
-                        0 < n &&
-                            (C = e.line(b, [h, h], [f, f + g], p, n, m, x)),
-                        (F = e.polygon(
-                            b,
-                            [0, 0, h, h, 0],
-                            [0, g, g + f, f, 0],
-                            q,
-                            l,
-                            1,
-                            p,
-                            0,
-                            u
-                        )),
+                        0 < n && (C = e.line(b, [h, h], [f, f + g], p, n, m, x)),
+                        (F = e.polygon(b, [0, 0, h, h, 0], [0, g, g + f, f, 0], q, l, 1, p, 0, u)),
                         (D = e.polygon(
                             b,
                             [d, d, d + h, d + h, d],
@@ -2043,18 +1795,10 @@
                             1,
                             p,
                             0,
-                            u
+                            u,
                         )),
                         0 < n &&
-                            (A = e.line(
-                                b,
-                                [d, d + h, d + h, d],
-                                [0, f, g + f, g],
-                                p,
-                                n,
-                                m,
-                                x
-                            )),
+                            (A = e.line(b, [d, d + h, d + h, d], [0, f, g + f, g], p, n, m, x)),
                         (q = e.adjustLuminosity(z, 0.2)),
                         (z = e.polygon(
                             b,
@@ -2065,18 +1809,9 @@
                             1,
                             p,
                             0,
-                            u
+                            u,
                         )),
-                        0 < n &&
-                            (L = e.line(
-                                b,
-                                [0, h, d + h],
-                                [g, g + f, g + f],
-                                p,
-                                n,
-                                m,
-                                x
-                            ));
+                        0 < n && (L = e.line(b, [0, h, d + h], [g, g + f, g + f], p, n, m, x));
                 else {
                     var N, O, P;
                     K
@@ -2096,21 +1831,10 @@
                     J = H * t;
                     0.1 < G &&
                         0.1 < G &&
-                        ((w = e.circle(b, G, B, l, m, p, n, !1, H)),
-                        w.translate(q, N));
+                        ((w = e.circle(b, G, B, l, m, p, n, !1, H)), w.translate(q, N));
                     0.1 < I &&
                         0.1 < I &&
-                        ((z = e.circle(
-                            b,
-                            I,
-                            e.adjustLuminosity(B, 0.5),
-                            l,
-                            m,
-                            p,
-                            n,
-                            !1,
-                            J
-                        )),
+                        ((z = e.circle(b, I, e.adjustLuminosity(B, 0.5), l, m, p, n, !1, J)),
                         z.translate(O, P));
                 }
             l = Q;
@@ -2223,13 +1947,8 @@
                   (b = b.path(l).attr(k)),
                   b.gradient(
                       'linearGradient',
-                      [
-                          B,
-                          e.adjustLuminosity(B, -0.3),
-                          e.adjustLuminosity(B, -0.3),
-                          B,
-                      ],
-                      G
+                      [B, e.adjustLuminosity(B, -0.3), e.adjustLuminosity(B, -0.3), B],
+                      G,
                   ),
                   K ? b.translate(h / 2, 0) : b.translate(0, f / 2))
                 : (b =
@@ -2250,7 +1969,7 @@
                                 n,
                                 u,
                                 !1,
-                                x
+                                x,
                             ));
             d = isNaN(t)
                 ? 0 > g
@@ -2269,8 +1988,7 @@
             e.setCN(c, w, r + 'bottom');
             e.setCN(c, F, r + 'left');
             e.setCN(c, D, r + 'right');
-            for (w = 0; w < d.length; w++)
-                if ((y = d[w])) a.push(y), e.setCN(c, y, r + 'element');
+            for (w = 0; w < d.length; w++) if ((y = d[w])) a.push(y), e.setCN(c, y, r + 'element');
             E && b.pattern(E, NaN, c.path);
         },
         width: function (a) {
@@ -2392,12 +2110,7 @@
                     q = this.firstDayOfWeek,
                     w = this.boldPeriodBeginning;
                 b = e
-                    .resetDateToMin(
-                        new Date(a[a.length - 1].time + 1.05 * u),
-                        this.minPeriod,
-                        1,
-                        q
-                    )
+                    .resetDateToMin(new Date(a[a.length - 1].time + 1.05 * u), this.minPeriod, 1, q)
                     .getTime();
                 this.firstTime = c.firstTime;
                 this.endTime > b && (this.endTime = b);
@@ -2408,9 +2121,7 @@
                 if (this.widthField)
                     for (b = this.start; b <= this.end; b++)
                         if ((t = this.data[b])) {
-                            var F = Number(
-                                this.data[b].dataContext[this.widthField]
-                            );
+                            var F = Number(this.data[b].dataContext[this.widthField]);
                             isNaN(F) || ((y += F), (t.widthValue = F));
                         }
                 if (this.parseDates && !this.equalSpacing)
@@ -2420,7 +2131,7 @@
                                 new Date(this.lastTime + 1.05 * u),
                                 this.minPeriod,
                                 1,
-                                q
+                                q,
                             )
                             .getTime()),
                         (this.timeDifference = this.endTime - this.startTime),
@@ -2442,61 +2153,48 @@
                                 w = 0,
                                 this.widthField && ((f = this.start), (q = 1)),
                                 this.end - f + 1 >= this.autoRotateCount &&
-                                    (this.labelRotationR =
-                                        this.autoRotateAngle),
+                                    (this.labelRotationR = this.autoRotateAngle),
                                 b = f;
                             b <= this.end + 2;
                             b++
                         ) {
                             k = !1;
                             0 <= b && b < this.data.length
-                                ? ((v = this.data[b]),
-                                  (n = v.category),
-                                  (k = v.forceShow))
+                                ? ((v = this.data[b]), (n = v.category), (k = v.forceShow))
                                 : (n = '');
                             if (r && !isNaN(t))
                                 if (b / t == Math.round(b / t) || k)
                                     b / q == Math.round(b / q) ||
                                         k ||
-                                        ((this.gridAlpha = this.minorGridAlpha),
-                                        (n = void 0));
+                                        ((this.gridAlpha = this.minorGridAlpha), (n = void 0));
                                 else continue;
                             else if (b / q != Math.round(b / q) && !k) continue;
                             f = this.getCoordinate(b - h);
                             k = 0;
                             'start' == this.gridPosition &&
-                                ((f -= this.cellWidth / 2),
-                                (k = this.cellWidth / 2));
+                                ((f -= this.cellWidth / 2), (k = this.cellWidth / 2));
                             p = !0;
                             E = k;
-                            'start' == this.tickPosition &&
-                                ((E = 0), (p = !1), (k = 0));
-                            if ((b == d && !l) || (b == this.end && !m))
-                                n = void 0;
+                            'start' == this.tickPosition && ((E = 0), (p = !1), (k = 0));
+                            if ((b == d && !l) || (b == this.end && !m)) n = void 0;
                             Math.round(w / g) != w / g && (n = void 0);
                             w++;
                             a = this.cellWidth;
                             B &&
-                                ((a = NaN),
-                                this.ignoreAxisWidth || !c.autoMargins) &&
+                                ((a = NaN), this.ignoreAxisWidth || !c.autoMargins) &&
                                 ((a =
                                     'right' == this.position
                                         ? c.marginRight - this.titleWidth
                                         : c.marginLeft - this.titleWidth),
                                 (a -= this.tickLength + 10));
-                            this.labelFunction &&
-                                v &&
-                                (n = this.labelFunction(n, v, this));
+                            this.labelFunction && v && (n = this.labelFunction(n, v, this));
                             n = e.fixBrakes(n);
                             u = !1;
                             this.boldLabels && (u = !0);
-                            b > this.end &&
-                                'start' == this.tickPosition &&
-                                (n = ' ');
+                            b > this.end && 'start' == this.tickPosition && (n = ' ');
                             this.rotate && this.inside && (k -= 2);
                             isNaN(v.widthValue) ||
-                                ((v.percentWidthValue =
-                                    (v.widthValue / y) * 100),
+                                ((v.percentWidthValue = (v.widthValue / y) * 100),
                                 (a = this.rotate
                                     ? (this.height * v.widthValue) / y
                                     : (this.width * v.widthValue) / y),
@@ -2515,7 +2213,7 @@
                                 E,
                                 !1,
                                 v.labelColor,
-                                v.className
+                                v.className,
                             );
                             p.serialDataItem = v;
                             this.pushAxisItem(p);
@@ -2536,9 +2234,7 @@
                     this.currentDateFormat = this.dateFormatsObject[x];
                     this.stepWidth = this.getStepWidth(f);
                     k = Math.ceil(this.timeDifference / b) + 1;
-                    n = e
-                        .resetDateToMin(new Date(this.startTime - b), g, v, q)
-                        .getTime();
+                    n = e.resetDateToMin(new Date(this.startTime - b), g, v, q).getTime();
                     this.cellWidth = this.getStepWidth(f);
                     f = Math.round(n / b);
                     d = -1;
@@ -2555,28 +2251,16 @@
                     F = f;
                     if (
                         this.data[f].time !=
-                        e
-                            .resetDateToMin(
-                                new Date(this.data[f].time),
-                                g,
-                                v,
-                                q
-                            )
-                            .getTime()
+                        e.resetDateToMin(new Date(this.data[f].time), g, v, q).getTime()
                     ) {
                         var u = 0,
                             D = n;
                         for (b = f; b < C; b++)
                             (t = this.data[b].time),
                                 this.checkPeriodChange(g, v, t, D) &&
-                                    (u++,
-                                    2 <= u && ((F = b), (b = C)),
-                                    (D = t));
+                                    (u++, 2 <= u && ((F = b), (b = C)), (D = t));
                     }
-                    r &&
-                        1 < v &&
-                        ((t = this.chooseMinorFrequency(v)),
-                        e.getPeriodDuration(g, t));
+                    r && 1 < v && ((t = this.chooseMinorFrequency(v)), e.getPeriodDuration(g, t));
                     if (0 < this.gridCountR)
                         for (b = f; b < C; b++)
                             if (
@@ -2586,29 +2270,14 @@
                                 f = this.getCoordinate(b - this.start);
                                 r = !1;
                                 this.nextPeriod[x] &&
-                                    (r = this.checkPeriodChange(
-                                        this.nextPeriod[x],
-                                        1,
-                                        t,
-                                        n,
-                                        x
-                                    )) &&
+                                    (r = this.checkPeriodChange(this.nextPeriod[x], 1, t, n, x)) &&
                                     e
-                                        .resetDateToMin(
-                                            new Date(t),
-                                            this.nextPeriod[x],
-                                            1,
-                                            q
-                                        )
+                                        .resetDateToMin(new Date(t), this.nextPeriod[x], 1, q)
                                         .getTime() != t &&
                                     (r = !1);
                                 u = !1;
                                 r && this.markPeriodChange
-                                    ? ((r =
-                                          this.dateFormatsObject[
-                                              this.nextPeriod[x]
-                                          ]),
-                                      (u = !0))
+                                    ? ((r = this.dateFormatsObject[this.nextPeriod[x]]), (u = !0))
                                     : (r = this.dateFormatsObject[x]);
                                 n = e.formatDate(new Date(t), r, c);
                                 if ((b == d && !l) || (b == k && !m)) n = ' ';
@@ -2617,11 +2286,7 @@
                                     : (w || (u = !1),
                                       f - this.previousPos >
                                           this.safeDistance *
-                                              Math.cos(
-                                                  (this.labelRotationR *
-                                                      Math.PI) /
-                                                      180
-                                              ) &&
+                                              Math.cos((this.labelRotationR * Math.PI) / 180) &&
                                           (this.labelFunction &&
                                               (n = this.labelFunction(
                                                   n,
@@ -2629,7 +2294,7 @@
                                                   this,
                                                   g,
                                                   v,
-                                                  E
+                                                  E,
                                               )),
                                           this.boldLabels && (u = !0),
                                           (p = new this.axisItemRenderer(
@@ -2640,7 +2305,7 @@
                                               void 0,
                                               void 0,
                                               void 0,
-                                              u
+                                              u,
                                           )),
                                           (r = p.graphics()),
                                           this.pushAxisItem(p),
@@ -2656,14 +2321,9 @@
                             ? ((m = t.time),
                               (d = this.cellWidth),
                               'MM' == this.minPeriod &&
-                                  ((d =
-                                      864e5 *
-                                      e.daysInMonth(new Date(m)) *
-                                      this.stepWidth),
+                                  ((d = 864e5 * e.daysInMonth(new Date(m)) * this.stepWidth),
                                   (t.cellWidth = d)),
-                              (m = Math.round(
-                                  (m - this.startTime) * this.stepWidth + d / 2
-                              )))
+                              (m = Math.round((m - this.startTime) * this.stepWidth + d / 2)))
                             : (m = this.getCoordinate(b - h)),
                             (t.x[this.id] = m);
                 if (this.widthField)
@@ -2688,15 +2348,7 @@
                             isNaN(q) ||
                                 ((d = this.getCoordinate(q - h)),
                                 l.expand && (d += this.cellWidth / 2),
-                                (p = new this.axisItemRenderer(
-                                    this,
-                                    d,
-                                    '',
-                                    !0,
-                                    NaN,
-                                    NaN,
-                                    l
-                                )),
+                                (p = new this.axisItemRenderer(this, d, '', !0, NaN, NaN, l)),
                                 this.pushAxisItem(p, m))),
                         l.category &&
                             ((q = c.getCategoryIndexByValue(l.category)),
@@ -2704,15 +2356,7 @@
                                 ((r = this.getCoordinate(q - h)),
                                 l.expand && (r -= this.cellWidth / 2),
                                 (q = (d - r) / 2),
-                                (p = new this.axisItemRenderer(
-                                    this,
-                                    r,
-                                    l.label,
-                                    !0,
-                                    NaN,
-                                    q,
-                                    l
-                                )),
+                                (p = new this.axisItemRenderer(this, r, l.label, !0, NaN, q, l)),
                                 this.pushAxisItem(p, m))),
                         (w = c.dataDateFormat),
                         l.toDate &&
@@ -2727,26 +2371,14 @@
                                       l.toDate.getTime(),
                                       !1,
                                       0,
-                                      this.data.length - 1
+                                      this.data.length - 1,
                                   )),
                                   isNaN(q) || (d = this.getCoordinate(q - h)))
-                                : (d =
-                                      (l.toDate.getTime() - this.startTime) *
-                                      this.stepWidth),
-                            (p = new this.axisItemRenderer(
-                                this,
-                                d,
-                                '',
-                                !0,
-                                NaN,
-                                NaN,
-                                l
-                            )),
+                                : (d = (l.toDate.getTime() - this.startTime) * this.stepWidth),
+                            (p = new this.axisItemRenderer(this, d, '', !0, NaN, NaN, l)),
                             this.pushAxisItem(p, m)),
                         l.date &&
-                            (!w ||
-                                l.date instanceof Date ||
-                                (l.date = l.date.toString() + ' |'),
+                            (!w || l.date instanceof Date || (l.date = l.date.toString() + ' |'),
                             (l.date = e.getDate(l.date, w)),
                             this.equalSpacing
                                 ? ((q = c.getClosestIndex(
@@ -2755,35 +2387,17 @@
                                       l.date.getTime(),
                                       !1,
                                       0,
-                                      this.data.length - 1
+                                      this.data.length - 1,
                                   )),
                                   isNaN(q) || (r = this.getCoordinate(q - h)))
-                                : (r =
-                                      (l.date.getTime() - this.startTime) *
-                                      this.stepWidth),
+                                : (r = (l.date.getTime() - this.startTime) * this.stepWidth),
                             (q = (d - r) / 2),
                             (p = !0),
                             l.toDate && (p = !1),
                             (p =
                                 'H' == this.orientation
-                                    ? new this.axisItemRenderer(
-                                          this,
-                                          r,
-                                          l.label,
-                                          p,
-                                          2 * q,
-                                          NaN,
-                                          l
-                                      )
-                                    : new this.axisItemRenderer(
-                                          this,
-                                          r,
-                                          l.label,
-                                          !1,
-                                          NaN,
-                                          q,
-                                          l
-                                      )),
+                                    ? new this.axisItemRenderer(this, r, l.label, p, 2 * q, NaN, l)
+                                    : new this.axisItemRenderer(this, r, l.label, !1, NaN, q, l)),
                             this.pushAxisItem(p, m)),
                         p && (q = p.label) && this.addEventListeners(q, l),
                         0 < d || 0 < r)
@@ -2804,9 +2418,7 @@
                     B
                         ? c.fixHeight(this.cellWidth)
                         : (c.fixWidth(this.cellWidth),
-                          c.fullWidth &&
-                              this.balloon &&
-                              (this.balloon.minWidth = this.cellWidth));
+                          c.fullWidth && this.balloon && (this.balloon.minWidth = this.cellWidth));
                 this.previousHeight = A;
             }
             this.axisCreated = !0;
@@ -2828,28 +2440,14 @@
                 g = this.stepWidth,
                 h;
             if (this.parseDates && !this.equalSpacing)
-                (a =
-                    this.startTime +
-                    Math.round(a / g) -
-                    this.minDuration() / 2),
-                    (h = c.getClosestIndex(
-                        b,
-                        'time',
-                        a,
-                        !1,
-                        this.start,
-                        this.end + 1
-                    ));
+                (a = this.startTime + Math.round(a / g) - this.minDuration() / 2),
+                    (h = c.getClosestIndex(b, 'time', a, !1, this.start, this.end + 1));
             else if (this.widthField)
                 for (c = Infinity, g = this.start; g <= this.end; g++) {
                     var f = this.data[g];
-                    f &&
-                        ((f = Math.abs(f.x[this.id] - a)),
-                        f < c && ((c = f), (h = g)));
+                    f && ((f = Math.abs(f.x[this.id] - a)), f < c && ((c = f), (h = g)));
                 }
-            else
-                this.startOnAxis || (a -= g / 2),
-                    (h = this.start + Math.round(a / g));
+            else this.startOnAxis || (a -= g / 2), (h = this.start + Math.round(a / g));
             h = e.fitToBounds(h, 0, b.length - 1);
             var k;
             b[h] && (k = b[h].x[this.id]);
@@ -2867,7 +2465,7 @@
                       a.getTime(),
                       !1,
                       0,
-                      this.data.length - 1
+                      this.data.length - 1,
                   )),
                   this.getCoordinate(a - this.start))
                 : NaN;
@@ -2886,8 +2484,7 @@
         },
         coordinateToValue: function (a) {
             a = this.xToIndex(a);
-            if ((a = this.data[a]))
-                return this.parseDates ? a.time : a.category;
+            if ((a = this.data[a])) return this.parseDates ? a.time : a.category;
         },
         getCoordinate: function (a) {
             a *= this.stepWidth;
@@ -2914,11 +2511,7 @@
             if (f)
                 if (this.parseDates)
                     (d = e.formatDate(f.category, c, h)),
-                        (b = e.changeDate(
-                            new Date(f.category),
-                            this.minPeriod,
-                            1
-                        )),
+                        (b = e.changeDate(new Date(f.category), this.minPeriod, 1)),
                         (g = e.formatDate(b, c, h)),
                         -1 != d.indexOf('fff') &&
                             ((d = e.formatMilliseconds(d, f.category)),
@@ -2961,8 +2554,7 @@
             d &&
                 !b &&
                 (d.setIndex(c),
-                this.parseDates &&
-                    d.setTimestamp(this.coordinateToDate(a).getTime()));
+                this.parseDates && d.setTimestamp(this.coordinateToDate(a).getTime()));
             return a;
         },
     });

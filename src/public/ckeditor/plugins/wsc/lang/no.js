@@ -6,8 +6,7 @@
     btnUndo: 'Angre',
     changeTo: 'Endre til',
     errorLoading: 'Feil under lasting av applikasjonstjenestetjener: %s.',
-    ieSpellDownload:
-        'Stavekontroll er ikke installert. Vil du laste den ned nå?',
+    ieSpellDownload: 'Stavekontroll er ikke installert. Vil du laste den ned nå?',
     manyChanges: 'Stavekontroll fullført: %1 ord endret',
     noChanges: 'Stavekontroll fullført: ingen ord endret',
     noMispell: 'Stavekontroll fullført: ingen feilstavinger funnet',

@@ -16,16 +16,11 @@
         function d(a) {
             var b = c(a);
             if (null !== b.charsBetween) {
-                var d = k.getUnusedButtonsArray(
-                        k.actualConfig.toolbar,
-                        !0,
-                        b.charsBetween
-                    ),
+                var d = k.getUnusedButtonsArray(k.actualConfig.toolbar, !0, b.charsBetween),
                     e = a.getCursor(),
                     b = CodeMirror.Pos(e.line, e.ch - b.charsBetween.length),
                     h = a.getTokenAt(e);
-                '{' === a.getTokenAt({ line: e.line, ch: h.start }).string &&
-                    (d = ['name']);
+                '{' === a.getTokenAt({ line: e.line, ch: h.start }).string && (d = ['name']);
                 if (0 !== d.length) return new f(b, e, d);
             }
         }
@@ -40,19 +35,12 @@
             b.cur = a.getCursor();
             b.tok = a.getTokenAt(b.cur);
             b['char'] = c || b.tok.string.charAt(b.tok.string.length - 1);
-            var d = a
-                    .getRange(CodeMirror.Pos(b.cur.line, 0), b.cur)
-                    .split('')
-                    .reverse()
-                    .join(''),
+            var d = a.getRange(CodeMirror.Pos(b.cur.line, 0), b.cur).split('').reverse().join(''),
                 d = d.replace(/(['|"]\w*['|"])/g, '');
             b.charsBetween = d.match(/(^\w*)(['|"])/);
             b.charsBetween &&
                 ((b.endChar = b.charsBetween[2]),
-                (b.charsBetween = b.charsBetween[1]
-                    .split('')
-                    .reverse()
-                    .join('')));
+                (b.charsBetween = b.charsBetween[1].split('').reverse().join('')));
             return b;
         }
         function b(a) {
@@ -67,8 +55,7 @@
         }
         var k = this;
         this._createToolbar();
-        this.toolbarContainer &&
-            this.mainContainer.append(this.toolbarContainer);
+        this.toolbarContainer && this.mainContainer.append(this.toolbarContainer);
         l.prototype._createModifier.call(this);
         this._setupActualConfig(a);
         a = this.actualConfig.toolbar;
@@ -87,11 +74,7 @@
                   '\n\t]') +
               ';'
             : 'config.toolbar \x3d [];';
-        a = [
-            'CKEDITOR.editorConfig \x3d function( config ) {\n',
-            a,
-            '\n};',
-        ].join('');
+        a = ['CKEDITOR.editorConfig \x3d function( config ) {\n', a, '\n};'].join('');
         var e = new CKEDITOR.dom.element('div');
         e.addClass('codemirror-wrapper');
         this.modifyContainer.append(e);
@@ -124,9 +107,7 @@
             var a = k.codeContainer.getValue(),
                 a = k._evaluateValue(a);
             null !== a
-                ? ((k.actualConfig.toolbar = a.toolbar
-                      ? a.toolbar
-                      : k.actualConfig.toolbar),
+                ? ((k.actualConfig.toolbar = a.toolbar ? a.toolbar : k.actualConfig.toolbar),
                   k._fillHintByUnusedElements(),
                   k._refreshEditor(),
                   k.mainContainer.removeClass('invalid'))
@@ -161,17 +142,13 @@
         a.length || (f = '\x3cp\x3eAll items are in use.\x3c/p\x3e');
         this.codeContainer.refresh();
         this.hintContainer.setHtml(
-            '\x3ch3\x3eUnused toolbar items\x3c/h3\x3e\x3cdl\x3e' +
-                f +
-                d +
-                '\x3c/dl\x3e'
+            '\x3ch3\x3eUnused toolbar items\x3c/h3\x3e\x3cdl\x3e' + f + d + '\x3c/dl\x3e',
         );
     };
     e.prototype.getToolbarGroupByButtonName = function (a) {
         var d = this.fullToolbarEditor.buttonNamesByGroup,
             f;
-        for (f in d)
-            for (var c = d[f], b = c.length; b--; ) if (a === c[b]) return f;
+        for (f in d) for (var c = d[f], b = c.length; b--; ) if (a === c[b]) return f;
         return null;
     };
     e.prototype.getUnusedButtonsArray = function (a, d, f) {
@@ -191,9 +168,7 @@
     };
     e.prototype.groupButtonNamesByGroup = function (a) {
         var d = [],
-            f = JSON.parse(
-                JSON.stringify(this.fullToolbarEditor.buttonNamesByGroup)
-            ),
+            f = JSON.parse(JSON.stringify(this.fullToolbarEditor.buttonNamesByGroup)),
             c;
         for (c in f) {
             var b = f[c],
@@ -209,21 +184,18 @@
             return '-' !== a;
         }
         for (var f = [], c = a.length, b = 0; b < c; b += 1)
-            a[b] &&
-                'string' !== typeof a[b] &&
-                (f = f.concat(g.filter(a[b].items, d)));
+            a[b] && 'string' !== typeof a[b] && (f = f.concat(g.filter(a[b].items, d)));
         return f;
     };
     e.prototype._setupActualConfig = function (a) {
         a = a || this.editorInstance.config;
         CKEDITOR.tools.isArray(a.toolbar) ||
             (a.toolbarGroups ||
-                (a.toolbarGroups =
-                    this.fullToolbarEditor.getFullToolbarGroupsConfig(!0)),
+                (a.toolbarGroups = this.fullToolbarEditor.getFullToolbarGroupsConfig(!0)),
             this._fixGroups(a),
             (a.toolbar = this._mapToolbarGroupsToToolbar(
                 a.toolbarGroups,
-                this.actualConfig.removeButtons
+                this.actualConfig.removeButtons,
             )),
             (this.actualConfig.toolbar = a.toolbar),
             (this.actualConfig.removeButtons = ''));
@@ -237,23 +209,15 @@
                 ? (a[f] = '/')
                 : CKEDITOR.tools.isArray(c) && 0 === c.length
                 ? a.splice(f, 1)
-                : (a[f] =
-                      'string' == typeof c ? c : { name: a[f].name, items: c });
+                : (a[f] = 'string' == typeof c ? c : { name: a[f].name, items: c });
         }
         return a;
     };
     e.prototype._mapToolbarSubgroup = function (a, d) {
         if ('string' == typeof a) return a;
-        for (
-            var f = a.groups ? a.groups.length : 0, c = [], b = 0;
-            b < f;
-            b += 1
-        ) {
+        for (var f = a.groups ? a.groups.length : 0, c = [], b = 0; b < f; b += 1) {
             var e = a.groups[b],
-                e =
-                    this.fullToolbarEditor.buttonsByGroup[
-                        'string' === typeof e ? e : e.name
-                    ] || [],
+                e = this.fullToolbarEditor.buttonsByGroup['string' === typeof e ? e : e.name] || [],
                 e = this._mapButtonsToButtonsNames(e, d),
                 g = e.length,
                 c = c.concat(e);
@@ -268,9 +232,7 @@
                 c =
                     'string' === typeof c
                         ? c
-                        : this.fullToolbarEditor.getCamelCasedButtonName(
-                              c.name
-                          );
+                        : this.fullToolbarEditor.getCamelCasedButtonName(c.name);
             -1 !== CKEDITOR.tools.indexOf(d, c) ? a.splice(f, 1) : (a[f] = c);
         }
         return a;
@@ -279,12 +241,9 @@
         var d;
         try {
             var f = {};
-            Function(
-                'var CKEDITOR \x3d {}; ' + a + '; return CKEDITOR;'
-            )().editorConfig(f);
+            Function('var CKEDITOR \x3d {}; ' + a + '; return CKEDITOR;')().editorConfig(f);
             d = f;
-            for (var c = d.toolbar.length; c--; )
-                d.toolbar[c] || d.toolbar.splice(c, 1);
+            for (var c = d.toolbar.length; c--; ) d.toolbar[c] || d.toolbar.splice(c, 1);
         } catch (b) {
             d = null;
         }
@@ -322,10 +281,7 @@
         c = (function (a, b) {
             var c = [],
                 e;
-            for (e in a)
-                var f = a[e],
-                    g = b[e].slice(),
-                    c = c.concat(d(g, Object.keys(f.buttons)));
+            for (e in a) var f = a[e], g = b[e].slice(), c = c.concat(d(g, Object.keys(f.buttons)));
             return c;
         })(f, this.fullToolbarEditor.buttonNamesByGroup);
         return { toolbarGroups: b, removeButtons: c.join(',') };

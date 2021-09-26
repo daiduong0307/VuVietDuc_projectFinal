@@ -6,8 +6,7 @@
     btnUndo: 'Atšaukti',
     changeTo: 'Pakeisti į',
     errorLoading: 'Klaida įkraunant servisą: %s.',
-    ieSpellDownload:
-        'Rašybos tikrinimas neinstaliuotas. Ar Jūs norite jį dabar atsisiųsti?',
+    ieSpellDownload: 'Rašybos tikrinimas neinstaliuotas. Ar Jūs norite jį dabar atsisiųsti?',
     manyChanges: 'Rašybos tikrinimas baigtas: Pakeista %1 žodžių',
     noChanges: 'Rašybos tikrinimas baigtas: Nėra pakeistų žodžių',
     noMispell: 'Rašybos tikrinimas baigtas: Nerasta rašybos klaidų',

@@ -44,8 +44,7 @@ CKEDITOR.lang['az'] = {
         validateNumberFailed: 'Rəqəm deyil.',
         confirmNewPage:
             'Yadda saxlanılmamış dəyişikliklər itiriləcək. Davam etmək istədiyinizə əminsinizmi?',
-        confirmCancel:
-            'Dəyişikliklər edilib. Pəncərəni bağlamaq istəyirsizə əminsinizmi?',
+        confirmCancel: 'Dəyişikliklər edilib. Pəncərəni bağlamaq istəyirsizə əminsinizmi?',
         options: 'Seçimlər',
         target: 'Hədəf çərçivə',
         targetNew: 'Yeni pəncərə (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['az'] = {
     about: {
         copy: 'Copyright &copy; $1. Bütün hüquqlar qorunur.',
         dlgTitle: 'CKEditor haqqında',
-        moreInfo:
-            'Lisenziya informasiyası üçün zəhmət olmasa saytımızı ziyarət edin:',
+        moreInfo: 'Lisenziya informasiyası üçün zəhmət olmasa saytımızı ziyarət edin:',
     },
     basicstyles: {
         bold: 'Qalın',
@@ -293,12 +291,9 @@ CKEDITOR.lang['az'] = {
     filetools: {
         loadError: 'Faylını oxumaq mümkün deyil',
         networkError: 'Xəta baş verdi.',
-        httpError404:
-            'Serverə göndərilməsinin zamanı xəta baş verdi (404 - fayl tapılmayıb)',
-        httpError403:
-            'Serverə göndərilməsinin zamanı xəta baş verdi (403 - gadağandır)',
-        httpError:
-            'Serverə göndərilməsinin zamanı xəta baş verdi (xətanın ststusu: %1)',
+        httpError404: 'Serverə göndərilməsinin zamanı xəta baş verdi (404 - fayl tapılmayıb)',
+        httpError403: 'Serverə göndərilməsinin zamanı xəta baş verdi (403 - gadağandır)',
+        httpError: 'Serverə göndərilməsinin zamanı xəta baş verdi (xətanın ststusu: %1)',
         noUrlError: 'Yükləmə linki təyin edilməyib',
         responseError: 'Serverin cavabı yanlışdır',
     },
@@ -466,11 +461,9 @@ CKEDITOR.lang['az'] = {
         alt: 'Alternativ mətn',
         border: 'Sərhəd',
         btnUpload: 'Serverə yüklə',
-        button2Img:
-            'Şəkil tipli düyməni şəklə çevirmək istədiyinizə əminsinizmi?',
+        button2Img: 'Şəkil tipli düyməni şəklə çevirmək istədiyinizə əminsinizmi?',
         hSpace: 'Üfüqi boşluq',
-        img2Button:
-            'Şəkli şəkil tipli düyməyə çevirmək istədiyinizə əminsinizmi?',
+        img2Button: 'Şəkli şəkil tipli düyməyə çevirmək istədiyinizə əminsinizmi?',
         infoTab: 'Şəkil haqqında məlumat',
         linkTab: 'Link',
         lockRatio: 'Ölçülərin uyğunluğu saxla',
@@ -577,8 +570,7 @@ CKEDITOR.lang['az'] = {
         type: 'Növ',
         upperAlpha: 'Böyük hərflər (a, b, c, d, e və s.)',
         upperRoman: 'Böyük Rum rəqəmləri (I, II, III, IV, V və s.)',
-        validateStartNumber:
-            'Siyahının başlanğıc nömrəsi tam və müsbət rəqəm olmalıdır.',
+        validateStartNumber: 'Siyahının başlanğıc nömrəsi tam və müsbət rəqəm olmalıdır.',
     },
     magicline: { title: 'Abzası burada əlavə et' },
     maximize: { maximize: 'Aşkarla', minimize: 'Gizlət' },
@@ -594,8 +586,7 @@ CKEDITOR.lang['az'] = {
         title: 'Paste as Plain Text',
     },
     pastefromword: {
-        confirmCleanup:
-            'Əlavə edilən mətn Word-dan köçürülənə oxşayır. Təmizləmək istəyirsinizmi?',
+        confirmCleanup: 'Əlavə edilən mətn Word-dan köçürülənə oxşayır. Təmizləmək istəyirsinizmi?',
         error: 'Daxili səhvə görə əlavə edilən məlumatların təmizlənməsi mümkün deyil',
         title: 'Word-dan əlavəetmə',
         toolbar: 'Word-dan əlavəetmə',
@@ -657,10 +648,8 @@ CKEDITOR.lang['az'] = {
             no: 'Xeyr',
             invalidWidth: 'Xanasın eni rəqəm olmalıdır.',
             invalidHeight: 'Xanasın hündürlüyü rəqəm olmalıdır.',
-            invalidRowSpan:
-                'Birləşdirdiyiniz sütun xanaların sayı tam və müsbət rəqəm olmalıdır.',
-            invalidColSpan:
-                'Birləşdirdiyiniz sətir xanaların sayı tam və müsbət rəqəm olmalıdır.',
+            invalidRowSpan: 'Birləşdirdiyiniz sütun xanaların sayı tam və müsbət rəqəm olmalıdır.',
+            invalidColSpan: 'Birləşdirdiyiniz sətir xanaların sayı tam və müsbət rəqəm olmalıdır.',
             chooseColor: 'Seç',
         },
         cellPad: 'Xanalardakı kənar boşluqlar',
@@ -680,8 +669,7 @@ CKEDITOR.lang['az'] = {
         headersRow: 'Birinci sətir',
         heightUnit: 'height unit',
         invalidBorder: 'Sərhədlərin eni müsbət rəqəm olmalıdır.',
-        invalidCellPadding:
-            'Xanalardakı kənar boşluqlar müsbət rəqəm olmalıdır.',
+        invalidCellPadding: 'Xanalardakı kənar boşluqlar müsbət rəqəm olmalıdır.',
         invalidCellSpacing: 'Xanalararası interval müsbət rəqəm olmalıdır.',
         invalidCols: 'Sütunlarin sayı tam və müsbət olmalıdır.',
         invalidHeight: 'Cədvəlin hündürlüyü rəqəm olmalıdır.',
@@ -709,7 +697,6 @@ CKEDITOR.lang['az'] = {
         doneOne: 'Fayl müvəffəqiyyətlə yüklənib',
         doneMany: '%1 fayllar müvəffəqiyyətlə yüklənib',
         uploadOne: 'Faylın yüklənməsi ({percentage}%)',
-        uploadMany:
-            'Faylların yüklənməsi,  {max}-dan {current} hazır ({percentage}%)...',
+        uploadMany: 'Faylların yüklənməsi,  {max}-dan {current} hazır ({percentage}%)...',
     },
 };

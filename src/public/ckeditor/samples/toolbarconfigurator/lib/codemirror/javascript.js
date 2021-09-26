@@ -13,20 +13,14 @@
         }
         function w(a, c) {
             var e = a.next();
-            if ('"' == e || "'" == e)
-                return (c.tokenize = pa(e)), c.tokenize(a, c);
-            if ('.' == e && a.match(/^\d+(?:[eE][+\-]?\d+)?/))
-                return q('number', 'number');
+            if ('"' == e || "'" == e) return (c.tokenize = pa(e)), c.tokenize(a, c);
+            if ('.' == e && a.match(/^\d+(?:[eE][+\-]?\d+)?/)) return q('number', 'number');
             if ('.' == e && a.match('..')) return q('spread', 'meta');
             if (/[\[\]{}\(\),;\:\.]/.test(e)) return q(e);
             if ('\x3d' == e && a.eat('\x3e')) return q('\x3d\x3e', 'operator');
-            if ('0' == e && a.eat(/x/i))
-                return a.eatWhile(/[\da-f]/i), q('number', 'number');
+            if ('0' == e && a.eat(/x/i)) return a.eatWhile(/[\da-f]/i), q('number', 'number');
             if (/\d/.test(e))
-                return (
-                    a.match(/^\d*(?:\.\d*)?(?:[eE][+\-]?\d+)?/),
-                    q('number', 'number')
-                );
+                return a.match(/^\d*(?:\.\d*)?(?:[eE][+\-]?\d+)?/), q('number', 'number');
             if ('/' == e) {
                 if (a.eat('*')) return (c.tokenize = J), J(a, c);
                 if (a.eat('/')) return a.skipToEnd(), q('comment', 'comment');
@@ -51,14 +45,12 @@
             }
             if ('`' == e) return (c.tokenize = Q), Q(a, c);
             if ('#' == e) return a.skipToEnd(), q('error', 'error');
-            if (K.test(e))
-                return a.eatWhile(K), q('operator', 'operator', a.current());
+            if (K.test(e)) return a.eatWhile(K), q('operator', 'operator', a.current());
             if (R.test(e))
                 return (
                     a.eatWhile(R),
                     (e = a.current()),
-                    (d = ba.propertyIsEnumerable(e) && ba[e]) &&
-                    '.' != c.lastType
+                    (d = ba.propertyIsEnumerable(e) && ba[e]) && '.' != c.lastType
                         ? q(d.type, d.style, e)
                         : q('variable', 'variable', e)
                 );
@@ -69,8 +61,7 @@
                     b;
                 if (L && '@' == c.peek() && c.match(qa))
                     return (e.tokenize = w), q('jsonld-keyword', 'meta');
-                for (; null != (b = c.next()) && (b != a || d); )
-                    d = !d && '\\' == b;
+                for (; null != (b = c.next()) && (b != a || d); ) d = !d && '\\' == b;
                 d || (e.tokenize = w);
                 return q('string', 'string');
             };
@@ -130,8 +121,7 @@
             null != d && (this.align = d);
         }
         function g() {
-            for (var a = arguments.length - 1; 0 <= a; a--)
-                f.cc.push(arguments[a]);
+            for (var a = arguments.length - 1; 0 <= a; a--) f.cc.push(arguments[a]);
         }
         function b() {
             g.apply(null, arguments);
@@ -145,8 +135,7 @@
             var b = f.state;
             b.context
                 ? ((f.marked = 'def'),
-                  c(b.localVars) ||
-                      (b.localVars = { name: a, next: b.localVars }))
+                  c(b.localVars) || (b.localVars = { name: a, next: b.localVars }))
                 : !c(b.globalVars) &&
                   t.globalVars &&
                   (b.globalVars = { name: a, next: b.globalVars });
@@ -168,11 +157,7 @@
                     e = b.indented;
                 if ('stat' == b.lexical.type) e = b.lexical.indented;
                 else
-                    for (
-                        var h = b.lexical;
-                        h && ')' == h.type && h.align;
-                        h = h.prev
-                    )
+                    for (var h = b.lexical; h && ')' == h.type && h.align; h = h.prev)
                         e = h.indented;
                 b.lexical = new ca(e, f.stream.column(), a, null, b.lexical, c);
             };
@@ -240,8 +225,7 @@
         function fa(a, c) {
             if (f.state.fatArrowAt == f.stream.start) {
                 var e = c ? ga : ha;
-                if ('(' == a)
-                    return b(y, l(')'), F(A, ')'), k, m('\x3d\x3e'), e, z);
+                if ('(' == a) return b(y, l(')'), F(A, ')'), k, m('\x3d\x3e'), e, z);
                 if ('variable' == a) return g(y, A, m('\x3d\x3e'), e, z);
             }
             e = c ? W : M;
@@ -277,11 +261,7 @@
                 f = 0 == e ? n : u;
             if ('\x3d\x3e' == a) return b(y, e ? ga : ha, z);
             if ('operator' == a)
-                return /\+\+|--/.test(c)
-                    ? b(d)
-                    : '?' == c
-                    ? b(n, m(':'), f)
-                    : b(f);
+                return /\+\+|--/.test(c) ? b(d) : '?' == c ? b(n, m(':'), f) : b(f);
             if ('quasi' == a) return g(O, d);
             if (';' != a) {
                 if ('(' == a) return G(u, ')', 'call', d);
@@ -290,15 +270,10 @@
             }
         }
         function O(a, c) {
-            return 'quasi' != a
-                ? g()
-                : '${' != c.slice(c.length - 2)
-                ? b(O)
-                : b(n, Ba);
+            return 'quasi' != a ? g() : '${' != c.slice(c.length - 2) ? b(O) : b(n, Ba);
         }
         function Ba(a) {
-            if ('}' == a)
-                return (f.marked = 'string-2'), (f.state.tokenize = Q), b(O);
+            if ('}' == a) return (f.marked = 'string-2'), (f.state.tokenize = Q), b(O);
         }
         function ha(a) {
             S(f.stream, f.state);
@@ -316,14 +291,9 @@
         }
         function za(a, c) {
             if ('variable' == a || 'keyword' == f.style)
-                return (
-                    (f.marked = 'property'),
-                    'get' == c || 'set' == c ? b(Ca) : b(H)
-                );
+                return (f.marked = 'property'), 'get' == c || 'set' == c ? b(Ca) : b(H);
             if ('number' == a || 'string' == a)
-                return (
-                    (f.marked = L ? 'property' : f.style + ' property'), b(H)
-                );
+                return (f.marked = L ? 'property' : f.style + ' property'), b(H);
             if ('jsonld-keyword' == a) return b(H);
             if ('[' == a) return b(n, m(']'), H);
         }
@@ -372,8 +342,7 @@
             if ('{' == a) return G(Fa, '}');
         }
         function Fa(a, c) {
-            if ('variable' == a && !f.stream.match(/^\s*:/, !1))
-                return x(c), b(Y);
+            if ('variable' == a && !f.stream.match(/^\s*:/, !1)) return x(c), b(Y);
             'variable' == a && (f.marked = 'property');
             return b(m(':'), A, Y);
         }
@@ -384,8 +353,7 @@
             if (',' == a) return b(T);
         }
         function da(a, c) {
-            if ('keyword b' == a && 'else' == c)
-                return b(l('form', 'else'), r, k);
+            if ('keyword b' == a && 'else' == c) return b(l('form', 'else'), r, k);
         }
         function ea(a) {
             if ('(' == a) return b(l(')'), Ga, m(')'), k);
@@ -400,9 +368,7 @@
                 : g(n, m(';'), P);
         }
         function Ha(a, c) {
-            return 'in' == c || 'of' == c
-                ? ((f.marked = 'keyword'), b(n))
-                : b(M, P);
+            return 'in' == c || 'of' == c ? ((f.marked = 'keyword'), b(n)) : b(M, P);
         }
         function P(a, c) {
             return ';' == a
@@ -474,11 +440,7 @@
             return ']' == a ? b() : g(u, Ka);
         }
         function Ka(a) {
-            return 'for' == a
-                ? g(N, m(']'))
-                : ',' == a
-                ? b(F(ia, ']'))
-                : g(F(u, ']'));
+            return 'for' == a ? g(N, m(']')) : ',' == a ? b(F(ia, ']')) : g(F(u, ']'));
         }
         function N(a) {
             if ('for' == a) return b(ea, N);
@@ -589,22 +551,18 @@
                     context: t.localVars && { vars: t.localVars },
                     indented: 0,
                 };
-                t.globalVars &&
-                    'object' == typeof t.globalVars &&
-                    (a.globalVars = t.globalVars);
+                t.globalVars && 'object' == typeof t.globalVars && (a.globalVars = t.globalVars);
                 return a;
             },
             token: function (a, b) {
                 a.sol() &&
-                    (b.lexical.hasOwnProperty('align') ||
-                        (b.lexical.align = !1),
+                    (b.lexical.hasOwnProperty('align') || (b.lexical.align = !1),
                     (b.indented = a.indentation()),
                     S(a, b));
                 if (b.tokenize != J && a.eatSpace()) return null;
                 var e = b.tokenize(a, b);
                 if ('comment' == E) return e;
-                b.lastType =
-                    'operator' != E || ('++' != I && '--' != I) ? E : 'incdec';
+                b.lastType = 'operator' != E || ('++' != I && '--' != I) ? E : 'incdec';
                 a: {
                     var d = E,
                         g = I,
@@ -662,10 +620,7 @@
                 f = d.type;
                 g = e == f;
                 return 'vardef' == f
-                    ? d.indented +
-                          ('operator' == a.lastType || ',' == a.lastType
-                              ? d.info + 1
-                              : 0)
+                    ? d.indented + ('operator' == a.lastType || ',' == a.lastType ? d.info + 1 : 0)
                     : 'form' == f && '{' == e
                     ? d.indented
                     : 'form' == f

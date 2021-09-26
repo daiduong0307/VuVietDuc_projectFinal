@@ -5,7 +5,7 @@ $(document).ready(function () {
         {
             opacity: '0',
         },
-        1200
+        1200,
     );
     setTimeout(function () {
         $('.theme-loader').remove();

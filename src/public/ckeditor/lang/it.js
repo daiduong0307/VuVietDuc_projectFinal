@@ -83,8 +83,7 @@ CKEDITOR.lang['it'] = {
             'Il valore specificato per lo stile inline deve consistere in una o più tuple con il formato di "name : value", separati da semicolonne.',
         cssLengthTooltip:
             'Inserisci un numero per il valore in pixel oppure un numero con una valida unità CSS (px, %, in, cm, mm, ex, pt, o pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, non disponibile</span>',
+        unavailable: '%1<span class="cke_accessibility">, non disponibile</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Invio',
@@ -127,8 +126,7 @@ CKEDITOR.lang['it'] = {
     about: {
         copy: 'Copyright &copy; $1. Tutti i diritti riservati.',
         dlgTitle: 'Informazioni su CKEditor 4',
-        moreInfo:
-            'Per le informazioni sulla licenza si prega di visitare il nostro sito:',
+        moreInfo: 'Per le informazioni sulla licenza si prega di visitare il nostro sito:',
     },
     basicstyles: {
         bold: 'Grassetto',
@@ -173,8 +171,7 @@ CKEDITOR.lang['it'] = {
         pasteNotification:
             'Premere %1 per incollare. Il tuo browser non permette di incollare tramite il pulsante della barra degli strumenti o tramite la voce del menu contestuale.',
         pasteArea: 'Area dove incollare',
-        pasteMsg:
-            "Incollare il proprio contenuto all'interno dell'area sottostante e premere OK.",
+        pasteMsg: "Incollare il proprio contenuto all'interno dell'area sottostante e premere OK.",
     },
     colorbutton: {
         auto: 'Automatico',
@@ -299,8 +296,7 @@ CKEDITOR.lang['it'] = {
     },
     filetools: {
         loadError: 'Si è verificato un errore durante la lettura del file.',
-        networkError:
-            'Si è verificato un errore di rete durante il caricamento del file.',
+        networkError: 'Si è verificato un errore di rete durante il caricamento del file.',
         httpError404:
             'Si è verificato un errore HTTP durante il caricamento del file (404: file non trovato).',
         httpError403:
@@ -474,11 +470,9 @@ CKEDITOR.lang['it'] = {
         alt: 'Testo alternativo',
         border: 'Bordo',
         btnUpload: 'Invia al server',
-        button2Img:
-            "Vuoi trasformare il bottone immagine selezionato in un'immagine semplice?",
+        button2Img: "Vuoi trasformare il bottone immagine selezionato in un'immagine semplice?",
         hSpace: 'HSpace',
-        img2Button:
-            "Vuoi trasferomare l'immagine selezionata in un bottone immagine?",
+        img2Button: "Vuoi trasferomare l'immagine selezionata in un bottone immagine?",
         infoTab: 'Informazioni immagine',
         linkTab: 'Collegamento',
         lockRatio: 'Blocca rapporto',
@@ -714,7 +708,6 @@ CKEDITOR.lang['it'] = {
         doneOne: 'Il file è stato caricato correttamente.',
         doneMany: '%1 file sono stati caricati correttamente.',
         uploadOne: 'Caricamento del file ({percentage}%)...',
-        uploadMany:
-            'Caricamento dei file, {current} di {max} completati ({percentage}%)...',
+        uploadMany: 'Caricamento dei file, {current} di {max} completati ({percentage}%)...',
     },
 };

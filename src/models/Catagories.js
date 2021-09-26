@@ -28,7 +28,7 @@ const categorySchema = new Schema(
             ref: 'managers',
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 categorySchema.pre('save', function (next) {

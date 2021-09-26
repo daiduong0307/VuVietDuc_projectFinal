@@ -6,8 +6,7 @@
     btnUndo: 'Ontdoen',
     changeTo: 'Verander na',
     errorLoading: 'Fout by inlaai van diens: %s.',
-    ieSpellDownload:
-        'Speltoetser is nie geïnstalleer nie. Wil u dit nou aflaai?',
+    ieSpellDownload: 'Speltoetser is nie geïnstalleer nie. Wil u dit nou aflaai?',
     manyChanges: 'Klaar met speltoets: %1 woorde verander',
     noChanges: 'Klaar met speltoets: Geen woorde verander nie',
     noMispell: 'Klaar met speltoets: Geen foute nie',

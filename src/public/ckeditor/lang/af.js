@@ -83,8 +83,7 @@ CKEDITOR.lang['af'] = {
             'Ongeldige CSS. Formaat is een of meer sleutel-wert paare, "naam : wert" met kommapunte gesky.',
         cssLengthTooltip:
             "Voeg 'n getal wert in pixel in, of 'n waarde met geldige CSS eenheid (px, %, in, cm, mm, em, ex, pt, of pc).",
-        unavailable:
-            '%1<span class="cke_accessibility">, nie beskikbaar nie</span>',
+        unavailable: '%1<span class="cke_accessibility">, nie beskikbaar nie</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Enter',
@@ -296,10 +295,8 @@ CKEDITOR.lang['af'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -468,11 +465,9 @@ CKEDITOR.lang['af'] = {
         alt: 'Alternatiewe teks',
         border: 'Rand',
         btnUpload: 'Stuur na bediener',
-        button2Img:
-            "Wil u die geselekteerde afbeeldingsknop vervang met 'n eenvoudige afbeelding?",
+        button2Img: "Wil u die geselekteerde afbeeldingsknop vervang met 'n eenvoudige afbeelding?",
         hSpace: 'HSpasie',
-        img2Button:
-            "Wil u die geselekteerde afbeelding vervang met 'n afbeeldingsknop?",
+        img2Button: "Wil u die geselekteerde afbeelding vervang met 'n afbeeldingsknop?",
         infoTab: 'Afbeelding informasie',
         linkTab: 'Skakel',
         lockRatio: 'Vaste proporsie',
@@ -701,7 +696,6 @@ CKEDITOR.lang['af'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

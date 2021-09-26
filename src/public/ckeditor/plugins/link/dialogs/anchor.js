@@ -7,7 +7,7 @@ CKEDITOR.dialog.add('anchor', function (c) {
         return b.createFakeElement(
             b.document.createElement('a', { attributes: a }),
             'cke_anchor',
-            'anchor'
+            'anchor',
         );
     }
     return {
@@ -19,9 +19,7 @@ CKEDITOR.dialog.add('anchor', function (c) {
             b = a.getRanges()[0];
             a = a.getSelectedElement();
             b.shrink(CKEDITOR.SHRINK_ELEMENT);
-            (a = b.getEnclosedNode()) &&
-                a.type === CKEDITOR.NODE_TEXT &&
-                (a = a.getParent());
+            (a = b.getEnclosedNode()) && a.type === CKEDITOR.NODE_TEXT && (a = a.getParent());
             a && !a.is('a') && (a = a.getAscendant('a') || a);
             b =
                 a &&
@@ -41,14 +39,10 @@ CKEDITOR.dialog.add('anchor', function (c) {
                       b.replace(a),
                       CKEDITOR.env.ie && c.getSelection().selectElement(b))
                     : a.setAttributes(b);
-            else if (
-                ((a = (a = c.getSelection()) && a.getRanges()[0]), a.collapsed)
-            )
+            else if (((a = (a = c.getSelection()) && a.getRanges()[0]), a.collapsed))
                 (b = f(c, b)), a.insertNode(b);
             else {
-                CKEDITOR.env.ie &&
-                    9 > CKEDITOR.env.version &&
-                    (b['class'] = 'cke_anchor');
+                CKEDITOR.env.ie && 9 > CKEDITOR.env.version && (b['class'] = 'cke_anchor');
                 var d = a.clone();
                 d.enlarge(CKEDITOR.ENLARGE_ELEMENT);
                 for (
@@ -95,9 +89,7 @@ CKEDITOR.dialog.add('anchor', function (c) {
                         label: c.lang.link.anchor.name,
                         required: !0,
                         validate: function () {
-                            return this.getValue()
-                                ? !0
-                                : (alert(c.lang.link.anchor.errorName), !1);
+                            return this.getValue() ? !0 : (alert(c.lang.link.anchor.errorName), !1);
                         },
                     },
                 ],

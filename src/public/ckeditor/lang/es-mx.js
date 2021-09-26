@@ -126,8 +126,7 @@ CKEDITOR.lang['es-mx'] = {
     about: {
         copy: 'Derechos reservados &copy; $1. Todos los derechos reservados',
         dlgTitle: 'Acerca de CKEditor 4',
-        moreInfo:
-            'Para información sobre la licencia por favor visita nuestro sitio web:',
+        moreInfo: 'Para información sobre la licencia por favor visita nuestro sitio web:',
     },
     basicstyles: {
         bold: 'Negrita',
@@ -257,8 +256,7 @@ CKEDITOR.lang['es-mx'] = {
         emptyListMsg: '(Sin plantilla definida)',
         insertOption: 'Reemplazar contenido actual',
         options: 'Opciones de la plantilla',
-        selectPromptMsg:
-            'Por favor selecciona una plantilla para abrir en el editor',
+        selectPromptMsg: 'Por favor selecciona una plantilla para abrir en el editor',
         title: 'Contenido de las plantillas',
     },
     contextmenu: { options: 'Opciones del menú contextual' },
@@ -298,14 +296,12 @@ CKEDITOR.lang['es-mx'] = {
     },
     filetools: {
         loadError: 'Ha ocurrido un error al leer el archivo',
-        networkError:
-            'Ha ocurrido un error de red durante la carga del archivo.',
+        networkError: 'Ha ocurrido un error de red durante la carga del archivo.',
         httpError404:
             'Se ha producido un error HTTP durante la subida de archivos (404: archivo no encontrado).',
         httpError403:
             'Se ha producido un error HTTP durante la subida de archivos (403: Prohibido).',
-        httpError:
-            'Se ha producido un error HTTP durante la subida de archivos (error: %1).',
+        httpError: 'Se ha producido un error HTTP durante la subida de archivos (error: %1).',
         noUrlError: 'La URL de subida no está definida.',
         responseError: 'Respuesta incorrecta del servidor.',
     },
@@ -473,11 +469,9 @@ CKEDITOR.lang['es-mx'] = {
         alt: 'Texto alternativo',
         border: 'Borde',
         btnUpload: 'Enviar al servidor',
-        button2Img:
-            '¿Desea transformar el botón de imagen seleccionado en una imagen simple?',
+        button2Img: '¿Desea transformar el botón de imagen seleccionado en una imagen simple?',
         hSpace: 'Espacio horizontal',
-        img2Button:
-            '¿Desea transformar la imagen seleccionada en un botón de imagen?',
+        img2Button: '¿Desea transformar la imagen seleccionada en un botón de imagen?',
         infoTab: 'Información de imagen',
         linkTab: 'Enlace',
         lockRatio: 'Bloquear aspecto',
@@ -584,8 +578,7 @@ CKEDITOR.lang['es-mx'] = {
         type: 'Tipo',
         upperAlpha: 'Abecedario mayúscula (A, B, C, D, E, etc.)',
         upperRoman: 'Romanos mayúscula (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'El número de inicio de la lista debe ser un número entero.',
+        validateStartNumber: 'El número de inicio de la lista debe ser un número entero.',
     },
     magicline: { title: 'Insertar un párrafo aquí' },
     maximize: { maximize: 'Maximizar', minimize: 'Minimizar' },
@@ -665,8 +658,7 @@ CKEDITOR.lang['es-mx'] = {
             invalidWidth: 'El ancho de la celda debe ser un número entero.',
             invalidHeight: 'El alto de la celda debe ser un número entero.',
             invalidRowSpan: 'El intervalo de filas debe ser un número entero.',
-            invalidColSpan:
-                'El intervalo de columnas debe ser un número entero.',
+            invalidColSpan: 'El intervalo de columnas debe ser un número entero.',
             chooseColor: 'Escoger',
         },
         cellPad: 'relleno de celda',
@@ -686,10 +678,8 @@ CKEDITOR.lang['es-mx'] = {
         headersRow: 'Primera fila',
         heightUnit: 'height unit',
         invalidBorder: 'El tamaño del borde debe ser un número entero.',
-        invalidCellPadding:
-            'El relleno de la celda debe ser un número positivo.',
-        invalidCellSpacing:
-            'El espacio de la celda debe ser un número positivo.',
+        invalidCellPadding: 'El relleno de la celda debe ser un número positivo.',
+        invalidCellSpacing: 'El espacio de la celda debe ser un número positivo.',
         invalidCols: 'El número de columnas debe ser un número mayo que 0.',
         invalidHeight: 'La altura de la tabla debe ser un número.',
         invalidRows: 'El número de filas debe ser mayor a 0.',
@@ -716,7 +706,6 @@ CKEDITOR.lang['es-mx'] = {
         doneOne: 'El archivo ha sido cargado completamente.',
         doneMany: '%1 archivos cargados completamente.',
         uploadOne: 'Cargando archivo ({percentage}%)...',
-        uploadMany:
-            'Cargando archivos, {current} de {max} listo ({percentage}%)...',
+        uploadMany: 'Cargando archivos, {current} de {max} listo ({percentage}%)...',
     },
 };

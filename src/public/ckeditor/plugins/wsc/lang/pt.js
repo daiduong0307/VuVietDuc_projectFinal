@@ -6,11 +6,9 @@
     btnUndo: 'Anular',
     changeTo: 'Mudar para',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        ' Verificação ortográfica não instalada. Quer descarregar agora?',
+    ieSpellDownload: ' Verificação ortográfica não instalada. Quer descarregar agora?',
     manyChanges: 'Verificação ortográfica completa: %1 palavras alteradas',
-    noChanges:
-        'Verificação ortográfica completa: não houve alteração de palavras',
+    noChanges: 'Verificação ortográfica completa: não houve alteração de palavras',
     noMispell: 'Verificação ortográfica completa: não foram encontrados erros',
     noSuggestions: '- Sem sugestões -',
     notAvailable: 'Sorry, but service is unavailable now.',

@@ -114,8 +114,7 @@
              * on some pages. e.g.: html, body { height: 100% }
              */
             scrollHeight > windowHeight &&
-            (body.offsetHeight <= windowHeight ||
-                html.offsetHeight <= windowHeight)
+            (body.offsetHeight <= windowHeight || html.offsetHeight <= windowHeight)
         ) {
             var fullPageElem = document.createElement('div');
             fullPageElem.style.cssText =
@@ -321,12 +320,10 @@
 
         if (isMac) {
             if (event.wheelDeltaX && isDivisible(event.wheelDeltaX, 120)) {
-                deltaX =
-                    -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
+                deltaX = -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
             }
             if (event.wheelDeltaY && isDivisible(event.wheelDeltaY, 120)) {
-                deltaY =
-                    -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
+                deltaY = -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
             }
         }
 
@@ -399,8 +396,7 @@
         // spacebar should trigger button press
         if (
             (isNodeName(target, 'button') ||
-                (isNodeName(target, 'input') &&
-                    buttonTypes.test(target.type))) &&
+                (isNodeName(target, 'input') && buttonTypes.test(target.type))) &&
             event.keyCode === key.spacebar
         ) {
             return true;
@@ -486,8 +482,7 @@
     }
 
     function setCache(elems, overflowing) {
-        for (var i = elems.length; i--; )
-            cache[uniqueID(elems[i])] = overflowing;
+        for (var i = elems.length; i--; ) cache[uniqueID(elems[i])] = overflowing;
         return overflowing;
     }
 
@@ -509,14 +504,9 @@
             }
             elems.push(el);
             if (rootScrollHeight === el.scrollHeight) {
-                var topOverflowsNotHidden =
-                    overflowNotHidden(root) && overflowNotHidden(body);
-                var isOverflowCSS =
-                    topOverflowsNotHidden || overflowAutoOrScroll(root);
-                if (
-                    (isFrame && isContentOverflowing(root)) ||
-                    (!isFrame && isOverflowCSS)
-                ) {
+                var topOverflowsNotHidden = overflowNotHidden(root) && overflowNotHidden(body);
+                var isOverflowCSS = topOverflowsNotHidden || overflowAutoOrScroll(root);
+                if ((isFrame && isContentOverflowing(root)) || (!isFrame && isOverflowCSS)) {
                     return setCache(elems, getScrollRoot());
                 }
             } else if (isContentOverflowing(el) && overflowAutoOrScroll(el)) {
@@ -608,9 +598,7 @@
         var isControl = false;
         if (document.URL.indexOf('www.youtube.com/watch') != -1) {
             do {
-                isControl =
-                    elem.classList &&
-                    elem.classList.contains('html5-video-controls');
+                isControl = elem.classList && elem.classList.contains('html5-video-controls');
                 if (isControl) break;
             } while ((elem = elem.parentNode));
         }
@@ -629,9 +617,7 @@
     })();
 
     var MutationObserver =
-        window.MutationObserver ||
-        window.WebKitMutationObserver ||
-        window.MozMutationObserver;
+        window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
     var getScrollRoot = (function () {
         var SCROLL_ROOT;
@@ -643,8 +629,7 @@
                 var bodyScrollTop = document.body.scrollTop;
                 var docElScrollTop = document.documentElement.scrollTop;
                 window.scrollBy(0, 3);
-                if (document.body.scrollTop != bodyScrollTop)
-                    SCROLL_ROOT = document.body;
+                if (document.body.scrollTop != bodyScrollTop) SCROLL_ROOT = document.body;
                 else SCROLL_ROOT = document.documentElement;
                 window.scrollBy(0, -3);
                 document.body.removeChild(dummy);
@@ -705,8 +690,7 @@
 
     var wheelEvent;
     if ('onwheel' in document.createElement('div')) wheelEvent = 'wheel';
-    else if ('onmousewheel' in document.createElement('div'))
-        wheelEvent = 'mousewheel';
+    else if ('onmousewheel' in document.createElement('div')) wheelEvent = 'mousewheel';
 
     if (wheelEvent && isEnabledForBrowser) {
         addEvent(wheelEvent, wheel);
@@ -720,8 +704,7 @@
 
     function SmoothScroll(optionsToSet) {
         for (var key in optionsToSet)
-            if (defaultOptions.hasOwnProperty(key))
-                options[key] = optionsToSet[key];
+            if (defaultOptions.hasOwnProperty(key)) options[key] = optionsToSet[key];
     }
     SmoothScroll.destroy = cleanup;
 

@@ -12,7 +12,7 @@
             function (a) {
                 return h(a);
             },
-            this
+            this,
         );
         if (b.length !== e.length)
             return (
@@ -26,10 +26,7 @@
             if (0 === b[d].indexOf('file://'))
                 if (e[d]) {
                     var k = b[d].replace(/\\/g, '\\\\');
-                    a = a.replace(
-                        new RegExp('(\x3cimg [^\x3e]*src\x3d["\']?)' + k),
-                        '$1' + e[d]
-                    );
+                    a = a.replace(new RegExp('(\x3cimg [^\x3e]*src\x3d["\']?)' + k), '$1' + e[d]);
                 } else
                     CKEDITOR.error('pastetools-unsupported-image', {
                         type: c[d].type,
@@ -41,7 +38,7 @@
         var e = CKEDITOR.tools.array.unique(
             CKEDITOR.tools.array.filter(b, function (a) {
                 return a.match(/^blob:/i);
-            })
+            }),
         );
         b = CKEDITOR.tools.array.map(e, m);
         CKEDITOR.tools.promise.all(b).then(function (b) {
@@ -58,7 +55,7 @@
                             a.setAttribute('src', b);
                             a.setAttribute('data-cke-saved-src', b);
                         },
-                        this
+                        this,
                     );
                 } else CKEDITOR.error('pastetools-unsupported-image', { type: 'blob', index: c });
             });
@@ -96,7 +93,7 @@
                     -1 !==
                     CKEDITOR.tools.array.indexOf(
                         CKEDITOR.pasteFilters.image.supportedImageTypes,
-                        n
+                        n,
                     );
             l
                 ? d.push(d[f])
@@ -104,9 +101,7 @@
                   m ||
                   ((g = {
                       id: h,
-                      hex: q
-                          ? e.extractGroupContent(g).replace(/\s/g, '')
-                          : null,
+                      hex: q ? e.extractGroupContent(g).replace(/\s/g, '') : null,
                       type: n,
                   }),
                   -1 !== f ? d.splice(f, 1, g) : d.push(g));
@@ -114,12 +109,7 @@
         return d;
     }
     function q(a) {
-        for (
-            var c = /<img[^>]+src="([^"]+)[^>]+/g, b = [], e;
-            (e = c.exec(a));
-
-        )
-            b.push(e[1]);
+        for (var c = /<img[^>]+src="([^"]+)[^>]+/g, b = [], e; (e = c.exec(a)); ) b.push(e[1]);
         return b;
     }
     function r(a) {
@@ -127,7 +117,7 @@
             CKEDITOR.pasteFilters.image.recognizableImageTypes,
             function (b) {
                 return b.marker.test(a);
-            }
+            },
         );
         return c ? c.type : 'unknown';
     }
@@ -136,17 +126,13 @@
                 -1 !==
                 CKEDITOR.tools.array.indexOf(
                     CKEDITOR.pasteFilters.image.supportedImageTypes,
-                    a.type
+                    a.type,
                 ),
             b = a.hex;
         if (!c) return null;
-        'string' === typeof b &&
-            (b = CKEDITOR.tools.convertHexStringToBytes(a.hex));
+        'string' === typeof b && (b = CKEDITOR.tools.convertHexStringToBytes(a.hex));
         return a.type
-            ? 'data:' +
-                  a.type +
-                  ';base64,' +
-                  CKEDITOR.tools.convertBytesToBase64(b)
+            ? 'data:' + a.type + ';base64,' + CKEDITOR.tools.convertBytesToBase64(b)
             : null;
     }
     function m(a) {
@@ -159,7 +145,7 @@
                     a = h({ type: e, hex: a });
                     c(a);
                 },
-                'arraybuffer'
+                'arraybuffer',
             );
         });
     }
@@ -174,7 +160,7 @@
             CKEDITOR.pasteFilters.image.recognizableImageSignatures,
             function (a) {
                 return 0 === c.indexOf(a.signature);
-            }
+            },
         ))
             ? a.type
             : null;
@@ -191,11 +177,7 @@
     CKEDITOR.pasteFilters.image.createSrcWithBase64 = h;
     CKEDITOR.pasteFilters.image.convertBlobUrlToBase64 = m;
     CKEDITOR.pasteFilters.image.getImageTypeFromSignature = t;
-    CKEDITOR.pasteFilters.image.supportedImageTypes = [
-        'image/png',
-        'image/jpeg',
-        'image/gif',
-    ];
+    CKEDITOR.pasteFilters.image.supportedImageTypes = ['image/png', 'image/jpeg', 'image/gif'];
     CKEDITOR.pasteFilters.image.recognizableImageTypes = [
         { marker: /\\pngblip/, type: 'image/png' },
         { marker: /\\jpegblip/, type: 'image/jpeg' },

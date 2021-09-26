@@ -9,12 +9,12 @@
                 'clickSlice',
                 'pullOutSlice',
                 'pullInSlice',
-                'rightClickSlice'
+                'rightClickSlice',
             );
             k.AmSlicedChart.base.construct.call(this, a);
             this.colors =
                 '#FF0F00 #FF6600 #FF9E01 #FCD202 #F8FF01 #B0DE09 #04D215 #0D8ECF #0D52D1 #2A0CD0 #8A0CCF #CD0D74 #754DEB #DDDDDD #999999 #333333 #000000 #57032A #CA9726 #990000 #4B0C25'.split(
-                    ' '
+                    ' ',
                 );
             this.alpha = 1;
             this.groupPercent = 0;
@@ -43,8 +43,7 @@
             this.autoMarginOffset = 10;
             this.gradientRatio = [];
             this.maxLabelWidth = 200;
-            this.accessibleLabel =
-                '[[title]]: [[percents]]% [[value]] [[description]]';
+            this.accessibleLabel = '[[title]]: [[percents]]% [[value]] [[description]]';
             k.applyTheme(this, a, 'AmSlicedChart');
         },
         initChart: function () {
@@ -117,7 +116,7 @@
                 '',
                 this.usePrefixes,
                 this.prefixesOfSmallNumbers,
-                this.prefixesOfBigNumbers
+                this.prefixesOfBigNumbers,
             );
             var d = this.pf.precision;
             isNaN(this.tempPrec) || (this.pf.precision = this.tempPrec);
@@ -127,8 +126,7 @@
                 '[[description]]': b.description,
             });
             this.pf.precision = d;
-            -1 != a.indexOf('[[') &&
-                (a = k.formatDataContextValue(a, b.dataContext));
+            -1 != a.indexOf('[[') && (a = k.formatDataContextValue(a, b.dataContext));
             a = c ? k.fixNewLines(a) : k.fixBrakes(a);
             return (a = k.cleanFromEmpty(a));
         },
@@ -173,20 +171,12 @@
                 (0 < a.alpha && b.show(),
                 b.translate(a.startX, a.startY),
                 this.animatable.push(b),
-                b.animate(
-                    { opacity: 1, translate: '0,0' },
-                    c,
-                    this.startEffect
-                ));
+                b.animate({ opacity: 1, translate: '0,0' }, c, this.startEffect));
             d &&
                 0 < c &&
                 (0 < a.alpha && d.show(),
                 d.translate(a.startX, a.startY),
-                d.animate(
-                    { opacity: 1, translate: '0,0' },
-                    c,
-                    this.startEffect
-                ));
+                d.animate({ opacity: 1, translate: '0,0' }, c, this.startEffect));
         },
         showLabels: function () {
             var a = this.chartData,
@@ -214,9 +204,7 @@
             clearTimeout(this.hoverInt);
             if (!a.hidden) {
                 this.pullOnHover && this.pullSlice(a, 1);
-                1 > this.hoverAlpha &&
-                    a.wedge &&
-                    a.wedge.attr({ opacity: this.hoverAlpha });
+                1 > this.hoverAlpha && a.wedge && a.wedge.attr({ opacity: this.hoverAlpha });
                 var d = a.balloonX,
                     g = a.balloonY;
                 a.pulled && ((d += a.pullX), (g += a.pullY));
@@ -279,7 +267,7 @@
                             [c.tx0, c.tx, c.tx2],
                             [c.ty0, d, d],
                             this.labelTickColor,
-                            this.labelTickAlpha
+                            this.labelTickAlpha,
                         );
                     k.setCN(this, d, this.type + '-tick');
                     k.setCN(this, d, c.className, !0);
@@ -314,23 +302,21 @@
                     ? (c.animate(
                           { translate: b * a.pullX + ',' + b * a.pullY },
                           d,
-                          this.pullOutEffect
+                          this.pullOutEffect,
                       ),
                       a.labelSet &&
                           a.labelSet.animate(
                               { translate: b * a.pullX + ',' + b * a.pullY },
                               d,
-                              this.pullOutEffect
+                              this.pullOutEffect,
                           ))
-                    : (a.labelSet &&
-                          a.labelSet.translate(b * a.pullX, b * a.pullY),
+                    : (a.labelSet && a.labelSet.translate(b * a.pullX, b * a.pullY),
                       c.translate(b * a.pullX, b * a.pullY));
             1 == b
                 ? ((a.pulled = !0),
                   this.pullOutOnlyOne && this.pullInAll(a.index),
                   (a = { type: 'pullOutSlice', dataItem: a, chart: this }))
-                : ((a.pulled = !1),
-                  (a = { type: 'pullInSlice', dataItem: a, chart: this }));
+                : ((a.pulled = !1), (a = { type: 'pullInSlice', dataItem: a, chart: this }));
             this.fire(a);
         },
         pullInAll: function (a) {
@@ -342,8 +328,7 @@
         pullOutAll: function () {
             var a = this.chartData,
                 b;
-            for (b = 0; b < a.length; b++)
-                a[b].pulled || this.pullSlice(a[b], 1);
+            for (b = 0; b < a.length; b++) a[b].pulled || this.pullSlice(a[b], 1);
         },
         parseData: function () {
             var a = [];
@@ -360,8 +345,7 @@
                     f = {};
                     var e = b[g];
                     f.dataContext = e;
-                    null !== e[this.valueField] &&
-                        (f.value = Number(e[this.valueField]));
+                    null !== e[this.valueField] && (f.value = Number(e[this.valueField]));
                     (h = e[this.titleField]) || (h = '');
                     f.title = h;
                     f.pulled = k.toBoolean(e[this.pulledField], !1);
@@ -374,10 +358,7 @@
                     h = e[this.patternField];
                     !h && this.patterns && (h = this.patterns[g]);
                     f.pattern = h;
-                    f.visibleInLegend = k.toBoolean(
-                        e[this.visibleInLegendField],
-                        !0
-                    );
+                    f.visibleInLegend = k.toBoolean(e[this.visibleInLegendField], !0);
                     h = e[this.alphaField];
                     f.alpha = void 0 !== h ? Number(h) : this.alpha;
                     h = e[this.colorField];
@@ -414,8 +395,7 @@
                 for (g = 0; g < a.length; g++)
                     c
                         ? (h = k.adjustLuminosity(c, (g * d) / 100))
-                        : ((h = this.colors[g]),
-                          void 0 === h && (h = k.randomColor())),
+                        : ((h = this.colors[g]), void 0 === h && (h = k.randomColor())),
                         void 0 === a[g].color && (a[g].color = h);
                 this.recalculatePercents();
             }
@@ -425,12 +405,10 @@
                 b = 0,
                 c,
                 d;
-            for (c = 0; c < a.length; c++)
-                (d = a[c]), !d.hidden && 0 < d.value && (b += d.value);
+            for (c = 0; c < a.length; c++) (d = a[c]), !d.hidden && 0 < d.value && (b += d.value);
             for (c = 0; c < a.length; c++)
                 (d = this.chartData[c]),
-                    (d.percents =
-                        !d.hidden && 0 < d.value ? (100 * d.value) / b : 0);
+                    (d.percents = !d.hidden && 0 < d.value ? (100 * d.value) / b : 0);
         },
         removeSmallSlices: function () {
             var a = this.chartData,
@@ -446,12 +424,9 @@
                 var c = a.chartData[b];
                 c.started = !1;
                 var d = c.wedge;
-                d &&
-                    (d.setAttr('opacity', a.startAlpha),
-                    d.translate(c.startX, c.startY));
+                d && (d.setAttr('opacity', a.startAlpha), d.translate(c.startX, c.startY));
                 if ((d = c.labelSet))
-                    d.setAttr('opacity', a.startAlpha),
-                        d.translate(c.startX, c.startY);
+                    d.setAttr('opacity', a.startAlpha), d.translate(c.startX, c.startY);
             }
             b = a.startDuration;
             0 < b
@@ -470,13 +445,7 @@
                     g = this.formatString(this.labelText, d),
                     f = this.labelFunction;
                 f && (g = f(d, g));
-                d = k.text(
-                    this.container,
-                    g,
-                    this.color,
-                    this.fontFamily,
-                    this.fontSize
-                );
+                d = k.text(this.container, g, this.color, this.fontFamily, this.fontSize);
                 g = d.getBBox().width;
                 g > b && (b = g);
                 d.remove();
@@ -502,8 +471,7 @@
             this.pullOutRadius = '20%';
             this.labelRadius = 20;
             this.labelText = '[[title]]: [[percents]]%';
-            this.balloonText =
-                '[[title]]: [[percents]]% ([[value]])\n[[description]]';
+            this.balloonText = '[[title]]: [[percents]]% ([[value]])\n[[description]]';
             this.previousScale = 1;
             this.adjustPrecision = !1;
             this.gradientType = 'radial';
@@ -533,14 +501,8 @@
                         q = this.measureMaxLabel();
                     q > this.maxLabelWidth && (q = this.maxLabelWidth);
                     (this.labelText && this.labelsEnabled) || (w = q = 0);
-                    A =
-                        void 0 === this.pieX
-                            ? (d - h - e) / 2 + h
-                            : f(this.pieX, this.realWidth);
-                    B =
-                        void 0 === this.pieY
-                            ? (g - z - n) / 2 + z
-                            : f(this.pieY, g);
+                    A = void 0 === this.pieX ? (d - h - e) / 2 + h : f(this.pieX, this.realWidth);
+                    B = void 0 === this.pieY ? (g - z - n) / 2 + z : f(this.pieY, g);
                     m = f(this.radius, d, g);
                     m ||
                         ((d = 0 <= w ? d - h - e - 2 * q : d - h - e),
@@ -561,24 +523,18 @@
                     d = m - (m * this.angle) / 90;
                     for (h = q = 0; h < a.length; h++)
                         (e = a[h]),
-                            !0 !== e.hidden &&
-                                (q += k.roundTo(e.percents, this.pf.precision));
+                            !0 !== e.hidden && (q += k.roundTo(e.percents, this.pf.precision));
                     q = k.roundTo(q, this.pf.precision);
                     this.tempPrec = NaN;
-                    this.adjustPrecision &&
-                        100 != q &&
-                        (this.tempPrec = this.pf.precision + 1);
+                    this.adjustPrecision && 100 != q && (this.tempPrec = this.pf.precision + 1);
                     for (var E, h = 0; h < a.length; h++)
                         if (
                             ((e = a[h]),
-                            !0 !== e.hidden &&
-                                (this.showZeroSlices || 0 !== e.percents))
+                            !0 !== e.hidden && (this.showZeroSlices || 0 !== e.percents))
                         ) {
                             var r = (360 * e.percents) / 100,
                                 q = Math.sin(((n + r / 2) / 180) * Math.PI),
-                                C =
-                                    (d / m) *
-                                    -Math.cos(((n + r / 2) / 180) * Math.PI),
+                                C = (d / m) * -Math.cos(((n + r / 2) / 180) * Math.PI),
                                 p = this.outlineColor;
                             p || (p = e.color);
                             var u = this.alpha;
@@ -605,7 +561,7 @@
                                 this.gradientRatio,
                                 e.pattern,
                                 this.path,
-                                this.gradientType
+                                this.gradientType,
                             );
                             k.setCN(this, p, 'pie-item');
                             k.setCN(this, p.wedge, 'pie-slice');
@@ -613,9 +569,7 @@
                             this.addEventListeners(p, e);
                             e.startAngle = n;
                             a[h].wedge = p;
-                            0 < b &&
-                                (this.chartCreated ||
-                                    p.setAttr('opacity', this.startAlpha));
+                            0 < b && (this.chartCreated || p.setAttr('opacity', this.startAlpha));
                             e.ix = q;
                             e.iy = C;
                             e.wedge = p;
@@ -632,8 +586,7 @@
                                 360 < l && (l -= 360);
                                 var t = w;
                                 isNaN(e.labelRadius) ||
-                                    ((t = e.labelRadius),
-                                    0 > t && (e.skipTick = !0));
+                                    ((t = e.labelRadius), 0 > t && (e.skipTick = !0));
                                 var r = A + q * (m + t),
                                     D = B + C * (m + t),
                                     x,
@@ -641,8 +594,7 @@
                                 isNaN(E) &&
                                     350 < l &&
                                     1 < a.length - h &&
-                                    (E =
-                                        h - 1 + Math.floor((a.length - h) / 2));
+                                    (E = h - 1 + Math.floor((a.length - h) / 2));
                                 if (0 <= t) {
                                     var y;
                                     90 >= l && 0 <= l
@@ -655,12 +607,8 @@
                                         ? ((y = 3), (x = 'end'), (v = -8))
                                         : 354 <= l &&
                                           (h > E
-                                              ? ((y = 0),
-                                                (x = 'start'),
-                                                (v = 8))
-                                              : ((y = 3),
-                                                (x = 'end'),
-                                                (v = -8)));
+                                              ? ((y = 0), (x = 'start'), (v = 8))
+                                              : ((y = 3), (x = 'end'), (v = -8)));
                                     e.labelQuarter = y;
                                 } else x = 'middle';
                                 l = this.formatString(this.labelText, e);
@@ -676,13 +624,12 @@
                                         this.fontSize,
                                         x,
                                         !1,
-                                        this.maxLabelWidth
+                                        this.maxLabelWidth,
                                     )),
                                     k.setCN(this, l, 'pie-label'),
                                     k.setCN(this, l, e.className, !0),
                                     l.translate(r + 1.5 * v, D),
-                                    0 > w &&
-                                        (l.node.style.pointerEvents = 'none'),
+                                    0 > w && (l.node.style.pointerEvents = 'none'),
                                     (l.node.style.cursor = 'default'),
                                     (e.ty = D),
                                     (e.textX = r + 1.5 * v),
@@ -700,13 +647,9 @@
                             e.pulled && (r += g);
                             this.accessible &&
                                 this.accessibleLabel &&
-                                ((D = this.formatString(
-                                    this.accessibleLabel,
-                                    e
-                                )),
+                                ((D = this.formatString(this.accessibleLabel, e)),
                                 this.makeAccessible(p, D));
-                            void 0 !== this.tabIndex &&
-                                p.setAttr('tabindex', this.tabIndex);
+                            void 0 !== this.tabIndex && p.setAttr('tabindex', this.tabIndex);
                             e.balloonX = q * r + A;
                             e.balloonY = C * r + B;
                             e.startX = Math.round(q * z);
@@ -749,24 +692,16 @@
                 d;
             for (d = b - 1; 0 <= d; d--)
                 (c = a[d]),
-                    0 !== c.labelQuarter ||
-                        c.hidden ||
-                        this.checkOverlapping(d, c, 0, !0, 0);
+                    0 !== c.labelQuarter || c.hidden || this.checkOverlapping(d, c, 0, !0, 0);
             for (d = 0; d < b; d++)
                 (c = a[d]),
-                    1 != c.labelQuarter ||
-                        c.hidden ||
-                        this.checkOverlapping(d, c, 1, !1, 0);
+                    1 != c.labelQuarter || c.hidden || this.checkOverlapping(d, c, 1, !1, 0);
             for (d = b - 1; 0 <= d; d--)
                 (c = a[d]),
-                    2 != c.labelQuarter ||
-                        c.hidden ||
-                        this.checkOverlapping(d, c, 2, !0, 0);
+                    2 != c.labelQuarter || c.hidden || this.checkOverlapping(d, c, 2, !0, 0);
             for (d = 0; d < b; d++)
                 (c = a[d]),
-                    3 != c.labelQuarter ||
-                        c.hidden ||
-                        this.checkOverlapping(d, c, 3, !1, 0);
+                    3 != c.labelQuarter || c.hidden || this.checkOverlapping(d, c, 3, !1, 0);
         },
         checkOverlapping: function (a, b, c, d, g) {
             var f,

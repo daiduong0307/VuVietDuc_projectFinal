@@ -44,8 +44,7 @@ CKEDITOR.lang['cy'] = {
         validateNumberFailed: "'Dyw'r gwerth hwn ddim yn rhif.",
         confirmNewPage:
             "Byddwch chi'n colli unrhyw newidiadau i'r cynnwys sydd heb eu cadw. Ydych am barhau i lwytho tudalen newydd?",
-        confirmCancel:
-            "Cafodd rhai o'r opsiynau eu newid. Ydych chi wir am gau'r deialog?",
+        confirmCancel: "Cafodd rhai o'r opsiynau eu newid. Ydych chi wir am gau'r deialog?",
         options: 'Opsiynau',
         target: 'Targed',
         targetNew: 'Ffenest Newydd (_blank)',
@@ -294,10 +293,8 @@ CKEDITOR.lang['cy'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -466,8 +463,7 @@ CKEDITOR.lang['cy'] = {
         alt: 'Testun Amgen',
         border: 'Ymyl',
         btnUpload: "Anfon i'r Gweinydd",
-        button2Img:
-            "Ydych am drawsffurfio'r botwm ddelwedd hwn ar ddelwedd syml?",
+        button2Img: "Ydych am drawsffurfio'r botwm ddelwedd hwn ar ddelwedd syml?",
         hSpace: 'BwlchLl',
         img2Button: "Ydych am drawsffurfio'r ddelwedd hon ar fotwm delwedd?",
         infoTab: 'Gwyb Delwedd',
@@ -656,8 +652,7 @@ CKEDITOR.lang['cy'] = {
             invalidWidth: "Mae'n rhaid i led y gell fod yn rhif.",
             invalidHeight: "Mae'n rhaid i uchder y gell fod yn rhif.",
             invalidRowSpan: "Mae'n rhaid i rychwant y rhesi fod yn gyfanrif.",
-            invalidColSpan:
-                "Mae'n rhaid i rychwant y colofnau fod yn gyfanrif.",
+            invalidColSpan: "Mae'n rhaid i rychwant y colofnau fod yn gyfanrif.",
             chooseColor: 'Dewis',
         },
         cellPad: "Padio'r gell",
@@ -678,8 +673,7 @@ CKEDITOR.lang['cy'] = {
         heightUnit: 'height unit',
         invalidBorder: "Mae'n rhaid i faint yr ymyl fod yn rhif.",
         invalidCellPadding: "Mae'n rhaid i badiad y gell fod yn rhif positif.",
-        invalidCellSpacing:
-            "Mae'n rhaid i fylchiad y gell fod yn rhif positif.",
+        invalidCellSpacing: "Mae'n rhaid i fylchiad y gell fod yn rhif positif.",
         invalidCols: "Mae'n rhaid cael o leiaf un golofn.",
         invalidHeight: "Mae'n rhaid i uchder y tabl fod yn rhif.",
         invalidRows: "Mae'n rhaid cael o leiaf un rhes.",
@@ -706,7 +700,6 @@ CKEDITOR.lang['cy'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

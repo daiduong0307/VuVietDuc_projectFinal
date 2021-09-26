@@ -59,8 +59,7 @@ CKEDITOR.plugins.setLang('a11yhelp', 'el', {
                 {
                     name: 'Επικολλήστε ως απλό κείμενο.',
                     legend: 'Πιέστε $(pastetext)',
-                    legendEdge:
-                        'Πιέστε $(pastetext), ακολουθούμενο με (paste)_',
+                    legendEdge: 'Πιέστε $(pastetext), ακολουθούμενο με (paste)_',
                 },
             ],
         },

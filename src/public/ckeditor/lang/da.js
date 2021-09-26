@@ -83,8 +83,7 @@ CKEDITOR.lang['da'] = {
             'Værdien specificeret for inline style skal indeholde en eller flere elementer med et format som "name:value", separeret af semikoloner',
         cssLengthTooltip:
             'Indsæt en numerisk værdi i pixel eller nummer med en gyldig CSS værdi (px, %, in, cm, mm, em, ex, pt, eller pc).',
-        unavailable:
-            '%1<span class="cke_accessibility">, ikke tilgængelig</span>',
+        unavailable: '%1<span class="cke_accessibility">, ikke tilgængelig</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Retur',
@@ -127,8 +126,7 @@ CKEDITOR.lang['da'] = {
     about: {
         copy: 'Copyright &copy; $1. Alle rettigheder forbeholdes.',
         dlgTitle: 'Om CKEditor 4',
-        moreInfo:
-            'For informationer omkring licens, se venligst vores hjemmeside (på engelsk):',
+        moreInfo: 'For informationer omkring licens, se venligst vores hjemmeside (på engelsk):',
     },
     basicstyles: {
         bold: 'Fed',
@@ -297,12 +295,9 @@ CKEDITOR.lang['da'] = {
     filetools: {
         loadError: 'Der skete en fejl ved indlæsningen af filen.',
         networkError: 'Der skete en netværks fejl under uploadingen.',
-        httpError404:
-            'Der skete en HTTP fejl under uploadingen (404: File not found).',
-        httpError403:
-            'Der skete en HTTP fejl under uploadingen (403: Forbidden).',
-        httpError:
-            'Der skete en HTTP fejl under uploadingen (error status: %1).',
+        httpError404: 'Der skete en HTTP fejl under uploadingen (404: File not found).',
+        httpError403: 'Der skete en HTTP fejl under uploadingen (403: Forbidden).',
+        httpError: 'Der skete en HTTP fejl under uploadingen (error status: %1).',
         noUrlError: 'Upload URL er ikke defineret.',
         responseError: 'Ikke korrekt server svar.',
     },
@@ -576,8 +571,7 @@ CKEDITOR.lang['da'] = {
         type: 'Type',
         upperAlpha: 'Store alfabet (A, B, C, D, E, etc.)',
         upperRoman: 'Store romerske (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'Den nummererede liste skal starte med et rundt nummer',
+        validateStartNumber: 'Den nummererede liste skal starte med et rundt nummer',
     },
     magicline: { title: 'Indsæt afsnit' },
     maximize: { maximize: 'Maksimér', minimize: 'Minimér' },
@@ -702,7 +696,6 @@ CKEDITOR.lang['da'] = {
         doneOne: 'Filen er uploadet.',
         doneMany: 'Du har uploadet %1 filer.',
         uploadOne: 'Uploader fil ({percentage}%)...',
-        uploadMany:
-            'Uploader filer, {current} af {max} er uploadet ({percentage}%)...',
+        uploadMany: 'Uploader filer, {current} af {max} er uploadet ({percentage}%)...',
     },
 };

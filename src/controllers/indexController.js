@@ -180,9 +180,7 @@ exports.blogByCategory = async (req, res) => {
         });
     } catch (error) {
         res.status(404).send(error.message);
-        return res.redirect(
-            `/BlogByCategory/${blogCategory._id}?msg=${error.message}`
-        );
+        return res.redirect(`/BlogByCategory/${blogCategory._id}?msg=${error.message}`);
     }
 };
 
@@ -294,9 +292,7 @@ exports.blogByCategory = async (req, res) => {
         });
     } catch (error) {
         res.status(404).send(error.message);
-        return res.redirect(
-            `/BlogByCategory/${blogCategory._id}?msg=${error.message}`
-        );
+        return res.redirect(`/BlogByCategory/${blogCategory._id}?msg=${error.message}`);
     }
 };
 
@@ -350,7 +346,7 @@ exports.blogDetails = async (req, res) => {
         const blogUpdate = await blogModel.findOneAndUpdate(
             { _id: blogId },
             { $set: { views: count } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
         res.render('indexViews/blogDetail', {
             title,

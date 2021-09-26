@@ -92,15 +92,12 @@
                                         label: b.start,
                                         type: 'text',
                                         id: 'start',
-                                        validate:
-                                            CKEDITOR.dialog.validate.integer(
-                                                b.validateStartNumber
-                                            ),
+                                        validate: CKEDITOR.dialog.validate.integer(
+                                            b.validateStartNumber,
+                                        ),
                                         setup: function (a) {
                                             a =
-                                                a
-                                                    .getFirst(g)
-                                                    .getAttribute('value') ||
+                                                a.getFirst(g).getAttribute('value') ||
                                                 a.getAttribute('start') ||
                                                 1;
                                             this.setValue(a);
@@ -111,28 +108,16 @@
                                                     b.getAttribute('value') ||
                                                     a.getAttribute('start') ||
                                                     1;
-                                            a.getFirst(g).removeAttribute(
-                                                'value'
-                                            );
-                                            var d = parseInt(
-                                                this.getValue(),
-                                                10
-                                            );
+                                            a.getFirst(g).removeAttribute('value');
+                                            var d = parseInt(this.getValue(), 10);
                                             isNaN(d)
                                                 ? a.removeAttribute('start')
                                                 : a.setAttribute('start', d);
                                             a = b;
                                             b = c;
-                                            for (
-                                                d = isNaN(d) ? 1 : d;
-                                                (a = a.getNext(g)) && b++;
-
-                                            )
+                                            for (d = isNaN(d) ? 1 : d; (a = a.getNext(g)) && b++; )
                                                 a.getAttribute('value') == b &&
-                                                    a.setAttribute(
-                                                        'value',
-                                                        d + b - c
-                                                    );
+                                                    a.setAttribute('value', d + b - c);
                                         },
                                     },
                                     {
@@ -152,13 +137,8 @@
                                         commit: function (a) {
                                             var b = this.getValue();
                                             b
-                                                ? a.setStyle(
-                                                      'list-style-type',
-                                                      b
-                                                  )
-                                                : a.removeStyle(
-                                                      'list-style-type'
-                                                  );
+                                                ? a.setStyle('list-style-type', b)
+                                                : a.removeStyle('list-style-type');
                                         },
                                     },
                                 ],

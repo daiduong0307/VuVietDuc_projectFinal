@@ -6,20 +6,14 @@
     function b(a, b, c) {
         var h = n[this.id];
         if (h)
-            for (
-                var f = this instanceof CKEDITOR.ui.dialog.checkbox, e = 0;
-                e < h.length;
-                e++
-            ) {
+            for (var f = this instanceof CKEDITOR.ui.dialog.checkbox, e = 0; e < h.length; e++) {
                 var d = h[e];
                 switch (d.type) {
                     case 1:
                         if (!a) continue;
                         if (null !== a.getAttribute(d.name)) {
                             a = a.getAttribute(d.name);
-                            f
-                                ? this.setValue('true' == a.toLowerCase())
-                                : this.setValue(a);
+                            f ? this.setValue('true' == a.toLowerCase()) : this.setValue(a);
                             return;
                         }
                         f && this.setValue(!!d['default']);
@@ -28,9 +22,7 @@
                         if (!a) continue;
                         if (d.name in c) {
                             a = c[d.name];
-                            f
-                                ? this.setValue('true' == a.toLowerCase())
-                                : this.setValue(a);
+                            f ? this.setValue('true' == a.toLowerCase()) : this.setValue(a);
                             return;
                         }
                         f && this.setValue(!!d['default']);
@@ -39,9 +31,7 @@
                         if (!b) continue;
                         if (b.getAttribute(d.name)) {
                             a = b.getAttribute(d.name);
-                            f
-                                ? this.setValue('true' == a.toLowerCase())
-                                : this.setValue(a);
+                            f ? this.setValue('true' == a.toLowerCase()) : this.setValue(a);
                             return;
                         }
                         f && this.setValue(!!d['default']);
@@ -61,11 +51,7 @@
                 var g = h[d];
                 switch (g.type) {
                     case 1:
-                        if (
-                            !a ||
-                            ('data' == g.name && b && !a.hasAttribute('data'))
-                        )
-                            continue;
+                        if (!a || ('data' == g.name && b && !a.hasAttribute('data'))) continue;
                         var m = this.getValue();
                         f || (e && m === g['default'])
                             ? a.removeAttribute(g.name)
@@ -74,19 +60,15 @@
                     case 2:
                         if (!a) continue;
                         m = this.getValue();
-                        if (f || (e && m === g['default']))
-                            g.name in c && c[g.name].remove();
-                        else if (g.name in c)
-                            c[g.name].setAttribute('value', m);
+                        if (f || (e && m === g['default'])) g.name in c && c[g.name].remove();
+                        else if (g.name in c) c[g.name].setAttribute('value', m);
                         else {
                             var p = CKEDITOR.dom.element.createFromHtml(
                                 '\x3ccke:param\x3e\x3c/cke:param\x3e',
-                                a.getDocument()
+                                a.getDocument(),
                             );
                             p.setAttributes({ name: g.name, value: m });
-                            1 > a.getChildCount()
-                                ? p.appendTo(a)
-                                : p.insertBefore(a.getFirst());
+                            1 > a.getChildCount() ? p.appendTo(a) : p.insertBefore(a.getFirst());
                         }
                         break;
                     case 4:
@@ -139,7 +121,7 @@
             },
             k =
                 'play loop menu quality scale salign wmode bgcolor base flashvars allowScriptAccess allowFullScreen'.split(
-                    ' '
+                    ' ',
                 ),
             l = 0;
         l < k.length;
@@ -150,8 +132,7 @@
             { type: 2, name: k[l] },
         ];
     k = ['play', 'loop', 'menu'];
-    for (l = 0; l < k.length; l++)
-        n[k[l]][0]['default'] = n[k[l]][1]['default'] = !0;
+    for (l = 0; l < k.length; l++) n[k[l]][0]['default'] = n[k[l]][1]['default'] = !0;
     CKEDITOR.dialog.add('flash', function (a) {
         var l = !a.config.flashEmbedTagOnly,
             k = a.config.flashAddEmbedTag || a.config.flashEmbedTagOnly,
@@ -189,9 +170,7 @@
                         d = g.getElementsByTag('embed', 'cke');
                         0 < d.count() && (b = d.getItem(0));
                         for (
-                            var d = g.getElementsByTag('param', 'cke'),
-                                f = 0,
-                                l = d.count();
+                            var d = g.getElementsByTag('param', 'cke'), f = 0, l = d.count();
                             f < l;
                             f++
                         ) {
@@ -215,31 +194,26 @@
                     : (l &&
                           ((e = CKEDITOR.dom.element.createFromHtml(
                               '\x3ccke:object\x3e\x3c/cke:object\x3e',
-                              a.document
+                              a.document,
                           )),
                           e.setAttributes({
-                              classid:
-                                  'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
+                              classid: 'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
                               codebase:
                                   'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version\x3d6,0,40,0',
                           })),
                       k &&
                           ((d = CKEDITOR.dom.element.createFromHtml(
                               '\x3ccke:embed\x3e\x3c/cke:embed\x3e',
-                              a.document
+                              a.document,
                           )),
                           d.setAttributes({
                               type: 'application/x-shockwave-flash',
-                              pluginspage:
-                                  'http://www.macromedia.com/go/getflashplayer',
+                              pluginspage: 'http://www.macromedia.com/go/getflashplayer',
                           }),
                           e && d.appendTo(e)));
                 if (e)
                     for (
-                        var b = {},
-                            c = e.getElementsByTag('param', 'cke'),
-                            f = 0,
-                            h = c.count();
+                        var b = {}, c = e.getElementsByTag('param', 'cke'), f = 0, h = c.count();
                         f < h;
                         f++
                     )
@@ -251,8 +225,7 @@
                 e.setAttributes(f);
                 e.setStyles(c);
                 this.fakeImage
-                    ? (e.replace(this.fakeImage),
-                      a.getSelection().selectElement(e))
+                    ? (e.replace(this.fakeImage), a.getSelection().selectElement(e))
                     : a.insertElement(e);
             },
             onHide: function () {
@@ -279,47 +252,36 @@
                                             type: 'text',
                                             label: a.lang.common.url,
                                             required: !0,
-                                            validate:
-                                                CKEDITOR.dialog.validate.notEmpty(
-                                                    a.lang.flash.validateSrc
-                                                ),
+                                            validate: CKEDITOR.dialog.validate.notEmpty(
+                                                a.lang.flash.validateSrc,
+                                            ),
                                             setup: b,
                                             commit: c,
                                             onLoad: function () {
                                                 var a = this.getDialog(),
                                                     b = function (b) {
-                                                        h.setAttribute(
-                                                            'src',
-                                                            b
-                                                        );
+                                                        h.setAttribute('src', b);
                                                         a.preview.setHtml(
                                                             '\x3cembed height\x3d"100%" width\x3d"100%" src\x3d"' +
                                                                 CKEDITOR.tools.htmlEncode(
-                                                                    h.getAttribute(
-                                                                        'src'
-                                                                    )
+                                                                    h.getAttribute('src'),
                                                                 ) +
-                                                                '" type\x3d"application/x-shockwave-flash"\x3e\x3c/embed\x3e'
+                                                                '" type\x3d"application/x-shockwave-flash"\x3e\x3c/embed\x3e',
                                                         );
                                                     };
                                                 a.preview = a
-                                                    .getContentElement(
-                                                        'info',
-                                                        'preview'
-                                                    )
+                                                    .getContentElement('info', 'preview')
                                                     .getElement()
                                                     .getChild(3);
                                                 this.on('change', function (a) {
-                                                    a.data &&
-                                                        a.data.value &&
-                                                        b(a.data.value);
+                                                    a.data && a.data.value && b(a.data.value);
                                                 });
                                                 this.getInputElement().on(
                                                     'change',
                                                     function () {
                                                         b(this.getValue());
                                                     },
-                                                    this
+                                                    this,
                                                 );
                                             },
                                         },
@@ -345,13 +307,12 @@
                                     requiredContent: 'embed[width]',
                                     style: 'width:95px',
                                     label: a.lang.common.width,
-                                    validate:
-                                        CKEDITOR.dialog.validate.htmlLength(
-                                            a.lang.common.invalidHtmlLength.replace(
-                                                '%1',
-                                                a.lang.common.width
-                                            )
+                                    validate: CKEDITOR.dialog.validate.htmlLength(
+                                        a.lang.common.invalidHtmlLength.replace(
+                                            '%1',
+                                            a.lang.common.width,
                                         ),
+                                    ),
                                     setup: b,
                                     commit: c,
                                 },
@@ -361,13 +322,12 @@
                                     requiredContent: 'embed[height]',
                                     style: 'width:95px',
                                     label: a.lang.common.height,
-                                    validate:
-                                        CKEDITOR.dialog.validate.htmlLength(
-                                            a.lang.common.invalidHtmlLength.replace(
-                                                '%1',
-                                                a.lang.common.height
-                                            )
+                                    validate: CKEDITOR.dialog.validate.htmlLength(
+                                        a.lang.common.invalidHtmlLength.replace(
+                                            '%1',
+                                            a.lang.common.height,
                                         ),
+                                    ),
                                     setup: b,
                                     commit: c,
                                 },
@@ -378,7 +338,7 @@
                                     style: 'width:95px',
                                     label: a.lang.flash.hSpace,
                                     validate: CKEDITOR.dialog.validate.integer(
-                                        a.lang.flash.validateHSpace
+                                        a.lang.flash.validateHSpace,
                                     ),
                                     setup: b,
                                     commit: c,
@@ -390,7 +350,7 @@
                                     style: 'width:95px',
                                     label: a.lang.flash.vSpace,
                                     validate: CKEDITOR.dialog.validate.integer(
-                                        a.lang.flash.validateVSpace
+                                        a.lang.flash.validateVSpace,
                                     ),
                                     setup: b,
                                     commit: c,
@@ -449,10 +409,7 @@
                                     items: [
                                         [a.lang.common.notSet, ''],
                                         [a.lang.flash.scaleAll, 'showall'],
-                                        [
-                                            a.lang.flash.scaleNoBorder,
-                                            'noborder',
-                                        ],
+                                        [a.lang.flash.scaleNoBorder, 'noborder'],
                                         [a.lang.flash.scaleFit, 'exactfit'],
                                     ],
                                     setup: b,
@@ -468,10 +425,7 @@
                                     items: [
                                         [a.lang.common.notSet, ''],
                                         [a.lang.flash.accessAlways, 'always'],
-                                        [
-                                            a.lang.flash.accessSameDomain,
-                                            'samedomain',
-                                        ],
+                                        [a.lang.flash.accessSameDomain, 'samedomain'],
                                         [a.lang.flash.accessNever, 'never'],
                                     ],
                                     setup: b,
@@ -492,18 +446,9 @@
                                     style: 'width : 100%;',
                                     items: [
                                         [a.lang.common.notSet, ''],
-                                        [
-                                            a.lang.flash.windowModeWindow,
-                                            'window',
-                                        ],
-                                        [
-                                            a.lang.flash.windowModeOpaque,
-                                            'opaque',
-                                        ],
-                                        [
-                                            a.lang.flash.windowModeTransparent,
-                                            'transparent',
-                                        ],
+                                        [a.lang.flash.windowModeWindow, 'window'],
+                                        [a.lang.flash.windowModeOpaque, 'opaque'],
+                                        [a.lang.flash.windowModeTransparent, 'transparent'],
                                     ],
                                     setup: b,
                                     commit: c,
@@ -519,15 +464,9 @@
                                         [a.lang.common.notSet, ''],
                                         [a.lang.flash.qualityBest, 'best'],
                                         [a.lang.flash.qualityHigh, 'high'],
-                                        [
-                                            a.lang.flash.qualityAutoHigh,
-                                            'autohigh',
-                                        ],
+                                        [a.lang.flash.qualityAutoHigh, 'autohigh'],
                                         [a.lang.flash.qualityMedium, 'medium'],
-                                        [
-                                            a.lang.flash.qualityAutoLow,
-                                            'autolow',
-                                        ],
+                                        [a.lang.flash.qualityAutoLow, 'autolow'],
                                         [a.lang.flash.qualityLow, 'low'],
                                     ],
                                     setup: b,
@@ -549,18 +488,9 @@
                                     items: [
                                         [a.lang.common.notSet, ''],
                                         [a.lang.common.left, 'left'],
-                                        [
-                                            a.lang.flash.alignAbsBottom,
-                                            'absBottom',
-                                        ],
-                                        [
-                                            a.lang.flash.alignAbsMiddle,
-                                            'absMiddle',
-                                        ],
-                                        [
-                                            a.lang.flash.alignBaseline,
-                                            'baseline',
-                                        ],
+                                        [a.lang.flash.alignAbsBottom, 'absBottom'],
+                                        [a.lang.flash.alignAbsMiddle, 'absMiddle'],
+                                        [a.lang.flash.alignBaseline, 'baseline'],
                                         [a.lang.common.alignBottom, 'bottom'],
                                         [a.lang.common.alignMiddle, 'middle'],
                                         [a.lang.common.right, 'right'],
@@ -582,9 +512,7 @@
                         },
                         {
                             type: 'fieldset',
-                            label: CKEDITOR.tools.htmlEncode(
-                                a.lang.flash.flashvars
-                            ),
+                            label: CKEDITOR.tools.htmlEncode(a.lang.flash.flashvars),
                             children: [
                                 {
                                     type: 'vbox',
@@ -672,7 +600,7 @@
                             id: 'style',
                             requiredContent: 'embed{cke-xyz}',
                             validate: CKEDITOR.dialog.validate.inlineStyle(
-                                a.lang.common.invalidInlineStyle
+                                a.lang.common.invalidInlineStyle,
                             ),
                             label: a.lang.common.cssStyle,
                             setup: b,

@@ -91,15 +91,12 @@ $(document).ready(function () {
         .click(function (event) {
             // On-page links
             if (
-                location.pathname.replace(/^\//, '') ==
-                    this.pathname.replace(/^\//, '') &&
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
                 location.hostname == this.hostname
             ) {
                 // Figure out element to scroll to
                 var target = $(this.hash);
-                target = target.length
-                    ? target
-                    : $('[name=' + this.hash.slice(1) + ']');
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                 // Does a scroll target exist?
                 if (target.length) {
                     // Only prevent default if animation is actually gonna happen
@@ -121,7 +118,7 @@ $(document).ready(function () {
                                 $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
                                 $target.focus(); // Set focus again
                             }
-                        }
+                        },
                     );
                 }
             }
@@ -169,11 +166,7 @@ $(document).ready(function () {
                     {
                         featureType: 'road.highway',
                         elementType: 'geometry.stroke',
-                        stylers: [
-                            { color: '#ffffff' },
-                            { lightness: 29 },
-                            { weight: 0.2 },
-                        ],
+                        stylers: [{ color: '#ffffff' }, { lightness: 29 }, { weight: 0.2 }],
                     },
                     {
                         featureType: 'road.arterial',
@@ -197,19 +190,11 @@ $(document).ready(function () {
                     },
                     {
                         elementType: 'labels.text.stroke',
-                        stylers: [
-                            { visibility: 'on' },
-                            { color: '#ffffff' },
-                            { lightness: 16 },
-                        ],
+                        stylers: [{ visibility: 'on' }, { color: '#ffffff' }, { lightness: 16 }],
                     },
                     {
                         elementType: 'labels.text.fill',
-                        stylers: [
-                            { saturation: 36 },
-                            { color: '#333333' },
-                            { lightness: 40 },
-                        ],
+                        stylers: [{ saturation: 36 }, { color: '#333333' }, { lightness: 40 }],
                     },
                     {
                         elementType: 'labels.icon',
@@ -228,11 +213,7 @@ $(document).ready(function () {
                     {
                         featureType: 'administrative',
                         elementType: 'geometry.stroke',
-                        stylers: [
-                            { color: '#fefefe' },
-                            { lightness: 17 },
-                            { weight: 1.2 },
-                        ],
+                        stylers: [{ color: '#fefefe' }, { lightness: 17 }, { weight: 1.2 }],
                     },
                 ],
             };

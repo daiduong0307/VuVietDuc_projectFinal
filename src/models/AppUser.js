@@ -29,7 +29,7 @@ const appUserSchema = new Schema(
             default: 'user',
         },
     },
-    { timestamps: true }
+    { timestamps: true },
 );
 
 // Hash the plain text password before saving

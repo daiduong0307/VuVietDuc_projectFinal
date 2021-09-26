@@ -42,10 +42,8 @@ CKEDITOR.lang['sk'] = {
         generalTab: 'Hlavné',
         advancedTab: 'Rozšírené',
         validateNumberFailed: 'Hodnota nie je číslo.',
-        confirmNewPage:
-            'Prajete si načítat novú stránku? Všetky neuložené zmeny budú stratené. ',
-        confirmCancel:
-            'Niektore možnosti boli zmenené. Naozaj chcete zavrieť okno?',
+        confirmNewPage: 'Prajete si načítat novú stránku? Všetky neuložené zmeny budú stratené. ',
+        confirmCancel: 'Niektore možnosti boli zmenené. Naozaj chcete zavrieť okno?',
         options: 'Možnosti',
         target: 'Cieľ',
         targetNew: 'Nové okno (_blank)',
@@ -126,8 +124,7 @@ CKEDITOR.lang['sk'] = {
     about: {
         copy: 'Copyright &copy; $1. Všetky práva vyhradené.',
         dlgTitle: 'O aplikácii CKEditor 4',
-        moreInfo:
-            'Pre informácie o licenciách, prosíme, navštívte našu web stránku:',
+        moreInfo: 'Pre informácie o licenciách, prosíme, navštívte našu web stránku:',
     },
     basicstyles: {
         bold: 'Tučné',
@@ -292,12 +289,9 @@ CKEDITOR.lang['sk'] = {
     filetools: {
         loadError: 'Počas čítania súboru nastala chyba.',
         networkError: 'Počas nahrávania súboru nastala chyba siete.',
-        httpError404:
-            'Počas nahrávania súboru nastala HTTP chyba (404: Súbor nebol nájdený).',
-        httpError403:
-            'Počas nahrávania súboru nastala HTTP chyba (403: Zakázaný).',
-        httpError:
-            'Počas nahrávania súboru nastala HTTP chyba (error status: %1).',
+        httpError404: 'Počas nahrávania súboru nastala HTTP chyba (404: Súbor nebol nájdený).',
+        httpError403: 'Počas nahrávania súboru nastala HTTP chyba (403: Zakázaný).',
+        httpError: 'Počas nahrávania súboru nastala HTTP chyba (error status: %1).',
         noUrlError: 'URL nahrávania nie je definovaný.',
         responseError: 'Nesprávna odpoveď servera.',
     },
@@ -465,8 +459,7 @@ CKEDITOR.lang['sk'] = {
         alt: 'Alternatívny text',
         border: 'Rám (border)',
         btnUpload: 'Odoslať to na server',
-        button2Img:
-            'Chcete zmeniť vybrané obrázkové tlačidlo na jednoduchý obrázok?',
+        button2Img: 'Chcete zmeniť vybrané obrázkové tlačidlo na jednoduchý obrázok?',
         hSpace: 'H-medzera',
         img2Button: 'Chcete zmeniť vybraný obrázok na obrázkové tlačidlo?',
         infoTab: 'Informácie o obrázku',
@@ -575,8 +568,7 @@ CKEDITOR.lang['sk'] = {
         type: 'Typ',
         upperAlpha: 'Veľké latinské (A, B, C, D, E, atď.)',
         upperRoman: 'Veľké rímske (I, II, III, IV, V, atď.)',
-        validateStartNumber:
-            'Začiatočné číslo číselného zoznamu musí byť celé číslo.',
+        validateStartNumber: 'Začiatočné číslo číselného zoznamu musí byť celé číslo.',
     },
     magicline: { title: 'Odsek vložiť sem' },
     maximize: { maximize: 'Maximalizovať', minimize: 'Minimalizovať' },
@@ -676,10 +668,8 @@ CKEDITOR.lang['sk'] = {
         headersRow: 'Prvý riadok',
         heightUnit: 'jednotka výšky',
         invalidBorder: 'Šírka orámovania musí byť číslo.',
-        invalidCellPadding:
-            'Odsadenie v bunkách (cell padding) musí byť kladné číslo.',
-        invalidCellSpacing:
-            'Medzera mädzi bunkami (cell spacing) musí byť kladné číslo.',
+        invalidCellPadding: 'Odsadenie v bunkách (cell padding) musí byť kladné číslo.',
+        invalidCellSpacing: 'Medzera mädzi bunkami (cell spacing) musí byť kladné číslo.',
         invalidCols: 'Počet stĺpcov musí byť číslo väčšie ako 0.',
         invalidHeight: 'Výška tabuľky musí byť číslo.',
         invalidRows: 'Počet riadkov musí byť číslo väčšie ako 0.',
@@ -709,7 +699,6 @@ CKEDITOR.lang['sk'] = {
         doneOne: 'Súbor úspešne nahraný.',
         doneMany: 'Úspešne nahraných %1 súborov.',
         uploadOne: 'Nahrávanie súboru ({percentage}%)...',
-        uploadMany:
-            'Nahrávanie súborov, {current} z {max} hotovo ({percentage}%)...',
+        uploadMany: 'Nahrávanie súborov, {current} z {max} hotovo ({percentage}%)...',
     },
 };

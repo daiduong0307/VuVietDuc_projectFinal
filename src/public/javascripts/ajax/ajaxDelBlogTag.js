@@ -41,7 +41,7 @@ $(document).ready(() => {
             icon: 'warning',
             buttons: true,
             dangerMode: true,
-        }).then((willDelete) => {
+        }).then(willDelete => {
             if (willDelete) {
                 ajaxDelete(id);
                 swal('Tag has been deleted!', {
@@ -55,7 +55,7 @@ $(document).ready(() => {
         console.log('Here is tags ', data);
         var res = '';
         if (data.length > 0) {
-            data.forEach((el) => {
+            data.forEach(el => {
                 res += getData(el);
             });
         } else {
@@ -74,8 +74,7 @@ $(document).ready(() => {
         html += '<li class="list-group-item d-flex justify-content-between">';
         html += '<p>' + tag.name + '</p>';
         html += '<button id="' + tag._id + '"';
-        html +=
-            'class="btn btn-danger btn-round btn-outline-danger btn-deleteTagBlog"';
+        html += 'class="btn btn-danger btn-round btn-outline-danger btn-deleteTagBlog"';
         html += 'title="Delete" data-toggle="tooltip">';
         html += '<i class="ti-trash"></i>';
         html += '</button>';

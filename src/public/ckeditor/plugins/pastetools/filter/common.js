@@ -24,7 +24,7 @@
     function u(a) {
         var b =
                 'background-color:transparent;background:transparent;background-color:none;background:none;background-position:initial initial;background-repeat:initial initial;caret-color;font-family:-webkit-standard;font-variant-caps;letter-spacing:normal;orphans;widows;text-transform:none;word-spacing:0px;-webkit-text-size-adjust:auto;-webkit-text-stroke-width:0px;text-indent:0px;margin-bottom:0in'.split(
-                    ';'
+                    ';',
                 ),
             c = CKEDITOR.tools.parseCssText(a.attributes.style),
             d,
@@ -70,8 +70,7 @@
                         var b = CKEDITOR.tools.parseCssText(a.attributes.style);
                         b['background-color'] ||
                             ((b['background-color'] = a.attributes.bgcolor),
-                            (a.attributes.style =
-                                CKEDITOR.tools.writeCssText(b)));
+                            (a.attributes.style = CKEDITOR.tools.writeCssText(b)));
                     }
                 },
                 span: function (a) {
@@ -94,8 +93,7 @@
                         a.attributes.align = b.attributes.align;
                         d = b.children.splice(0);
                         a.remove();
-                        for (h = d.length - 1; 0 <= h; h--)
-                            f.add(d[h], b.getIndex());
+                        for (h = d.length - 1; 0 <= h; h--) f.add(d[h], b.getIndex());
                         b.remove();
                     }
                     g.convertStyleToPx(a);
@@ -108,28 +106,21 @@
                         d = m.parseCssText(d.attributes.style, !0),
                         f = d.background;
                     f && g.setStyle(a, 'background', f, !0);
-                    (d = d['background-color']) &&
-                        g.setStyle(a, 'background-color', d, !0);
+                    (d = d['background-color']) && g.setStyle(a, 'background-color', d, !0);
                     var d = m.parseCssText(a.attributes.style, !0),
-                        f = d.border
-                            ? CKEDITOR.tools.style.border.fromCssRule(d.border)
-                            : {},
+                        f = d.border ? CKEDITOR.tools.style.border.fromCssRule(d.border) : {},
                         f = m.style.border.splitCssValues(d, f),
                         l = CKEDITOR.tools.clone(d),
                         h;
                     for (h in l) 0 == h.indexOf('border') && delete l[h];
                     a.attributes.style = CKEDITOR.tools.writeCssText(l);
                     d.background &&
-                        ((h = CKEDITOR.tools.style.parse.background(
-                            d.background
-                        )),
+                        ((h = CKEDITOR.tools.style.parse.background(d.background)),
                         h.color &&
                             (g.setStyle(a, 'background-color', h.color, !0),
                             g.setStyle(a, 'background', '')));
                     for (var n in f)
-                        (h = d[n]
-                            ? CKEDITOR.tools.style.border.fromCssRule(d[n])
-                            : f[n]),
+                        (h = d[n] ? CKEDITOR.tools.style.border.fromCssRule(d[n]) : f[n]),
                             'none' === h.style
                                 ? g.setStyle(a, n, 'none')
                                 : g.setStyle(a, n, h.toString());
@@ -139,13 +130,11 @@
                         a,
                         c,
                         b,
-                        /margin|text\-align|padding|list\-style\-type|width|height|border|white\-space|vertical\-align|background/i
+                        /margin|text\-align|padding|list\-style\-type|width|height|border|white\-space|vertical\-align|background/i,
                     );
                 },
                 font: function (a) {
-                    a.attributes.face &&
-                        d &&
-                        (a.attributes.face = w(a.attributes.face, d));
+                    a.attributes.face && d && (a.attributes.face = w(a.attributes.face, d));
                 },
             },
         };
@@ -188,32 +177,23 @@
         normalizedStyles: function (a, b) {
             var c =
                     'background-color:transparent border-image:none color:windowtext direction:ltr mso- visibility:visible div:border:none'.split(
-                        ' '
+                        ' ',
                     ),
                 d =
                     'font-family font font-size color background-color line-height text-decoration'.split(
-                        ' '
+                        ' ',
                     ),
                 e = function () {
                     for (var a = [], b = 0; b < arguments.length; b++)
                         arguments[b] && a.push(arguments[b]);
                     return -1 !== m.indexOf(c, a.join(':'));
                 },
-                k =
-                    !0 ===
-                    CKEDITOR.plugins.pastetools.getConfigValue(
-                        b,
-                        'removeFontStyles'
-                    ),
+                k = !0 === CKEDITOR.plugins.pastetools.getConfigValue(b, 'removeFontStyles'),
                 f = m.parseCssText(a.attributes.style);
             'cke:li' == a.name &&
                 (f['TEXT-INDENT'] && f.MARGIN
-                    ? ((a.attributes['cke-indentation'] =
-                          p.lists.getElementIndentation(a)),
-                      (f.MARGIN = f.MARGIN.replace(
-                          /(([\w\.]+ ){3,3})[\d\.]+(\w+$)/,
-                          '$10$3'
-                      )))
+                    ? ((a.attributes['cke-indentation'] = p.lists.getElementIndentation(a)),
+                      (f.MARGIN = f.MARGIN.replace(/(([\w\.]+ ){3,3})[\d\.]+(\w+$)/, '$10$3')))
                     : delete f['TEXT-INDENT'],
                 delete f['text-indent']);
             for (var l = m.object.keys(f), h = 0; h < l.length; h++) {
@@ -230,22 +210,16 @@
                     e(g)) &&
                     delete f[l[h]];
             }
-            var r = CKEDITOR.plugins.pastetools.getConfigValue(
-                b,
-                'keepZeroMargins'
-            );
+            var r = CKEDITOR.plugins.pastetools.getConfigValue(b, 'keepZeroMargins');
             t(f);
             (function () {
-                CKEDITOR.tools.array.forEach(
-                    ['top', 'right', 'bottom', 'left'],
-                    function (a) {
-                        a = 'margin-' + a;
-                        if (a in f) {
-                            var b = CKEDITOR.tools.convertToPx(f[a]);
-                            b || r ? (f[a] = b ? b + 'px' : 0) : delete f[a];
-                        }
+                CKEDITOR.tools.array.forEach(['top', 'right', 'bottom', 'left'], function (a) {
+                    a = 'margin-' + a;
+                    if (a in f) {
+                        var b = CKEDITOR.tools.convertToPx(f[a]);
+                        b || r ? (f[a] = b ? b + 'px' : 0) : delete f[a];
                     }
-                );
+                });
             })();
             return CKEDITOR.tools.writeCssText(f);
         },
@@ -263,7 +237,7 @@
                 if (
                     !f.match(
                         d ||
-                            /margin((?!-)|-left|-top|-bottom|-right)|text-indent|text-align|width|border|padding/i
+                            /margin((?!-)|-left|-top|-bottom|-right)|text-indent|text-align|width|border|padding/i,
                     )
                 )
                     if (k) k = !1;
@@ -290,9 +264,7 @@
                 f < d.length;
                 f++
             )
-                -1 !== m.indexOf(b, d[f].toLowerCase())
-                    ? e.push(d[f])
-                    : k.push(d[f]);
+                -1 !== m.indexOf(b, d[f].toLowerCase()) ? e.push(d[f]) : k.push(d[f]);
             e.sort(function (a, c) {
                 var d = m.indexOf(b, a.toLowerCase()),
                     e = m.indexOf(b, c.toLowerCase());
@@ -331,8 +303,7 @@
                             h.replaceWith(n);
                             h = n;
                         }
-                        h.type === CKEDITOR.NODE_ELEMENT &&
-                            ((f = !0), g.setStyle(h, k, e[k]));
+                        h.type === CKEDITOR.NODE_ELEMENT && ((f = !0), g.setStyle(h, k, e[k]));
                     }
                     f && delete e[k];
                 }
@@ -342,7 +313,7 @@
         inliner: {
             filtered:
                 'break-before break-after break-inside page-break page-break-before page-break-after page-break-inside'.split(
-                    ' '
+                    ' ',
                 ),
             parse: function (a) {
                 function b(a) {
@@ -389,19 +360,11 @@
                             return a.selector;
                         });
                         return function (a, b) {
-                            var k =
-                                    -1 !== ('' + a.selector).indexOf('.')
-                                        ? 1
-                                        : 0,
-                                k =
-                                    (-1 !== ('' + b.selector).indexOf('.')
-                                        ? 1
-                                        : 0) - k;
-                            return 0 !== k
-                                ? k
-                                : c.indexOf(b.selector) - c.indexOf(a.selector);
+                            var k = -1 !== ('' + a.selector).indexOf('.') ? 1 : 0,
+                                k = (-1 !== ('' + b.selector).indexOf('.') ? 1 : 0) - k;
+                            return 0 !== k ? k : c.indexOf(b.selector) - c.indexOf(a.selector);
                         };
-                    })(a)
+                    })(a),
                 );
             },
             inline: function (a) {
@@ -416,10 +379,9 @@
                     (function (a) {
                         var c = [],
                             d;
-                        for (d = 0; d < a.count(); d++)
-                            c = c.concat(b(a.getItem(d)));
+                        for (d = 0; d < a.count(); d++) c = c.concat(b(a.getItem(d)));
                         return c;
-                    })(a)
+                    })(a),
                 );
                 CKEDITOR.tools.array.forEach(c, function (a) {
                     var b = a.styles;
@@ -428,15 +390,10 @@
                     t(b);
                     for (h = 0; h < a.count(); h++)
                         (c = a.getItem(h)),
-                            (g = CKEDITOR.tools.parseCssText(
-                                c.getAttribute('style')
-                            )),
+                            (g = CKEDITOR.tools.parseCssText(c.getAttribute('style'))),
                             t(g),
                             (g = CKEDITOR.tools.extend({}, g, b)),
-                            c.setAttribute(
-                                'style',
-                                CKEDITOR.tools.writeCssText(g)
-                            );
+                            c.setAttribute('style', CKEDITOR.tools.writeCssText(g));
                 });
                 return d;
             },
@@ -457,8 +414,7 @@
     };
     p.elements = {
         replaceWithChildren: function (a) {
-            for (var b = a.children.length - 1; 0 <= b; b--)
-                a.children[b].insertAfter(a);
+            for (var b = a.children.length - 1; 0 <= b; b--) a.children[b].insertAfter(a);
         },
     };
     p.createAttributeStack = function (a, b) {
@@ -485,11 +441,7 @@
     p.parseShorthandMargins = t;
     p.rtf = {
         getGroups: function (a, b) {
-            for (
-                var c = [], d, e = 0;
-                (d = p.rtf.getGroup(a, b, { start: e }));
-
-            )
+            for (var c = [], d, e = 0; (d = p.rtf.getGroup(a, b, { start: e })); )
                 (e = d.end), c.push(d);
             return c;
         },
@@ -512,8 +464,7 @@
             b = c.index;
             e = a[b];
             do {
-                var g =
-                    '{' === e && '\\' !== q(a, b, -1) && '\\' === q(a, b, 1);
+                var g = '{' === e && '\\' !== q(a, b, -1) && '\\' === q(a, b, 1);
                 e = '}' === e && '\\' !== q(a, b, -1) && 0 < d;
                 g ? d++ : e && d--;
                 e = a[++b];

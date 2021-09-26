@@ -5,10 +5,10 @@ const socketapi = {
 };
 
 // Add your socket.io logic here!
-io.on('connection', (socket) => {
+io.on('connection', socket => {
     console.log('New Client connection with UID:', socket.id);
 
-    socket.on('newComment', (data) => {
+    socket.on('newComment', data => {
         // console.log("adjdfhdjfwif", formData);
         socket.broadcast.emit('newComment', data);
     });

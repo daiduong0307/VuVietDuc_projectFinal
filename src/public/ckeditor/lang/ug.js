@@ -42,8 +42,7 @@ CKEDITOR.lang['ug'] = {
         generalTab: 'ئادەتتىكى',
         advancedTab: 'ئالىي',
         validateNumberFailed: 'سان پىچىمىدا كىرگۈزۈش زۆرۈر',
-        confirmNewPage:
-            'نۆۋەتتىكى پۈتۈك مەزمۇنى ساقلانمىدى، يېڭى پۈتۈك قۇرامسىز؟',
+        confirmNewPage: 'نۆۋەتتىكى پۈتۈك مەزمۇنى ساقلانمىدى، يېڭى پۈتۈك قۇرامسىز؟',
         confirmCancel: 'قىسمەن ئۆزگەرتىش ساقلانمىدى، بۇ سۆزلەشكۈنى تاقامسىز؟',
         options: 'تاللانما',
         target: 'نىشان كۆزنەك',
@@ -82,8 +81,7 @@ CKEDITOR.lang['ug'] = {
             'ئىچكى باغلانما ئۇسلۇبى چوقۇم چېكىتلىك پەش بىلەن ئايرىلغان بىر ياكى كۆپ «خاسلىق ئاتى:خاسلىق قىممىتى» پىچىمىدا بولۇشى لازىم',
         cssLengthTooltip:
             'بۇ سۆز بۆلىكى بىرىكمە CSS ئۇزۇنلۇق قىممىتى بولۇشى كېرەك. ئۆز ئىچىگە ئالىدىغان بىرلىك (px, %, in, cm, mm, em, ex, pt ياكى pc)',
-        unavailable:
-            '%1<span class=\\\\"cke_accessibility\\\\">، ئىشلەتكىلى بولمايدۇ</span>',
+        unavailable: '%1<span class=\\\\"cke_accessibility\\\\">، ئىشلەتكىلى بولمايدۇ</span>',
         keyboard: {
             8: 'Backspace',
             13: 'Enter',
@@ -126,8 +124,7 @@ CKEDITOR.lang['ug'] = {
     about: {
         copy: 'Copyright &copy; $1. نەشر ھوقۇقىغا ئىگە',
         dlgTitle: 'CKEditor تەھرىرلىگۈچى 4 ھەقىدە',
-        moreInfo:
-            'تور تۇرايىمىزنى زىيارەت قىلىپ كېلىشىمگە ئائىت تېخىمۇ كۆپ ئۇچۇرغا ئېرىشىڭ',
+        moreInfo: 'تور تۇرايىمىزنى زىيارەت قىلىپ كېلىشىمگە ئائىت تېخىمۇ كۆپ ئۇچۇرغا ئېرىشىڭ',
     },
     basicstyles: {
         bold: 'توم',
@@ -295,12 +292,9 @@ CKEDITOR.lang['ug'] = {
     filetools: {
         loadError: 'ھۆججەت ئوقۇشتا خاتالىق كۆرۈلدى',
         networkError: 'ھۆججەت يۈكلەشتە تور خاتالىقى كۆرۈلدى.',
-        httpError404:
-            'ھۆججەت يۈكلىگەندە HTTP خاتالىقى كۆرۈلدى (404: ھۆججەت تېپىلمىدى).',
-        httpError403:
-            'ھۆججەت يۈكلىگەندە HTTP خاتالىقى كۆرۈلدى (403: چەكلەنگەن).',
-        httpError:
-            'ھۆججەت يۈكلىگەندە HTTP خاتالىقى كۆرۈلدى (404: خاتالىق نىسپىتى: 1%).',
+        httpError404: 'ھۆججەت يۈكلىگەندە HTTP خاتالىقى كۆرۈلدى (404: ھۆججەت تېپىلمىدى).',
+        httpError403: 'ھۆججەت يۈكلىگەندە HTTP خاتالىقى كۆرۈلدى (403: چەكلەنگەن).',
+        httpError: 'ھۆججەت يۈكلىگەندە HTTP خاتالىقى كۆرۈلدى (404: خاتالىق نىسپىتى: 1%).',
         noUrlError: 'چىقىردىغان ئۇلانما تەڭشەلمىگەن .',
         responseError: 'مۇلازىمىتىردا ئىنكاس يوق .',
     },
@@ -577,8 +571,7 @@ CKEDITOR.lang['ug'] = {
         type: 'بەلگە تىپى',
         upperAlpha: 'ئىنگلىزچە چوڭ ھەرپ (A, B, C, D, E قاتارلىق)',
         upperRoman: 'چوڭ ھەرپلىك رىم رەقىمى (I, II, III, IV, V قاتارلىق)',
-        validateStartNumber:
-            'تىزىم باشلىنىش تەرتىپ نومۇرى چوقۇم پۈتۈن سان پىچىمىدا بولۇشى لازىم',
+        validateStartNumber: 'تىزىم باشلىنىش تەرتىپ نومۇرى چوقۇم پۈتۈن سان پىچىمىدا بولۇشى لازىم',
     },
     magicline: { title: 'بۇ جايغا ئابزاس قىستۇر' },
     maximize: { maximize: 'چوڭايت', minimize: 'كىچىكلەت' },
@@ -703,7 +696,6 @@ CKEDITOR.lang['ug'] = {
         doneOne: 'ھۆججەت مۇۋەپپەقىيەتلىك يۈكلەندى.',
         doneMany: 'مۇۋەپپەقىيەتلىك ھالدا %1 ھۆججەت يۈكلەندى.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

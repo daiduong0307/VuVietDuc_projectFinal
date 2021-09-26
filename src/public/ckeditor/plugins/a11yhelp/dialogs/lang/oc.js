@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'oc', {
     title: "Instruccions d'accessibilitat",
-    contents:
-        "Contengut de l'ajuda. Per tampar aquesta fenèstra, quichatz sus la tòca Escap.",
+    contents: "Contengut de l'ajuda. Per tampar aquesta fenèstra, quichatz sus la tòca Escap.",
     legend: [
         {
             name: 'General',

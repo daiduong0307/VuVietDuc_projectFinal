@@ -15,7 +15,7 @@ const tagSchema = new Schema(
     },
     {
         timestamps: true,
-    }
+    },
 );
 
 tagSchema.virtual('tagBlog', {

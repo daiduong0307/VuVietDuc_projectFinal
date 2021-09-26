@@ -40,14 +40,8 @@ CKEDITOR.dialog.add('specialchar', function (h) {
         b = b || c.data.getTarget();
         'span' == b.getName() && (b = b.getParent());
         'a' == b.getName() &&
-            (f
-                .getContentElement('info', 'charPreview')
-                .getElement()
-                .setHtml('\x26nbsp;'),
-            f
-                .getContentElement('info', 'htmlPreview')
-                .getElement()
-                .setHtml('\x26nbsp;'),
+            (f.getContentElement('info', 'charPreview').getElement().setHtml('\x26nbsp;'),
+            f.getContentElement('info', 'htmlPreview').getElement().setHtml('\x26nbsp;'),
             b.getParent().removeClass('cke_light_background'),
             (k = void 0));
     };
@@ -81,26 +75,16 @@ CKEDITOR.dialog.add('specialchar', function (h) {
                 if ((a = b.getParent().getNext()))
                     (a = a.getChild(0)),
                         1 == a.type
-                            ? (a.focus(),
-                              d(null, b),
-                              e(null, a),
-                              c.preventDefault(!0))
+                            ? (a.focus(), d(null, b), e(null, a), c.preventDefault(!0))
                             : d(null, b);
                 else if ((a = b.getParent().getParent().getNext()))
                     (a = a.getChild([0, 0])) && 1 == a.type
-                        ? (a.focus(),
-                          d(null, b),
-                          e(null, a),
-                          c.preventDefault(!0))
+                        ? (a.focus(), d(null, b), e(null, a), c.preventDefault(!0))
                         : d(null, b);
                 break;
             case r ? 39 : 37:
                 (a = b.getParent().getPrevious())
-                    ? ((a = a.getChild(0)),
-                      a.focus(),
-                      d(null, b),
-                      e(null, a),
-                      c.preventDefault(!0))
+                    ? ((a = a.getChild(0)), a.focus(), d(null, b), e(null, a), c.preventDefault(!0))
                     : (a = b.getParent().getParent().getPrevious())
                     ? ((a = a.getLast().getChild(0)),
                       a.focus(),
@@ -138,16 +122,9 @@ CKEDITOR.dialog.add('specialchar', function (h) {
                     if ((g = b[e])) {
                         g instanceof Array
                             ? ((m = g[1]), (g = g[0]))
-                            : ((m = g
-                                  .replace('\x26', '')
-                                  .replace(';', '')
-                                  .replace('#', '')),
+                            : ((m = g.replace('\x26', '').replace(';', '').replace('#', '')),
                               (m = n[m] || g));
-                        var l =
-                            'cke_specialchar_label_' +
-                            e +
-                            '_' +
-                            CKEDITOR.tools.getNextNumber();
+                        var l = 'cke_specialchar_label_' + e + '_' + CKEDITOR.tools.getNextNumber();
                         d.push(
                             '\x3ctd class\x3d"cke_dark_background" style\x3d"cursor: default" role\x3d"presentation"\x3e\x3ca href\x3d"javascript: void(0);" role\x3d"option" aria-posinset\x3d"' +
                                 (e + 1) +
@@ -166,7 +143,7 @@ CKEDITOR.dialog.add('specialchar', function (h) {
                                 l +
                                 '"\x3e' +
                                 m +
-                                '\x3c/span\x3e\x3c/a\x3e\x3c/td\x3e'
+                                '\x3c/span\x3e\x3c/a\x3e\x3c/td\x3e',
                         );
                     }
                 d.push('\x3c/tr\x3e');
@@ -177,11 +154,9 @@ CKEDITOR.dialog.add('specialchar', function (h) {
                     a +
                     '" class\x3d"cke_voice_label"\x3e' +
                     n.options +
-                    '\x3c/span\x3e'
+                    '\x3c/span\x3e',
             );
-            this.getContentElement('info', 'charContainer')
-                .getElement()
-                .setHtml(d.join(''));
+            this.getContentElement('info', 'charContainer').getElement().setHtml(d.join(''));
         },
         contents: [
             {
@@ -203,18 +178,14 @@ CKEDITOR.dialog.add('specialchar', function (h) {
                                 onMouseover: e,
                                 onMouseout: d,
                                 focus: function () {
-                                    var c = this.getElement()
-                                        .getElementsByTag('a')
-                                        .getItem(0);
+                                    var c = this.getElement().getElementsByTag('a').getItem(0);
                                     setTimeout(function () {
                                         c.focus();
                                         e(null, c);
                                     }, 0);
                                 },
                                 onShow: function () {
-                                    var c = this.getElement().getChild([
-                                        0, 0, 0, 0, 0,
-                                    ]);
+                                    var c = this.getElement().getChild([0, 0, 0, 0, 0]);
                                     setTimeout(function () {
                                         c.focus();
                                         e(null, c);
@@ -240,16 +211,14 @@ CKEDITOR.dialog.add('specialchar', function (h) {
                                             {
                                                 type: 'html',
                                                 id: 'charPreview',
-                                                className:
-                                                    'cke_dark_background',
+                                                className: 'cke_dark_background',
                                                 style: "border:1px solid #eeeeee;font-size:28px;height:40px;width:70px;padding-top:9px;font-family:'Microsoft Sans Serif',Arial,Helvetica,Verdana;text-align:center;",
                                                 html: '\x3cdiv\x3e\x26nbsp;\x3c/div\x3e',
                                             },
                                             {
                                                 type: 'html',
                                                 id: 'htmlPreview',
-                                                className:
-                                                    'cke_dark_background',
+                                                className: 'cke_dark_background',
                                                 style: "border:1px solid #eeeeee;font-size:14px;height:20px;width:70px;padding-top:2px;font-family:'Microsoft Sans Serif',Arial,Helvetica,Verdana;text-align:center;",
                                                 html: '\x3cdiv\x3e\x26nbsp;\x3c/div\x3e',
                                             },

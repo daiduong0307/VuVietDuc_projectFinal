@@ -24,7 +24,7 @@ $(window).on('load', function () {
                     x: 30,
                     y: 30,
                 },
-            }
+            },
         );
     }
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
                     '<span data-growl="message"></span>' +
                     '<a href="#" data-growl="url"></a>' +
                     '</div>',
-            }
+            },
         );
     }
 

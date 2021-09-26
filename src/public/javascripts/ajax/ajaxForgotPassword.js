@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $('#resetForm').on('submit', (e) => {
+    $('#resetForm').on('submit', e => {
         e.preventDefault();
 
         var formData = $('#resetForm').serializeArray();

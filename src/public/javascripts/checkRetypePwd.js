@@ -1,8 +1,5 @@
 const check = () => {
-    if (
-        document.getElementById('pwd').value ==
-        document.getElementById('rePwd').value
-    ) {
+    if (document.getElementById('pwd').value == document.getElementById('rePwd').value) {
         document.getElementById('message').style.color = 'green';
         document.getElementById('message').innerHTML = 'Matching';
         document.getElementById('submit_acc').disabled = false;

@@ -10,8 +10,7 @@
         "La vérification d'orthographe n'est pas installée. Voulez-vous la télécharger maintenant?",
     manyChanges: "Vérification de l'orthographe terminée : %1 mots corrigés.",
     noChanges: "Vérification de l'orthographe terminée : Aucun mot corrigé.",
-    noMispell:
-        "Vérification de l'orthographe terminée : aucune erreur trouvée.",
+    noMispell: "Vérification de l'orthographe terminée : aucune erreur trouvée.",
     noSuggestions: '- Aucune suggestion -',
     notAvailable: 'Désolé, le service est indisponible actuellement.',
     notInDic: "N'existe pas dans le dictionnaire.",

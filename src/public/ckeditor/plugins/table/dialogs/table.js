@@ -15,9 +15,7 @@
     function t(a) {
         return function () {
             var f = this.getValue(),
-                f = !!(
-                    CKEDITOR.dialog.validate.integer().call(this, f) && 0 < f
-                );
+                f = !!(CKEDITOR.dialog.validate.integer().call(this, f) && 0 < f);
             f || (alert(a), this.select());
             return f;
         };
@@ -48,8 +46,7 @@
                             c = d.getContentElement('info', 'txtWidth');
                         c && c.setValue(a, !0);
                         a = this.getStyle('height', '');
-                        (c = d.getContentElement('info', 'txtHeight')) &&
-                            c.setValue(a, !0);
+                        (c = d.getContentElement('info', 'txtHeight')) && c.setValue(a, !0);
                     });
             },
             onShow: function () {
@@ -64,11 +61,8 @@
                     ((d = d.getSelectedElement()) && d.is('table')
                         ? (b = d)
                         : 0 < e.length &&
-                          (CKEDITOR.env.webkit &&
-                              e[0].shrink(CKEDITOR.NODE_ELEMENT),
-                          (b = a
-                              .elementPath(e[0].getCommonAncestor(!0))
-                              .contains('table', 1))),
+                          (CKEDITOR.env.webkit && e[0].shrink(CKEDITOR.NODE_ELEMENT),
+                          (b = a.elementPath(e[0].getCommonAncestor(!0)).contains('table', 1))),
                     (this._.selectedElement = b));
                 b
                     ? (this.setupContent(b), c && c.disable(), h && h.disable())
@@ -100,56 +94,40 @@
                         g = b.getElementsByTag('thead').getItem(0);
                         h = b.getElementsByTag('tbody').getItem(0);
                         l = h.getElementsByTag('tr').getItem(0);
-                        g ||
-                            ((g = new CKEDITOR.dom.element('thead')),
-                            g.insertBefore(h));
+                        g || ((g = new CKEDITOR.dom.element('thead')), g.insertBefore(h));
                         for (k = 0; k < l.getChildCount(); k++)
                             (h = l.getChild(k)),
                                 h.type != CKEDITOR.NODE_ELEMENT ||
                                     h.data('cke-bookmark') ||
-                                    (h.renameNode('th'),
-                                    h.setAttribute('scope', 'col'));
+                                    (h.renameNode('th'), h.setAttribute('scope', 'col'));
                         g.append(l.remove());
                     }
                     if (null !== b.$.tHead && 'row' != f && 'both' != f) {
                         g = new CKEDITOR.dom.element(b.$.tHead);
-                        for (
-                            h = b.getElementsByTag('tbody').getItem(0);
-                            0 < g.getChildCount();
-
-                        ) {
+                        for (h = b.getElementsByTag('tbody').getItem(0); 0 < g.getChildCount(); ) {
                             l = g.getFirst();
                             for (k = 0; k < l.getChildCount(); k++)
                                 (m = l.getChild(k)),
                                     m.type == CKEDITOR.NODE_ELEMENT &&
-                                        (m.renameNode('td'),
-                                        m.removeAttribute('scope'));
+                                        (m.renameNode('td'), m.removeAttribute('scope'));
                             h.append(l, !0);
                         }
                         g.remove();
                     }
                     if (!this.hasColumnHeaders && ('col' == f || 'both' == f))
                         for (g = 0; g < b.$.rows.length; g++)
-                            (m = new CKEDITOR.dom.element(
-                                b.$.rows[g].cells[0]
-                            )),
+                            (m = new CKEDITOR.dom.element(b.$.rows[g].cells[0])),
                                 m.renameNode('th'),
                                 m.setAttribute('scope', 'row');
                     if (this.hasColumnHeaders && 'col' != f && 'both' != f)
                         for (k = 0; k < b.$.rows.length; k++)
                             (g = new CKEDITOR.dom.element(b.$.rows[k])),
                                 'tbody' == g.getParent().getName() &&
-                                    ((m = new CKEDITOR.dom.element(
-                                        g.$.cells[0]
-                                    )),
+                                    ((m = new CKEDITOR.dom.element(g.$.cells[0])),
                                     m.renameNode('td'),
                                     m.removeAttribute('scope'));
-                    c.txtHeight
-                        ? b.setStyle('height', c.txtHeight)
-                        : b.removeStyle('height');
-                    c.txtWidth
-                        ? b.setStyle('width', c.txtWidth)
-                        : b.removeStyle('width');
+                    c.txtHeight ? b.setStyle('height', c.txtHeight) : b.removeStyle('height');
+                    c.txtWidth ? b.setStyle('width', c.txtWidth) : b.removeStyle('width');
                     b.getAttribute('style') || b.removeAttribute('style');
                 }
                 if (this._.selectedElement)
@@ -159,9 +137,7 @@
                 else
                     a.insertElement(b),
                         setTimeout(function () {
-                            var d = new CKEDITOR.dom.element(
-                                    b.$.rows[0].cells[0]
-                                ),
+                            var d = new CKEDITOR.dom.element(b.$.rows[0].cells[0]),
                                 c = a.createRange();
                             c.moveToPosition(d, CKEDITOR.POSITION_AFTER_START);
                             c.select();
@@ -188,9 +164,7 @@
                                             label: a.lang.table.rows,
                                             required: !0,
                                             controlStyle: 'width:5em',
-                                            validate: t(
-                                                a.lang.table.invalidRows
-                                            ),
+                                            validate: t(a.lang.table.invalidRows),
                                             setup: function (d) {
                                                 this.setValue(d.$.rows.length);
                                             },
@@ -203,9 +177,7 @@
                                             label: a.lang.table.columns,
                                             required: !0,
                                             controlStyle: 'width:5em',
-                                            validate: t(
-                                                a.lang.table.invalidCols
-                                            ),
+                                            validate: t(a.lang.table.invalidCols),
                                             setup: function (d) {
                                                 this.setValue(w(d));
                                             },
@@ -220,48 +192,26 @@
                                             label: a.lang.table.headers,
                                             items: [
                                                 [a.lang.table.headersNone, ''],
-                                                [
-                                                    a.lang.table.headersRow,
-                                                    'row',
-                                                ],
-                                                [
-                                                    a.lang.table.headersColumn,
-                                                    'col',
-                                                ],
-                                                [
-                                                    a.lang.table.headersBoth,
-                                                    'both',
-                                                ],
+                                                [a.lang.table.headersRow, 'row'],
+                                                [a.lang.table.headersColumn, 'col'],
+                                                [a.lang.table.headersBoth, 'both'],
                                             ],
                                             setup: function (d) {
                                                 var a = this.getDialog();
                                                 a.hasColumnHeaders = !0;
-                                                for (
-                                                    var b = 0;
-                                                    b < d.$.rows.length;
-                                                    b++
-                                                ) {
-                                                    var c =
-                                                        d.$.rows[b].cells[0];
-                                                    if (
-                                                        c &&
-                                                        'th' !=
-                                                            c.nodeName.toLowerCase()
-                                                    ) {
+                                                for (var b = 0; b < d.$.rows.length; b++) {
+                                                    var c = d.$.rows[b].cells[0];
+                                                    if (c && 'th' != c.nodeName.toLowerCase()) {
                                                         a.hasColumnHeaders = !1;
                                                         break;
                                                     }
                                                 }
                                                 null !== d.$.tHead
                                                     ? this.setValue(
-                                                          a.hasColumnHeaders
-                                                              ? 'both'
-                                                              : 'row'
+                                                          a.hasColumnHeaders ? 'both' : 'row',
                                                       )
                                                     : this.setValue(
-                                                          a.hasColumnHeaders
-                                                              ? 'col'
-                                                              : ''
+                                                          a.hasColumnHeaders ? 'col' : '',
                                                       );
                                             },
                                             commit: n,
@@ -270,32 +220,19 @@
                                             type: 'text',
                                             id: 'txtBorder',
                                             requiredContent: 'table[border]',
-                                            default: a.filter.check(
-                                                'table[border]'
-                                            )
-                                                ? 1
-                                                : 0,
+                                            default: a.filter.check('table[border]') ? 1 : 0,
                                             label: a.lang.table.border,
                                             controlStyle: 'width:3em',
-                                            validate:
-                                                CKEDITOR.dialog.validate.number(
-                                                    a.lang.table.invalidBorder
-                                                ),
+                                            validate: CKEDITOR.dialog.validate.number(
+                                                a.lang.table.invalidBorder,
+                                            ),
                                             setup: function (d) {
-                                                this.setValue(
-                                                    d.getAttribute('border') ||
-                                                        ''
-                                                );
+                                                this.setValue(d.getAttribute('border') || '');
                                             },
                                             commit: function (d, a) {
                                                 this.getValue()
-                                                    ? a.setAttribute(
-                                                          'border',
-                                                          this.getValue()
-                                                      )
-                                                    : a.removeAttribute(
-                                                          'border'
-                                                      );
+                                                    ? a.setAttribute('border', this.getValue())
+                                                    : a.removeAttribute('border');
                                             },
                                         },
                                         {
@@ -307,27 +244,16 @@
                                             items: [
                                                 [a.lang.common.notSet, ''],
                                                 [a.lang.common.left, 'left'],
-                                                [
-                                                    a.lang.common.center,
-                                                    'center',
-                                                ],
+                                                [a.lang.common.center, 'center'],
                                                 [a.lang.common.right, 'right'],
                                             ],
                                             setup: function (a) {
-                                                this.setValue(
-                                                    a.getAttribute('align') ||
-                                                        ''
-                                                );
+                                                this.setValue(a.getAttribute('align') || '');
                                             },
                                             commit: function (a, e) {
                                                 this.getValue()
-                                                    ? e.setAttribute(
-                                                          'align',
-                                                          this.getValue()
-                                                      )
-                                                    : e.removeAttribute(
-                                                          'align'
-                                                      );
+                                                    ? e.setAttribute('align', this.getValue())
+                                                    : e.removeAttribute('align');
                                             },
                                         },
                                     ],
@@ -343,40 +269,29 @@
                                                 {
                                                     type: 'text',
                                                     id: 'txtWidth',
-                                                    requiredContent:
-                                                        'table{width}',
+                                                    requiredContent: 'table{width}',
                                                     controlStyle: 'width:5em',
                                                     label: a.lang.common.width,
-                                                    title: a.lang.common
-                                                        .cssLengthTooltip,
-                                                    default: a.filter.check(
-                                                        'table{width}'
-                                                    )
-                                                        ? 500 >
-                                                          r.getSize('width')
+                                                    title: a.lang.common.cssLengthTooltip,
+                                                    default: a.filter.check('table{width}')
+                                                        ? 500 > r.getSize('width')
                                                             ? '100%'
                                                             : 500
                                                         : 0,
                                                     getValue: v,
-                                                    validate:
-                                                        CKEDITOR.dialog.validate.cssLength(
-                                                            a.lang.common.invalidCssLength.replace(
-                                                                '%1',
-                                                                a.lang.common
-                                                                    .width
-                                                            )
+                                                    validate: CKEDITOR.dialog.validate.cssLength(
+                                                        a.lang.common.invalidCssLength.replace(
+                                                            '%1',
+                                                            a.lang.common.width,
                                                         ),
+                                                    ),
                                                     onChange: function () {
-                                                        var a =
-                                                            this.getDialog().getContentElement(
-                                                                'advanced',
-                                                                'advStyles'
-                                                            );
+                                                        var a = this.getDialog().getContentElement(
+                                                            'advanced',
+                                                            'advStyles',
+                                                        );
                                                         a &&
-                                                            a.updateStyle(
-                                                                'width',
-                                                                this.getValue()
-                                                            );
+                                                            a.updateStyle('width', this.getValue());
                                                     },
                                                     setup: function (a) {
                                                         a = a.getStyle('width');
@@ -393,39 +308,31 @@
                                                 {
                                                     type: 'text',
                                                     id: 'txtHeight',
-                                                    requiredContent:
-                                                        'table{height}',
+                                                    requiredContent: 'table{height}',
                                                     controlStyle: 'width:5em',
                                                     label: a.lang.common.height,
-                                                    title: a.lang.common
-                                                        .cssLengthTooltip,
+                                                    title: a.lang.common.cssLengthTooltip,
                                                     default: '',
                                                     getValue: v,
-                                                    validate:
-                                                        CKEDITOR.dialog.validate.cssLength(
-                                                            a.lang.common.invalidCssLength.replace(
-                                                                '%1',
-                                                                a.lang.common
-                                                                    .height
-                                                            )
+                                                    validate: CKEDITOR.dialog.validate.cssLength(
+                                                        a.lang.common.invalidCssLength.replace(
+                                                            '%1',
+                                                            a.lang.common.height,
                                                         ),
+                                                    ),
                                                     onChange: function () {
-                                                        var a =
-                                                            this.getDialog().getContentElement(
-                                                                'advanced',
-                                                                'advStyles'
-                                                            );
+                                                        var a = this.getDialog().getContentElement(
+                                                            'advanced',
+                                                            'advStyles',
+                                                        );
                                                         a &&
                                                             a.updateStyle(
                                                                 'height',
-                                                                this.getValue()
+                                                                this.getValue(),
                                                             );
                                                     },
                                                     setup: function (a) {
-                                                        (a =
-                                                            a.getStyle(
-                                                                'height'
-                                                            )) &&
+                                                        (a = a.getStyle('height')) &&
                                                             this.setValue(a);
                                                     },
                                                     commit: n,
@@ -436,71 +343,39 @@
                                         {
                                             type: 'text',
                                             id: 'txtCellSpace',
-                                            requiredContent:
-                                                'table[cellspacing]',
+                                            requiredContent: 'table[cellspacing]',
                                             controlStyle: 'width:3em',
                                             label: a.lang.table.cellSpace,
-                                            default: a.filter.check(
-                                                'table[cellspacing]'
-                                            )
-                                                ? 1
-                                                : 0,
-                                            validate:
-                                                CKEDITOR.dialog.validate.number(
-                                                    a.lang.table
-                                                        .invalidCellSpacing
-                                                ),
+                                            default: a.filter.check('table[cellspacing]') ? 1 : 0,
+                                            validate: CKEDITOR.dialog.validate.number(
+                                                a.lang.table.invalidCellSpacing,
+                                            ),
                                             setup: function (a) {
-                                                this.setValue(
-                                                    a.getAttribute(
-                                                        'cellSpacing'
-                                                    ) || ''
-                                                );
+                                                this.setValue(a.getAttribute('cellSpacing') || '');
                                             },
                                             commit: function (a, e) {
                                                 this.getValue()
-                                                    ? e.setAttribute(
-                                                          'cellSpacing',
-                                                          this.getValue()
-                                                      )
-                                                    : e.removeAttribute(
-                                                          'cellSpacing'
-                                                      );
+                                                    ? e.setAttribute('cellSpacing', this.getValue())
+                                                    : e.removeAttribute('cellSpacing');
                                             },
                                         },
                                         {
                                             type: 'text',
                                             id: 'txtCellPad',
-                                            requiredContent:
-                                                'table[cellpadding]',
+                                            requiredContent: 'table[cellpadding]',
                                             controlStyle: 'width:3em',
                                             label: a.lang.table.cellPad,
-                                            default: a.filter.check(
-                                                'table[cellpadding]'
-                                            )
-                                                ? 1
-                                                : 0,
-                                            validate:
-                                                CKEDITOR.dialog.validate.number(
-                                                    a.lang.table
-                                                        .invalidCellPadding
-                                                ),
+                                            default: a.filter.check('table[cellpadding]') ? 1 : 0,
+                                            validate: CKEDITOR.dialog.validate.number(
+                                                a.lang.table.invalidCellPadding,
+                                            ),
                                             setup: function (a) {
-                                                this.setValue(
-                                                    a.getAttribute(
-                                                        'cellPadding'
-                                                    ) || ''
-                                                );
+                                                this.setValue(a.getAttribute('cellPadding') || '');
                                             },
                                             commit: function (a, e) {
                                                 this.getValue()
-                                                    ? e.setAttribute(
-                                                          'cellPadding',
-                                                          this.getValue()
-                                                      )
-                                                    : e.removeAttribute(
-                                                          'cellPadding'
-                                                      );
+                                                    ? e.setAttribute('cellPadding', this.getValue())
+                                                    : e.removeAttribute('cellPadding');
                                             },
                                         },
                                     ],
@@ -523,48 +398,29 @@
                                         if (0 < a.count()) {
                                             a = a.getItem(0);
                                             var e = a.getFirst(
-                                                CKEDITOR.dom.walker.nodeType(
-                                                    CKEDITOR.NODE_ELEMENT
-                                                )
+                                                CKEDITOR.dom.walker.nodeType(CKEDITOR.NODE_ELEMENT),
                                             );
                                             e && !e.equals(a.getBogus())
-                                                ? (this.disable(),
-                                                  this.setValue(a.getText()))
-                                                : ((a = CKEDITOR.tools.trim(
-                                                      a.getText()
-                                                  )),
+                                                ? (this.disable(), this.setValue(a.getText()))
+                                                : ((a = CKEDITOR.tools.trim(a.getText())),
                                                   this.setValue(a));
                                         }
                                     },
                                     commit: function (d, e) {
                                         if (this.isEnabled()) {
                                             var b = this.getValue(),
-                                                c =
-                                                    e.getElementsByTag(
-                                                        'caption'
-                                                    );
+                                                c = e.getElementsByTag('caption');
                                             if (b)
                                                 0 < c.count()
-                                                    ? ((c = c.getItem(0)),
-                                                      c.setHtml(''))
-                                                    : ((c =
-                                                          new CKEDITOR.dom.element(
-                                                              'caption',
-                                                              a.document
-                                                          )),
+                                                    ? ((c = c.getItem(0)), c.setHtml(''))
+                                                    : ((c = new CKEDITOR.dom.element(
+                                                          'caption',
+                                                          a.document,
+                                                      )),
                                                       e.append(c, !0)),
-                                                    c.append(
-                                                        new CKEDITOR.dom.text(
-                                                            b,
-                                                            a.document
-                                                        )
-                                                    );
+                                                    c.append(new CKEDITOR.dom.text(b, a.document));
                                             else if (0 < c.count())
-                                                for (
-                                                    b = c.count() - 1;
-                                                    0 <= b;
-                                                    b--
-                                                )
+                                                for (b = c.count() - 1; 0 <= b; b--)
                                                     c.getItem(b).remove();
                                         }
                                     },
@@ -576,16 +432,11 @@
                                     requiredContent: 'table[summary]',
                                     label: a.lang.table.summary,
                                     setup: function (a) {
-                                        this.setValue(
-                                            a.getAttribute('summary') || ''
-                                        );
+                                        this.setValue(a.getAttribute('summary') || '');
                                     },
                                     commit: function (a, e) {
                                         this.getValue()
-                                            ? e.setAttribute(
-                                                  'summary',
-                                                  this.getValue()
-                                              )
+                                            ? e.setAttribute('summary', this.getValue())
                                             : e.removeAttribute('summary');
                                     },
                                 },

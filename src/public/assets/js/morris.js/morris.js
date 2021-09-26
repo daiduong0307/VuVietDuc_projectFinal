@@ -57,9 +57,7 @@ Licensed under the BSD-2-Clause License.
 
         EventEmitter.prototype.fire = function () {
             var args, handler, name, _i, _len, _ref, _results;
-            (name = arguments[0]),
-                (args =
-                    2 <= arguments.length ? __slice.call(arguments, 1) : []);
+            (name = arguments[0]), (args = 2 <= arguments.length ? __slice.call(arguments, 1) : []);
             if (this.handlers != null && this.handlers[name] != null) {
                 _ref = this.handlers[name];
                 _results = [];
@@ -112,12 +110,7 @@ Licensed under the BSD-2-Clause License.
             if (this.el.css('position') === 'static') {
                 this.el.css('position', 'relative');
             }
-            this.options = $.extend(
-                {},
-                this.gridDefaults,
-                this.defaults || {},
-                options
-            );
+            this.options = $.extend({}, this.gridDefaults, this.defaults || {}, options);
             if (typeof this.options.units === 'string') {
                 this.options.postUnits = options.units;
             }
@@ -135,12 +128,8 @@ Licensed under the BSD-2-Clause License.
                 offset = _this.el.offset();
                 x = evt.pageX - offset.left;
                 if (_this.selectFrom) {
-                    left =
-                        _this.data[_this.hitTest(Math.min(x, _this.selectFrom))]
-                            ._x;
-                    right =
-                        _this.data[_this.hitTest(Math.max(x, _this.selectFrom))]
-                            ._x;
+                    left = _this.data[_this.hitTest(Math.min(x, _this.selectFrom))]._x;
+                    right = _this.data[_this.hitTest(Math.max(x, _this.selectFrom))]._x;
                     width = right - left;
                     return _this.selectionRect.attr({
                         x: left,
@@ -159,24 +148,14 @@ Licensed under the BSD-2-Clause License.
             });
             this.el.bind('touchstart touchmove touchend', function (evt) {
                 var offset, touch;
-                touch =
-                    evt.originalEvent.touches[0] ||
-                    evt.originalEvent.changedTouches[0];
+                touch = evt.originalEvent.touches[0] || evt.originalEvent.changedTouches[0];
                 offset = _this.el.offset();
-                return _this.fire(
-                    'hovermove',
-                    touch.pageX - offset.left,
-                    touch.pageY - offset.top
-                );
+                return _this.fire('hovermove', touch.pageX - offset.left, touch.pageY - offset.top);
             });
             this.el.bind('click', function (evt) {
                 var offset;
                 offset = _this.el.offset();
-                return _this.fire(
-                    'gridclick',
-                    evt.pageX - offset.left,
-                    evt.pageY - offset.top
-                );
+                return _this.fire('gridclick', evt.pageX - offset.left, evt.pageY - offset.top);
             });
             if (this.options.rangeSelect) {
                 this.selectionRect = this.raphael
@@ -196,11 +175,7 @@ Licensed under the BSD-2-Clause License.
                     var offset;
                     offset = _this.el.offset();
                     _this.endRange(evt.pageX - offset.left);
-                    return _this.fire(
-                        'hovermove',
-                        evt.pageX - offset.left,
-                        evt.pageY - offset.top
-                    );
+                    return _this.fire('hovermove', evt.pageX - offset.left, evt.pageY - offset.top);
                 });
             }
             if (this.options.resize) {
@@ -208,10 +183,7 @@ Licensed under the BSD-2-Clause License.
                     if (_this.timeoutId != null) {
                         window.clearTimeout(_this.timeoutId);
                     }
-                    return (_this.timeoutId = window.setTimeout(
-                        _this.resizeHandler,
-                        100
-                    ));
+                    return (_this.timeoutId = window.setTimeout(_this.resizeHandler, 100));
                 });
             }
             this.el.css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
@@ -290,11 +262,7 @@ Licensed under the BSD-2-Clause License.
             this.data = function () {
                 var _i, _len, _results;
                 _results = [];
-                for (
-                    index = _i = 0, _len = data.length;
-                    _i < _len;
-                    index = ++_i
-                ) {
+                for (index = _i = 0, _len = data.length; _i < _len; index = ++_i) {
                     row = data[index];
                     ret = {
                         src: row,
@@ -318,11 +286,7 @@ Licensed under the BSD-2-Clause License.
                         var _j, _len1, _ref, _results1;
                         _ref = this.options.ykeys;
                         _results1 = [];
-                        for (
-                            idx = _j = 0, _len1 = _ref.length;
-                            _j < _len1;
-                            idx = ++_j
-                        ) {
+                        for (idx = _j = 0, _len1 = _ref.length; _j < _len1; idx = ++_j) {
                             ykey = _ref[idx];
                             yval = row[ykey];
                             if (typeof yval === 'string') {
@@ -378,14 +342,8 @@ Licensed under the BSD-2-Clause License.
                 } else {
                     this.events = this.options.events;
                 }
-                this.xmax = Math.max(
-                    this.xmax,
-                    Math.max.apply(Math, this.events)
-                );
-                this.xmin = Math.min(
-                    this.xmin,
-                    Math.min.apply(Math, this.events)
-                );
+                this.xmax = Math.max(this.xmax, Math.max.apply(Math, this.events));
+                this.xmin = Math.min(this.xmin, Math.min.apply(Math, this.events));
             }
             if (this.xmin === this.xmax) {
                 this.xmin -= 1;
@@ -409,19 +367,11 @@ Licensed under the BSD-2-Clause License.
                     this.options.ymax === this.gridDefaults.ymax &&
                     this.options.ymin === this.gridDefaults.ymin
                 ) {
-                    this.grid = this.autoGridLines(
-                        this.ymin,
-                        this.ymax,
-                        this.options.numLines
-                    );
+                    this.grid = this.autoGridLines(this.ymin, this.ymax, this.options.numLines);
                     this.ymin = Math.min(this.ymin, this.grid[0]);
-                    this.ymax = Math.max(
-                        this.ymax,
-                        this.grid[this.grid.length - 1]
-                    );
+                    this.ymax = Math.max(this.ymax, this.grid[this.grid.length - 1]);
                 } else {
-                    step =
-                        (this.ymax - this.ymin) / (this.options.numLines - 1);
+                    step = (this.ymax - this.ymin) / (this.options.numLines - 1);
                     this.grid = function () {
                         var _i, _ref1, _ref2, _results;
                         _results = [];
@@ -489,11 +439,7 @@ Licensed under the BSD-2-Clause License.
                 grid = (function () {
                     var _i, _results;
                     _results = [];
-                    for (
-                        y = _i = gmin;
-                        step > 0 ? _i <= gmax : _i >= gmax;
-                        y = _i += step
-                    ) {
+                    for (y = _i = gmin; step > 0 ? _i <= gmax : _i >= gmax; y = _i += step) {
                         _results.push(parseFloat(y.toFixed(1 - smag)));
                     }
                     return _results;
@@ -502,11 +448,7 @@ Licensed under the BSD-2-Clause License.
                 grid = (function () {
                     var _i, _results;
                     _results = [];
-                    for (
-                        y = _i = gmin;
-                        step > 0 ? _i <= gmax : _i >= gmax;
-                        y = _i += step
-                    ) {
+                    for (y = _i = gmin; step > 0 ? _i <= gmax : _i >= gmax; y = _i += step) {
                         _results.push(y);
                     }
                     return _results;
@@ -519,11 +461,7 @@ Licensed under the BSD-2-Clause License.
             var bottomOffsets, gridLine, h, i, w, yLabelWidths, _ref, _ref1;
             w = this.el.width();
             h = this.el.height();
-            if (
-                this.elementWidth !== w ||
-                this.elementHeight !== h ||
-                this.dirty
-            ) {
+            if (this.elementWidth !== w || this.elementHeight !== h || this.dirty) {
                 this.elementWidth = w;
                 this.elementHeight = h;
                 this.dirty = false;
@@ -531,31 +469,20 @@ Licensed under the BSD-2-Clause License.
                 this.right = this.elementWidth - this.options.padding;
                 this.top = this.options.padding;
                 this.bottom = this.elementHeight - this.options.padding;
-                if (
-                    (_ref = this.options.axes) === true ||
-                    _ref === 'both' ||
-                    _ref === 'y'
-                ) {
+                if ((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'y') {
                     yLabelWidths = function () {
                         var _i, _len, _ref1, _results;
                         _ref1 = this.grid;
                         _results = [];
                         for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
                             gridLine = _ref1[_i];
-                            _results.push(
-                                this.measureText(this.yAxisFormat(gridLine))
-                                    .width
-                            );
+                            _results.push(this.measureText(this.yAxisFormat(gridLine)).width);
                         }
                         return _results;
                     }.call(this);
                     this.left += Math.max.apply(Math, yLabelWidths);
                 }
-                if (
-                    (_ref1 = this.options.axes) === true ||
-                    _ref1 === 'both' ||
-                    _ref1 === 'x'
-                ) {
+                if ((_ref1 = this.options.axes) === true || _ref1 === 'both' || _ref1 === 'x') {
                     bottomOffsets = function () {
                         var _i, _ref2, _results;
                         _results = [];
@@ -565,10 +492,8 @@ Licensed under the BSD-2-Clause License.
                             i = 0 <= _ref2 ? ++_i : --_i
                         ) {
                             _results.push(
-                                this.measureText(
-                                    this.data[i].text,
-                                    -this.options.xLabelAngle
-                                ).height
+                                this.measureText(this.data[i].text, -this.options.xLabelAngle)
+                                    .height,
                             );
                         }
                         return _results;
@@ -632,12 +557,7 @@ Licensed under the BSD-2-Clause License.
             if (typeof this.options.yLabelFormat === 'function') {
                 return this.options.yLabelFormat(label);
             } else {
-                return (
-                    '' +
-                    this.options.preUnits +
-                    Morris.commas(label) +
-                    this.options.postUnits
-                );
+                return '' + this.options.preUnits + Morris.commas(label) + this.options.postUnits;
             }
         };
 
@@ -656,27 +576,18 @@ Licensed under the BSD-2-Clause License.
             for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
                 lineY = _ref1[_i];
                 y = this.transY(lineY);
-                if (
-                    (_ref2 = this.options.axes) === true ||
-                    _ref2 === 'both' ||
-                    _ref2 === 'y'
-                ) {
+                if ((_ref2 = this.options.axes) === true || _ref2 === 'both' || _ref2 === 'y') {
                     this.drawYAxisLabel(
                         this.left - this.options.padding / 2,
                         y,
-                        this.yAxisFormat(lineY)
+                        this.yAxisFormat(lineY),
                     );
                 }
                 if (this.options.grid) {
                     _results.push(
                         this.drawGridLine(
-                            'M' +
-                                this.left +
-                                ',' +
-                                y +
-                                'H' +
-                                (this.left + this.width)
-                        )
+                            'M' + this.left + ',' + y + 'H' + (this.left + this.width),
+                        ),
                     );
                 } else {
                     _results.push(void 0);
@@ -691,10 +602,7 @@ Licensed under the BSD-2-Clause License.
             _results = [];
             for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
                 goal = _ref[i];
-                color =
-                    this.options.goalLineColors[
-                        i % this.options.goalLineColors.length
-                    ];
+                color = this.options.goalLineColors[i % this.options.goalLineColors.length];
                 _results.push(this.drawGoal(goal, color));
             }
             return _results;
@@ -706,10 +614,7 @@ Licensed under the BSD-2-Clause License.
             _results = [];
             for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
                 event = _ref[i];
-                color =
-                    this.options.eventLineColors[
-                        i % this.options.eventLineColors.length
-                    ];
+                color = this.options.eventLineColors[i % this.options.eventLineColors.length];
                 _results.push(this.drawEvent(event, color));
             }
             return _results;
@@ -717,23 +622,14 @@ Licensed under the BSD-2-Clause License.
 
         Grid.prototype.drawGoal = function (goal, color) {
             return this.raphael
-                .path(
-                    'M' + this.left + ',' + this.transY(goal) + 'H' + this.right
-                )
+                .path('M' + this.left + ',' + this.transY(goal) + 'H' + this.right)
                 .attr('stroke', color)
                 .attr('stroke-width', this.options.goalStrokeWidth);
         };
 
         Grid.prototype.drawEvent = function (event, color) {
             return this.raphael
-                .path(
-                    'M' +
-                        this.transX(event) +
-                        ',' +
-                        this.bottom +
-                        'V' +
-                        this.top
-                )
+                .path('M' + this.transX(event) + ',' + this.bottom + 'V' + this.top)
                 .attr('stroke', color)
                 .attr('stroke-width', this.options.eventStrokeWidth);
         };
@@ -797,29 +693,17 @@ Licensed under the BSD-2-Clause License.
         n = date.match(/^(\d+)-(\d+)$/);
         o = date.match(/^(\d+)-(\d+)-(\d+)$/);
         p = date.match(/^(\d+) W(\d+)$/);
-        q = date.match(
-            /^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+)(Z|([+-])(\d\d):?(\d\d))?$/
-        );
-        r = date.match(
-            /^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+):(\d+(\.\d+)?)(Z|([+-])(\d\d):?(\d\d))?$/
-        );
+        q = date.match(/^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+)(Z|([+-])(\d\d):?(\d\d))?$/);
+        r = date.match(/^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+):(\d+(\.\d+)?)(Z|([+-])(\d\d):?(\d\d))?$/);
         if (m) {
-            return new Date(
-                parseInt(m[1], 10),
-                parseInt(m[2], 10) * 3 - 1,
-                1
-            ).getTime();
+            return new Date(parseInt(m[1], 10), parseInt(m[2], 10) * 3 - 1, 1).getTime();
         } else if (n) {
-            return new Date(
-                parseInt(n[1], 10),
-                parseInt(n[2], 10) - 1,
-                1
-            ).getTime();
+            return new Date(parseInt(n[1], 10), parseInt(n[2], 10) - 1, 1).getTime();
         } else if (o) {
             return new Date(
                 parseInt(o[1], 10),
                 parseInt(o[2], 10) - 1,
-                parseInt(o[3], 10)
+                parseInt(o[3], 10),
             ).getTime();
         } else if (p) {
             ret = new Date(parseInt(p[1], 10), 0, 1);
@@ -834,7 +718,7 @@ Licensed under the BSD-2-Clause License.
                     parseInt(q[2], 10) - 1,
                     parseInt(q[3], 10),
                     parseInt(q[4], 10),
-                    parseInt(q[5], 10)
+                    parseInt(q[5], 10),
                 ).getTime();
             } else {
                 offsetmins = 0;
@@ -849,7 +733,7 @@ Licensed under the BSD-2-Clause License.
                     parseInt(q[2], 10) - 1,
                     parseInt(q[3], 10),
                     parseInt(q[4], 10),
-                    parseInt(q[5], 10) + offsetmins
+                    parseInt(q[5], 10) + offsetmins,
                 );
             }
         } else if (r) {
@@ -864,7 +748,7 @@ Licensed under the BSD-2-Clause License.
                     parseInt(r[4], 10),
                     parseInt(r[5], 10),
                     isecs,
-                    msecs
+                    msecs,
                 ).getTime();
             } else {
                 offsetmins = 0;
@@ -881,7 +765,7 @@ Licensed under the BSD-2-Clause License.
                     parseInt(r[4], 10),
                     parseInt(r[5], 10) + offsetmins,
                     isecs,
-                    msecs
+                    msecs,
                 );
             }
         } else {
@@ -924,10 +808,7 @@ Licensed under the BSD-2-Clause License.
             parentHeight = this.options.parent.innerHeight();
             hoverWidth = this.el.outerWidth();
             hoverHeight = this.el.outerHeight();
-            left = Math.min(
-                Math.max(0, x - hoverWidth / 2),
-                parentWidth - hoverWidth
-            );
+            left = Math.min(Math.max(0, x - hoverWidth / 2), parentWidth - hoverWidth);
             if (y != null) {
                 top = y - hoverHeight - 10;
                 if (top < 0) {
@@ -1037,20 +918,16 @@ Licensed under the BSD-2-Clause License.
                                 var _j, _len1, _ref1, _results1;
                                 _ref1 = row._y;
                                 _results1 = [];
-                                for (
-                                    _j = 0, _len1 = _ref1.length;
-                                    _j < _len1;
-                                    _j++
-                                ) {
+                                for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
                                     y = _ref1[_j];
                                     if (y != null) {
                                         _results1.push(y);
                                     }
                                 }
                                 return _results1;
-                            })()
-                        )
-                    ))
+                            })(),
+                        ),
+                    )),
                 );
             }
             return _results;
@@ -1092,10 +969,7 @@ Licensed under the BSD-2-Clause License.
         Line.prototype.displayHoverForRow = function (index) {
             var _ref;
             if (index != null) {
-                (_ref = this.hover).update.apply(
-                    _ref,
-                    this.hoverContentForRow(index)
-                );
+                (_ref = this.hover).update.apply(_ref, this.hoverContentForRow(index));
                 return this.hilight(index);
             } else {
                 this.hover.hide();
@@ -1106,8 +980,7 @@ Licensed under the BSD-2-Clause License.
         Line.prototype.hoverContentForRow = function (index) {
             var content, j, row, y, _i, _len, _ref;
             row = this.data[index];
-            content =
-                "<div class='morris-hover-row-label'>" + row.label + '</div>';
+            content = "<div class='morris-hover-row-label'>" + row.label + '</div>';
             _ref = row.y;
             for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
                 y = _ref[j];
@@ -1121,12 +994,7 @@ Licensed under the BSD-2-Clause License.
                     '\n</div>';
             }
             if (typeof this.options.hoverCallback === 'function') {
-                content = this.options.hoverCallback(
-                    index,
-                    this.options,
-                    content,
-                    row.src
-                );
+                content = this.options.hoverCallback(index, this.options, content, row.src);
             }
             return [content, row._x, row._ymax];
         };
@@ -1162,9 +1030,7 @@ Licensed under the BSD-2-Clause License.
                         return _results1;
                     }.call(this);
                     if (coords.length > 1) {
-                        _results.push(
-                            Morris.Line.createPath(coords, smooth, this.bottom)
-                        );
+                        _results.push(Morris.Line.createPath(coords, smooth, this.bottom));
                     } else {
                         _results.push(null);
                     }
@@ -1175,11 +1041,7 @@ Licensed under the BSD-2-Clause License.
 
         Line.prototype.draw = function () {
             var _ref;
-            if (
-                (_ref = this.options.axes) === true ||
-                _ref === 'both' ||
-                _ref === 'x'
-            ) {
+            if ((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'x') {
                 this.drawXAxis();
             }
             this.drawSeries();
@@ -1205,11 +1067,7 @@ Licensed under the BSD-2-Clause License.
             prevAngleMargin = null;
             drawLabel = function (labelText, xpos) {
                 var label, labelBox, margin, offset, textBox;
-                label = _this.drawXAxisLabel(
-                    _this.transX(xpos),
-                    ypos,
-                    labelText
-                );
+                label = _this.drawXAxisLabel(_this.transX(xpos), ypos, labelText);
                 textBox = label.getBBox();
                 label.transform('r' + -_this.options.xLabelAngle);
                 labelBox = label.getBBox();
@@ -1225,21 +1083,17 @@ Licensed under the BSD-2-Clause License.
                 if (
                     (prevLabelMargin == null ||
                         prevLabelMargin >= labelBox.x + labelBox.width ||
-                        (prevAngleMargin != null &&
-                            prevAngleMargin >= labelBox.x)) &&
+                        (prevAngleMargin != null && prevAngleMargin >= labelBox.x)) &&
                     labelBox.x >= 0 &&
                     labelBox.x + labelBox.width < _this.el.width()
                 ) {
                     if (_this.options.xLabelAngle !== 0) {
                         margin =
                             (1.25 * _this.options.gridTextSize) /
-                            Math.sin(
-                                (_this.options.xLabelAngle * Math.PI) / 180.0
-                            );
+                            Math.sin((_this.options.xLabelAngle * Math.PI) / 180.0);
                         prevAngleMargin = labelBox.x - margin;
                     }
-                    return (prevLabelMargin =
-                        labelBox.x - _this.options.xLabelMargin);
+                    return (prevLabelMargin = labelBox.x - _this.options.xLabelMargin);
                 } else {
                     return label.remove();
                 }
@@ -1253,7 +1107,7 @@ Licensed under the BSD-2-Clause License.
                         this.xmax,
                         this.width,
                         this.options.xLabels,
-                        this.options.xLabelFormat
+                        this.options.xLabelFormat,
                     );
                 }
             } else {
@@ -1311,7 +1165,7 @@ Licensed under the BSD-2-Clause License.
                         row._x,
                         row._y[index],
                         this.colorFor(row, index, 'point'),
-                        index
+                        index,
                     );
                 }
                 _results.push(this.seriesPoints[index].push(circle));
@@ -1323,29 +1177,12 @@ Licensed under the BSD-2-Clause License.
             var path;
             path = this.paths[index];
             if (path !== null) {
-                return this.drawLinePath(
-                    path,
-                    this.colorFor(null, index, 'line'),
-                    index
-                );
+                return this.drawLinePath(path, this.colorFor(null, index, 'line'), index);
             }
         };
 
         Line.createPath = function (coords, smooth, bottom) {
-            var coord,
-                g,
-                grads,
-                i,
-                ix,
-                lg,
-                path,
-                prevCoord,
-                x1,
-                x2,
-                y1,
-                y2,
-                _i,
-                _len;
+            var coord, g, grads, i, ix, lg, path, prevCoord, x1, x2, y1, y2, _i, _len;
             path = '';
             if (smooth) {
                 grads = Morris.Line.gradients(coords);
@@ -1432,9 +1269,7 @@ Licensed under the BSD-2-Clause License.
                     i = 0 <= _ref ? ++_i : --_i
                 ) {
                     if (this.seriesPoints[i][this.prevHilight]) {
-                        this.seriesPoints[i][this.prevHilight].animate(
-                            this.pointShrinkSeries(i)
-                        );
+                        this.seriesPoints[i][this.prevHilight].animate(this.pointShrinkSeries(i));
                     }
                 }
             }
@@ -1445,9 +1280,7 @@ Licensed under the BSD-2-Clause License.
                     i = 0 <= _ref1 ? ++_j : --_j
                 ) {
                     if (this.seriesPoints[i][index]) {
-                        this.seriesPoints[i][index].animate(
-                            this.pointGrowSeries(i)
-                        );
+                        this.seriesPoints[i][index].animate(this.pointGrowSeries(i));
                     }
                 }
             }
@@ -1459,17 +1292,11 @@ Licensed under the BSD-2-Clause License.
                 return this.options.lineColors.call(this, row, sidx, type);
             } else if (type === 'point') {
                 return (
-                    this.options.pointFillColors[
-                        sidx % this.options.pointFillColors.length
-                    ] ||
-                    this.options.lineColors[
-                        sidx % this.options.lineColors.length
-                    ]
+                    this.options.pointFillColors[sidx % this.options.pointFillColors.length] ||
+                    this.options.lineColors[sidx % this.options.lineColors.length]
                 );
             } else {
-                return this.options.lineColors[
-                    sidx % this.options.lineColors.length
-                ];
+                return this.options.lineColors[sidx % this.options.lineColors.length];
             }
         };
 
@@ -1489,12 +1316,7 @@ Licensed under the BSD-2-Clause License.
                 .attr('stroke-width', this.lineWidthForSeries(lineIndex));
         };
 
-        Line.prototype.drawLinePoint = function (
-            xPos,
-            yPos,
-            pointColor,
-            lineIndex
-        ) {
+        Line.prototype.drawLinePoint = function (xPos, yPos, pointColor, lineIndex) {
             return this.raphael
                 .circle(xPos, yPos, this.pointSizeForSeries(lineIndex))
                 .attr('fill', pointColor)
@@ -1503,22 +1325,16 @@ Licensed under the BSD-2-Clause License.
         };
 
         Line.prototype.pointStrokeWidthForSeries = function (index) {
-            return this.options.pointStrokeWidths[
-                index % this.options.pointStrokeWidths.length
-            ];
+            return this.options.pointStrokeWidths[index % this.options.pointStrokeWidths.length];
         };
 
         Line.prototype.pointStrokeColorForSeries = function (index) {
-            return this.options.pointStrokeColors[
-                index % this.options.pointStrokeColors.length
-            ];
+            return this.options.pointStrokeColors[index % this.options.pointStrokeColors.length];
         };
 
         Line.prototype.lineWidthForSeries = function (index) {
             if (this.options.lineWidth instanceof Array) {
-                return this.options.lineWidth[
-                    index % this.options.lineWidth.length
-                ];
+                return this.options.lineWidth[index % this.options.lineWidth.length];
             } else {
                 return this.options.lineWidth;
             }
@@ -1526,9 +1342,7 @@ Licensed under the BSD-2-Clause License.
 
         Line.prototype.pointSizeForSeries = function (index) {
             if (this.options.pointSize instanceof Array) {
-                return this.options.pointSize[
-                    index % this.options.pointSize.length
-                ];
+                return this.options.pointSize[index % this.options.pointSize.length];
             } else {
                 return this.options.pointSize;
             }
@@ -1540,7 +1354,7 @@ Licensed under the BSD-2-Clause License.
                     r: this.pointSizeForSeries(index) + 3,
                 },
                 25,
-                'linear'
+                'linear',
             );
         };
 
@@ -1550,20 +1364,14 @@ Licensed under the BSD-2-Clause License.
                     r: this.pointSizeForSeries(index),
                 },
                 25,
-                'linear'
+                'linear',
             );
         };
 
         return Line;
     })(Morris.Grid);
 
-    Morris.labelSeries = function (
-        dmin,
-        dmax,
-        pxwidth,
-        specName,
-        xLabelFormat
-    ) {
+    Morris.labelSeries = function (dmin, dmax, pxwidth, specName, xLabelFormat) {
         var d, d0, ddensity, name, ret, s, spec, t, _i, _len, _ref;
         ddensity = (200 * (dmax - dmin)) / pxwidth;
         d0 = new Date(dmin);
@@ -1602,20 +1410,10 @@ Licensed under the BSD-2-Clause License.
         return {
             span: interval * 60 * 1000,
             start: function (d) {
-                return new Date(
-                    d.getFullYear(),
-                    d.getMonth(),
-                    d.getDate(),
-                    d.getHours()
-                );
+                return new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours());
             },
             fmt: function (d) {
-                return (
-                    '' +
-                    Morris.pad2(d.getHours()) +
-                    ':' +
-                    Morris.pad2(d.getMinutes())
-                );
+                return '' + Morris.pad2(d.getHours()) + ':' + Morris.pad2(d.getMinutes());
             },
             incr: function (d) {
                 return d.setUTCMinutes(d.getUTCMinutes() + interval);
@@ -1632,7 +1430,7 @@ Licensed under the BSD-2-Clause License.
                     d.getMonth(),
                     d.getDate(),
                     d.getHours(),
-                    d.getMinutes()
+                    d.getMinutes(),
                 );
             },
             fmt: function (d) {
@@ -1682,9 +1480,7 @@ Licensed under the BSD-2-Clause License.
                 return new Date(d.getFullYear(), d.getMonth(), 1);
             },
             fmt: function (d) {
-                return (
-                    '' + d.getFullYear() + '-' + Morris.pad2(d.getMonth() + 1)
-                );
+                return '' + d.getFullYear() + '-' + Morris.pad2(d.getMonth() + 1);
             },
             incr: function (d) {
                 return d.setMonth(d.getMonth() + 1);
@@ -1812,17 +1608,7 @@ Licensed under the BSD-2-Clause License.
         };
 
         Area.prototype.drawSeries = function () {
-            var i,
-                range,
-                _i,
-                _j,
-                _k,
-                _len,
-                _ref,
-                _ref1,
-                _results,
-                _results1,
-                _results2;
+            var i, range, _i, _j, _k, _len, _ref, _ref1, _results, _results1, _results2;
             this.seriesPoints = [];
             if (this.options.behaveLikeLine) {
                 range = function () {
@@ -1884,10 +1670,7 @@ Licensed under the BSD-2-Clause License.
             return Raphael.hsl(
                 color.h,
                 this.options.behaveLikeLine ? color.s * 0.9 : color.s * 0.75,
-                Math.min(
-                    0.98,
-                    this.options.behaveLikeLine ? color.l * 1.2 : color.l * 1.25
-                )
+                Math.min(0.98, this.options.behaveLikeLine ? color.l * 1.2 : color.l * 1.25),
             );
         };
 
@@ -1916,7 +1699,7 @@ Licensed under the BSD-2-Clause License.
                 this,
                 $.extend({}, options, {
                     parseTime: false,
-                })
+                }),
             );
         }
 
@@ -1955,7 +1738,7 @@ Licensed under the BSD-2-Clause License.
             if (this.options.hideHover === false) {
                 return (_ref = this.hover).update.apply(
                     _ref,
-                    this.hoverContentForRow(this.data.length - 1)
+                    this.hoverContentForRow(this.data.length - 1),
                 );
             }
         };
@@ -1966,8 +1749,7 @@ Licensed under the BSD-2-Clause License.
             _results = [];
             for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
                 row = _ref[idx];
-                row._x =
-                    this.left + (this.width * (idx + 0.5)) / this.data.length;
+                row._x = this.left + (this.width * (idx + 0.5)) / this.data.length;
                 _results.push(
                     (row._y = function () {
                         var _j, _len1, _ref1, _results1;
@@ -1982,7 +1764,7 @@ Licensed under the BSD-2-Clause License.
                             }
                         }
                         return _results1;
-                    }.call(this))
+                    }.call(this)),
                 );
             }
             return _results;
@@ -1990,11 +1772,7 @@ Licensed under the BSD-2-Clause License.
 
         Bar.prototype.draw = function () {
             var _ref;
-            if (
-                (_ref = this.options.axes) === true ||
-                _ref === 'both' ||
-                _ref === 'x'
-            ) {
+            if ((_ref = this.options.axes) === true || _ref === 'both' || _ref === 'x') {
                 this.drawXAxis();
             }
             return this.drawSeries();
@@ -2014,9 +1792,7 @@ Licensed under the BSD-2-Clause License.
                 _i,
                 _ref,
                 _results;
-            ypos =
-                this.bottom +
-                (this.options.xAxisLabelTopPadding || this.options.padding / 2);
+            ypos = this.bottom + (this.options.xAxisLabelTopPadding || this.options.padding / 2);
             prevLabelMargin = null;
             prevAngleMargin = null;
             _results = [];
@@ -2041,23 +1817,17 @@ Licensed under the BSD-2-Clause License.
                 if (
                     (prevLabelMargin == null ||
                         prevLabelMargin >= labelBox.x + labelBox.width ||
-                        (prevAngleMargin != null &&
-                            prevAngleMargin >= labelBox.x)) &&
+                        (prevAngleMargin != null && prevAngleMargin >= labelBox.x)) &&
                     labelBox.x >= 0 &&
                     labelBox.x + labelBox.width < this.el.width()
                 ) {
                     if (this.options.xLabelAngle !== 0) {
                         margin =
                             (1.25 * this.options.gridTextSize) /
-                            Math.sin(
-                                (this.options.xLabelAngle * Math.PI) / 180.0
-                            );
+                            Math.sin((this.options.xLabelAngle * Math.PI) / 180.0);
                         prevAngleMargin = labelBox.x - margin;
                     }
-                    _results.push(
-                        (prevLabelMargin =
-                            labelBox.x - this.options.xLabelMargin)
-                    );
+                    _results.push((prevLabelMargin = labelBox.x - this.options.xLabelMargin));
                 } else {
                     _results.push(label.remove());
                 }
@@ -2084,16 +1854,12 @@ Licensed under the BSD-2-Clause License.
             groupWidth = this.width / this.options.data.length;
             numBars = this.options.stacked ? 1 : this.options.ykeys.length;
             barWidth =
-                (groupWidth * this.options.barSizeRatio -
-                    this.options.barGap * (numBars - 1)) /
+                (groupWidth * this.options.barSizeRatio - this.options.barGap * (numBars - 1)) /
                 numBars;
             if (this.options.barSize) {
                 barWidth = Math.min(barWidth, this.options.barSize);
             }
-            spaceLeft =
-                groupWidth -
-                barWidth * numBars -
-                this.options.barGap * (numBars - 1);
+            spaceLeft = groupWidth - barWidth * numBars - this.options.barGap * (numBars - 1);
             leftPadding = spaceLeft / 2;
             zeroPos = this.ymin <= 0 && this.ymax >= 0 ? this.transY(0) : null;
             return (this.bars = function () {
@@ -2108,11 +1874,7 @@ Licensed under the BSD-2-Clause License.
                             var _j, _len1, _ref1, _results1;
                             _ref1 = row._y;
                             _results1 = [];
-                            for (
-                                sidx = _j = 0, _len1 = _ref1.length;
-                                _j < _len1;
-                                sidx = ++_j
-                            ) {
+                            for (sidx = _j = 0, _len1 = _ref1.length; _j < _len1; sidx = ++_j) {
                                 ypos = _ref1[sidx];
                                 if (ypos !== null) {
                                     if (zeroPos) {
@@ -2122,21 +1884,14 @@ Licensed under the BSD-2-Clause License.
                                         top = ypos;
                                         bottom = this.bottom;
                                     }
-                                    left =
-                                        this.left +
-                                        idx * groupWidth +
-                                        leftPadding;
+                                    left = this.left + idx * groupWidth + leftPadding;
                                     if (!this.options.stacked) {
-                                        left +=
-                                            sidx *
-                                            (barWidth + this.options.barGap);
+                                        left += sidx * (barWidth + this.options.barGap);
                                     }
                                     size = bottom - top;
                                     if (
                                         this.options.verticalGridCondition &&
-                                        this.options.verticalGridCondition(
-                                            row.x
-                                        )
+                                        this.options.verticalGridCondition(row.x)
                                     ) {
                                         this.drawBar(
                                             this.left + idx * groupWidth,
@@ -2145,7 +1900,7 @@ Licensed under the BSD-2-Clause License.
                                             Math.abs(this.top - this.bottom),
                                             this.options.verticalGridColor,
                                             this.options.verticalGridOpacity,
-                                            this.options.barRadius
+                                            this.options.barRadius,
                                         );
                                     }
                                     if (this.options.stacked) {
@@ -2158,7 +1913,7 @@ Licensed under the BSD-2-Clause License.
                                         size,
                                         this.colorFor(row, sidx, 'bar'),
                                         this.options.barOpacity,
-                                        this.options.barRadius
+                                        this.options.barRadius,
                                     );
                                     _results1.push((lastTop += size));
                                 } else {
@@ -2166,7 +1921,7 @@ Licensed under the BSD-2-Clause License.
                                 }
                             }
                             return _results1;
-                        }.call(this)
+                        }.call(this),
                     );
                 }
                 return _results;
@@ -2188,9 +1943,7 @@ Licensed under the BSD-2-Clause License.
                 };
                 return this.options.barColors.call(this, r, s, type);
             } else {
-                return this.options.barColors[
-                    sidx % this.options.barColors.length
-                ];
+                return this.options.barColors[sidx % this.options.barColors.length];
             }
         };
 
@@ -2201,7 +1954,7 @@ Licensed under the BSD-2-Clause License.
             x = Math.max(Math.min(x, this.right), this.left);
             return Math.min(
                 this.data.length - 1,
-                Math.floor((x - this.left) / (this.width / this.data.length))
+                Math.floor((x - this.left) / (this.width / this.data.length)),
             );
         };
 
@@ -2214,10 +1967,7 @@ Licensed under the BSD-2-Clause License.
         Bar.prototype.onHoverMove = function (x, y) {
             var index, _ref;
             index = this.hitTest(x);
-            return (_ref = this.hover).update.apply(
-                _ref,
-                this.hoverContentForRow(index)
-            );
+            return (_ref = this.hover).update.apply(_ref, this.hoverContentForRow(index));
         };
 
         Bar.prototype.onHoverOut = function () {
@@ -2229,8 +1979,7 @@ Licensed under the BSD-2-Clause License.
         Bar.prototype.hoverContentForRow = function (index) {
             var content, j, row, x, y, _i, _len, _ref;
             row = this.data[index];
-            content =
-                "<div class='morris-hover-row-label'>" + row.label + '</div>';
+            content = "<div class='morris-hover-row-label'>" + row.label + '</div>';
             _ref = row.y;
             for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
                 y = _ref[j];
@@ -2244,12 +1993,7 @@ Licensed under the BSD-2-Clause License.
                     '\n</div>';
             }
             if (typeof this.options.hoverCallback === 'function') {
-                content = this.options.hoverCallback(
-                    index,
-                    this.options,
-                    content,
-                    row.src
-                );
+                content = this.options.hoverCallback(index, this.options, content, row.src);
             }
             x = this.left + ((index + 0.5) * this.width) / this.data.length;
             return [content, x];
@@ -2272,21 +2016,16 @@ Licensed under the BSD-2-Clause License.
             height,
             barColor,
             opacity,
-            radiusArray
+            radiusArray,
         ) {
             var maxRadius, path;
             maxRadius = Math.max.apply(Math, radiusArray);
             if (maxRadius === 0 || maxRadius > height) {
                 path = this.raphael.rect(xPos, yPos, width, height);
             } else {
-                path = this.raphael.path(
-                    this.roundedRect(xPos, yPos, width, height, radiusArray)
-                );
+                path = this.raphael.path(this.roundedRect(xPos, yPos, width, height, radiusArray));
             }
-            return path
-                .attr('fill', barColor)
-                .attr('fill-opacity', opacity)
-                .attr('stroke', 'none');
+            return path.attr('fill', barColor).attr('fill-opacity', opacity).attr('stroke', 'none');
         };
 
         Bar.prototype.roundedRect = function (x, y, w, h, r) {
@@ -2381,10 +2120,7 @@ Licensed under the BSD-2-Clause License.
                     if (_this.timeoutId != null) {
                         window.clearTimeout(_this.timeoutId);
                     }
-                    return (_this.timeoutId = window.setTimeout(
-                        _this.resizeHandler,
-                        100
-                    ));
+                    return (_this.timeoutId = window.setTimeout(_this.resizeHandler, 100));
                 });
             }
             this.setData(options.data);
@@ -2440,11 +2176,10 @@ Licensed under the BSD-2-Clause License.
                     w,
                     last,
                     next,
-                    this.data[i].color ||
-                        this.options.colors[idx % this.options.colors.length],
+                    this.data[i].color || this.options.colors[idx % this.options.colors.length],
                     this.options.backgroundColor,
                     idx,
-                    this.raphael
+                    this.raphael,
                 );
                 seg.render();
                 this.segments.push(seg);
@@ -2453,19 +2188,8 @@ Licensed under the BSD-2-Clause License.
                 last = next;
                 idx += 1;
             }
-            this.text1 = this.drawEmptyDonutLabel(
-                cx,
-                cy - 10,
-                this.options.labelColor,
-                15,
-                800
-            );
-            this.text2 = this.drawEmptyDonutLabel(
-                cx,
-                cy + 10,
-                this.options.labelColor,
-                14
-            );
+            this.text1 = this.drawEmptyDonutLabel(cx, cy - 10, this.options.labelColor, 15, 800);
+            this.text2 = this.drawEmptyDonutLabel(cx, cy + 10, this.options.labelColor, 14);
             max_value = Math.max.apply(Math, this.values);
             idx = 0;
             _ref2 = this.values;
@@ -2511,10 +2235,7 @@ Licensed under the BSD-2-Clause License.
             segment = this.segments[idx];
             segment.select();
             row = this.data[idx];
-            return this.setLabels(
-                row.label,
-                this.options.formatter(row.value, row)
-            );
+            return this.setLabels(row.label, this.options.formatter(row.value, row));
         };
 
         Donut.prototype.setLabels = function (label1, label2) {
@@ -2526,10 +2247,7 @@ Licensed under the BSD-2-Clause License.
                 text1scale,
                 text2bbox,
                 text2scale;
-            inner =
-                ((Math.min(this.el.width() / 2, this.el.height() / 2) - 10) *
-                    2) /
-                3;
+            inner = ((Math.min(this.el.width() / 2, this.el.height() / 2) - 10) * 2) / 3;
             maxWidth = 1.8 * inner;
             maxHeightTop = inner / 2;
             maxHeightBottom = inner / 3;
@@ -2538,10 +2256,7 @@ Licensed under the BSD-2-Clause License.
                 transform: '',
             });
             text1bbox = this.text1.getBBox();
-            text1scale = Math.min(
-                maxWidth / text1bbox.width,
-                maxHeightTop / text1bbox.height
-            );
+            text1scale = Math.min(maxWidth / text1bbox.width, maxHeightTop / text1bbox.height);
             this.text1.attr({
                 transform:
                     'S' +
@@ -2558,10 +2273,7 @@ Licensed under the BSD-2-Clause License.
                 transform: '',
             });
             text2bbox = this.text2.getBBox();
-            text2scale = Math.min(
-                maxWidth / text2bbox.width,
-                maxHeightBottom / text2bbox.height
-            );
+            text2scale = Math.min(maxWidth / text2bbox.width, maxHeightBottom / text2bbox.height);
             return this.text2.attr({
                 transform:
                     'S' +
@@ -2575,13 +2287,7 @@ Licensed under the BSD-2-Clause License.
             });
         };
 
-        Donut.prototype.drawEmptyDonutLabel = function (
-            xPos,
-            yPos,
-            color,
-            fontSize,
-            fontWeight
-        ) {
+        Donut.prototype.drawEmptyDonutLabel = function (xPos, yPos, color, fontSize, fontWeight) {
             var text;
             text = this.raphael
                 .text(xPos, yPos, '')
@@ -2615,7 +2321,7 @@ Licensed under the BSD-2-Clause License.
             color,
             backgroundColor,
             index,
-            raphael
+            raphael,
         ) {
             this.cx = cx;
             this.cy = cy;
@@ -2632,14 +2338,8 @@ Licensed under the BSD-2-Clause License.
             this.sin_p1 = Math.sin(p1);
             this.cos_p1 = Math.cos(p1);
             this.is_long = p1 - p0 > Math.PI ? 1 : 0;
-            this.path = this.calcSegment(
-                this.inner + 3,
-                this.inner + this.outer - 5
-            );
-            this.selectedPath = this.calcSegment(
-                this.inner + 3,
-                this.inner + this.outer
-            );
+            this.path = this.calcSegment(this.inner + 3, this.inner + this.outer - 5);
+            this.selectedPath = this.calcSegment(this.inner + 3, this.inner + this.outer);
             this.hilight = this.calcArc(this.inner);
         }
 
@@ -2669,27 +2369,9 @@ Licensed under the BSD-2-Clause License.
                 ix0 +
                 ',' +
                 iy0 +
-                ('A' +
-                    r1 +
-                    ',' +
-                    r1 +
-                    ',0,' +
-                    this.is_long +
-                    ',0,' +
-                    ix1 +
-                    ',' +
-                    iy1) +
+                ('A' + r1 + ',' + r1 + ',0,' + this.is_long + ',0,' + ix1 + ',' + iy1) +
                 ('L' + ox1 + ',' + oy1) +
-                ('A' +
-                    r2 +
-                    ',' +
-                    r2 +
-                    ',0,' +
-                    this.is_long +
-                    ',1,' +
-                    ox0 +
-                    ',' +
-                    oy0) +
+                ('A' + r2 + ',' + r2 + ',0,' + this.is_long + ',1,' + ox0 + ',' + oy0) +
                 'Z'
             );
         };
@@ -2706,16 +2388,7 @@ Licensed under the BSD-2-Clause License.
                 ix0 +
                 ',' +
                 iy0 +
-                ('A' +
-                    r +
-                    ',' +
-                    r +
-                    ',0,' +
-                    this.is_long +
-                    ',0,' +
-                    ix1 +
-                    ',' +
-                    iy1)
+                ('A' + r + ',' + r + ',0,' + this.is_long + ',0,' + ix1 + ',' + iy1)
             );
         };
 
@@ -2731,7 +2404,7 @@ Licensed under the BSD-2-Clause License.
                 },
                 function () {
                     return _this.fire('click', _this.index);
-                }
+                },
             ));
         };
 
@@ -2748,7 +2421,7 @@ Licensed under the BSD-2-Clause License.
             fillColor,
             strokeColor,
             hoverFunction,
-            clickFunction
+            clickFunction,
         ) {
             return this.raphael
                 .path(path)
@@ -2768,14 +2441,14 @@ Licensed under the BSD-2-Clause License.
                         path: this.selectedPath,
                     },
                     150,
-                    '<>'
+                    '<>',
                 );
                 this.arc.animate(
                     {
                         opacity: 1,
                     },
                     150,
-                    '<>'
+                    '<>',
                 );
                 return (this.selected = true);
             }
@@ -2788,14 +2461,14 @@ Licensed under the BSD-2-Clause License.
                         path: this.path,
                     },
                     150,
-                    '<>'
+                    '<>',
                 );
                 this.arc.animate(
                     {
                         opacity: 0,
                     },
                     150,
-                    '<>'
+                    '<>',
                 );
                 return (this.selected = false);
             }

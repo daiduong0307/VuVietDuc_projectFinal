@@ -27,8 +27,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
     }
     function D(a) {
         a = a.replace(/^#/, '');
-        for (var c = 0, b = []; 2 >= c; c++)
-            b[c] = parseInt(a.substr(2 * c, 2), 16);
+        for (var c = 0, b = []; 2 >= c; c++) b[c] = parseInt(a.substr(2 * c, 2), 16);
         return 165 <= 0.2126 * b[0] + 0.7152 * b[1] + 0.0722 * b[2];
     }
     function z(a) {
@@ -41,11 +40,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
             (q(a),
             c ? (d = b) : (A = b),
             c &&
-                b.addClass(
-                    D(f)
-                        ? 'cke_colordialog_focused_light'
-                        : 'cke_colordialog_focused_dark'
-                ),
+                b.addClass(D(f) ? 'cke_colordialog_focused_light' : 'cke_colordialog_focused_dark'),
             r(f));
     }
     function B() {
@@ -63,10 +58,8 @@ CKEDITOR.dialog.add('colordialog', function (w) {
     }
     function r(a) {
         a
-            ? (h.getById(t).setStyle('background-color', a),
-              h.getById(u).setHtml(a))
-            : (h.getById(t).removeStyle('background-color'),
-              h.getById(u).setHtml('\x26nbsp;'));
+            ? (h.getById(t).setStyle('background-color', a), h.getById(u).setHtml(a))
+            : (h.getById(t).removeStyle('background-color'), h.getById(u).setHtml('\x26nbsp;'));
     }
     function E(a) {
         var c = a.data,
@@ -75,8 +68,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
             d = 'rtl' == w.lang.dir;
         switch (f) {
             case 38:
-                if ((a = b.getParent().getPrevious()))
-                    (a = a.getChild([b.getIndex()])), a.focus();
+                if ((a = b.getParent().getPrevious())) (a = a.getChild([b.getIndex()])), a.focus();
                 c.preventDefault();
                 break;
             case 40:
@@ -126,8 +118,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
                 var f = new v(k.$.insertRow(-1));
                 f.setAttribute('role', 'row');
                 for (var g = d; g < d + 3; g++)
-                    for (var h = 0; 6 > h; h++)
-                        c(f.$, '#' + b[g] + b[h] + b[e]);
+                    for (var h = 0; 6 > h; h++) c(f.$, '#' + b[g] + b[h] + b[e]);
             }
         }
         function c(a, c) {
@@ -149,8 +140,8 @@ CKEDITOR.dialog.add('colordialog', function (w) {
                         '" class\x3d"cke_voice_label"\x3e' +
                         c +
                         '\x3c/span\x3e',
-                    CKEDITOR.document
-                )
+                    CKEDITOR.document,
+                ),
             );
         }
         k = CKEDITOR.dom.element.createFromHtml(
@@ -158,7 +149,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
                 g.options +
                 '" role\x3d"grid" style\x3d"border-collapse:separate;" cellspacing\x3d"0"\x3e\x3ccaption class\x3d"cke_voice_label"\x3e' +
                 g.options +
-                '\x3c/caption\x3e\x3ctbody role\x3d"presentation"\x3e\x3c/tbody\x3e\x3c/table\x3e'
+                '\x3c/caption\x3e\x3ctbody role\x3d"presentation"\x3e\x3c/tbody\x3e\x3c/table\x3e',
         );
         k.on('mouseover', z);
         k.on('mouseout', q);
@@ -177,9 +168,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
         c(f.$, '#ffffff');
     })();
     CKEDITOR.document.appendStyleSheet(
-        CKEDITOR.getUrl(
-            CKEDITOR.plugins.get('colordialog').path + 'dialogs/colordialog.css'
-        )
+        CKEDITOR.getUrl(CKEDITOR.plugins.get('colordialog').path + 'dialogs/colordialog.css'),
     );
     return {
         title: g.title,
@@ -189,8 +178,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
             if (
                 !a.data.selectionColor ||
                 a.data.selectionColor == a.data.automaticTextColor ||
-                ('#rgba(0, 0, 0, 0)' == a.data.selectionColor &&
-                    'back' == a.data.type)
+                ('#rgba(0, 0, 0, 0)' == a.data.selectionColor && 'back' == a.data.type)
             )
                 l(), B();
             else {
@@ -199,9 +187,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
                 var b;
                 m.getContentElement('picker', 'selectedColor').setValue(c);
                 CKEDITOR.tools.array.forEach(a, function (a) {
-                    b = CKEDITOR.tools.convertRgbToHex(
-                        a.getStyle('background-color')
-                    );
+                    b = CKEDITOR.tools.convertRgbToHex(a.getStyle('background-color'));
                     c === b && (a.focus(), (d = a));
                 });
             }
@@ -228,16 +214,11 @@ CKEDITOR.dialog.add('colordialog', function (w) {
                                 type: 'html',
                                 html: '\x3cdiv\x3e\x3c/div\x3e',
                                 onLoad: function () {
-                                    CKEDITOR.document
-                                        .getById(this.domId)
-                                        .append(k);
+                                    CKEDITOR.document.getById(this.domId).append(k);
                                 },
                                 focus: function () {
                                     (
-                                        d ||
-                                        this.getElement()
-                                            .getElementsByTag('td')
-                                            .getItem(0)
+                                        d || this.getElement().getElementsByTag('td').getItem(0)
                                     ).focus();
                                 },
                             },
@@ -272,7 +253,7 @@ CKEDITOR.dialog.add('colordialog', function (w) {
                                             try {
                                                 h.getById(p).setStyle(
                                                     'background-color',
-                                                    this.getValue()
+                                                    this.getValue(),
                                                 );
                                             } catch (a) {
                                                 l();

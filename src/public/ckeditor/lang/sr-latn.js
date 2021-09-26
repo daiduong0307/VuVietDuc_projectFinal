@@ -44,8 +44,7 @@ CKEDITOR.lang['sr-latn'] = {
         validateNumberFailed: 'Ova vrednost nije broj.',
         confirmNewPage:
             'Nesačuvane promene ovog sadržaja će biti izgubljene. Jeste li sigurni da želita da učitate novu stranu?',
-        confirmCancel:
-            'Neka podešavanja su promenjena.Sigurno želite zatvoriti prozor?',
+        confirmCancel: 'Neka podešavanja su promenjena.Sigurno želite zatvoriti prozor?',
         options: 'Podešavanja',
         target: 'Cilj',
         targetNew: 'Novi prozor (_blank)',
@@ -297,10 +296,8 @@ CKEDITOR.lang['sr-latn'] = {
         networkError: 'Tokom postavljanja datoteke došlo je do mrežne greške',
         httpError404:
             'Tokom postavljanja datoteke došlo je do HTTP greške (404: Datoteka nije pronadjena).',
-        httpError403:
-            'Tokom postavljanja datoteke došlo je do HTTP greške (403: Zabranjena).',
-        httpError:
-            'Tokom postavljanja datoteke došlo je do HTTP greške (status greške: %1).',
+        httpError403: 'Tokom postavljanja datoteke došlo je do HTTP greške (403: Zabranjena).',
+        httpError: 'Tokom postavljanja datoteke došlo je do HTTP greške (status greške: %1).',
         noUrlError: 'URL adresa za postavljanje nije navedena.',
         responseError: 'Neispravan odgovor servera.',
     },
@@ -356,11 +353,9 @@ CKEDITOR.lang['sr-latn'] = {
         scaleNoBorder: 'Bez ivice',
         title: 'Osobine fleša',
         vSpace: 'Usprav. razdaljina',
-        validateHSpace:
-            'U polje vodoravna razdaljina možete uneti samo brojeve.',
+        validateHSpace: 'U polje vodoravna razdaljina možete uneti samo brojeve.',
         validateSrc: 'Unesite URL linka',
-        validateVSpace:
-            'U polje uspravna razdaljina možete uneti samo brojeve.',
+        validateVSpace: 'U polje uspravna razdaljina možete uneti samo brojeve.',
         windowMode: 'Prozor mod',
         windowModeOpaque: 'Neprovidan',
         windowModeTransparent: 'Providan',
@@ -654,10 +649,8 @@ CKEDITOR.lang['sr-latn'] = {
             no: 'Nе',
             invalidWidth: 'U polje širina možete upisati samo brojeve. ',
             invalidHeight: 'U polje visina možete upisati samo brojeve.',
-            invalidRowSpan:
-                'U polje spoj uspravno  možete upistai samo brojeve.',
-            invalidColSpan:
-                'U polje spoj vodoravno možete upistai samo brojeve.',
+            invalidRowSpan: 'U polje spoj uspravno  možete upistai samo brojeve.',
+            invalidColSpan: 'U polje spoj vodoravno možete upistai samo brojeve.',
             chooseColor: 'Izaberi',
         },
         cellPad: 'Razmak ćelija',
@@ -705,7 +698,6 @@ CKEDITOR.lang['sr-latn'] = {
         doneOne: 'Datoteka je uspešno postavljena',
         doneMany: '%1 datoteka je uspešno postavljena',
         uploadOne: 'Postavljanje datoteke  ({percentage}%)...',
-        uploadMany:
-            'Postavljanje datoteka, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Postavljanje datoteka, {current} of {max} done ({percentage}%)...',
     },
 };

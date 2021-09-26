@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'es-mx', {
     title: 'Instrucciones de accesibilidad',
-    contents:
-        'Contenidos de ayuda. Para cerrar este cuadro de diálogo presione ESC.',
+    contents: 'Contenidos de ayuda. Para cerrar este cuadro de diálogo presione ESC.',
     legend: [
         {
             name: 'General',

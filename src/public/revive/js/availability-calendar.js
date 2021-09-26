@@ -37,15 +37,9 @@
             this.$monthLabel = $('<span></span>').appendTo($toolbar);
             var $inputContainer = $('<span></span>').appendTo($toolbar);
 
-            $inputContainer.append(
-                '<input type="button" title="This month" value="This Month">'
-            );
-            $inputContainer.append(
-                '<input type="button" title="Previous month" value="&#10094;">'
-            );
-            $inputContainer.append(
-                '<input type="button" title="Next month" value="&#10095;">'
-            );
+            $inputContainer.append('<input type="button" title="This month" value="This Month">');
+            $inputContainer.append('<input type="button" title="Previous month" value="&#10094;">');
+            $inputContainer.append('<input type="button" title="Next month" value="&#10095;">');
 
             var $inputs = $inputContainer.children('input');
             var self = this;
@@ -80,9 +74,7 @@
             // Day cells
             for (var i = 0; i < 6; ++i) {
                 $tr = $('<tr class="date"></tr>').appendTo($table);
-                $tr.append(
-                    '<td></td><td></td><td></td><td></td><td></td><td></td><td></td>'
-                );
+                $tr.append('<td></td><td></td><td></td><td></td><td></td><td></td><td></td>');
             }
 
             this.$cells = $table.find('td');
@@ -103,11 +95,7 @@
                 date.setDate(0);
                 var numDays = date.getDate();
 
-                for (
-                    var i = numDays - firstWeekdayOfMonth + 1;
-                    i <= numDays;
-                    ++i
-                ) {
+                for (var i = numDays - firstWeekdayOfMonth + 1; i <= numDays; ++i) {
                     this.$cells.eq(dates.length).html(i).addClass('ex-month');
 
                     date.setDate(i);
@@ -195,11 +183,7 @@
 
             this.$monthLabel.html(months[month] + ' ' + year);
             this.$cells.removeClass('ex-month');
-            this.$cells
-                .filter('.unavailable')
-                .removeClass('unavailable')
-                .children()
-                .remove();
+            this.$cells.filter('.unavailable').removeClass('unavailable').children().remove();
 
             this.__addPreviousMonthDays(date, cellIndexes, dates);
             this.__addThisMonthDays(date, year, month, cellIndexes, dates);

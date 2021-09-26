@@ -6,8 +6,7 @@
     btnUndo: '취소',
     changeTo: '변경할 단어',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        '철자 검사기가 철치되지 않았습니다. 지금 다운로드하시겠습니까?',
+    ieSpellDownload: '철자 검사기가 철치되지 않았습니다. 지금 다운로드하시겠습니까?',
     manyChanges: '철자검사 완료: %1 단어가 변경되었습니다.',
     noChanges: '철자검사 완료: 변경된 단어가 없습니다.',
     noMispell: '철자검사 완료: 잘못된 철자가 없습니다.',

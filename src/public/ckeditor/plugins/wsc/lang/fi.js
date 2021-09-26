@@ -6,8 +6,7 @@
     btnUndo: 'Kumoa',
     changeTo: 'Vaihda',
     errorLoading: 'Virhe ladattaessa oikolukupalvelua isännältä: %s.',
-    ieSpellDownload:
-        'Oikeinkirjoituksen tarkistusta ei ole asennettu. Haluatko ladata sen nyt?',
+    ieSpellDownload: 'Oikeinkirjoituksen tarkistusta ei ole asennettu. Haluatko ladata sen nyt?',
     manyChanges: 'Tarkistus valmis: %1 sanaa muutettiin',
     noChanges: 'Tarkistus valmis: Yhtään sanaa ei muutettu',
     noMispell: 'Tarkistus valmis: Ei virheitä',

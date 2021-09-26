@@ -294,10 +294,8 @@ CKEDITOR.lang['ka'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -466,11 +464,9 @@ CKEDITOR.lang['ka'] = {
         alt: 'სანაცვლო ტექსტი',
         border: 'ჩარჩო',
         btnUpload: 'სერვერისთვის გაგზავნა',
-        button2Img:
-            'გსურთ არჩეული სურათიანი ღილაკის გადაქცევა ჩვეულებრივ ღილაკად?',
+        button2Img: 'გსურთ არჩეული სურათიანი ღილაკის გადაქცევა ჩვეულებრივ ღილაკად?',
         hSpace: 'ჰორიზონტალური სივრცე',
-        img2Button:
-            'გსურთ არჩეული ჩვეულებრივი ღილაკის გადაქცევა სურათიან ღილაკად?',
+        img2Button: 'გსურთ არჩეული ჩვეულებრივი ღილაკის გადაქცევა სურათიან ღილაკად?',
         infoTab: 'სურათის ინფორმცია',
         linkTab: 'ბმული',
         lockRatio: 'პროპორციის შენარჩუნება',
@@ -565,8 +561,7 @@ CKEDITOR.lang['ka'] = {
         decimal: 'რიცხვებით (1, 2, 3, ..)',
         disc: 'წრე',
         lowerAlpha: 'პატარა ლათინური ასოებით (a, b, c, d, e, ..)',
-        lowerRoman:
-            'რომაული გადანომრვცა პატარა ციფრებით (i, ii, iii, iv, v, ..)',
+        lowerRoman: 'რომაული გადანომრვცა პატარა ციფრებით (i, ii, iii, iv, v, ..)',
         none: 'არაფერი',
         notset: '<არაფერი>',
         numberedTitle: 'გადანომრილი სიის პარამეტრები',
@@ -574,8 +569,7 @@ CKEDITOR.lang['ka'] = {
         start: 'საწყისი',
         type: 'ტიპი',
         upperAlpha: 'დიდი ლათინური ასოებით (A, B, C, D, E, ..)',
-        upperRoman:
-            'რომაული გადანომრვა დიდი ციფრებით (I, II, III, IV, V, etc.)',
+        upperRoman: 'რომაული გადანომრვა დიდი ციფრებით (I, II, III, IV, V, etc.)',
         validateStartNumber: 'სიის საწყისი მთელი რიცხვი უნდა იყოს.',
     },
     magicline: { title: 'Insert paragraph here' },
@@ -673,10 +667,8 @@ CKEDITOR.lang['ka'] = {
         headersRow: 'პირველი სტრიქონი',
         heightUnit: 'height unit',
         invalidBorder: 'ჩარჩოს ზომა რიცხვით უდნა იყოს წარმოდგენილი.',
-        invalidCellPadding:
-            'უჯრის კიდე (padding) რიცხვით უნდა იყოს წარმოდგენილი.',
-        invalidCellSpacing:
-            'უჯრის სივრცე (spacing) რიცხვით უნდა იყოს წარმოდგენილი.',
+        invalidCellPadding: 'უჯრის კიდე (padding) რიცხვით უნდა იყოს წარმოდგენილი.',
+        invalidCellSpacing: 'უჯრის სივრცე (spacing) რიცხვით უნდა იყოს წარმოდგენილი.',
         invalidCols: 'სვეტების რაოდენობა დადებითი რიცხვი უნდა იყოს.',
         invalidHeight: 'ცხრილის სიმაღლე რიცხვით უნდა იყოს წარმოდგენილი.',
         invalidRows: 'სტრიქონების რაოდენობა დადებითი რიცხვი უნდა იყოს.',
@@ -703,7 +695,6 @@ CKEDITOR.lang['ka'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

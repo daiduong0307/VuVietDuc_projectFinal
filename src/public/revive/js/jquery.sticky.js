@@ -37,10 +37,7 @@
 
                 if (scrollTop <= etse) {
                     if (s.currentTop !== null) {
-                        s.stickyElement
-                            .css('width', '')
-                            .css('position', '')
-                            .css('top', '');
+                        s.stickyElement.css('width', '').css('position', '').css('top', '');
                         s.stickyElement
                             .trigger('sticky-end', [s])
                             .parent()
@@ -67,16 +64,10 @@
                             .css('top', newTop);
 
                         if (typeof s.getWidthFrom !== 'undefined') {
-                            s.stickyElement.css(
-                                'width',
-                                $(s.getWidthFrom).width()
-                            );
+                            s.stickyElement.css('width', $(s.getWidthFrom).width());
                         }
 
-                        s.stickyElement
-                            .trigger('sticky-start', [s])
-                            .parent()
-                            .addClass(s.className);
+                        s.stickyElement.trigger('sticky-start', [s]).parent().addClass(s.className);
                         s.currentTop = newTop;
                     }
                 }
@@ -87,10 +78,7 @@
 
             for (var i = 0; i < sticked.length; i++) {
                 var s = sticked[i];
-                if (
-                    typeof s.getWidthFrom !== 'undefined' &&
-                    s.responsiveWidth === true
-                ) {
+                if (typeof s.getWidthFrom !== 'undefined' && s.responsiveWidth === true) {
                     s.stickyElement.css('width', $(s.getWidthFrom).width());
                 }
             }
@@ -119,10 +107,7 @@
                     }
 
                     if (stickyElement.css('float') == 'right') {
-                        stickyElement
-                            .css({ float: 'none' })
-                            .parent()
-                            .css({ float: 'right' });
+                        stickyElement.css({ float: 'none' }).parent().css({ float: 'right' });
                     }
 
                     var stickyWrapper = stickyElement.parent();
@@ -146,10 +131,7 @@
 
                     var removeIdx = -1;
                     for (var i = 0; i < sticked.length; i++) {
-                        if (
-                            sticked[i].stickyElement.get(0) ==
-                            unstickyElement.get(0)
-                        ) {
+                        if (sticked[i].stickyElement.get(0) == unstickyElement.get(0)) {
                             removeIdx = i;
                         }
                     }
@@ -173,10 +155,7 @@
 
     $.fn.sticky = function (method) {
         if (methods[method]) {
-            return methods[method].apply(
-                this,
-                Array.prototype.slice.call(arguments, 1)
-            );
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
         } else {
@@ -186,10 +165,7 @@
 
     $.fn.unstick = function (method) {
         if (methods[method]) {
-            return methods[method].apply(
-                this,
-                Array.prototype.slice.call(arguments, 1)
-            );
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
             return methods.unstick.apply(this, arguments);
         } else {

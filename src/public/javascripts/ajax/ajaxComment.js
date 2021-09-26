@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $('#cmtForm').on('submit', (e) => {
+    $('#cmtForm').on('submit', e => {
         e.preventDefault();
 
         var formData = $('#cmtForm').serializeArray();
@@ -38,10 +38,7 @@ $(document).ready(() => {
         });
 
         $(document).mouseup(function (event) {
-            if (
-                !formReply.is(event.target) &&
-                !formReply.has(event.target).length
-            ) {
+            if (!formReply.is(event.target) && !formReply.has(event.target).length) {
                 formReply.attr('hidden', true);
             }
         });
@@ -93,7 +90,7 @@ $(document).ready(() => {
         console.log('Here is replies ', data);
         var res = '';
         if (data.length > 0) {
-            data.forEach((el) => {
+            data.forEach(el => {
                 res += dataReplies(el);
             });
         }
@@ -158,7 +155,7 @@ $(document).ready(() => {
         console.log('Here is comment ', data);
         var res = '';
         if (data.length > 0) {
-            data.forEach((el) => (res += getData(el)));
+            data.forEach(el => (res += getData(el)));
         }
         $('#listComment').html(res);
     }
@@ -181,15 +178,7 @@ $(document).ready(() => {
         if (minute < 10) minute = '0' + minute;
 
         let formatted_date =
-            longMonth +
-            ' ' +
-            day +
-            ', ' +
-            date.getFullYear() +
-            ' ' +
-            hour +
-            ':' +
-            minute;
+            longMonth + ' ' + day + ', ' + date.getFullYear() + ' ' + hour + ':' + minute;
         return formatted_date;
     }
 
@@ -235,16 +224,11 @@ $(document).ready(() => {
         html += '  </div>';
 
         html +=
-            '  <input type="hidden" id="commentId" name="commentId" value="' +
-            comment._id +
-            '">';
+            '  <input type="hidden" id="commentId" name="commentId" value="' + comment._id + '">';
         html +=
-            '  <input type="hidden" id="blogId" name="blogId" value="' +
-            comment.postId._id +
-            '">';
+            '  <input type="hidden" id="blogId" name="blogId" value="' + comment.postId._id + '">';
 
-        html +=
-            '  <input type="submit" class="primary-btn submit_btn" value="Reply" />';
+        html += '  <input type="submit" class="primary-btn submit_btn" value="Reply" />';
         html += ' </form>';
         html += ' </div>';
         html += '</div>';

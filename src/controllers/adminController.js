@@ -94,10 +94,7 @@ function getMonth_Of_Posts(postData) {
 exports.allUserAccount = async (req, res) => {
     const title = 'List of User Accounts';
 
-    const users = await userModel
-        .find({})
-        .sort({ createdAt: -1 })
-        .populate('accountId');
+    const users = await userModel.find({}).sort({ createdAt: -1 }).populate('accountId');
 
     const userAcc = await appUserModel.find({ role: 'user' });
     const admin = await appUserModel.findOne({ _id: req.session.userId });
@@ -132,10 +129,7 @@ exports.searchUser = async (req, res) => {
     // const users = await userModel.find({ createdAt: { $gte: timeFrom, $lte: timeTo } }).sort({ "createdAt": -1 }).populate("accountId");
     const users = await userModel
         .find({
-            $or: [
-                { accountId: username },
-                { createdAt: { $gte: timeFrom, $lte: timeTo } },
-            ],
+            $or: [{ accountId: username }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
         })
         .sort({ createdAt: -1 })
         .populate('accountId');
@@ -199,7 +193,7 @@ exports.updateOneUser = async (req, res) => {
     const updatedUser = await userModel.findOneAndUpdate(
         { _id },
         { $set: newValues },
-        { new: true }
+        { new: true },
     );
     try {
         console.log(updatedUser);
@@ -231,7 +225,7 @@ exports.deleteOneUser = async (req, res) => {
             const pullBlog = await userModel.findOneAndUpdate(
                 { posts: userBlog._id },
                 { $pull: { posts: userBlog._id } },
-                { new: true, useFindAndModify: false, multi: true }
+                { new: true, useFindAndModify: false, multi: true },
             );
             const deleteBlogComment = await commentModel.deleteMany({
                 _id: userBlog.comments,
@@ -296,10 +290,7 @@ exports.searchManager = async (req, res) => {
     // const managers = await userModel.find({ createdAt: { $gte: timeFrom, $lte: timeTo } }).sort({ "createdAt": -1 }).populate("accountId");
     const managers = await managerModel
         .find({
-            $or: [
-                { email: regExpEmail },
-                { createdAt: { $gte: timeFrom, $lte: timeTo } },
-            ],
+            $or: [{ email: regExpEmail }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
         })
         .sort({ createdAt: -1 })
         .populate('accountId')
@@ -387,13 +378,13 @@ exports.addOneManager = async (req, res) => {
             const updateCategory = await categoryModel.findOneAndUpdate(
                 { _id: categoryId },
                 { $set: { isManaged: true, managedBy: saveManager._id } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
 
             const updateManager = await managerModel.findOneAndUpdate(
                 { _id: newUser._id },
                 { $set: { isResponsible: true } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
         }
 
@@ -410,9 +401,7 @@ exports.getUpdateManager = async (req, res) => {
     const { error, success } = req.query;
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-    const managerInfo = await managerModel
-        .findOne({ _id: userId })
-        .populate('categoryId');
+    const managerInfo = await managerModel.findOne({ _id: userId }).populate('categoryId');
     const category = await categoryModel.find({ isManaged: false });
 
     try {
@@ -456,32 +445,30 @@ exports.updateOneManager = async (req, res) => {
         const updatedManager = await managerModel.findOneAndUpdate(
             { _id },
             { $set: newValues },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         await categoryModel.findOneAndUpdate(
             { _id: categoryId },
             { $set: { managedBy: _id } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const updateOldCate = await categoryModel.findOneAndUpdate(
             { _id: manager.categoryId },
             { $set: { isManaged: false } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const updateCate = await categoryModel.findOneAndUpdate(
             { _id: categoryId },
             { $set: { isManaged: true } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         // console.log(updatedManager);
         const success = 'Update Successfully';
-        return res.redirect(
-            `/admin/updateManager/${updatedManager._id}?success=${success}`
-        );
+        return res.redirect(`/admin/updateManager/${updatedManager._id}?success=${success}`);
     } catch (error) {
         console.log(error);
         return res.render('adminViews/updateManagerAcc');
@@ -535,7 +522,7 @@ exports.deleteOneManger = async (req, res) => {
             await categoryModel.findOneAndUpdate(
                 { managedBy: managerInfo._id },
                 { $set: { isManaged: false } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
         }
 
@@ -554,10 +541,7 @@ exports.allCategories = async (req, res) => {
     const title = 'List of categories';
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-    const categories = await categoryModel
-        .find({})
-        .sort({ createdAt: -1 })
-        .populate('managedBy');
+    const categories = await categoryModel.find({}).sort({ createdAt: -1 }).populate('managedBy');
 
     try {
         res.render('adminViews/listAllCategories', {
@@ -616,13 +600,13 @@ exports.addOneCategory = async (req, res) => {
             const updateCate = await categoryModel.findOneAndUpdate(
                 { _id: saveCate._id },
                 { $set: { isManaged: true } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
 
             const updateManager = await managerModel.findOneAndUpdate(
                 { _id: managerId },
                 { $set: { isResponsible: true, categoryId: saveCate._id } },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
         }
 
@@ -679,13 +663,11 @@ exports.updateOneCategory = async (req, res) => {
         const updatedCategory = await categoryModel.findOneAndUpdate(
             { _id },
             { $set: newValues },
-            { new: true }
+            { new: true },
         );
 
         const success = 'Update Successfully!!!';
-        return res.redirect(
-            `/admin/updateCategory/${updatedCategory._id}?success=${success}`
-        );
+        return res.redirect(`/admin/updateCategory/${updatedCategory._id}?success=${success}`);
     } catch (error) {
         console.log(error);
         return res.render('admin/updateCategory');
@@ -708,14 +690,14 @@ exports.deleteOneCategory = async (req, res) => {
             await userModel.findOneAndUpdate(
                 { posts: blog._id },
                 { $pull: { posts: blog._id } },
-                { new: true, useFindAndModify: false, multi: true }
+                { new: true, useFindAndModify: false, multi: true },
             );
         }
 
         await managerModel.findOneAndUpdate(
             { categoryId },
             { $set: { isResponsible: false } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const obj = {
@@ -788,7 +770,7 @@ exports.deleteOneTag = async (req, res) => {
             const pullTag = await categoryModel.findOneAndUpdate(
                 { tags: tagId },
                 { $pull: { tags: tagId } },
-                { new: true, useFindAndModify: false, multi: true }
+                { new: true, useFindAndModify: false, multi: true },
             );
         }
 

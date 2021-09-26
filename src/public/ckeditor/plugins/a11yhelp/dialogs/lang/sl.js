@@ -4,8 +4,7 @@
 */
 CKEDITOR.plugins.setLang('a11yhelp', 'sl', {
     title: 'Navodila za dostopnost',
-    contents:
-        'Vsebina pomoči. Če želite zapreti pogovorno okno, pritisnite ESC.',
+    contents: 'Vsebina pomoči. Če želite zapreti pogovorno okno, pritisnite ESC.',
     legend: [
         {
             name: 'Splošno',

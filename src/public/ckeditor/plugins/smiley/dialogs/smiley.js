@@ -39,8 +39,7 @@ CKEDITOR.dialog.add('smiley', function (f) {
                 switch (b) {
                     case 38:
                         if ((b = c.getParent().getParent().getPrevious()))
-                            (b = b.getChild([c.getParent().getIndex(), 0])),
-                                b.focus();
+                            (b = b.getChild([c.getParent().getIndex(), 0])), b.focus();
                         a.preventDefault();
                         break;
                     case 40:
@@ -55,22 +54,15 @@ CKEDITOR.dialog.add('smiley', function (f) {
                         break;
                     case d ? 37 : 39:
                         if ((b = c.getParent().getNext()))
-                            (b = b.getChild(0)),
-                                b.focus(),
-                                a.preventDefault(!0);
+                            (b = b.getChild(0)), b.focus(), a.preventDefault(!0);
                         else if ((b = c.getParent().getParent().getNext()))
-                            (b = b.getChild([0, 0])) && b.focus(),
-                                a.preventDefault(!0);
+                            (b = b.getChild([0, 0])) && b.focus(), a.preventDefault(!0);
                         break;
                     case d ? 39 : 37:
                         if ((b = c.getParent().getPrevious()))
-                            (b = b.getChild(0)),
-                                b.focus(),
-                                a.preventDefault(!0);
+                            (b = b.getChild(0)), b.focus(), a.preventDefault(!0);
                         else if ((b = c.getParent().getParent().getPrevious()))
-                            (b = b.getLast().getChild(0)),
-                                b.focus(),
-                                a.preventDefault(!0);
+                            (b = b.getLast().getChild(0)), b.focus(), a.preventDefault(!0);
                 }
             }),
             d = CKEDITOR.tools.getNextId() + '_smiley_emtions_label',
@@ -83,9 +75,7 @@ CKEDITOR.dialog.add('smiley', function (f) {
                 '\x3ctable role\x3d"listbox" aria-labelledby\x3d"' +
                     d +
                     '" style\x3d"width:100%;height:100%;border-collapse:separate;" cellspacing\x3d"2" cellpadding\x3d"2"',
-                CKEDITOR.env.ie && CKEDITOR.env.quirks
-                    ? ' style\x3d"position:absolute;"'
-                    : '',
+                CKEDITOR.env.ie && CKEDITOR.env.quirks ? ' style\x3d"position:absolute;"' : '',
                 '\x3e\x3ctbody\x3e',
             ],
             n = h.length,
@@ -121,7 +111,7 @@ CKEDITOR.dialog.add('smiley', function (f) {
                 '" class\x3d"cke_voice_label"\x3e' +
                 e.smiley_descriptions[a] +
                 '\x3c/span\x3e\x3c/a\x3e',
-            '\x3c/td\x3e'
+            '\x3c/td\x3e',
         );
         a % g == g - 1 && d.push('\x3c/tr\x3e');
     }

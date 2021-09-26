@@ -67,7 +67,7 @@ $(document).ready(function () {
                     task +
                     '</span></label></div><div class="f-right"><a onclick="delete_todo(' +
                     i +
-                    ');" href="#!" class="delete_todolist"><i class="icofont icofont-ui-delete" ></i></a></div></div>'
+                    ');" href="#!" class="delete_todolist"><i class="icofont icofont-ui-delete" ></i></a></div></div>',
             );
             i++;
             $(add_todo).appendTo('.new-task').hide().fadeIn(300);
@@ -97,7 +97,7 @@ $(document).ready(function () {
                     saveTask +
                     '</span><div class="f-right hidden-phone"><i class="icofont icofont-ui-delete delete_todo" onclick="delete_todo(' +
                     i +
-                    ');"></i></div></label></div></div>'
+                    ');"></i></div></label></div></div>',
             );
             i++;
             $(add_todo).appendTo('.task-content').hide().fadeIn(300);

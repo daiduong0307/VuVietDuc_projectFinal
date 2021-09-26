@@ -40,18 +40,13 @@ CKEDITOR.dialog.add('checkbox', function (d) {
                         default: '',
                         accessKey: 'N',
                         setup: function (a) {
-                            this.setValue(
-                                a.data('cke-saved-name') ||
-                                    a.getAttribute('name') ||
-                                    ''
-                            );
+                            this.setValue(a.data('cke-saved-name') || a.getAttribute('name') || '');
                         },
                         commit: function (a) {
                             a = a.element;
                             this.getValue()
                                 ? a.data('cke-saved-name', this.getValue())
-                                : (a.data('cke-saved-name', !1),
-                                  a.removeAttribute('name'));
+                                : (a.data('cke-saved-name', !1), a.removeAttribute('name'));
                         },
                     },
                     {
@@ -62,19 +57,14 @@ CKEDITOR.dialog.add('checkbox', function (d) {
                         accessKey: 'V',
                         setup: function (a) {
                             a = a.getAttribute('value');
-                            this.setValue(
-                                CKEDITOR.env.ie && 'on' == a ? '' : a
-                            );
+                            this.setValue(CKEDITOR.env.ie && 'on' == a ? '' : a);
                         },
                         commit: function (a) {
                             var b = a.element,
                                 c = this.getValue();
                             !c || (CKEDITOR.env.ie && 'on' == c)
                                 ? CKEDITOR.env.ie
-                                    ? ((c = new CKEDITOR.dom.element(
-                                          'input',
-                                          b.getDocument()
-                                      )),
+                                    ? ((c = new CKEDITOR.dom.element('input', b.getDocument())),
                                       b.copyAttributes(c, { value: 1 }),
                                       c.replace(b),
                                       d.getSelection().selectElement(c),
@@ -103,7 +93,7 @@ CKEDITOR.dialog.add('checkbox', function (d) {
                                         '\x3cinput type\x3d"checkbox"' +
                                             (e ? ' checked\x3d"checked"' : '') +
                                             '/\x3e',
-                                        d.document
+                                        d.document,
                                     )),
                                     b.copyAttributes(c, {
                                         type: 1,

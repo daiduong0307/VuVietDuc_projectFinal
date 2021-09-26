@@ -44,8 +44,7 @@ CKEDITOR.lang['et'] = {
         validateNumberFailed: 'See väärtus pole number.',
         confirmNewPage:
             'Kõik salvestamata muudatused lähevad kaotsi. Kas oled kindel, et tahad laadida uue lehe?',
-        confirmCancel:
-            'Mõned valikud on muudetud. Kas oled kindel, et tahad dialoogi sulgeda?',
+        confirmCancel: 'Mõned valikud on muudetud. Kas oled kindel, et tahad dialoogi sulgeda?',
         options: 'Valikud',
         target: 'Sihtkoht',
         targetNew: 'Uus aken (_blank)',
@@ -256,8 +255,7 @@ CKEDITOR.lang['et'] = {
         emptyListMsg: '(Ühtegi malli ei ole defineeritud)',
         insertOption: 'Praegune sisu asendatakse',
         options: 'Malli valikud',
-        selectPromptMsg:
-            'Palun vali mall, mis avada redaktoris<br />(praegune sisu läheb kaotsi):',
+        selectPromptMsg: 'Palun vali mall, mis avada redaktoris<br />(praegune sisu läheb kaotsi):',
         title: 'Sisumallid',
     },
     contextmenu: { options: 'Kontekstimenüü valikud' },
@@ -295,8 +293,7 @@ CKEDITOR.lang['et'] = {
     filetools: {
         loadError: 'Faili lugemisel esines viga.',
         networkError: 'Faili üleslaadimisel esines võrgu viga.',
-        httpError404:
-            'Faili üleslaadimisel esines HTTP viga (404: faili ei leitud).',
+        httpError404: 'Faili üleslaadimisel esines HTTP viga (404: faili ei leitud).',
         httpError403: 'Faili üleslaadimisel esines HTTP viga (403: keelatud).',
         httpError: 'Faili üleslaadimisel esines HTTP viga (veakood: %1).',
         noUrlError: 'Üleslaadimise URL ei ole määratud.',
@@ -462,11 +459,9 @@ CKEDITOR.lang['et'] = {
         alt: 'Alternatiivne tekst',
         border: 'Joon',
         btnUpload: 'Saada serverisse',
-        button2Img:
-            'Kas tahad teisendada valitud pildiga nupu tavaliseks pildiks?',
+        button2Img: 'Kas tahad teisendada valitud pildiga nupu tavaliseks pildiks?',
         hSpace: 'H. vaheruum',
-        img2Button:
-            'Kas tahad teisendada valitud tavalise pildi pildiga nupuks?',
+        img2Button: 'Kas tahad teisendada valitud tavalise pildi pildiga nupuks?',
         infoTab: 'Pildi info',
         linkTab: 'Link',
         lockRatio: 'Lukusta kuvasuhe',
@@ -670,8 +665,7 @@ CKEDITOR.lang['et'] = {
         headersRow: 'Esimene rida',
         heightUnit: 'kõrgusühik',
         invalidBorder: 'Äärise suurus peab olema number.',
-        invalidCellPadding:
-            'Lahtrite polsterdus (padding) peab olema positiivne arv.',
+        invalidCellPadding: 'Lahtrite polsterdus (padding) peab olema positiivne arv.',
         invalidCellSpacing: 'Lahtrite vahe peab olema positiivne arv.',
         invalidCols: 'Tulpade arv peab olema nullist suurem.',
         invalidHeight: 'Tabeli kõrgus peab olema number.',

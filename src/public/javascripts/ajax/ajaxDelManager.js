@@ -37,7 +37,7 @@ $(document).ready(() => {
             icon: 'warning',
             buttons: true,
             dangerMode: true,
-        }).then((willDelete) => {
+        }).then(willDelete => {
             if (willDelete) {
                 ajaxDelete(id);
                 swal('Manager has been deleted!', {

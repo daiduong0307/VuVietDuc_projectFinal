@@ -72,8 +72,7 @@ CKEDITOR.lang['ko'] = {
         invalidValue: '잘못된 값.',
         invalidHeight: '높이는 숫자여야 합니다.',
         invalidWidth: '넓이는 숫자여야 합니다.',
-        invalidLength:
-            '"%1" 값은 유효한 측정단위(%2)를 포함하거나 포함하지 않은 양수여야 합니다.',
+        invalidLength: '"%1" 값은 유효한 측정단위(%2)를 포함하거나 포함하지 않은 양수여야 합니다.',
         invalidCssLength:
             '"%1" 값은 유효한 CSS 측정 단위(px, %, in, cm, mm, em, ex, pt, or pc)를 포함하거나 포함하지 않은 양수 여야 합니다.',
         invalidHtmlLength:
@@ -293,10 +292,8 @@ CKEDITOR.lang['ko'] = {
     filetools: {
         loadError: '파일을 읽는 중 오류가 발생했습니다.',
         networkError: '파일 업로드 중 네트워크 오류가 발생했습니다.',
-        httpError404:
-            '파일 업로드중 HTTP 오류가 발생했습니다 (404: 파일 찾을수 없음).',
-        httpError403:
-            '파일 업로드중 HTTP 오류가 발생했습니다 (403: 권한 없음).',
+        httpError404: '파일 업로드중 HTTP 오류가 발생했습니다 (404: 파일 찾을수 없음).',
+        httpError403: '파일 업로드중 HTTP 오류가 발생했습니다 (403: 권한 없음).',
         httpError: '파일 업로드중 HTTP 오류가 발생했습니다 (오류 코드 %1).',
         noUrlError: '업로드 주소가 정의되어 있지 않습니다.',
         responseError: '잘못된 서버 응답.',
@@ -692,7 +689,6 @@ CKEDITOR.lang['ko'] = {
         doneOne: '파일이 성공적으로 업로드되었습니다.',
         doneMany: '파일 %1개를 성공적으로 업로드하였습니다.',
         uploadOne: '파일 업로드중 ({percentage}%)...',
-        uploadMany:
-            '파일 {max} 개 중 {current} 번째 파일 업로드 중 ({percentage}%)...',
+        uploadMany: '파일 {max} 개 중 {current} 번째 파일 업로드 중 ({percentage}%)...',
     },
 };

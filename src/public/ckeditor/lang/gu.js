@@ -255,8 +255,7 @@ CKEDITOR.lang['gu'] = {
         emptyListMsg: '(કોઈ ટેમ્પ્લેટ ડિફાઇન નથી)',
         insertOption: 'મૂળ શબ્દને બદલો',
         options: 'ટેમ્પ્લેટના વિકલ્પો',
-        selectPromptMsg:
-            'એડિટરમાં ઓપન કરવા ટેમ્પ્લેટ પસંદ કરો (વર્તમાન કન્ટેન્ટ સેવ નહીં થાય):',
+        selectPromptMsg: 'એડિટરમાં ઓપન કરવા ટેમ્પ્લેટ પસંદ કરો (વર્તમાન કન્ટેન્ટ સેવ નહીં થાય):',
         title: 'કન્ટેન્ટ ટેમ્પ્લેટ',
     },
     contextmenu: { options: 'કોન્તેક્ષ્ત્ મેનુના વિકલ્પો' },
@@ -294,10 +293,8 @@ CKEDITOR.lang['gu'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -702,7 +699,6 @@ CKEDITOR.lang['gu'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

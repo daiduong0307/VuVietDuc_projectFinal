@@ -296,10 +296,8 @@ CKEDITOR.lang['eu'] = {
         networkError: 'Sareko errorea gertatu da fitxategia kargatzean.',
         httpError404:
             'HTTP errorea gertatu da fitxategia kargatzean (404: Fitxategia ez da aurkitu).',
-        httpError403:
-            'HTTP errorea gertatu da fitxategia kargatzean (403: Debekatuta).',
-        httpError:
-            'HTTP errorea gertatu da fitxategia kargatzean (errore-egoera: %1).',
+        httpError403: 'HTTP errorea gertatu da fitxategia kargatzean (403: Debekatuta).',
+        httpError: 'HTTP errorea gertatu da fitxategia kargatzean (errore-egoera: %1).',
         noUrlError: 'Kargatzeko URLa definitu gabe.',
         responseError: 'Zerbitzariaren erantzun okerra.',
     },
@@ -576,8 +574,7 @@ CKEDITOR.lang['eu'] = {
         type: 'Mota',
         upperAlpha: 'Alfabetoa maiuskulaz (A, B, C, D, E...)',
         upperRoman: 'Erromatarra maiuskulaz (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'Zerrendaren hasierako zenbakiak zenbaki osoa izan behar du.',
+        validateStartNumber: 'Zerrendaren hasierako zenbakiak zenbaki osoa izan behar du.',
     },
     magicline: { title: 'Txertatu paragrafoa hemen' },
     maximize: { maximize: 'Maximizatu', minimize: 'Minimizatu' },
@@ -679,11 +676,9 @@ CKEDITOR.lang['eu'] = {
         invalidBorder: 'Ertzaren tamaina zenbaki bat izan behar da.',
         invalidCellPadding: 'Gelaxken betegarria zenbaki bat izan behar da.',
         invalidCellSpacing: 'Gelaxka arteko tartea zenbaki bat izan behar da.',
-        invalidCols:
-            'Zutabe kopurua 0 baino handiagoa den zenbakia izan behar da.',
+        invalidCols: 'Zutabe kopurua 0 baino handiagoa den zenbakia izan behar da.',
         invalidHeight: 'Taularen altuera zenbaki bat izan behar da.',
-        invalidRows:
-            'Errenkada kopurua 0 baino handiagoa den zenbakia izan behar da.',
+        invalidRows: 'Errenkada kopurua 0 baino handiagoa den zenbakia izan behar da.',
         invalidWidth: 'Taularen zabalera zenbaki bat izan behar da.',
         menu: 'Taularen propietateak',
         row: {
@@ -710,7 +705,6 @@ CKEDITOR.lang['eu'] = {
         doneOne: 'Fitxategia behar bezala kargatu da.',
         doneMany: 'Behar bezala kargatu dira %1 fitxategi.',
         uploadOne: 'Fitxategia kargatzen ({percentage}%)...',
-        uploadMany:
-            'Fitxategiak kargatzen, {current} / {max} eginda ({percentage}%)...',
+        uploadMany: 'Fitxategiak kargatzen, {current} / {max} eginda ({percentage}%)...',
     },
 };

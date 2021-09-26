@@ -44,8 +44,7 @@ CKEDITOR.lang['fr'] = {
         validateNumberFailed: "Cette valeur n'est pas un nombre.",
         confirmNewPage:
             'Les changements non sauvegardés seront perdus. Êtes-vous sûr de vouloir charger une nouvelle page ?',
-        confirmCancel:
-            'Certaines options ont été modifiées. Êtes-vous sûr de vouloir fermer ?',
+        confirmCancel: 'Certaines options ont été modifiées. Êtes-vous sûr de vouloir fermer ?',
         options: 'Options',
         target: 'Cible',
         targetNew: 'Nouvelle fenêtre (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['fr'] = {
     about: {
         copy: 'Copyright &copy; $1. Tous droits réservés.',
         dlgTitle: 'À propos de CKEditor 4',
-        moreInfo:
-            'Pour les informations de licence, veuillez visiter notre site web :',
+        moreInfo: 'Pour les informations de licence, veuillez visiter notre site web :',
     },
     basicstyles: {
         bold: 'Gras',
@@ -172,8 +170,7 @@ CKEDITOR.lang['fr'] = {
         pasteNotification:
             "Utilisez le raccourci %1 pour coller. Votre navigateur n'accepte pas de coller à l'aide du bouton ou du menu contextuel.",
         pasteArea: 'Coller la zone',
-        pasteMsg:
-            'Collez votre contenu dans la zone de saisie ci-dessous et cliquez OK.',
+        pasteMsg: 'Collez votre contenu dans la zone de saisie ci-dessous et cliquez OK.',
     },
     colorbutton: {
         auto: 'Automatique',
@@ -258,8 +255,7 @@ CKEDITOR.lang['fr'] = {
         emptyListMsg: '(Aucun modèle disponible)',
         insertOption: 'Remplacer le contenu actuel',
         options: 'Options des modèles',
-        selectPromptMsg:
-            "Veuillez sélectionner le modèle à ouvrir dans l'éditeur",
+        selectPromptMsg: "Veuillez sélectionner le modèle à ouvrir dans l'éditeur",
         title: 'Contenu des modèles',
     },
     contextmenu: { options: 'Options du menu contextuel' },
@@ -296,14 +292,12 @@ CKEDITOR.lang['fr'] = {
     },
     filetools: {
         loadError: 'Une erreur est survenue lors de la lecture du fichier.',
-        networkError:
-            'Une erreur réseau est survenue lors du téléversement du fichier.',
+        networkError: 'Une erreur réseau est survenue lors du téléversement du fichier.',
         httpError404:
             'Une erreur HTTP est survenue durant le téléversement du fichier (404 : fichier non trouvé).',
         httpError403:
             'Une erreur HTTP est survenue durant le téléversement du fichier (403 : accès refusé).',
-        httpError:
-            'Une erreur HTTP est survenue durant le téléversement du fichier (erreur : %1).',
+        httpError: 'Une erreur HTTP est survenue durant le téléversement du fichier (erreur : %1).',
         noUrlError: "L'URL de téléversement n'est pas spécifiée.",
         responseError: 'Réponse du serveur incorrecte.',
     },
@@ -471,11 +465,9 @@ CKEDITOR.lang['fr'] = {
         alt: 'Texte alternatif',
         border: 'Bordure',
         btnUpload: 'Envoyer sur le serveur',
-        button2Img:
-            'Voulez-vous transformer le bouton avec image sélectionné en simple image ?',
+        button2Img: 'Voulez-vous transformer le bouton avec image sélectionné en simple image ?',
         hSpace: 'Espacement horizontal',
-        img2Button:
-            "Voulez-vous transformer l'image sélectionnée en bouton avec image ?",
+        img2Button: "Voulez-vous transformer l'image sélectionnée en bouton avec image ?",
         infoTab: "Informations sur l'image",
         linkTab: 'Lien',
         lockRatio: 'Conserver les proportions',
@@ -582,8 +574,7 @@ CKEDITOR.lang['fr'] = {
         type: 'Type',
         upperAlpha: 'Lettres majuscules (A, B, C, D, E, etc.)',
         upperRoman: 'Chiffres romains majuscules (I, II, III, IV, V, etc.)',
-        validateStartNumber:
-            'Le premier élément de la liste doit être un nombre entier.',
+        validateStartNumber: 'Le premier élément de la liste doit être un nombre entier.',
     },
     magicline: { title: 'Insérer un paragraphe ici' },
     maximize: { maximize: 'Agrandir', minimize: 'Réduire' },
@@ -662,10 +653,8 @@ CKEDITOR.lang['fr'] = {
             no: 'Non',
             invalidWidth: 'La largeur de la cellule doit être un nombre.',
             invalidHeight: 'La hauteur de la cellule doit être un nombre.',
-            invalidRowSpan:
-                'Le nombre de colonnes occupées doit être un nombre entier.',
-            invalidColSpan:
-                'Le nombre de colonnes occupées doit être un nombre entier.',
+            invalidRowSpan: 'Le nombre de colonnes occupées doit être un nombre entier.',
+            invalidColSpan: 'Le nombre de colonnes occupées doit être un nombre entier.',
             chooseColor: 'Choisir',
         },
         cellPad: 'Marge interne des cellules',
@@ -685,10 +674,8 @@ CKEDITOR.lang['fr'] = {
         headersRow: 'Première ligne',
         heightUnit: 'unité de hauteur',
         invalidBorder: 'La taille de la bordure doit être un nombre.',
-        invalidCellPadding:
-            'La marge interne des cellules doit être un nombre positif.',
-        invalidCellSpacing:
-            "L'espacement entre les cellules doit être un nombre positif.",
+        invalidCellPadding: 'La marge interne des cellules doit être un nombre positif.',
+        invalidCellSpacing: "L'espacement entre les cellules doit être un nombre positif.",
         invalidCols: 'Le nombre de colonnes doit être supérieur à 0.',
         invalidHeight: 'La hauteur du tableau doit être un nombre.',
         invalidRows: 'Le nombre de lignes doit être supérieur à 0.',

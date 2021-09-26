@@ -39,7 +39,7 @@ $(document).ready(() => {
             icon: 'warning',
             buttons: true,
             dangerMode: true,
-        }).then((willDelete) => {
+        }).then(willDelete => {
             if (willDelete) {
                 ajaxDelete(id);
                 swal('Blog has been deleted!', {
@@ -100,12 +100,7 @@ $(document).ready(() => {
             '"><img style="max-width: 100%;height: auto;width: auto;" src="/uploads/' +
             blog.mainImage +
             '" alt="BlogImage" /></a></td>';
-        html +=
-            '<td><a href="/users/blogDetail/' +
-            blog._id +
-            '">' +
-            blog.titleName +
-            '</a></td>';
+        html += '<td><a href="/users/blogDetail/' + blog._id + '">' + blog.titleName + '</a></td>';
         html += '<td>' + blog.brief + '</td>';
         html += '<td>' + blog.categoryId.name + '</td>';
         html += '<td>' + formatDate(blog.createdAt) + '</td>';

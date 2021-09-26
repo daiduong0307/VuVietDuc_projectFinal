@@ -63,15 +63,13 @@ exports.updateAcc = async (req, res) => {
                 const errorPassword =
                     `Password must be at least 8 characters !!!` +
                     `\nPassword cannot contain "password"`;
-                return res.redirect(
-                    `/managers/updateAccount?accError=${errorPassword}`
-                );
+                return res.redirect(`/managers/updateAccount?accError=${errorPassword}`);
             }
         } else {
             const updateAcc = await appUserModel.findOneAndUpdate(
                 { _id: accId },
                 { $set: newValues },
-                { new: true }
+                { new: true },
             );
         }
 
@@ -102,14 +100,12 @@ exports.updateInfo = async (req, res) => {
             const updateInfo = await managerModel.findOneAndUpdate(
                 { _id: accId },
                 { $set: newValues },
-                { new: true, useFindAndModify: false }
+                { new: true, useFindAndModify: false },
             );
         }
 
         const msgSucceed = 'Information changed Successfully !!!';
-        return res.redirect(
-            `/managers/updateAccount?infoSucceed=${msgSucceed}`
-        );
+        return res.redirect(`/managers/updateAccount?infoSucceed=${msgSucceed}`);
     } catch (error) {
         res.send(error.message);
     }
@@ -200,7 +196,7 @@ exports.approveBlog = async (req, res) => {
         const approvedBlog = await blogModel.findOneAndUpdate(
             { _id: blogId },
             { $set: { isPublish: 'Approved' } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         await category.posts.push(approvedBlog);
@@ -221,13 +217,13 @@ exports.rejectBlog = async (req, res) => {
         const rejectBlog = await blogModel.findOneAndUpdate(
             { _id: blogId },
             { $set: { isPublish: 'Rejected' } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         const category = await categoryModel.findOneAndUpdate(
             { posts: blog._id },
             { $pull: { posts: blog._id } },
-            { new: true, useFindAndModify: false }
+            { new: true, useFindAndModify: false },
         );
 
         res.redirect('/managers/allRequest');
@@ -244,10 +240,7 @@ exports.blogDetails = async (req, res) => {
         .findOne({ accountId: req.session.userId })
         .populate('categoryId');
 
-    const blog = await blogModel
-        .findOne({ _id: blogId })
-        .populate('owner')
-        .populate('categoryId');
+    const blog = await blogModel.findOne({ _id: blogId }).populate('owner').populate('categoryId');
 
     try {
         res.render('managerViews/blogDetails', {

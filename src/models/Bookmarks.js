@@ -13,7 +13,7 @@ const bookmarkSchema = new Schema(
     },
     {
         timestamps: true,
-    }
+    },
 );
 
 bookmarkSchema.virtual('bookmark_Blog', {

@@ -18,9 +18,7 @@ CKEDITOR.dialog.add('hiddenfield', function (c) {
         onShow: function () {
             var a = this.getParentEditor(),
                 b = this.getModel(a);
-            b &&
-                (this.setupContent(a.restoreRealElement(b)),
-                a.getSelection().selectElement(b));
+            b && (this.setupContent(a.restoreRealElement(b)), a.getSelection().selectElement(b));
         },
         onOk: function () {
             var a = this.getValueOf('info', '_cke_saved_name'),
@@ -28,18 +26,14 @@ CKEDITOR.dialog.add('hiddenfield', function (c) {
                 a =
                     CKEDITOR.env.ie && 8 > CKEDITOR.document.$.documentMode
                         ? b.document.createElement(
-                              '\x3cinput name\x3d"' +
-                                  CKEDITOR.tools.htmlEncode(a) +
-                                  '"\x3e'
+                              '\x3cinput name\x3d"' + CKEDITOR.tools.htmlEncode(a) + '"\x3e',
                           )
                         : b.document.createElement('input');
             a.setAttribute('type', 'hidden');
             this.commitContent(a);
             var a = b.createFakeElement(a, 'cke_hidden', 'hiddenfield'),
                 c = this.getModel(b);
-            c
-                ? (a.replace(c), b.getSelection().selectElement(a))
-                : b.insertElement(a);
+            c ? (a.replace(c), b.getSelection().selectElement(a)) : b.insertElement(a);
             return !0;
         },
         contents: [
@@ -55,11 +49,7 @@ CKEDITOR.dialog.add('hiddenfield', function (c) {
                         default: '',
                         accessKey: 'N',
                         setup: function (a) {
-                            this.setValue(
-                                a.data('cke-saved-name') ||
-                                    a.getAttribute('name') ||
-                                    ''
-                            );
+                            this.setValue(a.data('cke-saved-name') || a.getAttribute('name') || '');
                         },
                         commit: function (a) {
                             this.getValue()

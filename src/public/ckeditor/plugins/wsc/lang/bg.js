@@ -6,8 +6,7 @@
     btnUndo: 'Възтанови',
     changeTo: 'Промени на',
     errorLoading: 'Error loading application service host: %s.',
-    ieSpellDownload:
-        'Spell checker not installed. Do you want to download it now?',
+    ieSpellDownload: 'Spell checker not installed. Do you want to download it now?',
     manyChanges: 'Spell check complete: %1 words changed',
     noChanges: 'Spell check complete: No words changed',
     noMispell: 'Spell check complete: No misspellings found',

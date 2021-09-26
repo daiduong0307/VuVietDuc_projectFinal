@@ -18,10 +18,7 @@ CKEDITOR.dialog.add('form', function (a) {
         onOk: function () {
             var b = this.getParentEditor(),
                 a = this.getModel(b);
-            a ||
-                ((a = b.document.createElement('form')),
-                a.appendBogus(),
-                b.insertElement(a));
+            a || ((a = b.document.createElement('form')), a.appendBogus(), b.insertElement(a));
             this.commitContent(a);
         },
         onLoad: function () {
@@ -51,17 +48,12 @@ CKEDITOR.dialog.add('form', function (a) {
                         default: '',
                         accessKey: 'N',
                         setup: function (a) {
-                            this.setValue(
-                                a.data('cke-saved-name') ||
-                                    a.getAttribute('name') ||
-                                    ''
-                            );
+                            this.setValue(a.data('cke-saved-name') || a.getAttribute('name') || '');
                         },
                         commit: function (a) {
                             this.getValue()
                                 ? a.data('cke-saved-name', this.getValue())
-                                : (a.data('cke-saved-name', !1),
-                                  a.removeAttribute('name'));
+                                : (a.data('cke-saved-name', !1), a.removeAttribute('name'));
                         },
                     },
                     {

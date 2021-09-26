@@ -126,8 +126,7 @@ CKEDITOR.lang['pt'] = {
     about: {
         copy: 'Direitos de Autor &copy; $1. Todos os direitos reservados.',
         dlgTitle: 'Sobre o CKEditor 4',
-        moreInfo:
-            'Para informação sobre licenciamento visite o nosso sítio web:',
+        moreInfo: 'Para informação sobre licenciamento visite o nosso sítio web:',
     },
     basicstyles: {
         bold: 'Negrito',
@@ -298,10 +297,8 @@ CKEDITOR.lang['pt'] = {
     filetools: {
         loadError: 'Ocorreu um erro ao ler o ficheiro',
         networkError: 'Ocorreu um erro de rede ao carregar o ficheiro.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -470,11 +467,9 @@ CKEDITOR.lang['pt'] = {
         alt: 'Texto alternativo',
         border: 'Limite',
         btnUpload: 'Enviar para o servidor',
-        button2Img:
-            'Deseja transformar o botão com imagem selecionado numa imagem simples?',
+        button2Img: 'Deseja transformar o botão com imagem selecionado numa imagem simples?',
         hSpace: 'Esp. Horiz',
-        img2Button:
-            'Deseja transformar a imagem selecionada num botão com imagem?',
+        img2Button: 'Deseja transformar a imagem selecionada num botão com imagem?',
         infoTab: 'Informação da imagem',
         linkTab: 'Hiperligação',
         lockRatio: 'Proporcional',
@@ -675,10 +670,8 @@ CKEDITOR.lang['pt'] = {
         headersRow: 'Primeira linha',
         heightUnit: 'height unit',
         invalidBorder: 'O tamanho da margem tem de ser um número.',
-        invalidCellPadding:
-            'A criação do espaço na célula deve ser um número positivo.',
-        invalidCellSpacing:
-            'O espaçamento da célula deve ser um número positivo.',
+        invalidCellPadding: 'A criação do espaço na célula deve ser um número positivo.',
+        invalidCellSpacing: 'O espaçamento da célula deve ser um número positivo.',
         invalidCols: 'O número de colunas tem de ser um número maior que 0.',
         invalidHeight: 'A altura da tabela tem de ser um número.',
         invalidRows: 'O número de linhas tem de ser maior que 0.',
@@ -705,7 +698,6 @@ CKEDITOR.lang['pt'] = {
         doneOne: 'Ficheiro carregado com sucesso.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

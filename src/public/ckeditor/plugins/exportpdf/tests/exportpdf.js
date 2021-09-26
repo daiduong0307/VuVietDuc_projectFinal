@@ -13,18 +13,16 @@
                     },
                     function (c) {
                         var b = c.editor;
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.once('exportPdf', function (a) {
                             assert.areEqual(
                                 a.data.html,
                                 b.getData(),
-                                'Data from editor is incorrect.'
+                                'Data from editor is incorrect.',
                             );
                             assert.isTrue(
                                 CKEDITOR.tools.isEmpty(a.data.options),
-                                '`options` object should be initially empty.'
+                                '`options` object should be initially empty.',
                             );
                         });
                         b.once(
@@ -36,19 +34,16 @@
                                         b.getData() +
                                         '\x3c/div\x3e',
                                     a.data.html,
-                                    'Preprocessed data sent to endpoint is incorrect.'
+                                    'Preprocessed data sent to endpoint is incorrect.',
                                 );
-                                assert.isNotNull(
-                                    a.data.css,
-                                    'CSS should be attached.'
-                                );
+                                assert.isNotNull(a.data.css, 'CSS should be attached.');
                             },
                             null,
                             null,
-                            16
+                            16,
                         );
                         b.execCommand('exportPdf');
-                    }
+                    },
                 );
             },
             'test options provided via config': function () {
@@ -61,15 +56,13 @@
                     },
                     function (c) {
                         var b = c.editor;
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.once('exportPdf', function (a) {
                             a.cancel();
                             assert.areEqual(a.data.options.format, 'A6');
                         });
                         b.execCommand('exportPdf');
-                    }
+                    },
                 );
             },
             'test html changed via event': function () {
@@ -80,9 +73,7 @@
                     },
                     function (c) {
                         var b = c.editor;
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.once('exportPdf', function (a) {
                             a.cancel();
                             assert.areEqual(a.data.html, '');
@@ -95,10 +86,10 @@
                             },
                             null,
                             null,
-                            1
+                            1,
                         );
                         b.execCommand('exportPdf');
-                    }
+                    },
                 );
             },
             'test options changed via event': function () {
@@ -109,9 +100,7 @@
                     },
                     function (c) {
                         var b = c.editor;
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.once('exportPdf', function (a) {
                             a.cancel();
                             assert.areEqual(a.data.options.format, 'A5');
@@ -123,10 +112,10 @@
                             },
                             null,
                             null,
-                            1
+                            1,
                         );
                         b.execCommand('exportPdf');
-                    }
+                    },
                 );
             },
             'test html changed via event asynchronously': function () {
@@ -137,16 +126,14 @@
                     },
                     function (c) {
                         var b = c.editor;
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.on('exportPdf', function (a) {
                             a.cancel();
                             a.data.asyncDone &&
                                 (resume(),
                                 assert.areEqual(
                                     a.data.html,
-                                    '\x3cp\x3eContent filtered!\x3c/p\x3e'
+                                    '\x3cp\x3eContent filtered!\x3c/p\x3e',
                                 ),
                                 delete a.data.asyncDone,
                                 assert.isUndefined(a.data.asyncDone));
@@ -156,19 +143,18 @@
                             function (a) {
                                 a.data.asyncDone ||
                                     setTimeout(function () {
-                                        a.data.html =
-                                            '\x3cp\x3eContent filtered!\x3c/p\x3e';
+                                        a.data.html = '\x3cp\x3eContent filtered!\x3c/p\x3e';
                                         a.data.asyncDone = !0;
                                         b.fire('exportPdf', a.data);
                                     }, 1e3);
                             },
                             null,
                             null,
-                            1
+                            1,
                         );
                         b.execCommand('exportPdf');
                         wait();
-                    }
+                    },
                 );
             },
             'test options changed via event asynchronously': function () {
@@ -181,9 +167,7 @@
                     },
                     function (c) {
                         var b = c.editor;
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.on('exportPdf', function (a) {
                             a.cancel();
                             a.data.asyncDone &&
@@ -204,11 +188,11 @@
                             },
                             null,
                             null,
-                            1
+                            1,
                         );
                         b.execCommand('exportPdf');
                         wait();
-                    }
+                    },
                 );
             },
             'test default CKEditor config': function () {
@@ -222,19 +206,19 @@
                             ? assert.areEqual(
                                   c.editor.config.exportPdf_service,
                                   'https://pdf-converter.cke-cs-staging.com/v1/convert',
-                                  'Default dev endpoint is incorrect.'
+                                  'Default dev endpoint is incorrect.',
                               )
                             : assert.areEqual(
                                   c.editor.config.exportPdf_service,
                                   'https://pdf-converter.cke-cs.com/v1/convert',
-                                  'Default prod endpoint is incorrect.'
+                                  'Default prod endpoint is incorrect.',
                               );
                         assert.areEqual(
                             c.editor.config.exportPdf_fileName,
                             'ckeditor4-export-pdf.pdf',
-                            'Default file name is incorrect.'
+                            'Default file name is incorrect.',
                         );
-                    }
+                    },
                 );
             },
             'test inaccessible stylesheets are handled correctly': function () {
@@ -250,15 +234,10 @@
                         var b = c.editor,
                             a = !1,
                             d = CKEDITOR.on('log', function (b) {
-                                'exportpdf-stylesheets-inaccessible' ===
-                                    b.data.errorCode &&
-                                    (b.cancel(),
-                                    CKEDITOR.removeListener('log', d),
-                                    (a = !0));
+                                'exportpdf-stylesheets-inaccessible' === b.data.errorCode &&
+                                    (b.cancel(), CKEDITOR.removeListener('log', d), (a = !0));
                             });
-                        c.setHtmlWithSelection(
-                            '\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^'
-                        );
+                        c.setHtmlWithSelection('\x3cp id\x3d"test"\x3eHello, World!\x3c/p\x3e^');
                         b.once(
                             'exportPdf',
                             function (b) {
@@ -267,19 +246,19 @@
                                     a
                                         ? assert.pass()
                                         : assert.fail(
-                                              'No errors thrown while accessing stylesheets rules.'
+                                              'No errors thrown while accessing stylesheets rules.',
                                           );
                                 });
                             },
                             null,
                             null,
-                            19
+                            19,
                         );
                         CKEDITOR.tools.setTimeout(function () {
                             b.execCommand('exportPdf');
                         }, 1e3);
                         wait();
-                    }
+                    },
                 );
             },
         });

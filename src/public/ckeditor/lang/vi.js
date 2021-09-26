@@ -44,8 +44,7 @@ CKEDITOR.lang['vi'] = {
         validateNumberFailed: 'Giá trị này không phải là số.',
         confirmNewPage:
             'Mọi thay đổi không được lưu lại, nội dung này sẽ bị mất. Bạn có chắc chắn muốn tải một trang mới?',
-        confirmCancel:
-            'Một vài tùy chọn đã bị thay đổi. Bạn có chắc chắn muốn đóng hộp thoại?',
+        confirmCancel: 'Một vài tùy chọn đã bị thay đổi. Bạn có chắc chắn muốn đóng hộp thoại?',
         options: 'Tùy chọn',
         target: 'Đích đến',
         targetNew: 'Cửa sổ mới (_blank)',
@@ -126,8 +125,7 @@ CKEDITOR.lang['vi'] = {
     about: {
         copy: 'Bản quyền &copy; $1. Giữ toàn quyền.',
         dlgTitle: 'Thông tin về CKEditor 4',
-        moreInfo:
-            'Vui lòng ghé thăm trang web của chúng tôi để có thông tin về giấy phép:',
+        moreInfo: 'Vui lòng ghé thăm trang web của chúng tôi để có thông tin về giấy phép:',
     },
     basicstyles: {
         bold: 'Đậm',
@@ -296,8 +294,7 @@ CKEDITOR.lang['vi'] = {
     filetools: {
         loadError: 'Lỗi xảy ra khi đang đọc file',
         networkError: 'Lỗi kết nối xảy ra khi đang tải file lên',
-        httpError404:
-            'Lỗi HTTP xảy ra khi đang tải file lên (404: Không tìm thấy file)',
+        httpError404: 'Lỗi HTTP xảy ra khi đang tải file lên (404: Không tìm thấy file)',
         httpError403: 'Lỗi HTTP xảy ra khi đang tải file lên (403: Bị cấm)',
         httpError: 'Lỗi HTTP xảy ra khi đang tải file lên (tình trạng lỗi: %1)',
         noUrlError: 'Đường dẫn tải lên không hoạt động',
@@ -469,8 +466,7 @@ CKEDITOR.lang['vi'] = {
         btnUpload: 'Tải lên máy chủ',
         button2Img: 'Bạn có muốn chuyển nút bấm bằng ảnh được chọn thành ảnh?',
         hSpace: 'Khoảng đệm ngang',
-        img2Button:
-            'Bạn có muốn chuyển đổi ảnh được chọn thành nút bấm bằng ảnh?',
+        img2Button: 'Bạn có muốn chuyển đổi ảnh được chọn thành nút bấm bằng ảnh?',
         infoTab: 'Thông tin của ảnh',
         linkTab: 'Tab liên kết',
         lockRatio: 'Giữ nguyên tỷ lệ',
@@ -674,8 +670,7 @@ CKEDITOR.lang['vi'] = {
         headersRow: 'Hàng đầu tiên',
         heightUnit: 'height unit',
         invalidBorder: 'Kích cỡ của đường biên phải là một số nguyên.',
-        invalidCellPadding:
-            'Khoảng đệm giữa ô và nội dung phải là một số nguyên.',
+        invalidCellPadding: 'Khoảng đệm giữa ô và nội dung phải là một số nguyên.',
         invalidCellSpacing: 'Khoảng cách giữa các ô phải là một số nguyên.',
         invalidCols: 'Số lượng cột phải là một số lớn hơn 0.',
         invalidHeight: 'Chiều cao của bảng phải là một số nguyên.',
@@ -703,7 +698,6 @@ CKEDITOR.lang['vi'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

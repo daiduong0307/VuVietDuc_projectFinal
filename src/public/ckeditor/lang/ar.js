@@ -44,8 +44,7 @@ CKEDITOR.lang['ar'] = {
         validateNumberFailed: 'لايوجد نتيجة',
         confirmNewPage:
             'ستفقد أي متغييرات اذا لم تقم بحفظها اولا. هل أنت متأكد أنك تريد صفحة جديدة؟',
-        confirmCancel:
-            'بعض الخيارات قد تغيرت. هل أنت متأكد من إغلاق مربع النص؟',
+        confirmCancel: 'بعض الخيارات قد تغيرت. هل أنت متأكد من إغلاق مربع النص؟',
         options: 'خيارات',
         target: 'هدف الرابط',
         targetNew: 'نافذة جديدة',
@@ -294,10 +293,8 @@ CKEDITOR.lang['ar'] = {
     filetools: {
         loadError: 'Error occurred during file read.',
         networkError: 'Network error occurred during file upload.',
-        httpError404:
-            'HTTP error occurred during file upload (404: File not found).',
-        httpError403:
-            'HTTP error occurred during file upload (403: Forbidden).',
+        httpError404: 'HTTP error occurred during file upload (404: File not found).',
+        httpError403: 'HTTP error occurred during file upload (403: Forbidden).',
         httpError: 'HTTP error occurred during file upload (error status: %1).',
         noUrlError: 'Upload URL is not defined.',
         responseError: 'Incorrect server response.',
@@ -699,7 +696,6 @@ CKEDITOR.lang['ar'] = {
         doneOne: 'File successfully uploaded.',
         doneMany: 'Successfully uploaded %1 files.',
         uploadOne: 'Uploading file ({percentage}%)...',
-        uploadMany:
-            'Uploading files, {current} of {max} done ({percentage}%)...',
+        uploadMany: 'Uploading files, {current} of {max} done ({percentage}%)...',
     },
 };

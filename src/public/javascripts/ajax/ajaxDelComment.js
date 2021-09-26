@@ -43,7 +43,7 @@ $(document).ready(() => {
             icon: 'warning',
             buttons: true,
             dangerMode: true,
-        }).then((willDelete) => {
+        }).then(willDelete => {
             if (willDelete) {
                 if (type == 1) {
                     ajaxDeleteComment(id);
@@ -78,7 +78,7 @@ $(document).ready(() => {
         // console.log("Here is comment ", data);
         var res = '';
         if (data.length > 0) {
-            data.forEach((el) => (res += getData(el)));
+            data.forEach(el => (res += getData(el)));
         }
         $('#listComment').html(res);
     }
@@ -122,7 +122,7 @@ $(document).ready(() => {
         // console.log("Here is replies ", data);
         var res = '';
         if (data.length > 0) {
-            data.forEach((el) => {
+            data.forEach(el => {
                 res += dataReplies(el);
             });
         }
@@ -147,15 +147,7 @@ $(document).ready(() => {
         if (minute < 10) minute = '0' + minute;
 
         let formatted_date =
-            longMonth +
-            ' ' +
-            day +
-            ' - ' +
-            date.getFullYear() +
-            ' ' +
-            hour +
-            ':' +
-            minute;
+            longMonth + ' ' + day + ' - ' + date.getFullYear() + ' ' + hour + ':' + minute;
         return formatted_date;
     }
 
@@ -199,16 +191,11 @@ $(document).ready(() => {
         html += '  </div>';
 
         html +=
-            '  <input type="hidden" id="commentId" name="commentId" value="' +
-            comment._id +
-            '">';
+            '  <input type="hidden" id="commentId" name="commentId" value="' + comment._id + '">';
         html +=
-            '  <input type="hidden" id="blogId" name="blogId" value="' +
-            comment.postId._id +
-            '">';
+            '  <input type="hidden" id="blogId" name="blogId" value="' + comment.postId._id + '">';
 
-        html +=
-            '  <input type="submit" class="primary-btn submit_btn" value="Reply" />';
+        html += '  <input type="submit" class="primary-btn submit_btn" value="Reply" />';
         html += ' </form>';
         html += ' </div>';
         html += '</div>';
