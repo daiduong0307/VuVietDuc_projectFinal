@@ -21,7 +21,7 @@ exports.signUpAdmin = async (req, res, next) => {
 exports.getSignUpUser = async (req, res, next) => {
     const { errAcc, errPwd } = req.query;
     try {
-        res.render('signup', {
+        res.render('signUp', {
             notify: {
                 errAcc,
                 errPwd,
