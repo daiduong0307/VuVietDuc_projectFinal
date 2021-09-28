@@ -154,7 +154,9 @@
                                                                     <th scope="row">{{@index}}</th>
                                                                     <td>{{owner.accountId.username}}</td>
                                                                     <td>{{owner.fullName}}</td>
-                                                                    <td>{{titleName}}</td>
+                                                                    <td><a
+                                                                            href="/managers/blogDetails/{{_id}}">{{titleName}}</a>
+                                                                    </td>
                                                                     <td>{{moment createdAt format ="dddd, DD MMMM
                                                                         YYYY"}}</td>
                                                                     {{#equals isPublish 'Approved'}}
@@ -172,56 +174,35 @@
                                                                     {{/equals}}
                                                                     <td class="d-flex flex-row">
 
-                                                                        <a href="/managers/blogDetails/{{_id}}">
+                                                                        {{#equals isPublish "Approved"}}
+
+                                                                        <button
+                                                                            class="btn btn-outline-success btn-round disabled">Approve</button>
+
+                                                                        {{else}}
+                                                                        <form action="/managers/approveBlog"
+                                                                            method="POST"
+                                                                            enctype="application/x-www-form-urlencoded">
+                                                                            <input type="hidden" name="blogId"
+                                                                                value={{_id}}>
+                                                                            <input type="hidden" name="_method"
+                                                                                value="PATCH">
                                                                             <button type="submit"
-                                                                                style="margin-right: 5px;"
-                                                                                class="btn btn-primary btn-outline-primary btn-round">Details</button>
-                                                                        </a>
+                                                                                class="btn btn-outline-success btn-round">Approve</button>
+                                                                        </form>
+                                                                        {{/equals}}
 
+                                                                        <form action="/managers/rejectBlog"
+                                                                            method="POST"
+                                                                            enctype="application/x-www-form-urlencoded">
+                                                                            <input type="hidden" name="blogId"
+                                                                                value={{_id}}>
+                                                                            <input type="hidden" name="_method"
+                                                                                value="PATCH">
+                                                                            <button type="submit"
+                                                                                class="btn btn-outline-danger btn-round" style="margin-left: 5px;">Reject</button>
+                                                                        </form>
 
-                                                                        <div class="dropdown-success dropdown open">
-                                                                            <button
-                                                                                class="btn btn-success btn-round btn-outline-success dropdown-toggle waves-effect waves-light "
-                                                                                type="button" id="dropdown-3"
-                                                                                data-toggle="dropdown"
-                                                                                aria-haspopup="true"
-                                                                                aria-expanded="true">Status</button>
-                                                                            <div class="dropdown-menu"
-                                                                                aria-labelledby="dropdown-3"
-                                                                                data-dropdown-in="fadeIn"
-                                                                                data-dropdown-out="fadeOut">
-
-                                                                                {{#equals isPublish "Approved"}}
-
-                                                                                <button
-                                                                                    class="btn btn-success dropdown-item waves-light waves-effect disabled">Approve</button>
-
-                                                                                {{else}}
-                                                                                <form action="/managers/approveBlog"
-                                                                                    method="POST"
-                                                                                    enctype="application/x-www-form-urlencoded">
-                                                                                    <input type="hidden" name="blogId"
-                                                                                        value={{_id}}>
-                                                                                    <input type="hidden" name="_method"
-                                                                                        value="PATCH">
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-success dropdown-item waves-light waves-effect">Approve</button>
-                                                                                </form>
-                                                                                {{/equals}}
-
-                                                                                <form action="/managers/rejectBlog"
-                                                                                    method="POST"
-                                                                                    enctype="application/x-www-form-urlencoded">
-                                                                                    <input type="hidden" name="blogId"
-                                                                                        value={{_id}}>
-                                                                                    <input type="hidden" name="_method"
-                                                                                        value="PATCH">
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger dropdown-item waves-light waves-effect">Reject</button>
-                                                                                </form>
-
-                                                                            </div>
-                                                                        </div>
                                                                     </td>
                                                                     {{else}}
                                                                     <td colspan="7">

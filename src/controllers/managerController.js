@@ -4,6 +4,7 @@ const categoryModel = require('../models/Catagories');
 const blogModel = require('../models/Blogs');
 const commentModel = require('../models/comment');
 const userModel = require('../models/Users');
+const { mailApproved, mailRejected } = require('../middleware/sendingMail')
 
 // manager homepage
 exports.homePage = async (req, res) => {
@@ -37,12 +38,10 @@ exports.getUpdateAccount = async (req, res) => {
     try {
         res.render('managerViews/updateAccount', {
             title,
-
             infoError,
             accError,
             infoSucceed,
             accSucceed,
-
             managerInfo,
             managerAcc,
         });
@@ -188,7 +187,7 @@ exports.searchRequest = async (req, res) => {
 exports.approveBlog = async (req, res) => {
     const { blogId } = req.body;
 
-    const blog = await blogModel.findOne({ _id: blogId });
+    const blog = await blogModel.findOne({ _id: blogId }).populate('owner');
 
     const category = await categoryModel.findOne({ _id: blog.categoryId });
 
@@ -202,6 +201,14 @@ exports.approveBlog = async (req, res) => {
         await category.posts.push(approvedBlog);
         category.save();
 
+        const sentEmail = await mailApproved(
+            blog.owner.email,
+            'Your post has been approved',
+            blog.owner.fullName,
+            blog.titleName,
+        );
+        console.log('Email sent...', sentEmail);
+
         res.redirect('/managers/allRequest');
     } catch (error) {
         res.status(400).send(error);
@@ -211,20 +218,28 @@ exports.approveBlog = async (req, res) => {
 exports.rejectBlog = async (req, res) => {
     const { blogId } = req.body;
 
-    const blog = await blogModel.findOne({ _id: blogId });
+    const blog = await blogModel.findOne({ _id: blogId }).populate('owner');
 
     try {
-        const rejectBlog = await blogModel.findOneAndUpdate(
+        await blogModel.findOneAndUpdate(
             { _id: blogId },
             { $set: { isPublish: 'Rejected' } },
             { new: true, useFindAndModify: false },
         );
 
-        const category = await categoryModel.findOneAndUpdate(
+        await categoryModel.findOneAndUpdate(
             { posts: blog._id },
             { $pull: { posts: blog._id } },
             { new: true, useFindAndModify: false },
         );
+
+        const sentEmail = await mailRejected(
+            blog.owner.email,
+            'Your post has been Rejected',
+            blog.owner.fullName,
+            blog.titleName,
+        );
+        console.log('Email sent...', sentEmail);
 
         res.redirect('/managers/allRequest');
     } catch (error) {
