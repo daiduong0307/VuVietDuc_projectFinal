@@ -49,25 +49,25 @@ async function sendMail(email, subject, author, title) {
 async function sendMailReset(email, subject, text) {
     try {
         const ACCESS_TOKEN = await oAuth2client.getAccessToken();
-        // const transport = nodemailer.createTransport({
-        //     service: 'gmail',
-        //     auth: {
-        //         type: 'OAuth2',
-        //         user: 'cuongndgch18641@fpt.edu.vn',
-        //         clientId: CLIENT_ID,
-        //         clientSecret: CLIENT_SECRET,
-        //         refreshToken: REFRESH_TOKEN,
-        //         accessToken: ACCESS_TOKEN,
-        //     },
-        // });
         const transport = nodemailer.createTransport({
-            host: 'smtp.mailtrap.io',
-            port: 2525,
+            service: 'gmail',
             auth: {
-                user: '70094f5b39259d',
-                pass: '7df613ccf6e04c',
+                type: 'OAuth2',
+                user: 'cuongndgch18641@fpt.edu.vn',
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken: ACCESS_TOKEN,
             },
         });
+        // const transport = nodemailer.createTransport({
+        //     host: 'smtp.mailtrap.io',
+        //     port: 2525,
+        //     auth: {
+        //         user: '70094f5b39259d',
+        //         pass: '7df613ccf6e04c',
+        //     },
+        // });
 
         const mailOption = {
             from: 'BLOG MANAGEMENT SYSTEM 🎡 <no-reply@blog.com>',

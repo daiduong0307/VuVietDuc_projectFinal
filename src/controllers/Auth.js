@@ -31,7 +31,6 @@ exports.getSignUpUser = async (req, res, next) => {
     } catch (error) {
         res.status(400).send(error);
     }
-
 };
 
 exports.signUpUser = async (req, res) => {
@@ -82,7 +81,6 @@ exports.getLogin = async (req, res, next) => {
     } catch (error) {
         res.status(400).send(error);
     }
-
 };
 
 exports.login = async (req, res, next) => {

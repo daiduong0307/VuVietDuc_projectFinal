@@ -4,7 +4,7 @@ const categoryModel = require('../models/Catagories');
 const blogModel = require('../models/Blogs');
 const commentModel = require('../models/comment');
 const userModel = require('../models/Users');
-const { mailApproved, mailRejected } = require('../middleware/sendingMail')
+const { mailApproved, mailRejected } = require('../middleware/sendingMail');
 
 // manager homepage
 exports.homePage = async (req, res) => {

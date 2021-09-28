@@ -169,7 +169,7 @@ app.post('/upload', multipartMiddleware, (req, res) => {
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/u', passwordReset);
-app.use('/admin', adminRouter);
+app.use('/admin', auth.isAdmin, adminRouter);
 app.use('/users', auth.isUser, userRouter);
 app.use('/managers', auth.isManager, managerRouter);
 app.use('/api', apiRouter);
