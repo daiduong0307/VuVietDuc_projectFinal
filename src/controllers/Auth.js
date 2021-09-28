@@ -20,13 +20,18 @@ exports.signUpAdmin = async (req, res, next) => {
 
 exports.getSignUpUser = async (req, res, next) => {
     const { errAcc, errPwd } = req.query;
-    res.render('signup', {
-        notify: {
-            errAcc,
-            errPwd,
-        },
-        title: 'Sign up an Account',
-    });
+    try {
+        res.render('signup', {
+            notify: {
+                errAcc,
+                errPwd,
+            },
+            title: 'Sign up an Account',
+        });
+    } catch (error) {
+        res.status(400).send(error);
+    }
+
 };
 
 exports.signUpUser = async (req, res) => {
@@ -72,7 +77,12 @@ exports.signUpUser = async (req, res) => {
 
 exports.getLogin = async (req, res, next) => {
     const { msg } = req.query;
-    res.render('login', { err: msg, title: 'Login to your Account' });
+    try {
+        res.render('login', { err: msg, title: 'Login to your Account' });
+    } catch (error) {
+        res.status(400).send(error);
+    }
+
 };
 
 exports.login = async (req, res, next) => {
