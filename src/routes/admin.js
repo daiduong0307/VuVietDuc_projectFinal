@@ -18,6 +18,7 @@ adminRouter.get('/updateManager/:id', adminController.getUpdateManager);
 adminRouter.post('/addManagerAcc', adminController.addOneManager);
 adminRouter.delete('/deleteManagerAcc/:id', adminController.deleteOneManger);
 adminRouter.put('/updateManagerAcc', adminController.updateOneManager);
+adminRouter.patch('/deprivationRights', adminController.deprivationRights);
 
 adminRouter.get('/allCategories', adminController.allCategories);
 // adminRouter.get("/addCategory", adminController.getAddCategory);

@@ -475,29 +475,30 @@ exports.updateOneManager = async (req, res) => {
     }
 };
 
-//Assign category to manager
-// exports.assignOneCategory = async (req, res) => {
-//     const { _id, categoryId } = req.body;
+// Assign category to manager
+exports.deprivationRights = async (req, res) => {
+    const { categoryId, _id } = req.body
+    try {
+        const updatedManager = await managerModel.findOneAndUpdate(
+            { _id: _id },
+            { $set: { categoryId: null, isResponsible: false } },
+            { new: true, useFindAndModify: false }
+        )
 
-//     const assign = await managerModel.findOneAndUpdate(
-//         { _id: _id },
-//         { $set: { categoryId: categoryId } },
-//         { new: true, useFindAndModify: false }
-//     )
+        await categoryModel.findOneAndUpdate(
+            { _id: categoryId },
+            { $set: { isManaged: false, managedBy: null } },
+            { new: true, useFindAndModify: false }
+        )
 
-//     const updateCate = await categoryModel.findOneAndUpdate(
-//         { _id: categoryId },
-//         { $set: { isManaged: true } },
-//         { new: true, useFindAndModify: false }
-//     )
 
-//     try {
-//         return res.redirect(`/admin/updateManager/${assign._id}`)
-//     } catch (error) {
-//         console.log(error);
-//         return res.render("adminViews/updateManagerAcc",);
-//     }
-// }
+        const success = 'Update Successfully';
+        return res.redirect(`/admin/updateManager/${updatedManager._id}?success=${success}`);
+    } catch (error) {
+        console.log(error);
+        return res.render("adminViews/updateManagerAcc",);
+    }
+}
 
 // Delete one manager
 exports.deleteOneManger = async (req, res) => {
@@ -521,7 +522,7 @@ exports.deleteOneManger = async (req, res) => {
         if (managerInfo.categoryId) {
             await categoryModel.findOneAndUpdate(
                 { managedBy: managerInfo._id },
-                { $set: { isManaged: false } },
+                { $set: { isManaged: false, managedBy: null } },
                 { new: true, useFindAndModify: false },
             );
         }
@@ -542,12 +543,14 @@ exports.allCategories = async (req, res) => {
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
     const categories = await categoryModel.find({}).sort({ createdAt: -1 }).populate('managedBy');
+    const managers = await managerModel.find({ isResponsible: false });
 
     try {
         res.render('adminViews/listAllCategories', {
             title,
             admin,
             categories,
+            managers: managers,
         });
     } catch (error) {
         console.log(error);
