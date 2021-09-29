@@ -130,18 +130,13 @@
                     <div class="single-sidebar-widget share-widget">
                         <h4 class="share-title">Share this post</h4>
                         <div class="social-icons mt-20">
-                            <a href="#">
-                                <span class="ti-facebook"></span>
-                            </a>
-                            <a href="#">
-                                <span class="ti-twitter"></span>
-                            </a>
-                            <a href="#">
-                                <span class="ti-pinterest"></span>
-                            </a>
-                            <a href="#">
-                                <span class="ti-instagram"></span>
-                            </a>
+                            <div class="fb-share-button"
+                                data-href="https://revive2000.herokuapp.com/blogDetail/{{blog._id}}"
+                                data-layout="box_count" data-size="large"><a target="_blank"
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                    class="fb-xfbml-parse-ignore">Share Post</a>
+                            </div>
+
                         </div>
                     </div>
 
@@ -167,3 +162,11 @@
         $("#blogContent").html($("#blogContent").text())
     })
 </script>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0"
+    nonce="IB0aDEIx"></script>
+
+<iframe
+    src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&width=87&height=28&appId"
+    width="87" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
