@@ -752,7 +752,7 @@ exports.addOneTag = async (req, res) => {
             describe: tagDesc,
         });
 
-        const saveTag = await newTag.save();
+        await newTag.save();
 
         const success = 'Adding Successfully';
         return res.redirect(`/admin/allTags?success=${success}`);

@@ -36,32 +36,45 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="">Select Category</label>
+                        <select class="form-control" id="category" name="_id" required>
+                            <option value="">Open this select category</option>
+                            {{#each categories}}
+                            <option value="{{_id}}">
+                                {{name}}
+                            </option>
+                            {{/each}}
+                        </select>
+                        <div class="invalid-feedback">Please choose a category</div>
+                    </div>
+
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <div class="form-group">
-                                <label for="">Select Category</label>
-                                <select class="form-control" id="category" name="_id" required>
-                                    <option value="">Open this select category</option>
-                                    {{#each categories}}
-                                    <option value="{{_id}}">
-                                        {{name}}
-                                    </option>
-                                    {{/each}}
-                                </select>
-                                <div class="invalid-feedback">Please choose a category</div>
+                                <label for="">Choose a tag</label>
+                                <input type="text" class="form-control" id="titleName" name="tagName"
+                                    placeholder="Choose a tag name ..." onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Choose a tag name ...'" class="single-input">
+                                {{!-- <div class="invalid-feedback">Please choose a tag</div> --}}
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-2">
+                            <label for=""></label>
+                            <p class="text-center">OR</p>
+                        </div>
+
+                        <div class="col-sm-5">
                             <div class="form-group">
                                 <label for="">Select Tag</label>
-                                <select class="selectpicker form-control" name="tagId" data-live-search="true" multiple required>
+                                <select class="selectpicker form-control" name="tagId" data-live-search="true" multiple>
                                     {{#each tags}}
                                     <option value="{{_id}}">{{name}}</option>
                                     {{/each}}
                                 </select>
 
-                                <div class="invalid-feedback">Please choose a tag</div>
+                                {{!-- <div class="invalid-feedback">Please choose a tag</div> --}}
                             </div>
                         </div>
                     </div>

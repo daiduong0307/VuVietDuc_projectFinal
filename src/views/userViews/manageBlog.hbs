@@ -44,8 +44,8 @@
                             </div>
                             <div class="col">
                                 <h6>Category</h6>
-                                <select class="form-control" name="categoryId" data-placeholder="Open this select Category...">
-                                    <option value=""></option>
+                                <select class="selectpicker form-control" name="categoryId"
+                                    data-placeholder="Open this select Category..." data-live-search="true" multiple>
                                     {{#each categories}}
                                     <option value="{{_id}}">
                                         {{name}}

@@ -413,7 +413,7 @@ exports.getUploadPage = async (req, res) => {
 };
 
 exports.uploadBlog = async (req, res) => {
-    const { _id, tagId } = req.body;
+    const { _id, tagId, tagName } = req.body;
     const userInfo = await userModel.findOne({ accountId: req.session.userId });
     const obj = {
         titleName: req.body.titleName,
@@ -428,9 +428,15 @@ exports.uploadBlog = async (req, res) => {
         const newBlog = await blogModel.create(obj);
         const savePost = await newBlog.save();
 
+        const newTag = new tagModel({
+            name: tagName
+        });
+
+        const saveTag = await newTag.save();
+
         const pushTag = await blogModel.findOneAndUpdate(
             { _id: savePost._id },
-            { $push: { tags: tagId } },
+            { $push: { tags: tagId, tags: saveTag } },
             { new: true, useFindAndModify: false, multi: true },
         );
         await pushTag.save();
