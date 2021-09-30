@@ -33,7 +33,8 @@
                             {{#equals demo.bookmarkExists.accountId session.userId}}
 
                             <input type="hidden" name="blogId" id="blog_id" value="{{blog._id}}">
-                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="unBookmark this post" id="{{blog._id}}"
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+                                title="unBookmark this post" id="{{blog._id}}"
                                 style="margin-right: 10px; margin-top: 6px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
@@ -47,7 +48,8 @@
                             {{else}}
 
                             <input type="hidden" name="blogId" id="blog_id" value="{{blog._id}}">
-                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Bookmark this post" id="{{blog._id}}"
+                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top"
+                                title="Bookmark this post" id="{{blog._id}}"
                                 style="margin-right: 10px; margin-top: 6px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
@@ -205,6 +207,14 @@
                                     href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
                                     class="fb-xfbml-parse-ignore">Share Post</a>
                             </div>
+                            <div style="margin-top: 5px">
+                                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                                    data-show-count="false" data-size="large">Tweet</a>
+                            </div>
+                            <div>
+                                <a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-lang="en"
+                                    href="https://pl.pinterest.com/pin/create/button/"></a>
+                            </div>
                         </div>
                     </div>
 
@@ -248,6 +258,8 @@
 
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0"
     nonce="IB0aDEIx"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 
 <iframe
     src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&width=87&height=28&appId"
