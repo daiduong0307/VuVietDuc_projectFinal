@@ -71,8 +71,10 @@ exports.homePage = async (req, res) => {
             slideBlog,
             blogs,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -138,8 +140,10 @@ exports.searchBlog = async (req, res) => {
             latestPost,
             slideBlog,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -429,7 +433,7 @@ exports.uploadBlog = async (req, res) => {
         const savePost = await newBlog.save();
 
         const newTag = new tagModel({
-            name: tagName
+            name: tagName,
         });
 
         const saveTag = await newTag.save();

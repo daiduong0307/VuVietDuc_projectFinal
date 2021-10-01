@@ -1,36 +1,45 @@
 <nav class="blog-pagination justify-content-center d-flex">
-    {{#pagination currentPage pages size=5}}
     <ul class="pagination">
-        {{#unless context.startFromFirstPage}}
-        <li class="page-item">
+        {{#paginate pagination type="first"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}>
+            <a href="/searchBlog?search={{../search}}&?p={{n}}" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">
+                    <span class="ti-shift-left"></span>
+                </span>
+            </a>
+        </li>
+        {{/paginate}}
+        {{#paginate pagination type="previous"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}>
             <a href="/searchBlog?search={{../search}}" class="page-link" aria-label="Previous">
                 <span aria-hidden="true">
                     <span class="ti-arrow-left"></span>
                 </span>
             </a>
         </li>
-        {{/unless}}
-
-        {{#each pages}}
-        {{#if isCurrent}}
-        <li class="page-item active"><a href="/searchBlog?search={{../../search}}&?p={{page}}"
-                class="page-link">{{page}}</a></li>
-        {{/if}}
-        {{#unless isCurrent}}
-        <li class="page-item"><a href="/searchBlog?search={{../../search}}&?p={{page}}" class="page-link">{{page}}</a>
+        {{/paginate}}
+        {{#paginate pagination type="middle" limit="7"}}
+        <li {{#if active}}class="page-item active" {{/if}}>
+            <a href="/searchBlog?search={{../search}}&?p={{n}}" class="page-link">{{n}}</a>
         </li>
-        {{/unless}}
-        {{/each}}
-
-        {{#unless context.endAtLastPage}}
-        <li class="page-item">
-            <a href="/?p={{endPage}}" class="page-link" aria-label="Next">
+        {{/paginate}}
+        {{#paginate pagination type="next"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}>
+            <a href="/searchBlog?search={{../search}}&?p={{n}}" class="page-link" aria-label="Next">
                 <span aria-hidden="true">
                     <span class="ti-arrow-right"></span>
                 </span>
             </a>
         </li>
-        {{/unless}}
+        {{/paginate}}
+        {{#paginate pagination type="last"}}
+        <li {{#if disabled}}class="page-item disabled" {{/if}}>
+            <a href="/searchBlog?search={{../search}}&?p={{n}}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">
+                    <span class="ti-shift-right"></span>
+                </span>
+            </a>
+        </li>
+        {{/paginate}}
     </ul>
-    {{/pagination}}
 </nav>

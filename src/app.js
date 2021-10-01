@@ -7,6 +7,7 @@ const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const paginate = require('handlebars-paginate');
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart();
 const fs = require('fs');
@@ -47,60 +48,8 @@ Handlebars.registerHelper('equals', function (a, b, options) {
         return options.inverse(this);
     }
 });
-Handlebars.registerHelper('ifCond', function (a, b, options) {
-    if (a > b) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
-});
 
-Handlebars.registerHelper('pagination', function (currentPage, totalPage, size, options) {
-    let startPage, endPage, context;
-
-    if (arguments.length === 3) {
-        options = size;
-        size = 5;
-    }
-
-    startPage = currentPage - Math.floor(size / 2);
-    endPage = currentPage + Math.floor(size / 2);
-
-    if (startPage <= 0) {
-        endPage -= startPage - 1;
-        startPage = 1;
-    }
-
-    if (endPage > totalPage) {
-        endPage = totalPage;
-        if (endPage - size + 1 > 0) {
-            startPage = endPage - size + 1;
-        } else {
-            startPage = 1;
-        }
-    }
-
-    context = {
-        startFromFirstPage: false,
-        pages: [],
-        endAtLastPage: false,
-        endPage,
-    };
-    if (startPage === 1) {
-        context.startFromFirstPage = true;
-    }
-    for (let i = startPage; i <= endPage; i++) {
-        context.pages.push({
-            page: i,
-            isCurrent: i == currentPage,
-        });
-    }
-    if (endPage === totalPage) {
-        context.endAtLastPage = true;
-    }
-
-    return options.fn(context);
-});
+Handlebars.registerHelper('paginate', paginate);
 
 app.engine(
     'hbs',
@@ -137,25 +86,25 @@ app.use(
 app.post('/upload', multipartMiddleware, (req, res) => {
     try {
         fs.readFile(req.files.upload.path, function (err, data) {
-            const newPath = __dirname + '/public/images/' + req.files.upload.name;
+            const newPath = __dirname + '/public/CK_Images/' + req.files.upload.name;
             fs.writeFile(newPath, data, function (err) {
                 if (err) console.log({ err });
                 else {
-                    console.log(req.files.upload.originalFilename);
+                    // console.log(req.files.upload.originalFilename);
                     const fileName = req.files.upload.name;
-                    const url = '/images/' + fileName;
+                    const url = '/CK_Images/' + fileName;
                     const msg = 'Upload successfully';
                     const funcNum = req.query.CKEditorFuncNum;
                     console.log({ url, msg, funcNum });
 
                     res.status(201).send(
                         "<script>window.parent.CKEDITOR.tools.callFunction('" +
-                            funcNum +
-                            "','" +
-                            url +
-                            "','" +
-                            msg +
-                            "');</script>",
+                        funcNum +
+                        "','" +
+                        url +
+                        "','" +
+                        msg +
+                        "');</script>",
                     );
                 }
             });

@@ -36,6 +36,7 @@
     "express-session": "^1.17.2",
     "googleapis": "^87.0.0",
     "handlebars-helpers": "^0.10.0",
+    "handlebars-paginate": "^0.1.0",
     "hbs": "^4.1.2",
     "http-errors": "^1.8.0",
     "joi": "^17.4.2",

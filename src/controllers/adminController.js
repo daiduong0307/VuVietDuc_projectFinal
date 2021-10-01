@@ -477,28 +477,27 @@ exports.updateOneManager = async (req, res) => {
 
 // Assign category to manager
 exports.deprivationRights = async (req, res) => {
-    const { categoryId, _id } = req.body
+    const { categoryId, _id } = req.body;
     try {
         const updatedManager = await managerModel.findOneAndUpdate(
             { _id: _id },
             { $set: { categoryId: null, isResponsible: false } },
-            { new: true, useFindAndModify: false }
-        )
+            { new: true, useFindAndModify: false },
+        );
 
         await categoryModel.findOneAndUpdate(
             { _id: categoryId },
             { $set: { isManaged: false, managedBy: null } },
-            { new: true, useFindAndModify: false }
-        )
-
+            { new: true, useFindAndModify: false },
+        );
 
         const success = 'Update Successfully';
         return res.redirect(`/admin/updateManager/${updatedManager._id}?success=${success}`);
     } catch (error) {
         console.log(error);
-        return res.render("adminViews/updateManagerAcc",);
+        return res.render('adminViews/updateManagerAcc');
     }
-}
+};
 
 // Delete one manager
 exports.deleteOneManger = async (req, res) => {
