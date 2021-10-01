@@ -93,8 +93,11 @@ function getMonth_Of_Posts(postData) {
 // List all user accounts
 exports.allUserAccount = async (req, res) => {
     const title = 'List of User Accounts';
+    const perPage = 5;
+    const page = req.query.p || 1;
 
-    const users = await userModel.find({}).sort({ createdAt: -1 }).populate('accountId');
+    const users = await userModel.find({}).sort({ createdAt: -1 }).skip(perPage * page - perPage).limit(perPage).populate('accountId');
+    const countUser = await userModel.countDocuments();
 
     const userAcc = await appUserModel.find({ role: 'user' });
     const admin = await appUserModel.findOne({ _id: req.session.userId });
@@ -105,6 +108,10 @@ exports.allUserAccount = async (req, res) => {
             userAcc,
             title,
             admin,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countUser / perPage), // Total pages to display
+            },
         });
     } catch (error) {
         console.log(error);
@@ -115,15 +122,13 @@ exports.allUserAccount = async (req, res) => {
 exports.searchUser = async (req, res) => {
     const title = 'List of User Accounts';
     const { timeFrom, timeTo, username } = req.query;
-    // let regExpEmail = '';
-    // if (!email) {
-    //     regExpEmail = null;
-    // } else {
-    //     regExpEmail = new RegExp(email, 'i');
-    // }
+    const perPage = 5;
+    const page = req.query.p || 1;
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
     const userAcc = await appUserModel.find({ role: 'user' });
+    const countUser = await userModel.countDocuments();
+
 
     // const usersFindEmail = await userModel.find({}).or([{ email: regExpEmail },]).sort({ "createdAt": -1 }).populate("accountId");
     // const users = await userModel.find({ createdAt: { $gte: timeFrom, $lte: timeTo } }).sort({ "createdAt": -1 }).populate("accountId");
@@ -131,15 +136,22 @@ exports.searchUser = async (req, res) => {
         .find({
             $or: [{ accountId: username }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
         })
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: -1 }).skip(perPage * page - perPage).limit(perPage)
         .populate('accountId');
 
     try {
         res.render('adminViews/listAllUserAcc', {
             users,
+            timeFrom,
+            timeTo,
+            username,
             userAcc,
             title,
             admin,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countUser / perPage), // Total pages to display
+            },
         });
     } catch (error) {
         console.log(error);
@@ -254,12 +266,16 @@ exports.deleteOneUser = async (req, res) => {
 // List all manager account
 exports.allManagerAccount = async (req, res) => {
     const title = 'List of Manager Accounts';
+    const perPage = 5;
+    const page = req.query.p || 1;
 
+    const countManager = await managerModel.countDocuments();
     const admin = await appUserModel.findOne({ _id: req.session.userId });
     const managers = await managerModel
         .find({})
         .populate('accountId')
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: -1 }).skip(perPage * page - perPage)
+        .limit(perPage)
         .populate('categoryId');
 
     try {
@@ -267,6 +283,10 @@ exports.allManagerAccount = async (req, res) => {
             managers,
             admin,
             title,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countManager / perPage), // Total pages to display
+            },
         });
     } catch (error) {
         console.log(error);
@@ -276,7 +296,10 @@ exports.allManagerAccount = async (req, res) => {
 
 exports.searchManager = async (req, res) => {
     const title = 'List of Manager Accounts';
-    const { timeFrom, timeTo, email } = req.query;
+    const { timeFrom, timeTo, email} = req.query;
+    const perPage = 5;
+    const page = req.query.p || 1;
+
     let regExpEmail = '';
     if (!email) {
         regExpEmail = null;
@@ -285,22 +308,28 @@ exports.searchManager = async (req, res) => {
     }
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-
-    // const usersFindEmail = await userModel.find({}).or([{ email: regExpEmail },]).sort({ "createdAt": -1 }).populate("accountId");
-    // const managers = await userModel.find({ createdAt: { $gte: timeFrom, $lte: timeTo } }).sort({ "createdAt": -1 }).populate("accountId");
+    const countManager = await managerModel.countDocuments();
     const managers = await managerModel
         .find({
             $or: [{ email: regExpEmail }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
         })
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: -1 }).skip(perPage * page - perPage)
+        .limit(perPage)
         .populate('accountId')
         .populate('categoryId');
 
     try {
         res.render('adminViews/listAllManagerAcc', {
             managers,
+            timeFrom,
+            timeTo,
+            email,
             admin,
             title,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countManager / perPage), // Total pages to display
+            },
         });
     } catch (error) {
         console.log(error);
@@ -539,9 +568,12 @@ exports.deleteOneManger = async (req, res) => {
 // all categories
 exports.allCategories = async (req, res) => {
     const title = 'List of categories';
+    const perPage = 5;
+    const page = req.query.p || 1;
 
+    const countCat = await categoryModel.countDocuments();
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-    const categories = await categoryModel.find({}).sort({ createdAt: -1 }).populate('managedBy');
+    const categories = await categoryModel.find({}).sort({ createdAt: -1 }).skip(perPage * page - perPage).limit(perPage).populate('managedBy');
     const managers = await managerModel.find({ isResponsible: false });
 
     try {
@@ -550,6 +582,10 @@ exports.allCategories = async (req, res) => {
             admin,
             categories,
             managers: managers,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countCat / perPage), // Total pages to display
+            },
         });
     } catch (error) {
         console.log(error);
@@ -715,9 +751,14 @@ exports.deleteOneCategory = async (req, res) => {
 exports.allTags = async (req, res) => {
     const title = 'List of tags';
     const { success, errTag } = req.query;
+    const perPage = 5;
+    const page = req.query.p || 1;
 
+    const countTag = await tagModel.countDocuments();
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-    const tags = await tagModel.find({}).sort({ createdAt: -1 });
+    const tags = await tagModel.find({}).skip(perPage * page - perPage)
+        .sort({ createdAt: -1 })
+        .limit(perPage);
 
     try {
         res.render('adminViews/listAllTags', {
@@ -727,6 +768,10 @@ exports.allTags = async (req, res) => {
             notify: {
                 success,
                 errTag,
+            },
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countTag / perPage), // Total pages to display
             },
         });
     } catch (error) {

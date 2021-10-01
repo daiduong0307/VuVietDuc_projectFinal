@@ -235,6 +235,79 @@
                                                                 {{/each}}
                                                             </tbody>
                                                         </table>
+                                                        {{#if timeFrom}}
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination justify-content-end"
+                                                                style="margin: 10px 15px;">
+                                                                {{#paginate pagination type="first"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/searchManager?timeFrom={{../timeFrom}}&timeTo={{../timeTo}}&email={{../email}}&p={{n}}">First</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="previous"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/searchManager?timeFrom={{../timeFrom}}&timeTo={{../timeTo}}&email={{../email}}&p={{n}}">Previous</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="middle" limit="7"}}
+                                                                <li {{#if active}}class="page-item active" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/searchManager?timeFrom={{../timeFrom}}&timeTo={{../timeTo}}&email={{../email}}&p={{n}}">{{n}}</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="next"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/searchManager?timeFrom={{../timeFrom}}&timeTo={{../timeTo}}&email={{../email}}&p={{n}}">Next</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="last"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/searchManager?timeFrom={{../timeFrom}}&timeTo={{../timeTo}}&email={{../email}}&p={{n}}">Last</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                            </ul>
+                                                        </nav>
+                                                        {{else}}
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination justify-content-end"
+                                                                style="margin: 10px 15px;">
+                                                                {{#paginate pagination type="first"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/allManagerAcc?p={{n}}">First</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="previous"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/allManagerAcc?p={{n}}">Previous</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="middle" limit="7"}}
+                                                                <li {{#if active}}class="page-item active" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/allManagerAcc?p={{n}}">{{n}}</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="next"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/allManagerAcc?p={{n}}">Next</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                                {{#paginate pagination type="last"}}
+                                                                <li {{#if disabled}}class="page-item disabled" {{/if}}>
+                                                                    <a class="page-link"
+                                                                        href="/admin/allManagerAcc?p={{n}}">Last</a>
+                                                                </li>
+                                                                {{/paginate}}
+                                                            </ul>
+                                                        </nav>
+                                                        {{/if}}
                                                     </div>
 
                                                 </div>
