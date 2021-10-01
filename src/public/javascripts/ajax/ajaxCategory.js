@@ -26,7 +26,6 @@ $(document).ready(() => {
             method: 'get',
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             arrayBlog(res);
             // getData();
         });
@@ -50,7 +49,6 @@ $(document).ready(() => {
     }
 
     function arrayBlog(data) {
-        console.log('Here is category ', data);
         var res = '';
         if (data.length > 0) {
             data.forEach((el, index) => {

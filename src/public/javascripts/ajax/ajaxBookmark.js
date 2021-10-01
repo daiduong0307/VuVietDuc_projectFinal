@@ -15,12 +15,10 @@ $(document).ready(() => {
             method: 'put',
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             ajaxGetSet();
         });
     }
     var BlogId = $('#blog_id').val();
-    // console.log("set",BlogId);
 
     function ajaxGetSet() {
         $.ajax({
@@ -28,7 +26,6 @@ $(document).ready(() => {
             method: 'get',
             dataType: 'json',
         }).done(function (res) {
-            // console.log(res);
             test(res);
         });
     }
@@ -43,7 +40,6 @@ $(document).ready(() => {
             ajaxGetUn();
         });
     }
-    // var unBlogId = $("#unBM").val();
 
     function ajaxGetUn() {
         $.ajax({
@@ -57,18 +53,14 @@ $(document).ready(() => {
     }
 
     function test(data) {
-        // console.log(data);
         var res = '';
         res += dataBlog(data);
         $('#bookmark').html(res);
     }
 
     var ss_id = $('#ss_id').val();
-    // console.log(ss_id);
 
     function dataBlog(data) {
-        // console.log(data);
-        // console.log("acc", data.demo.bookmarkExists.accountId);
 
         var html = '';
 

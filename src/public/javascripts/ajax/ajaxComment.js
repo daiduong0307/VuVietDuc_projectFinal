@@ -3,7 +3,6 @@ $(document).ready(() => {
         e.preventDefault();
 
         var formData = $('#cmtForm').serializeArray();
-        console.log(formData);
 
         var data = {};
 
@@ -18,7 +17,6 @@ $(document).ready(() => {
         e.preventDefault();
 
         var formData = $(this).serializeArray();
-        console.log(formData);
 
         var data = {};
 
@@ -52,7 +50,6 @@ $(document).ready(() => {
             data: JSON.stringify(data),
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             ajaxGet();
         });
     }
@@ -65,7 +62,6 @@ $(document).ready(() => {
             data: JSON.stringify(data),
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             ajaxGet();
         });
     }
@@ -78,8 +74,6 @@ $(document).ready(() => {
             method: 'get',
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
-            console.log(res.comments);
             arrayComment(res.comments);
             arrayReplies(res.comments[0].replies);
             event();
@@ -87,7 +81,6 @@ $(document).ready(() => {
     }
 
     function arrayReplies(data) {
-        console.log('Here is replies ', data);
         var res = '';
         if (data.length > 0) {
             data.forEach(el => {
@@ -100,12 +93,6 @@ $(document).ready(() => {
     var userId2 = $('#userId2').val();
 
     function dataReplies(reply) {
-        console.log(reply);
-
-        // var button = "";
-        // if(reply.author.accountId._id == userId2){
-        //     button += '<button id="'+ reply._id +'" class="btn btn-danger btn-outline-danger btn-deleteReply"> <i class="ti-trash"></i> </button>'
-        // }
 
         var res = '';
 
@@ -136,23 +123,10 @@ $(document).ready(() => {
         res += ' </div>';
         res += ' </div>';
 
-        // res += '      <li class="comment">';
-        // res += '        <div class="vcard">';
-        // res += '             <img src="/uploads/' + reply.author.avatar + '" alt="Image placeholder">';
-        // res += '         </div>';
-        // res += '        <div class="comment-body">';
-        // res += '             <h3>' + reply.author.fullName + '</h3>';
-        // res += '            <div class="meta">' + formatDate(reply.createdAt) + '</div>';
-        // res += '            <p>' + reply.comment + '</p>';
-        // res += reply.author.accountId._id == userId2 ? '<button id="'+ reply._id +'" class="btn btn-danger btn-outline-danger btn-deleteReply"> <i class="ti-trash"></i> </button>' : "";
-        // res += '        </div>';
-        // res += '     </li>';
-
         return res;
     }
 
     function arrayComment(data) {
-        console.log('Here is comment ', data);
         var res = '';
         if (data.length > 0) {
             data.forEach(el => (res += getData(el)));
@@ -185,7 +159,6 @@ $(document).ready(() => {
     var userId = $('#userId').val();
 
     function getData(comment) {
-        console.log(comment);
 
         var html = '';
 

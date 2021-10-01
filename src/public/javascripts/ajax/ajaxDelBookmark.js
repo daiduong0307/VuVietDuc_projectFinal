@@ -11,8 +11,6 @@ $(document).ready(() => {
             dataType: 'json',
         })
             .done(function (res) {
-                console.log(res);
-                // getData();
                 ajaxGet();
             })
             .fail(function () {
@@ -26,9 +24,7 @@ $(document).ready(() => {
             method: 'get',
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             arrayBlog(res);
-            // getData();
         });
     }
 
@@ -50,7 +46,6 @@ $(document).ready(() => {
     }
 
     function arrayBlog(data) {
-        // console.log("Here is comment ", data);
         var res = '';
         if (data.length > 0) {
             data.forEach((el, index) => {
@@ -90,7 +85,6 @@ $(document).ready(() => {
     }
 
     function getData(blog, index) {
-        console.log(blog);
         var html = '';
 
         html += '<tr>';

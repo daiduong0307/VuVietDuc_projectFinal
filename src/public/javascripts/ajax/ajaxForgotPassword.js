@@ -3,7 +3,6 @@ $(document).ready(() => {
         e.preventDefault();
 
         var formData = $('#resetForm').serializeArray();
-        console.log(formData);
 
         var data = {};
 
@@ -40,13 +39,11 @@ $(document).ready(() => {
             dataType: 'json',
         })
             .done(function (res) {
-                console.log(res);
                 $('#msgSuccess').html(res.success);
                 $('#msgSuccess').css('display', 'block');
                 $('#msg').css('display', 'none');
             })
             .fail(function (res) {
-                console.log(res);
                 $('#msg').html(res.responseJSON.err);
                 $('#msg').css('display', 'block');
                 $('#msgSuccess').css('display', 'none');

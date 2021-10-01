@@ -11,7 +11,6 @@ $(document).ready(() => {
             dataType: 'json',
         })
             .done(function (res) {
-                console.log(res);
                 ajaxGet();
             })
             .fail(function () {
@@ -25,7 +24,6 @@ $(document).ready(() => {
             method: 'get',
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             arrayManager(res);
         });
     }
@@ -48,7 +46,6 @@ $(document).ready(() => {
     }
 
     function arrayManager(data) {
-        console.log('Here is managers ', data);
         var res = '';
         if (data.length > 0) {
             data.forEach((el, index) => {

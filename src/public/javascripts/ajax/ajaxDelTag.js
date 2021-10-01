@@ -11,8 +11,6 @@ $(document).ready(() => {
             dataType: 'json',
         })
             .done(function (res) {
-                console.log(res);
-                // getData();
                 ajaxGet();
             })
             .fail(function () {
@@ -26,9 +24,7 @@ $(document).ready(() => {
             method: 'get',
             dataType: 'json',
         }).done(function (res) {
-            console.log(res);
             arrayTag(res);
-            // getData();
         });
     }
 
@@ -50,7 +46,6 @@ $(document).ready(() => {
     }
 
     function arrayTag(data) {
-        console.log('Here is tags ', data);
         var res = '';
         if (data.length > 0) {
             data.forEach((el, index) => {
