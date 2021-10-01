@@ -313,8 +313,10 @@ exports.blogByCategory = async (req, res) => {
             popularBlog,
             blogs,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -374,8 +376,10 @@ exports.blogByTag = async (req, res) => {
             popularBlog,
             blogs,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -608,8 +612,10 @@ exports.profile = async (req, res) => {
             popularBlog,
             myLatestPost,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -1174,8 +1180,10 @@ exports.viewPostAuthor = async (req, res) => {
             countBlog,
             totalViews,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });

@@ -82,7 +82,7 @@ exports.searchBlog = async (req, res) => {
         })
         .skip(perPage * page - perPage)
         .limit(perPage)
-        .sort({ createdAt: -1 });
+        .sort({ createdAt: -1 }).populate("categoryId");
 
     const countBlog = await blogModel.countDocuments({
         isPublish: 'Approved',
@@ -176,8 +176,10 @@ exports.blogByCategory = async (req, res) => {
             latestPost,
             blogs,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -233,8 +235,10 @@ exports.blogByTag = async (req, res) => {
             latestPost,
             blogs,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -288,8 +292,10 @@ exports.blogByCategory = async (req, res) => {
             latestPost,
             blogs,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
@@ -373,6 +379,7 @@ exports.viewPostAuthor = async (req, res) => {
     const page = req.query.p || 1;
 
     const userAcc = await appUserModel.findOne({ username });
+    console.log(userAcc)
     const userInfo = await userModel.findOne({ accountId: userAcc._id });
 
     const title = `${userInfo.fullName} - Revive`;
@@ -417,8 +424,10 @@ exports.viewPostAuthor = async (req, res) => {
             countBlog,
             totalViews,
 
-            currentPage: page, // Current Page
-            pages: Math.ceil(countBlog / perPage), // Total pages to display
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
 
             layout: 'userLayout.hbs',
         });
