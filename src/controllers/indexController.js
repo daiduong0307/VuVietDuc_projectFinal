@@ -82,7 +82,8 @@ exports.searchBlog = async (req, res) => {
         })
         .skip(perPage * page - perPage)
         .limit(perPage)
-        .sort({ createdAt: -1 }).populate("categoryId");
+        .sort({ createdAt: -1 })
+        .populate('categoryId');
 
     const countBlog = await blogModel.countDocuments({
         isPublish: 'Approved',
@@ -379,7 +380,7 @@ exports.viewPostAuthor = async (req, res) => {
     const page = req.query.p || 1;
 
     const userAcc = await appUserModel.findOne({ username });
-    console.log(userAcc)
+    console.log(userAcc);
     const userInfo = await userModel.findOne({ accountId: userAcc._id });
 
     const title = `${userInfo.fullName} - Revive`;

@@ -27,6 +27,10 @@ $(document).ready(() => {
         doReply(data);
     });
 
+    var userId = $('#userId').val();
+    var userId2 = $('#userId2').val();
+    var blogId = $('#blogId2').val();
+
     function event() {
         var formReply;
         $(document).on('click', '.reply', function () {
@@ -66,8 +70,6 @@ $(document).ready(() => {
         });
     }
 
-    var blogId = $('#blogId2').val();
-
     function ajaxGet() {
         $.ajax({
             url: `/api/users/getBlogData/${blogId}`,
@@ -90,10 +92,7 @@ $(document).ready(() => {
         return res;
     }
 
-    var userId2 = $('#userId2').val();
-
     function dataReplies(reply) {
-
         var res = '';
 
         res += '<div class="comment-list left-padding">';
@@ -113,7 +112,7 @@ $(document).ready(() => {
         res += ' </div>';
         res += ' <div class="reply-btn">';
         res +=
-            reply.author.accountId._id == userId2
+            reply.author.accountId._id == userId
                 ? ' <a class="btn-reply text-uppercase btn-deleteReply" style="cursor: pointer"  id="' +
                   reply._id +
                   '">Delete</a>'
@@ -156,10 +155,9 @@ $(document).ready(() => {
         return formatted_date;
     }
 
-    var userId = $('#userId').val();
+
 
     function getData(comment) {
-
         var html = '';
 
         html += '<div class="comment-list">';

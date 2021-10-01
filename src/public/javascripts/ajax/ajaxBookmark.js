@@ -61,7 +61,6 @@ $(document).ready(() => {
     var ss_id = $('#ss_id').val();
 
     function dataBlog(data) {
-
         var html = '';
 
         if (data.demo.bookmarkExists) {

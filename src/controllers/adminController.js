@@ -96,7 +96,12 @@ exports.allUserAccount = async (req, res) => {
     const perPage = 5;
     const page = req.query.p || 1;
 
-    const users = await userModel.find({}).sort({ createdAt: -1 }).skip(perPage * page - perPage).limit(perPage).populate('accountId');
+    const users = await userModel
+        .find({})
+        .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
+        .populate('accountId');
     const countUser = await userModel.countDocuments();
 
     const userAcc = await appUserModel.find({ role: 'user' });
@@ -129,14 +134,15 @@ exports.searchUser = async (req, res) => {
     const userAcc = await appUserModel.find({ role: 'user' });
     const countUser = await userModel.countDocuments();
 
-
     // const usersFindEmail = await userModel.find({}).or([{ email: regExpEmail },]).sort({ "createdAt": -1 }).populate("accountId");
     // const users = await userModel.find({ createdAt: { $gte: timeFrom, $lte: timeTo } }).sort({ "createdAt": -1 }).populate("accountId");
     const users = await userModel
         .find({
             $or: [{ accountId: username }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
         })
-        .sort({ createdAt: -1 }).skip(perPage * page - perPage).limit(perPage)
+        .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
         .populate('accountId');
 
     try {
@@ -274,7 +280,8 @@ exports.allManagerAccount = async (req, res) => {
     const managers = await managerModel
         .find({})
         .populate('accountId')
-        .sort({ createdAt: -1 }).skip(perPage * page - perPage)
+        .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
         .limit(perPage)
         .populate('categoryId');
 
@@ -296,7 +303,7 @@ exports.allManagerAccount = async (req, res) => {
 
 exports.searchManager = async (req, res) => {
     const title = 'List of Manager Accounts';
-    const { timeFrom, timeTo, email} = req.query;
+    const { timeFrom, timeTo, email } = req.query;
     const perPage = 5;
     const page = req.query.p || 1;
 
@@ -313,7 +320,8 @@ exports.searchManager = async (req, res) => {
         .find({
             $or: [{ email: regExpEmail }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
         })
-        .sort({ createdAt: -1 }).skip(perPage * page - perPage)
+        .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
         .limit(perPage)
         .populate('accountId')
         .populate('categoryId');
@@ -573,7 +581,12 @@ exports.allCategories = async (req, res) => {
 
     const countCat = await categoryModel.countDocuments();
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-    const categories = await categoryModel.find({}).sort({ createdAt: -1 }).skip(perPage * page - perPage).limit(perPage).populate('managedBy');
+    const categories = await categoryModel
+        .find({})
+        .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
+        .populate('managedBy');
     const managers = await managerModel.find({ isResponsible: false });
 
     try {
@@ -756,7 +769,9 @@ exports.allTags = async (req, res) => {
 
     const countTag = await tagModel.countDocuments();
     const admin = await appUserModel.findOne({ _id: req.session.userId });
-    const tags = await tagModel.find({}).skip(perPage * page - perPage)
+    const tags = await tagModel
+        .find({})
+        .skip(perPage * page - perPage)
         .sort({ createdAt: -1 })
         .limit(perPage);
 
