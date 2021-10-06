@@ -211,7 +211,6 @@ exports.approveBlog = async (req, res) => {
             blog.titleName,
         );
         console.log('Email sent...', sentEmail);
-
     } catch (error) {
         res.status(400).send(error);
     }
@@ -220,7 +219,7 @@ exports.approveBlog = async (req, res) => {
 exports.rejectBlog = async (req, res) => {
     const { blogId } = req.body;
 
-    const blog = await blogModel.findOne({ _id: blogId }).populate('owner')
+    const blog = await blogModel.findOne({ _id: blogId }).populate('owner');
     const findBookmark = await bookmarkModel.findOne({ postId: blogId });
 
     try {
@@ -242,7 +241,7 @@ exports.rejectBlog = async (req, res) => {
             { bookmarks: findBookmark._id },
             { $pull: { bookmarks: findBookmark._id } },
             { new: true, useFindAndModify: false },
-        )
+        );
 
         await res.redirect('/managers/allRequest');
 
@@ -253,7 +252,6 @@ exports.rejectBlog = async (req, res) => {
             blog.titleName,
         );
         console.log('Email sent...', sentEmail);
-
     } catch (error) {
         res.status(400).send(error);
     }

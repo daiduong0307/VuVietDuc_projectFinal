@@ -473,7 +473,6 @@ exports.uploadBlog = async (req, res) => {
             body.title,
         );
         console.log('Email sent...', sentEmail);
-
     } catch (error) {
         console.log(error.message);
         res.status(400).send(error.message);
@@ -740,11 +739,8 @@ exports.deleteReply = async (req, res) => {
 
 exports.manageBlog = async (req, res) => {
     const title = 'Blogs Management';
-    const { categoryId } = req.query;
-    const query = {};
-    if (categoryId) {
-        query.categoryId = categoryId;
-    }
+    const perPage = 6;
+    const page = req.query.p || 1;
 
     const userInfo = await userModel
         .findOne({ accountId: req.session.userId })
@@ -754,9 +750,13 @@ exports.manageBlog = async (req, res) => {
         .find({ isPublish: 'Approved' })
         .sort({ createdAt: -1 })
         .limit(limitLatest);
+
+    const countBlog = await blogModel.countDocuments({ owner: userInfo._id });
     const myBlog = await blogModel
-        .find({ owner: userInfo._id, ...query })
+        .find({ owner: userInfo._id })
         .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
         .populate('owner')
         .populate('categoryId');
 
@@ -767,6 +767,10 @@ exports.manageBlog = async (req, res) => {
             categories,
             blogs: myBlog,
             latestPost,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
             layout: 'userLayout.hbs',
         });
     } catch (error) {
@@ -986,15 +990,22 @@ exports.deleteOneBlog = async (req, res) => {
 
 exports.getAllBookmark = async (req, res) => {
     const title = 'List All Bookmarks';
+    const perPage = 6;
+    const page = req.query.p || 1;
 
     const userInfo = await userModel
         .findOne({ accountId: req.session.userId })
         .populate('accountId');
 
-    const bookmarks = await bookmarkModel.find({ author: userInfo._id }).populate({
-        path: 'postId',
-        populate: [{ path: 'owner' }, { path: 'categoryId' }],
-    });
+    const countBookmark = await bookmarkModel.countDocuments({ author: userInfo._id });
+    const bookmarks = await bookmarkModel
+        .find({ author: userInfo._id })
+        .populate({
+            path: 'postId',
+            populate: [{ path: 'owner' }, { path: 'categoryId' }],
+        })
+        .skip(perPage * page - perPage)
+        .limit(perPage);
 
     const latestPost = await blogModel
         .find({ isPublish: 'Approved' })
@@ -1014,6 +1025,10 @@ exports.getAllBookmark = async (req, res) => {
             latestPost,
             popularBlog,
             categories,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBookmark / perPage), // Total pages to display
+            },
             layout: 'userLayout.hbs',
         });
     } catch (error) {

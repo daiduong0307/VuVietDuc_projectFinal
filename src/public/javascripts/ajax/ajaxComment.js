@@ -155,8 +155,6 @@ $(document).ready(() => {
         return formatted_date;
     }
 
-
-
     function getData(comment) {
         var html = '';
 
