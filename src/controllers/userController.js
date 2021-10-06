@@ -436,21 +436,25 @@ exports.uploadBlog = async (req, res) => {
         const newBlog = await blogModel.create(obj);
         const savePost = await newBlog.save();
 
-        const newTag = new tagModel({
-            name: tagName,
-        });
+        if (tagId || tagName) {
+            const newTag = new tagModel({
+                name: tagName,
+            });
 
-        const saveTag = await newTag.save();
+            const saveTag = await newTag.save();
 
-        const pushTag = await blogModel.findOneAndUpdate(
-            { _id: savePost._id },
-            { $push: { tags: tagId, tags: saveTag } },
-            { new: true, useFindAndModify: false, multi: true },
-        );
-        await pushTag.save();
-
-        await userInfo.posts.push(pushTag);
-        await userInfo.save();
+            const pushTag = await blogModel.findOneAndUpdate(
+                { _id: savePost._id },
+                { $push: { tags: tagId, tags: saveTag } },
+                { new: true, useFindAndModify: false, multi: true },
+            );
+            await pushTag.save();
+            await userInfo.posts.push(pushTag);
+            await userInfo.save();
+        } else {
+            await userInfo.posts.push(savePost);
+            await userInfo.save();
+        }
 
         const findBlog = await blogModel.findOne({ _id: savePost._id }).populate('owner');
 
@@ -459,6 +463,9 @@ exports.uploadBlog = async (req, res) => {
             Author: findBlog.owner.fullName,
             title: findBlog.titleName,
         };
+
+        await res.redirect(`/users/manageBlog`);
+
         const sentEmail = await sendMail(
             manager.email,
             'You have receive a new Request',
@@ -467,7 +474,6 @@ exports.uploadBlog = async (req, res) => {
         );
         console.log('Email sent...', sentEmail);
 
-        return res.redirect(`/users/manageBlog`);
     } catch (error) {
         console.log(error.message);
         res.status(400).send(error.message);
@@ -1104,11 +1110,11 @@ exports.unBookmark = async (req, res) => {
     const bookmark = await bookmarkModel.findOne({ postId: blogId });
 
     try {
-        const delUserBookmark = await bookmarkModel.findOneAndDelete({
+        await bookmarkModel.findOneAndDelete({
             postId: blogId,
         });
 
-        const updateBlog = await userModel.findOneAndUpdate(
+        await userModel.findOneAndUpdate(
             { bookmarks: bookmark._id },
             { $pull: { bookmarks: bookmark._id } },
             { new: true, useFindAndModify: false },

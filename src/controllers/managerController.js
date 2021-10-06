@@ -3,6 +3,7 @@ const managerModel = require('../models/Manager');
 const categoryModel = require('../models/Catagories');
 const blogModel = require('../models/Blogs');
 const commentModel = require('../models/comment');
+const bookmarkModel = require('../models/Bookmarks');
 const userModel = require('../models/Users');
 const { mailApproved, mailRejected } = require('../middleware/sendingMail');
 
@@ -201,6 +202,8 @@ exports.approveBlog = async (req, res) => {
         await category.posts.push(approvedBlog);
         category.save();
 
+        await res.redirect('/managers/allRequest');
+
         const sentEmail = await mailApproved(
             blog.owner.email,
             'Your post has been approved',
@@ -209,7 +212,6 @@ exports.approveBlog = async (req, res) => {
         );
         console.log('Email sent...', sentEmail);
 
-        res.redirect('/managers/allRequest');
     } catch (error) {
         res.status(400).send(error);
     }
@@ -218,7 +220,8 @@ exports.approveBlog = async (req, res) => {
 exports.rejectBlog = async (req, res) => {
     const { blogId } = req.body;
 
-    const blog = await blogModel.findOne({ _id: blogId }).populate('owner');
+    const blog = await blogModel.findOne({ _id: blogId }).populate('owner')
+    const findBookmark = await bookmarkModel.findOne({ postId: blogId });
 
     try {
         await blogModel.findOneAndUpdate(
@@ -233,6 +236,16 @@ exports.rejectBlog = async (req, res) => {
             { new: true, useFindAndModify: false },
         );
 
+        await findBookmark.remove();
+
+        await userModel.findOneAndUpdate(
+            { bookmarks: findBookmark._id },
+            { $pull: { bookmarks: findBookmark._id } },
+            { new: true, useFindAndModify: false },
+        )
+
+        await res.redirect('/managers/allRequest');
+
         const sentEmail = await mailRejected(
             blog.owner.email,
             'Your post has been Rejected',
@@ -241,7 +254,6 @@ exports.rejectBlog = async (req, res) => {
         );
         console.log('Email sent...', sentEmail);
 
-        res.redirect('/managers/allRequest');
     } catch (error) {
         res.status(400).send(error);
     }
