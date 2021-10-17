@@ -19,12 +19,13 @@ exports.signUpAdmin = async (req, res, next) => {
 };
 
 exports.getSignUpUser = async (req, res, next) => {
-    const { errAcc, errPwd } = req.query;
+    const { errAcc, errPwd, errEmail } = req.query;
     try {
         res.render('signup', {
             notify: {
                 errAcc,
                 errPwd,
+                errEmail
             },
             title: 'Sign up an Account',
         });
@@ -40,14 +41,20 @@ exports.signUpUser = async (req, res) => {
         username,
         role: 'user',
     });
+    const emailExist = await appUserModel.findOne({
+        email,
+        role: 'user',
+    })
 
     if (accountExist) {
         const errorUsername = 'Username has already exist !!!';
         return res.redirect(`/auth/signup?errAcc=${errorUsername}`);
     } else if (password.length < 8 || password.includes('password')) {
-        const errorPassword = `Password must be at least 8 characters !!!
-    Password cannot contain "password"`;
+        const errorPassword = `Password must be at least 8 characters !!! Password cannot contain "password"`;
         return res.redirect(`/auth/signup?errPwd=${errorPassword}`);
+    } else if( emailExist ){
+        const errorEmail = `Email has already exist !!!`;
+        return res.redirect(`/auth/signup?errEmail=${errorEmail}`);
     }
 
     try {
