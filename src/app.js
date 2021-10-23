@@ -99,12 +99,12 @@ app.post('/upload', multipartMiddleware, (req, res) => {
 
                     res.status(201).send(
                         "<script>window.parent.CKEDITOR.tools.callFunction('" +
-                        funcNum +
-                        "','" +
-                        url +
-                        "','" +
-                        msg +
-                        "');</script>",
+                            funcNum +
+                            "','" +
+                            url +
+                            "','" +
+                            msg +
+                            "');</script>",
                     );
                 }
             });

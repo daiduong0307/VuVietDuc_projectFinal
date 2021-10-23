@@ -16,7 +16,7 @@ const bookmarkSchema = new Schema(
     },
 );
 
-bookmarkSchema.virtual('bookmark_Blog', {
+bookmarkSchema.virtual('bookmark_user', {
     ref: 'users',
     localField: '_id',
     foreignField: 'bookmarks',

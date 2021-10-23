@@ -552,7 +552,7 @@ exports.blogDetails = async (req, res) => {
     try {
         const count = blog.views + 1;
 
-        const blogUpdate = await blogModel.findOneAndUpdate(
+        await blogModel.findOneAndUpdate(
             { _id: blogId },
             { $set: { views: count } },
             { new: true, useFindAndModify: false },
@@ -662,17 +662,17 @@ exports.deleteComment = async (req, res) => {
     const commentId = req.params.id;
 
     try {
-        const deleteCmt = await commentModel.findOneAndDelete({
+        await commentModel.findOneAndDelete({
             _id: commentId,
         });
 
-        const pullComment = await blogModel.findOneAndUpdate(
+        await blogModel.findOneAndUpdate(
             { comments: commentId },
             { $pull: { comments: commentId } },
             { new: true, useFindAndModify: false },
         );
 
-        const deleteReplies = await replyModel.deleteMany({
+        await replyModel.deleteMany({
             commentId,
         });
 
