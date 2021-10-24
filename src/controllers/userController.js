@@ -437,7 +437,7 @@ exports.uploadBlog = async (req, res) => {
         const newBlog = await blogModel.create(obj);
         const savePost = await newBlog.save();
 
-        if (tagId || tagName) {
+        if (tagName) {
             const newTag = new tagModel({
                 name: tagName,
             });
@@ -446,7 +446,16 @@ exports.uploadBlog = async (req, res) => {
 
             const pushTag = await blogModel.findOneAndUpdate(
                 { _id: savePost._id },
-                { $push: { tags: tagId, tags: saveTag } },
+                { $push: { tags: saveTag } },
+                { new: true, useFindAndModify: false },
+            );
+            await pushTag.save();
+            await userInfo.posts.push(pushTag);
+            await userInfo.save();
+        } else if (tagId) {
+            const pushTag = await blogModel.findOneAndUpdate(
+                { _id: savePost._id },
+                { $push: { tags: tagId } },
                 { new: true, useFindAndModify: false, multi: true },
             );
             await pushTag.save();

@@ -106,7 +106,12 @@ $(document).ready(() => {
         html += '<td>' + category._id + '</td>';
         html += '<td>' + category.name + '</td>';
         html += '<td>' + category.describe + '</td>';
-        html += '<td>' + category.managedBy.fullName + '</td>';
+        if (category.managedBy) {
+            html += '<td>' + category.managedBy + '</td>';
+        } else {
+            html += '<td>' + category.managedBy.fullName + '</td>';
+        }
+
         html += '<td>' + formatDate(category.createdAt) + '</td>';
         html += '<td class="d-flex flex-row">';
         html += '<button class="btn btn-success btn-round btn-outline-success"';
