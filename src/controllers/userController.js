@@ -591,34 +591,35 @@ exports.profile = async (req, res) => {
     const perPage = 6;
     const page = req.query.p || 1;
 
-    const userInfo = await userModel
-        .findOne({ accountId: req.session.userId })
-        .populate('accountId');
-
-    const categories = await categoryModel.find({});
-    const tags = await tagModel.find({}).limit(12);
-    const countBlog = await blogModel.countDocuments({
-        isPublish: 'Approved',
-        owner: userInfo._id,
-    });
-
-    const myLatestPost = await blogModel
-        .find({ isPublish: 'Approved', owner: userInfo._id })
-        .skip(perPage * page - perPage)
-        .limit(perPage)
-        .sort({ createdAt: -1 })
-        .populate('owner')
-        .populate('categoryId');
-    const latestPost = await blogModel
-        .find({ isPublish: 'Approved' })
-        .sort({ createdAt: -1 })
-        .limit(limitLatest);
-    const popularBlog = await blogModel
-        .find({ isPublish: 'Approved' })
-        .sort({ views: -1 })
-        .limit(limitPopular);
-
     try {
+        const userInfo = await userModel
+            .findOne({ accountId: req.session.userId })
+            .populate('accountId');
+
+        const categories = await categoryModel.find({});
+        const tags = await tagModel.find({}).limit(12);
+        const countBlog = await blogModel.countDocuments({
+            isPublish: 'Approved',
+            owner: userInfo._id,
+        });
+
+        const myLatestPost = await blogModel
+            .find({ isPublish: 'Approved', owner: userInfo._id })
+            .skip(perPage * page - perPage)
+            .limit(perPage)
+            .sort({ createdAt: -1 })
+            .populate('owner')
+            .populate('categoryId');
+        const latestPost = await blogModel
+            .find({ isPublish: 'Approved' })
+            .sort({ createdAt: -1 })
+            .limit(limitLatest);
+        const popularBlog = await blogModel
+            .find({ isPublish: 'Approved' })
+            .sort({ views: -1 })
+            .limit(limitPopular);
+
+
         res.render('userViews/myProfile', {
             title,
             userInfo,
@@ -753,25 +754,26 @@ exports.manageBlog = async (req, res) => {
     const perPage = 6;
     const page = req.query.p || 1;
 
-    const userInfo = await userModel
-        .findOne({ accountId: req.session.userId })
-        .populate('accountId');
-    const categories = await categoryModel.find({});
-    const latestPost = await blogModel
-        .find({ isPublish: 'Approved' })
-        .sort({ createdAt: -1 })
-        .limit(limitLatest);
-
-    const countBlog = await blogModel.countDocuments({ owner: userInfo._id });
-    const myBlog = await blogModel
-        .find({ owner: userInfo._id })
-        .sort({ createdAt: -1 })
-        .skip(perPage * page - perPage)
-        .limit(perPage)
-        .populate('owner')
-        .populate('categoryId');
-
     try {
+        const userInfo = await userModel
+            .findOne({ accountId: req.session.userId })
+            .populate('accountId');
+        const categories = await categoryModel.find({});
+        const latestPost = await blogModel
+            .find({ isPublish: 'Approved' })
+            .sort({ createdAt: -1 })
+            .limit(limitLatest);
+
+        const countBlog = await blogModel.countDocuments({ owner: userInfo._id });
+        const myBlog = await blogModel
+            .find({ owner: userInfo._id })
+            .sort({ createdAt: -1 })
+            .skip(perPage * page - perPage)
+            .limit(perPage)
+            .populate('owner')
+            .populate('categoryId');
+
+
         res.render('userViews/manageBlog', {
             title,
             userInfo,
@@ -801,28 +803,29 @@ exports.searchMyBlog = async (req, res) => {
         regExp = new RegExp(titleName, 'i');
     }
 
-    const userInfo = await userModel
-        .findOne({ accountId: req.session.userId })
-        .populate('accountId');
-    const categories = await categoryModel.find({});
-    const latestPost = await blogModel
-        .find({ isPublish: 'Approved' })
-        .sort({ createdAt: -1 })
-        .limit(limitLatest);
-    const myBlog = await blogModel
-        .find({ owner: userInfo._id })
-        .or([
-            { titleName: regExp },
-            {
-                createdAt: { $gte: timeFrom, $lte: timeTo },
-            },
-            { categoryId },
-        ])
-        .sort({ createdAt: -1 })
-        .populate('owner')
-        .populate('categoryId');
-
     try {
+        const userInfo = await userModel
+            .findOne({ accountId: req.session.userId })
+            .populate('accountId');
+        const categories = await categoryModel.find({});
+        const latestPost = await blogModel
+            .find({ isPublish: 'Approved' })
+            .sort({ createdAt: -1 })
+            .limit(limitLatest);
+        const myBlog = await blogModel
+            .find({ owner: userInfo._id })
+            .or([
+                { titleName: regExp },
+                {
+                    createdAt: { $gte: timeFrom, $lte: timeTo },
+                },
+                { categoryId },
+            ])
+            .sort({ createdAt: -1 })
+            .populate('owner')
+            .populate('categoryId');
+
+
         res.render('userViews/manageBlog', {
             title,
             userInfo,
@@ -841,27 +844,28 @@ exports.getUpdateBlog = async (req, res) => {
     const title = 'Update Blog Information';
     const blogId = req.params.id;
     const { msg } = req.query;
-
-    const userInfo = await userModel
-        .findOne({ accountId: req.session.userId })
-        .populate('accountId');
-
-    const blog = await blogModel.findOne({ _id: blogId }).populate('categoryId').populate('tags');
-
-    const latestPost = await blogModel
-        .find({ isPublish: 'Approved' })
-        .sort({ createdAt: -1 })
-        .limit(limitLatest);
-    const popularBlog = await blogModel
-        .find({ isPublish: 'Approved' })
-        .populate('owner')
-        .sort({ views: -1 })
-        .limit(limitPopular);
-    const categories = await categoryModel.find({});
-    const tags = await tagModel.find({});
-    const findPostTag = await tagModel.find({ _id: blog.tags });
-
+    
     try {
+        const userInfo = await userModel
+            .findOne({ accountId: req.session.userId })
+            .populate('accountId');
+
+        const blog = await blogModel.findOne({ _id: blogId }).populate('categoryId').populate('tags');
+
+        const latestPost = await blogModel
+            .find({ isPublish: 'Approved' })
+            .sort({ createdAt: -1 })
+            .limit(limitLatest);
+        const popularBlog = await blogModel
+            .find({ isPublish: 'Approved' })
+            .populate('owner')
+            .sort({ views: -1 })
+            .limit(limitPopular);
+        const categories = await categoryModel.find({});
+        const tags = await tagModel.find({});
+        const findPostTag = await tagModel.find({ _id: blog.tags });
+
+
         res.render('userViews/updateBlog', {
             title,
             blog,
