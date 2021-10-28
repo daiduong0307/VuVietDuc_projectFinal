@@ -94,6 +94,7 @@ exports.searchBlog = async (req, res) => {
     const regExp = new RegExp(keySearch, 'i');
     const searchBlog = await blogModel
         .find({
+            isPublish: 'Approved',
             $or: [{ titleName: regExp }, { brief: regExp }],
         })
         .skip(perPage * page - perPage)
