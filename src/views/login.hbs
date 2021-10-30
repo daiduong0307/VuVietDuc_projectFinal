@@ -86,6 +86,10 @@
                             <div class="alert alert-danger" role="alert" style="width: auto;">
                                 {{err}}
                             </div>
+                            {{else if alert}}
+                            <div class="alert alert-info" role="alert" style="width: auto;">
+                                {{alert}}
+                            </div>
                             {{/if}}
 
                             <div class="row m-t-30">

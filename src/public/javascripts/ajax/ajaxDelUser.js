@@ -117,7 +117,7 @@ $(document).ready(() => {
         html +=
             '     <button id="' +
             user.accountId._id +
-            '" class="btn btn-danger btn-round btn-outline-danger btn-deleteManager" title="Delete" data-toggle="tooltip">';
+            '" class="btn btn-danger btn-round btn-outline-danger btn-deleteUser" title="Delete" data-toggle="tooltip">';
         html += '         <i class="ti-trash"></i>';
         html += '     </button>';
         html += ' </td>';

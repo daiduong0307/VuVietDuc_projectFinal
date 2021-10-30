@@ -41,10 +41,7 @@ exports.signUpUser = async (req, res) => {
         username,
         role: 'user',
     });
-    const emailExist = await appUserModel.findOne({
-        email,
-        role: 'user',
-    });
+    const emailExist = await userModel.findOne({ email });
 
     if (accountExist) {
         const errorUsername = 'Username has already exist !!!';
@@ -75,16 +72,22 @@ exports.signUpUser = async (req, res) => {
         });
 
         await newUser.save();
-        return res.redirect('/users/home');
+
+        const msg = "Login with your account";
+        return res.redirect(`/auth/login?alert=${msg}`);
     } catch (error) {
         res.status(400).send(error.message);
     }
 };
 
 exports.getLogin = async (req, res, next) => {
-    const { msg } = req.query;
+    const { msg, alert } = req.query;
     try {
-        res.render('login', { err: msg, title: 'Login to your Account' });
+        res.render('login', { 
+            err: msg,
+            alert,
+            title: 'Login to your Account' 
+        });
     } catch (error) {
         res.status(400).send(error);
     }

@@ -37,11 +37,17 @@ exports.getBlogData = async (req, res) => {
 };
 
 exports.allBlog = async (req, res) => {
+    const perPage = 6;
+    const page = req.query.p || 1;
+
     const userInfo = await userModel.findOne({ accountId: req.session.userId });
     const blog = await blogModel
         .find({ owner: userInfo._id })
-        .populate('categoryId')
-        .sort({ createdAt: -1 });
+        .sort({ createdAt: -1 })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
+        .populate('owner')
+        .populate('categoryId');
 
     res.json(blog);
 };
@@ -56,14 +62,21 @@ exports.listTag = async (req, res) => {
 };
 
 exports.allBookmark = async (req, res) => {
+    const perPage = 6;
+    const page = req.query.p || 1;
+
     const userInfo = await userModel
         .findOne({ accountId: req.session.userId })
         .populate('accountId');
 
-    const bookmarks = await bookmarkModel.find({ author: userInfo._id }).populate({
-        path: 'postId',
-        populate: [{ path: 'owner' }, { path: 'categoryId' }],
-    });
+    const bookmarks = await bookmarkModel
+        .find({ author: userInfo._id })
+        .populate({
+            path: 'postId',
+            populate: [{ path: 'owner' }, { path: 'categoryId' }],
+        })
+        .skip(perPage * page - perPage)
+        .limit(perPage);
 
     return res.json(bookmarks);
 };
