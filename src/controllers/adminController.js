@@ -236,7 +236,6 @@ exports.deleteOneUser = async (req, res) => {
             return res.status(400).send('User Account is not exist');
         }
 
-
         if (userBlog) {
             const pullBlog = await userModel.findOneAndUpdate(
                 { posts: userBlog._id },
@@ -247,7 +246,7 @@ exports.deleteOneUser = async (req, res) => {
                 { posts: userBlog._id },
                 { $pull: { posts: userBlog._id } },
                 { new: true, useFindAndModify: false, multi: true },
-            )
+            );
             const deleteBlogComment = await commentModel.deleteMany({
                 _id: userBlog.comments,
             });
@@ -262,7 +261,6 @@ exports.deleteOneUser = async (req, res) => {
         const deleteUserAcc = await appUserModel.findOneAndDelete({
             _id: accountId,
         });
-
 
         const obj = {
             msg: 'Delete Success',

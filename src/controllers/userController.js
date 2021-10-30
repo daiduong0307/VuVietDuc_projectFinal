@@ -302,7 +302,6 @@ exports.blogByCategory = async (req, res) => {
             .limit(limitPopular)
             .populate('owner');
 
-
         res.render('userViews/blogByCategory', {
             title,
             err: msg,
@@ -365,7 +364,6 @@ exports.blogByTag = async (req, res) => {
             .limit(limitPopular)
             .populate('owner');
 
-
         res.render('userViews/blogByTag', {
             title,
             err: msg,
@@ -393,7 +391,9 @@ exports.blogByTag = async (req, res) => {
 exports.getUploadPage = async (req, res) => {
     const title = 'Upload new blog';
     try {
-        const user = await userModel.findOne({ accountId: req.session.userId }).populate('accountId');
+        const user = await userModel
+            .findOne({ accountId: req.session.userId })
+            .populate('accountId');
         const categories = await categoryModel.find({});
         const tags = await tagModel.find({});
 
@@ -405,7 +405,6 @@ exports.getUploadPage = async (req, res) => {
             .find({ isPublish: 'Approved' })
             .sort({ views: -1 })
             .limit(limitPopular);
-
 
         res.render('userViews/uploadBlog', {
             title,
@@ -561,7 +560,6 @@ exports.blogDetails = async (req, res) => {
             .populate('owner')
             .populate('categoryId');
 
-
         const count = blog.views + 1;
 
         await blogModel.findOneAndUpdate(
@@ -619,7 +617,6 @@ exports.profile = async (req, res) => {
             .find({ isPublish: 'Approved' })
             .sort({ views: -1 })
             .limit(limitPopular);
-
 
         res.render('userViews/myProfile', {
             title,
@@ -774,7 +771,6 @@ exports.manageBlog = async (req, res) => {
             .populate('owner')
             .populate('categoryId');
 
-
         res.render('userViews/manageBlog', {
             title,
             userInfo,
@@ -826,7 +822,6 @@ exports.searchMyBlog = async (req, res) => {
             .populate('owner')
             .populate('categoryId');
 
-
         res.render('userViews/manageBlog', {
             title,
             userInfo,
@@ -845,13 +840,16 @@ exports.getUpdateBlog = async (req, res) => {
     const title = 'Update Blog Information';
     const blogId = req.params.id;
     const { msg } = req.query;
-    
+
     try {
         const userInfo = await userModel
             .findOne({ accountId: req.session.userId })
             .populate('accountId');
 
-        const blog = await blogModel.findOne({ _id: blogId }).populate('categoryId').populate('tags');
+        const blog = await blogModel
+            .findOne({ _id: blogId })
+            .populate('categoryId')
+            .populate('tags');
 
         const latestPost = await blogModel
             .find({ isPublish: 'Approved' })
@@ -865,7 +863,6 @@ exports.getUpdateBlog = async (req, res) => {
         const categories = await categoryModel.find({});
         const tags = await tagModel.find({});
         const findPostTag = await tagModel.find({ _id: blog.tags });
-
 
         res.render('userViews/updateBlog', {
             title,

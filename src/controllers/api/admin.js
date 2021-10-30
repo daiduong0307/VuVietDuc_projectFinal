@@ -23,7 +23,7 @@ exports.allCategory = async (req, res) => {
 exports.allTag = async (req, res) => {
     const perPage = 5;
     const page = req.query.p || 1;
-    
+
     const tags = await tagModel
         .find({})
         .skip(perPage * page - perPage)

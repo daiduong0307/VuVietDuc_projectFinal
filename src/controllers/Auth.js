@@ -73,7 +73,7 @@ exports.signUpUser = async (req, res) => {
 
         await newUser.save();
 
-        const msg = "Login with your account";
+        const msg = 'Login with your account';
         return res.redirect(`/auth/login?alert=${msg}`);
     } catch (error) {
         res.status(400).send(error.message);
@@ -83,10 +83,10 @@ exports.signUpUser = async (req, res) => {
 exports.getLogin = async (req, res, next) => {
     const { msg, alert } = req.query;
     try {
-        res.render('login', { 
+        res.render('login', {
             err: msg,
             alert,
-            title: 'Login to your Account' 
+            title: 'Login to your Account',
         });
     } catch (error) {
         res.status(400).send(error);
