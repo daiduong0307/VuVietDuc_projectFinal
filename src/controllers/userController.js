@@ -437,7 +437,7 @@ exports.uploadBlog = async (req, res) => {
         const newBlog = await blogModel.create(obj);
         const savePost = await newBlog.save();
 
-        if (tagName) {
+        if (tagName && !tagId) {
             const newTag = new tagModel({
                 name: tagName,
             });
@@ -452,7 +452,7 @@ exports.uploadBlog = async (req, res) => {
             await pushTag.save();
             await userInfo.posts.push(pushTag);
             await userInfo.save();
-        } else if (tagId) {
+        } else if (tagId && !tagName) {
             const pushTag = await blogModel.findOneAndUpdate(
                 { _id: savePost._id },
                 { $push: { tags: tagId } },
@@ -460,6 +460,18 @@ exports.uploadBlog = async (req, res) => {
             );
             await pushTag.save();
             await userInfo.posts.push(pushTag);
+            await userInfo.save();
+        } else if (tagId && tagName) {
+            const newTag = await tagModel.create({ name: tagName });
+            const saveTag = await newTag.save();
+            const pushTag = await blogModel.findOneAndUpdate(
+                { _id: savePost._id },
+                { $push: { tags: saveTag._id } },
+                { new: true }
+            );
+            await savePost.tags.push(tagId);
+            await savePost.save();
+            await userInfo.posts.push(savePost);
             await userInfo.save();
         } else {
             await userInfo.posts.push(savePost);
@@ -883,7 +895,7 @@ exports.getUpdateBlog = async (req, res) => {
 };
 
 exports.updateOneBlog = async (req, res) => {
-    const { titleName, brief, blogContent, categoryId, _id, tagId } = req.body;
+    const { titleName, brief, blogContent, categoryId, _id, tagId, tagName } = req.body;
     const newValues = {};
 
     if (req.file) {
@@ -916,19 +928,36 @@ exports.updateOneBlog = async (req, res) => {
             await category.save();
         }
 
-        // if (tagId) {
-        //     const pushTag = await blogModel.findOneAndUpdate(
-        //         { tags: tagId },
-        //         { $pull: { tags: tagId } },
-        //         { new: true, useFindAndModify: false, multi: true }
-        //     )
-        //     await pushTag.save();
-        // }
-        const pushTag = await blogModel.findOneAndUpdate(
-            { _id },
-            { $push: { tags: tagId } },
-            { new: true, useFindAndModify: false, multi: true },
-        );
+        if (tagId && !tagName) {
+            const pushTag = await blogModel.findOneAndUpdate(
+                { _id },
+                { $push: { tags: tagId } },
+                { new: true, useFindAndModify: false, multi: true },
+            );
+            await pushTag.save();
+        } else if (tagName && !tagId) {
+            const newTag = await tagModel.create({ name: tagName });
+            const saveTag = await newTag.save();
+            const pushTag = await blogModel.findOneAndUpdate(
+                { _id },
+                { $push: { tags: saveTag } },
+                { new: true, useFindAndModify: false, multi: true },
+            );
+            await pushTag.save();
+        } else if (tagId && tagName) {
+            const newTag = await tagModel.create({ name: tagName });
+            const saveTag = await newTag.save();
+            const pushTagName = await blogModel.findOneAndUpdate(
+                { _id },
+                { $push: { tags: saveTag } },
+                { new: true, useFindAndModify: false },
+            );
+            const pushTagId = await blogModel.findOneAndUpdate(
+                { _id },
+                { $push: { tags: tagId } },
+                { new: true, useFindAndModify: false, multi: true },
+            );
+        }
 
         const msg = 'Update Successfully !!!';
         return res.redirect(`/users/updateBlog/${_id}?msg=${msg}`);

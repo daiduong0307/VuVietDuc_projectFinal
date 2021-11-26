@@ -10,7 +10,7 @@ userRouter.get('/u/:username', userController.viewPostAuthor);
 
 userRouter.get('/uploadBlog', userController.getUploadPage);
 userRouter.post('/uploadOneBlog', upload.multerInstance, userController.uploadBlog);
-userRouter.delete('/deleteBlog', userController.deleteOneBlog);
+// userRouter.delete('/deleteBlog', userController.deleteOneBlog);
 
 userRouter.get('/blogDetail/:id', userController.blogDetails);
 userRouter.get('/blogByCategory/:categoryId', userController.blogByCategory);

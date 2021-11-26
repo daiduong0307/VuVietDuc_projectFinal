@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $(document).on('click', '.btn-deleteTagBlog', function () {
+    $(document).on('click', '.btn-delTagBlog', function () {
         var id = $(this).attr('id');
         sweetAlert(id);
     });
@@ -72,7 +72,7 @@ $(document).ready(() => {
         html += '<li class="list-group-item d-flex justify-content-between">';
         html += '<p>' + tag.name + '</p>';
         html += '<button id="' + tag._id + '"';
-        html += 'class="btn btn-danger btn-round btn-outline-danger btn-deleteTagBlog"';
+        html += 'class="btn btn-danger btn-round btn-outline-danger btn-delTagBlog"';
         html += 'title="Delete" data-toggle="tooltip">';
         html += '<i class="ti-trash"></i>';
         html += '</button>';
