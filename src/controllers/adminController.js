@@ -5,6 +5,7 @@ const categoryModel = require('../models/Catagories');
 const blogModel = require('../models/Blogs');
 const commentModel = require('../models/comment');
 const tagModel = require('../models/BlogTags');
+const bookmarkModel = require('../models/Bookmarks');
 
 // admin homepage
 exports.homePage = async (req, res) => {
@@ -247,6 +248,9 @@ exports.deleteOneUser = async (req, res) => {
                 { $pull: { posts: userBlog._id } },
                 { new: true, useFindAndModify: false, multi: true },
             );
+            const deleteBookmark = await bookmarkModel.deleteMany(
+                { postId: userBlog._id },
+            )
             const deleteBlogComment = await commentModel.deleteMany({
                 _id: userBlog.comments,
             });
@@ -500,11 +504,18 @@ exports.updateOneManager = async (req, res) => {
             { new: true, useFindAndModify: false },
         );
 
-        const updateCate = await categoryModel.findOneAndUpdate(
-            { _id: categoryId },
-            { $set: { isManaged: true } },
-            { new: true, useFindAndModify: false },
-        );
+        if (categoryId) {
+            const updateNewCate = await categoryModel.findOneAndUpdate(
+                { _id: categoryId },
+                { $set: { managedBy: _id, isManaged: true } },
+                { new: true, useFindAndModify: false },
+            );
+            const updateNewResponsible = await managerModel.findOneAndUpdate(
+                { _id },
+                { $set: { isResponsible: true } },
+                { new: true, useFindAndModify: false },
+            )
+        }
 
         // console.log(updatedManager);
         const success = 'Update Successfully';

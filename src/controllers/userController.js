@@ -423,6 +423,8 @@ exports.getUploadPage = async (req, res) => {
 exports.uploadBlog = async (req, res) => {
     const { _id, tagId, tagName } = req.body;
 
+    const checkTagNameExists = await tagModel.findOne({ name: tagName });
+
     try {
         const userInfo = await userModel.findOne({ accountId: req.session.userId });
         const obj = {
@@ -438,20 +440,26 @@ exports.uploadBlog = async (req, res) => {
         const savePost = await newBlog.save();
 
         if (tagName && !tagId) {
-            const newTag = new tagModel({
-                name: tagName,
-            });
-
-            const saveTag = await newTag.save();
-
-            const pushTag = await blogModel.findOneAndUpdate(
-                { _id: savePost._id },
-                { $push: { tags: saveTag } },
-                { new: true, useFindAndModify: false },
-            );
-            await pushTag.save();
-            await userInfo.posts.push(pushTag);
-            await userInfo.save();
+            if (!checkTagNameExists) {
+                const newTag = new tagModel({
+                    name: tagName,
+                });
+                const saveTag = await newTag.save();
+                const pushTag = await blogModel.findOneAndUpdate(
+                    { _id: savePost._id },
+                    { $push: { tags: saveTag } },
+                    { new: true, useFindAndModify: false },
+                );
+                await pushTag.save();
+                await userInfo.posts.push(pushTag);
+                await userInfo.save();
+            } else {
+                await blogModel.findOneAndUpdate(
+                    { _id: savePost._id },
+                    { $push: { tags: checkTagNameExists._id } },
+                    { new: true }
+                );
+            }
         } else if (tagId && !tagName) {
             const pushTag = await blogModel.findOneAndUpdate(
                 { _id: savePost._id },
@@ -462,13 +470,21 @@ exports.uploadBlog = async (req, res) => {
             await userInfo.posts.push(pushTag);
             await userInfo.save();
         } else if (tagId && tagName) {
-            const newTag = await tagModel.create({ name: tagName });
-            const saveTag = await newTag.save();
-            await blogModel.findOneAndUpdate(
-                { _id: savePost._id },
-                { $push: { tags: saveTag } },
-                { new: true }
-            );
+            if (!checkTagNameExists) {
+                const newTag = await tagModel.create({ name: tagName });
+                const saveTag = await newTag.save();
+                await blogModel.findOneAndUpdate(
+                    { _id: savePost._id },
+                    { $push: { tags: saveTag } },
+                    { new: true }
+                );
+            } else {
+                await blogModel.findOneAndUpdate(
+                    { _id: savePost._id },
+                    { $push: { tags: checkTagNameExists._id } },
+                    { new: true }
+                );
+            }
             await blogModel.findOneAndUpdate(
                 { _id: savePost._id },
                 { $push: { tags: tagId } },
@@ -914,6 +930,11 @@ exports.updateOneBlog = async (req, res) => {
     if (categoryId) newValues.categoryId = categoryId;
 
     const category = await categoryModel.findOne({ _id: categoryId });
+    const checkTagIdExists = await blogModel.findOne({ tags: tagId, _id });
+    if (tagName) {
+        const findTagExists = await tagModel.findOne({ name: tagName });
+        var checkTagNameExist = await blogModel.findOne({ tags: findTagExists._id });
+    }
 
     try {
         const updateBlog = await blogModel.findOneAndUpdate(
@@ -933,34 +954,65 @@ exports.updateOneBlog = async (req, res) => {
         }
 
         if (tagId && !tagName) {
-            const pushTag = await blogModel.findOneAndUpdate(
-                { _id },
-                { $push: { tags: tagId } },
-                { new: true, useFindAndModify: false, multi: true },
-            );
-            await pushTag.save();
+            if (!checkTagIdExists) {
+                const pushTag = await blogModel.findOneAndUpdate(
+                    { _id },
+                    { $push: { tags: tagId } },
+                    { new: true, useFindAndModify: false, multi: true },
+                );
+                await pushTag.save();
+            }
         } else if (tagName && !tagId) {
-            const newTag = await tagModel.create({ name: tagName });
-            const saveTag = await newTag.save();
-            const pushTag = await blogModel.findOneAndUpdate(
-                { _id },
-                { $push: { tags: saveTag } },
-                { new: true, useFindAndModify: false, multi: true },
-            );
-            await pushTag.save();
+            // check if *tagName* is exist in database
+            const checkTag = await tagModel.findOne({ name: tagName });
+            if (!checkTagNameExist) {
+                if (checkTag) {
+                    const pushTag = await blogModel.findOneAndUpdate(
+                        { _id },
+                        { $push: { tags: checkTag._id } },
+                        { new: true, useFindAndModify: false, multi: true },
+                    );
+                    await pushTag.save();
+                } else {
+                    const newTag = await tagModel.create({ name: tagName });
+                    const saveTag = await newTag.save();
+                    const pushTag = await blogModel.findOneAndUpdate(
+                        { _id },
+                        { $push: { tags: saveTag } },
+                        { new: true, useFindAndModify: false, multi: true },
+                    );
+                    await pushTag.save();
+                }
+            }
         } else if (tagId && tagName) {
-            const newTag = await tagModel.create({ name: tagName });
-            const saveTag = await newTag.save();
-            const pushTagName = await blogModel.findOneAndUpdate(
-                { _id },
-                { $push: { tags: saveTag } },
-                { new: true, useFindAndModify: false },
-            );
-            const pushTagId = await blogModel.findOneAndUpdate(
-                { _id },
-                { $push: { tags: tagId } },
-                { new: true, useFindAndModify: false, multi: true },
-            );
+            const checkTag = await tagModel.findOne({ name: tagName });
+            if (!checkTagIdExists && !checkTagNameExist) {
+                if (checkTag) {
+                    await blogModel.findOneAndUpdate(
+                        { _id },
+                        { $push: { tags: checkTag._id } },
+                        { new: true, useFindAndModify: false, multi: true },
+                    );
+                    await blogModel.findOneAndUpdate(
+                        { _id },
+                        { $push: { tags: tagId } },
+                        { new: true, useFindAndModify: false, multi: true },
+                    );
+                } else {
+                    const newTag = await tagModel.create({ name: tagName });
+                    const saveTag = await newTag.save();
+                    await blogModel.findOneAndUpdate(
+                        { _id },
+                        { $push: { tags: saveTag } },
+                        { new: true, useFindAndModify: false },
+                    );
+                    await blogModel.findOneAndUpdate(
+                        { _id },
+                        { $push: { tags: tagId } },
+                        { new: true, useFindAndModify: false, multi: true },
+                    );
+                }
+            }
         }
 
         const msg = 'Update Successfully !!!';
@@ -1098,6 +1150,8 @@ exports.getAllBookmark = async (req, res) => {
 exports.searchBookmark = async (req, res) => {
     const title = 'List All Bookmarks';
     const { timeFrom, timeTo, titleName, categoryId } = req.query;
+    const perPage = 6;
+    const page = req.query.p || 1;
 
     let regExp = '';
     if (!titleName) {
@@ -1109,6 +1163,8 @@ exports.searchBookmark = async (req, res) => {
     const userInfo = await userModel
         .findOne({ accountId: req.session.userId })
         .populate('accountId');
+
+    const countBookmark = await bookmarkModel.countDocuments({ author: userInfo._id });
 
     const bookmarks = await bookmarkModel
         .find({
@@ -1125,7 +1181,10 @@ exports.searchBookmark = async (req, res) => {
         .populate({
             path: 'postId',
             populate: [{ path: 'owner' }, { path: 'categoryId' }],
-        });
+        }).skip(perPage * page - perPage)
+        .limit(perPage);
+
+    console.log(bookmarks)
 
     const latestPost = await blogModel
         .find({ isPublish: 'Approved' })
@@ -1145,6 +1204,10 @@ exports.searchBookmark = async (req, res) => {
             latestPost,
             popularBlog,
             categories,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBookmark / perPage), // Total pages to display
+            },
             layout: 'userLayout.hbs',
         });
     } catch (error) {
