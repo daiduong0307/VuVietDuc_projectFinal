@@ -10,7 +10,7 @@ const blogSchema = new Schema(
         brief: {
             type: String,
             trim: true,
-            default: 'NULL',
+            default: 'No Information',
         },
         mainImage: {
             type: String,

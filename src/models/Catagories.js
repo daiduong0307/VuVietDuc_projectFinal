@@ -11,7 +11,7 @@ const categorySchema = new Schema(
         describe: {
             type: String,
             trim: true,
-            default: 'NULL',
+            default: 'No description',
         },
         isManaged: {
             type: Boolean,

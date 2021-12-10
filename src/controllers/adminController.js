@@ -238,25 +238,20 @@ exports.deleteOneUser = async (req, res) => {
         }
 
         if (userBlog) {
-            const pullBlog = await userModel.findOneAndUpdate(
-                { posts: userBlog._id },
-                { $pull: { posts: userBlog._id } },
-                { new: true, useFindAndModify: false, multi: true },
-            );
             const pullCate = await categoryModel.findOneAndUpdate(
-                { posts: userBlog._id },
-                { $pull: { posts: userBlog._id } },
+                { posts: userBlog },
+                { $pull: { posts: userBlog } },
                 { new: true, useFindAndModify: false, multi: true },
             );
+            const deleteUserBlog = await blogModel.deleteMany({
+                _id: userInfo.posts,
+            });
             const deleteBookmark = await bookmarkModel.deleteMany({ postId: userBlog._id });
             const deleteBlogComment = await commentModel.deleteMany({
                 _id: userBlog.comments,
             });
         }
 
-        const deleteUserBlog = await blogModel.deleteMany({
-            _id: userInfo.posts,
-        });
         const deleteUser = await userModel.findOneAndDelete({
             accountId: userAcc._id,
         });

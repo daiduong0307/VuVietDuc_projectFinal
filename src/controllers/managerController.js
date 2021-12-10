@@ -200,14 +200,16 @@ exports.approveBlog = async (req, res) => {
 
         await category.posts.push(approvedBlog);
         await category.save();
+        await blog.save();
 
         await res.redirect('/managers/allRequest');
 
         const sentEmail = await mailApproved(
             blog.owner.email,
-            'Your post has been approved',
             blog.owner.fullName,
+            'Your post has been approved',
             blog.titleName,
+            blog.updatedAt,
         );
         console.log('Email sent...', sentEmail);
     } catch (error) {
@@ -243,6 +245,8 @@ exports.rejectBlog = async (req, res) => {
                 { new: true, useFindAndModify: false },
             );
         }
+        
+        await blog.save();
 
         await res.redirect('/managers/allRequest');
 
@@ -251,6 +255,7 @@ exports.rejectBlog = async (req, res) => {
             'Your post has been Rejected',
             blog.owner.fullName,
             blog.titleName,
+            blog.updatedAt,
         );
         console.log('Email sent...', sentEmail);
     } catch (error) {

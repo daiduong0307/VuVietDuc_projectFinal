@@ -504,15 +504,18 @@ exports.uploadBlog = async (req, res) => {
         const body = {
             Author: findBlog.owner.fullName,
             title: findBlog.titleName,
+            createdAt: findBlog.createdAt,
         };
 
         await res.redirect(`/users/manageBlog`);
 
         const sentEmail = await sendMail(
             manager.email,
+            manager.fullName,
             'You have receive a new Request',
             body.Author,
             body.title,
+            body.createdAt,
         );
         console.log('Email sent...', sentEmail);
     } catch (error) {

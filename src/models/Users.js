@@ -23,7 +23,7 @@ const userSchema = new Schema(
         introduction: {
             type: String,
             trim: true,
-            default: 'NULL',
+            default: 'No introduction',
         },
         DoB: {
             type: Date,

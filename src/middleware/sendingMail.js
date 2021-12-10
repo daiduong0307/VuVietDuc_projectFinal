@@ -10,7 +10,7 @@ const REFRESH_TOKEN =
 const oAuth2client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 oAuth2client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-async function sendMail(email, subject, author, title) {
+async function sendMail(email, name, subject, author, title, createdAt) {
     try {
         const ACCESS_TOKEN = await oAuth2client.getAccessToken();
         const transport = nodemailer.createTransport({
@@ -25,11 +25,23 @@ async function sendMail(email, subject, author, title) {
             },
         });
 
+        // format date
+        const date = new Date(createdAt);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+
+        const dateFormat = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+
         const html = `
-        <h3>Hi Manager, a user post has been created, Please check !</h3>
+        <h3>Hi ${name}, a user post has been created, Please check !</h3>
         <h4>Some information of the article:</h4>
         <p><strong>Author</strong>: ${author}</p>
         <p><strong>Post Title</strong>: ${title}</p>
+        <p><strong>Created At</strong>: ${dateFormat}</p>
         `;
 
         const mailOption = {
@@ -83,7 +95,7 @@ async function sendMailReset(email, subject, text) {
     }
 }
 
-async function mailApproved(email, subject, author, title) {
+async function mailApproved(email, name, subject, title, updatedAt) {
     try {
         const ACCESS_TOKEN = await oAuth2client.getAccessToken();
         const transport = nodemailer.createTransport({
@@ -98,11 +110,22 @@ async function mailApproved(email, subject, author, title) {
             },
         });
 
+        // format date
+        const date = new Date(updatedAt);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+
+        const dateFormat = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+
         const html = `
-        <h3>Hi User, Your post has been <span style="color: green;">Approved</span>, Please check !</h3>
+        <h3>Hi ${name}, Your post has been <span style="color: green;">Approved</span>, Please check !</h3>
         <h4>Some information of the article:</h4>
-        <p><strong>Author</strong>: ${author}</p>
         <p><strong>Post Title</strong>: ${title}</p>
+        <p><strong>Approval At</strong>: ${dateFormat}</p>
         `;
 
         const mailOption = {
@@ -119,7 +142,7 @@ async function mailApproved(email, subject, author, title) {
     }
 }
 
-async function mailRejected(email, subject, author, title) {
+async function mailRejected(email, subject, author, title, updatedAt) {
     try {
         const ACCESS_TOKEN = await oAuth2client.getAccessToken();
         const transport = nodemailer.createTransport({
@@ -134,11 +157,22 @@ async function mailRejected(email, subject, author, title) {
             },
         });
 
+        // format date
+        const date = new Date(updatedAt);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const second = date.getSeconds();
+
+        const dateFormat = `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+
         const html = `
-        <h3>Hi User, Your post has been <span style="color: red;">Rejected</span>, sorry</h3>
+        <h3>Hi ${author}, Your post has been <span style="color: red;">Rejected</span>, sorry</h3>
         <h4>Some information of the article:</h4>
-        <p><strong>Author</strong>: ${author}</p>
         <p><strong>Post Title</strong>: ${title}</p>
+        <p><strong>Rejected At</strong>: ${dateFormat}</p>
         `;
 
         const mailOption = {

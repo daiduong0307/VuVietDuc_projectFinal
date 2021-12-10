@@ -11,6 +11,7 @@ const tagSchema = new Schema(
         describe: {
             type: String,
             trim: true,
+            default: 'No description',
         },
     },
     {
