@@ -192,6 +192,12 @@
                                                                         </form>
                                                                         {{/equals}}
 
+                                                                        {{#equals isPublish "Rejected"}}
+                                                                        <button type="submit"
+                                                                            class="btn btn-outline-danger btn-round disabled"
+                                                                            style="margin-left: 5px;">Reject</button>
+                                                                        {{else}}
+
                                                                         <form action="/managers/rejectBlog"
                                                                             method="POST"
                                                                             enctype="application/x-www-form-urlencoded">
@@ -200,8 +206,10 @@
                                                                             <input type="hidden" name="_method"
                                                                                 value="PATCH">
                                                                             <button type="submit"
-                                                                                class="btn btn-outline-danger btn-round" style="margin-left: 5px;">Reject</button>
+                                                                                class="btn btn-outline-danger btn-round"
+                                                                                style="margin-left: 5px;">Reject</button>
                                                                         </form>
+                                                                        {{/equals}}
 
                                                                     </td>
                                                                     {{else}}

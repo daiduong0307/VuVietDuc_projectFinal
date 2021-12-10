@@ -457,7 +457,7 @@ exports.uploadBlog = async (req, res) => {
                 await blogModel.findOneAndUpdate(
                     { _id: savePost._id },
                     { $push: { tags: checkTagNameExists._id } },
-                    { new: true }
+                    { new: true },
                 );
             }
         } else if (tagId && !tagName) {
@@ -476,13 +476,13 @@ exports.uploadBlog = async (req, res) => {
                 await blogModel.findOneAndUpdate(
                     { _id: savePost._id },
                     { $push: { tags: saveTag } },
-                    { new: true }
+                    { new: true },
                 );
             } else {
                 await blogModel.findOneAndUpdate(
                     { _id: savePost._id },
                     { $push: { tags: checkTagNameExists._id } },
-                    { new: true }
+                    { new: true },
                 );
             }
             await blogModel.findOneAndUpdate(
@@ -824,6 +824,8 @@ exports.manageBlog = async (req, res) => {
 exports.searchMyBlog = async (req, res) => {
     const title = 'Blogs Management';
     const { timeFrom, timeTo, titleName, categoryId } = req.query;
+    const perPage = 6;
+    const page = req.query.p || 1;
 
     let regExp = '';
     if (!titleName) {
@@ -851,8 +853,12 @@ exports.searchMyBlog = async (req, res) => {
                 { categoryId },
             ])
             .sort({ createdAt: -1 })
+            .skip(perPage * page - perPage)
+            .limit(perPage)
             .populate('owner')
             .populate('categoryId');
+
+        const countBlog = await blogModel.countDocuments({ owner: userInfo._id });
 
         res.render('userViews/manageBlog', {
             title,
@@ -860,6 +866,10 @@ exports.searchMyBlog = async (req, res) => {
             categories,
             blogs: myBlog,
             latestPost,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
             layout: 'userLayout.hbs',
         });
     } catch (error) {
@@ -933,7 +943,7 @@ exports.updateOneBlog = async (req, res) => {
     const checkTagIdExists = await blogModel.findOne({ tags: tagId, _id });
     if (tagName) {
         const findTagExists = await tagModel.findOne({ name: tagName });
-        var checkTagNameExist = await blogModel.findOne({ tags: findTagExists._id });
+        var checkTagNameExist = await blogModel.findOne({ tags: findTagExists._id, _id });
     }
 
     try {
@@ -1181,10 +1191,11 @@ exports.searchBookmark = async (req, res) => {
         .populate({
             path: 'postId',
             populate: [{ path: 'owner' }, { path: 'categoryId' }],
-        }).skip(perPage * page - perPage)
+        })
+        .skip(perPage * page - perPage)
         .limit(perPage);
 
-    console.log(bookmarks)
+    console.log(bookmarks);
 
     const latestPost = await blogModel
         .find({ isPublish: 'Approved' })

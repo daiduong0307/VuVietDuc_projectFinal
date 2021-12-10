@@ -189,7 +189,6 @@ exports.approveBlog = async (req, res) => {
     const { blogId } = req.body;
 
     const blog = await blogModel.findOne({ _id: blogId }).populate('owner');
-
     const category = await categoryModel.findOne({ _id: blog.categoryId });
 
     try {
@@ -200,7 +199,7 @@ exports.approveBlog = async (req, res) => {
         );
 
         await category.posts.push(approvedBlog);
-        category.save();
+        await category.save();
 
         await res.redirect('/managers/allRequest');
 
@@ -230,18 +229,20 @@ exports.rejectBlog = async (req, res) => {
         );
 
         await categoryModel.findOneAndUpdate(
-            { posts: blog._id },
-            { $pull: { posts: blog._id } },
+            { posts: blogId },
+            { $pull: { posts: blogId } },
             { new: true, useFindAndModify: false },
         );
 
-        await findBookmark.remove();
+        if (findBookmark) {
+            await findBookmark.remove();
 
-        await userModel.findOneAndUpdate(
-            { bookmarks: findBookmark._id },
-            { $pull: { bookmarks: findBookmark._id } },
-            { new: true, useFindAndModify: false },
-        );
+            await userModel.findOneAndUpdate(
+                { bookmarks: findBookmark._id },
+                { $pull: { bookmarks: findBookmark._id } },
+                { new: true, useFindAndModify: false },
+            );
+        }
 
         await res.redirect('/managers/allRequest');
 

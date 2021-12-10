@@ -248,9 +248,7 @@ exports.deleteOneUser = async (req, res) => {
                 { $pull: { posts: userBlog._id } },
                 { new: true, useFindAndModify: false, multi: true },
             );
-            const deleteBookmark = await bookmarkModel.deleteMany(
-                { postId: userBlog._id },
-            )
+            const deleteBookmark = await bookmarkModel.deleteMany({ postId: userBlog._id });
             const deleteBlogComment = await commentModel.deleteMany({
                 _id: userBlog.comments,
             });
@@ -514,7 +512,7 @@ exports.updateOneManager = async (req, res) => {
                 { _id },
                 { $set: { isResponsible: true } },
                 { new: true, useFindAndModify: false },
-            )
+            );
         }
 
         // console.log(updatedManager);

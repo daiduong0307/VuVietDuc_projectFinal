@@ -90,7 +90,18 @@
                                     <td>{{brief}}</td>
                                     <td>{{categoryId.name}}</td>
                                     <td>{{moment createdAt format ="MMMM DD - YYYY"}}</td>
-                                    <td>{{isPublish}}</td>
+
+                                    {{#equals isPublish 'Approved'}}
+                                    <td><span class="badge badge-success">{{isPublish}}</span>
+                                    </td>
+                                    {{else equals isPublish 'Rejected'}}
+                                    <td><span class="badge badge-danger">{{isPublish}}</span>
+                                    </td>
+                                    {{else}}
+                                    <td><span class="badge badge-dark">{{isPublish}}</span>
+                                    </td>
+                                    {{/equals}}
+                                    
                                     <td class="d-flex flex-row">
                                         <button class="btn btn-info btn-outline-info"
                                             onclick="window.location='/users/updateBlog/{{_id}}'"
@@ -172,4 +183,4 @@
 {{> index/indexFooter}}
 <!--================ End Footer Area ===================-->
 
- <script src="/javascripts/ajax/ajaxBlog.js"></script>
+<script src="/javascripts/ajax/ajaxBlog.js"></script>

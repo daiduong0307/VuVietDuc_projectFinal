@@ -191,6 +191,10 @@
                                                     </dl>
 
                                                     <div class="text-center">
+                                                        {{#equals blog.isPublish "Approved"}}
+                                                        <button type="submit"
+                                                                class="btn btn-success btn-round disabled">Approve</button>
+                                                        {{else}}
                                                         <form style="display: inline-block"
                                                             action="/managers/approveBlog" method="POST">
                                                             <input type="hidden" name="blogId" value={{blog._id}}>
@@ -198,7 +202,12 @@
                                                             <button type="submit"
                                                                 class="btn btn-success btn-round">Approve</button>
                                                         </form>
+                                                        {{/equals}}
 
+                                                        {{#equals blog.isPublish "Rejected"}}
+                                                        <button type="submit"
+                                                                class="btn btn-danger btn-round disabled">Reject</button>
+                                                        {{else}}
                                                         <form style="display: inline-block"
                                                             action="/managers/rejectBlog" method="POST">
                                                             <input type="hidden" name="blogId" value={{blog._id}}>
@@ -206,6 +215,7 @@
                                                             <button type="submit"
                                                                 class="btn btn-danger btn-round">Reject</button>
                                                         </form>
+                                                        {{/equals}}
                                                     </div>
                                                 </div>
                                             </div>
