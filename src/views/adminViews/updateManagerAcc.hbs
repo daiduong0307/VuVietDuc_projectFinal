@@ -11,17 +11,8 @@
             <div class="pcoded-wrapper">
                 <nav class="pcoded-navbar">
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-                    <div class="pcoded-inner-navbar main-menu">
+                   <div class="pcoded-inner-navbar main-menu">
                         <div class="">
-                            <div class="main-menu-header">
-                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
-                                    alt="User-Profile-Image" />
-                                <div class="user-details">
-                                    <span>{{admin.username}}</span>
-                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
-                                </div>
-                            </div>
-
                             <div class="main-menu-content">
                                 <ul>
                                     <li class="more-details">
@@ -33,38 +24,28 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List Account</div>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="">
-                                <a href="/admin/home">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List of Account</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu active pcoded-trigger">
+                            <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Accounts</span>
+                                    <span class="pcoded-micon" style="background-color: gray;"><i class="ti-layout-grid2-alt" ></i></span>
+                                    <span class="" data-i18n="nav.basic-components.main">Accounts</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class="">
                                         <a href="/admin/allUserAcc">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User
+                                            <span class="" data-i18n="nav.basic-components.alert">User
                                                 Account</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
 
-                                    <li class="active">
+                                    <li class="">
                                         <a href="/admin/allManagerAcc">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext"
+                                            <span class=""
                                                 data-i18n="nav.basic-components.breadcrumbs">Manager Account</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
@@ -73,26 +54,26 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Manage Categories</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation"> Categories and Tags</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
                                 <a href="/admin/allCategories">
-                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                    <span class="pcoded-micon" style="background-color: gray;"><i class="ti-layers" style="background-color: white;"></i><b>FC</b></span>
+                                    <span class="" data-i18n="nav.form-components.main">
                                         Categories</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
                             <li class="">
                                 <a href="/admin/allTags">
-                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                    <span class="pcoded-micon" style="background-color: gray;"><i class="ti-layers" style="background-color: white;"></i><b>FC</b></span>
+                                    <span class="" data-i18n="nav.form-components.main">
                                         Tags</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>>
 
                 </nav>
                 <div class="pcoded-content">
@@ -101,64 +82,47 @@
                             <div class="page-wrapper">
                                 <div class="page-body">
                                     <!-- Page-header start -->
-                                    <div class="page-header card">
+                                    <div class="page-header card" style="background-color: lightgray;">
                                         <div class="row align-items-end">
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
-                                                    <i class="icofont icofont-table bg-c-blue"></i>
                                                     <div class="d-inline">
                                                         <h4>Update Manager Information</h4>
-                                                        <span>Update Manager Accounts</span>
-
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="page-header-breadcrumb">
-                                                    <ul class="breadcrumb-title">
-                                                        <li class="breadcrumb-item">
-                                                            <a href="/admin/home">
-                                                                <i class="icofont icofont-home"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="breadcrumb-item"><a href="#!">Manager Account</a>
-                                                        </li>
-                                                        <li class="breadcrumb-item">
-                                                            <a href="#!">Update Manager Account</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
-                                    <div class="row">
-                                        <div class="col-sm-8">
+                                    <div class="row" style="justify-content: space-around;">
+                                        <div class="col-sm-6">
                                             <!-- Tab variant tab card start -->
 
-                                            <div class="card">
+                                            <div class="card" style="border-radius: 50px;">
                                                 <div class="card-block">
-                                                    <h3 class="sub-title">Change Manager Information
-                                                    </h3>
+
                                                     <form action="/admin/updateManagerAcc" method="POST"
                                                         enctype="application/x-www-form-urlencoded">
                                                         {{#if notify.success}}
-                                                        <div class="alert alert-success" role="alert"
-                                                            style="width: auto;">
+                                                        <div class="alert " role="alert"
+                                                            style="width: auto; text-align: center; color:green;">
                                                             {{notify.success}}
                                                         </div>
                                                         {{/if}}
                                                         <div class="form-group">
-                                                            <label for="name">Name: <span
-                                                                    class="changeStyle">{{data.managerInfo.fullName}}</span>
-                                                            </label>
+                                                             <span
+                                                                    >{{data.managerInfo.fullName}}</span>
+                                                            
                                                             <input type="text" class="form-control" id="fullName"
                                                                 name="fullName" placeholder="Enter Manager Name here">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="email">Email: <span
-                                                                    class="changeStyle">{{data.managerInfo.email}}</span>
-                                                            </label>
+                                                            <span
+                                                                    >{{data.managerInfo.email}}</span>
+                                                            
                                                             {{#if notify.error}}
                                                             <input type="text" class="form-control form-control-danger"
                                                                 id="inputDanger1" name="email"
@@ -172,16 +136,16 @@
                                                             {{/if}}
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="email">Date of Birth: <span
-                                                                    class="changeStyle">{{moment data.managerInfo.DoB
+                                                             <span
+                                                                    >{{moment data.managerInfo.DoB
                                                                     format ="MMMM DD - YYYY"}}</span>
-                                                            </label>
+                                                            
                                                             <input type="date" class="form-control" id="DoB" name="DoB">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="email">Current Category: <span
-                                                                    class="changeStyle">{{data.managerInfo.categoryId.name}}</span>
-                                                            </label>
+                                                            <span
+                                                                    >{{data.managerInfo.categoryId.name}}</span>
+                                                            
                                                             <select class="form-control" name="categoryId">
                                                                 {{#each data.category}}
                                                                 <option value="{{_id}}" selected>
@@ -194,7 +158,7 @@
                                                         <input type="hidden" name="_id" value="{{data._id}}">
 
 
-                                                        <button type="submit" class="btn btn-primary"
+                                                        <button type="submit" class="btn "style="border-radius: 50px;"
                                                             id="submit_info">Update</button>
                                                     </form>
                                                 </div>
@@ -202,30 +166,7 @@
 
                                         </div>
 
-                                        <div class="col-sm-4">
-                                            <div class="card">
-                                                <div class="card-block">
-                                                    <h3 class="sub-title">Cancel Category Management</h3>
-                                                    <dl class="dl-horizontal row">
-                                                        <dt class="col-sm-3">Current Category</dt>
-                                                        <dd class="col-sm-9">
-                                                            {{data.managerInfo.categoryId.name}}
-                                                        </dd>
-                                                    </dl>
 
-                                                    <div class="text-center">
-                                                        <form style="display: inline-block" action="/admin/deprivationRights" method="POST">
-                                                            <input type="hidden" name="_method" value="PATCH">
-                                                            <input type="hidden" name="_id" value="{{data._id}}">
-                                                            <input type="hidden" name="categoryId"
-                                                                value="{{data.managerInfo.categoryId._id}}">
-                                                            <button type="submit" class="btn btn-danger btn-round"
-                                                                id="submit_info">Deprivation of rights</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <!-- Tab variant tab card start -->
                                     </div>

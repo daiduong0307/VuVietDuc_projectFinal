@@ -31,10 +31,8 @@ $(document).ready(() => {
     function sweetAlert(id) {
         swal({
             title: 'Are you sure?',
-            text: 'Once deleted, you will not be able to recover this !',
-            icon: 'warning',
             buttons: true,
-            dangerMode: true,
+
         }).then(willDelete => {
             if (willDelete) {
                 ajaxDelete(id);
@@ -100,14 +98,12 @@ $(document).ready(() => {
 
         html += '<tr>';
         html += '<th scope="row">' + index + '</th>';
-        html += '<td>' + user.accountId._id + '</td>';
         html += '<td>' + user.email + '</td>';
         html += '<td>' + user.fullName + '</td>';
         html += '<td>' + user.accountId.username + '</td>';
-        html += ' <td>' + formatDate(user.accountId.createdAt) + '</td>';
         html += ' <td class="d-flex flex-row">';
         html +=
-            '     <button class="btn btn-success btn-round btn-outline-success" onclick="' +
+            '     <button class="btn " onclick="' +
             window.location +
             '=/admin/updateUser/' +
             user._id +
@@ -117,7 +113,7 @@ $(document).ready(() => {
         html +=
             '     <button id="' +
             user.accountId._id +
-            '" class="btn btn-danger btn-round btn-outline-danger btn-deleteUser" title="Delete" data-toggle="tooltip">';
+            '" class="btn btn-danger btn-deleteUser" title="Delete" data-toggle="tooltip">';
         html += '         <i class="ti-trash"></i>';
         html += '     </button>';
         html += ' </td>';

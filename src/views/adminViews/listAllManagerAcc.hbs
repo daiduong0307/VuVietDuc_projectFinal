@@ -13,15 +13,6 @@
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                     <div class="pcoded-inner-navbar main-menu">
                         <div class="">
-                            <div class="main-menu-header">
-                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
-                                    alt="User-Profile-Image" />
-                                <div class="user-details">
-                                    <span>{{admin.username}}</span>
-                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
-                                </div>
-                            </div>
-
                             <div class="main-menu-content">
                                 <ul>
                                     <li class="more-details">
@@ -33,38 +24,28 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List Account</div>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="">
-                                <a href="/admin/home">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">List of Account</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu active pcoded-trigger">
+                            <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)">
-                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Accounts</span>
+                                    <span class="pcoded-micon" style="background-color: gray;"><i class="ti-layout-grid2-alt" ></i></span>
+                                    <span class="" data-i18n="nav.basic-components.main">Accounts</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class="">
                                         <a href="/admin/allUserAcc">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">User
+                                            <span class="" data-i18n="nav.basic-components.alert">User
                                                 Account</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
 
-                                    <li class="active">
+                                    <li class="">
                                         <a href="/admin/allManagerAcc">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext"
+                                            <span class=""
                                                 data-i18n="nav.basic-components.breadcrumbs">Manager Account</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
@@ -73,26 +54,26 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Manage Categories</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation"> Categories and Tags</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
                                 <a href="/admin/allCategories">
-                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                    <span class="pcoded-micon" style="background-color: gray;"><i class="ti-layers" style="background-color: white;"></i><b>FC</b></span>
+                                    <span class="" data-i18n="nav.form-components.main">
                                         Categories</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
                             <li class="">
                                 <a href="/admin/allTags">
-                                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">List of
+                                    <span class="pcoded-micon" style="background-color: gray;"><i class="ti-layers" style="background-color: white;"></i><b>FC</b></span>
+                                    <span class="" data-i18n="nav.form-components.main">
                                         Tags</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>>
 
                 </nav>
                 <div class="pcoded-content">
@@ -101,33 +82,17 @@
                             <div class="page-wrapper">
                                 <div class="page-body">
                                     <!-- Page-header start -->
-                                    <div class="page-header card">
+                                    <div class="page-header card" style="background-color: lightgray;">
                                         <div class="row align-items-end">
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
-                                                    <i class="icofont icofont-table bg-c-blue"></i>
                                                     <div class="d-inline">
                                                         <h4>Manager Accounts</h4>
-                                                        <span>List of Manager Accounts</span>
-
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="page-header-breadcrumb">
-                                                    <ul class="breadcrumb-title">
-                                                        <li class="breadcrumb-item">
-                                                            <a href="/admin/home">
-                                                                <i class="icofont icofont-home"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="breadcrumb-item"><a href="#!">Manager Account</a>
-                                                        </li>
-                                                        <li class="breadcrumb-item">
-                                                            <a href="#!">List of manager Account</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +102,6 @@
 
                                             <div class="card">
                                                 <div class="card-block">
-                                                    <h4 class="sub-title">Search</h4>
                                                     <form action="/admin/searchManager" method="GET">
                                                         <div class="form-group row">
                                                             <div class="col">
@@ -152,17 +116,13 @@
                                                                     value="" />
                                                             </div>
 
-                                                            <div class="col-sm-4">
-                                                                <h6>Email</h6>
-                                                                <input type="email" name="email" class="form-control"
-                                                                    placeholder="Type email to find account ..." />
-                                                            </div>
+                                                            
 
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col text-right">
+                                                            <div class="col text-left">
                                                                 <button
-                                                                    class="btn btn-primary btn-square">Search</button>
+                                                                    class="btn ">Search</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -172,11 +132,9 @@
                                             <!-- Tab variant tab card start -->
                                             <div class="card add-task-card">
                                                 <div class="card-header">
+
                                                     <div class="card-header-left">
-                                                        <h3>List of manager Accounts</h3>
-                                                    </div>
-                                                    <div class="card-header-right">
-                                                        <button class="btn btn-card btn-primary"
+                                                        <button class="btn "
                                                             onclick="window.location='/admin/addManagerAcc';">
                                                             Add Manager
                                                         </button>
@@ -184,16 +142,15 @@
                                                 </div>
                                                 <div class="card-block table-border-style">
                                                     <div class="table-responsive">
-                                                        <table class="table table-hover">
-                                                            <thead>
+                                                        <table class="table ">
+                                                            <thead style="background-color: lightgray;">
                                                                 <tr>
-                                                                    <th scope="col">#</th>
-                                                                    <th scope="col">User_id</th>
+                                                                    <th scope="col">Number</th>
                                                                     <th scope="col">Email</th>
                                                                     <th scope="col">Full name</th>
                                                                     <th scope="col">Username</th>
                                                                     <th scope="col">Responsible for</th>
-                                                                    <th scope="col">CreatedAt</th>
+
                                                                     <th scope="col">Action</th>
                                                                 </tr>
                                                             </thead>
@@ -201,18 +158,16 @@
                                                                 {{#each managers}}
                                                                 <tr>
                                                                     <th scope="row">{{@index}}</th>
-                                                                    <td>{{accountId._id}}</td>
                                                                     <td>{{email}}</td>
                                                                     <td>{{fullName}}</td>
                                                                     <td>{{accountId.username}}</td>
-                                                                    <td class="text-custom">
-                                                                        <strong>{{categoryId.name}}</strong>
+                                                                    <td >
+                                                                        {{categoryId.name}}
                                                                     </td>
-                                                                    <td>{{moment accountId.createdAt format ="MMMM DD -
-                                                                        YYYY HH:mm:ss"}}</td>
+                                                             
                                                                     <td class="d-flex flex-row">
                                                                         <button
-                                                                            class="btn btn-success btn-round btn-outline-success"
+                                                                            class="btn  "
                                                                             title="Update" data-toggle="tooltip"
                                                                             onclick="window.location='/admin/updateManager/{{_id}}'"
                                                                             style="margin-right: 5px;">
@@ -220,7 +175,7 @@
                                                                         </button>
 
                                                                         <button id="{{accountId._id}}"
-                                                                            class="btn btn-danger btn-round btn-outline-danger btn-deleteManager"
+                                                                            class="btn btn-danger  btn-deleteManager"
                                                                             title="Delete" data-toggle="tooltip">
                                                                             <i class="ti-trash"></i>
                                                                         </button>

@@ -31,10 +31,10 @@ $(document).ready(() => {
     function sweetAlert(id) {
         swal({
             title: 'Are you sure?',
-            text: 'Once deleted, you will not be able to recover this !',
-            icon: 'warning',
+
+
             buttons: true,
-            dangerMode: true,
+
         }).then(willDelete => {
             if (willDelete) {
                 ajaxDelete(id);
@@ -63,52 +63,19 @@ $(document).ready(() => {
         $('#listManager').html(res);
     }
 
-    function formatDate(data) {
-        let date = new Date(data);
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let second = date.getSeconds();
-
-        let longMonth = new Intl.DateTimeFormat('en-US', {
-            month: 'long',
-        }).format(date);
-
-        if (day < 10) day = '0' + day;
-        if (month < 10) month = '0' + month;
-        if (hour < 10) hour = '0' + hour;
-        if (minute < 10) minute = '0' + minute;
-
-        let formatted_date =
-            longMonth +
-            ' ' +
-            day +
-            ' - ' +
-            date.getFullYear() +
-            ' ' +
-            hour +
-            ':' +
-            minute +
-            ':' +
-            second;
-        return formatted_date;
-    }
 
     function getData(manager, index) {
         var html = '';
 
         html += '<tr>';
         html += '<th scope="row">' + index + '</th>';
-        html += '<td>' + manager.accountId._id + '</td>';
         html += '<td>' + manager.email + '</td>';
         html += '<td>' + manager.fullName + '</td>';
         html += '<td>' + manager.accountId.username + '</td>';
         html += ' <td>' + manager.categoryId.name + '</td>';
-        html += ' <td>' + formatDate(manager.accountId.createdAt) + '</td>';
         html += ' <td class="d-flex flex-row">';
         html +=
-            '     <button class="btn btn-success btn-round btn-outline-success" onclick="' +
+            '     <button class="btn" onclick="' +
             window.location +
             '=/admin/updateManager/' +
             manager._id +
@@ -118,7 +85,7 @@ $(document).ready(() => {
         html +=
             '     <button id="' +
             manager.accountId._id +
-            '" class="btn btn-danger btn-round btn-outline-danger btn-deleteManager" title="Delete" data-toggle="tooltip">';
+            '" class="btn btn-danger  btn-deleteManager" title="Delete" data-toggle="tooltip">';
         html += '         <i class="ti-trash"></i>';
         html += '     </button>';
         html += ' </td>';

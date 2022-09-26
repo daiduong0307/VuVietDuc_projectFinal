@@ -641,7 +641,7 @@ exports.addOneCategory = async (req, res) => {
     const manager = await managerModel.findOne({ _id: managerId });
 
     if (categoryExist) {
-        const msg = "Sorry, that category name's taken. Try another?";
+        const msg = "Please choose another tag name";
         return res.redirect(`/admin/addCategory?msg=${msg}`);
     }
 
@@ -713,7 +713,7 @@ exports.updateOneCategory = async (req, res) => {
 
     if (nameExist) {
         // res.status(400).send();
-        const msg = "Sorry, that category name's taken. Try another?";
+        const msg = "Please choose another tag name";
         return res.redirect(`/admin/updateCategory/${_id}?error=${msg}`);
     }
 
@@ -808,7 +808,7 @@ exports.addOneTag = async (req, res) => {
     const duplicateTag = await tagModel.findOne({ name: tagName });
 
     if (duplicateTag) {
-        const errTag = "Sorry, that tagName's taken. Try another?'";
+        const errTag = "that's tag arealdy taken";
         return res.redirect(`/admin/allTags?errTag=${errTag}`);
     }
 

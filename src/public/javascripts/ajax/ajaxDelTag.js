@@ -31,10 +31,10 @@ $(document).ready(() => {
     function sweetAlert(id) {
         swal({
             title: 'Are you sure?',
-            text: 'Once deleted, you will not be able to recover this !',
-            icon: 'warning',
+
+
             buttons: true,
-            dangerMode: true,
+
         }).then(willDelete => {
             if (willDelete) {
                 ajaxDelete(id);
@@ -63,38 +63,6 @@ $(document).ready(() => {
         $('#listTag').html(res);
     }
 
-    function formatDate(data) {
-        let date = new Date(data);
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let hour = date.getHours();
-        let minute = date.getMinutes();
-        let second = date.getSeconds();
-
-        let longMonth = new Intl.DateTimeFormat('en-US', {
-            month: 'long',
-        }).format(date);
-
-        if (day < 10) day = '0' + day;
-        if (month < 10) month = '0' + month;
-        if (hour < 10) hour = '0' + hour;
-        if (minute < 10) minute = '0' + minute;
-
-        let formatted_date =
-            longMonth +
-            ' ' +
-            day +
-            ' - ' +
-            date.getFullYear() +
-            ' ' +
-            hour +
-            ':' +
-            minute +
-            ':' +
-            second;
-        return formatted_date;
-    }
-
     function getData(tag, index) {
         var html = '';
 
@@ -102,22 +70,11 @@ $(document).ready(() => {
         html += '<td>' + index + '</td>';
         html += '<td>' + tag.name + '</td>';
         html += '<td>' + tag.describe + '</td>';
-        html += '<td>' + formatDate(tag.createdAt) + '</td>';
         html += '<td class="d-flex flex-row">';
-        html += '<button class="btn btn-success btn-round btn-outline-success"';
-        html +=
-            ' onclick="' +
-            window.location +
-            '=/admin/updateCategory/' +
-            tag._id +
-            '" title="Update" data-toggle="tooltip" style="margin-right: 5px;">';
-        html += ' <i class="ti-pencil-alt"></i>';
-        html += ' </button>';
-
         html +=
             ' <button id="' +
             tag._id +
-            '" class="btn btn-danger btn-round btn-outline-danger btn-deleteTag" title="Delete" data-toggle="tooltip">';
+            '" class="btn btn-danger  btn-outline-danger btn-deleteTag" title="Delete" data-toggle="tooltip">';
         html += ' <i class="ti-trash"></i>';
         html += ' </button>';
         html += ' </td>';
