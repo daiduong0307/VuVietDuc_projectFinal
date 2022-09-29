@@ -12,43 +12,12 @@
                 <nav class="pcoded-navbar">
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                     <div class="pcoded-inner-navbar main-menu">
-                        <div class="">
-                            <div class="main-menu-header">
-                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
-                                    alt="User-Profile-Image">
-                                <div class="user-details">
-                                    <span>{{managerInfo.fullName}}</span>
-                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
-                                </div>
-                            </div>
-
-                            <div class="main-menu-content">
-                                <ul>
-                                    <li class="more-details">
-
-                                        <a href="/auth/logout">
-                                            <i class="ti-layout-sidebar-left"></i>Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="">
-                                <a href="/managers/home">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">Navigation</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">List</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="active">
                                 <a href="/managers/allRequest">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List of user requests</span>
+                                    <span class="pcoded-micon" style="background-color: lightgray;"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List requests</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -61,36 +30,20 @@
                             <div class="page-wrapper">
                                 <div class="page-body">
                                     <!-- Page-header start -->
-                                    <div class="page-header card">
+                                    <div class="page-header card"style="background-color: lightgray;">
                                         <div class="row align-items-end">
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
-                                                    <i
-                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
+
                                                     <div class="d-inline">
-                                                        <h4>List of User Requests in Category:
+                                                        <h4>All Request in 
                                                             {{managerInfo.categoryId.name}}</h4>
-                                                        <span>All user Requests</span>
 
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="page-header-breadcrumb">
-                                                    <ul class="breadcrumb-title">
-                                                        <li class="breadcrumb-item">
-                                                            <a href="/managers/home">
-                                                                <i class="icofont icofont-home"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="breadcrumb-item">
-                                                            <a href="#!">Homepage</a>
-                                                        </li>
-                                                        <li class="breadcrumb-item">
-                                                            <a href="#!">list of user requests</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +53,6 @@
 
                                             <div class="card">
                                                 <div class="card-block">
-                                                    <h4 class="sub-title">Search</h4>
                                                     <form action="/managers/searchRequest" method="GET">
                                                         <div class="form-group row">
                                                             <div class="col-sm-3">
@@ -113,15 +65,6 @@
                                                                 <input type="date" name="timeTo" class="form-control"
                                                                     placeholder="col-sm-4" />
                                                             </div>
-                                                            {{!-- <div class="col-sm-3">
-                                                                <h6>Requester</h6>
-                                                                <select class="selectpicker form-control"
-                                                                    name="username" data-live-search="true" multiple>
-                                                                    {{#each userAcc}}
-                                                                    <option value="{{_id}}">{{username}}</option>
-                                                                    {{/each}}
-                                                                </select>
-                                                            </div> --}}
                                                             <div class="col text-right">
                                                                 <button
                                                                     class="btn btn-primary btn-square">Search</button>
@@ -139,11 +82,9 @@
                                                         <table class="table table-hover">
                                                             <thead>
                                                                 <tr>
-                                                                    <th scope="col">#</th>
-                                                                    <th scope="col">Requester</th>
+                                                                    <th scope="col">Account</th>
                                                                     <th scope="col">Full Name</th>
-                                                                    <th scope="col">Blog Title</th>
-                                                                    <th scope="col">Created At</th>
+                                                                    <th scope="col">Title</th>
                                                                     <th scope="col">status</th>
                                                                     <th scope="col">Action</th>
                                                                 </tr>
@@ -151,14 +92,11 @@
                                                             <tbody>
                                                                 {{#each userBlog}}
                                                                 <tr>
-                                                                    <th scope="row">{{@index}}</th>
                                                                     <td>{{owner.accountId.username}}</td>
                                                                     <td>{{owner.fullName}}</td>
                                                                     <td><a
                                                                             href="/managers/blogDetails/{{_id}}">{{titleName}}</a>
                                                                     </td>
-                                                                    <td>{{moment createdAt format ="dddd, DD MMMM
-                                                                        YYYY"}}</td>
                                                                     {{#equals isPublish 'Approved'}}
                                                                     <td><span
                                                                             class="label bg-c-green m-l-10 f-10">{{isPublish}}</span>

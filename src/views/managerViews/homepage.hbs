@@ -12,43 +12,12 @@
                 <nav class="pcoded-navbar">
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                     <div class="pcoded-inner-navbar main-menu">
-                        <div class="">
-                            <div class="main-menu-header">
-                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
-                                    alt="User-Profile-Image">
-                                <div class="user-details">
-                                    <span>{{managerInfo.fullName}}</span>
-                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
-                                </div>
-                            </div>
-
-                            <div class="main-menu-content">
-                                <ul>
-                                    <li class="more-details">
-
-                                        <a href="/auth/logout">
-                                            <i class="ti-layout-sidebar-left"></i>Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="active">
-                                <a href="/managers/home">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">Navigation</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">List</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">
                                 <a href="/managers/allRequest">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List of user requests</span>
+                                    <span class="pcoded-micon"  style="background-color: gray;"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List requests</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -61,64 +30,47 @@
                             <div class="page-wrapper">
                                 <div class="page-body">
                                     <!-- Page-header start -->
-                                    <div class="page-header card">
+                                    <div class="page-header card" style="background-color: lightgray;">
                                         <div class="row align-items-end">
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
-                                                    <i
-                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
-                                                    <div class="d-inline">
-                                                        <h4>Manager Page</h4>
-                                                        <span>Welcome Manager to Homepage</span>
-
+                                                    <div class="d-inline" >
+                                                        <h4>Manager Information</h4>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="page-header-breadcrumb">
-                                                    <ul class="breadcrumb-title">
-                                                        <li class="breadcrumb-item">
-                                                            <a href="/managers/home">
-                                                                <i class="icofont icofont-home"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="breadcrumb-item">
-                                                            <a href="#!">Homepage</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-3">
                                             <!-- Tab variant tab card start -->
                                             <div class="card">
                                                 <div class="card-block tab-icon">
-
-                                                    <h2 class="sub-title">Manager Information</h2>
-                                                    <dl class="dl-horizontal row">
-                                                        <dt class="col-sm-3">Username</dt>
-                                                        <dd class="col-sm-9">
+                                                    <dl class="dl-vertical column">
+                                                        <dt class="col-sm">Username</dt>
+                                                        <dd class="col-sm">
                                                             {{managerAcc.username}}
                                                         </dd>
-                                                        <dt class="col-sm-3">Full Name</dt>
-                                                        <dd class="col-sm-9">
+                                                        <dt class="col-sm">Full Name</dt>
+                                                        <dd class="col-sm">
                                                            {{managerInfo.fullName}}
                                                         </dd>
-                                                        <dt class="col-sm-3">Email</dt>
-                                                        <dd class="col-sm-9">
+                                                        <dt class="col-sm">Email</dt>
+                                                        <dd class="col-sm">
                                                            {{managerInfo.email}}
                                                         </dd>
-                                                        <dt class="col-sm-3">Responsible for</dt>
-                                                        <dd class="col-sm-9">
+                                                        <dt class="col-sm">Incharge</dt>
+                                                        <dd class="col-sm">
                                                            {{managerInfo.categoryId.name}}
                                                         </dd>
                                                     </dl>
 
-                                                    <a href="/managers/updateAccount">
-                                                        <button type="submit" class="btn btn-primary">Update Account</button>
+                                                    <a href="/managers/updateAccount" style="float: right;">
+                                                        <button type="submit" class="btn ">Update Account</button>
                                                     </a>
 
                                                 </div>
