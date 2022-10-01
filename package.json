@@ -15,7 +15,7 @@
       "pre-commit": "yarn lint"
     }
   },
-  "author": "CuongNguyen",
+  "author": "VuVietDuc",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.15.4",

@@ -12,43 +12,12 @@
                 <nav class="pcoded-navbar">
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                     <div class="pcoded-inner-navbar main-menu">
-                        <div class="">
-                            <div class="main-menu-header">
-                                <img class="img-40 img-radius" src="/assets/images/avatar-4.jpg"
-                                    alt="User-Profile-Image">
-                                <div class="user-details">
-                                    <span>{{managerInfo.fullName}}</span>
-                                    <span id="more-details">See More<i class="ti-angle-down"></i></span>
-                                </div>
-                            </div>
-
-                            <div class="main-menu-content">
-                                <ul>
-                                    <li class="more-details">
-
-                                        <a href="/auth/logout">
-                                            <i class="ti-layout-sidebar-left"></i>Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Main</div>
-                        <ul class="pcoded-item pcoded-left-item">
-                            <li class="active">
-                                <a href="/managers/home">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">Navigation</div>
+                        <div class="pcoded-navigatio-lavel" data-i18n="nav.category.form">List</div>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">
                                 <a href="/managers/allRequest">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List of user requests</span>
+                                    <span class="pcoded-micon" style="background-color: lightgray;"><i class="ti-home"></i><b>D</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">List requests</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -61,42 +30,85 @@
                             <div class="page-wrapper">
                                 <div class="page-body">
                                     <!-- Page-header start -->
-                                    <div class="page-header card">
+                                    <div class="page-header card" style="background-color: lightgray;">
                                         <div class="row align-items-end">
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
-                                                    <i
-                                                        class="icofont icofont icofont icofont-file-document bg-c-pink"></i>
                                                     <div class="d-inline">
-                                                        <h4>Manager Page</h4>
-                                                        <span>Welcome Manager to Homepage</span>
-
+                                                        <h4>Update Manager Information</h4>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="page-header-breadcrumb">
-                                                    <ul class="breadcrumb-title">
-                                                        <li class="breadcrumb-item">
-                                                            <a href="/managers/home">
-                                                                <i class="icofont icofont-home"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="breadcrumb-item">
-                                                            <a href="#!">Homepage</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Page-header end -->
-                                    <div class="row">
-                                        <div class="col">
-                                            <!-- Tab variant tab card start -->
-                                            <div class="card">
+                                    <div class="col" style="display: flex;flex-direction: column;align-items: center;">
+                                          <div class="col-sm-6">
+
+                                            <div class="card" style="border-radius: 50px;">
                                                 <div class="card-block tab-icon">
-                                                    <h3 class="sub-title">Update Account</h3>
+                                                    <form action="/managers/updateInfo" method="POST"
+                                                        enctype="application/x-www-form-urlencoded">
+
+                                                        <div class="form-group">
+                                                             <span
+                                                                    class="changeStyle">{{managerInfo.fullName}}</span>
+                                                            
+                                                            <input type="text" class="form-control" id="fullName"
+                                                                name="fullName" placeholder="Enter your name here"
+                                                                onfocus="this.placeholder = ''"
+                                                                onblur="this.placeholder = 'Enter your name here'">
+                                                        </div>
+                                                        <div class="form-group">
+                                                             <span
+                                                                    class="changeStyle">{{managerInfo.email}}</span>
+                                                           
+                                                            <input type="email" class="form-control" id="email"
+                                                                name="email" placeholder="Enter your email here"
+                                                                onfocus="this.placeholder = ''"
+                                                                onblur="this.placeholder = 'Enter your email here'">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                             <span
+                                                                    class="changeStyle">{{moment
+                                                                    managerInfo.DoB
+                                                                    format
+                                                                    ="DD MMMM - YYYY"}}</span>
+                                                           
+                                                            <input type="date" class="form-control" id="DoB" name="DoB">
+                                                        </div>
+
+                                                        <input type="hidden" name="_method" value="PUT">
+                                                        <input type="hidden" name="accId" value="{{managerInfo._id}}">
+
+                                                        {{#if infoError}}
+                                                        <div class="alert alert-danger" role="alert"
+                                                            style="width: auto;">
+                                                            {{infoError}}
+                                                        </div>
+                                                        {{else if infoSucceed}}
+                                                        <div class="alert alert-success" role="alert"
+                                                            style="width: auto;">
+                                                            {{infoSucceed}}
+                                                        </div>
+                                                        {{/if}}
+
+                                                        <button type="submit" class="btn" style="border-radius: 50px; float:right;"
+                                                            id="submit_acc">Submit</button>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <!-- Tab variant tab card start -->
+                                            <div class="card" style="border-radius: 50px;">
+                                                <div class="card-block tab-icon">
 
                                                     <div class="form-group">
                                                         <label for="usr">Username: <span
@@ -116,12 +128,7 @@
                                                                     onblur="this.placeholder = 'Enter new Password'"
                                                                     name="password" onkeyup="check();">
 
-                                                                <div class="input-group-append">
-                                                                    <button class="btn btn-outline-secondary"
-                                                                        type="button" id="btnPassword">
-                                                                        <span class="ti-eye"></span>
-                                                                    </button>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -132,12 +139,7 @@
                                                                     onfocus="this.placeholder = ''"
                                                                     onblur="this.placeholder = 'Re-enter Password'"
                                                                     name="repwd" onkeyup="check();">
-                                                                <div class="input-group-append">
-                                                                    <button class="btn btn-outline-secondary"
-                                                                        type="button" id="btnRePassword">
-                                                                        <span class="ti-eye"></span>
-                                                                    </button>
-                                                                </div>
+                                                              
                                                             </div>
                                                             <span id="message"></span>
                                                         </div>
@@ -154,74 +156,14 @@
                                                             {{accSucceed}}
                                                         </div>
                                                         {{/if}}
-                                                        <button type="submit" class="btn btn-primary"
+                                                        <button type="submit" class="btn " style="border-radius: 50px; float:right;"
                                                             id="submit_acc">Submit</button>
                                                     </form>
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col">
-
-                                            <div class="card">
-                                                <div class="card-block tab-icon">
-                                                    <h3 class="sub-title">Update Information</h3>
-
-                                                    <form action="/managers/updateInfo" method="POST"
-                                                        enctype="application/x-www-form-urlencoded">
-
-                                                        <div class="form-group">
-                                                            <label for="name">FullName: <span
-                                                                    class="changeStyle">{{managerInfo.fullName}}</span>
-                                                            </label>
-                                                            <input type="text" class="form-control" id="fullName"
-                                                                name="fullName" placeholder="Enter your name here"
-                                                                onfocus="this.placeholder = ''"
-                                                                onblur="this.placeholder = 'Enter your name here'">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="email">Email: <span
-                                                                    class="changeStyle">{{managerInfo.email}}</span>
-                                                            </label>
-                                                            <input type="email" class="form-control" id="email"
-                                                                name="email" placeholder="Enter your email here"
-                                                                onfocus="this.placeholder = ''"
-                                                                onblur="this.placeholder = 'Enter your email here'">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="email">Date of Birth: <span
-                                                                    class="changeStyle">{{moment
-                                                                    managerInfo.DoB
-                                                                    format
-                                                                    ="DD MMMM - YYYY"}}</span>
-                                                            </label>
-                                                            <input type="date" class="form-control" id="DoB" name="DoB">
-                                                        </div>
-
-                                                        <input type="hidden" name="_method" value="PUT">
-                                                        <input type="hidden" name="accId" value="{{managerInfo._id}}">
-
-                                                        {{#if infoError}}
-                                                        <div class="alert alert-danger" role="alert"
-                                                            style="width: auto;">
-                                                            {{infoError}}
-                                                        </div>
-                                                        {{else if infoSucceed}}
-                                                        <div class="alert alert-success" role="alert"
-                                                            style="width: auto;">
-                                                            {{infoSucceed}}
-                                                        </div>
-                                                        {{/if}}
-
-                                                        <button type="submit" class="btn btn-primary"
-                                                            id="submit_acc">Submit</button>
-                                                    </form>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                      
                                     </div>
                                 </div>
 
