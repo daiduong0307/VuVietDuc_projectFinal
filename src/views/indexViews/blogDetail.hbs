@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> index/header}}
     </div>
 </header>
@@ -11,8 +11,7 @@
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
         <h1>Blog Details</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
+
     </div>
 </section>
 <!--================ End banner Area =================-->
@@ -28,14 +27,7 @@
                         <h4>{{blog.titleName}}</h4>
                     </a>
                     <div class="user_details">
-                        <div class="float-left">
-                            <a href="/blogByCategory?categoryId={{blog.categoryId._id}}">{{blog.categoryId.name}}</a>
-                        </div>
-                        {{#each blog.tags}}
-                        <div class="float-left">
-                            <a href="#">{{name}}</a>
-                        </div>
-                        {{/each}}
+
                         <div class="float-right mt-sm-0 mt-3">
                             <div class="media">
                                 <div class="media-body">
@@ -56,100 +48,20 @@
                     <div id="blogContent">
                         {{blog.blogContent}}
                     </div>
-                    <div class="pt-5">
-                        <p><strong>Categories:</strong> <a href="#">{{blog.categoryId.name}}</a> <strong>Tags:</strong>
-                            {{#each blog.tags}}<a href="#">#{{name}}, </a>{{/each}}</p>
-                    </div>
-                    <div class="news_d_footer flex-column flex-sm-row">
-                        <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><i
-                                class="lnr lnr lnr-bubble"></i>{{blog.comments.length}}
-                            Comments</a>
-                        <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </div>
-                    </div>
+
+
                 </div>
 
-                <div class="comments-area">
-                    <h4>{{blog.comments.length}} Comments</h4>
-                    {{#each blog.comments}}
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="/uploads/{{author.avatar}}" style="width:60px; height:60px;"
-                                        alt="userAvt">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">{{author.fullName}}</a></h5>
-                                    <p class="date">{{moment createdAt format ="MMMM DD, YYYY at HH:mm"}}</p>
-                                    <p class="comment">
-                                        {{comment}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{#if replies}}
-                    {{#each replies}}
-                    <div class="comment-list left-padding">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="/uploads/{{author.avatar}}" style="width:60px; height:60px;"
-                                        alt="userAvt">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">{{author.fullName}}</a></h5>
-                                    <p class="date">{{moment createdAt format ="MMMM DD, YYYY at HH:mm"}}</p>
-                                    <p class="comment">
-                                        {{comment}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                    {{/if}}
-                    {{/each}}
-                </div>
-                <div class="comment-form">
-                    <h4>Leave a Comment</h4>
-                    <div class="alert alert-primary" role="alert" style="text-align: center">
-                        You need <b><a href="/auth/login">Login</a></b> to comment !!!
-                    </div>
-                </div>
+                
+               
             </div>
 
             <!-- Start Blog Post Sidebar -->
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
 
-                    <div class="single-sidebar-widget share-widget">
-                        <h4 class="share-title">Share this post</h4>
-                        <div class="social-icons mt-20">
-                            <div class="fb-share-button"
-                                data-href="https://revive2000.herokuapp.com/blogDetail/{{blog._id}}"
-                                data-layout="button" data-size="large" data-pin-lang="en"><a target="_blank"
-                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                    class="fb-xfbml-parse-ignore" data-pin-lang="en">Share Post</a>
-                            </div>
-                            <div style="margin-top: 5px">
-                                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
-                                    data-show-count="false" data-size="large">Tweet</a>
-                            </div>
-                            <div >
-                                <a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-lang="en" href="https://pl.pinterest.com/pin/create/button/"></a>
-                            </div>
-
-                        </div>
-                    </div>
-
                     {{> index/categories}}
                     {{> index/relatedBlog}}
-                    {{> index/popularBlog}}
                     {{> index/tags}}
 
                 </div>

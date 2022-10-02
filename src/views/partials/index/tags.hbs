@@ -1,8 +1,9 @@
-<div class="sidebar-box">
-    <h3 class="heading">Tags</h3>
+<div class="single-sidebar-widget post-category-widget">
+    <h3 class="category-title">Tags</h3>
+      <hr />
     <ul class="tags">
         {{#each tags}}
-        <li><a href="/blogByTag/{{_id}}">{{name}}</a></li>
+        <li><a href="/blogByTag/{{_id}}" style="text-transform:capitalize;">{{name}}</a></li>
         {{/each}}
     </ul>
 </div>

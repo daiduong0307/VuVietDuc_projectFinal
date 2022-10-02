@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> index/header}}
     </div>
 </header>
@@ -10,9 +10,7 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>Hi There! I'm {{userInfo.fullName}}</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
+
     </div>
 </section>
 <!--================ End banner Area =================-->
@@ -26,10 +24,10 @@
                     <div class="col-md-12">
                         <div class="widget-wrap">
                             <div class="single-sidebar-widget">
-                                <div class="bio text-center">
+                                <div class="bio ">
                                     <img src="/uploads/{{userInfo.avatar}}" alt="Image Placeholder" class="img-fluid">
-                                    <h3 class="text-heading">Hi There! I'm {{userInfo.fullName}}</h3>
-                                    <p>@{{userAcc.username}}</p>
+                                    <h3 class="text-heading"> I'm {{userInfo.fullName}}</h3>
+                                    {{!-- <p>@{{userAcc.username}}</p> --}}
                                 </div>
 
                             </div>
@@ -42,9 +40,9 @@
                 </div>
 
 
-                <div class="row mb-5 mt-5 blog-entries">
+                {{!-- <div class="row mb-5 mt-5 blog-entries">
                     <div class="col-md-12">
-                        <h3 class="text-heading">Here is my latest Posts</h3>
+                        <h3 class="text-heading">my Posts</h3>
                         <div class="col-md-12">
                             {{#each authorLatestPost}}
                             <div class="post-entry-horizontal">
@@ -53,51 +51,16 @@
                                         src="/uploads/{{mainImage}}" alt="" />
                                     <span class="text">
                                         <div class="post-meta">
-                                            {{!-- <span class="author mr-2"><img src="/uploads/{{owner.avatar}}" alt="">
-                                                {{owner.fullName}}</span>&bullet; --}}
-                                            <span class="mr-20"><span class="ti-calendar"></span>{{moment createdAt
+                            
+                                            <span class="mr-20">{{moment createdAt
                                                 format ="DD MMMM YYYY"}}</span>
-                                            <span class="ml-20"><span class="fa fa-comments"></span>
-                                                {{comments.length}} </span>
-                                            <span class="ml-20"><span class="ti-eye"></span> {{views}} </span>
+
+                                            <span class="ml-20"> {{views}} </span>
                                         </div>
                                         <h2>{{titleName}}</h2>
 
                                     </span>
                                 </a>
-                                {{!-- <div class="single-amenities">
-                                    <div class="amenities-thumb">
-                                        <img class="img-fluid w-100" src="/uploads/{{mainImage}}" alt="" />
-                                    </div>
-                                    <div class="amenities-details">
-                                        <h5>
-                                            <a href="/blogDetail/{{_id}}">{{titleName}}</a>
-                                        </h5>
-                                        <div class="amenities-meta mb-10">
-                                            <a href="#" class=""><span class="ti-calendar"></span>{{moment createdAt
-                                                format
-                                                ="DD
-                                                MMMM, YYYY"}}</a>
-                                            <a href="#" class="ml-20"><span
-                                                    class="ti-comment"></span>{{comments.length}}</a>
-                                            <a href="#" class="ml-20"><span class="ti-eye"></span>{{views}}</a>
-                                        </div>
-                                        <p>{{brief}}</p>
-
-                                        <div class="d-flex justify-content-between mt-20">
-                                            <div>
-                                                <a href="/blogDetail/{{_id}}" class="blog-post-btn">
-                                                    Read More <span class="ti-arrow-right"></span>
-                                                </a>
-                                            </div>
-                                            <div class="category">
-                                                <a href="/blogByCategory?categoryId={{categoryId._id}}">
-                                                    <span class="ti-folder mr-1"></span> {{categoryId.name}}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </div>
 
                             {{else}}
@@ -164,13 +127,13 @@
                         </div>
 
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- Start Blog Post Sidebar -->
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
 
-                    <div class="single-sidebar-widget post-category-widget">
+                    {{!-- <div class="single-sidebar-widget post-category-widget">
                         <h4 class="category-title">Information</h4>
                         <ul class="cat-list mt-20">
                             <li class="d-flex justify-content-between">
@@ -182,7 +145,7 @@
                                 <p><strong>{{countBlog}}</strong></p>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                     {{> index/categories}}
                     {{> index/popularBlog}}

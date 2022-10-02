@@ -1,5 +1,6 @@
 <div class="single-sidebar-widget popular-post-widget">
     <h4 class="popular-title">Related Posts</h4>
+    <hr />
     <div class="popular-post-list">
         {{#each relatedBlog}}
         <div class="single-post-list">
@@ -10,7 +11,7 @@
                 <a href="/blogDetail/{{_id}}">
                     <h6>{{titleName}}</h6>
                 </a>
-                <p>{{owner.fullName}} | {{moment createdAt format ="MMMM DD"}}</p>
+                <p> {{moment createdAt format ="MMMM DD"}}</p>
             </div>
         </div>
         {{/each}}

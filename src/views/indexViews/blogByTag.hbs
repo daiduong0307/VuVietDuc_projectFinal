@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> index/header}}
     </div>
 </header>
@@ -10,9 +10,7 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>{{blogTag.name}}</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
+
     </div>
 </section>
 <!--================ End banner Area =================-->
@@ -29,31 +27,28 @@
 
                     {{#each blogs}}
                     <div class="col-lg-6 col-md-6">
-                        <div class="single-amenities">
+                        <div class="single-amenities" style="border: 1px solid lightgray;">
                             <div class="amenities-thumb">
+                                <a href="/blogDetail/{{_id}}">
                                 <img class="img-fluid w-100" src="/uploads/{{mainImage}}" alt="" />
+                            </a>
+ 
                             </div>
                             <div class="amenities-details">
                                 <h5>
                                     <a href="/blogDetail/{{_id}}">{{titleName}}</a>
                                 </h5>
                                 <div class="amenities-meta mb-10">
-                                    <a href="#" class=""><span class="ti-calendar"></span>{{moment createdAt format
+                                    <a href="#" class="">{{moment createdAt format
                                         ="DD
                                         MMMM, YYYY"}}</a>
-                                    <a href="#" class="ml-20"><span class="ti-comment"></span>{{comments.length}}</a>
                                 </div>
                                 <p>{{brief}}</p>
 
                                 <div class="d-flex justify-content-between mt-20">
-                                    <div>
-                                        <a href="/blogDetail/{{_id}}" class="blog-post-btn">
-                                            Read More <span class="ti-arrow-right"></span>
-                                        </a>
-                                    </div>
                                     <div class="category">
                                         <a href="/blogByCategory?categoryId={{categoryId._id}}">
-                                            <span class="ti-folder mr-1"></span> {{categoryId.name}}
+                                            <span>Category: </span> {{categoryId.name}}
                                         </a>
                                     </div>
                                 </div>

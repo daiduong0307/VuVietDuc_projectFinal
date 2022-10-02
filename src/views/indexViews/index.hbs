@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> index/header}}
     </div>
 </header>
@@ -10,48 +10,9 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>Welcome to Revive</h1>
-        <p>This is the website that will be used to connect around the world.</p>
+  
     </div>
 </section>
-{{!-- {{#if slideBlog}}
-<section class="home-banner-area relative">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="owl-carousel home-banner-owl">
-                {{#each slideBlog}}
-                <div class="banner-img">
-                    <img class="img-fluid" style="width: 1140px; height: 650px" src="/uploads/{{mainImage}}" alt="" />
-                    <div class="text-wrapper">
-                        <a href="/blogDetail/{{_id}}" class="d-flex">
-                            <h1>
-                                {{titleName}}
-                            </h1>
-                        </a>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-
-    <div class="social-icons">
-        <ul>
-            <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-            </li>
-            <li class="diffrent">share now</li>
-        </ul>
-    </div>
-</section>
-{{/if}} --}}
-<!--================ End banner Area =================-->
 
 <!--================ Start Blog Post Area =================-->
 <section class="blog-post-area section-gap relative">
@@ -68,34 +29,30 @@
                     {{#if blogs}}
                     {{#each blogs}}
                     <div class="col-lg-6 col-md-6">
-                        <div class="single-amenities">
+                        <div class="single-amenities" style="border: 1px solid lightgray;">
                             <div class="amenities-thumb">
                                 <a href="/blogDetail/{{_id}}">
-                                    <img class="img-fluid w-100" style="border-radius:10px" src="/uploads/{{mainImage}}"
+                                    <img class="img-fluid w-100"  src="/uploads/{{mainImage}}"
                                         alt="Blog_Image" />
                                 </a>
+                                                            
                             </div>
                             <div class="amenities-details">
                                 <h5>
                                     <a href="/blogDetail/{{_id}}">{{titleName}}</a>
                                 </h5>
                                 <div class="amenities-meta mb-10">
-                                    <a href="#" class=""><span class="ti-calendar"></span>{{moment createdAt format ="DD
+                                    <a href="#" class="">{{moment createdAt format ="DD
                                         MMMM, YYYY"}}</a>
-                                    <a href="#" class="ml-20"><span class="ti-comment"></span>{{comments.length}}</a>
-                                    <a href="#" class="ml-20"><span class="ti-eye"></span>{{views}}</a>
+                                    {{!-- <a href="#" class="ml-20"><span >viewer: </span>{{views}}</a> --}}
                                 </div>
-                                <p>{{brief}}</p>
+                                <p>Read more: {{brief}}</p>
 
                                 <div class="d-flex justify-content-between mt-20">
-                                    <div>
-                                        <a href="/blogDetail/{{_id}}" class="blog-post-btn">
-                                            Read More <span class="ti-arrow-right"></span>
-                                        </a>
-                                    </div>
+
                                     <div class="category">
                                         <a href="/blogByCategory/{{categoryId._id}}">
-                                            <span class="ti-folder mr-1"></span> {{categoryId.name}}
+                                            <span >Category: </span> {{categoryId.name}}
                                         </a>
                                     </div>
                                 </div>
@@ -128,8 +85,11 @@
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
                     {{> index/searchSidebar}}
-                    {{> index/categories}}
+                  
                     {{> index/popularBlog}}
+                  
+                    {{> index/categories}}
+                    
                     {{> index/tags}}
                 </div>
             </div>
