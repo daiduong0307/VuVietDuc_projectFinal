@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> user/header}}
     </div>
 </header>
@@ -9,11 +9,6 @@
 <!--================ Start banner Area ===============-->
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
-    <div class="banner-content text-center">
-        <h1>Blog Details</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
-    </div>
 </section>
 <!--================ End banner Area =================-->
 
@@ -63,15 +58,8 @@
                             {{/equals}}
                         </div>
 
-                        <div class="float-left">
-                            <a
-                                href="/users/blogByCategory?categoryId={{blog.categoryId._id}}">{{blog.categoryId.name}}</a>
-                        </div>
-                        {{#each blog.tags}}
-                        <div class="float-left">
-                            <a href="#">{{name}}</a>
-                        </div>
-                        {{/each}}
+ 
+                        
                         <div class="float-right mt-sm-0 mt-3">
                             <div class="media">
                                 <div class="media-body">
@@ -92,136 +80,19 @@
                     <div id="blogContent">
                         {{blog.blogContent}}
                     </div>
-                    <div class="pt-5">
-                        <p><strong>Categories:</strong> <a href="#">{{blog.categoryId.name}}</a> <strong>Tags:</strong>
-                            {{#each blog.tags}}<a href="#">#{{name}}, </a>{{/each}}</p>
-                    </div>
-                    <div class="news_d_footer flex-column flex-sm-row">
-                        <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><i
-                                class="lnr lnr lnr-bubble"></i>{{totalComment}}
-                            Comments</a>
-                        <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </div>
-                    </div>
+                    
+                   
                 </div>
 
-                <div class="comments-area" id="listComment">
-                    <h4>{{totalComment}} Comments</h4>
-                    <input type="hidden" name="" id="userId" value="{{session.userId}}">
-                    {{#each blog.comments}}
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="/uploads/{{author.avatar}}" style="width:60px; height:60px;"
-                                        alt="userAvt">
-                                </div>
-                                <div class="desc">
-                                    <h5><a href="#">{{author.fullName}}</a></h5>
-                                    <p class="date">{{moment createdAt format ="MMMM DD, YYYY HH:mm"}}</p>
-                                    <p class="comment">
-                                        {{comment}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="reply-btn">
-                                <a class="btn-reply text-uppercase reply" style="cursor: pointer" id="show">reply</a>
-                                {{#equals author.accountId._id ../session.userId}}
-                                <a class="btn-reply text-uppercase btn-deleteComment" style="cursor: pointer"
-                                    id="{{_id}}">Delete</a>
-                                {{/equals}}
-                            </div>
-                            <form method="post" id="formReply" hidden="true" class="clsFormReply"
-                                enctype="application/x-www-form-urlencoded">
-                                <div class="form-group">
-                                    <textarea class="form-control mb-10" rows="5" name="reply" placeholder="Message"
-                                        required></textarea>
-                                </div>
-
-                                <input type="hidden" id="commentId" name="commentId" value="{{_id}}">
-                                <input type="hidden" id="blogId" name="blogId" value="{{postId._id}}">
-
-                                <input type="submit" class="primary-btn submit_btn" value="Reply" />
-                            </form>
-                        </div>
-                    </div>
-
-                    {{#if replies}}
-                    <div id="listReplies">
-                        <input type="hidden" name="" id="userId2" value="{{../session.userId}}">
-                        {{#each replies}}
-                        <div class="comment-list left-padding">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="/uploads/{{author.avatar}}" style="width:60px; height:60px;"
-                                            alt="userAvt">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">{{author.fullName}}</a></h5>
-                                        <p class="date">{{moment createdAt format ="MMMM DD, YYYY HH:mm"}}</p>
-                                        <p class="comment">
-                                            {{comment}}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    {{#equals author.accountId._id ../../session.userId}}
-                                    <a class="btn-reply text-uppercase btn-deleteReply" style="cursor: pointer"
-                                        id="{{_id}}">Delete</a>
-                                    {{/equals}}
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
-                    {{/if}}
-                    {{/each}}
-                </div>
-                <div class="comment-form">
-                    <h4>Leave a Comment</h4>
-                    <form id="cmtForm" method="post">
-                        <div class="form-group">
-                            <textarea class="form-control mb-10" rows="5" name="comment" placeholder="Message"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
-                                required=""></textarea>
-                        </div>
-                        <input type="hidden" id="blogId2" name="blogId" value="{{blog._id}}">
-                        <input type="submit" class="primary-btn submit_btn" value="Post comment" />
-                    </form>
-                </div>
+                
             </div>
 
             <!-- Start Blog Post Sidebar -->
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
 
-                    <div class="single-sidebar-widget share-widget">
-                        <h4 class="share-title">Share this post</h4>
-                        <div class="social-icons mt-20">
-                            <div class="fb-share-button"
-                                data-href="https://revive2000.herokuapp.com/blogDetail/{{blog._id}}"
-                                data-layout="button" data-size="large"><a target="_blank"
-                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                    class="fb-xfbml-parse-ignore">Share Post</a>
-                            </div>
-                            <div style="margin-top: 5px">
-                                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
-                                    data-show-count="false" data-size="large">Tweet</a>
-                            </div>
-                            <div>
-                                <a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-lang="en"
-                                    href="https://pl.pinterest.com/pin/create/button/"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{> user/bioProfile}}
                     {{> user/categories}}
                     {{> user/relatedBlog}}
-                    {{> user/popularBlog}}
                     {{> user/tags}}
 
                 </div>

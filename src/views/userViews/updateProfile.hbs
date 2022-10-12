@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> user/header}}
     </div>
 </header>
@@ -10,9 +10,7 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>Update My Information</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
+
     </div>
 </section>
 <!--================ End banner Area =================-->
@@ -21,8 +19,8 @@
 <section class="blog_area section-gap single-post-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <h3 class="text-heading">Change my information</h3>
+            <div class="col">
+
 
                 <div class="col-lg-12">
                     <!-- Nav tabs -->
@@ -50,7 +48,6 @@
                             <form action="/users/updateInformation" method="POST" enctype="multipart/form-data"
                                 class="needs-validation" novalidate>
                                 <div class="form-group">
-                                    <label for="name">Your avatar: </label> <br>
                                     <img src="/uploads/{{userInfo.avatar}}" id="imgShow" alt="" style="max-width:180px">
                                     <hr>
                                     <div class="input-group mb-3">
@@ -97,7 +94,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="introduction">Bio Introduce:</label>
+                                    <h5 for="introduction">Bio:</h5>
                                     <textarea type="text" class="form-control" id="introduction" name="introduction"
                                         rows="4">{{userInfo.introduction}}</textarea>
                                 </div>
@@ -107,7 +104,7 @@
 
 
 
-                                <button type="submit" class="btn btn-primary" id="submit_info">Update</button>
+                                <button type="submit" class="btn " id="submit_info" style="float: right;">Update</button>
                             </form>
                         </div>
                         <div class="tab-pane" id="profile1" role="tabpanel"><br>
@@ -140,11 +137,7 @@
                                     <div class="input-group mb-3">
                                         <input type="password" class="form-control" id="pwd" name="password"
                                             onkeyup="check();">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button" id="btnPassword">
-                                                <span class="ti-eye"></span>
-                                            </button>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -152,11 +145,7 @@
                                     <div class="input-group mb-3">
                                         <input type="password" class="form-control" id="rePwd" name="rePassword"
                                             onkeyup="check();">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button" id="btnRePassword">
-                                                <span class="ti-eye"></span>
-                                            </button>
-                                        </div>
+
                                     </div>
                                     <span id="message"></span>
                                 </div>
@@ -164,7 +153,7 @@
                                 <input type="hidden" name="_method" value="PUT">
                                 <input type="hidden" name="_id" value="{{userAcc._id}}">
 
-                                <button type="submit" class="btn btn-primary" id="submit_info">Update</button>
+                                <button type="submit" class="btn " id="submit_info" style="float: right;">Update</button>
                             </form>
                         </div>
 
@@ -172,13 +161,7 @@
                 </div>
             </div>
             <!-- Start Blog Post Sidebar -->
-            <div class="col-lg-4 sidebar-widgets">
-                <div class="widget-wrap">
-                    {{> user/bioProfile}}
-                    {{> user/categories}}
-                    {{> user/popularBlog}}
-                </div>
-            </div>
+
 
             <!-- End Blog Post Sidebar -->
 

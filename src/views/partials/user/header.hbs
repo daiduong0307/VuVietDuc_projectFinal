@@ -3,7 +3,7 @@
         <div class="col-5 text-lg-center mt-2 mt-lg-0">
             <span class="logo-outer">
                 <span class="logo-inner">
-                    <a href="/users/home"><img class="mx-auto" src="/images/logo.png" alt="" /></a>
+                    <a  href="/" style="font-size: 30px;color:black;">Medical Blog </a>
                 </span>
             </span>
         </div>
@@ -30,24 +30,16 @@
                             {{/each}}
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users/uploadBlog">Upload</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users/myBookmark">Bookmarks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users/manageBlog">My Blogs</a>
-                    </li>
-
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            {{userInfo.accountId.username}}
+                            User
                         </a>
                         <div class="dropdown-menu">
 
                             <a class="dropdown-item" href="/users/myProfile">View Profile</a>
+                            <a class="dropdown-item" href="/users/uploadBlog">Create Article </a>
+                            <a class="dropdown-item" href="/users/manageBlog">My Article</a>
                             <a class="dropdown-item" href="/users/myBookmark">Bookmarks</a>
                             <a class="dropdown-item" href="/auth/logout">Logout</a>
 

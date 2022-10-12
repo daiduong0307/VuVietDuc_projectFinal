@@ -1,6 +1,6 @@
 ## Description
 
-This project is designed to build a web application to help with the needs of internet users to share Blog content.
+This project is designed to build a web application to help with the needs of internet users to share Medical Blog content.
 
 ## Installation
 

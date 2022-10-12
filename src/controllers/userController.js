@@ -674,113 +674,113 @@ exports.profile = async (req, res) => {
     }
 };
 
-exports.doComment = async (req, res) => {
-    const { comment, blogId } = req.body;
+// exports.doComment = async (req, res) => {
+//     const { comment, blogId } = req.body;
 
-    const user = await userModel.findOne({ accountId: req.session.userId });
-    const blog = await blogModel.findOne({ _id: blogId });
+//     const user = await userModel.findOne({ accountId: req.session.userId });
+//     const blog = await blogModel.findOne({ _id: blogId });
 
-    try {
-        const obj = {
-            author: user._id,
-            comment,
-            postId: blog._id,
-        };
+//     try {
+//         const obj = {
+//             author: user._id,
+//             comment,
+//             postId: blog._id,
+//         };
 
-        const newComment = await commentModel.create(obj);
-        const saveComment = await newComment.save();
+//         const newComment = await commentModel.create(obj);
+//         const saveComment = await newComment.save();
 
-        // console.log(saveComment);
+//         // console.log(saveComment);
 
-        await blog.comments.push(saveComment);
-        await blog.save();
+//         await blog.comments.push(saveComment);
+//         await blog.save();
 
-        // res.redirect(`/users/blogDetail/${blog._id}`);
-        res.json(saveComment);
-    } catch (error) {
-        console.log(error);
-        res.status(400).send(error);
-    }
-};
+//         // res.redirect(`/users/blogDetail/${blog._id}`);
+//         res.json(saveComment);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(400).send(error);
+//     }
+// };
 
-exports.deleteComment = async (req, res) => {
-    const commentId = req.params.id;
+// exports.deleteComment = async (req, res) => {
+//     const commentId = req.params.id;
 
-    try {
-        await commentModel.findOneAndDelete({
-            _id: commentId,
-        });
+//     try {
+//         await commentModel.findOneAndDelete({
+//             _id: commentId,
+//         });
 
-        await blogModel.findOneAndUpdate(
-            { comments: commentId },
-            { $pull: { comments: commentId } },
-            { new: true, useFindAndModify: false },
-        );
+//         await blogModel.findOneAndUpdate(
+//             { comments: commentId },
+//             { $pull: { comments: commentId } },
+//             { new: true, useFindAndModify: false },
+//         );
 
-        await replyModel.deleteMany({
-            commentId,
-        });
+//         await replyModel.deleteMany({
+//             commentId,
+//         });
 
-        const obj = {
-            msg: 'Delete Success',
-        };
+//         const obj = {
+//             msg: 'Delete Success',
+//         };
 
-        res.json(obj);
-    } catch (error) {
-        console.log(error);
-        res.status(400).send(error);
-    }
-};
+//         res.json(obj);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(400).send(error);
+//     }
+// };
 
-exports.deReply = async (req, res) => {
-    const { reply, commentId, blogId } = req.body;
+// exports.deReply = async (req, res) => {
+//     const { reply, commentId, blogId } = req.body;
 
-    const user = await userModel.findOne({ accountId: req.session.userId });
-    const comment = await commentModel.findOne({ _id: commentId });
-    const blog = await blogModel.findOne({ _id: blogId });
+//     const user = await userModel.findOne({ accountId: req.session.userId });
+//     const comment = await commentModel.findOne({ _id: commentId });
+//     const blog = await blogModel.findOne({ _id: blogId });
 
-    try {
-        const obj = {
-            author: user._id,
-            comment: reply,
-            commentId,
-        };
+//     try {
+//         const obj = {
+//             author: user._id,
+//             comment: reply,
+//             commentId,
+//         };
 
-        const newReply = await replyModel.create(obj);
-        const saveReply = await newReply.save();
+//         const newReply = await replyModel.create(obj);
+//         const saveReply = await newReply.save();
 
-        await comment.replies.push(saveReply);
-        await comment.save();
+//         await comment.replies.push(saveReply);
+//         await comment.save();
 
-        res.json(saveReply);
-    } catch (error) {
-        console.log(error);
-        res.status(400).send(error);
-    }
-};
+//         res.json(saveReply);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(400).send(error);
+//     }
+// };
 
-exports.deleteReply = async (req, res) => {
-    const replyId = req.params.id;
+// exports.deleteReply = async (req, res) => {
+//     const replyId = req.params.id;
 
-    try {
-        const deleteReply = await replyModel.findOneAndDelete({ _id: replyId });
+//     try {
+//         const deleteReply = await replyModel.findOneAndDelete({ _id: replyId });
 
-        const pullReply = await commentModel.findOneAndUpdate(
-            { replies: replyId },
-            { $pull: { replies: replyId } },
-            { new: true, useFindAndModify: false },
-        );
+//         const pullReply = await commentModel.findOneAndUpdate(
+//             { replies: replyId },
+//             { $pull: { replies: replyId } },
+//             { new: true, useFindAndModify: false },
+//         );
 
-        const obj = {
-            msg: 'Delete Success',
-        };
+//         const obj = {
+//             msg: 'Delete Success',
+//         };
 
-        res.json(obj);
-    } catch (error) {
-        console.log(error);
-        res.status(400).send(error);
-    }
-};
+//         res.json(obj);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(400).send(error);
+//     }
+// };
 
 exports.manageBlog = async (req, res) => {
     const title = 'Blogs Management';

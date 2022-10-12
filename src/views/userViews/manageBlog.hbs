@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> user/header}}
     </div>
 </header>
@@ -10,19 +10,17 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>List all of my Blogs</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
     </div>
 </section>
 <!--================ End banner Area =================-->
 
 <!--================Blog Area =================-->
 <section class="blog_area section-gap single-post-area">
-    <div class="container">
+    <div style="padding: 0 50px;">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card-block" style="margin-bottom: 15px">
+                <div class="card-block" style="margin-bottom: 15px;padding: 5px 20px;
+    background-color: lightgray;">
                     <h3 class="text-heading">Search</h3>
                     <form action="/users/searchMyBlog" method="GET">
                         <div class="form-group row">
@@ -56,7 +54,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-right">
-                                <button class="btn btn-primary btn-square">Search</button>
+                                <button class="btn ">Search</button>
                             </div>
                         </div>
                     </form>
@@ -67,7 +65,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Number</th>
                                     <th scope="col">Blog image</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Brief</th>
@@ -106,10 +104,10 @@
                                         <button class="btn btn-info btn-outline-info"
                                             onclick="window.location='/users/updateBlog/{{_id}}'"
                                             style="margin-right: 5px;">
-                                            <i class="ti-pencil-alt"></i>
+                                            <i class="ti-pencil"></i>
                                         </button>
 
-                                        <button id="{{_id}}" class="btn btn-danger btn-outline-danger btn-deleteBlog">
+                                        <button id="{{_id}}" class="btn btn-danger  btn-deleteBlog">
                                             <i class="ti-trash"></i>
                                         </button>
                                     </td>

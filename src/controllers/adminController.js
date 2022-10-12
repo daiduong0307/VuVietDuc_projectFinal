@@ -3,7 +3,7 @@ const userModel = require('../models/Users');
 const managerModel = require('../models/Manager');
 const categoryModel = require('../models/Catagories');
 const blogModel = require('../models/Blogs');
-const commentModel = require('../models/comment');
+// const commentModel = require('../models/comment');
 const tagModel = require('../models/BlogTags');
 const bookmarkModel = require('../models/Bookmarks');
 
@@ -247,9 +247,9 @@ exports.deleteOneUser = async (req, res) => {
                 _id: userInfo.posts,
             });
             const deleteBookmark = await bookmarkModel.deleteMany({ postId: userBlog._id });
-            const deleteBlogComment = await commentModel.deleteMany({
-                _id: userBlog.comments,
-            });
+            // const deleteBlogComment = await commentModel.deleteMany({
+            //     _id: userBlog.comments,
+            // });
         }
 
         const deleteUser = await userModel.findOneAndDelete({
@@ -613,25 +613,6 @@ exports.allCategories = async (req, res) => {
     }
 };
 
-// // get adding category page
-// exports.getAddCategory = async (req, res) => {
-//     const title = "Adding new Blog Category";
-//     const { msg } = req.query;
-
-//     const admin = await appUserModel.findOne({ _id: req.session.userId });
-//     const managers = await managerModel.find({ isResponsible: false });
-
-//     try {
-//         res.render("adminViews/addCategory", {
-//             err: msg,
-//             title: title,
-//             admin: admin,
-//             managers: managers,
-//         });
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 // adding new category
 exports.addOneCategory = async (req, res) => {

@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> user/header}}
     </div>
 </header>
@@ -10,18 +10,17 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>List of My Bookmark Blogs</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
+        
     </div>
 </section>
 <!--================ End banner Area =================-->
 
 <!--================Blog Area =================-->
 <section class="sample-text-area">
-    <div class="container">
+    <div style="padding: 0 50px;">
 
-        <div class="card-block" style="margin-bottom: 15px">
+        <div class="card-block" style="margin-bottom: 15px;padding: 5px 20px;
+    background-color: lightgray;">
             <h3 class="text-heading">Search</h3>
             <form action="/users/searchBookmark" method="GET">
                 <div class="form-group row">
@@ -35,27 +34,10 @@
                             value="" />
                     </div>
 
-                    {{!-- <div class="col">
-                        <h6>Title Blog</h6>
-                        <input type="text" name="titleName" class="form-control"
-                            placeholder="Type name of Blog to find..." />
-                    </div> --}}
-                    {{!-- <div class="col">
-                        <h6>Category</h6>
-                        <select class="form-control" name="categoryId">
-                            <option selected>Open this select Category</option>
-                            {{#each categories}}
-                            <option value="{{_id}}">
-                                {{name}}
-                            </option>
-                            {{/each}}
-                        </select>
-                    </div> --}}
-
                 </div>
                 <div class="row">
                     <div class="col text-right">
-                        <button class="btn btn-primary btn-square">Search</button>
+                        <button class="btn ">Search</button>
                     </div>
                 </div>
             </form>
@@ -67,7 +49,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Number</th>
                             <th scope="col">Blog image</th>
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
@@ -99,7 +81,7 @@
                                 </button>
 
                                 <button id="{{postId._id}}"
-                                    class="btn btn-danger btn-outline-danger btn-deleteBookmark">
+                                    class="btn btn-danger btn-deleteBookmark">
                                     <i class="ti-trash"></i>
                                 </button>
                             </td>

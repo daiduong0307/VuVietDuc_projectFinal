@@ -17,7 +17,7 @@ async function sendMail(email, name, subject, author, title, createdAt) {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'cuongndgch18641@fpt.edu.vn',
+                user: 'vuvietduc@gmail.com',
                 clientId: CLIENT_ID,
                 clientSecret: CLIENT_SECRET,
                 refreshToken: REFRESH_TOKEN,
@@ -65,7 +65,7 @@ async function sendMailReset(email, subject, text) {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'cuongndgch18641@fpt.edu.vn',
+                user: 'vuvietduc@gmail.com',
                 clientId: CLIENT_ID,
                 clientSecret: CLIENT_SECRET,
                 refreshToken: REFRESH_TOKEN,
@@ -102,7 +102,7 @@ async function mailApproved(email, name, subject, title, updatedAt) {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'cuongndgch18641@fpt.edu.vn',
+                user: 'vuvietduc@gmail.com',
                 clientId: CLIENT_ID,
                 clientSecret: CLIENT_SECRET,
                 refreshToken: REFRESH_TOKEN,
@@ -149,7 +149,7 @@ async function mailRejected(email, subject, author, title, updatedAt) {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'cuongndgch18641@fpt.edu.vn',
+                user: 'vuvietduc@gmail.com',
                 clientId: CLIENT_ID,
                 clientSecret: CLIENT_SECRET,
                 refreshToken: REFRESH_TOKEN,

@@ -96,7 +96,7 @@ td {
 
 .tags li a:hover {
     color: #fff;
-    background: #6610f2;
+    background: black;
 }
 
 .sidebar-box {
@@ -2099,7 +2099,7 @@ h6 {
     display: block;
     margin-bottom: 10px;
     text-transform: capitalize;
-    font-style: italic;
+    text-decoration: underline;
 }
 @media (max-width: 1280px) and (min-width: 799px) {
     .menu-right {
@@ -3002,7 +3002,7 @@ h6 {
     transition: all 0.4s ease 0s;
 }
 .widget-wrap .post-category-widget .cat-list li:hover {
-    background: #13113a;
+    background: lightgray;
 }
 .widget-wrap .post-category-widget .cat-list li:hover a {
     color: #ffffff;

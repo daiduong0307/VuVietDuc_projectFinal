@@ -1,6 +1,6 @@
 <!--================ Start Header Area ===============-->
 <header class="header-area">
-    <div class="container">
+    <div >
         {{> user/header}}
     </div>
 </header>
@@ -10,9 +10,7 @@
 <section class="banner-area relative">
     <div class="overlay overlay-bg"></div>
     <div class="banner-content text-center">
-        <h1>Upload New Blog</h1>
-        <p>Elementum libero hac leo integer. Risus hac parturient feugiat litora <br /> cursus hendrerit bibendum per
-        </p>
+
     </div>
 </section>
 <!--================ End banner Area =================-->
@@ -21,79 +19,66 @@
 <section class="blog_area section-gap single-post-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col">
                 <form action="/users/uploadOneBlog" method="POST" enctype="multipart/form-data" class="needs-validation"
                     novalidate>
-                    <h3 class="mb-30">Upload New Blog</h3>
+                    <h3 class="mb-30">Upload New Article</h3>
 
                     <div class="form-group">
-                        <label for="">Blog title</label>
+                        <h5 for="" >Title</h5>
                         <input type="text" class="form-control" id="titleName" name="titleName"
-                            placeholder="Enter blog title here ..." onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Enter blog title here ...'" class="single-input" required>
+                            placeholder="Enter title" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Enter title '" class="single-input" required>
                         <div class="invalid-feedback">
-                            Please enter a blog title here
+                            Please enter title 
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="">Select Category</label>
+                        <h5 for="">Select Category</h5>
                         <select class="form-control" id="category" name="_id" required>
-                            <option value="">Open this select category</option>
+                            <option value="">Category</option>
                             {{#each categories}}
                             <option value="{{_id}}">
                                 {{name}}
                             </option>
                             {{/each}}
                         </select>
-                        <div class="invalid-feedback">Please choose a category</div>
+                        <div class="invalid-feedback">Please choose category</div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <label for="">Choose a tag</label>
-                                <input type="text" class="form-control" id="titleName" name="tagName"
-                                    placeholder="Choose a tag name ..." onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Choose a tag name ...'" class="single-input">
-                                {{!-- <div class="invalid-feedback">Please choose a tag</div> --}}
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2">
-                            <label for=""></label>
-                            <p class="text-center">OR</p>
-                        </div>
-
-                        <div class="col-sm-5">
-                            <div class="form-group">
-                                <label for="">Select Tag</label>
-                                <select class="selectpicker form-control" name="tagId" data-live-search="true" multiple>
-                                    {{#each tags}}
-                                    <option value="{{_id}}">{{name}}</option>
-                                    {{/each}}
-                                </select>
-
-                                {{!-- <div class="invalid-feedback">Please choose a tag</div> --}}
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <h5 for="">Create a new Tag</h5>
+                        <input type="text" class="form-control" id="titleName" name="tagName"
+                            placeholder="Create a new tag" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Create a new tag'" class="single-input">
+                    </div>
+                    <span>OR</span>
+                    <br>
+                    <div class="form-group">
+                        <h5 for="">Select a Tag</h5>
+                        <select class="selectpicker form-control" name="tagId" data-live-search="true" multiple>
+                            {{#each tags}}
+                            <option value="{{_id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
                     </div>
 
 
 
                     <div class="form-group">
-                        <label for="inputName">brief</label>
+                        <h5 for="inputName">Brief</h5>
                         <textarea type="text" class="form-control" id="brief" rows="3" id="brief" name="brief"
-                            placeholder="Enter your brief ..."></textarea>
+                            placeholder="Enter brief ..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="inputName">Main Content</label>
+                        <h5 for="inputName">Main Content of Article</h5>
                         <textarea name="blogContent" id="editor1" rows="10" cols="20"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label>Main Image: You can upload main image for your blog</label><br>
+                        <label>Upload image for article</label><br>
                         <img src="" id="imgShow" alt="" style="max-width:180px">
                         <hr>
                         <div class="custom-file">
@@ -110,19 +95,12 @@
                     </div>
                     {{/if}}
 
-                    <button type="submit" class="genric-btn info circle" id="submit_info">Submit</button>
+                    <button type="submit" class="genric-btn circle" id="submit_info" style="float: right;">Submit</button>
 
                 </form>
             </div>
             <!-- Start Blog Post Sidebar -->
-            <div class="col-lg-4 sidebar-widgets">
-                <div class="widget-wrap">
-                    {{> user/bioProfile}}
-                    {{> user/categories}}
-                    {{> user/popularBlog}}
-                    {{> user/tags}}
-                </div>
-            </div>
+            
 
             <!-- End Blog Post Sidebar -->
 

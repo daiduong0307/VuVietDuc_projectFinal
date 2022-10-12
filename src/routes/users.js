@@ -28,10 +28,10 @@ userRouter.get('/updateProfile', userController.getUpdateProfile);
 userRouter.put('/updateAccount', userController.updateUserAcc);
 userRouter.post('/updateInformation', upload.multerInstance, userController.updateUserInfo);
 
-userRouter.post('/doComment', userController.doComment);
-userRouter.post('/doReply', userController.deReply);
-userRouter.delete('/deleteComment/:id', userController.deleteComment);
-userRouter.delete('/deleteReply/:id', userController.deleteReply);
+// userRouter.post('/doComment', userController.doComment);
+// userRouter.post('/doReply', userController.deReply);
+// userRouter.delete('/deleteComment/:id', userController.deleteComment);
+// userRouter.delete('/deleteReply/:id', userController.deleteReply);
 
 userRouter.get('/myBookmark', userController.getAllBookmark);
 userRouter.get('/searchBookmark', userController.searchBookmark);

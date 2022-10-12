@@ -2,7 +2,6 @@ const appUserModel = require('../models/AppUser');
 const managerModel = require('../models/Manager');
 const categoryModel = require('../models/Catagories');
 const blogModel = require('../models/Blogs');
-const commentModel = require('../models/comment');
 const bookmarkModel = require('../models/Bookmarks');
 const userModel = require('../models/Users');
 const { mailApproved, mailRejected } = require('../middleware/sendingMail');

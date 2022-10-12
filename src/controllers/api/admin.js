@@ -1,8 +1,7 @@
-const appUserModel = require('../../models/AppUser');
+
 const userModel = require('../../models/Users');
 const blogModel = require('../../models/Blogs');
 const categoryModel = require('../../models/Catagories');
-const commentModel = require('../../models/comment');
 const managerModel = require('../../models/Manager');
 const tagModel = require('../../models/BlogTags');
 

@@ -21,10 +21,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="text-heading" style="text-transform:capitalize;"> {{blogCategory.name}}</h3>
-                    </div>
-
+       
                     {{#each blogs}}
                     <div class="col-lg-6 col-md-6">
                         <div class="single-amenities" style="border: 1px solid lightgray;">
@@ -122,8 +119,9 @@
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
                     {{> index/searchSidebar}}
+                                        {{> index/popularBlog}}
                     {{> index/categories}}
-                    {{> index/popularBlog}}
+
                     {{> index/tags}}
                 </div>
             </div>
