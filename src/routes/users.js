@@ -35,6 +35,7 @@ userRouter.post('/updateInformation', upload.multerInstance, userController.upda
 
 userRouter.get('/myBookmark', userController.getAllBookmark);
 userRouter.get('/searchBookmark', userController.searchBookmark);
+userRouter.get('/searchBookmarkUpdate', userController.searchBookmarkUpdate);
 userRouter.put('/setBookmark/:id', userController.setBookmark);
 userRouter.put('/unBookmark/:id', userController.unBookmark);
 

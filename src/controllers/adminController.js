@@ -277,6 +277,7 @@ exports.allManagerAccount = async (req, res) => {
 
     const countManager = await managerModel.countDocuments();
     const admin = await appUserModel.findOne({ _id: req.session.userId });
+    const managerAcc = await appUserModel.find({ role: 'manager' });
     const managers = await managerModel
         .find({})
         .populate('accountId')
@@ -288,6 +289,7 @@ exports.allManagerAccount = async (req, res) => {
     try {
         res.render('adminViews/listAllManagerAcc', {
             managers,
+            managerAcc,
             admin,
             title,
             pagination: {
@@ -303,7 +305,7 @@ exports.allManagerAccount = async (req, res) => {
 
 exports.searchManager = async (req, res) => {
     const title = 'List of Manager Accounts';
-    const { timeFrom, timeTo, email } = req.query;
+    const { timeFrom, timeTo, email, username } = req.query;
     const perPage = 5;
     const page = req.query.p || 1;
 
@@ -315,10 +317,15 @@ exports.searchManager = async (req, res) => {
     }
 
     const admin = await appUserModel.findOne({ _id: req.session.userId });
+    const managerAcc = await appUserModel.find({ role: 'manager' });
     const countManager = await managerModel.countDocuments();
     const managers = await managerModel
         .find({
-            $or: [{ email: regExpEmail }, { createdAt: { $gte: timeFrom, $lte: timeTo } }],
+            $or: [
+                { accountId: username },
+                { email: regExpEmail },
+                { createdAt: { $gte: timeFrom, $lte: timeTo } },
+            ],
         })
         .sort({ createdAt: -1 })
         .skip(perPage * page - perPage)
@@ -329,6 +336,7 @@ exports.searchManager = async (req, res) => {
     try {
         res.render('adminViews/listAllManagerAcc', {
             managers,
+            managerAcc,
             timeFrom,
             timeTo,
             email,
@@ -613,7 +621,6 @@ exports.allCategories = async (req, res) => {
     }
 };
 
-
 // adding new category
 exports.addOneCategory = async (req, res) => {
     const { name, describe, managerId } = req.body;
@@ -622,7 +629,7 @@ exports.addOneCategory = async (req, res) => {
     const manager = await managerModel.findOne({ _id: managerId });
 
     if (categoryExist) {
-        const msg = "Please choose another tag name";
+        const msg = 'Please choose another tag name';
         return res.redirect(`/admin/addCategory?msg=${msg}`);
     }
 
@@ -683,6 +690,37 @@ exports.getUpdateCategory = async (req, res) => {
     }
 };
 
+exports.searchCategory = async (req, res) => {
+const title = 'List of searchCategories';
+const { name } = req.query;
+const perPage = 5;
+const page = req.query.p || 1;
+
+const countTag = await categoryModel.countDocuments();
+const admin = await appUserModel.findOne({ _id: req.session.userId });
+const categories = await categoryModel
+    .find({
+        $or: [{ _id: name }],
+    })
+    .skip(perPage * page - perPage)
+    .limit(perPage);
+
+try {
+    res.render('adminViews/listAllCategories', {
+        title,
+        admin,
+        categories,
+        pagination: {
+            page: page, // Current Page
+            pageCount: Math.ceil(countTag / perPage), // Total pages to display
+        },
+    });
+} catch (error) {
+    console.log(error);
+    res.status(404).send(error);
+}
+};
+
 // update one category
 exports.updateOneCategory = async (req, res) => {
     const { name, describe, _id } = req.body;
@@ -694,7 +732,7 @@ exports.updateOneCategory = async (req, res) => {
 
     if (nameExist) {
         // res.status(400).send();
-        const msg = "Please choose another tag name";
+        const msg = 'Please choose another tag name';
         return res.redirect(`/admin/updateCategory/${_id}?error=${msg}`);
     }
 
@@ -772,6 +810,37 @@ exports.allTags = async (req, res) => {
                 success,
                 errTag,
             },
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countTag / perPage), // Total pages to display
+            },
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).send(error);
+    }
+};
+
+exports.searchTag = async (req, res) => {
+    const title = 'List of tags';
+    const { name } = req.query;
+    const perPage = 5;
+    const page = req.query.p || 1;
+
+    const countTag = await tagModel.countDocuments();
+    const admin = await appUserModel.findOne({ _id: req.session.userId });
+    const tags = await tagModel
+        .find({
+            $or: [{ _id: name }],
+        })
+        .skip(perPage * page - perPage)
+        .limit(perPage);
+
+    try {
+        res.render('adminViews/listAllTags', {
+            title,
+            admin,
+            tags,
             pagination: {
                 page: page, // Current Page
                 pageCount: Math.ceil(countTag / perPage), // Total pages to display

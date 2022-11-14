@@ -1230,6 +1230,49 @@ exports.searchBookmark = async (req, res) => {
     }
 };
 
+exports.searchBookmarkUpdate = async (req, res) => {
+    const title = 'Revive';
+    const { search } = req.query;
+    const keySearch = req.query.search;
+    const perPage = 6;
+    const page = req.query.p || 1;
+
+    const regExp = new RegExp(keySearch, 'i');
+    const bookmarks = await blogModel
+        .find({
+            isPublish: 'Approved',
+            $or: [{ titleName: regExp }, { brief: regExp }],
+        })
+        .skip(perPage * page - perPage)
+        .limit(perPage)
+        .sort({ createdAt: -1 });
+
+    const userInfo = await userModel
+        .findOne({ accountId: req.session.userId })
+        .populate('accountId');
+
+    const countBlog = await blogModel.countDocuments({
+        isPublish: 'Approved',
+        $or: [{ titleName: regExp }, { brief: regExp }],
+    });
+    try {
+        res.render('userViews/myBookmark', {
+            title,
+            search,
+            userInfo,
+            bookmarks,
+            pagination: {
+                page: page, // Current Page
+                pageCount: Math.ceil(countBlog / perPage), // Total pages to display
+            },
+
+            layout: 'userLayout.hbs',
+        });
+    } catch (error) {
+        res.status(400).send(error);
+    }
+};
+
 exports.setBookmark = async (req, res) => {
     const blogId = req.params.id;
 

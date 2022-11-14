@@ -116,7 +116,15 @@
                                                                     value="" />
                                                             </div>
 
-                                                            
+                                                            <div class="col-sm-4">
+                                                                <h6>Username</h6>
+                                                                <select class="selectpicker form-control"
+                                                                    name="username" data-live-search="true" multiple>
+                                                                    {{#each managerAcc}}
+                                                                    <option value="{{_id}}">{{username}}</option>
+                                                                    {{/each}}
+                                                                </select>
+                                                            </div>
 
                                                         </div>
                                                         <div class="row">

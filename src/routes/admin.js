@@ -26,8 +26,10 @@ adminRouter.get('/updateCategory/:id', adminController.getUpdateCategory);
 adminRouter.post('/addOneCategory', adminController.addOneCategory);
 adminRouter.put('/updateOneCategory', adminController.updateOneCategory);
 adminRouter.delete('/deleteOneCategory/:id', adminController.deleteOneCategory);
+adminRouter.get('/searchCategory', adminController.searchCategory);
 
 adminRouter.get('/allTags', adminController.allTags);
+adminRouter.get('/searchTag', adminController.searchTag);
 adminRouter.post('/addOneTag', adminController.addOneTag);
 adminRouter.delete('/deleteOneTag/:id', adminController.deleteOneTag);
 
