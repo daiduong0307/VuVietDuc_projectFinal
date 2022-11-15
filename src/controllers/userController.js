@@ -218,9 +218,9 @@ exports.updateUserAcc = async (req, res) => {
             }
         } else {
             const updateAcc = await appUserModel.findOneAndUpdate(
-                { _id },
+                { _id : _id},
                 { $set: newValues },
-                { new: true },
+                { new: true , useFindAndModify: false},
             );
         }
 

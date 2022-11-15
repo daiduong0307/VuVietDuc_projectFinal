@@ -68,8 +68,9 @@ exports.updateAcc = async (req, res) => {
             const updateAcc = await appUserModel.findOneAndUpdate(
                 { _id: accId },
                 { $set: newValues },
-                { new: true },
+                { new: true, useFindAndModify: false },
             );
+            console.log(updateAcc, "updateAccupdateAccupdateAcc");
         }
 
         const msgSucceed = 'Account changed successfully !!!';

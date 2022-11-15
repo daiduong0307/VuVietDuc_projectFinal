@@ -104,19 +104,11 @@
 
 
 
-                                <button type="submit" class="btn " id="submit_info" style="float: right;">Update</button>
+                                <button type="submit" class="btn "  style="float: right;">Update</button>
                             </form>
                         </div>
                         <div class="tab-pane" id="profile1" role="tabpanel"><br>
-                            {{#if accError}}
-                            <div class="alert alert-danger" role="alert" style="width: auto;">
-                                {{accError}}
-                            </div>
-                            {{else if accSucceed}}
-                            <div class="alert alert-success" role="alert" style="width: auto;">
-                                {{accSucceed}}
-                            </div>
-                            {{/if}}
+
                             <form action="/users/updateAccount" method="POST"
                                 enctype="application/x-www-form-urlencoded" class="needs-validation" novalidate>
 
@@ -160,6 +152,15 @@
 
                                 <input type="hidden" name="_method" value="PUT">
                                 <input type="hidden" name="_id" value="{{userAcc._id}}">
+                            {{#if accError}}
+                            <div class="alert alert-danger" role="alert" style="width: auto;">
+                                {{accError}}
+                            </div>
+                            {{else if accSucceed}}
+                            <div class="alert alert-success" role="alert" style="width: auto;">
+                                {{accSucceed}}
+                            </div>
+                            {{/if}}
 
                                 <button type="submit" class="btn " id="submit_info" style="float: right;">Update</button>
                             </form>
