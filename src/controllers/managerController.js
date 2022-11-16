@@ -51,27 +51,31 @@ exports.getUpdateAccount = async (req, res) => {
 };
 
 exports.updateAcc = async (req, res) => {
-    const { accId, password } = req.body;
+    const { rePassword, accId, password } = req.body;
 
     const newValues = {};
     if (password) newValues.password = password;
 
     try {
-        if (password) {
-            if (password.length < 8 || password.includes('password')) {
-                const errorPassword =
-                    `Password must be at least 8 characters !!!` +
-                    `\nPassword cannot contain "password"`;
-                return res.redirect(`/managers/updateAccount?accError=${errorPassword}`);
-            }
-        } else {
+        if (password.length < 8 || password.includes('password')) {
+            const errorPassword =
+                `Password must be at least 8 characters !!!` +
+                `\nPassword cannot contain "password"`;
+            return res.redirect(`/managers/updateAccount?accError=${errorPassword}`);
+        } else if (rePassword !== password){
+            const errorRePassword =
+                `Password and Re-enter Password must be the same!!!` 
+            return res.redirect(`/users/updateProfile?accError=${errorRePassword}`);
+        }
+        else {
             const updateAcc = await appUserModel.findOneAndUpdate(
                 { _id: accId },
                 { $set: newValues },
                 { new: true, useFindAndModify: false },
             );
-            console.log(updateAcc, "updateAccupdateAccupdateAcc");
+            console.log(updateAcc, 'updateAccupdateAccupdateAcc');
         }
+
 
         const msgSucceed = 'Account changed successfully !!!';
         res.redirect(`/managers/updateAccount?accSucceed=${msgSucceed}`);
@@ -245,7 +249,7 @@ exports.rejectBlog = async (req, res) => {
                 { new: true, useFindAndModify: false },
             );
         }
-        
+
         await blog.save();
 
         await res.redirect('/managers/allRequest');

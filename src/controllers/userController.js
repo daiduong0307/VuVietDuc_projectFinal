@@ -196,34 +196,33 @@ exports.getUpdateProfile = async (req, res) => {
 };
 
 exports.updateUserAcc = async (req, res) => {
-    const { username, password, _id } = req.body;
+    const {rePassword, password, _id } = req.body;
     const newValues = {};
-    if (username) newValues.username = username;
     if (password) newValues.password = password;
 
-    const userAccExist = await appUserModel.findOne({ username });
-
-    if (userAccExist) {
-        const errorUsername = 'Username has already exist !!!';
-        return res.redirect(`/users/updateProfile?accError=${errorUsername}`);
-    }
+    const userAccExist = await appUserModel.findOne({ _id: _id });
+    console.log(userAccExist, 'userAccExistuserAccExist');
 
     try {
-        if (password) {
-            if (password.length < 8 || password.includes('password')) {
-                const errorPassword =
-                    `Password must be at least 8 characters !!!` +
-                    `\nPassword cannot contain "password"`;
-                return res.redirect(`/users/updateProfile?accError=${errorPassword}`);
-            }
-        } else {
-            const updateAcc = await appUserModel.findOneAndUpdate(
-                { _id : _id},
-                { $set: newValues },
-                { new: true , useFindAndModify: false},
-            );
-        }
 
+        if (password.length < 8 || password.includes('password')) {
+            const errorPassword =
+                `Password must be at least 8 characters !!!` +
+                `\nPassword cannot contain "password"`;
+            return res.redirect(`/users/updateProfile?accError=${errorPassword}`);
+        } else if (rePassword !== password){
+            const errorRePassword =
+                `Password and Re-enter Password must be the same!!!` 
+            return res.redirect(`/users/updateProfile?accError=${errorRePassword}`);
+        }
+         else {
+            const updateAcc = await appUserModel.findOneAndUpdate(
+                { _id: userAccExist._id },
+                { $set: newValues },
+                { new: true, useFindAndModify: false },
+            );
+            console.log(updateAcc, 'updateAccupdateAcc');
+        }
         const msgSucceed = 'Account changed successfully !!!';
         res.redirect(`/users/updateProfile?accSucceed=${msgSucceed}`);
     } catch (error) {

@@ -33,14 +33,22 @@ const appUserSchema = new Schema(
 );
 
 // Hash the plain text password before saving
-appUserSchema.pre('save', async function (next) {
-    const user = this;
-    if (user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8);
-    }
+// appUserSchema.pre('save', async function (next) {
+//     const user = this;
+//     if (user.isModified('password')) {
+//         user.password = await bcrypt.hash(user.password, 8);
+//     }
 
-    next();
-});
+//     next();
+// });
+
+appUserSchema.path("password").set((inputString) => {
+    return (inputString = bcrypt.hashSync(
+      inputString,
+      bcrypt.genSaltSync(10),
+      null
+    ));
+  });
 
 const appUser = model('AppUser', appUserSchema);
 
