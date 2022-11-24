@@ -196,7 +196,7 @@ exports.getUpdateProfile = async (req, res) => {
 };
 
 exports.updateUserAcc = async (req, res) => {
-    const {rePassword, password, _id } = req.body;
+    const { rePassword, password, _id } = req.body;
     const newValues = {};
     if (password) newValues.password = password;
 
@@ -204,18 +204,15 @@ exports.updateUserAcc = async (req, res) => {
     console.log(userAccExist, 'userAccExistuserAccExist');
 
     try {
-
         if (password.length < 8 || password.includes('password')) {
             const errorPassword =
                 `Password must be at least 8 characters !!!` +
                 `\nPassword cannot contain "password"`;
             return res.redirect(`/users/updateProfile?accError=${errorPassword}`);
-        } else if (rePassword !== password){
-            const errorRePassword =
-                `Password and Re-enter Password must be the same!!!` 
+        } else if (rePassword !== password) {
+            const errorRePassword = `Password and Re-enter Password must be the same!!!`;
             return res.redirect(`/users/updateProfile?accError=${errorRePassword}`);
-        }
-         else {
+        } else {
             const updateAcc = await appUserModel.findOneAndUpdate(
                 { _id: userAccExist._id },
                 { $set: newValues },
@@ -1417,3 +1414,19 @@ function getNumber_Of_Posts(postData) {
 
     return sum;
 }
+
+exports.deleteBookmark = async (req, res) => {
+    const { _id } = req.body;
+
+    const bookmark = await bookmarkModel.findOne({ postId: _id });
+
+    try {
+        if (bookmark) {
+            await bookmark.remove();
+        }
+
+        res.redirect(`/users/myBookmark`);
+    } catch (e) {
+        res.status(400).send(e);
+    }
+};

@@ -90,36 +90,28 @@ $(document).ready(() => {
         html += '<tr>';
         html += '<th scope="row">' + index + '</th>';
         html += '<td style="width: 250px; height:170px">';
-        html += '<a href="/users/blogDetail/' + blog._id + '">';
+        html += '<a href="/users/blogDetail/' + postId._id + '">';
         html +=
             ' <img style="max-width: 100%;height: auto;width: auto;" src="/uploads/' +
-            blog.postId.mainImage +
+            postId.mainImage +
             '" alt="BlogImage" />';
         html += ' </a>';
         html += ' </td>';
         html +=
             '<td><a href="/users/blogDetail/' +
-            blog.postId._id +
+            _id +
             '">' +
-            blog.postId.titleName +
+            postId.titleName +
             '</a></td>';
-        html += ' <td>' + blog.postId.owner.fullName + '</td>';
-        html += '<td>' + blog.postId.brief + '</td>';
-        html += '<td>' + formatDate(blog.createdAt) + '</td>';
-        html += '<td>' + blog.postId.categoryId.name + '</td>';
+        html += '<td>' + postId.brief + '</td>';
+        html += '<td>' + postId.categoryId.name + '</td>';
         html += ' <td class="d-flex flex-row">';
-        html +=
-            '<button class="btn btn-info btn-outline-info" onclick="' +
-            window.location +
-            '=/users/blogDetail/' +
-            blog.postId._id +
-            '" style="margin-right: 5px;">';
         html += ' <i class="ti-eye"></i>';
         html += ' </button>';
 
         html +=
             '<button id="' +
-            blog.postId._id +
+            postId._id +
             '" class="btn btn-danger btn-outline-danger btn-deleteBookmark">';
         html += ' <i class="ti-trash"></i>';
         html += ' </button>';

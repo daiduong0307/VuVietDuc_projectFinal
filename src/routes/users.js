@@ -38,5 +38,6 @@ userRouter.get('/searchBookmark', userController.searchBookmark);
 userRouter.get('/searchBookmarkUpdate', userController.searchBookmarkUpdate);
 userRouter.put('/setBookmark/:id', userController.setBookmark);
 userRouter.put('/unBookmark/:id', userController.unBookmark);
+userRouter.delete('/deleteBookmark', userController.deleteBookmark);
 
 module.exports = userRouter;
