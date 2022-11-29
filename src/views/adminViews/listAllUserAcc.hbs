@@ -154,6 +154,7 @@
                                                                     <th scope="col">Email</th>
                                                                     <th scope="col">Full name</th>
                                                                     <th scope="col">Username</th>
+                                                                    <th scope="col">CreatedAt</th>
                                                                     <th scope="col">Action</th>
                                                                 </tr>
                                                             </thead>
@@ -164,6 +165,7 @@
                                                                     <td>{{email}}</td>
                                                                     <td>{{fullName}}</td>
                                                                     <td>{{accountId.username}}</td>
+                                                                    <td>{{moment createdAt format ="MMMM DD - YYYY"}}</td>
                                                                     <td class="d-flex flex-row">
                                                                         <button
                                                                             class="btn "

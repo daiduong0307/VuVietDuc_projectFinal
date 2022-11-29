@@ -104,7 +104,7 @@
                                                     <form action="/admin/searchCategory" method="GET">
                                                         <div class="form-group row">
                                                              <div class="col-sm-4">
-                                                                <h6>Tag name</h6>
+                                                                <h6>Category name</h6>
                                                                 <select class="selectpicker form-control"
                                                                     name="name" data-live-search="true" multiple>
                                                                     {{#each categories}}
@@ -161,16 +161,16 @@
                                                                         <input type="text"
                                                                             class="form-control is-invalid" id="name"
                                                                             name="name"
-                                                                            placeholder="Enter category Name" required>
+                                                                            placeholder="Enter Category Name" required>
                                                                         <div class="invalid-feedback">
                                                                             {{err}}
                                                                         </div>
                                                                         {{else}}
                                                                         <input type="text" class="form-control"
                                                                             id="name" name="name"
-                                                                            placeholder="Enter category Name" required>
+                                                                            placeholder="Enter Category Name" required>
                                                                         <div class="invalid-feedback">
-                                                                            Please enter
+                                                                            Please enter a category name
                                                                         </div>
                                                                         {{/if}}
                                                                     </div>
@@ -186,8 +186,8 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="inputDesc">Description</label>
-                                                                        <textarea class="form-control" id="desc"
-                                                                            name="describe" rows="3"
+                                                                        <textarea class="form-control" id="desc" rows="3"
+                                                                            name="describe" 
                                                                             placeholder="Description">
                                                                 </textarea>
                                                                     </div>

@@ -113,38 +113,38 @@
                                                         </div>
                                                         {{/if}}
                                                         <div class="form-group">
-                                                             <span
-                                                                    >{{data.managerInfo.fullName}}</span>
+                                                            <label for="name">Fullname: <span class="changeStyle"
+                                                                    >{{data.managerInfo.fullName}}</span></label>
                                                             
                                                             <input type="text" class="form-control" id="fullName"
-                                                                name="fullName" placeholder="Enter Manager Name here">
+                                                                name="fullName" placeholder="Enter new manager name here">
                                                         </div>
                                                         <div class="form-group">
-                                                            <span
-                                                                    >{{data.managerInfo.email}}</span>
+                                                            <label for="email">Email: <span class="changeStyle"
+                                                                    >{{data.managerInfo.email}}</span></label>
                                                             
                                                             {{#if notify.error}}
                                                             <input type="text" class="form-control form-control-danger"
                                                                 id="inputDanger1" name="email"
-                                                                placeholder="Enter email address" />
+                                                                placeholder="Enter new email address here" />
                                                             <div class="col-form-label text-danger">
                                                                 {{notify.error}}
                                                             </div>
                                                             {{else}}
                                                             <input type="email" class="form-control" id="email"
-                                                                name="email" placeholder="Enter email address">
+                                                                name="email" placeholder="Enter new email address here">
                                                             {{/if}}
                                                         </div>
                                                         <div class="form-group">
-                                                             <span
+                                                            <label for="email">Date of birth: <span class="changeStyle"
                                                                     >{{moment data.managerInfo.DoB
-                                                                    format ="MMMM DD - YYYY"}}</span>
+                                                                    format ="MMMM DD - YYYY"}}</span></label>
                                                             
                                                             <input type="date" class="form-control" id="DoB" name="DoB">
                                                         </div>
                                                         <div class="form-group">
-                                                            <span
-                                                                    >{{data.managerInfo.categoryId.name}}</span>
+                                                            <label>Responsible for: <span class="changeStyle"
+                                                                    >{{data.managerInfo.categoryId.name}}</span></label>
                                                             
                                                             <select class="form-control" name="categoryId">
                                                                 {{#each data.category}}

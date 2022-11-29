@@ -54,8 +54,8 @@
                                                         enctype="application/x-www-form-urlencoded">
 
                                                         <div class="form-group">
-                                                             <span
-                                                                    class="changeStyle">{{managerInfo.fullName}}</span>
+                                                            <label for="name">Fullname:  <span
+                                                                    class="changeStyle">{{managerInfo.fullName}}</span></label>
                                                             
                                                             <input type="text" class="form-control" id="fullName"
                                                                 name="fullName" placeholder="Enter your name here"
@@ -63,8 +63,8 @@
                                                                 onblur="this.placeholder = 'Enter your name here'">
                                                         </div>
                                                         <div class="form-group">
-                                                             <span
-                                                                    class="changeStyle">{{managerInfo.email}}</span>
+                                                            <label for="email">Email: <span
+                                                                    class="changeStyle">{{managerInfo.email}}</span></label>
                                                            
                                                             <input type="email" class="form-control" id="email"
                                                                 name="email" placeholder="Enter your email here"
@@ -73,11 +73,11 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                             <span
+                                                            <label for="email">Date of birth:  <span
                                                                     class="changeStyle">{{moment
                                                                     managerInfo.DoB
                                                                     format
-                                                                    ="DD MMMM - YYYY"}}</span>
+                                                                    ="DD MMMM - YYYY"}}</span></label>
                                                            
                                                             <input type="date" class="form-control" id="DoB" name="DoB">
                                                         </div>
@@ -128,7 +128,9 @@
                                                                     onblur="this.placeholder = 'Enter new Password'"
                                                                     name="password" onkeyup="check();">
                                                              <div class="input-group-append">
-                                                                    
+                                                                    <button class="btn btn-outline-secondary" type="button" id="btnPassword">
+                                                                        <span class="ti-eye"></span>
+                                                                    </button>
                                                                 </div>
                                                                 
                                                             </div>
@@ -142,7 +144,9 @@
                                                                     onblur="this.placeholder = 'Re-enter Password'"
                                                                     name="rePassword" onkeyup="check();">
                                                                     <div class="input-group-append">
-                                                                    
+                                                                        <button class="btn btn-outline-secondary" type="button" id="btnRePassword">
+                                                                            <span class="ti-eye"></span>
+                                                                        </button>
                                                                 </div>
                                                               
                                                             </div>
@@ -184,3 +188,6 @@
         </div>
     </div>
 </div>
+
+
+<script src="/javascripts/hideShowPwd.js"></script>

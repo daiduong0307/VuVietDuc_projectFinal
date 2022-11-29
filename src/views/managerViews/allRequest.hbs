@@ -85,6 +85,7 @@
                                                                     <th scope="col">Account</th>
                                                                     <th scope="col">Full Name</th>
                                                                     <th scope="col">Title</th>
+                                                                    <th scope="col">CreatedAt</th>
                                                                     <th scope="col">status</th>
                                                                     <th scope="col">Action</th>
                                                                 </tr>
@@ -97,6 +98,7 @@
                                                                     <td><a
                                                                             href="/managers/blogDetails/{{_id}}">{{titleName}}</a>
                                                                     </td>
+                                                                    <td>{{moment createdAt format ="MMMM DD - YYYY"}}</td>
                                                                     {{#equals isPublish 'Approved'}}
                                                                     <td><span
                                                                             class="label bg-c-green m-l-10 f-10">{{isPublish}}</span>
@@ -160,6 +162,7 @@
                                                                 {{/each}}
                                                             </tbody>
                                                         </table>
+                                                        
                                                     </div>
 
                                                 </div>

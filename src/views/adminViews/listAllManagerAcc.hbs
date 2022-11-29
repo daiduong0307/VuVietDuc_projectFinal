@@ -158,7 +158,7 @@
                                                                     <th scope="col">Full name</th>
                                                                     <th scope="col">Username</th>
                                                                     <th scope="col">Responsible for</th>
-
+                                                                    <th scope="col">CreatedAt</th>
                                                                     <th scope="col">Action</th>
                                                                 </tr>
                                                             </thead>
@@ -172,7 +172,7 @@
                                                                     <td >
                                                                         {{categoryId.name}}
                                                                     </td>
-                                                             
+                                                                    <td>{{moment createdAt format ="MMMM DD - YYYY"}}</td>
                                                                     <td class="d-flex flex-row">
                                                                         <button
                                                                             class="btn  "

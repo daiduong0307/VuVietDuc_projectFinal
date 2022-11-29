@@ -115,7 +115,11 @@
                                 <div class="form-group">
                                     <label for="pwd">Password</label>
                                     <div class="input-group mb-3">
-                                        <input type="password" class="form-control" id="pwd" name="password"
+                                        <input type="password" class="form-control" id="pwd" 
+                                            placeholder="Enter new Password"
+                                            onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Enter new Password'"
+                                            name="password"
                                             onkeyup="check();">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button" id="btnPassword">
@@ -128,6 +132,9 @@
                                     <label for="repwd">Re-enter Password</label>
                                     <div class="input-group mb-3">
                                         <input type="password" class="form-control" id="rePwd" name="rePassword"
+                                            placeholder="Re-enter Password"
+                                            onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Re-enter Password'"
                                             onkeyup="check();">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button" id="btnRePassword">
@@ -149,7 +156,7 @@
                                 {{accSucceed}}
                             </div>
                             {{/if}}
-
+                                
                                 <button type="submit" class="btn " id="submit_info" style="float: right;">Update</button>
                             </form>
                         </div>

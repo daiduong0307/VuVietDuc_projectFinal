@@ -1415,6 +1415,7 @@ function getNumber_Of_Posts(postData) {
     return sum;
 }
 
+//delete bookmark
 exports.deleteBookmark = async (req, res) => {
     const { _id } = req.body;
 

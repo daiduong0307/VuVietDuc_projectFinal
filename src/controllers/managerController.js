@@ -138,6 +138,10 @@ exports.allRequest = async (req, res) => {
                 userBlog,
                 managerInfo,
                 categories,
+                pagination: {
+                    page: page, // Current Page
+                    pageCount: Math.ceil(countUser / perPage), // Total pages to display
+                },
             });
         }
     } catch (error) {
